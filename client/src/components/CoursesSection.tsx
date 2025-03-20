@@ -28,6 +28,7 @@ export default function CoursesSection() {
     skipSnaps: false
   });
   const [autoplay, setAutoplay] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
   const autoplayInterval = 3000;
   const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
@@ -36,7 +37,7 @@ export default function CoursesSection() {
   }, [embla]);
   
   const autoplayCallback = useCallback(() => {
-    if (!embla || !autoplay) return;
+    if (!embla || !autoplay || isHovering) return;
     if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
     
     autoplayTimeoutRef.current = setTimeout(() => {
@@ -44,7 +45,7 @@ export default function CoursesSection() {
       embla.scrollNext();
       autoplayCallback();
     }, autoplayInterval);
-  }, [autoplay, embla, autoplayInterval]);
+  }, [autoplay, embla, autoplayInterval, isHovering]);
   
   useEffect(() => {
     if (!embla) return;
@@ -58,7 +59,14 @@ export default function CoursesSection() {
         clearTimeout(autoplayTimeoutRef.current);
       }
     };
-  }, [autoplay, autoplayCallback, embla, onSelect]);
+  }, [autoplay, autoplayCallback, embla, onSelect, isHovering]);
+  
+  // Effect to restart autoplay when hovering stops
+  useEffect(() => {
+    if (!isHovering && autoplay) {
+      autoplayCallback();
+    }
+  }, [isHovering, autoplay, autoplayCallback]);
   
   // Responsive slide count
   const getVisibleSlides = () => {
@@ -242,14 +250,21 @@ export default function CoursesSection() {
         
         {/* Course Carousel */}
         <div className="relative">
-          <div className="overflow-hidden" ref={viewportRef}>
+          <div 
+            className="overflow-hidden" 
+            ref={viewportRef}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
             <div className="flex">
               {filteredCourses.map(course => (
                 <div 
                   key={course.id}
                   className="min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)] px-4 flex-shrink-0"
                 >
-                  <div className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg h-full flex flex-col">
+                  <div 
+                    className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg h-full flex flex-col"
+                  >
                     <div className={`h-48 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 flex-shrink-0`}>
                       {course.logoUrl ? (
                         <img src={course.logoUrl} alt={course.title} className="h-12 max-w-full object-contain" />
