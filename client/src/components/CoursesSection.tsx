@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 
 type CourseCategory = 'all' | 'business' | 'ai' | 'cloud';
 
@@ -19,6 +20,55 @@ interface Course {
 export default function CoursesSection() {
   const [activeFilter, setActiveFilter] = useState<CourseCategory>('all');
   const [expandedCourses, setExpandedCourses] = useState<Record<string, boolean>>({});
+  
+  // Embla carousel setup
+  const [viewportRef, embla] = useEmblaCarousel({ 
+    loop: true, 
+    align: 'start',
+    skipSnaps: false
+  });
+  const [autoplay, setAutoplay] = useState(true);
+  const autoplayInterval = 3000;
+  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
+  const onSelect = useCallback(() => {
+    if (!embla) return;
+  }, [embla]);
+  
+  const autoplayCallback = useCallback(() => {
+    if (!embla || !autoplay) return;
+    if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
+    
+    autoplayTimeoutRef.current = setTimeout(() => {
+      if (!embla) return;
+      embla.scrollNext();
+      autoplayCallback();
+    }, autoplayInterval);
+  }, [autoplay, embla, autoplayInterval]);
+  
+  useEffect(() => {
+    if (!embla) return;
+    onSelect();
+    embla.on('select', onSelect);
+    autoplayCallback();
+    
+    return () => {
+      embla.off('select', onSelect);
+      if (autoplayTimeoutRef.current) {
+        clearTimeout(autoplayTimeoutRef.current);
+      }
+    };
+  }, [autoplay, autoplayCallback, embla, onSelect]);
+  
+  // Responsive slide count
+  const getVisibleSlides = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 3;
+    }
+    return 3;
+  };
 
   const courses: Course[] = [
     {
@@ -34,7 +84,7 @@ export default function CoursesSection() {
         'End-to-end implementation expertise',
         'Industry-specific CRM solutions'
       ],
-      logoUrl: 'https://www.salesforce.com/content/dam/web/en_us/www/images/sales-cloud/sales-cloud-logo.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg',
       gradientFrom: 'from-blue-500',
       gradientTo: 'to-blue-700'
     },
@@ -51,7 +101,7 @@ export default function CoursesSection() {
         'Financial and operational module expertise',
         'Business process optimization'
       ],
-      logoUrl: 'https://www.oracle.com/a/ocom/img/logo-red.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg',
       gradientFrom: 'from-red-500',
       gradientTo: 'to-red-700'
     },
@@ -119,7 +169,7 @@ export default function CoursesSection() {
         'Multi-tier cloud architecture design',
         'Security and cost optimization expertise'
       ],
-      logoUrl: 'https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
       gradientFrom: 'from-yellow-500',
       gradientTo: 'to-orange-500'
     }
@@ -139,9 +189,11 @@ export default function CoursesSection() {
   return (
     <section id="courses" className="py-16 bg-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Our Course Offerings</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">Level Up</span> Your Skills
+        </h2>
         <p className="text-center text-gray-700 max-w-2xl mx-auto mb-12">
-          Specialized training in high-demand technology domains with hands-on experience and certification prep.
+          Get certified, get noticed, get hired 🚀 Hands-on training that puts your career in the fast lane with the tech skills employers are desperate for.
         </p>
         
         {/* Course Filters */}
@@ -154,7 +206,7 @@ export default function CoursesSection() {
             }`}
             onClick={() => setActiveFilter('all')}
           >
-            All Courses
+            Show All 🔥
           </button>
           <button 
             className={`font-medium py-2 px-6 rounded-full transition ${
@@ -164,7 +216,7 @@ export default function CoursesSection() {
             }`}
             onClick={() => setActiveFilter('business')}
           >
-            Business Applications
+            Biz Apps 💼
           </button>
           <button 
             className={`font-medium py-2 px-6 rounded-full transition ${
@@ -174,7 +226,7 @@ export default function CoursesSection() {
             }`}
             onClick={() => setActiveFilter('ai')}
           >
-            AI Consulting
+            AI Magic 🧠
           </button>
           <button 
             className={`font-medium py-2 px-6 rounded-full transition ${
@@ -184,73 +236,108 @@ export default function CoursesSection() {
             }`}
             onClick={() => setActiveFilter('cloud')}
           >
-            Cloud Computing
+            Cloud Power ☁️
           </button>
         </div>
         
-        {/* Course Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCourses.map(course => (
-            <div 
-              key={course.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg"
-            >
-              <div className={`h-48 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6`}>
-                {course.logoUrl ? (
-                  <img src={course.logoUrl} alt={course.title} className="h-12" />
-                ) : (
-                  course.id === 'nlp' ? (
-                    <i className="fas fa-comments text-white text-5xl"></i>
-                  ) : (
-                    <i className="fas fa-robot text-white text-5xl"></i>
-                  )
-                )}
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold">{course.title}</h3>
-                  <span className={`bg-${course.bgColor} text-${course.color} text-xs font-semibold px-2.5 py-0.5 rounded`}>
-                    {course.categoryLabel}
-                  </span>
-                </div>
-                <p className="text-gray-700 mb-4">
-                  {course.description}
-                </p>
-                <h4 className="font-semibold mb-2">Key Outcomes:</h4>
-                <ul className="mb-4 space-y-1">
-                  {course.outcomes.map((outcome, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-primary mr-2"><i className="fas fa-check"></i></span>
-                      <span className="text-gray-700">{outcome}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button 
-                  onClick={() => toggleCourseDetails(course.id)} 
-                  className="text-primary hover:text-primary/80 font-medium flex items-center"
+        {/* Course Carousel */}
+        <div className="relative">
+          <div className="overflow-hidden" ref={viewportRef}>
+            <div className="flex">
+              {filteredCourses.map(course => (
+                <div 
+                  key={course.id}
+                  className="min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)] px-4 flex-shrink-0"
                 >
-                  {expandedCourses[course.id] ? (
-                    <>Hide Details <i className="fas fa-chevron-up ml-1 text-sm"></i></>
-                  ) : (
-                    <>View Details <i className="fas fa-chevron-right ml-1 text-sm"></i></>
-                  )}
-                </button>
-                
-                {expandedCourses[course.id] && (
-                  <div className="mt-4 pt-4 border-t">
-                    <h4 className="font-semibold mb-2">Course Structure:</h4>
-                    <p className="text-gray-700 mb-3">
-                      12-week immersive program with hands-on projects and mentorship from industry experts.
-                    </p>
-                    <h4 className="font-semibold mb-2">Career Opportunities:</h4>
-                    <p className="text-gray-700">
-                      Graduates work as specialized consultants in top firms with average starting salaries of $85,000-$115,000.
-                    </p>
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg h-full flex flex-col">
+                    <div className={`h-48 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 flex-shrink-0`}>
+                      {course.logoUrl ? (
+                        <img src={course.logoUrl} alt={course.title} className="h-12 max-w-full object-contain" />
+                      ) : (
+                        course.id === 'nlp' ? (
+                          <i className="fas fa-comments text-white text-5xl"></i>
+                        ) : (
+                          <i className="fas fa-robot text-white text-5xl"></i>
+                        )
+                      )}
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="text-xl font-bold">{course.title}</h3>
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">
+                          {course.categoryLabel}
+                        </span>
+                      </div>
+                      <p className="text-gray-700 mb-4">
+                        {course.description}
+                      </p>
+                      <h4 className="font-semibold mb-2">Key Outcomes:</h4>
+                      <ul className="mb-4 space-y-1">
+                        {course.outcomes.map((outcome, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-primary mr-2"><i className="fas fa-check"></i></span>
+                            <span className="text-gray-700">{outcome}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <button 
+                        onClick={() => toggleCourseDetails(course.id)} 
+                        className="text-primary hover:text-primary/80 font-medium flex items-center mt-auto"
+                      >
+                        {expandedCourses[course.id] ? (
+                          <>Hide Details <i className="fas fa-chevron-up ml-1 text-sm"></i></>
+                        ) : (
+                          <>View Details <i className="fas fa-chevron-right ml-1 text-sm"></i></>
+                        )}
+                      </button>
+                      
+                      {expandedCourses[course.id] && (
+                        <div className="mt-4 pt-4 border-t">
+                          <h4 className="font-semibold mb-2">Course Structure:</h4>
+                          <p className="text-gray-700 mb-3">
+                            12-week immersive program with hands-on projects and mentorship from industry experts.
+                          </p>
+                          <h4 className="font-semibold mb-2">Career Opportunities:</h4>
+                          <p className="text-gray-700">
+                            Graduates work as specialized consultants in top firms with average starting salaries of $85,000-$115,000.
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                )}
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          
+          {/* Navigation Buttons */}
+          <button 
+            className="absolute top-1/2 -translate-y-1/2 left-0 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 text-primary hover:bg-primary hover:text-white transition"
+            onClick={() => embla?.scrollPrev()}
+            aria-label="Previous slide"
+          >
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <button 
+            className="absolute top-1/2 -translate-y-1/2 right-0 bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center z-10 text-primary hover:bg-primary hover:text-white transition"
+            onClick={() => embla?.scrollNext()}
+            aria-label="Next slide"
+          >
+            <i className="fas fa-chevron-right"></i>
+          </button>
+          
+          {/* Pause/Play Button */}
+          <button 
+            className="absolute bottom-4 right-4 bg-white shadow-md rounded-full w-8 h-8 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition"
+            onClick={() => setAutoplay(!autoplay)}
+            aria-label={autoplay ? "Pause autoplay" : "Start autoplay"}
+          >
+            {autoplay ? (
+              <i className="fas fa-pause text-xs"></i>
+            ) : (
+              <i className="fas fa-play text-xs"></i>
+            )}
+          </button>
         </div>
       </div>
     </section>
