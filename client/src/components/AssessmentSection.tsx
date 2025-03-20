@@ -90,7 +90,7 @@ export default function AssessmentSection() {
                 onClick={startAssessment}
                 className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg"
               >
-                Start Assessment
+                Find Your Lane
               </button>
             </div>
           )}

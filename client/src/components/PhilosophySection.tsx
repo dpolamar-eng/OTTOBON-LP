@@ -2,7 +2,7 @@ export default function PhilosophySection() {
   return (
     <section id="philosophy" className="py-16 bg-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Our Philosophy</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Our Vibe</h2>
         <p className="text-center text-gray-700 max-w-2xl mx-auto mb-12">
           At OttoBon, we believe technical skills alone aren't enough. Our integrated approach prepares consultants who excel technically and interpersonally.
         </p>
