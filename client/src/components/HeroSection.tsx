@@ -6,23 +6,25 @@ export default function HeroSection() {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Accelerate Your Tech Consulting Career
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">Level Up</span> Your Tech Game
             </h1>
             <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-lg">
-              Develop the technical expertise and interpersonal skills needed to excel in Business Applications, AI, and Cloud Computing consulting.
+              Skill up, stand out, and secure the bag 💰 with cutting-edge skills in Business Apps, AI, and Cloud. No cap - we'll get you industry-ready in weeks, not years.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <a 
                 href="#enroll" 
-                className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg text-center"
+                className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group"
               >
-                Enroll Now
+                <span className="relative z-10">Get In The Game</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               </a>
               <a 
                 href="#assessment" 
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-full transition text-center"
+                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-full transition text-center group"
               >
-                Take Skill Assessment
+                <span className="group-hover:hidden">Check Your Vibe</span>
+                <span className="hidden group-hover:inline">🔥 Let's Go 🔥</span>
               </a>
             </div>
           </div>
