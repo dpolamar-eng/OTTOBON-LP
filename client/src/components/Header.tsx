@@ -38,10 +38,10 @@ export default function Header() {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          <a href="#philosophy" className="text-gray-700 hover:text-primary font-medium transition">Our Vibe</a>
-          <a href="#courses" className="text-gray-700 hover:text-primary font-medium transition">Level Up</a>
-          <a href="#assessment" className="text-gray-700 hover:text-primary font-medium transition">Find Your Lane</a>
-          <a href="#success-stories" className="text-gray-700 hover:text-primary font-medium transition">The Winners</a>
+          <a href="#philosophy" className="text-gray-700 hover:text-primary font-medium transition">Our Philosophy</a>
+          <a href="#courses" className="text-gray-700 hover:text-primary font-medium transition">Our Programs</a>
+          <a href="#assessment" className="text-gray-700 hover:text-primary font-medium transition">Skills Assessment</a>
+          <a href="#success-stories" className="text-gray-700 hover:text-primary font-medium transition">Success Stories</a>
         </nav>
         
         {/* CTA Button */}
@@ -50,7 +50,7 @@ export default function Header() {
             href="#enroll" 
             className="bg-primary hover:bg-primary/90 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
           >
-            <span className="relative z-10">Join The Fast Lane</span>
+            <span className="relative z-10">Apply Now</span>
             <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </a>
         </div>
@@ -73,35 +73,35 @@ export default function Header() {
             className="text-gray-700 hover:text-primary font-medium transition py-2"
             onClick={closeMobileMenu}
           >
-            Our Vibe
+            Our Philosophy
           </a>
           <a 
             href="#courses" 
             className="text-gray-700 hover:text-primary font-medium transition py-2"
             onClick={closeMobileMenu}
           >
-            Level Up
+            Our Programs
           </a>
           <a 
             href="#assessment" 
             className="text-gray-700 hover:text-primary font-medium transition py-2"
             onClick={closeMobileMenu}
           >
-            Find Your Lane
+            Skills Assessment
           </a>
           <a 
             href="#success-stories" 
             className="text-gray-700 hover:text-primary font-medium transition py-2"
             onClick={closeMobileMenu}
           >
-            The Winners
+            Success Stories
           </a>
           <a 
             href="#enroll" 
             className="bg-primary hover:bg-primary/90 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group"
             onClick={closeMobileMenu}
           >
-            <span className="relative z-10">Join The Fast Lane</span>
+            <span className="relative z-10">Apply Now</span>
             <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </a>
         </div>

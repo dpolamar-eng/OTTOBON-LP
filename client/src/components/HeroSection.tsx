@@ -5,7 +5,9 @@ export default function HeroSection() {
   // Carousel for hero content
   const [heroViewportRef, heroEmbla] = useEmblaCarousel({ 
     loop: true,
-    skipSnaps: false
+    skipSnaps: false,
+    align: "center",
+    containScroll: "trimSnaps" 
   });
   
   const [heroActiveIndex, setHeroActiveIndex] = useState(0);
@@ -14,20 +16,20 @@ export default function HeroSection() {
   
   const heroSlides = [
     {
-      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600'>Level Up</span> Your Tech Game",
-      description: "Skill up, stand out, and secure the bag 💰 with cutting-edge skills in Business Apps, AI, and Cloud. No cap - we'll get you industry-ready in weeks, not years.",
+      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600'>Advance</span> Your Technical Expertise",
+      description: "Develop essential skills in Business Applications, AI, and Cloud Computing. Our accelerated programs prepare you for industry roles in a fraction of traditional timelines.",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       alt: "Technology consultants collaborating"
     },
     {
-      title: "Where <span class='bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600'>Innovation</span> Meets Career",
-      description: "Join a community of tech-obsessed learners building tomorrow's solutions today. Collab with industry pros who've been there, done that, and are ready to spill the tea. 🚀",
+      title: "Where <span class='bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600'>Innovation</span> Meets Career Development",
+      description: "Join a community of dedicated professionals building tomorrow's solutions. Learn from industry experts with extensive experience in implementing enterprise technologies.",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       alt: "Young professionals with digital devices"
     },
     {
-      title: "Tech Skills That <span class='bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-pink-500'>Actually Pay</span>",
-      description: "Not your average bootcamp. Learn what employers actually want, not what textbooks claim. Get hands dirty with real projects and make your portfolio go brrrr! 💯",
+      title: "Acquire <span class='bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-pink-500'>High-Demand</span> Technical Skills",
+      description: "Our specialized professional training focuses on practical applications rather than theory alone. Develop a portfolio of real-world projects desired by leading employers.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       alt: "Tech consultant presenting to team"
     }
@@ -88,15 +90,15 @@ export default function HeroSection() {
                         href="#enroll" 
                         className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group"
                       >
-                        <span className="relative z-10">Get In The Game</span>
+                        <span className="relative z-10">Apply Now</span>
                         <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       </a>
                       <a 
                         href="#assessment" 
                         className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-full transition text-center group"
                       >
-                        <span className="group-hover:hidden">Check Your Vibe</span>
-                        <span className="hidden group-hover:inline">🔥 Let's Go 🔥</span>
+                        <span className="group-hover:hidden">Skills Assessment</span>
+                        <span className="hidden group-hover:inline">Begin Assessment</span>
                       </a>
                     </div>
                   </div>
