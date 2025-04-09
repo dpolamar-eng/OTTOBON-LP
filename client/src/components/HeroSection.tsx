@@ -16,7 +16,7 @@ export default function HeroSection() {
   
   const heroSlides = [
     {
-      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600'>Advance</span> Your Technical Expertise",
+      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700'>Advance</span> Your Technical Expertise",
       description: "Develop essential skills in Business Applications, AI, and Cloud Computing. Our accelerated programs prepare you for industry roles in a fraction of traditional timelines.",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       alt: "Technology consultants collaborating"
