@@ -3,6 +3,25 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 type CourseCategory = 'all' | 'Career Launch' | 'Tech Edge';
 
+interface CategoryInfo {
+  id: CourseCategory;
+  title: string;
+  description: string;
+}
+
+const categories: CategoryInfo[] = [
+  {
+    id: 'Tech Edge',
+    title: 'Tech Edge',
+    description: 'High demand skills in Market'
+  },
+  {
+    id: 'Career Launch',
+    title: 'Career Launch',
+    description: 'Placement Guaranteed path'
+  }
+];
+
 interface Course {
   id: string;
   title: string;
@@ -200,27 +219,21 @@ export default function CoursesSection() {
           >
             All Programs
           </button>
-          <button 
-            className={`font-medium py-2 px-6 rounded-full transition ${
-              activeFilter === 'Career Launch ' 
-                ? 'bg-primary text-white' 
-                : 'bg-white hover:bg-primary hover:text-white shadow-sm'
-            }`}
-            onClick={() => setActiveFilter('Career Launch ')}
-          >
-            Career Launch
-          </button>
-          <button 
-            className={`font-medium py-2 px-6 rounded-full transition ${
-              activeFilter === 'Tech Edge' 
-                ? 'bg-primary text-white' 
-                : 'bg-white hover:bg-primary hover:text-white shadow-sm'
-            }`}
-            onClick={() => setActiveFilter('Tech Edge')}
-          >
-            Tech Edge
-          </button>
-          
+          {categories.map(category => (
+            <div key={category.id} className="text-center">
+              <button 
+                className={`font-medium py-2 px-6 rounded-full transition ${
+                  activeFilter === category.id
+                    ? 'bg-primary text-white' 
+                    : 'bg-white hover:bg-primary hover:text-white shadow-sm'
+                }`}
+                onClick={() => setActiveFilter(category.id)}
+              >
+                {category.title}
+              </button>
+              <p className="text-sm text-gray-600 mt-1">{category.description}</p>
+            </div>
+          ))}
         </div>
         
         {/* Course Carousel */}
