@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 
-type CourseCategory = 'all' | 'business' | 'ai' | 'cloud';
+type CourseCategory = 'all' | 'Career Launch' | 'Tech Edge';
 
 interface Course {
   id: string;
   title: string;
-  category: 'business' | 'ai' | 'cloud';
+  category: 'Career Launch' | 'Tech Edge';
   categoryLabel: string;
   color: string;
   bgColor: string;
@@ -82,7 +82,7 @@ export default function CoursesSection() {
     {
       id: 'salesforce',
       title: 'Salesforce CX Consultant',
-      category: 'business',
+      category: 'Tech Edge',
       categoryLabel: 'Business Apps',
       color: 'blue-800',
       bgColor: 'blue-100',
@@ -99,7 +99,7 @@ export default function CoursesSection() {
     {
       id: 'oracle',
       title: 'Oracle ERP Consultant',
-      category: 'business',
+      category: 'Tech Edge',
       categoryLabel: 'Business Apps',
       color: 'red-800',
       bgColor: 'red-100',
@@ -116,7 +116,7 @@ export default function CoursesSection() {
     {
       id: 'microsoft',
       title: 'Microsoft Dynamics SCM',
-      category: 'business',
+      category: 'Tech Edge',
       categoryLabel: 'Business Apps',
       color: 'green-800',
       bgColor: 'green-100',
@@ -130,27 +130,11 @@ export default function CoursesSection() {
       gradientFrom: 'from-green-500',
       gradientTo: 'to-green-700'
     },
-    {
-      id: 'nlp',
-      title: 'NLP Implementation Specialist',
-      category: 'ai',
-      categoryLabel: 'AI',
-      color: 'purple-800',
-      bgColor: 'purple-100',
-      description: 'Deploy natural language processing solutions for enterprise applications.',
-      outcomes: [
-        'NLP model development and fine-tuning',
-        'Conversational AI implementation',
-        'Multilingual capabilities deployment'
-      ],
-      logoUrl: '',
-      gradientFrom: 'from-purple-500',
-      gradientTo: 'to-purple-700'
-    },
+   
     {
       id: 'genai',
       title: 'Generative AI Solutions Architect',
-      category: 'ai',
+      category: 'Career Launch ',
       categoryLabel: 'AI',
       color: 'indigo-800',
       bgColor: 'indigo-100',
@@ -167,7 +151,7 @@ export default function CoursesSection() {
     {
       id: 'aws',
       title: 'AWS Solutions Architect',
-      category: 'cloud',
+      category: 'Career Launch',
       categoryLabel: 'Cloud',
       color: 'yellow-800',
       bgColor: 'yellow-100',
@@ -218,34 +202,25 @@ export default function CoursesSection() {
           </button>
           <button 
             className={`font-medium py-2 px-6 rounded-full transition ${
-              activeFilter === 'business' 
+              activeFilter === 'Career Launch ' 
                 ? 'bg-primary text-white' 
                 : 'bg-white hover:bg-primary hover:text-white shadow-sm'
             }`}
-            onClick={() => setActiveFilter('business')}
+            onClick={() => setActiveFilter('Career Launch ')}
           >
-            Business Applications
+            Career Launch
           </button>
           <button 
             className={`font-medium py-2 px-6 rounded-full transition ${
-              activeFilter === 'ai' 
+              activeFilter === 'Tech Edge' 
                 ? 'bg-primary text-white' 
                 : 'bg-white hover:bg-primary hover:text-white shadow-sm'
             }`}
-            onClick={() => setActiveFilter('ai')}
+            onClick={() => setActiveFilter('Tech Edge')}
           >
-            AI Consulting
+            Tech Edge
           </button>
-          <button 
-            className={`font-medium py-2 px-6 rounded-full transition ${
-              activeFilter === 'cloud' 
-                ? 'bg-primary text-white' 
-                : 'bg-white hover:bg-primary hover:text-white shadow-sm'
-            }`}
-            onClick={() => setActiveFilter('cloud')}
-          >
-            Cloud Computing
-          </button>
+          
         </div>
         
         {/* Course Carousel */}
