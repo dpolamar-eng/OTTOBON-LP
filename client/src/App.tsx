@@ -2,9 +2,11 @@ import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
+import { useState, useEffect } from "react";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ScrollToTop from "@/components/ScrollToTop";
+import OnboardingExperience from "@/components/OnboardingExperience";
 
 function Router() {
   return (
@@ -16,11 +18,35 @@ function Router() {
 }
 
 function App() {
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  
+  useEffect(() => {
+    // Check if the user has seen the onboarding before
+    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
+    
+    if (!hasSeenOnboarding) {
+      // Show onboarding after a slight delay to allow the main page to load first
+      const timer = setTimeout(() => {
+        setShowOnboarding(true);
+      }, 1500);
+      
+      // Mark as seen for future visits
+      localStorage.setItem('hasSeenOnboarding', 'true');
+      
+      return () => clearTimeout(timer);
+    }
+  }, []);
+  
+  const handleOnboardingClose = () => {
+    setShowOnboarding(false);
+  };
+  
   return (
     <QueryClientProvider client={queryClient}>
       <ScrollToTop />
       <Router />
       <Toaster />
+      {showOnboarding && <OnboardingExperience onClose={handleOnboardingClose} />}
     </QueryClientProvider>
   );
 }
