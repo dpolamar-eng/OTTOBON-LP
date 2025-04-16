@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import PhilosophySection from "@/components/PhilosophySection";
-import ApproachSection from "@/components/ApproachSection";
+import MethodologySection from "@/components/MethodologySection";
 import CoursesSection from "@/components/CoursesSection";
 import RequirementsSection from "@/components/RequirementsSection";
 import AssessmentSection from "@/components/AssessmentSection";
@@ -15,8 +14,7 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <PhilosophySection />
-        <ApproachSection />
+        <MethodologySection />
         <CoursesSection />
         <RequirementsSection />
         <AssessmentSection />

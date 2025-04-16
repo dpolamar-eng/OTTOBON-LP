@@ -1,0 +1,443 @@
+import React, { useState } from 'react';
+
+export default function MethodologySection() {
+  const [flippedCards, setFlippedCards] = useState({
+    human: false,
+    industry: false,
+    technical: false,
+    career: false
+  });
+
+  return (
+    <section className="py-20 bg-gradient-soft">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Methodology</h2>
+          <p className="text-gray-700 mb-8">
+            Ottobon's unique approach transforms promising talent into elite technology consultants through these core pillars.
+          </p>
+          <div className="fancy-divider"></div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {/* Pillar 1: Human-Centered */}
+          <div 
+            className="flip-card hover-lift" 
+            style={{height: "450px"}}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
+          >
+            <div className="flip-card-inner">
+              <div className="flip-card-front glass-effect">
+                <div className="h-1/3 bg-gradient-primary relative overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
+                    alt="Team collaboration" 
+                    className="w-full h-full object-cover opacity-80"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-primary text-2xl font-bold">01</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-8 h-2/3 flex flex-col justify-between">
+                  <div>
+                    <div className="text-primary text-3xl mb-4 flex justify-center">
+                      <i className="fas fa-users"></i>
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-center">Human-Centered Excellence</h3>
+                    <p className="text-gray-700 text-sm text-center">
+                      Technical expertise must be paired with exceptional communication, adaptability, and emotional intelligence.
+                    </p>
+                  </div>
+                  <button 
+                    className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
+                    }}
+                  >
+                    Learn More <i className="fas fa-arrow-right ml-2"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <div className="flip-card-back">
+                <div className="h-full p-8 flex flex-col bg-white">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold flex items-center">
+                      <img 
+                        src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=80&h=80&q=80" 
+                        alt="Team collaboration" 
+                        className="w-10 h-10 object-cover rounded-full mr-3 border-2 border-primary"
+                      />
+                      Human-Centered Excellence
+                    </h3>
+                    <button 
+                      className="text-gray-500 hover:text-gray-700"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
+                      }}
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  </div>
+                  
+                  <div className="overflow-y-auto flex-1">
+                    <p className="text-gray-700 mb-4">
+                      Technical excellence alone isn't enough. The most brilliant solutions fail without stakeholder buy-in. Our human-centered approach develops consultants who are:
+                    </p>
+                    <ul className="space-y-2 mb-4">
+                      <li className="flex items-start">
+                        <span className="text-primary mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Accountable</strong> - Taking ownership of outcomes</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-primary mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Adaptable</strong> - Continuously learning and adjusting to challenges</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-primary mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Empathetic</strong> - Understanding client needs and perspectives</span>
+                      </li>
+                    </ul>
+                    <h4 className="font-semibold mb-2 text-primary">How We Develop It:</h4>
+                    <p className="text-gray-700 mb-2">
+                      Our human-centered curriculum includes:
+                    </p>
+                    <ul className="text-gray-700 space-y-2">
+                      <li>• Weekly communication workshops</li>
+                      <li>• Simulated client interactions</li>
+                      <li>• Emotional intelligence training</li>
+                      <li>• Team-based project challenges</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Pillar 2: Industry Knowledge */}
+          <div 
+            className="flip-card hover-lift"
+            style={{height: "450px"}}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
+          >
+            <div className="flip-card-inner">
+              <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
+                <div className="h-1/3 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=600&q=80" 
+                    alt="Industry analysis" 
+                    className="w-full h-full object-cover opacity-80"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-blue-600 text-2xl font-bold">02</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white p-6 h-2/3 flex flex-col">
+                  <div className="text-blue-600 text-3xl mb-4 flex justify-center">
+                    <i className="fas fa-chart-line"></i>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-center">Business & Industry Mastery</h3>
+                  <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
+                    Technology solutions exist to solve business problems. Our curriculum emphasizes context and industry-specific challenges.
+                  </p>
+                  <button 
+                    className="text-blue-600 font-medium py-2 px-4 rounded-full border border-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
+                    }}
+                  >
+                    Learn More <i className="fas fa-arrow-right ml-2"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <div className="flip-card-back bg-white rounded-lg shadow-md">
+                <div className="p-6 h-full flex flex-col">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold flex items-center">
+                      <img 
+                        src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=80&h=80&q=80" 
+                        alt="Industry analysis" 
+                        className="w-10 h-10 object-cover rounded-full mr-3 border-2 border-blue-600"
+                      />
+                      Business & Industry Mastery
+                    </h3>
+                    <button 
+                      className="text-gray-500 hover:text-gray-700"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
+                      }}
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  </div>
+                  
+                  <div className="overflow-y-auto flex-1">
+                    <p className="text-gray-700 mb-4">
+                      Technology never exists in a vacuum. Our curriculum focuses on the business context of technical solutions:
+                    </p>
+                    <ul className="space-y-2 mb-4">
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Business Processes</strong> - Understanding operations and value chains</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Industry Verticals</strong> - Specializing in healthcare, finance, retail, etc.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Change Management</strong> - Facilitating organizational transformation</span>
+                      </li>
+                    </ul>
+                    <h4 className="font-semibold mb-2 text-blue-600">Our Methodology:</h4>
+                    <p className="text-gray-700">
+                      Students work on real case studies from industry partners, gaining practical exposure to different business domains. Guest lectures from executives provide context on how technology addresses specific market challenges. Traditional learning is accelerated through our immersive, hands-on approach to industry knowledge.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Pillar 3: Technical Expertise */}
+          <div 
+            className="flip-card hover-lift"
+            style={{height: "450px"}}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
+          >
+            <div className="flip-card-inner">
+              <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
+                <div className="h-1/3 bg-gradient-to-r from-purple-500 to-purple-700 relative overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" 
+                    alt="Technical development" 
+                    className="w-full h-full object-cover opacity-75"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-purple-600 text-2xl font-bold">03</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white p-6 h-2/3 flex flex-col">
+                  <div className="text-purple-600 text-3xl mb-4 flex justify-center">
+                    <i className="fas fa-code"></i>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-center">Technical Acceleration</h3>
+                  <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
+                    Build robust technical foundations across high-demand domains through our accelerated, hands-on approach.
+                  </p>
+                  <button 
+                    className="text-purple-600 font-medium py-2 px-4 rounded-full border border-purple-600 hover:bg-purple-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
+                    }}
+                  >
+                    Learn More <i className="fas fa-arrow-right ml-2"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <div className="flip-card-back bg-white rounded-lg shadow-md">
+                <div className="p-6 h-full flex flex-col">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold flex items-center">
+                      <img 
+                        src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=80&h=80&q=80" 
+                        alt="Technical development" 
+                        className="w-10 h-10 object-cover rounded-full mr-3 border-2 border-purple-600"
+                      />
+                      Technical Acceleration
+                    </h3>
+                    <button 
+                      className="text-gray-500 hover:text-gray-700"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
+                      }}
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  </div>
+                  
+                  <div className="overflow-y-auto flex-1">
+                    <p className="text-gray-700 mb-4">
+                      Our speedway approach accelerates learning through immersive, hands-on experiences with real-world scenarios and industry tools:
+                    </p>
+                    <ul className="space-y-2 mb-4">
+                      <li className="flex items-start">
+                        <span className="text-purple-600 mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Technology Stacks</strong> - From front-end to back-end solutions</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-purple-600 mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Industry Tools</strong> - Working with professional-grade technologies</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-purple-600 mr-2"><i className="fas fa-check-circle"></i></span>
+                        <span className="text-gray-700"><strong>Implementation Methods</strong> - Structured project approaches</span>
+                      </li>
+                    </ul>
+                    <h4 className="font-semibold mb-2 text-purple-600">Our Acceleration Approach:</h4>
+                    <p className="text-gray-700">
+                      Traditional learning is too slow for today's tech evolution. We compress years of experiential learning into months through deliberate practice and expert coaching. Our lab environments provide hands-on practice with the tools used by leading consulting firms. Students graduate with both theoretical knowledge and practical implementation experience.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Pillar 4: Career Partnership */}
+          <div 
+            className="flip-card hover-lift" 
+            style={{height: "450px"}}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
+          >
+            <div className="flip-card-inner">
+              <div className="flip-card-front glass-effect">
+                <div className="h-1/3 bg-gradient-to-r from-green-500 to-green-700 relative overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&w=600&q=80" 
+                    alt="Career growth" 
+                    className="w-full h-full object-cover opacity-80"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-green-600 text-2xl font-bold">04</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-8 h-2/3 flex flex-col justify-between">
+                  <div>
+                    <div className="text-green-600 text-3xl mb-4 flex justify-center">
+                      <i className="fas fa-handshake"></i>
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-center">Career Partnership</h3>
+                    <p className="text-gray-700 text-sm text-center">
+                      We're committed to your long-term professional success beyond graduation.
+                    </p>
+                  </div>
+                  <button 
+                    className="text-green-600 font-medium py-2 px-4 rounded-full border border-green-600 hover:bg-green-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
+                    }}
+                  >
+                    Learn More <i className="fas fa-arrow-right ml-2"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <div className="flip-card-back">
+                <div className="h-full p-8 flex flex-col bg-white">
+                  <div className="flex justify-between items-start mb-6">
+                    <h3 className="text-xl font-bold">Career Partnership</h3>
+                    <button 
+                      className="text-gray-500 hover:text-gray-700"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
+                      }}
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  </div>
+                  
+                  <div className="flex-1 overflow-y-auto">
+                    <p className="text-gray-700 mb-6">
+                      We're committed to your long-term success, providing ongoing mentorship and connections to top consulting opportunities.
+                    </p>
+                    <h4 className="font-semibold mb-2 text-green-600">Why It Matters:</h4>
+                    <p className="text-gray-700 mb-6">
+                      Your success is our success. Our extensive industry network and career support services ensure you land not just any job, but the right job with substantial growth potential.
+                    </p>
+                    <h4 className="font-semibold mb-2 text-green-600">Our Commitment Includes:</h4>
+                    <ul className="text-gray-700 space-y-2">
+                      <li>• Personalized career coaching</li>
+                      <li>• Interview preparation with industry veterans</li>
+                      <li>• Exclusive recruiting events</li>
+                      <li>• Alumni network of 2,000+ professionals</li>
+                      <li>• Ongoing learning opportunities</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
