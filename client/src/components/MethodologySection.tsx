@@ -1,13 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function MethodologySection() {
-  const [flippedCards, setFlippedCards] = useState({
-    human: false,
-    industry: false,
-    technical: false,
-    career: false
-  });
-
   return (
     <section className="py-20 bg-gradient-soft">
       <div className="container mx-auto px-4">
@@ -33,42 +26,23 @@ export default function MethodologySection() {
           >
             <div className="flip-card-inner">
               <div className="flip-card-front glass-effect">
-                <div className="h-1/3 bg-gradient-primary relative overflow-hidden">
+                <div className="h-2/5 bg-gradient-primary relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
                     alt="Team collaboration" 
                     className="w-full h-full object-cover opacity-80"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-primary text-2xl font-bold">01</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="p-8 h-2/3 flex flex-col justify-between">
+                <div className="p-8 h-3/5 flex flex-col justify-between">
                   <div>
                     <div className="text-primary text-3xl mb-4 flex justify-center">
                       <i className="fas fa-users"></i>
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-center">Human-Centered Excellence</h3>
-                    <p className="text-gray-700 text-sm text-center">
+                    <p className="text-gray-700 text-center">
                       Technical expertise must be paired with exceptional communication, adaptability, and emotional intelligence.
                     </p>
                   </div>
-                  <button 
-                    className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      const parent = e.currentTarget.closest('.flip-card');
-                      if (parent) {
-                        const inner = parent.querySelector('.flip-card-inner');
-                        if (inner) inner.classList.add('flipped');
-                      }
-                    }}
-                  >
-                    Learn More <i className="fas fa-arrow-right ml-2"></i>
-                  </button>
                 </div>
               </div>
               
@@ -146,40 +120,21 @@ export default function MethodologySection() {
           >
             <div className="flip-card-inner">
               <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
-                <div className="h-1/3 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
+                <div className="h-2/5 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=600&q=80" 
                     alt="Industry analysis" 
                     className="w-full h-full object-cover opacity-80"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-blue-600 text-2xl font-bold">02</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="bg-white p-6 h-2/3 flex flex-col">
+                <div className="bg-white p-6 h-3/5 flex flex-col">
                   <div className="text-blue-600 text-3xl mb-4 flex justify-center">
                     <i className="fas fa-chart-line"></i>
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-center">Business & Industry Mastery</h3>
-                  <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
+                  <p className="text-gray-700 text-center">
                     Technology solutions exist to solve business problems. Our curriculum emphasizes context and industry-specific challenges.
                   </p>
-                  <button 
-                    className="text-blue-600 font-medium py-2 px-4 rounded-full border border-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      const parent = e.currentTarget.closest('.flip-card');
-                      if (parent) {
-                        const inner = parent.querySelector('.flip-card-inner');
-                        if (inner) inner.classList.add('flipped');
-                      }
-                    }}
-                  >
-                    Learn More <i className="fas fa-arrow-right ml-2"></i>
-                  </button>
                 </div>
               </div>
               
@@ -251,40 +206,21 @@ export default function MethodologySection() {
           >
             <div className="flip-card-inner">
               <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
-                <div className="h-1/3 bg-gradient-to-r from-purple-500 to-purple-700 relative overflow-hidden">
+                <div className="h-2/5 bg-gradient-to-r from-purple-500 to-purple-700 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" 
                     alt="Technical development" 
                     className="w-full h-full object-cover opacity-75"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-purple-600 text-2xl font-bold">03</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="bg-white p-6 h-2/3 flex flex-col">
+                <div className="bg-white p-6 h-3/5 flex flex-col">
                   <div className="text-purple-600 text-3xl mb-4 flex justify-center">
                     <i className="fas fa-code"></i>
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-center">Technical Acceleration</h3>
-                  <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
+                  <p className="text-gray-700 text-center">
                     Build robust technical foundations across high-demand domains through our accelerated, hands-on approach.
                   </p>
-                  <button 
-                    className="text-purple-600 font-medium py-2 px-4 rounded-full border border-purple-600 hover:bg-purple-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      const parent = e.currentTarget.closest('.flip-card');
-                      if (parent) {
-                        const inner = parent.querySelector('.flip-card-inner');
-                        if (inner) inner.classList.add('flipped');
-                      }
-                    }}
-                  >
-                    Learn More <i className="fas fa-arrow-right ml-2"></i>
-                  </button>
                 </div>
               </div>
               
@@ -356,42 +292,23 @@ export default function MethodologySection() {
           >
             <div className="flip-card-inner">
               <div className="flip-card-front glass-effect">
-                <div className="h-1/3 bg-gradient-to-r from-green-500 to-green-700 relative overflow-hidden">
+                <div className="h-2/5 bg-gradient-to-r from-green-500 to-green-700 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&w=600&q=80" 
                     alt="Career growth" 
                     className="w-full h-full object-cover opacity-80"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="glass-effect w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-green-600 text-2xl font-bold">04</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="p-8 h-2/3 flex flex-col justify-between">
+                <div className="p-8 h-3/5 flex flex-col justify-between">
                   <div>
                     <div className="text-green-600 text-3xl mb-4 flex justify-center">
                       <i className="fas fa-handshake"></i>
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-center">Career Partnership</h3>
-                    <p className="text-gray-700 text-sm text-center">
+                    <p className="text-gray-700 text-center">
                       We're committed to your long-term professional success beyond graduation.
                     </p>
                   </div>
-                  <button 
-                    className="text-green-600 font-medium py-2 px-4 rounded-full border border-green-600 hover:bg-green-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      const parent = e.currentTarget.closest('.flip-card');
-                      if (parent) {
-                        const inner = parent.querySelector('.flip-card-inner');
-                        if (inner) inner.classList.add('flipped');
-                      }
-                    }}
-                  >
-                    Learn More <i className="fas fa-arrow-right ml-2"></i>
-                  </button>
                 </div>
               </div>
               
