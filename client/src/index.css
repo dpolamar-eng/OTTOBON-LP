@@ -54,7 +54,7 @@
     border-radius: 0.5rem;
   }
 
-  .flip-card.flipped .flip-card-inner {
+  .flip-card-inner.flipped {
     transform: rotateY(180deg);
   }
 

@@ -61,7 +61,12 @@ export default function PhilosophySection() {
                     className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleFlipCard('human');
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
                     }}
                   >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
@@ -77,7 +82,12 @@ export default function PhilosophySection() {
                       className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
-                        toggleFlipCard('human');
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
                       }}
                     >
                       <i className="fas fa-times"></i>
@@ -134,7 +144,12 @@ export default function PhilosophySection() {
                     className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleFlipCard('accelerated');
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
                     }}
                   >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
@@ -150,7 +165,12 @@ export default function PhilosophySection() {
                       className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
-                        toggleFlipCard('accelerated');
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
                       }}
                     >
                       <i className="fas fa-times"></i>
@@ -207,7 +227,12 @@ export default function PhilosophySection() {
                     className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleFlipCard('career');
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
                     }}
                   >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
@@ -223,7 +248,12 @@ export default function PhilosophySection() {
                       className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
-                        toggleFlipCard('career');
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
                       }}
                     >
                       <i className="fas fa-times"></i>

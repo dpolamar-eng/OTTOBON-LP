@@ -64,7 +64,12 @@ export default function ApproachSection() {
                     className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleFlipCard('interpersonal');
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
                     }}
                   >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
@@ -151,7 +156,12 @@ export default function ApproachSection() {
                     className="text-blue-600 font-medium py-2 px-4 rounded-full border border-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleFlipCard('industry');
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
                     }}
                   >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
@@ -238,7 +248,12 @@ export default function ApproachSection() {
                     className="text-purple-600 font-medium py-2 px-4 rounded-full border border-purple-600 hover:bg-purple-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleFlipCard('technical');
+                      e.preventDefault();
+                      const parent = e.currentTarget.closest('.flip-card');
+                      if (parent) {
+                        const inner = parent.querySelector('.flip-card-inner');
+                        if (inner) inner.classList.add('flipped');
+                      }
                     }}
                   >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
