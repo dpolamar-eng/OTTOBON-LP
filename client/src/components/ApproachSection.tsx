@@ -60,7 +60,13 @@ export default function ApproachSection() {
                   <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
                     Technical excellence means little without the ability to communicate effectively and work collaboratively.
                   </p>
-                  <button className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto">
+                  <button 
+                    className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlipCard('interpersonal');
+                    }}
+                  >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
                   </button>
                 </div>
@@ -141,7 +147,13 @@ export default function ApproachSection() {
                   <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
                     Technology never exists in a vacuum. Our curriculum emphasizes business context and industry-specific challenges.
                   </p>
-                  <button className="text-blue-600 font-medium py-2 px-4 rounded-full border border-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto">
+                  <button 
+                    className="text-blue-600 font-medium py-2 px-4 rounded-full border border-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlipCard('industry');
+                    }}
+                  >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
                   </button>
                 </div>
@@ -222,7 +234,13 @@ export default function ApproachSection() {
                   <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
                     Build robust technical foundations across high-demand domains with hands-on experience and certification pathways.
                   </p>
-                  <button className="text-purple-600 font-medium py-2 px-4 rounded-full border border-purple-600 hover:bg-purple-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto">
+                  <button 
+                    className="text-purple-600 font-medium py-2 px-4 rounded-full border border-purple-600 hover:bg-purple-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlipCard('technical');
+                    }}
+                  >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
                   </button>
                 </div>

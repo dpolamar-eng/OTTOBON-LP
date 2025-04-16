@@ -57,7 +57,13 @@ export default function PhilosophySection() {
                       We emphasize the human side of consulting.
                     </p>
                   </div>
-                  <button className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4">
+                  <button 
+                    className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlipCard('human');
+                    }}
+                  >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
                   </button>
                 </div>
@@ -124,7 +130,13 @@ export default function PhilosophySection() {
                       Our approach accelerates learning through immersive experiences.
                     </p>
                   </div>
-                  <button className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4">
+                  <button 
+                    className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlipCard('accelerated');
+                    }}
+                  >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
                   </button>
                 </div>
@@ -191,7 +203,13 @@ export default function PhilosophySection() {
                       We're committed to your long-term success.
                     </p>
                   </div>
-                  <button className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4">
+                  <button 
+                    className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-4"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFlipCard('career');
+                    }}
+                  >
                     Learn More <i className="fas fa-arrow-right ml-2"></i>
                   </button>
                 </div>
