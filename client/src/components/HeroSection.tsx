@@ -79,12 +79,28 @@ export default function HeroSection() {
   const indicatorsRef = useAnimation('animate-fade-in delay-400');
   
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white" ref={sectionRef}>
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden bg-gradient-to-b from-blue-50 to-white" ref={sectionRef}>
       {/* Background decorative elements */}
       <div className="absolute w-full h-64 top-0 right-0 z-[-1] bg-gradient-to-r from-primary/10 to-primary/0 rounded-bl-[100%] transform -skew-y-3"></div>
       <div className="absolute w-24 h-24 top-20 left-10 z-[-1] bg-blue-100 rounded-full opacity-50 animate-pulse"></div>
       <div className="absolute w-32 h-32 bottom-20 right-10 z-[-1] bg-purple-100 rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
       <div className="absolute w-64 h-64 top-40 right-1/4 z-[-1] bg-gradient-to-tr from-blue-50 to-purple-50 rounded-full opacity-30 animate-float"></div>
+      
+      {/* Floating bubbles */}
+      <div className="absolute inset-0 overflow-hidden z-[-1]">
+        <div className="bubble" style={{animationDelay: '0s'}}></div>
+        <div className="bubble" style={{animationDelay: '2s'}}></div>
+        <div className="bubble" style={{animationDelay: '6s'}}></div>
+        <div className="bubble" style={{animationDelay: '4s'}}></div>
+        <div className="bubble" style={{animationDelay: '1s'}}></div>
+        <div className="bubble" style={{animationDelay: '5s'}}></div>
+        <div className="bubble" style={{animationDelay: '3s'}}></div>
+        
+        {/* Add colorful opportunity bubbles */}
+        <div className="bubble" style={{left: '15%', width: '60px', height: '60px', animationDelay: '2.5s', background: 'radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.1))'}}></div>
+        <div className="bubble" style={{left: '75%', width: '70px', height: '70px', animationDelay: '4.5s', background: 'radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.4), rgba(124, 58, 237, 0.1))'}}></div>
+        <div className="bubble" style={{left: '45%', width: '65px', height: '65px', animationDelay: '7s', background: 'radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.4), rgba(16, 185, 129, 0.1))'}}></div>
+      </div>
       
       <div className="container mx-auto px-4 relative">
         {/* Grid pattern overlay */}
@@ -130,11 +146,11 @@ export default function HeroSection() {
                     </div>
                   </div>
                   <div ref={imageRef} className="md:w-1/2">
-                    <div className="relative overflow-hidden rounded-lg transform rotate-1 hover:rotate-0 transition duration-300">
+                    <div className="relative overflow-hidden rounded-lg hover:-translate-y-1 hover:scale-[1.01] transition duration-300 shadow-xl">
                       <img 
                         src={slide.image} 
                         alt={slide.alt} 
-                        className="rounded-lg shadow-xl w-full object-cover h-80 md:h-96 transition duration-500 hover:scale-105"
+                        className="rounded-lg w-full object-cover h-80 md:h-96 transition duration-500 hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/20 opacity-70 mix-blend-overlay"></div>
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
