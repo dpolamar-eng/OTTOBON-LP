@@ -87,7 +87,7 @@ export default function Header() {
             className="text-gray-700 hover:text-primary font-medium transition py-2"
             onClick={closeMobileMenu}
           >
-            Skills Assessment
+            Career Fit Assessment
           </a>
           <a 
             href="#success-stories" 
