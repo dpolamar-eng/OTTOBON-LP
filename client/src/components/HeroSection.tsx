@@ -18,19 +18,19 @@ export default function HeroSection() {
     {
       title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700'>Advance</span> Your Technical Expertise",
       description: "Develop essential skills in Business Applications, AI, and Cloud Computing. Our accelerated programs prepare you for industry roles in a fraction of traditional timelines.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Technology consultants collaborating"
     },
     {
       title: "Where <span class='bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600'>Innovation</span> Meets Career Development",
       description: "Join a community of dedicated professionals building tomorrow's solutions. Learn from industry experts with extensive experience in implementing enterprise technologies.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Young professionals with digital devices"
     },
     {
       title: "Acquire <span class='bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-pink-500'>High-Demand</span> Technical Skills",
       description: "Our specialized professional training focuses on practical applications rather than theory alone. Develop a portfolio of real-world projects desired by leading employers.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Tech consultant presenting to team"
     }
   ];

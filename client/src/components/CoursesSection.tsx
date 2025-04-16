@@ -38,7 +38,7 @@ interface Course {
 
 export default function CoursesSection() {
   const [activeFilter, setActiveFilter] = useState<CourseCategory>('all');
-  const [expandedCourses, setExpandedCourses] = useState<Record<string, boolean>>({});
+  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
   
   // Embla carousel setup
   const [viewportRef, embla] = useEmblaCarousel({ 
@@ -153,7 +153,7 @@ export default function CoursesSection() {
     {
       id: 'genai',
       title: 'Generative AI Solutions Architect',
-      category: 'Career Launch ',
+      category: 'Career Launch',
       categoryLabel: 'AI',
       color: 'indigo-800',
       bgColor: 'indigo-100',
@@ -186,8 +186,8 @@ export default function CoursesSection() {
     }
   ];
 
-  const toggleCourseDetails = (courseId: string) => {
-    setExpandedCourses(prev => ({
+  const toggleFlipCard = (courseId: string) => {
+    setFlippedCards(prev => ({
       ...prev,
       [courseId]: !prev[courseId]
     }));
@@ -251,61 +251,80 @@ export default function CoursesSection() {
                   className="min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)] px-4 flex-shrink-0"
                 >
                   <div 
-                    className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg h-full flex flex-col"
+                    className={`relative h-96 w-full perspective-1000 cursor-pointer ${flippedCards[course.id] ? 'flip-card-flipped' : ''}`}
+                    onClick={() => toggleFlipCard(course.id)}
                   >
-                    <div className={`h-48 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 flex-shrink-0`}>
-                      {course.logoUrl ? (
-                        <img src={course.logoUrl} alt={course.title} className="h-12 max-w-full object-contain" />
-                      ) : (
-                        course.id === 'nlp' ? (
-                          <i className="fas fa-comments text-white text-5xl"></i>
+                    {/* Card Front */}
+                    <div className={`absolute inset-0 bg-white rounded-lg shadow-md transition-all duration-500 ease-in-out transform ${flippedCards[course.id] ? 'rotate-y-180 opacity-0 z-0' : 'rotate-y-0 opacity-100 z-10'}`}>
+                      <div className={`h-1/2 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6`}>
+                        {course.logoUrl ? (
+                          <img src={course.logoUrl} alt={course.title} className="h-16 max-w-full object-contain" />
                         ) : (
-                          <i className="fas fa-robot text-white text-5xl"></i>
-                        )
-                      )}
-                    </div>
-                    <div className="p-6 flex-1 flex flex-col">
-                      <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-bold">{course.title}</h3>
-                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">
-                          {course.categoryLabel}
-                        </span>
-                      </div>
-                      <p className="text-gray-700 mb-4">
-                        {course.description}
-                      </p>
-                      <h4 className="font-semibold mb-2">Key Outcomes:</h4>
-                      <ul className="mb-4 space-y-1">
-                        {course.outcomes.map((outcome, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="text-primary mr-2"><i className="fas fa-check"></i></span>
-                            <span className="text-gray-700">{outcome}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <button 
-                        onClick={() => toggleCourseDetails(course.id)} 
-                        className="text-primary hover:text-primary/80 font-medium flex items-center mt-auto"
-                      >
-                        {expandedCourses[course.id] ? (
-                          <>Hide Details <i className="fas fa-chevron-up ml-1 text-sm"></i></>
-                        ) : (
-                          <>View Details <i className="fas fa-chevron-right ml-1 text-sm"></i></>
+                          course.id === 'nlp' ? (
+                            <i className="fas fa-comments text-white text-5xl"></i>
+                          ) : (
+                            <i className="fas fa-robot text-white text-5xl"></i>
+                          )
                         )}
-                      </button>
-                      
-                      {expandedCourses[course.id] && (
-                        <div className="mt-4 pt-4 border-t">
-                          <h4 className="font-semibold mb-2">Course Structure:</h4>
-                          <p className="text-gray-700 mb-3">
+                      </div>
+                      <div className="p-6 flex flex-col justify-between h-1/2">
+                        <div>
+                          <div className="flex justify-between items-start mb-3">
+                            <h3 className="text-xl font-bold">{course.title}</h3>
+                            <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">
+                              {course.categoryLabel}
+                            </span>
+                          </div>
+                          <p className="text-gray-700 text-sm">
+                            {course.description}
+                          </p>
+                        </div>
+                        <div className="mt-4 text-center">
+                          <button className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto">
+                            See Details <i className="fas fa-arrow-right ml-2"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Card Back */}
+                    <div className={`absolute inset-0 bg-white rounded-lg shadow-md transition-all duration-500 ease-in-out transform ${flippedCards[course.id] ? 'rotate-y-0 opacity-100 z-10' : 'rotate-y-180 opacity-0 z-0'}`}>
+                      <div className="p-6 h-full flex flex-col">
+                        <div className="flex justify-between items-start mb-4">
+                          <h3 className="text-xl font-bold">{course.title}</h3>
+                          <button className="text-gray-500 hover:text-gray-700">
+                            <i className="fas fa-times"></i>
+                          </button>
+                        </div>
+                        
+                        <div className="overflow-y-auto flex-1">
+                          <h4 className="font-semibold mb-2 text-primary">Key Outcomes:</h4>
+                          <ul className="mb-4 space-y-1">
+                            {course.outcomes.map((outcome, index) => (
+                              <li key={index} className="flex items-start text-sm">
+                                <span className="text-primary mr-2"><i className="fas fa-check"></i></span>
+                                <span className="text-gray-700">{outcome}</span>
+                              </li>
+                            ))}
+                          </ul>
+                          
+                          <h4 className="font-semibold mb-2 text-primary">Course Structure:</h4>
+                          <p className="text-gray-700 mb-3 text-sm">
                             12-week immersive program with hands-on projects and mentorship from industry experts.
                           </p>
-                          <h4 className="font-semibold mb-2">Career Opportunities:</h4>
-                          <p className="text-gray-700">
+                          
+                          <h4 className="font-semibold mb-2 text-primary">Career Opportunities:</h4>
+                          <p className="text-gray-700 text-sm">
                             Graduates work as specialized consultants in top firms with average starting salaries of $85,000-$115,000.
                           </p>
                         </div>
-                      )}
+                        
+                        <div className="mt-4 text-center">
+                          <button className="bg-primary text-white font-medium py-2 px-6 rounded-full hover:bg-primary/90 transition-colors duration-300">
+                            Apply Now
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
