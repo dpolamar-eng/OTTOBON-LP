@@ -39,9 +39,14 @@ export default function ApproachSection() {
           <div 
             className="flip-card hover-lift"
             style={{height: "450px"}}
-            onClick={() => toggleFlipCard('interpersonal')}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
           >
-            <div className={`flip-card-inner ${flippedCards.interpersonal ? 'flipped' : ''}`}>
+            <div className="flip-card-inner">
               <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
                 <div className="h-1/2 bg-gradient-to-r from-primary to-blue-600 relative overflow-hidden">
                   <img 
@@ -92,7 +97,12 @@ export default function ApproachSection() {
                       className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
-                        toggleFlipCard('interpersonal');
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
                       }}
                     >
                       <i className="fas fa-times"></i>
@@ -131,9 +141,14 @@ export default function ApproachSection() {
           <div 
             className="flip-card hover-lift"
             style={{height: "450px"}}
-            onClick={() => toggleFlipCard('industry')}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
           >
-            <div className={`flip-card-inner ${flippedCards.industry ? 'flipped' : ''}`}>
+            <div className="flip-card-inner">
               <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
                 <div className="h-1/2 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
                   <img 
@@ -184,7 +199,12 @@ export default function ApproachSection() {
                       className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
-                        toggleFlipCard('industry');
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
                       }}
                     >
                       <i className="fas fa-times"></i>
@@ -223,9 +243,14 @@ export default function ApproachSection() {
           <div 
             className="flip-card hover-lift"
             style={{height: "450px"}}
-            onClick={() => toggleFlipCard('technical')}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
           >
-            <div className={`flip-card-inner ${flippedCards.technical ? 'flipped' : ''}`}>
+            <div className="flip-card-inner">
               <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
                 <div className="h-1/2 bg-gradient-to-r from-purple-500 to-purple-700 relative overflow-hidden">
                   <img 
@@ -276,7 +301,12 @@ export default function ApproachSection() {
                       className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
-                        toggleFlipCard('technical');
+                        e.preventDefault();
+                        const parent = e.currentTarget.closest('.flip-card');
+                        if (parent) {
+                          const inner = parent.querySelector('.flip-card-inner');
+                          if (inner) inner.classList.remove('flipped');
+                        }
                       }}
                     >
                       <i className="fas fa-times"></i>

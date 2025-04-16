@@ -36,9 +36,14 @@ export default function PhilosophySection() {
           <div 
             className="flip-card hover-lift" 
             style={{height: "350px"}}
-            onClick={() => toggleFlipCard('human')}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
           >
-            <div className={`flip-card-inner ${flippedCards.human ? 'flipped' : ''}`}>
+            <div className="flip-card-inner">
               <div className="flip-card-front glass-effect">
                 <div className="bg-gradient-primary h-1/3 flex items-center justify-center">
                   <img 
@@ -119,9 +124,14 @@ export default function PhilosophySection() {
           <div 
             className="flip-card hover-lift" 
             style={{height: "350px"}}
-            onClick={() => toggleFlipCard('accelerated')}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
           >
-            <div className={`flip-card-inner ${flippedCards.accelerated ? 'flipped' : ''}`}>
+            <div className="flip-card-inner">
               <div className="flip-card-front glass-effect">
                 <div className="bg-gradient-primary h-1/3 flex items-center justify-center">
                   <img 
@@ -202,9 +212,14 @@ export default function PhilosophySection() {
           <div 
             className="flip-card hover-lift" 
             style={{height: "350px"}}
-            onClick={() => toggleFlipCard('career')}
+            onClick={(e) => {
+              const inner = e.currentTarget.querySelector('.flip-card-inner');
+              if (inner && !inner.classList.contains('flipped')) {
+                inner.classList.add('flipped');
+              }
+            }}
           >
-            <div className={`flip-card-inner ${flippedCards.career ? 'flipped' : ''}`}>
+            <div className="flip-card-inner">
               <div className="flip-card-front glass-effect">
                 <div className="bg-gradient-primary h-1/3 flex items-center justify-center">
                   <img 
