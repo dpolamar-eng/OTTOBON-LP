@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
 
 export default function HeroSection() {
   // Carousel for hero content
@@ -68,8 +69,17 @@ export default function HeroSection() {
       }
     };
   }, [heroEmbla, onHeroSelect, autoplayCallback]);
+  
+  // Animation refs
+  const sectionRef = useAnimation('animate-fade-in');
+  const headingRef = useAnimation('animate-slide-up delay-100');
+  const descriptionRef = useAnimation('animate-slide-up delay-200');
+  const ctaRef = useAnimation('animate-slide-up delay-300');
+  const imageRef = useAnimation('animate-slide-right delay-200');
+  const indicatorsRef = useAnimation('animate-fade-in delay-400');
+  
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute w-full h-64 top-0 right-0 z-[-1] bg-gradient-to-r from-primary/10 to-primary/0 rounded-bl-[100%] transform -skew-y-3"></div>
       <div className="container mx-auto px-4">
         <div className="embla overflow-hidden" ref={heroViewportRef}>
@@ -79,13 +89,14 @@ export default function HeroSection() {
                 <div className="flex flex-col md:flex-row items-center">
                   <div className="md:w-1/2 mb-10 md:mb-0">
                     <h1 
+                      ref={headingRef}
                       className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
                       dangerouslySetInnerHTML={{ __html: slide.title }}
                     ></h1>
-                    <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-lg">
+                    <p ref={descriptionRef} className="text-lg md:text-xl text-gray-700 mb-8 max-w-lg">
                       {slide.description}
                     </p>
-                    <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div ref={ctaRef} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                       <a 
                         href="#enroll" 
                         className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group"
@@ -102,7 +113,7 @@ export default function HeroSection() {
                       </a>
                     </div>
                   </div>
-                  <div className="md:w-1/2">
+                  <div ref={imageRef} className="md:w-1/2">
                     <div className="relative overflow-hidden rounded-lg">
                       <img 
                         src={slide.image} 
@@ -119,7 +130,7 @@ export default function HeroSection() {
         </div>
         
         {/* Carousel Indicators */}
-        <div className="flex justify-center mt-8 space-x-2">
+        <div ref={indicatorsRef} className="flex justify-center mt-8 space-x-2">
           {heroSlides.map((_, index) => (
             <button
               key={index}

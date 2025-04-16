@@ -1,6 +1,11 @@
 import React from 'react';
+import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
 
 export default function MethodologySection() {
+  // Animation refs
+  const sectionRef = useAnimation('animate-fade-in');
+  const headerRef = useAnimation('animate-slide-up');
+  const cardsRef = useStaggeredAnimation('animate-scale-in');
   return (
     <section className="py-20 bg-gradient-soft">
       <div className="container mx-auto px-4">
