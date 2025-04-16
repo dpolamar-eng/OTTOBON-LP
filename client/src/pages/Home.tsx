@@ -4,7 +4,6 @@ import MethodologySection from "@/components/MethodologySection";
 import CoursesSection from "@/components/CoursesSection";
 import RequirementsSection from "@/components/RequirementsSection";
 import AssessmentSection from "@/components/AssessmentSection";
-import SuccessStoriesSection from "@/components/SuccessStoriesSection";
 import EnrollmentSection from "@/components/EnrollmentSection";
 import Footer from "@/components/Footer";
 
@@ -18,7 +17,6 @@ export default function Home() {
         <CoursesSection />
         <RequirementsSection />
         <AssessmentSection />
-        <SuccessStoriesSection />
         <EnrollmentSection />
       </main>
       <Footer />
