@@ -257,18 +257,18 @@ export default function CoursesSection() {
                     <div className="flip-card-inner shadow-lg">
                       {/* Card Front */}
                       <div className="flip-card-front">
-                        <div className={`h-1/2 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6`}>
+                        <div className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6`}>
                           {course.logoUrl ? (
-                            <img src={course.logoUrl} alt={course.title} className="h-16 max-w-full object-contain" />
+                            <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain" />
                           ) : (
                             course.id === 'nlp' ? (
-                              <i className="fas fa-comments text-white text-5xl"></i>
+                              <i className="fas fa-comments text-white text-6xl"></i>
                             ) : (
-                              <i className="fas fa-robot text-white text-5xl"></i>
+                              <i className="fas fa-robot text-white text-6xl"></i>
                             )
                           )}
                         </div>
-                        <div className="p-6 flex flex-col justify-between h-1/2">
+                        <div className="p-6 flex flex-col justify-between h-2/5">
                           <div>
                             <div className="flex justify-between items-start mb-3">
                               <h3 className="text-xl font-bold">{course.title}</h3>
@@ -276,14 +276,9 @@ export default function CoursesSection() {
                                 {course.categoryLabel}
                               </span>
                             </div>
-                            <p className="text-gray-700 text-sm">
+                            <p className="text-gray-700">
                               {course.description}
                             </p>
-                          </div>
-                          <div className="mt-4 text-center">
-                            <button className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto">
-                              See Details <i className="fas fa-arrow-right ml-2"></i>
-                            </button>
                           </div>
                         </div>
                       </div>
