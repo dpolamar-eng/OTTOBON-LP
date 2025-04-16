@@ -40,14 +40,18 @@
   .flip-card {
     perspective: 1000px;
     height: 400px;
+    cursor: pointer;
+    position: relative;
   }
 
   .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
   }
 
   .flip-card.flipped .flip-card-inner {
@@ -61,14 +65,77 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 0.5rem;
+    overflow: hidden;
   }
 
   .flip-card-front {
     background-color: white;
+    display: flex;
+    flex-direction: column;
   }
 
   .flip-card-back {
     transform: rotateY(180deg);
     background-color: white;
+  }
+  
+  /* Glow effect on hover */
+  .flip-card:hover .flip-card-inner {
+    box-shadow: 0 15px 35px -15px rgba(0, 128, 255, 0.25);
+  }
+  
+  /* Stylish backgrounds and design elements */
+  .bg-gradient-soft {
+    background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f9 100%);
+  }
+  
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #4f83cc 0%, #0072ff 100%);
+  }
+  
+  .pattern-dots {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Animated elements */
+  .hover-lift {
+    transition: transform 0.3s ease-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Fancy dividers */
+  .fancy-divider {
+    height: 5px;
+    background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.6), transparent);
+    margin: 2rem auto;
+    width: 70%;
+    border-radius: 999px;
+  }
+  
+  /* Section styling */
+  .section-wave-top {
+    position: relative;
+  }
+  
+  .section-wave-top::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'/%3E%3C/svg%3E");
+    background-size: cover;
   }
 }
