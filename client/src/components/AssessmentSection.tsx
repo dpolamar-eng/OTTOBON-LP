@@ -74,23 +74,54 @@ export default function AssessmentSection() {
   return (
     <section id="assessment" className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Discover Your Consultant Potential</h2>
-        <p className="text-center max-w-2xl mx-auto mb-12 text-white opacity-90">
-          Take our free skill assessment to identify your strengths and find the perfect learning path. You may qualify for scholarships based on your results.
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Career Fit Assessment</h2>
+        <p className="text-center max-w-2xl mx-auto mb-8 text-white opacity-90">
+          Discover your unique strengths and the perfect program match through our personality assessment. Find your ideal path and maximize your potential.
         </p>
+        
+        <div className="flex justify-center items-center mb-12">
+          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 inline-flex items-center max-w-2xl">
+            <div className="bg-green-500 rounded-full p-2 mr-4">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div className="text-white">
+              <strong className="block text-lg">Save up to 90% on your tuition</strong>
+              <span className="opacity-90">Assessment results combined with your background can qualify you for substantial discounts</span>
+            </div>
+          </div>
+        </div>
         
         <div className="bg-white rounded-lg shadow-lg p-8 text-gray-900 max-w-4xl mx-auto">
           {currentView === 'intro' && (
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Technology Consultant Aptitude Assessment</h3>
+              <h3 className="text-2xl font-bold mb-4">Personality & Career Alignment Assessment</h3>
               <p className="mb-6 text-gray-700">
-                This 10-question assessment helps determine your natural aptitude for technology consulting. Answer honestly for the most accurate results.
+                This assessment evaluates your natural aptitudes, working style, and personal strengths to match you with the ideal technology consulting path.
               </p>
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 text-left">
+                <h4 className="font-bold">Benefits of completing this assessment:</h4>
+                <ul className="mt-2 space-y-1">
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>Personalized program recommendations based on your strengths</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>Potential tuition discount of up to 90% based on results</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>Insights to help counselors create your optimal learning path</span>
+                  </li>
+                </ul>
+              </div>
               <button 
                 onClick={startAssessment}
                 className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg"
               >
-                Find Your Lane
+                Start Your Assessment
               </button>
             </div>
           )}
@@ -190,19 +221,31 @@ export default function AssessmentSection() {
                     </li>
                     <li className="flex items-start">
                       <span className="text-purple-600 mr-2"><i className="fas fa-award"></i></span>
-                      <span><strong>Scholarship Eligible:</strong> 25% tuition reduction</span>
+                      <span><strong>Scholarship Eligible:</strong> 75% tuition reduction</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-600 mr-2"><i className="fas fa-percentage"></i></span>
+                      <span><strong>Additional Discount:</strong> Up to 15% more based on experience</span>
                     </li>
                   </ul>
                 </div>
               </div>
               
-              <div className="bg-gray-50 p-6 rounded-lg mb-6">
-                <h4 className="text-lg font-semibold mb-2">Next Steps</h4>
+              <div className="bg-blue-50 p-6 rounded-lg mb-6 border-l-4 border-blue-500">
+                <h4 className="text-lg font-semibold mb-2 flex items-center">
+                  <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Congratulations!
+                </h4>
                 <p className="mb-4">
-                  Based on your assessment results, we recommend exploring our AI Consulting track, where your technical aptitude and problem-solving skills will be valuable assets.
+                  Based on your assessment, you currently qualify for a <strong className="text-blue-700">75% tuition reduction</strong>. Combined with your experience-based discount, you could receive up to <strong className="text-blue-700">90% off your total tuition</strong>.
+                </p>
+                <p className="mb-4">
+                  We recommend exploring our AI Consulting track, where your technical aptitude and problem-solving skills will be valuable assets.
                 </p>
                 <p>
-                  Schedule a call with our admissions team to discuss your results and explore your scholarship options.
+                  Schedule a call with our admissions team to discuss your results and finalize your discount eligibility.
                 </p>
               </div>
               

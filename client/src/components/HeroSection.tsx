@@ -108,9 +108,17 @@ export default function HeroSection() {
                         href="#assessment" 
                         className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-full transition text-center group"
                       >
-                        <span className="group-hover:hidden">Skills Assessment</span>
-                        <span className="hidden group-hover:inline">Begin Assessment</span>
+                        <span className="group-hover:hidden">Career Fit Assessment</span>
+                        <span className="hidden group-hover:inline">Start Assessment</span>
                       </a>
+                    </div>
+                    <div className="mt-3 text-sm text-gray-600">
+                      <p className="flex items-center">
+                        <svg className="w-4 h-4 mr-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Qualify for up to 90% tuition discount through our assessment
+                      </p>
                     </div>
                   </div>
                   <div ref={imageRef} className="md:w-1/2">

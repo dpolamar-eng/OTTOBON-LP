@@ -40,7 +40,7 @@ export default function Header() {
         <nav className="hidden md:flex space-x-6">
           <a href="#philosophy" className="text-gray-700 hover:text-primary font-medium transition">Our Philosophy</a>
           <a href="#courses" className="text-gray-700 hover:text-primary font-medium transition">Our Programs</a>
-          <a href="#assessment" className="text-gray-700 hover:text-primary font-medium transition">Skills Assessment</a>
+          <a href="#assessment" className="text-gray-700 hover:text-primary font-medium transition">Career Fit Assessment</a>
           <a href="#success-stories" className="text-gray-700 hover:text-primary font-medium transition">Success Stories</a>
         </nav>
         
