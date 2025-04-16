@@ -368,4 +368,18 @@
       opacity: 0;
     }
   }
+  
+  /* Premium button shine animation */
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+    }
+    20%, 100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shine {
+    animation: shine 4s infinite;
+  }
 }

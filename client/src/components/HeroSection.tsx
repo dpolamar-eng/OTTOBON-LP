@@ -79,12 +79,19 @@ export default function HeroSection() {
   const indicatorsRef = useAnimation('animate-fade-in delay-400');
   
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden bg-gradient-to-b from-blue-50 to-white" ref={sectionRef}>
-      {/* Background decorative elements */}
-      <div className="absolute w-full h-64 top-0 right-0 z-[-1] bg-gradient-to-r from-primary/10 to-primary/0 rounded-bl-[100%] transform -skew-y-3"></div>
-      <div className="absolute w-24 h-24 top-20 left-10 z-[-1] bg-blue-100 rounded-full opacity-50 animate-pulse"></div>
-      <div className="absolute w-32 h-32 bottom-20 right-10 z-[-1] bg-purple-100 rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden bg-[#f8faff]" ref={sectionRef}>
+      {/* Premium background elements */}
+      <div className="absolute inset-0 z-[-2] bg-gradient-to-b from-blue-50 via-white to-blue-50/40"></div>
+      <div className="absolute inset-0 z-[-1] opacity-10" style={{ 
+        backgroundImage: "radial-gradient(circle at 25px 25px, rgba(0, 0, 255, 0.1) 2%, transparent 0%), radial-gradient(circle at 75px 75px, rgba(128, 0, 255, 0.05) 2%, transparent 0%)",
+        backgroundSize: "100px 100px" 
+      }}></div>
+      <div className="absolute w-full h-96 top-0 right-0 z-[-1] bg-gradient-to-r from-indigo-500/5 via-blue-500/10 to-purple-500/5 rounded-bl-[30%] transform -skew-y-3"></div>
+      <div className="absolute w-24 h-24 top-20 left-10 z-[-1] bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full opacity-50 animate-pulse"></div>
+      <div className="absolute w-32 h-32 bottom-20 right-10 z-[-1] bg-gradient-to-tr from-purple-200 to-purple-100 rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
       <div className="absolute w-64 h-64 top-40 right-1/4 z-[-1] bg-gradient-to-tr from-blue-50 to-purple-50 rounded-full opacity-30 animate-float"></div>
+      <div className="absolute top-0 left-0 z-[-1] h-full w-20 bg-gradient-to-b from-blue-500/5 via-transparent to-blue-500/5"></div>
+      <div className="absolute top-0 right-0 z-[-1] h-full w-20 bg-gradient-to-b from-purple-500/5 via-transparent to-purple-500/5"></div>
       
       {/* Floating bubbles */}
       <div className="absolute inset-0 overflow-hidden z-[-1]">
@@ -110,8 +117,19 @@ export default function HeroSection() {
           <div className="embla__container flex">
             {heroSlides.map((slide, index) => (
               <div key={index} className="embla__slide flex-[0_0_100%] min-w-0">
-                <div className="flex flex-col md:flex-row items-center bg-white p-6 md:p-10 rounded-2xl">
-                  <div className="md:w-1/2 mb-10 md:mb-0">
+                <div className="flex flex-col md:flex-row items-center bg-white/90 backdrop-blur-sm p-6 md:p-10 rounded-2xl border border-gray-100/50 shadow-[0_10px_50px_-12px_rgba(59,130,246,0.15)]">
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-100 to-transparent rounded-tr-2xl rounded-bl-[50%] z-[-1] opacity-70"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-100 to-transparent rounded-bl-2xl rounded-tr-[50%] z-[-1] opacity-70"></div>
+                  <div className="absolute top-10 left-10 w-4 h-4 bg-blue-400 rounded-full opacity-20"></div>
+                  <div className="absolute bottom-10 right-10 w-4 h-4 bg-purple-400 rounded-full opacity-20"></div>
+                  
+                  <div className="md:w-1/2 mb-10 md:mb-0 relative">
+                    {/* Floating badge */}
+                    <div className="absolute -top-6 -left-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-bold py-1 px-3 rounded-full shadow-lg transform -rotate-6">
+                      Next cohort starting soon
+                    </div>
+                    
                     <h1 
                       ref={headingRef}
                       className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
@@ -123,10 +141,16 @@ export default function HeroSection() {
                     <div ref={ctaRef} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                       <a 
                         href="#enroll" 
-                        className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group"
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group"
                       >
-                        <span className="relative z-10">Apply Now</span>
-                        <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span className="relative z-10 flex items-center">
+                          Join Fast Lane
+                          <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                          </svg>
+                        </span>
+                        {/* Button shine effect */}
+                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
                       </a>
                       <a 
                         href="#assessment" 
@@ -136,7 +160,7 @@ export default function HeroSection() {
                         <span className="hidden group-hover:inline">Start Assessment</span>
                       </a>
                     </div>
-                    <div className="mt-4 text-sm bg-green-50 rounded-lg p-3 border border-green-100">
+                    <div className="mt-4 text-sm bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-3 border border-green-100 shadow-inner">
                       <p className="flex items-center font-medium text-green-800">
                         <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -146,7 +170,7 @@ export default function HeroSection() {
                     </div>
                   </div>
                   <div ref={imageRef} className="md:w-1/2">
-                    <div className="relative overflow-hidden rounded-lg hover:-translate-y-1 hover:scale-[1.01] transition duration-300 shadow-xl">
+                    <div className="relative overflow-hidden rounded-lg hover:-translate-y-1 hover:scale-[1.01] transition duration-300 shadow-xl bg-gradient-to-r p-[3px] from-blue-500 to-purple-600">
                       <img 
                         src={slide.image} 
                         alt={slide.alt} 
@@ -155,6 +179,18 @@ export default function HeroSection() {
                       <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/20 opacity-70 mix-blend-overlay"></div>
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                         <p className="text-white font-medium text-sm">{slide.alt}</p>
+                      </div>
+                      
+                      {/* Floating tech icons */}
+                      <div className="absolute -top-3 -right-3 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg text-white transform rotate-12">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                      </div>
+                      <div className="absolute top-1/4 -left-3 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg text-white transform -rotate-12">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                       </div>
                     </div>
                   </div>
