@@ -7,9 +7,9 @@ export default function MethodologySection() {
   const headerRef = useAnimation('animate-slide-up');
   const cardsRef = useStaggeredAnimation('animate-scale-in');
   return (
-    <section className="py-20 bg-gradient-soft">
+    <section className="py-20 bg-gradient-soft" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-12" ref={headerRef}>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Methodology</h2>
           <p className="text-gray-700 mb-8">
             Ottobon's unique approach transforms promising talent into elite technology consultants through these core pillars.
@@ -17,7 +17,7 @@ export default function MethodologySection() {
           <div className="fancy-divider"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" ref={cardsRef}>
           {/* Pillar 1: Human-Centered */}
           <div 
             className="flip-card hover-lift" 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
 
 type CourseCategory = 'all' | 'Career Launch' | 'Tech Edge';
 
@@ -197,18 +198,25 @@ export default function CoursesSection() {
     ? courses 
     : courses.filter(course => course.category === activeFilter);
 
+  // Animation refs
+  const sectionRef = useAnimation('animate-fade-in');
+  const headingRef = useAnimation('animate-slide-up');
+  const descriptionRef = useAnimation('animate-slide-up delay-100');
+  const filtersRef = useAnimation('animate-slide-up delay-200');
+  const carouselRef = useAnimation('animate-scale-in delay-300');
+  
   return (
-    <section id="courses" className="py-16 bg-gray-100">
+    <section id="courses" className="py-16 bg-gray-100" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+        <h2 ref={headingRef} className="text-3xl md:text-4xl font-bold text-center mb-4">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700">Advance</span> Your Professional Skills
         </h2>
-        <p className="text-center text-gray-700 max-w-2xl mx-auto mb-12">
+        <p ref={descriptionRef} className="text-center text-gray-700 max-w-2xl mx-auto mb-12">
           Gain certification, industry recognition, and career advancement opportunities through our hands-on training programs focused on in-demand technical skills sought by leading employers.
         </p>
         
         {/* Course Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div ref={filtersRef} className="flex flex-wrap justify-center gap-4 mb-12">
           <button 
             className={`font-medium py-2 px-6 rounded-full transition ${
               activeFilter === 'all' 
@@ -237,7 +245,7 @@ export default function CoursesSection() {
         </div>
         
         {/* Course Carousel */}
-        <div className="relative">
+        <div ref={carouselRef} className="relative">
           <div 
             className="overflow-hidden" 
             ref={viewportRef}
