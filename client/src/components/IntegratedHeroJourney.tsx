@@ -179,7 +179,7 @@ export default function IntegratedHeroJourney() {
   };
   
   return (
-    <section className="relative pt-8 pb-24 bg-gradient-to-b from-indigo-900 to-indigo-800 text-white overflow-hidden">
+    <section className="relative pt-16 pb-24 bg-gradient-to-b from-blue-700 to-purple-800 text-white overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuMDUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMTAwIiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+')]"></div>
