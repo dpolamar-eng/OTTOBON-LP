@@ -12,14 +12,14 @@ interface CategoryInfo {
 
 const categories: CategoryInfo[] = [
   {
-    id: 'Tech Edge',
-    title: 'Tech Edge',
-    description: 'High demand skills in Market'
-  },
-  {
     id: 'Career Launch',
     title: 'Career Launch',
     description: 'Placement Guaranteed path'
+  },
+  {
+    id: 'Tech Edge',
+    title: 'Tech Edge',
+    description: 'High demand skills in Market'
   }
 ];
 
@@ -41,11 +41,25 @@ export default function CoursesSection() {
   const [activeFilter, setActiveFilter] = useState<CourseCategory>('Career Launch');
   const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
   
+  // Responsive slide count function
+  const getVisibleSlides = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 3;
+    }
+    return 3;
+  };
+  
+  // Responsive slide count state
+  const [slidesPerView, setSlidesPerView] = useState(getVisibleSlides());
+  
   // Embla carousel setup
   const [viewportRef, embla] = useEmblaCarousel({ 
     loop: true, 
     align: 'start',
-    skipSnaps: false
+    skipSnaps: false,
+    slidesToScroll: 1
   });
   const [autoplay, setAutoplay] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
@@ -88,15 +102,24 @@ export default function CoursesSection() {
     }
   }, [isHovering, autoplay, autoplayCallback]);
   
-  // Responsive slide count
-  const getVisibleSlides = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 1024) return 2;
-      return 3;
-    }
-    return 3;
-  };
+  // Effect to handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      const newSlidesPerView = getVisibleSlides();
+      if (newSlidesPerView !== slidesPerView) {
+        setSlidesPerView(newSlidesPerView);
+        // Reset and rebuild carousel when window size changes category
+        if (embla) {
+          embla.reInit();
+        }
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [embla, slidesPerView]);
+  
+  // Removed duplicate function
 
   const courses: Course[] = [
     {
@@ -216,22 +239,34 @@ export default function CoursesSection() {
         </p>
         
         {/* Course Filters */}
-        <div ref={filtersRef} className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map(category => (
-            <div key={category.id} className="text-center">
-              <button 
-                className={`font-medium py-2 px-6 rounded-full transition ${
-                  activeFilter === category.id
-                    ? 'bg-primary text-white' 
-                    : 'bg-white hover:bg-primary hover:text-white shadow-sm'
-                }`}
-                onClick={() => setActiveFilter(category.id)}
-              >
-                {category.title}
-              </button>
-              <p className="text-sm text-gray-600 mt-1">{category.description}</p>
-            </div>
-          ))}
+        <div ref={filtersRef} className="mb-12">
+          <div className="flex flex-wrap justify-center gap-4 mb-2">
+            {categories.map(category => (
+              <div key={category.id} className="text-center">
+                <button 
+                  className={`font-medium py-2 px-8 rounded-full transition ${
+                    activeFilter === category.id
+                      ? 'bg-primary text-white shadow-md' 
+                      : 'bg-white hover:bg-gray-100 text-gray-700 shadow-sm'
+                  }`}
+                  onClick={() => setActiveFilter(category.id)}
+                >
+                  {category.title}
+                </button>
+              </div>
+            ))}
+          </div>
+          
+          {/* Description for selected category only */}
+          <div className="text-center animate-fade-in">
+            {categories.map(category => (
+              activeFilter === category.id && (
+                <p key={category.id} className="text-sm text-gray-600 mt-2">
+                  {category.description}
+                </p>
+              )
+            ))}
+          </div>
         </div>
         
         {/* Course Carousel */}

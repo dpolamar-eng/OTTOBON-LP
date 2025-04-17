@@ -289,29 +289,70 @@ export default function IntegratedHeroJourney() {
               Your Complete <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Learning Journey</span>
             </h3>
             
-            {/* Progress bar */}
+            {/* Progress steps with arrows */}
             <div className="mb-8">
-              <div className="flex justify-between mb-2">
-                {onboardingSteps.map((_, index) => (
+              <div className="flex items-center mb-2">
+                {onboardingSteps.map((step, index) => (
                   <div 
                     key={index} 
-                    className={`flex-1 ${index > 0 ? 'ml-2' : ''}`}
+                    className={`flex-1 relative ${index > 0 ? '' : ''}`}
                   >
-                    <button
-                      onClick={() => goToStep(index)}
-                      className={`w-full text-center text-xs sm:text-sm font-medium py-2 px-1 rounded-lg transition
-                        ${currentStep === index 
-                          ? 'bg-blue-600 text-white' 
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
-                    >
-                      Step {index + 1}
-                    </button>
+                    <div className="flex items-center">
+                      {/* Step Connector Line */}
+                      {index > 0 && (
+                        <div className={`flex-grow h-[2px] ${
+                          index <= currentStep ? 'bg-blue-600' : 'bg-gray-300'
+                        } transition-colors duration-300`}></div>
+                      )}
+                      
+                      {/* Step Button */}
+                      <button
+                        onClick={() => goToStep(index)}
+                        className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all 
+                          ${currentStep === index 
+                            ? 'bg-blue-600 text-white ring-4 ring-blue-100' 
+                            : index < currentStep
+                              ? 'bg-blue-500 text-white'
+                              : 'bg-gray-200 text-gray-500 hover:bg-gray-300'}`}
+                      >
+                        {index < currentStep ? (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        ) : currentStep === index ? (
+                          <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
+                            <div className="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+                          </div>
+                        ) : (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                          </svg>
+                        )}
+                      </button>
+                      
+                      {/* Step Connector Line */}
+                      {index < onboardingSteps.length - 1 && (
+                        <div className={`flex-grow h-[2px] ${
+                          index < currentStep ? 'bg-blue-600' : 'bg-gray-300'
+                        } transition-colors duration-300`}></div>
+                      )}
+                    </div>
+                    
+                    {/* Step Label */}
+                    <div className={`absolute -bottom-6 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs font-medium
+                      ${currentStep === index 
+                        ? 'text-blue-600' 
+                        : 'text-gray-500'}`}>
+                      {step.title.split(' ')[0]}
+                    </div>
                   </div>
                 ))}
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2.5">
+              
+              {/* Progress Bar */}
+              <div className="w-full bg-gray-200 rounded-full h-1.5 mt-8">
                 <div 
-                  className="h-2.5 rounded-full bg-blue-600 transition-all duration-500" 
+                  className="h-1.5 rounded-full bg-blue-600 transition-all duration-500" 
                   style={{ width: `${((currentStep + 1) / onboardingSteps.length) * 100}%` }}
                 ></div>
               </div>
