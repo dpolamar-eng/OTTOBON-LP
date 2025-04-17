@@ -87,9 +87,9 @@ export default function AssessmentSection() {
   return (
     <section id="assessment" className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Career Fit Assessment</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Career Aptitude Assessment</h2>
         <p className="text-center max-w-2xl mx-auto mb-8 text-white opacity-90">
-          Discover your unique strengths and the perfect program match through our personality assessment. Find your ideal path and maximize your potential.
+          Discover your unique strengths and the perfect program match through our comprehensive assessment tool. Find your ideal path and maximize your potential.
         </p>
         
         <div className="flex justify-center items-center mb-12">
@@ -109,7 +109,7 @@ export default function AssessmentSection() {
         <div className="bg-white rounded-lg shadow-lg p-8 text-gray-900 max-w-4xl mx-auto">
           {currentView === 'intro' && (
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Personality & Career Alignment Assessment</h3>
+              <h3 className="text-2xl font-bold mb-4">Career Aptitude Assessment</h3>
               <p className="mb-6 text-gray-700">
                 This assessment evaluates your natural aptitudes, working style, and personal strengths to match you with the ideal technology consulting path.
               </p>
