@@ -179,7 +179,7 @@ export default function IntegratedHeroJourney() {
   };
   
   return (
-    <section className="relative pt-16 pb-24 bg-gradient-to-b from-blue-700 to-purple-800 text-white overflow-hidden">
+    <section className="relative pt-16 pb-24 bg-white overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuMDUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMTAwIiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+')]"></div>
@@ -202,7 +202,7 @@ export default function IntegratedHeroJourney() {
                           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                           dangerouslySetInnerHTML={{ __html: slide.title }}
                         ></h1>
-                        <p ref={descriptionRef} className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg leading-relaxed">
+                        <p ref={descriptionRef} className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg leading-relaxed">
                           {slide.description}
                         </p>
                         <div ref={ctaRef} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -221,15 +221,15 @@ export default function IntegratedHeroJourney() {
                           </a>
                           <button
                             onClick={toggleJourney}
-                            className="border-2 border-blue-400 text-blue-100 hover:bg-blue-400 hover:text-blue-900 font-semibold py-3 px-8 rounded-full transition text-center group"
+                            className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-full transition text-center group"
                           >
                             <span className="group-hover:hidden">Explore Our Program</span>
                             <span className="hidden group-hover:inline">View Learning Journey</span>
                           </button>
                         </div>
-                        <div className="mt-4 text-sm bg-gradient-to-r from-green-900/60 to-emerald-900/60 rounded-lg p-3 border border-green-700/40 shadow-inner">
-                          <p className="flex items-center font-medium text-green-300">
-                            <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <div className="mt-4 text-sm bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-3 border border-green-200 shadow-sm">
+                          <p className="flex items-center font-medium text-green-700">
+                            <svg className="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             Qualify for up to 90% tuition discount through our assessment
@@ -258,15 +258,15 @@ export default function IntegratedHeroJourney() {
           
           {/* Carousel Controls */}
           <div className="flex items-center justify-center mt-8">
-            <div ref={indicatorsRef} className="flex justify-center space-x-2 bg-white/10 backdrop-blur-sm py-2 px-4 rounded-full shadow-md">
+            <div ref={indicatorsRef} className="flex justify-center space-x-2 bg-gray-100 py-2 px-4 rounded-full shadow-md">
               {heroSlides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === heroActiveIndex 
-                      ? 'bg-blue-500 w-6' 
-                      : 'bg-white/40 hover:bg-white/60'
+                      ? 'bg-blue-600 w-6' 
+                      : 'bg-gray-300 hover:bg-gray-400'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -278,8 +278,8 @@ export default function IntegratedHeroJourney() {
         {/* Learning Journey */}
         {showJourney && (
           <div ref={journeyRef} className="max-w-5xl mx-auto mt-8">
-            <h3 className="text-2xl font-bold text-center mb-6">
-              Your Complete <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-violet-400">Learning Journey</span>
+            <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+              Your Complete <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Learning Journey</span>
             </h3>
             
             {/* Progress bar */}
@@ -295,16 +295,16 @@ export default function IntegratedHeroJourney() {
                       className={`w-full text-center text-xs sm:text-sm font-medium py-2 px-1 rounded-lg transition
                         ${currentStep === index 
                           ? 'bg-blue-600 text-white' 
-                          : 'bg-white/10 backdrop-blur-sm text-white hover:bg-white/20'}`}
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
                     >
                       Step {index + 1}
                     </button>
                   </div>
                 ))}
               </div>
-              <div className="w-full bg-white/10 rounded-full h-2.5">
+              <div className="w-full bg-gray-200 rounded-full h-2.5">
                 <div 
-                  className="h-2.5 rounded-full bg-blue-500 transition-all duration-500" 
+                  className="h-2.5 rounded-full bg-blue-600 transition-all duration-500" 
                   style={{ width: `${((currentStep + 1) / onboardingSteps.length) * 100}%` }}
                 ></div>
               </div>
@@ -414,7 +414,7 @@ export default function IntegratedHeroJourney() {
             <div className="text-center mt-6">
               <button 
                 onClick={toggleJourney}
-                className="inline-flex items-center text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full py-2 px-4 transition"
+                className="inline-flex items-center text-gray-600 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-full py-2 px-4 transition"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
