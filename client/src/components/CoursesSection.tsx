@@ -51,7 +51,7 @@ export default function CoursesSection() {
     return 3;
   };
   
-  // Responsive slide count state
+  // State for responsive slides
   const [slidesPerView, setSlidesPerView] = useState(getVisibleSlides());
   
   // Embla carousel setup
@@ -65,6 +65,24 @@ export default function CoursesSection() {
   const [isHovering, setIsHovering] = useState(false);
   const autoplayInterval = 3000;
   const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Handle resize effect
+  useEffect(() => {
+    const handleResize = () => {
+      const newSlidesPerView = getVisibleSlides();
+      if (newSlidesPerView !== slidesPerView) {
+        setSlidesPerView(newSlidesPerView);
+        
+        // Reset and rebuild carousel when window size changes
+        if (embla) {
+          embla.reInit();
+        }
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [embla, slidesPerView]);
   
   const onSelect = useCallback(() => {
     if (!embla) return;
@@ -101,27 +119,42 @@ export default function CoursesSection() {
       autoplayCallback();
     }
   }, [isHovering, autoplay, autoplayCallback]);
-  
-  // Effect to handle window resize
-  useEffect(() => {
-    const handleResize = () => {
-      const newSlidesPerView = getVisibleSlides();
-      if (newSlidesPerView !== slidesPerView) {
-        setSlidesPerView(newSlidesPerView);
-        // Reset and rebuild carousel when window size changes category
-        if (embla) {
-          embla.reInit();
-        }
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [embla, slidesPerView]);
-  
-  // Removed duplicate function
 
   const courses: Course[] = [
+    {
+      id: 'genai',
+      title: 'Generative AI Solutions Architect',
+      category: 'Career Launch',
+      categoryLabel: 'AI',
+      color: 'indigo-800',
+      bgColor: 'indigo-100',
+      description: 'Design and implement generative AI solutions for enterprise applications.',
+      outcomes: [
+        'Large language model implementation',
+        'Responsible AI deployment frameworks',
+        'Enterprise-ready AI architectures'
+      ],
+      logoUrl: '',
+      gradientFrom: 'from-indigo-500',
+      gradientTo: 'to-indigo-700'
+    },
+    {
+      id: 'aws',
+      title: 'AWS Solutions Architect',
+      category: 'Career Launch',
+      categoryLabel: 'Cloud',
+      color: 'yellow-800',
+      bgColor: 'yellow-100',
+      description: 'Design and implement scalable, high-availability systems on AWS.',
+      outcomes: [
+        'AWS Solutions Architect certification',
+        'Multi-tier cloud architecture design',
+        'Security and cost optimization expertise'
+      ],
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+      gradientFrom: 'from-yellow-500',
+      gradientTo: 'to-orange-500'
+    },
     {
       id: 'salesforce',
       title: 'Salesforce CX Consultant',
@@ -172,41 +205,6 @@ export default function CoursesSection() {
       logoUrl: 'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31',
       gradientFrom: 'from-green-500',
       gradientTo: 'to-green-700'
-    },
-   
-    {
-      id: 'genai',
-      title: 'Generative AI Solutions Architect',
-      category: 'Career Launch',
-      categoryLabel: 'AI',
-      color: 'indigo-800',
-      bgColor: 'indigo-100',
-      description: 'Design and implement generative AI solutions for enterprise applications.',
-      outcomes: [
-        'Large language model implementation',
-        'Responsible AI deployment frameworks',
-        'Enterprise-ready AI architectures'
-      ],
-      logoUrl: '',
-      gradientFrom: 'from-indigo-500',
-      gradientTo: 'to-indigo-700'
-    },
-    {
-      id: 'aws',
-      title: 'AWS Solutions Architect',
-      category: 'Career Launch',
-      categoryLabel: 'Cloud',
-      color: 'yellow-800',
-      bgColor: 'yellow-100',
-      description: 'Design and implement scalable, high-availability systems on AWS.',
-      outcomes: [
-        'AWS Solutions Architect certification',
-        'Multi-tier cloud architecture design',
-        'Security and cost optimization expertise'
-      ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
-      gradientFrom: 'from-yellow-500',
-      gradientTo: 'to-orange-500'
     }
   ];
 
@@ -294,11 +292,7 @@ export default function CoursesSection() {
                           {course.logoUrl ? (
                             <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain" />
                           ) : (
-                            course.id === 'nlp' ? (
-                              <i className="fas fa-comments text-white text-6xl"></i>
-                            ) : (
-                              <i className="fas fa-robot text-white text-6xl"></i>
-                            )
+                            <i className="fas fa-robot text-white text-6xl"></i>
                           )}
                         </div>
                         <div className="p-6 flex flex-col justify-between h-2/5">

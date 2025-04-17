@@ -108,31 +108,56 @@ export default function OnboardingJourneySection() {
         </p>
         
         <div ref={journeyRef} className="max-w-5xl mx-auto">
-          {/* Progress bar */}
-          <div className="mb-8">
-            <div className="flex justify-between mb-2">
-              {onboardingSteps.map((_, index) => (
+          {/* Progress steps with arrows */}
+          <div className="mb-10">
+            <div className="flex justify-between items-center relative">
+              {/* Background progress line */}
+              <div className="absolute h-1 bg-gray-200 left-0 right-0 top-1/2 -translate-y-1/2"></div>
+              
+              {/* Colored progress line */}
+              <div 
+                className="absolute h-1 bg-gradient-to-r from-blue-600 to-purple-600 left-0 top-1/2 -translate-y-1/2 transition-all duration-500" 
+                style={{ width: `${((currentStep) / (onboardingSteps.length - 1)) * 100}%` }}
+              ></div>
+              
+              {/* Step circles with arrows */}
+              {onboardingSteps.map((step, index) => (
                 <div 
                   key={index} 
-                  className={`flex-1 ${index > 0 ? 'ml-2' : ''}`}
+                  className="z-10 flex flex-col items-center group"
                 >
                   <button
                     onClick={() => goToStep(index)}
-                    className={`w-full text-center text-xs sm:text-sm font-medium py-2 px-1 rounded-lg transition
-                      ${currentStep === index 
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-md relative
+                      ${index <= currentStep 
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' 
+                        : 'bg-white text-gray-400 border border-gray-200'}`}
+                    aria-label={`Go to step ${index + 1}`}
                   >
-                    Step {index + 1}
+                    {index < currentStep ? (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    ) : index === currentStep ? (
+                      <span className="animate-pulse">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                        </svg>
+                      </span>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    )}
+                    
+                    {/* Tooltip on hover */}
+                    <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 absolute -bottom-12 bg-gray-800 text-white text-xs font-medium py-1 px-3 rounded-lg shadow-lg whitespace-nowrap">
+                      {step.title}
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                    </div>
                   </button>
                 </div>
               ))}
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div 
-                className="h-2.5 rounded-full bg-blue-600 transition-all duration-500" 
-                style={{ width: `${((currentStep + 1) / onboardingSteps.length) * 100}%` }}
-              ></div>
             </div>
           </div>
 
