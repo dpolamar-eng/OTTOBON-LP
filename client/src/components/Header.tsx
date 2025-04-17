@@ -50,20 +50,17 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <div className="text-3xl font-extrabold relative">
+          <div className="text-3xl font-extrabold">
             <span className="text-white">OTTOBON</span>
-            <div className="absolute -top-4 -right-6 transform rotate-12 transition-transform group-hover:rotate-6">
-              <span className="text-xs font-bold bg-gradient-to-r from-blue-400 to-purple-400 text-white px-2 py-0.5 rounded-full shadow-lg">ACADEMY</span>
-            </div>
           </div>
         </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-2">
           {[
-            { label: "Our Approach", href: "#philosophy", icon: "⚡" },
+            { label: "Our Approach", href: "#methodology", icon: "⚡" },
             { label: "Programs", href: "#courses", icon: "🚀" },
-            { label: "Learning Style", href: "#methodology", icon: "📚" },
+            { label: "Assessment", href: "#assessment", icon: "📊" },
           ].map((item, index) => (
             <a 
               key={index}
@@ -83,21 +80,10 @@ export default function Header() {
         <div className="hidden md:flex space-x-3">
           <a 
             href="#assessment" 
-            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium py-2 px-5 rounded-full transition shadow-sm hover:shadow-md relative overflow-hidden"
-          >
-            <span className="flex items-center space-x-1">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-              </svg>
-              <span>Personality Match™</span>
-            </span>
-          </a>
-          <a 
-            href="#assessment" 
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-2 px-5 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center">
-              Start Your Journey
+              Take Assessment
               <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
@@ -122,7 +108,7 @@ export default function Header() {
       <div className={`md:hidden bg-indigo-900/95 backdrop-blur-md border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
           <a 
-            href="#philosophy" 
+            href="#methodology" 
             className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
             onClick={closeMobileMenu}
           >
@@ -138,32 +124,21 @@ export default function Header() {
             <span>Programs</span>
           </a>
           <a 
-            href="#methodology" 
+            href="#assessment" 
             className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
             onClick={closeMobileMenu}
           >
-            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">📚</span>
-            <span>Learning Style</span>
+            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">📊</span>
+            <span>Assessment</span>
           </a>
 
           <div className="pt-3 pb-2 flex flex-col space-y-3">
             <a 
               href="#assessment" 
-              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium py-3 px-6 rounded-full transition shadow-md hover:shadow-lg flex items-center justify-center"
-              onClick={closeMobileMenu}
-            >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-              </svg>
-              <span>Personality Match™</span>
-            </a>
-            
-            <a 
-              href="#assessment" 
               className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition shadow-md hover:shadow-lg text-center flex items-center justify-center"
               onClick={closeMobileMenu}
             >
-              <span>Start Your Journey</span>
+              <span>Take Assessment</span>
               <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>

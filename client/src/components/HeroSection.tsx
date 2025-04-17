@@ -125,10 +125,6 @@ export default function HeroSection() {
                   <div className="absolute bottom-10 right-10 w-4 h-4 bg-purple-400 rounded-full opacity-20"></div>
                   
                   <div className="md:w-1/2 mb-10 md:mb-0 relative">
-                    {/* Floating badge */}
-                    <div className="absolute -top-6 -left-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-bold py-1 px-3 rounded-full shadow-lg transform -rotate-6">
-                      Next cohort starting soon
-                    </div>
                     
                     <h1 
                       ref={headingRef}
@@ -144,7 +140,7 @@ export default function HeroSection() {
                         className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group"
                       >
                         <span className="relative z-10 flex items-center">
-                          Join Fast Lane
+                          Start Your Journey
                           <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                           </svg>
@@ -156,7 +152,7 @@ export default function HeroSection() {
                         href="#assessment" 
                         className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-full transition text-center group"
                       >
-                        <span className="group-hover:hidden">Career Fit Assessment</span>
+                        <span className="group-hover:hidden">Take Assessment</span>
                         <span className="hidden group-hover:inline">Start Assessment</span>
                       </a>
                     </div>
@@ -181,17 +177,7 @@ export default function HeroSection() {
                         <p className="text-white font-medium text-sm">{slide.alt}</p>
                       </div>
                       
-                      {/* Floating tech icons */}
-                      <div className="absolute -top-3 -right-3 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg text-white transform rotate-12">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
-                      </div>
-                      <div className="absolute top-1/4 -left-3 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg text-white transform -rotate-12">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                      </div>
+                      {/* No floating tech icons - removed */}
                     </div>
                   </div>
                 </div>
