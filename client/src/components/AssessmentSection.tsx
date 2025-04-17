@@ -85,7 +85,7 @@ export default function AssessmentSection() {
   };
 
   return (
-    <section id="assessment" className="py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white relative">
+    <section id="assessment" className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white relative">
       {/* Background pattern overlay */}
       <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
       
