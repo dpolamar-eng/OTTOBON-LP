@@ -25,106 +25,146 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white/80 backdrop-blur-sm'}`}>
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-50/30 via-white/30 to-purple-50/30 z-[-1]"></div>
+    <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-indigo-900/90 backdrop-blur-md shadow-xl' : 'bg-transparent'}`}>
+      {/* Rich background elements */}
+      <div className="absolute inset-0 z-[-2] overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 opacity-90"></div>
+        
+        {/* Radial pattern overlay */}
+        <div className="absolute inset-0 opacity-10" 
+          style={{ 
+            backgroundImage: "radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)", 
+            backgroundSize: "50px 50px" 
+          }}>
+        </div>
+        
+        {/* Accent light beams */}
+        <div className="absolute top-0 right-[20%] w-[500px] h-[500px] bg-blue-500 rounded-full opacity-20 blur-[80px] animate-pulse"></div>
+        <div className="absolute top-20 left-[10%] w-[300px] h-[300px] bg-purple-500 rounded-full opacity-10 blur-[60px] animate-pulse" style={{animationDelay: '1s'}}></div>
+      </div>
+      
+      {/* Subtle divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <div className="text-3xl font-extrabold relative">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 hover:from-blue-500 hover:to-blue-700 transition">OTTO</span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-500 hover:to-blue-500 transition">BON</span>
+            <span className="text-white">OTTOBON</span>
             <div className="absolute -top-4 -right-6 transform rotate-12 transition-transform group-hover:rotate-6">
-              <span className="text-xs font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-white px-2 py-0.5 rounded-full shadow-md">ACADEMY</span>
+              <span className="text-xs font-bold bg-gradient-to-r from-blue-400 to-purple-400 text-white px-2 py-0.5 rounded-full shadow-lg">ACADEMY</span>
             </div>
           </div>
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-1">
+        <nav className="hidden md:flex space-x-2">
           {[
-            { label: "Our Philosophy", href: "#philosophy" },
-            { label: "Our Programs", href: "#courses" },
-            { label: "Career Fit Assessment", href: "#assessment" }
+            { label: "Our Approach", href: "#philosophy", icon: "⚡" },
+            { label: "Programs", href: "#courses", icon: "🚀" },
+            { label: "Learning Style", href: "#methodology", icon: "📚" },
           ].map((item, index) => (
             <a 
               key={index}
               href={item.href} 
-              className="text-gray-700 hover:text-primary font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition-all relative overflow-hidden group"
+              className="text-white/90 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group"
             >
-              {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+              <div className="flex items-center space-x-1">
+                <span className="text-white/80 group-hover:text-white/100 transition-all">{item.icon}</span>
+                <span>{item.label}</span>
+              </div>
+              <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
             </a>
           ))}
         </nav>
         
         {/* CTA Button */}
-        <div className="hidden md:flex space-x-2">
+        <div className="hidden md:flex space-x-3">
           <a 
             href="#assessment" 
-            className="bg-white border border-blue-400 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded-lg transition shadow-sm hover:shadow-md relative overflow-hidden"
+            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium py-2 px-5 rounded-full transition shadow-sm hover:shadow-md relative overflow-hidden"
           >
-            Career Fit Assessment
+            <span className="flex items-center space-x-1">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+              </svg>
+              <span>Personality Match™</span>
+            </span>
           </a>
           <a 
-            href="#enroll" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-lg transition shadow-md hover:shadow-lg relative overflow-hidden group"
+            href="#assessment" 
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-2 px-5 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center">
-              Join Fast Lane
+              Start Your Journey
               <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
             </span>
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full animate-shine"></span>
           </a>
         </div>
         
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
-          className="md:hidden bg-white/70 backdrop-blur-sm rounded-full p-2 text-gray-900 focus:outline-none hover:bg-blue-50 transition shadow-sm"
+          className="md:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-white/20 transition shadow-sm"
           aria-label="Toggle mobile menu"
         >
-          <i className={`fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
+          </svg>
         </button>
       </div>
       
       {/* Mobile Navigation */}
-      <div className={`md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
+      <div className={`md:hidden bg-indigo-900/95 backdrop-blur-md border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
           <a 
             href="#philosophy" 
-            className="text-gray-700 hover:text-primary font-medium transition py-3 px-4 rounded-lg hover:bg-blue-50/50 flex items-center"
+            className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
             onClick={closeMobileMenu}
           >
-            <i className="fas fa-lightbulb mr-3 text-blue-500"></i>
-            Our Philosophy
+            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">⚡</span>
+            <span>Our Approach</span>
           </a>
           <a 
             href="#courses" 
-            className="text-gray-700 hover:text-primary font-medium transition py-3 px-4 rounded-lg hover:bg-blue-50/50 flex items-center"
+            className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
             onClick={closeMobileMenu}
           >
-            <i className="fas fa-graduation-cap mr-3 text-blue-500"></i>
-            Our Programs
+            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🚀</span>
+            <span>Programs</span>
           </a>
           <a 
-            href="#assessment" 
-            className="text-gray-700 hover:text-primary font-medium transition py-3 px-4 rounded-lg hover:bg-blue-50/50 flex items-center"
+            href="#methodology" 
+            className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
             onClick={closeMobileMenu}
           >
-            <i className="fas fa-clipboard-check mr-3 text-blue-500"></i>
-            Career Fit Assessment
+            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">📚</span>
+            <span>Learning Style</span>
           </a>
 
-          <div className="pt-2 pb-1">
+          <div className="pt-3 pb-2 flex flex-col space-y-3">
             <a 
-              href="#enroll" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg transition shadow-md hover:shadow-lg text-center block flex items-center justify-center"
+              href="#assessment" 
+              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium py-3 px-6 rounded-full transition shadow-md hover:shadow-lg flex items-center justify-center"
               onClick={closeMobileMenu}
             >
-              <span>Join Fast Lane</span>
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+              </svg>
+              <span>Personality Match™</span>
+            </a>
+            
+            <a 
+              href="#assessment" 
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition shadow-md hover:shadow-lg text-center flex items-center justify-center"
+              onClick={closeMobileMenu}
+            >
+              <span>Start Your Journey</span>
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
             </a>

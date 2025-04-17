@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Question {
   id: number;
@@ -10,6 +10,19 @@ export default function AssessmentSection() {
   const [currentView, setCurrentView] = useState<'intro' | 'questions' | 'results'>('intro');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
+  
+  // Track whether onboarding has been shown
+  const [seenOnboarding, setSeenOnboarding] = useState(() => {
+    return localStorage.getItem('hasSeenOnboarding') === 'true';
+  });
+  
+  // Show onboarding automatically if first visit
+  useEffect(() => {
+    if (!seenOnboarding) {
+      localStorage.setItem('hasSeenOnboarding', 'true');
+      setSeenOnboarding(true);
+    }
+  }, [seenOnboarding]);
 
   const questions: Question[] = [
     {
