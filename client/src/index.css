@@ -426,4 +426,25 @@
   .animate-shine {
     animation: shine 4s infinite;
   }
+  
+  /* Storytelling component styles */
+  .typing-cursor {
+    display: inline-block;
+    animation: cursor-blink 1s step-end infinite;
+  }
+  
+  .fade-transition {
+    animation: fade-transition 0.5s ease;
+  }
+  
+  /* Storytelling animations */
+  @keyframes cursor-blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  @keyframes fade-transition {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
