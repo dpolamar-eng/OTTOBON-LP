@@ -25,11 +25,11 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-slate-900/90 backdrop-blur-md shadow-xl' : 'bg-transparent'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-indigo-900/95 backdrop-blur-md shadow-xl' : 'bg-transparent'}`}>
       {/* Rich background elements */}
       <div className="absolute inset-0 z-[-2] overflow-hidden">
         {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 opacity-90"></div>
         
         {/* Radial pattern overlay */}
         <div className="absolute inset-0 opacity-10" 
@@ -39,7 +39,9 @@ export default function Header() {
           }}>
         </div>
         
-        {/* Accent light beams - removed for better contrast with hero */}
+        {/* Accent color elements */}
+        <div className="absolute top-0 -right-[20%] w-[50%] h-[100%] bg-indigo-500 rounded-full opacity-20 blur-[80px]"></div>
+        <div className="absolute top-0 -left-[10%] w-[40%] h-[100%] bg-purple-500 rounded-full opacity-10 blur-[60px]"></div>
       </div>
       
       {/* Subtle divider */}
@@ -93,7 +95,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
-          className="md:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-white/20 transition shadow-sm"
+          className="md:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm"
           aria-label="Toggle mobile menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +105,7 @@ export default function Header() {
       </div>
       
       {/* Mobile Navigation */}
-      <div className={`md:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`md:hidden bg-indigo-900/95 backdrop-blur-md border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
           <a 
             href="#methodology" 
