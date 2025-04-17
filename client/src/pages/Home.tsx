@@ -1,11 +1,10 @@
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
 import MethodologySection from "@/components/MethodologySection";
 import CoursesSection from "@/components/CoursesSection";
 import RequirementsSection from "@/components/RequirementsSection";
 import AssessmentSection from "@/components/AssessmentSection";
 import EnrollmentSection from "@/components/EnrollmentSection";
-import OnboardingJourneySection from "@/components/OnboardingJourneySection";
+import IntegratedHeroJourney from "@/components/IntegratedHeroJourney";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -13,9 +12,8 @@ export default function Home() {
     <div className="font-sans text-dark bg-white">
       <Header />
       <main>
-        <HeroSection />
+        <IntegratedHeroJourney />
         <MethodologySection />
-        <OnboardingJourneySection />
         <CoursesSection />
         <RequirementsSection />
         <AssessmentSection />
