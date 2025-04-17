@@ -38,7 +38,7 @@ interface Course {
 }
 
 export default function CoursesSection() {
-  const [activeFilter, setActiveFilter] = useState<CourseCategory>('all');
+  const [activeFilter, setActiveFilter] = useState<CourseCategory>('Career Launch');
   const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
   
   // Embla carousel setup
@@ -217,16 +217,6 @@ export default function CoursesSection() {
         
         {/* Course Filters */}
         <div ref={filtersRef} className="flex flex-wrap justify-center gap-4 mb-12">
-          <button 
-            className={`font-medium py-2 px-6 rounded-full transition ${
-              activeFilter === 'all' 
-                ? 'bg-primary text-white' 
-                : 'bg-white hover:bg-primary hover:text-white shadow-sm'
-            }`}
-            onClick={() => setActiveFilter('all')}
-          >
-            All Programs
-          </button>
           {categories.map(category => (
             <div key={category.id} className="text-center">
               <button 
@@ -262,7 +252,7 @@ export default function CoursesSection() {
                     className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''}`}
                     onClick={() => toggleFlipCard(course.id)}
                   >
-                    <div className="flip-card-inner shadow-lg">
+                    <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? 'flipped' : ''}`}>
                       {/* Card Front */}
                       <div className="flip-card-front">
                         <div className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6`}>

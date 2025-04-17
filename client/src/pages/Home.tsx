@@ -5,6 +5,7 @@ import CoursesSection from "@/components/CoursesSection";
 import RequirementsSection from "@/components/RequirementsSection";
 import AssessmentSection from "@/components/AssessmentSection";
 import EnrollmentSection from "@/components/EnrollmentSection";
+import OnboardingJourneySection from "@/components/OnboardingJourneySection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <MethodologySection />
+        <OnboardingJourneySection />
         <CoursesSection />
         <RequirementsSection />
         <AssessmentSection />
