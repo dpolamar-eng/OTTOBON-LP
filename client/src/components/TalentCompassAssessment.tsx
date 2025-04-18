@@ -1,0 +1,1103 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { useAnimation } from '@/hooks/use-animation';
+
+// Define types for trait assessment
+interface Trait {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  score: number;
+}
+
+// Define question interface
+interface Question {
+  id: number;
+  text: string;
+  options: {
+    text: string;
+    traits: Record<string, number>; // Maps trait IDs to score impacts
+    backgroundFactors?: Record<string, number>; // Maps to educational/experience factors
+  }[];
+  type: 'trait' | 'background';
+  category?: string;
+}
+
+// Define course interface
+interface Course {
+  id: string;
+  title: string;
+  description: string;
+  category: 'Career Launch' | 'Tech Edge';
+  traitMatches: Record<string, number>; // How important each trait is for this course
+  backgroundFactors: Record<string, number>; // How background factors affect this course's match
+  icon: string;
+  color: string;
+}
+
+// Define user profile
+interface UserProfile {
+  traits: Record<string, number>; // Maps trait IDs to scores
+  background: Record<string, number | string>; // Educational/experience factors
+  currentPath: 'career-switcher' | 'recent-graduate' | 'experienced'; // Current career path
+  discountEligibility: number; // 0-100 percentage
+  courseMatches: Record<string, number>; // Maps course IDs to match percentages
+}
+
+// Define component phases
+type AssessmentPhase = 
+  | 'intro' 
+  | 'path-selection' 
+  | 'trait-assessment' 
+  | 'background-assessment' 
+  | 'results';
+
+export default function TalentCompassAssessment() {
+  // Animation refs
+  const sectionRef = useAnimation('animate-fade-in');
+  const titleRef = useAnimation('animate-slide-up');
+  const compassRef = useAnimation('animate-scale-in delay-100');
+  
+  // State for controlling assessment flow
+  const [currentPhase, setCurrentPhase] = useState<AssessmentPhase>('intro');
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answeredQuestions, setAnsweredQuestions] = useState<number[]>([]);
+  const [assessmentStarted, setAssessmentStarted] = useState(false);
+  const [assessmentComplete, setAssessmentComplete] = useState(false);
+  const compassCanvas = useRef<HTMLCanvasElement>(null);
+  
+  // User profile state
+  const [userProfile, setUserProfile] = useState<UserProfile>({
+    traits: {
+      ambition: 0,
+      learnability: 0,
+      accountability: 0,
+      integrity: 0,
+      curiosity: 0,
+      adaptability: 0,
+      emotionalIntelligence: 0
+    },
+    background: {
+      education: '',
+      languages: 0,
+      yearsExperience: 0,
+      relevantProjects: 0
+    },
+    currentPath: 'recent-graduate',
+    discountEligibility: 0,
+    courseMatches: {}
+  });
+  
+  // Define the 7 core traits
+  const traits: Trait[] = [
+    {
+      id: 'ambition',
+      name: 'Ambition',
+      description: 'Drive to achieve goals and pursue continuous improvement',
+      icon: '🚀',
+      color: 'from-blue-400 to-blue-600',
+      score: 0
+    },
+    {
+      id: 'learnability',
+      name: 'Learnability',
+      description: 'Ability to quickly acquire and apply new knowledge',
+      icon: '📚',
+      color: 'from-purple-400 to-purple-600',
+      score: 0
+    },
+    {
+      id: 'accountability',
+      name: 'Accountability',
+      description: 'Taking ownership of actions, commitments, and outcomes',
+      icon: '✅',
+      color: 'from-green-400 to-green-600',
+      score: 0
+    },
+    {
+      id: 'integrity',
+      name: 'Integrity',
+      description: 'Adherence to ethical principles and trustworthiness',
+      icon: '🛡️',
+      color: 'from-gray-400 to-gray-600',
+      score: 0
+    },
+    {
+      id: 'curiosity',
+      name: 'Curiosity',
+      description: 'Desire to explore, question, and understand new concepts',
+      icon: '🔍',
+      color: 'from-amber-400 to-amber-600',
+      score: 0
+    },
+    {
+      id: 'adaptability',
+      name: 'Adaptability',
+      description: 'Flexibility in changing environments and requirements',
+      icon: '🔄',
+      color: 'from-teal-400 to-teal-600',
+      score: 0
+    },
+    {
+      id: 'emotionalIntelligence',
+      name: 'Emotional Intelligence',
+      description: 'Awareness and management of emotions in self and others',
+      icon: '❤️',
+      color: 'from-red-400 to-red-600',
+      score: 0
+    }
+  ];
+  
+  // Define courses with trait importance weights
+  const courses: Course[] = [
+    {
+      id: 'genai',
+      title: 'Generative AI Solutions Architect',
+      description: 'Design and implement generative AI solutions for enterprise applications.',
+      category: 'Career Launch',
+      traitMatches: {
+        curiosity: 0.9,
+        learnability: 0.8,
+        adaptability: 0.7,
+        accountability: 0.6,
+        emotionalIntelligence: 0.5,
+        integrity: 0.5,
+        ambition: 0.7
+      },
+      backgroundFactors: {
+        education: 0.6,
+        languages: 0.7,
+        yearsExperience: 0.5,
+        relevantProjects: 0.8
+      },
+      icon: '🤖',
+      color: 'from-indigo-500 to-indigo-700'
+    },
+    {
+      id: 'aws',
+      title: 'AWS Solutions Architect',
+      description: 'Design and implement scalable, high-availability systems on AWS.',
+      category: 'Career Launch',
+      traitMatches: {
+        accountability: 0.9,
+        adaptability: 0.8,
+        learnability: 0.7,
+        integrity: 0.7,
+        curiosity: 0.6,
+        emotionalIntelligence: 0.4,
+        ambition: 0.7
+      },
+      backgroundFactors: {
+        education: 0.5,
+        languages: 0.6,
+        yearsExperience: 0.7,
+        relevantProjects: 0.8
+      },
+      icon: '☁️',
+      color: 'from-yellow-500 to-orange-500'
+    },
+    {
+      id: 'salesforce',
+      title: 'Salesforce CX Consultant',
+      description: 'Become a certified Salesforce consultant specializing in customer experience solutions.',
+      category: 'Tech Edge',
+      traitMatches: {
+        emotionalIntelligence: 0.9,
+        accountability: 0.8,
+        adaptability: 0.7,
+        integrity: 0.8,
+        curiosity: 0.5,
+        learnability: 0.6,
+        ambition: 0.6
+      },
+      backgroundFactors: {
+        education: 0.5,
+        languages: 0.5,
+        yearsExperience: 0.6,
+        relevantProjects: 0.7
+      },
+      icon: '☁️',
+      color: 'from-blue-500 to-blue-700'
+    }
+  ];
+  
+  // Define questions for the trait assessment
+  const traitQuestions: Question[] = [
+    {
+      id: 1,
+      text: "When faced with a complex technological problem, you typically:",
+      options: [
+        {
+          text: "Persist until you solve it completely, even if it takes extra time",
+          traits: { ambition: 2, accountability: 1, learnability: 1 }
+        },
+        {
+          text: "Break it down into smaller parts and solve systematically",
+          traits: { adaptability: 1, accountability: 2, learnability: 1 }
+        },
+        {
+          text: "Research multiple solutions and test different approaches",
+          traits: { curiosity: 2, learnability: 2, adaptability: 1 }
+        },
+        {
+          text: "Collaborate with others to gain different perspectives",
+          traits: { emotionalIntelligence: 2, adaptability: 1, integrity: 1 }
+        }
+      ],
+      type: 'trait'
+    },
+    {
+      id: 2,
+      text: "When learning a new technology or framework, you:",
+      options: [
+        {
+          text: "Follow tutorials meticulously, step by step",
+          traits: { accountability: 2, integrity: 1, learnability: 1 }
+        },
+        {
+          text: "Experiment by building your own small projects",
+          traits: { curiosity: 2, learnability: 2, ambition: 1 }
+        },
+        {
+          text: "Join communities to learn from others' approaches",
+          traits: { emotionalIntelligence: 1, adaptability: 1, learnability: 2 }
+        },
+        {
+          text: "Study the documentation comprehensively before starting",
+          traits: { integrity: 1, accountability: 1, learnability: 2 }
+        }
+      ],
+      type: 'trait'
+    },
+    {
+      id: 3,
+      text: "When a deadline for a project is approaching, but you discover it needs significant changes, you:",
+      options: [
+        {
+          text: "Immediately communicate the issue and propose solutions",
+          traits: { integrity: 2, accountability: 2, emotionalIntelligence: 1 }
+        },
+        {
+          text: "Work extra hours to ensure the deliverable meets requirements",
+          traits: { ambition: 2, accountability: 2 }
+        },
+        {
+          text: "Quickly adapt your approach to prioritize essential features",
+          traits: { adaptability: 2, learnability: 1, accountability: 1 }
+        },
+        {
+          text: "Look for creative workarounds to meet the core requirements",
+          traits: { curiosity: 2, adaptability: 2, learnability: 1 }
+        }
+      ],
+      type: 'trait'
+    },
+    {
+      id: 4,
+      text: "When you notice a teammate is struggling with their tasks, you:",
+      options: [
+        {
+          text: "Offer to help them directly with their tasks",
+          traits: { emotionalIntelligence: 2, integrity: 1, accountability: 1 }
+        },
+        {
+          text: "Share resources that could help them overcome obstacles",
+          traits: { learnability: 1, emotionalIntelligence: 1, curiosity: 1 }
+        },
+        {
+          text: "Suggest they speak with the team leader for guidance",
+          traits: { integrity: 1, accountability: 1 }
+        },
+        {
+          text: "Ask questions to better understand their challenges",
+          traits: { emotionalIntelligence: 2, curiosity: 2, adaptability: 1 }
+        }
+      ],
+      type: 'trait'
+    },
+    {
+      id: 5,
+      text: "Your preferred approach to staying current with industry developments is:",
+      options: [
+        {
+          text: "Following structured online courses and certifications",
+          traits: { learnability: 2, accountability: 1, integrity: 1 }
+        },
+        {
+          text: "Regularly experimenting with new technologies in side projects",
+          traits: { curiosity: 2, ambition: 2, adaptability: 1 }
+        },
+        {
+          text: "Participating in communities, forums, and tech discussions",
+          traits: { emotionalIntelligence: 1, curiosity: 1, learnability: 1 }
+        },
+        {
+          text: "Reading documentation, research papers, and technical blogs",
+          traits: { learnability: 2, curiosity: 2, integrity: 1 }
+        }
+      ],
+      type: 'trait'
+    }
+  ];
+  
+  // Define questions for the background assessment
+  const backgroundQuestions: Question[] = [
+    {
+      id: 6,
+      text: "What is your highest level of formal education?",
+      options: [
+        {
+          text: "High school or equivalent",
+          traits: {},
+          backgroundFactors: { education: 1 }
+        },
+        {
+          text: "Associate degree or some college",
+          traits: {},
+          backgroundFactors: { education: 2 }
+        },
+        {
+          text: "Bachelor's degree",
+          traits: {},
+          backgroundFactors: { education: 3 }
+        },
+        {
+          text: "Master's degree or higher",
+          traits: {},
+          backgroundFactors: { education: 4 }
+        }
+      ],
+      type: 'background',
+      category: 'education'
+    },
+    {
+      id: 7,
+      text: "How many programming languages are you proficient in?",
+      options: [
+        {
+          text: "None yet",
+          traits: {},
+          backgroundFactors: { languages: 0 }
+        },
+        {
+          text: "1 language",
+          traits: {},
+          backgroundFactors: { languages: 1 }
+        },
+        {
+          text: "2-3 languages",
+          traits: {},
+          backgroundFactors: { languages: 2 }
+        },
+        {
+          text: "4+ languages",
+          traits: {},
+          backgroundFactors: { languages: 3 }
+        }
+      ],
+      type: 'background',
+      category: 'technical'
+    },
+    {
+      id: 8,
+      text: "How many years of professional experience do you have in technology or related fields?",
+      options: [
+        {
+          text: "No professional experience yet",
+          traits: {},
+          backgroundFactors: { yearsExperience: 0 }
+        },
+        {
+          text: "Less than 2 years",
+          traits: {},
+          backgroundFactors: { yearsExperience: 1 }
+        },
+        {
+          text: "2-5 years",
+          traits: {},
+          backgroundFactors: { yearsExperience: 2 }
+        },
+        {
+          text: "More than 5 years",
+          traits: {},
+          backgroundFactors: { yearsExperience: 3 }
+        }
+      ],
+      type: 'background',
+      category: 'experience'
+    },
+    {
+      id: 9,
+      text: "How many relevant projects have you completed (personal, educational, or professional)?",
+      options: [
+        {
+          text: "No projects yet",
+          traits: {},
+          backgroundFactors: { relevantProjects: 0 }
+        },
+        {
+          text: "1-2 projects",
+          traits: {},
+          backgroundFactors: { relevantProjects: 1 }
+        },
+        {
+          text: "3-5 projects",
+          traits: {},
+          backgroundFactors: { relevantProjects: 2 }
+        },
+        {
+          text: "More than 5 projects",
+          traits: {},
+          backgroundFactors: { relevantProjects: 3 }
+        }
+      ],
+      type: 'background',
+      category: 'experience'
+    }
+  ];
+  
+  // Combined questions list
+  const allQuestions = [...traitQuestions, ...backgroundQuestions];
+  
+  // Get current question
+  const currentQuestion = allQuestions[currentQuestionIndex];
+  
+  // Handle path selection
+  const selectPath = (path: 'career-switcher' | 'recent-graduate' | 'experienced') => {
+    setUserProfile({
+      ...userProfile,
+      currentPath: path
+    });
+    setCurrentPhase('trait-assessment');
+  };
+  
+  // Handle answer selection
+  const selectAnswer = (optionIndex: number) => {
+    const option = currentQuestion.options[optionIndex];
+    
+    // Update trait scores
+    if (option.traits) {
+      const updatedTraits = { ...userProfile.traits };
+      
+      Object.entries(option.traits).forEach(([traitId, score]) => {
+        updatedTraits[traitId] = (updatedTraits[traitId] || 0) + score;
+      });
+      
+      setUserProfile({
+        ...userProfile,
+        traits: updatedTraits
+      });
+    }
+    
+    // Update background factors
+    if (option.backgroundFactors) {
+      const updatedBackground = { ...userProfile.background };
+      
+      Object.entries(option.backgroundFactors).forEach(([factor, value]) => {
+        updatedBackground[factor] = value;
+      });
+      
+      setUserProfile({
+        ...userProfile,
+        background: updatedBackground
+      });
+    }
+    
+    // Mark question as answered
+    setAnsweredQuestions([...answeredQuestions, currentQuestion.id]);
+    
+    // Move to next question or phase
+    if (currentQuestionIndex < traitQuestions.length - 1 && currentQuestion.type === 'trait') {
+      // Still in trait assessment phase
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else if (currentQuestionIndex === traitQuestions.length - 1 && currentQuestion.type === 'trait') {
+      // Move to background assessment
+      setCurrentPhase('background-assessment');
+      setCurrentQuestionIndex(traitQuestions.length);
+    } else if (currentQuestionIndex < allQuestions.length - 1) {
+      // Continue with background questions
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      // Assessment complete
+      calculateResults();
+      setCurrentPhase('results');
+      setAssessmentComplete(true);
+    }
+    
+    // Update compass visualization
+    updateCompassVisualization();
+  };
+  
+  // Calculate final results
+  const calculateResults = () => {
+    // Calculate course matches based on traits and background
+    const matches: Record<string, number> = {};
+    
+    courses.forEach(course => {
+      let matchScore = 0;
+      let totalWeight = 0;
+      
+      // Calculate trait match component (70% weight)
+      Object.entries(course.traitMatches).forEach(([traitId, importance]) => {
+        const traitScore = userProfile.traits[traitId] || 0;
+        // Normalize trait score to 0-1 range (assuming max score of 10)
+        const normalizedScore = Math.min(traitScore / 10, 1);
+        matchScore += normalizedScore * importance * 0.7;
+        totalWeight += importance * 0.7;
+      });
+      
+      // Calculate background match component (30% weight)
+      Object.entries(course.backgroundFactors).forEach(([factor, importance]) => {
+        const factorValue = userProfile.background[factor] || 0;
+        // Normalize factor value to 0-1 range (assuming max value of 4)
+        const normalizedValue = typeof factorValue === 'number' ? Math.min(factorValue / 4, 1) : 0;
+        matchScore += normalizedValue * importance * 0.3;
+        totalWeight += importance * 0.3;
+      });
+      
+      // Normalize final score as percentage
+      matches[course.id] = Math.round((matchScore / totalWeight) * 100);
+    });
+    
+    // Calculate discount eligibility (basic algorithm)
+    // This is a simplified calculation - could be made more sophisticated
+    const traitScores = Object.values(userProfile.traits);
+    const avgTraitScore = traitScores.reduce((sum, score) => sum + score, 0) / traitScores.length;
+    
+    // Normalize to 0-100 scale (assuming max avg score of 2)
+    const traitComponent = Math.min(avgTraitScore / 2, 1) * 60; // 60% of discount based on traits
+    
+    // Background component (40% of discount)
+    const educationValue = Number(userProfile.background.education) || 0;
+    const experienceValue = Number(userProfile.background.yearsExperience) || 0;
+    const projectsValue = Number(userProfile.background.relevantProjects) || 0;
+    
+    const backgroundComponent = 
+      (educationValue / 4) * 15 + // 15% from education
+      (experienceValue / 3) * 15 + // 15% from experience
+      (projectsValue / 3) * 10;    // 10% from projects
+    
+    // Calculate total discount (maximum 90%)
+    const calculatedDiscount = Math.min(Math.round(traitComponent + backgroundComponent), 90);
+    
+    // Update user profile with results
+    setUserProfile({
+      ...userProfile,
+      courseMatches: matches,
+      discountEligibility: calculatedDiscount
+    });
+  };
+  
+  // Update the compass visualization
+  const updateCompassVisualization = () => {
+    const canvas = compassCanvas.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    const width = canvas.width;
+    const height = canvas.height;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const radius = Math.min(width, height) / 2 - 20;
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, width, height);
+    
+    // Draw compass background
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.fill();
+    
+    // Draw trait sections
+    const numTraits = traits.length;
+    const angleStep = (Math.PI * 2) / numTraits;
+    
+    traits.forEach((trait, index) => {
+      const startAngle = index * angleStep - Math.PI / 2;
+      const endAngle = (index + 1) * angleStep - Math.PI / 2;
+      
+      // Get trait score (normalized to 0-1)
+      const score = (userProfile.traits[trait.id] || 0) / 10;
+      const traitRadius = radius * Math.max(0.1, score);
+      
+      // Draw section
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.arc(centerX, centerY, traitRadius, startAngle, endAngle);
+      ctx.closePath();
+      
+      // Create gradient based on trait color
+      const colorParts = trait.color.split(' ');
+      const fromColor = colorParts[0].replace('from-', '').replace('-400', '');
+      const toColor = colorParts[1].replace('to-', '').replace('-600', '');
+      
+      const getColor = (name: string) => {
+        const colors: Record<string, string> = {
+          'blue': '#3b82f6',
+          'purple': '#9333ea',
+          'green': '#10b981',
+          'gray': '#6b7280',
+          'amber': '#f59e0b',
+          'teal': '#14b8a6',
+          'red': '#ef4444',
+          'indigo': '#6366f1'
+        };
+        return colors[name] || '#000000';
+      };
+      
+      const gradient = ctx.createRadialGradient(
+        centerX, centerY, 0,
+        centerX, centerY, traitRadius
+      );
+      gradient.addColorStop(0, getColor(fromColor));
+      gradient.addColorStop(1, getColor(toColor));
+      
+      ctx.fillStyle = gradient;
+      ctx.fill();
+      
+      // Add trait label
+      const labelRadius = radius + 15;
+      const labelX = centerX + Math.cos(startAngle + angleStep / 2) * labelRadius;
+      const labelY = centerY + Math.sin(startAngle + angleStep / 2) * labelRadius;
+      
+      ctx.font = '12px Arial';
+      ctx.fillStyle = '#000000';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(trait.name, labelX, labelY);
+    });
+    
+    // Draw center circle
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 20, 0, Math.PI * 2);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    
+    // Draw compass icon in center
+    ctx.font = '20px Arial';
+    ctx.fillStyle = '#000000';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('🧭', centerX, centerY);
+  };
+  
+  // Initialize canvas when component loads
+  useEffect(() => {
+    const canvas = compassCanvas.current;
+    if (!canvas) return;
+    
+    // Set canvas dimensions
+    canvas.width = 400;
+    canvas.height = 400;
+    
+    // Initial visualization
+    updateCompassVisualization();
+  }, [compassCanvas]);
+  
+  // Get best course match
+  const getBestCourseMatch = () => {
+    if (!Object.keys(userProfile.courseMatches).length) return null;
+    
+    const sortedMatches = Object.entries(userProfile.courseMatches)
+      .sort(([, scoreA], [, scoreB]) => scoreB - scoreA);
+    
+    if (!sortedMatches.length) return null;
+    
+    const [bestMatchId, bestMatchScore] = sortedMatches[0];
+    const course = courses.find(c => c.id === bestMatchId);
+    
+    if (!course) return null;
+    
+    return { course, score: bestMatchScore };
+  };
+  
+  // Cache best match to avoid repetitive calls
+  const bestMatch = getBestCourseMatch();
+  
+  // Start the assessment
+  const startAssessment = () => {
+    setAssessmentStarted(true);
+    setCurrentPhase('path-selection');
+  };
+  
+  // Render trait score card
+  const renderTraitScoreCard = (trait: Trait) => {
+    const score = userProfile.traits[trait.id] || 0;
+    const normalizedScore = Math.min(score / 10, 1) * 100; // 0-100 scale
+    
+    return (
+      <div key={trait.id} className="bg-white rounded-lg p-4 shadow-md">
+        <div className="flex items-center mb-2">
+          <span className="text-xl mr-2">{trait.icon}</span>
+          <h4 className="font-semibold">{trait.name}</h4>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
+          <div 
+            className={`h-2 rounded-full bg-gradient-to-r ${trait.color}`} 
+            style={{ width: `${normalizedScore}%` }}
+          ></div>
+        </div>
+        <p className="text-xs text-gray-500">{trait.description}</p>
+      </div>
+    );
+  };
+  
+  // Render course card
+  const renderCourseCard = (course: Course) => {
+    const matchScore = userProfile.courseMatches[course.id] || 0;
+    
+    return (
+      <div 
+        key={course.id} 
+        className={`border rounded-lg p-5 ${
+          matchScore > 80 ? 'border-green-400 bg-green-50' : 
+          matchScore > 60 ? 'border-blue-400 bg-blue-50' : 'border-gray-300'
+        }`}
+      >
+        <div className="flex justify-between items-start mb-3">
+          <div className="flex items-center">
+            <span className="text-2xl mr-3">{course.icon}</span>
+            <h3 className="font-bold text-lg">{course.title}</h3>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-full px-3 py-1 text-sm font-medium">
+            {matchScore}% Match
+          </div>
+        </div>
+        
+        <p className="text-gray-700 mb-4">{course.description}</p>
+        
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-gray-500">{course.category}</span>
+          <button className="text-primary hover:text-primary/80 text-sm font-medium">
+            View Details
+          </button>
+        </div>
+      </div>
+    );
+  };
+  
+  return (
+    <section id="talent-compass" className="py-16 bg-gray-50 relative" ref={sectionRef}>
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-center mb-3">
+          Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
+        </h2>
+        
+        {currentPhase === 'intro' && (
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-gray-600 mb-8">
+              Discover your unique path in technology consulting through our personalized assessment tool. 
+              Based on your core strengths and background, we'll identify your ideal learning track and 
+              potential for tuition discounts of up to 90%.
+            </p>
+            
+            <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <h3 className="text-xl font-bold mb-4 text-left">Personalized Path Discovery</h3>
+                  <ul className="text-left space-y-3">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span>Identify your natural strengths across 7 key traits</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span>Get matched with optimal learning tracks</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span>See how your background enhances your potential</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-bold mb-4 text-left">Unlock Your Potential</h3>
+                  <ul className="text-left space-y-3">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span>Qualify for up to 90% tuition discounts</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span>Join the Fast Lane application process</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2 mt-1">✓</span>
+                      <span>Get a personalized learning roadmap</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <button
+                onClick={startAssessment}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg"
+              >
+                Begin Your Journey
+              </button>
+            </div>
+            
+            <div className="flex justify-center">
+              <div className="max-w-md">
+                <p className="text-sm text-gray-500 mb-4">
+                  The assessment takes approximately 5 minutes to complete and provides 
+                  immediate results. Your answers help us tailor a personalized learning 
+                  experience that maximizes your strengths.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {currentPhase === 'path-selection' && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-center text-gray-600 mb-10">
+              Select your current position to customize your assessment journey.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div 
+                className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
+                onClick={() => selectPath('career-switcher')}
+              >
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-3xl mb-4 mx-auto">
+                  🔄
+                </div>
+                <h3 className="text-xl font-bold text-center mb-2">Career Switcher</h3>
+                <p className="text-gray-600 text-center">
+                  Coming from another field and looking to transition into technology consulting.
+                </p>
+              </div>
+              
+              <div 
+                className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
+                onClick={() => selectPath('recent-graduate')}
+              >
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-3xl mb-4 mx-auto">
+                  🎓
+                </div>
+                <h3 className="text-xl font-bold text-center mb-2">Recent Graduate</h3>
+                <p className="text-gray-600 text-center">
+                  Starting your professional journey with a focus on technology.
+                </p>
+              </div>
+              
+              <div 
+                className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
+                onClick={() => selectPath('experienced')}
+              >
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl mb-4 mx-auto">
+                  💼
+                </div>
+                <h3 className="text-xl font-bold text-center mb-2">Experienced Professional</h3>
+                <p className="text-gray-600 text-center">
+                  Looking to specialize or update your skills in the tech industry.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {(currentPhase === 'trait-assessment' || currentPhase === 'background-assessment') && (
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Compass visualization */}
+              <div ref={compassRef} className="hidden lg:block">
+                <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
+                  <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
+                  <div className="flex justify-center mb-4">
+                    <canvas 
+                      ref={compassCanvas} 
+                      width="400" 
+                      height="400"
+                      className="max-w-full"
+                    ></canvas>
+                  </div>
+                  <p className="text-sm text-gray-500 text-center">
+                    This visualization updates in real-time as you answer questions,
+                    showing how your unique strengths are being mapped.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Question section */}
+              <div className="lg:col-span-2">
+                <div className="bg-white rounded-xl shadow-md p-8">
+                  <div className="mb-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-medium text-gray-500">
+                        {currentPhase === 'trait-assessment' ? 'Trait Assessment' : 'Background Assessment'}
+                      </span>
+                      <span className="text-sm font-medium text-gray-500">
+                        Question {answeredQuestions.length + 1} of {allQuestions.length}
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
+                        style={{ width: `${((answeredQuestions.length) / allQuestions.length) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  
+                  {currentQuestion && (
+                    <div>
+                      <h3 className="text-xl font-bold mb-6">{currentQuestion.text}</h3>
+                      
+                      <div className="space-y-3">
+                        {currentQuestion.options.map((option, index) => (
+                          <button
+                            key={index}
+                            onClick={() => selectAnswer(index)}
+                            className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition"
+                          >
+                            {option.text}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {currentPhase === 'results' && (
+          <div className="max-w-5xl mx-auto">
+            <p className="text-center text-gray-600 mb-10">
+              Based on your responses, we've created a personalized profile highlighting your strengths and optimal paths.
+            </p>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Compass and traits visualization */}
+              <div>
+                <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+                  <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
+                  <div className="flex justify-center mb-4">
+                    <canvas 
+                      ref={compassCanvas} 
+                      width="400" 
+                      height="400"
+                      className="max-w-full"
+                    ></canvas>
+                  </div>
+                </div>
+                
+                <div className="bg-white rounded-xl shadow-md p-6">
+                  <h3 className="text-xl font-bold mb-4">Your Core Strengths</h3>
+                  <div className="space-y-4">
+                    {traits.map(trait => renderTraitScoreCard(trait))}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Results and recommendations */}
+              <div className="lg:col-span-2">
+                {/* Discount eligibility card */}
+                <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg p-8 text-white mb-8">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2">Congratulations!</h3>
+                      <p className="opacity-90 mb-4">
+                        Based on your assessment, you've qualified for a significant tuition discount.
+                      </p>
+                    </div>
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                      <span className="text-4xl font-bold">{userProfile.discountEligibility}%</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 mb-6">
+                    <div className="flex items-start">
+                      <span className="text-white mr-2 mt-1">✨</span>
+                      <p>
+                        Your unique combination of traits and background makes you eligible 
+                        for up to <strong>{userProfile.discountEligibility}% off your tuition</strong>. 
+                        This discount will be applied automatically when you enroll in any of our programs.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-end">
+                    <a 
+                      href="#enroll" 
+                      className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg"
+                    >
+                      Join Fast Lane
+                    </a>
+                  </div>
+                </div>
+                
+                {/* Course matches */}
+                <div className="bg-white rounded-xl shadow-md p-8">
+                  <h3 className="text-xl font-bold mb-6">Your Recommended Paths</h3>
+                  
+                  <div className="space-y-6 mb-8">
+                    {bestMatch?.course && (
+                      <div className="border-2 border-green-400 rounded-lg p-6 bg-green-50">
+                        <div className="flex justify-between items-start mb-4">
+                          <h4 className="text-lg font-bold flex items-center">
+                            <span className="text-xl mr-2">🏆</span>
+                            Best Match: {bestMatch.course.title}
+                          </h4>
+                          <span className="bg-green-100 text-green-800 font-medium px-3 py-1 rounded-full text-sm">
+                            {bestMatch.score}% Match
+                          </span>
+                        </div>
+                        <p className="text-gray-700 mb-4">
+                          {bestMatch.course.description}
+                        </p>
+                        <div className="flex justify-end">
+                          <a 
+                            href="#enroll" 
+                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg"
+                          >
+                            Apply Now
+                          </a>
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div className="space-y-6">
+                      <h4 className="font-medium text-gray-500">Other Strong Matches</h4>
+                      {courses
+                        .filter(course => course.id !== bestMatch?.course?.id)
+                        .sort((a, b) => (userProfile.courseMatches[b.id] || 0) - (userProfile.courseMatches[a.id] || 0))
+                        .map(course => renderCourseCard(course))
+                      }
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-center pt-4 border-t border-gray-200">
+                    <a 
+                      href="#enroll" 
+                      className="text-blue-600 hover:text-blue-800 font-medium"
+                    >
+                      Schedule a Consultation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
