@@ -444,7 +444,7 @@ export default function IntegratedHeroJourney() {
                       </div>
                       
                       <div className="flex-1 flex flex-col justify-center">
-                        <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-inner border border-white/10 relative">
+                        <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-inner border border-gray-300 relative">
                           <div className="absolute -top-3 -left-2 text-4xl text-white/20">"</div>
                           <div className="absolute -bottom-3 -right-2 text-4xl text-white/20">"</div>
                           <p className="text-black font-medium italic relative z-10">
