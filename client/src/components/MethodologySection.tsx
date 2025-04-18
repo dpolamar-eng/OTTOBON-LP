@@ -10,8 +10,14 @@ export default function MethodologySection() {
     <section className="pt-8 pb-20 bg-gradient-soft" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12" ref={headerRef}>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Methodology</h2>
-          <p className="text-gray-700 mb-8">
+          <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
+            <span className="text-blue-600 mr-2 text-xl">⚡</span>
+            <span className="text-blue-800 font-medium text-sm uppercase tracking-wider">Learning Accelerator</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 leading-tight">
+            Our Game-Changing Methodology
+          </h2>
+          <p className="text-gray-700 mb-8 text-lg">
             Ottobon's unique approach transforms promising talent into elite technology consultants through these core pillars.
           </p>
           <div className="fancy-divider"></div>

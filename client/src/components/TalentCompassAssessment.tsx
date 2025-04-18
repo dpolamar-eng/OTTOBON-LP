@@ -793,9 +793,15 @@ export default function TalentCompassAssessment() {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-center mb-3">
-          Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
-        </h2>
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center mb-4 bg-purple-50 px-4 py-2 rounded-full">
+            <span className="text-purple-600 mr-2 text-xl">🧭</span>
+            <span className="text-purple-800 font-medium text-sm uppercase tracking-wider">Personalized Assessment</span>
+          </div>
+          <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold text-center mb-3 leading-tight">
+            Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
+          </h2>
+        </div>
         
         {currentPhase === 'intro' && (
           <div className="max-w-3xl mx-auto text-center">

@@ -204,9 +204,13 @@ export default function IntegratedHeroJourney() {
                   <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center gap-8 py-6">
                       <div className="md:w-1/2 mb-10 md:mb-0 relative">
+                        <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
+                          <span className="text-blue-600 mr-2 text-xl">✨</span>
+                          <span className="text-blue-800 font-medium text-sm uppercase tracking-wider">Harvard-Style Learning</span>
+                        </div>
                         <h1 
                           ref={headingRef}
-                          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900"
                           dangerouslySetInnerHTML={{ __html: slide.title }}
                         ></h1>
                         <p ref={descriptionRef} className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg leading-relaxed">
