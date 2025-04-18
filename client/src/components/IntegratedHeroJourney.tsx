@@ -210,10 +210,7 @@ export default function IntegratedHeroJourney() {
                       </div>
                       
                       <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-1 px-0">
-                        <div className="inline-flex flex-wrap items-center mb-4 bg-blue-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
-                          <span className="text-blue-600 mr-2 text-lg sm:text-xl">✨</span>
-                          <span className="text-blue-800 font-medium text-xs sm:text-sm uppercase tracking-wider">Harvard-Style Learning</span>
-                        </div>
+
                         <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
                           <h1 
                             ref={headingRef}
@@ -247,10 +244,10 @@ export default function IntegratedHeroJourney() {
                           </a>
                           <button
                             onClick={toggleJourney}
-                            className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition text-center group text-sm sm:text-base"
+                            className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition text-center group text-sm sm:text-base"
                           >
-                            <span className="group-hover:hidden truncate">Explore Program</span>
-                            <span className="hidden group-hover:inline truncate">View Journey</span>
+                            <span className="group-hover:hidden truncate text-blue-600">Explore Program</span>
+                            <span className="hidden group-hover:inline truncate text-white">View Journey</span>
                           </button>
                         </div>
                         <div className="mt-4 text-xs sm:text-sm bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-2 sm:p-3 border border-green-200 shadow-sm">

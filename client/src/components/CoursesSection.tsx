@@ -41,85 +41,7 @@ export default function CoursesSection() {
   const [activeFilter, setActiveFilter] = useState<CourseCategory>('Career Launch');
   const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
   
-  // Responsive slide count function
-  const getVisibleSlides = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 1024) return 2;
-      return 3;
-    }
-    return 3;
-  };
-  
-  // State for responsive slides
-  const [slidesPerView, setSlidesPerView] = useState(getVisibleSlides());
-  
-  // Embla carousel setup
-  const [viewportRef, embla] = useEmblaCarousel({ 
-    loop: true, 
-    align: 'start',
-    skipSnaps: false,
-    slidesToScroll: 1
-  });
-  const [autoplay, setAutoplay] = useState(true);
-  const [isHovering, setIsHovering] = useState(false);
-  const autoplayInterval = 3000;
-  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
-  // Handle resize effect
-  useEffect(() => {
-    const handleResize = () => {
-      const newSlidesPerView = getVisibleSlides();
-      if (newSlidesPerView !== slidesPerView) {
-        setSlidesPerView(newSlidesPerView);
-        
-        // Reset and rebuild carousel when window size changes
-        if (embla) {
-          embla.reInit();
-        }
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [embla, slidesPerView]);
-  
-  const onSelect = useCallback(() => {
-    if (!embla) return;
-  }, [embla]);
-  
-  const autoplayCallback = useCallback(() => {
-    if (!embla || !autoplay || isHovering) return;
-    if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
-    
-    autoplayTimeoutRef.current = setTimeout(() => {
-      if (!embla) return;
-      embla.scrollNext();
-      autoplayCallback();
-    }, autoplayInterval);
-  }, [autoplay, embla, autoplayInterval, isHovering]);
-  
-  useEffect(() => {
-    if (!embla) return;
-    onSelect();
-    embla.on('select', onSelect);
-    autoplayCallback();
-    
-    return () => {
-      embla.off('select', onSelect);
-      if (autoplayTimeoutRef.current) {
-        clearTimeout(autoplayTimeoutRef.current);
-      }
-    };
-  }, [autoplay, autoplayCallback, embla, onSelect, isHovering]);
-  
-  // Effect to restart autoplay when hovering stops
-  useEffect(() => {
-    if (!isHovering && autoplay) {
-      autoplayCallback();
-    }
-  }, [isHovering, autoplay, autoplayCallback]);
-
+  // Courses data
   const courses: Course[] = [
     {
       id: 'genai',
@@ -208,16 +130,115 @@ export default function CoursesSection() {
     }
   ];
 
+  // Filter courses based on selected category
+  const filteredCourses = activeFilter === 'all' 
+    ? courses 
+    : courses.filter(course => course.category === activeFilter);
+    
+  // Toggle flip card state
   const toggleFlipCard = (courseId: string) => {
     setFlippedCards(prev => ({
       ...prev,
       [courseId]: !prev[courseId]
     }));
   };
+  
+  // Responsive slide count function
+  const getVisibleSlides = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 3;
+    }
+    return 3;
+  };
+  
+  // State for responsive slides
+  const [slidesPerView, setSlidesPerView] = useState(getVisibleSlides());
+  
+  // Embla carousel setup
+  const [viewportRef, embla] = useEmblaCarousel({ 
+    loop: false, // Disable loop when fewer items
+    align: 'start',
+    skipSnaps: false,
+    slidesToScroll: 1,
+    containScroll: 'keepSnaps' // Prevents scrolling beyond the available slides
+  });
+  const [autoplay, setAutoplay] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
+  const autoplayInterval = 3000;
+  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Check if we need to show navigation at all
+  const [canScroll, setCanScroll] = useState(true);
+  
+  // Handle resize effect
+  useEffect(() => {
+    const handleResize = () => {
+      const newSlidesPerView = getVisibleSlides();
+      if (newSlidesPerView !== slidesPerView) {
+        setSlidesPerView(newSlidesPerView);
+        
+        // Reset and rebuild carousel when window size changes
+        if (embla) {
+          embla.reInit();
+        }
+      }
+    };
 
-  const filteredCourses = activeFilter === 'all' 
-    ? courses 
-    : courses.filter(course => course.category === activeFilter);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [embla, slidesPerView]);
+  
+  const onSelect = useCallback(() => {
+    if (!embla) return;
+  }, [embla]);
+  
+  const autoplayCallback = useCallback(() => {
+    if (!embla || !autoplay || isHovering) return;
+    if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
+    
+    autoplayTimeoutRef.current = setTimeout(() => {
+      if (!embla) return;
+      embla.scrollNext();
+      autoplayCallback();
+    }, autoplayInterval);
+  }, [autoplay, embla, autoplayInterval, isHovering]);
+
+  useEffect(() => {
+    if (!embla) return;
+    
+    // Set initial scroll state
+    const updateCanScroll = () => {
+      const totalSlides = filteredCourses.length;
+      const visibleSlides = getVisibleSlides();
+      setCanScroll(totalSlides > visibleSlides);
+    };
+    
+    updateCanScroll();
+    onSelect();
+    embla.on('select', onSelect);
+    embla.on('reInit', updateCanScroll);
+    
+    if (autoplay && canScroll) {
+      autoplayCallback();
+    }
+    
+    return () => {
+      embla.off('select', onSelect);
+      embla.off('reInit', updateCanScroll);
+      if (autoplayTimeoutRef.current) {
+        clearTimeout(autoplayTimeoutRef.current);
+      }
+    };
+  }, [autoplay, autoplayCallback, embla, onSelect, isHovering, filteredCourses, canScroll]);
+  
+  // Effect to restart autoplay when hovering stops
+  useEffect(() => {
+    if (!isHovering && autoplay) {
+      autoplayCallback();
+    }
+  }, [isHovering, autoplay, autoplayCallback]);
 
   // Animation refs
   const sectionRef = useAnimation('animate-fade-in');
@@ -292,9 +313,13 @@ export default function CoursesSection() {
                   className="min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)] px-4 flex-shrink-0"
                 >
                   <div 
-                    className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''}`}
+                    className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative`}
                     onClick={() => toggleFlipCard(course.id)}
                   >
+                    {/* Hover tooltip */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none rounded-lg">
+                      <span className="bg-white text-gray-800 font-medium py-2 px-4 rounded-full shadow-lg">Click for details</span>
+                    </div>
                     <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? 'flipped' : ''}`}>
                       {/* Card Front */}
                       <div className="flip-card-front">
@@ -327,7 +352,7 @@ export default function CoursesSection() {
                                 {course.categoryLabel}
                               </span>
                             </div>
-                            <p className="text-gray-700">
+                            <p className="text-gray-700 text-base font-medium">
                               {course.description}
                             </p>
                           </div>
@@ -442,43 +467,47 @@ export default function CoursesSection() {
             </div>
           </div>
           
-          {/* Navigation Buttons */}
-          <button 
-            className="absolute top-1/2 -translate-y-1/2 -left-2 md:left-2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-blue-600 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 border border-blue-100"
-            onClick={() => embla?.scrollPrev()}
-            aria-label="Previous slide"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 18l-6-6 6-6"/>
-            </svg>
-          </button>
-          <button 
-            className="absolute top-1/2 -translate-y-1/2 -right-2 md:right-2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-blue-600 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 border border-blue-100"
-            onClick={() => embla?.scrollNext()}
-            aria-label="Next slide"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
-          </button>
-          
-          {/* Pause/Play Button */}
-          <button 
-            className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm shadow-md rounded-full w-10 h-10 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition border border-blue-100"
-            onClick={() => setAutoplay(!autoplay)}
-            aria-label={autoplay ? "Pause autoplay" : "Start autoplay"}
-          >
-            {autoplay ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="6" y="4" width="4" height="16"/>
-                <rect x="14" y="4" width="4" height="16"/>
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="5 3 19 12 5 21 5 3"/>
-              </svg>
-            )}
-          </button>
+          {/* Navigation Buttons - Only show if we can scroll */}
+          {canScroll && (
+            <>
+              <button 
+                className="absolute top-1/2 -translate-y-1/2 -left-2 md:left-2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-blue-600 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 border border-blue-100"
+                onClick={() => embla?.scrollPrev()}
+                aria-label="Previous slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+              </button>
+              <button 
+                className="absolute top-1/2 -translate-y-1/2 -right-2 md:right-2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-blue-600 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 border border-blue-100"
+                onClick={() => embla?.scrollNext()}
+                aria-label="Next slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </button>
+              
+              {/* Pause/Play Button */}
+              <button 
+                className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm shadow-md rounded-full w-10 h-10 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition border border-blue-100"
+                onClick={() => setAutoplay(!autoplay)}
+                aria-label={autoplay ? "Pause autoplay" : "Start autoplay"}
+              >
+                {autoplay ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="6" y="4" width="4" height="16"/>
+                    <rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                  </svg>
+                )}
+              </button>
+            </>
+          )}
         </div>
       </div>
     </section>
