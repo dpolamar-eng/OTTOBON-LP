@@ -195,30 +195,43 @@ export default function IntegratedHeroJourney() {
         <div className="animate-float opacity-10 absolute top-[60%] -left-[5%] w-[30%] h-[30%] rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-1 sm:px-3 md:px-4 relative z-10 overflow-hidden">
         {/* Hero Content */}
         <div className="mb-16">
           <div className="overflow-hidden" ref={heroViewportRef}>
             <div className="flex">
               {heroSlides.map((slide, index) => (
-                <div key={index} className="min-w-full flex-shrink-0">
+                <div key={index} className="min-w-full flex-shrink-0 w-screen max-w-full">
                   <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-6 md:gap-8 py-4 md:py-6 relative px-2 sm:px-4 md:px-6">
+                    <div className="flex flex-col md:flex-row items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 py-4 md:py-6 relative px-2 sm:px-4 md:px-6">
                       {/* Add the hero-specific dynamic background effect as an absolute positioned element */}
                       <div className="absolute inset-0 z-0">
                         <HeroBackgroundEffect />
                       </div>
                       
-                      <div className="w-full md:w-1/2 mb-10 md:mb-0 relative z-1 px-2 sm:px-0">
+                      <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-1 px-0">
                         <div className="inline-flex flex-wrap items-center mb-4 bg-blue-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
                           <span className="text-blue-600 mr-2 text-lg sm:text-xl">✨</span>
                           <span className="text-blue-800 font-medium text-xs sm:text-sm uppercase tracking-wider">Harvard-Style Learning</span>
                         </div>
-                        <h1 
-                          ref={headingRef}
-                          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-4 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900 break-words"
-                          dangerouslySetInnerHTML={{ __html: slide.title }}
-                        ></h1>
+                        {/* Use custom text handling to ensure proper wrapping */}
+                        <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
+                          <h1 
+                            ref={headingRef}
+                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900"
+                            style={{ 
+                              maxWidth: '100%',
+                              wordBreak: 'break-word',
+                              overflowWrap: 'break-word',
+                              whiteSpace: 'normal',
+                              hyphens: 'auto'
+                            }}
+                          >
+                            {slide.title.split(' ').map((word, i) => (
+                              <span key={i} className="inline-block">{word}&nbsp;</span>
+                            ))}
+                          </h1>
+                        </div>
                         <p ref={descriptionRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-4 md:mb-6 max-w-lg leading-relaxed">
                           {slide.description}
                         </p>
