@@ -795,10 +795,13 @@ export default function TalentCompassAssessment() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-6">
           <div className="inline-flex items-center mb-4 bg-purple-50 px-4 py-2 rounded-full">
-            <span className="text-purple-600 mr-2 text-xl">🧭</span>
+            <svg className="text-purple-600 mr-2 w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
             <span className="text-purple-800 font-medium text-sm uppercase tracking-wider">Personalized Assessment</span>
           </div>
-          <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold text-center mb-3 leading-tight">
+          <h2 ref={titleRef} className="text-4xl md:text-6xl font-bold text-center mb-3 leading-tight">
             Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
           </h2>
         </div>
