@@ -180,7 +180,7 @@ export default function IntegratedHeroJourney() {
   };
   
   return (
-    <section className="relative pt-12 md:pt-16 pb-8 bg-gray-50 overflow-hidden">
+    <section className="relative pt-6 sm:pt-8 md:pt-16 pb-8 bg-gray-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {/* Subtle grid pattern */}
@@ -197,19 +197,19 @@ export default function IntegratedHeroJourney() {
       
       <div className="container mx-auto px-1 sm:px-3 md:px-4 relative z-10 overflow-hidden">
         {/* Hero Content */}
-        <div className="mb-16">
+        <div className="mb-12 md:mb-16">
           <div className="overflow-hidden" ref={heroViewportRef}>
             <div className="flex">
               {heroSlides.map((slide, index) => (
                 <div key={index} className="min-w-full flex-shrink-0 w-screen max-w-full">
                   <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 py-4 md:py-6 relative px-2 sm:px-4 md:px-6">
+                    <div className="flex flex-col md:flex-row items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 py-6 md:py-6 relative px-2 sm:px-4 md:px-6">
                       {/* Add the hero-specific dynamic background effect as an absolute positioned element */}
                       <div className="absolute inset-0 z-0">
                         <HeroBackgroundEffect />
                       </div>
                       
-                      <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-1 px-0">
+                      <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-1 px-0 pt-1 sm:pt-2 md:pt-0">
 
                         <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
                           <h1 
