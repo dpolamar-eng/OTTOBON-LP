@@ -180,7 +180,7 @@ export default function IntegratedHeroJourney() {
   };
   
   return (
-    <section className="relative pt-6 sm:pt-8 md:pt-16 pb-8 bg-gray-50 overflow-hidden">
+    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 bg-gray-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {/* Subtle grid pattern */}
