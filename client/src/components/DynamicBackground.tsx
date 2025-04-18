@@ -11,145 +11,149 @@ interface DynamicBackgroundProps {
 
 export default function DynamicBackground({
   className = '',
-  colorShift = true,
-  parallax = true, 
-  bubbles = true,
+  colorShift = false,
+  parallax = false,
+  bubbles = false,
   grid = false,
-  noise = false
+  noise = false,
 }: DynamicBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scroll, setScroll] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [windowDimensions, setWindowDimensions] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 0,
-    height: typeof window !== 'undefined' ? window.innerHeight : 0,
-  });
-
-  // Handle scroll events
+  
+  // Handle scroll events and mouse movements
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate scroll percentage (0 to 1)
-      const scrollTop = window.scrollY;
-      const docHeight = document.body.offsetHeight - window.innerHeight;
-      const scrollPercent = scrollTop / docHeight;
-      setScrollPosition(scrollPercent);
+      const scrollY = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const normalizedScroll = Math.min(scrollY / maxScroll, 1);
+      setScroll(normalizedScroll);
     };
-
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX / window.innerWidth;  // normalized 0-1
+      const y = e.clientY / window.innerHeight; // normalized 0-1
+      setMousePosition({ x, y });
+    };
+    
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  // Handle mouse movement
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX / window.innerWidth,  // normalized 0-1
-        y: e.clientY / window.innerHeight, // normalized 0-1
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-
-  // Handle window resize
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  // Calculate dynamic styles based on scroll and mouse position
-  const gradientStyle = colorShift ? {
-    backgroundImage: `linear-gradient(${135 + scrollPosition * 90}deg, 
-      rgba(59, 130, 246, ${0.05 + scrollPosition * 0.1}) 0%, 
-      rgba(147, 51, 234, ${0.05 + (1 - scrollPosition) * 0.1}) 100%)`,
-    opacity: 0.8 + mousePosition.y * 0.2,
-  } : {};
-
-  const parallaxStyle = parallax ? {
-    transform: `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px)`,
-  } : {};
-
+  
+  // Calculate color based on scroll and mouse position
+  const getBackgroundColor = () => {
+    if (!colorShift) return 'transparent';
+    
+    // Base color (light blue to purple gradient)
+    const hue1 = 210 + (scroll * 30); // Shift from blue towards purple as scroll increases
+    const hue2 = 260 + (scroll * 20); // Shift from purple towards pink as scroll increases
+    
+    // Adjust saturation & lightness slightly based on mouse position
+    const satAdj = 20 + (mousePosition.x * 10); // 20-30%
+    const lightAdj = 92 + (mousePosition.y * 5); // 92-97%
+    
+    return `linear-gradient(
+      ${135 + (scroll * 45)}deg, 
+      hsla(${hue1}, ${satAdj}%, ${lightAdj}%, 0.03) 0%, 
+      hsla(${hue2}, ${satAdj}%, ${lightAdj - 3}%, 0.06) 100%
+    )`;
+  };
+  
   return (
     <div 
       ref={containerRef}
-      className={`fixed inset-0 -z-10 overflow-hidden pointer-events-none transition-all duration-500 ${className}`}
+      className={`fixed inset-0 w-full h-full -z-10 overflow-hidden ${className}`}
+      style={{ pointerEvents: 'none' }}
     >
-      {/* Base background with gradient that changes with scroll */}
+      {/* Base gradient background that shifts with scroll */}
       <div 
-        className="absolute inset-0 transition-all duration-1000" 
-        style={gradientStyle}
+        className="absolute inset-0 transition-opacity duration-1000"
+        style={{ 
+          background: getBackgroundColor(),
+          opacity: colorShift ? 1 : 0,
+        }}
       ></div>
       
-      {/* Grid pattern that moves slightly with mouse */}
+      {/* Parallax floating elements */}
+      {parallax && (
+        <div className="absolute inset-0">
+          <div 
+            className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/5 to-cyan-500/5 blur-3xl transition-all duration-700 ease-out"
+            style={{
+              left: `${20 + mousePosition.x * -10}%`,
+              top: `${20 + (scroll * 20) + (mousePosition.y * -10)}%`,
+              transform: `scale(${1 + scroll * 0.3})`,
+              opacity: 0.7 - (scroll * 0.3),
+            }}
+          ></div>
+          
+          <div 
+            className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-purple-500/5 to-pink-500/5 blur-3xl transition-all duration-700 ease-out"
+            style={{
+              right: `${20 + mousePosition.x * 10}%`,
+              bottom: `${30 + (scroll * -30) + (mousePosition.y * 10)}%`,
+              transform: `scale(${0.8 + scroll * 0.4})`,
+              opacity: 0.5 + (scroll * 0.2),
+            }}
+          ></div>
+        </div>
+      )}
+      
+      {/* Floating bubbles */}
+      {bubbles && (
+        <div className="absolute inset-0">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <div
+              key={index}
+              className="absolute rounded-full transition-all duration-1000"
+              style={{
+                width: `${(index + 1) * 50 + 50}px`,
+                height: `${(index + 1) * 50 + 50}px`,
+                background: index % 2 === 0 
+                  ? 'radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(59, 130, 246, 0) 70%)' 
+                  : 'radial-gradient(circle, rgba(168, 85, 247, 0.03) 0%, rgba(168, 85, 247, 0) 70%)',
+                left: `${(index * 15) + (mousePosition.x * 5)}%`,
+                top: `${(index * 20) + (scroll * (index % 2 === 0 ? 50 : -50))}%`,
+                transform: `scale(${1 + (scroll * 0.2)})`,
+                opacity: 0.7 - (index * 0.1),
+                animation: `float-${index + 1} ${10 + index * 5}s ease-in-out infinite`,
+                animationDelay: `${index * 0.5}s`,
+              }}
+            ></div>
+          ))}
+        </div>
+      )}
+      
+      {/* Subtle grid overlay */}
       {grid && (
         <div 
-          className="absolute inset-0 bg-grid-pattern opacity-5 transition-transform duration-500" 
-          style={parallaxStyle}
-        ></div>
-      )}
-
-      {/* Noise texture overlay */}
-      {noise && (
-        <div 
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 transition-opacity duration-1000"
           style={{
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27noise%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.65%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23noise)%27/%3E%3C/svg%3E")',
-            backgroundSize: 'cover',
-            opacity: 0.02 + scrollPosition * 0.03,
+            backgroundImage: `linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px',
+            backgroundPosition: `${mousePosition.x * 10}px ${mousePosition.y * 10}px`,
+            opacity: 0.4 - (scroll * 0.2),
           }}
         ></div>
       )}
-
-      {/* Floating bubble elements */}
-      {bubbles && (
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="bubble" style={{ 
-            '--duration': '15s', 
-            '--delay': '0s',
-            left: `${20 + mousePosition.x * 10}%`
-          } as React.CSSProperties}></div>
-          <div className="bubble" style={{ 
-            '--duration': '25s', 
-            '--delay': '2s',
-            left: `${40 + mousePosition.x * -5}%`
-          } as React.CSSProperties}></div>
-          <div className="bubble" style={{ 
-            '--duration': '20s', 
-            '--delay': '5s',
-            left: `${60 + mousePosition.x * 8}%`
-          } as React.CSSProperties}></div>
-          <div className="bubble" style={{ 
-            '--duration': '18s', 
-            '--delay': '7s',
-            left: `${80 + mousePosition.x * -12}%`
-          } as React.CSSProperties}></div>
-        </div>
+      
+      {/* Noise texture overlay */}
+      {noise && (
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            mixBlendMode: 'overlay',
+            opacity: 0.02 + (scroll * 0.01),
+          }}
+        ></div>
       )}
-
-      {/* Radial glow that follows mouse */}
-      <div 
-        className="absolute rounded-full w-[800px] h-[800px] transition-all duration-1000 opacity-20 blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, rgba(79, 70, 229, 0.8) 0%, rgba(79, 70, 229, 0) 70%)',
-          left: `calc(${mousePosition.x * 100}% - 400px)`,
-          top: `calc(${mousePosition.y * 100}% - 400px)`,
-          opacity: 0.1 + scrollPosition * 0.1,
-        }}
-      ></div>
     </div>
   );
 }
