@@ -438,8 +438,8 @@ export default function IntegratedHeroJourney() {
                           />
                         </div>
                         <div>
-                          <h3 className="font-bold text-white">{onboardingSteps[currentStep].character.name}</h3>
-                          <p className="text-sm text-white/80">{onboardingSteps[currentStep].character.role}</p>
+                          <h3 className="font-bold text-black">{onboardingSteps[currentStep].character.name}</h3>
+                          <p className="text-sm text-gray-600">{onboardingSteps[currentStep].character.role}</p>
                         </div>
                       </div>
                       
