@@ -60,7 +60,7 @@ export default function Header() {
           {[
             { label: "Our Approach", href: "#methodology", icon: "⚡" },
             { label: "Programs", href: "#courses", icon: "🚀" },
-            { label: "Assessment", href: "#assessment", icon: "📊" },
+            { label: "Talent Compass", href: "#talent-compass", icon: "🧭" },
           ].map((item, index) => (
             <a 
               key={index}
@@ -79,11 +79,11 @@ export default function Header() {
         {/* CTA Button */}
         <div className="hidden md:flex space-x-3">
           <a 
-            href="#assessment" 
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
+            href="#talent-compass" 
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center">
-              Take Assessment
+              Start Your Journey
               <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
@@ -124,21 +124,21 @@ export default function Header() {
             <span>Programs</span>
           </a>
           <a 
-            href="#assessment" 
+            href="#talent-compass" 
             className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
             onClick={closeMobileMenu}
           >
-            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">📊</span>
-            <span>Assessment</span>
+            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🧭</span>
+            <span>Talent Compass</span>
           </a>
 
           <div className="pt-3 pb-2 flex flex-col space-y-3">
             <a 
-              href="#assessment" 
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition shadow-md hover:shadow-lg text-center flex items-center justify-center"
+              href="#talent-compass" 
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full transition shadow-md hover:shadow-lg text-center flex items-center justify-center"
               onClick={closeMobileMenu}
             >
-              <span>Take Assessment</span>
+              <span>Start Your Journey</span>
               <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
