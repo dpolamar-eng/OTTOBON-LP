@@ -180,7 +180,7 @@ export default function IntegratedHeroJourney() {
   };
   
   return (
-    <section className="relative pt-16 pb-8 bg-gray-50 overflow-hidden">
+    <section className="relative pt-12 md:pt-16 pb-8 bg-gray-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {/* Subtle grid pattern */}
@@ -195,7 +195,7 @@ export default function IntegratedHeroJourney() {
         <div className="animate-float opacity-10 absolute top-[60%] -left-[5%] w-[30%] h-[30%] rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Hero Content */}
         <div className="mb-16">
           <div className="overflow-hidden" ref={heroViewportRef}>
@@ -204,20 +204,22 @@ export default function IntegratedHeroJourney() {
                 <div key={index} className="min-w-full flex-shrink-0">
                   <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center gap-8 py-6 relative">
-                      {/* Add the hero-specific dynamic background effect */}
-                      <HeroBackgroundEffect />
+                      {/* Add the hero-specific dynamic background effect as an absolute positioned element */}
+                      <div className="absolute inset-0 z-0">
+                        <HeroBackgroundEffect />
+                      </div>
                       
-                      <div className="md:w-1/2 mb-10 md:mb-0 relative">
+                      <div className="md:w-1/2 mb-10 md:mb-0 relative z-1 w-full">
                         <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
                           <span className="text-blue-600 mr-2 text-xl">✨</span>
                           <span className="text-blue-800 font-medium text-sm uppercase tracking-wider">Harvard-Style Learning</span>
                         </div>
                         <h1 
                           ref={headingRef}
-                          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900"
+                          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900"
                           dangerouslySetInnerHTML={{ __html: slide.title }}
                         ></h1>
-                        <p ref={descriptionRef} className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg leading-relaxed">
+                        <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-lg leading-relaxed">
                           {slide.description}
                         </p>
                         <div ref={ctaRef} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -251,12 +253,12 @@ export default function IntegratedHeroJourney() {
                           </p>
                         </div>
                       </div>
-                      <div ref={imageRef} className="md:w-1/2">
-                        <div className="relative overflow-hidden rounded-lg hover:-translate-y-1 hover:scale-[1.01] transition duration-300 shadow-xl bg-gradient-to-r p-[3px] from-blue-500 to-purple-600">
+                      <div ref={imageRef} className="w-full md:w-1/2 relative z-1">
+                        <div className="max-w-sm mx-auto md:max-w-none relative overflow-hidden rounded-lg hover:-translate-y-1 hover:scale-[1.01] transition duration-300 shadow-xl bg-gradient-to-r p-[3px] from-blue-500 to-purple-600">
                           <img 
                             src={slide.image} 
                             alt={slide.alt} 
-                            className="rounded-lg w-full object-cover h-80 md:h-96 transition duration-500 hover:scale-105"
+                            className="rounded-lg w-full object-cover h-64 sm:h-80 md:h-96 transition duration-500 hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/20 opacity-70 mix-blend-overlay"></div>
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
