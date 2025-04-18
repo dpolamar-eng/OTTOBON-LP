@@ -7,7 +7,7 @@ export default function MethodologySection() {
   const headerRef = useAnimation('animate-slide-up');
   const cardsRef = useStaggeredAnimation('animate-scale-in');
   return (
-    <section className="py-20 bg-gradient-soft" ref={sectionRef}>
+    <section className="pt-8 pb-20 bg-gradient-soft" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12" ref={headerRef}>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Methodology</h2>
