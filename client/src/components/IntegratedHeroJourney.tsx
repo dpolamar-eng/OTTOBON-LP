@@ -214,11 +214,10 @@ export default function IntegratedHeroJourney() {
                           <span className="text-blue-600 mr-2 text-lg sm:text-xl">✨</span>
                           <span className="text-blue-800 font-medium text-xs sm:text-sm uppercase tracking-wider">Harvard-Style Learning</span>
                         </div>
-                        {/* Use custom text handling to ensure proper wrapping */}
                         <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
                           <h1 
                             ref={headingRef}
-                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900"
+                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
                             style={{ 
                               maxWidth: '100%',
                               wordBreak: 'break-word',
@@ -226,11 +225,8 @@ export default function IntegratedHeroJourney() {
                               whiteSpace: 'normal',
                               hyphens: 'auto'
                             }}
-                          >
-                            {slide.title.split(' ').map((word, i) => (
-                              <span key={i} className="inline-block">{word}&nbsp;</span>
-                            ))}
-                          </h1>
+                            dangerouslySetInnerHTML={{ __html: slide.title }}
+                          ></h1>
                         </div>
                         <p ref={descriptionRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-4 md:mb-6 max-w-lg leading-relaxed">
                           {slide.description}
