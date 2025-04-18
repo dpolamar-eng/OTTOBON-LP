@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ScrollToTop from "@/components/ScrollToTop";
 import OnboardingExperience from "@/components/OnboardingExperience";
+import DynamicBackground from "@/components/DynamicBackground";
 
 function Router() {
   return (
@@ -43,6 +44,7 @@ function App() {
   
   return (
     <QueryClientProvider client={queryClient}>
+      <DynamicBackground colorShift={true} parallax={true} bubbles={true} noise={true} />
       <ScrollToTop />
       <Router />
       <Toaster />

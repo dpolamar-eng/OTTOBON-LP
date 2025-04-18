@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
+import HeroBackgroundEffect from './HeroBackgroundEffect';
 
 interface OnboardingStep {
   title: string;
@@ -202,7 +203,10 @@ export default function IntegratedHeroJourney() {
               {heroSlides.map((slide, index) => (
                 <div key={index} className="min-w-full flex-shrink-0">
                   <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-center gap-8 py-6">
+                    <div className="flex flex-col md:flex-row items-center gap-8 py-6 relative">
+                      {/* Add the hero-specific dynamic background effect */}
+                      <HeroBackgroundEffect />
+                      
                       <div className="md:w-1/2 mb-10 md:mb-0 relative">
                         <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
                           <span className="text-blue-600 mr-2 text-xl">✨</span>
