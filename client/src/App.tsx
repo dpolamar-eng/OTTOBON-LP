@@ -21,20 +21,14 @@ function Router() {
 function App() {
   const [showOnboarding, setShowOnboarding] = useState(false);
   
+  // Disabled automatic onboarding popup since we have the journey integrated in the hero section
   useEffect(() => {
-    // Check if the user has seen the onboarding before
+    // For future functionality if needed
     const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
     
     if (!hasSeenOnboarding) {
-      // Show onboarding after a slight delay to allow the main page to load first
-      const timer = setTimeout(() => {
-        setShowOnboarding(true);
-      }, 1500);
-      
-      // Mark as seen for future visits
+      // Mark as seen for future visits in case we re-enable this
       localStorage.setItem('hasSeenOnboarding', 'true');
-      
-      return () => clearTimeout(timer);
     }
   }, []);
   
