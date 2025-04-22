@@ -316,10 +316,7 @@ export default function CoursesSection() {
                     className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative`}
                     onClick={() => toggleFlipCard(course.id)}
                   >
-                    {/* Hover tooltip */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none rounded-lg">
-                      <span className="bg-white text-gray-800 font-medium py-2 px-4 rounded-full shadow-lg">Click for details</span>
-                    </div>
+                    {/* No hover tooltip anymore */}
                     <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? 'flipped' : ''}`}>
                       {/* Card Front */}
                       <div className="flip-card-front">

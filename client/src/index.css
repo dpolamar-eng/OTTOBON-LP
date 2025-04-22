@@ -158,6 +158,11 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     box-shadow: 0 15px 35px -15px rgba(0, 128, 255, 0.25);
   }
   
+  /* Wiggle animation on hover */
+  .flip-card:hover .flip-card-inner:not(.flipped) {
+    animation: wiggle 0.5s ease-in-out;
+  }
+  
   /* Stylish backgrounds and design elements */
   .bg-gradient-soft {
     background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f9 100%);
@@ -501,5 +506,14 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   @keyframes fade-transition {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+  
+  /* Wiggle animation for flip cards */
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
   }
 }

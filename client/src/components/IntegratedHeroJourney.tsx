@@ -157,6 +157,12 @@ export default function IntegratedHeroJourney() {
   // Handle journey navigation
   const toggleJourney = () => {
     setShowJourney(!showJourney);
+    
+    // Scroll to methodology section
+    const methodologySection = document.getElementById('methodology');
+    if (methodologySection) {
+      methodologySection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
   
   const goToStep = (index: number) => {
