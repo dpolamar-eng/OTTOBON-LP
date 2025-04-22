@@ -1046,9 +1046,14 @@ export default function TalentCompassAssessment() {
                   <div className="flex justify-end">
                     <a 
                       href="#enroll" 
-                      className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg"
+                      className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                     >
-                      Join Fast Lane
+                      <span className="relative z-10 flex items-center justify-center">
+                        Join Fast Lane
+                        <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                      </span>
                     </a>
                   </div>
                 </div>
@@ -1075,9 +1080,15 @@ export default function TalentCompassAssessment() {
                         <div className="flex justify-end">
                           <a 
                             href="#enroll" 
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg"
+                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                           >
-                            Apply Now
+                            <span className="relative z-10 flex items-center justify-center">
+                              Apply Now
+                              <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                              </svg>
+                            </span>
+                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
                           </a>
                         </div>
                       </div>

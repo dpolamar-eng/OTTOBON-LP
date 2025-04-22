@@ -448,7 +448,10 @@ export default function CoursesSection() {
                           </div>
                           
                           <div className="mt-4 text-center">
-                            <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group">
+                            <a 
+                              href="#talent-compass" 
+                              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex"
+                            >
                               <span className="relative z-10 flex items-center justify-center">
                                 Apply Now
                                 <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -456,7 +459,7 @@ export default function CoursesSection() {
                                 </svg>
                               </span>
                               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                            </button>
+                            </a>
                           </div>
                         </div>
                       </div>
