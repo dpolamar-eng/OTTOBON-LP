@@ -16,17 +16,18 @@ export default function GatewayPortal() {
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         
         {/* Animated particles */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           {Array.from({ length: 15 }).map((_, i) => (
             <div 
               key={i}
-              className="bubble absolute rounded-full bg-white/20"
+              className="gateway-bubble"
               style={{
-                width: `${Math.random() * 10 + 5}px`,
-                height: `${Math.random() * 10 + 5}px`,
+                width: `${Math.random() * 20 + 10}px`,
+                height: `${Math.random() * 20 + 10}px`,
                 left: `${Math.random() * 100}%`,
+                background: `radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1))`,
                 animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 10 + 15}s`
+                animationDuration: `${Math.random() * 10 + 20}s`
               }}
             ></div>
           ))}

@@ -311,6 +311,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     opacity: 0.2;
     bottom: -100px;
   }
+  
+  /* Portal page bubbles */
+  .gateway-bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    bottom: -20px;
+    animation: bubble-float 25s ease-in-out infinite;
+  }
 
   .bubble:nth-child(1) {
     width: 40px;
@@ -442,6 +451,29 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     }
   }
   
+  @keyframes bubble-float {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0.1;
+    }
+    25% {
+      transform: translateY(-20vh) translateX(10px) scale(1.1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: translateY(-40vh) translateX(-15px) scale(0.95);
+      opacity: 0.3;
+    }
+    75% {
+      transform: translateY(-60vh) translateX(5px) scale(1.05);
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(-80vh) translateX(0) scale(1);
+      opacity: 0;
+    }
+  }
+  
   /* Float animations for dynamic background */
   @keyframes float-1 {
     0% { transform: translateY(0) translateX(0); }
@@ -480,6 +512,26 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     60% { transform: translateY(20px) translateX(5px); }
     80% { transform: translateY(-5px) translateX(-15px); }
     100% { transform: translateY(0) translateX(0); }
+  }
+  
+  .animate-float-1 {
+    animation: float-1 20s ease-in-out infinite;
+  }
+  
+  .animate-float-2 {
+    animation: float-2 18s ease-in-out infinite;
+  }
+  
+  .animate-float-3 {
+    animation: float-3 24s ease-in-out infinite;
+  }
+  
+  .animate-float-4 {
+    animation: float-4 22s ease-in-out infinite;
+  }
+  
+  .animate-float-5 {
+    animation: float-5 26s ease-in-out infinite;
   }
   
   /* Premium button shine animation */
