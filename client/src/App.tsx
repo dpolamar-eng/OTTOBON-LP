@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { useState, useEffect } from "react";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import Portal from "@/pages/Portal";
+import Services from "@/pages/Services";
 import ScrollToTop from "@/components/ScrollToTop";
 import OnboardingExperience from "@/components/OnboardingExperience";
 import DynamicBackground from "@/components/DynamicBackground";
@@ -12,7 +14,9 @@ import DynamicBackground from "@/components/DynamicBackground";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={Portal} />
+      <Route path="/academy" component={Home} />
+      <Route path="/services" component={Services} />
       <Route component={NotFound} />
     </Switch>
   );
