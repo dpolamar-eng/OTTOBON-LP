@@ -239,7 +239,10 @@ export default function RevisedProfessionalServices() {
       {/* Header with navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-0">
+          <div 
+            onClick={() => navigate('/')} 
+            className="flex items-center gap-0 cursor-pointer hover:opacity-80 transition-opacity"
+          >
             <img src="/assets/logo.png" alt="Ottobon Logo" className="h-20" />
             <h1 className="text-2xl font-bold tracking-tighter -ml-1">OTTOBON</h1>
           </div>
