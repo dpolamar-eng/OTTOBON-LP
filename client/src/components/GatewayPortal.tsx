@@ -112,23 +112,23 @@ export default function GatewayPortal() {
             <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm rounded-2xl">
               <div>
                 <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-6">
-                  <span className="text-3xl">💼</span>
+                  <span className="text-3xl">🤖</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Professional Services</h2>
-                <p className="text-purple-100 mb-6">Strategic consulting and implementation services for businesses navigating digital transformation.</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Professional Services Org</h2>
+                <p className="text-purple-100 mb-6">Empowering experts and consulting businesses with comprehensive operational and strategic support.</p>
                 
                 <div className="space-y-2">
                   <div className="flex items-start">
                     <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Technology strategy development</span>
+                    <span className="text-purple-50">AI-powered business functions</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Custom solution implementation</span>
+                    <span className="text-purple-50">Executive & operational support</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Digital transformation advisory</span>
+                    <span className="text-purple-50">Flexible service for all expert levels</span>
                   </div>
                 </div>
               </div>
