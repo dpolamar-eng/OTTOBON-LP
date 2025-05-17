@@ -29,22 +29,40 @@ export default function ProfessionalServicesPage() {
       title: "Professional Services Org",
       subtitle: "Empowering experts with AI-powered operational support",
       image: "💼",
+      illustration: "/images/consulting-team.svg",
       color: "from-indigo-800 to-purple-700",
-      bgClass: "bg-gradient-to-br from-indigo-800 to-purple-700"
+      bgClass: "bg-gradient-to-br from-indigo-800 to-purple-700",
+      visualElements: [
+        { type: "circle", size: "lg", position: "top-right", color: "bg-purple-500/20", blur: true },
+        { type: "circle", size: "md", position: "bottom-left", color: "bg-indigo-500/20", blur: true },
+        { type: "particles", count: 12, color: "bg-white/30" }
+      ]
     },
     {
       title: "End-to-End Business Support",
       subtitle: "From pre-sales to invoicing, we've got your back office covered",
       image: "🔄",
+      illustration: "/images/automation-system.svg",
       color: "from-blue-800 to-cyan-700",
-      bgClass: "bg-gradient-to-br from-blue-800 to-cyan-700"
+      bgClass: "bg-gradient-to-br from-blue-800 to-cyan-700",
+      visualElements: [
+        { type: "circle", size: "xl", position: "center-right", color: "bg-blue-500/20", blur: true },
+        { type: "circle", size: "sm", position: "top-left", color: "bg-cyan-500/20", blur: true },
+        { type: "particles", count: 10, color: "bg-white/20" }
+      ]
     },
     {
       title: "Focus On Your Expertise",
       subtitle: "Let our AI handle the routine tasks while you deliver client value",
       image: "🚀",
+      illustration: "/images/ai-powered-tools.svg",
       color: "from-emerald-800 to-teal-700",
-      bgClass: "bg-gradient-to-br from-emerald-800 to-teal-700"
+      bgClass: "bg-gradient-to-br from-emerald-800 to-teal-700",
+      visualElements: [
+        { type: "circle", size: "lg", position: "bottom-right", color: "bg-teal-500/20", blur: true },
+        { type: "circle", size: "md", position: "top-center", color: "bg-emerald-500/20", blur: true },
+        { type: "particles", count: 15, color: "bg-white/25" }
+      ]
     }
   ];
   
@@ -226,48 +244,33 @@ export default function ProfessionalServicesPage() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => {
-                setActiveTab('overview');
-                document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`text-sm font-medium px-1 py-1 border-b-2 transition-colors ${
-                activeTab === 'overview' ? 'text-white border-indigo-500' : 'text-gray-400 border-transparent hover:text-white'
-              }`}
+            <a 
+              href="#overview"
+              className="text-sm font-medium px-1 py-1 border-b-2 border-transparent hover:border-indigo-500 text-gray-300 hover:text-white transition-colors"
             >
               Overview
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('services');
-                document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`text-sm font-medium px-1 py-1 border-b-2 transition-colors ${
-                activeTab === 'services' ? 'text-white border-indigo-500' : 'text-gray-400 border-transparent hover:text-white'
-              }`}
+            </a>
+            <a 
+              href="#services"
+              className="text-sm font-medium px-1 py-1 border-b-2 border-transparent hover:border-indigo-500 text-gray-300 hover:text-white transition-colors"
             >
               Services
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('audience');
-                document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`text-sm font-medium px-1 py-1 border-b-2 transition-colors ${
-                activeTab === 'audience' ? 'text-white border-indigo-500' : 'text-gray-400 border-transparent hover:text-white'
-              }`}
+            </a>
+            <a 
+              href="#audience"
+              className="text-sm font-medium px-1 py-1 border-b-2 border-transparent hover:border-indigo-500 text-gray-300 hover:text-white transition-colors"
             >
               Who It's For
-            </button>
+            </a>
             <a 
               href="#career-path"
-              className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+              className="text-sm font-medium px-1 py-1 border-b-2 border-transparent hover:border-indigo-500 text-gray-300 hover:text-white transition-colors"
             >
               Career Path Explorer
             </a>
             <a 
               href="#notify"
-              className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+              className="text-sm font-medium px-1 py-1 border-b-2 border-transparent hover:border-indigo-500 text-gray-300 hover:text-white transition-colors"
             >
               Get Notified
             </a>
@@ -308,51 +311,37 @@ export default function ProfessionalServicesPage() {
         
         {/* Mobile menu */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileMenuOpen ? 'max-h-60' : 'max-h-0'
+          mobileMenuOpen ? 'max-h-80' : 'max-h-0'
         }`}>
           <div className="bg-gray-900 border-t border-white/10 px-4 py-3 space-y-2">
-            <button 
-              onClick={() => {
-                setActiveTab('overview');
-                setMobileMenuOpen(false);
-                document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`block w-full text-left px-3 py-2 rounded-md ${
-                activeTab === 'overview' 
-                  ? 'bg-indigo-600 text-white' 
-                  : 'text-gray-300 hover:bg-gray-800'
-              }`}
+            <a 
+              href="#overview"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800"
             >
               Overview
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('services');
-                setMobileMenuOpen(false);
-                document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`block w-full text-left px-3 py-2 rounded-md ${
-                activeTab === 'services' 
-                  ? 'bg-indigo-600 text-white' 
-                  : 'text-gray-300 hover:bg-gray-800'
-              }`}
+            </a>
+            <a 
+              href="#services"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800"
             >
               Services
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('audience');
-                setMobileMenuOpen(false);
-                document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`block w-full text-left px-3 py-2 rounded-md ${
-                activeTab === 'audience' 
-                  ? 'bg-indigo-600 text-white' 
-                  : 'text-gray-300 hover:bg-gray-800'
-              }`}
+            </a>
+            <a
+              href="#audience"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800"
             >
               Who It's For
-            </button>
+            </a>
+            <a
+              href="#career-path"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800"
+            >
+              Career Path Explorer
+            </a>
             <a 
               href="#notify"
               onClick={() => setMobileMenuOpen(false)}
@@ -375,9 +364,58 @@ export default function ProfessionalServicesPage() {
                 index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
               } ${slide.bgClass}`}
             >
-              {/* Decorative elements */}
-              <div className="absolute right-0 top-1/4 w-1/3 h-1/3 bg-white/10 rounded-full blur-3xl"></div>
-              <div className="absolute left-0 bottom-1/4 w-1/4 h-1/4 bg-white/10 rounded-full blur-3xl"></div>
+              {/* Dynamic visual elements */}
+              {slide.visualElements?.map((element, i) => {
+                if (element.type === "circle") {
+                  // Position classes
+                  const positionClass = element.position === "top-right" ? "top-10 right-10" :
+                                       element.position === "bottom-left" ? "bottom-10 left-10" :
+                                       element.position === "top-left" ? "top-10 left-10" :
+                                       element.position === "bottom-right" ? "bottom-10 right-10" :
+                                       element.position === "center-right" ? "top-1/2 right-10 -translate-y-1/2" :
+                                       element.position === "top-center" ? "top-10 left-1/2 -translate-x-1/2" :
+                                       "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2";
+                  
+                  // Size classes
+                  const sizeClass = element.size === "sm" ? "w-24 h-24" :
+                                   element.size === "md" ? "w-48 h-48" :
+                                   element.size === "lg" ? "w-64 h-64" :
+                                   element.size === "xl" ? "w-96 h-96" :
+                                   "w-32 h-32";
+                  
+                  return (
+                    <div 
+                      key={`circle-${i}`}
+                      className={`absolute ${positionClass} ${sizeClass} ${element.color} rounded-full ${element.blur ? 'blur-3xl' : ''}`}
+                      style={{
+                        animation: `float-${(i % 5) + 1} ${15 + i * 2}s infinite ease-in-out`,
+                        opacity: 0.6
+                      }}
+                    ></div>
+                  );
+                }
+                
+                // Particles
+                if (element.type === "particles") {
+                  return [...Array(element.count || 10)].map((_, j) => (
+                    <div
+                      key={`particle-${i}-${j}`}
+                      className={`absolute rounded-full ${element.color}`}
+                      style={{
+                        width: `${Math.random() * 6 + 2}px`,
+                        height: `${Math.random() * 6 + 2}px`,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        opacity: 0.1 + Math.random() * 0.4,
+                        transform: `translateY(${scrollY * 0.1 * Math.random()}px)`,
+                        transition: 'transform 0.2s ease-out'
+                      }}
+                    ></div>
+                  ));
+                }
+                
+                return null;
+              })}
               
               {/* Content grid */}
               <div className="container relative z-10 mx-auto h-full px-4 py-12 flex flex-col md:flex-row items-center">
@@ -400,10 +438,42 @@ export default function ProfessionalServicesPage() {
                 {/* Right image/icon */}
                 <div className="w-full md:w-1/2 flex justify-center md:justify-end items-center">
                   <div className="relative">
+                    {/* Orbital rings */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                      <div className="absolute inset-0 border-2 border-white/10 rounded-full rotate-45 animate-spin-slow"></div>
+                      <div className="absolute inset-5 border-[1px] border-white/20 rounded-full -rotate-45 animate-spin-reverse"></div>
+                      <div className="absolute inset-10 border-[1px] border-white/5 rounded-full rotate-90 animate-spin-slow-reverse"></div>
+                      
+                      {/* Orbiting particles */}
+                      {[...Array(5)].map((_, i) => (
+                        <div 
+                          key={`orbit-particle-${i}`} 
+                          className="absolute w-2 h-2 bg-white rounded-full" 
+                          style={{
+                            top: '50%',
+                            left: '50%',
+                            transformOrigin: '0 0',
+                            animation: `orbit ${10 + i * 3}s linear infinite`,
+                            animationDelay: `${i * 0.5}s`
+                          }}
+                        ></div>
+                      ))}
+                    </div>
+                  
                     {/* Main icon container */}
-                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center">
+                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 z-10">
                       <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-white/5 to-white/10 blur-xl"></div>
-                      <div className="text-8xl sm:text-9xl" style={{animation: 'float 6s ease-in-out infinite'}}>{slide.image}</div>
+                      
+                      {/* Dynamic glow effect */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/0 via-white/10 to-white/0 blur-xl animate-glow"></div>
+                      
+                      {/* Icon container */}
+                      <div 
+                        className="text-8xl sm:text-9xl relative z-10" 
+                        style={{animation: 'float 6s ease-in-out infinite'}}
+                      >
+                        {slide.image}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -448,8 +518,8 @@ export default function ProfessionalServicesPage() {
           </button>
         </section>
         
-        {/* Content tabs section */}
-        <section id="content-tabs" className="py-12 bg-gray-900">
+        {/* Overview section */}
+        <section id="overview" className="py-20 bg-gray-900">
           <div className="container mx-auto px-4">
             {/* Tab navigation */}
             <div className="flex overflow-x-auto pb-2 mb-8 justify-center">
