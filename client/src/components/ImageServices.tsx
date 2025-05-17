@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
-import CareerPathVisualizer from './CareerPathVisualizer';
 
 export default function ImageServices() {
   const [, navigate] = useLocation();
@@ -245,12 +244,6 @@ export default function ImageServices() {
               Who It's For
             </a>
             <a 
-              href="#career-path"
-              className="text-sm font-medium px-1 py-1 border-b-2 border-transparent hover:border-indigo-500 text-gray-300 hover:text-white transition-colors"
-            >
-              Career Path Explorer
-            </a>
-            <a 
               href="#notify"
               className="text-sm font-medium px-1 py-1 border-b-2 border-transparent hover:border-indigo-500 text-gray-300 hover:text-white transition-colors"
             >
@@ -316,13 +309,6 @@ export default function ImageServices() {
               className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800"
             >
               Who It's For
-            </a>
-            <a
-              href="#career-path"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800"
-            >
-              Career Path Explorer
             </a>
             <a 
               href="#notify"
@@ -703,21 +689,6 @@ export default function ImageServices() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-        
-        {/* Career Path Visualizer Section */}
-        <section id="career-path" className="py-16 bg-gradient-to-b from-gray-900 to-gray-950">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-10">
-              <h2 className="text-3xl font-bold mb-4">Interactive Career Path Explorer</h2>
-              <p className="text-gray-300">
-                Visualize potential career paths in consulting and professional services. Explore role progression, 
-                required skills, and expected compensation at each stage of your journey.
-              </p>
-            </div>
-            
-            <CareerPathVisualizer initialPath="technical" showSalary={true} />
           </div>
         </section>
         
