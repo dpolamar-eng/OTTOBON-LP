@@ -39,7 +39,7 @@ export default function GatewayPortal() {
         <div className="flex flex-col items-center justify-center">
           <div className="flex items-center">
             <img src="/assets/logo.png" alt="Ottobon Logo" className="h-36" />
-            <div className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white ml-4 tracking-tight">
+            <div className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white ml-1 tracking-tight">
               OTTOBON
             </div>
           </div>

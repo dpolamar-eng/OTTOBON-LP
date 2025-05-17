@@ -244,7 +244,7 @@ export default function RevisedProfessionalServices() {
             className="flex items-center gap-0 cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img src="/assets/logo.png" alt="Ottobon Logo" className="h-20" />
-            <h1 className="text-2xl font-bold tracking-tighter ml-2">OTTOBON</h1>
+            <h1 className="text-2xl font-bold tracking-tighter ml-0">OTTOBON</h1>
           </div>
           
           {/* Desktop Navigation */}
