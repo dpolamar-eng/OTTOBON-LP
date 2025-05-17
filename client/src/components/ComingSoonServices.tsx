@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 
 export default function ComingSoonServices() {
@@ -6,6 +6,53 @@ export default function ComingSoonServices() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
+  
+  // Animation states
+  const [scrollY, setScrollY] = useState(0);
+  const [heroVisible, setHeroVisible] = useState(true);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const heroImageRef = useRef<HTMLDivElement>(null);
+  
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
+  // Calculate animation values based on scroll position
+  useEffect(() => {
+    if (!heroRef.current) return;
+    
+    // Get hero section height and position
+    const heroHeight = heroRef.current.offsetHeight;
+    const heroTop = heroRef.current.getBoundingClientRect().top + window.scrollY;
+    
+    // Determine if hero is still in viewport
+    const heroBottom = heroTop + heroHeight;
+    const isVisible = scrollY < heroBottom;
+    setHeroVisible(isVisible);
+    
+    // Apply animations to hero content and image based on scroll position
+    if (heroContentRef.current && heroImageRef.current) {
+      // Calculate progress (0 when at top, 1 when scrolled past hero)
+      const progress = Math.min(1, Math.max(0, scrollY / heroHeight));
+      
+      // Apply parallax effect
+      heroContentRef.current.style.transform = `translateY(${progress * 50}px)`;
+      heroContentRef.current.style.opacity = `${1 - progress * 1.5}`;
+      
+      // Rotate and scale the image
+      heroImageRef.current.style.transform = `rotate(${progress * 10}deg) scale(${1 - progress * 0.2})`;
+      heroImageRef.current.style.opacity = `${1 - progress * 1.5}`;
+    }
+  }, [scrollY]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -129,15 +176,54 @@ export default function ComingSoonServices() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-28 flex flex-col items-center">
         {/* Hero Banner */}
-        <div className="w-full relative overflow-hidden rounded-2xl mb-16 bg-gradient-to-r from-purple-800 to-pink-800">
+        <div 
+          ref={heroRef}
+          className="w-full relative overflow-hidden rounded-2xl mb-16 bg-gradient-to-r from-purple-800 to-pink-800"
+          style={{
+            transformStyle: 'preserve-3d',
+            perspective: '1000px',
+            transition: 'transform 0.3s ease-out'
+          }}
+        >
           <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
           
-          {/* Animated elements */}
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-purple-500/20 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-pink-500/20 to-transparent rounded-full blur-3xl"></div>
+          {/* Animated background elements */}
+          <div 
+            className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-purple-500/20 to-transparent rounded-full blur-3xl"
+            style={{
+              transform: `translateY(${scrollY * 0.05}px)`,
+              transition: 'transform 0.1s ease-out'
+            }}
+          ></div>
+          <div 
+            className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-pink-500/20 to-transparent rounded-full blur-3xl"
+            style={{
+              transform: `translateY(${-scrollY * 0.08}px)`,
+              transition: 'transform 0.1s ease-out'
+            }}
+          ></div>
+          
+          {/* Floating particles that move with scroll */}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div 
+              key={i}
+              className="absolute rounded-full bg-white/30"
+              style={{
+                width: `${Math.random() * 8 + 4}px`,
+                height: `${Math.random() * 8 + 4}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                transform: `translateY(${scrollY * (0.1 + Math.random() * 0.1)}px)`,
+                transition: 'transform 0.1s ease-out'
+              }}
+            ></div>
+          ))}
           
           <div className="relative z-10 flex flex-col md:flex-row items-center py-16 px-8 md:px-12">
-            <div className="w-full md:w-2/3 mb-8 md:mb-0 md:pr-8">
+            <div 
+              ref={heroContentRef}
+              className="w-full md:w-2/3 mb-8 md:mb-0 md:pr-8 transition-all duration-300"
+            >
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-500/30 text-pink-300 font-semibold text-sm mb-6 backdrop-blur-sm">
                 <span className="mr-2">⚡</span>
                 <span>Coming Soon</span>
@@ -152,25 +238,52 @@ export default function ComingSoonServices() {
               </p>
               
               <div className="flex flex-wrap gap-4 mb-4">
-                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                <div 
+                  className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white"
+                  style={{ 
+                    transform: `translateX(${-scrollY * 0.2}px)`,
+                    transition: 'transform 0.2s ease-out' 
+                  }}
+                >
                   <span className="text-lg mr-2">🧠</span>
                   <span>AI-Powered Tools</span>
                 </div>
-                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                <div 
+                  className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white"
+                  style={{ 
+                    transform: `translateY(${scrollY * 0.1}px)`,
+                    transition: 'transform 0.2s ease-out' 
+                  }}
+                >
                   <span className="text-lg mr-2">💼</span>
                   <span>Expert Support</span>
                 </div>
-                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                <div 
+                  className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white"
+                  style={{ 
+                    transform: `translateX(${scrollY * 0.2}px)`,
+                    transition: 'transform 0.2s ease-out' 
+                  }}
+                >
                   <span className="text-lg mr-2">🚀</span>
                   <span>Scale On Demand</span>
                 </div>
               </div>
             </div>
             
-            <div className="w-full md:w-1/3 flex justify-center">
-              <div className="relative w-64 h-64 rounded-full bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-lg flex items-center justify-center border border-white/20">
+            <div 
+              ref={heroImageRef}
+              className="w-full md:w-1/3 flex justify-center transition-all duration-300"
+            >
+              <div 
+                className="relative w-64 h-64 rounded-full bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-lg flex items-center justify-center border border-white/20"
+                style={{
+                  transition: 'all 0.3s ease-out',
+                  boxShadow: `0 0 60px rgba(${(150 - scrollY * 0.5)}, ${(60 - scrollY * 0.2)}, ${(255 - scrollY * 0.5)}, 0.2)`
+                }}
+              >
                 <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-purple-500/10 to-pink-500/10 blur-xl"></div>
-                <div className="text-8xl z-10">🤖</div>
+                <div className="text-8xl z-10 transition-transform duration-300" style={{ transform: `rotate(${scrollY * 0.05}deg)` }}>🤖</div>
               </div>
             </div>
           </div>
