@@ -105,42 +105,87 @@ export default function ComingSoonServices() {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-12 flex flex-col items-center">
-        {/* Header/Navigation */}
-        <div className="w-full flex justify-between items-center mb-8 md:mb-16">
-          <div className="text-3xl font-extrabold text-white">
+      {/* Header */}
+      <header className="relative z-20 fixed top-0 left-0 right-0 bg-gradient-to-r from-purple-900/80 to-indigo-900/80 backdrop-blur-md shadow-md">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="text-3xl font-extrabold text-white flex items-center">
+            <span className="mr-2 text-2xl">🤖</span>
             OTTOBON
           </div>
-          <button 
-            onClick={() => navigate('/')}
-            className="flex items-center text-white/80 hover:text-white font-medium transition"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            Back to Portal
-          </button>
-        </div>
-
-        {/* Hero Content */}
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-500/20 text-pink-300 font-semibold text-sm mb-6">
-            <span className="mr-2">⚡</span>
-            <span>Coming Soon</span>
+          <div className="flex items-center space-x-4">
+            <button 
+              onClick={() => navigate('/')}
+              className="flex items-center text-white/80 hover:text-white font-medium transition bg-white/10 px-4 py-2 rounded-full"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              Back to Portal
+            </button>
           </div>
+        </div>
+      </header>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 pt-28 flex flex-col items-center">
+        {/* Hero Banner */}
+        <div className="w-full relative overflow-hidden rounded-2xl mb-16 bg-gradient-to-r from-purple-800 to-pink-800">
+          <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Professional Services Org
-          </h1>
+          {/* Animated elements */}
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-purple-500/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-pink-500/20 to-transparent rounded-full blur-3xl"></div>
           
+          <div className="relative z-10 flex flex-col md:flex-row items-center py-16 px-8 md:px-12">
+            <div className="w-full md:w-2/3 mb-8 md:mb-0 md:pr-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-500/30 text-pink-300 font-semibold text-sm mb-6 backdrop-blur-sm">
+                <span className="mr-2">⚡</span>
+                <span>Coming Soon</span>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Professional <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">Services Org</span>
+              </h1>
+              
+              <p className="text-xl text-purple-100 mb-8 max-w-3xl">
+                Empowering experts and consulting businesses with operational and strategic support
+              </p>
+              
+              <div className="flex flex-wrap gap-4 mb-4">
+                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                  <span className="text-lg mr-2">🧠</span>
+                  <span>AI-Powered Tools</span>
+                </div>
+                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                  <span className="text-lg mr-2">💼</span>
+                  <span>Expert Support</span>
+                </div>
+                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white">
+                  <span className="text-lg mr-2">🚀</span>
+                  <span>Scale On Demand</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-full md:w-1/3 flex justify-center">
+              <div className="relative w-64 h-64 rounded-full bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-lg flex items-center justify-center border border-white/20">
+                <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-purple-500/10 to-pink-500/10 blur-xl"></div>
+                <div className="text-8xl z-10">🤖</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Introduction section */}
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6">Execution Engine for Consultants</h2>
           <p className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
-            Empowering experts and consulting businesses with operational and strategic support
+            Our PSO helps experts focus on their core competencies by providing comprehensive operational and strategic support including sales, marketing, talent acquisition, payroll and billing.
           </p>
           
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/10 mb-16">
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/10">
             <p className="text-lg text-purple-50">
-              Our PSO helps experts focus on their core competencies by providing comprehensive operational and strategic support including sales, marketing, talent acquisition, payroll and billing.
+              <span className="font-bold">Mission:</span> To transform how consulting businesses operate by combining AI-powered automation with human expertise, freeing consultants to focus on delivering exceptional client value.
             </p>
           </div>
         </div>
