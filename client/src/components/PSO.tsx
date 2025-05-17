@@ -335,74 +335,116 @@ export default function PSO() {
               Each service combines AI automation with optional human support, allowing you to choose the right balance for your needs.
             </p>
             
-            <div className="grid grid-cols-1 gap-6 mt-6">
+            {/* Carousel Navigation */}
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold text-white">Our Services</h3>
+              <div className="flex space-x-2">
+                <button 
+                  onClick={() => {
+                    const container = document.getElementById('services-carousel');
+                    if (container) {
+                      container.scrollBy({ left: -320, behavior: 'smooth' });
+                    }
+                  }}
+                  className="bg-white/10 hover:bg-white/20 rounded-full p-2"
+                >
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                  </svg>
+                </button>
+                <button 
+                  onClick={() => {
+                    const container = document.getElementById('services-carousel');
+                    if (container) {
+                      container.scrollBy({ left: 320, behavior: 'smooth' });
+                    }
+                  }}
+                  className="bg-white/10 hover:bg-white/20 rounded-full p-2"
+                >
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            {/* Carousel of Services */}
+            <div 
+              id="services-carousel"
+              className="flex overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory scroll-smooth gap-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className={`perspective-1000 relative h-[220px] sm:h-[240px] md:h-[260px] transition-all duration-300 transform ${
-                    expandedCards[service.id] ? 'rotate-y-180' : ''
-                  }`}
+                  className="min-w-[280px] md:min-w-[320px] h-[400px] flex-shrink-0 snap-start"
                 >
-                  {/* Front of card */}
                   <div 
-                    className={`absolute inset-0 duration-500 bg-white/5 rounded-xl border border-white/20 shadow-xl flex flex-col overflow-hidden backface-hidden ${
-                      expandedCards[service.id] ? 'opacity-0' : 'opacity-100'
+                    className={`h-full perspective-1000 relative transition-all duration-300 transform ${
+                      expandedCards[service.id] ? 'rotate-y-180' : ''
                     }`}
-                    onClick={() => toggleCard(service.id)}
                   >
-                    <div className={`bg-gradient-to-r ${service.color} p-5 flex items-center`}>
-                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mr-4">
-                        <span className="text-4xl">{service.icon}</span>
+                    {/* Front of card */}
+                    <div 
+                      className={`absolute inset-0 duration-500 bg-white/5 rounded-xl border border-white/20 shadow-xl flex flex-col overflow-hidden backface-hidden ${
+                        expandedCards[service.id] ? 'opacity-0' : 'opacity-100'
+                      }`}
+                      onClick={() => toggleCard(service.id)}
+                    >
+                      <div className={`bg-gradient-to-r ${service.color} p-5 flex items-center`}>
+                        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                          <span className="text-4xl">{service.icon}</span>
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                      </div>
-                    </div>
-                    
-                    <div className="p-6 flex-1 flex flex-col">
-                      <p className="text-lg text-gray-200 mb-4">{service.description}</p>
                       
-                      <div className="mt-auto flex justify-between items-center">
-                        <span className="text-indigo-400 text-sm">Click to see details</span>
-                        <div className="animate-bounce">
-                          <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8h16M4 16h16"></path>
-                          </svg>
+                      <div className="p-6 flex-1 flex flex-col">
+                        <p className="text-lg text-gray-200 mb-4">{service.description}</p>
+                        
+                        <div className="mt-auto flex justify-between items-center">
+                          <span className="text-indigo-400 text-sm">Click to see details</span>
+                          <div className="animate-bounce">
+                            <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8h16M4 16h16"></path>
+                            </svg>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  {/* Back of card */}
-                  <div 
-                    className={`absolute inset-0 duration-500 bg-gray-800 rounded-xl border border-white/10 shadow-xl p-6 flex flex-col rotate-y-180 backface-hidden ${
-                      expandedCards[service.id] ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    onClick={() => toggleCard(service.id)}
-                  >
-                    <div className="flex justify-between items-center mb-3">
-                      <h3 className="text-xl font-bold text-white">{service.title}</h3>
-                      <button className="bg-white/10 hover:bg-white/20 p-1 rounded-full">
-                        <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                        </svg>
-                      </button>
-                    </div>
                     
-                    <div className="overflow-y-auto flex-1 pr-1">
-                      <p className="text-gray-300 mb-4 text-sm">{service.details}</p>
+                    {/* Back of card */}
+                    <div 
+                      className={`absolute inset-0 duration-500 bg-gray-800 rounded-xl border border-white/10 shadow-xl p-6 flex flex-col rotate-y-180 backface-hidden ${
+                        expandedCards[service.id] ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      onClick={() => toggleCard(service.id)}
+                    >
+                      <div className="flex justify-between items-center mb-3">
+                        <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                        <button className="bg-white/10 hover:bg-white/20 p-1 rounded-full">
+                          <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                          </svg>
+                        </button>
+                      </div>
                       
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-indigo-400 mb-2">Key Features</h4>
-                      <ul className="space-y-2 mb-4">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="flex items-start">
-                            <svg className="w-4 h-4 text-indigo-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span className="text-gray-300 text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="overflow-y-auto flex-1 pr-1">
+                        <p className="text-gray-300 mb-4 text-sm">{service.details}</p>
+                        
+                        <h4 className="text-sm font-semibold uppercase tracking-wide text-indigo-400 mb-2">Key Features</h4>
+                        <ul className="space-y-2 mb-4">
+                          {service.features.map((feature, i) => (
+                            <li key={i} className="flex items-start">
+                              <svg className="w-4 h-4 text-indigo-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                              </svg>
+                              <span className="text-gray-300 text-sm">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
