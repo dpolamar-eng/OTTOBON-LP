@@ -210,7 +210,20 @@ export default function ProServices() {
             <img src="/assets/logo.png" alt="Ottobon Logo" className="h-20" />
             <h1 className="text-xl font-bold ml-0">OTTOBON</h1>
           </div>
-
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="#overview" className="text-white hover:text-indigo-300 transition-colors">Overview</a>
+            <a href="#services" className="text-white hover:text-indigo-300 transition-colors">Services</a>
+            <a href="#audience" className="text-white hover:text-indigo-300 transition-colors">Who We Serve</a>
+          </nav>
+          
+          {/* Mobile menu button */}
+          <button className="md:hidden text-white">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
       </header>
 
@@ -291,7 +304,7 @@ export default function ProServices() {
           </section>
           
           {/* Overview Section */}
-          <section className="bg-indigo-900/20 rounded-xl p-6 border border-indigo-800/30 mb-6">
+          <section id="overview" className="bg-indigo-900/20 rounded-xl p-6 border border-indigo-800/30 mb-6">
             <h2 className="text-2xl font-bold mb-3">Overview</h2>
             <p className="text-gray-300 mb-4">
               The Ottobon Professional Services Organization (PSO) provides consultants with comprehensive operational and administrative support powered by advanced AI and expert human assistance.
@@ -343,7 +356,7 @@ export default function ProServices() {
           </section>
           
           {/* Services Section - Carousel with 3 visible cards */}
-          <section className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
+          <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h2 className="text-2xl font-bold mb-1">Our Service Offerings</h2>
@@ -464,7 +477,7 @@ export default function ProServices() {
           </section>
           
           {/* Audience Section */}
-          <section className="bg-emerald-900/20 rounded-xl p-6 border border-emerald-800/30 mb-6">
+          <section id="audience" className="bg-emerald-900/20 rounded-xl p-6 border border-emerald-800/30 mb-6">
             <h2 className="text-2xl font-bold mb-3">Who We Serve</h2>
             <p className="text-gray-300 mb-4">
               Our flexible service model adapts to different consulting business models and scales.
