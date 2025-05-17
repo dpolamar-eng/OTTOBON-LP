@@ -31,7 +31,7 @@ export default function ProServices() {
     }
   ];
   
-  // Service offerings data (4 services to demonstrate carousel)
+  // Service offerings data
   const services = [
     {
       id: 'presales',
@@ -60,6 +60,19 @@ export default function ProServices() {
       ]
     },
     {
+      id: 'talent',
+      title: 'Talent Acquisition',
+      icon: '🔍',
+      color: 'from-emerald-600 to-cyan-600',
+      description: 'Find the perfect experts for your client projects',
+      details: "Our AI matching system connects you with pre-vetted talent for your specific project needs, whether for staff augmentation or specialized expertise.",
+      features: [
+        'AI-Powered Skill Matching for precise matching',
+        'Background Verification and quality assurance',
+        'Streamlined Interviewing and onboarding process'
+      ]
+    },
+    {
       id: 'delivery',
       title: 'Project Delivery Support',
       icon: '✅',
@@ -83,6 +96,19 @@ export default function ProServices() {
         'Automated invoice generation based on time tracking',
         'Contract management with renewal reminders',
         'Expense tracking with receipt scanning'
+      ]
+    },
+    {
+      id: 'payroll',
+      title: 'Payroll Management',
+      icon: '💰',
+      color: 'from-blue-600 to-cyan-600',
+      description: 'Automated payroll processing for your consultants',
+      details: "Simplify complex payroll requirements for consultants with varying contracts, payment schedules, and international tax regulations.",
+      features: [
+        'Multi-currency payment processing with optimal rates',
+        'Tax compliance across multiple jurisdictions',
+        'Consultant self-service portal for payment tracking'
       ]
     }
   ];
