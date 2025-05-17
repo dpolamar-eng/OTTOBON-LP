@@ -144,12 +144,31 @@ export default function ProServices() {
     return () => clearInterval(interval);
   }, [heroSlides.length]);
 
-  // Calculate visible cards based on screen size
+  // Create a looping carousel effect
   const scrollCards = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
-      const cardWidth = 320; // approx width of each card including gap
-      const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const container = carouselRef.current;
+      const cardWidth = 450; // approx width of each card including gap
+      
+      if (direction === 'right') {
+        // If we're near the end, loop back to the beginning
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - cardWidth) {
+          // Smooth scroll to the beginning
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Normal scroll right
+          container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      } else {
+        // If we're near the beginning, loop to the end
+        if (container.scrollLeft <= cardWidth) {
+          // Smooth scroll to the end
+          container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+        } else {
+          // Normal scroll left
+          container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        }
+      }
     }
   };
 
