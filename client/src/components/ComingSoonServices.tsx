@@ -6,6 +6,7 @@ export default function ComingSoonServices() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Animation states
   const [scrollY, setScrollY] = useState(0);
@@ -159,6 +160,35 @@ export default function ComingSoonServices() {
             <span className="mr-2 text-2xl">🤖</span>
             OTTOBON
           </div>
+          
+          {/* Navigation Links */}
+          <nav className="hidden md:flex space-x-6">
+            <button 
+              onClick={() => setActiveTab('overview')}
+              className={`text-white/90 hover:text-white font-medium transition ${activeTab === 'overview' ? 'border-b-2 border-pink-400' : ''}`}
+            >
+              Overview
+            </button>
+            <button 
+              onClick={() => setActiveTab('audience')}
+              className={`text-white/90 hover:text-white font-medium transition ${activeTab === 'audience' ? 'border-b-2 border-pink-400' : ''}`}
+            >
+              Who It's For
+            </button>
+            <button 
+              onClick={() => setActiveTab('offerings')}
+              className={`text-white/90 hover:text-white font-medium transition ${activeTab === 'offerings' ? 'border-b-2 border-pink-400' : ''}`}
+            >
+              Offerings
+            </button>
+            <a 
+              href="#notify"
+              className="text-white/90 hover:text-white font-medium transition"
+            >
+              Get Notified
+            </a>
+          </nav>
+          
           <div className="flex items-center space-x-4">
             <button 
               onClick={() => navigate('/')}
@@ -169,6 +199,62 @@ export default function ComingSoonServices() {
               </svg>
               Back to Portal
             </button>
+            
+            {/* Mobile menu button */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Navigation Menu */}
+        <div className={`md:hidden transition-all duration-300 overflow-hidden ${mobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="bg-gradient-to-r from-purple-800/90 to-indigo-800/90 backdrop-blur-md p-4 space-y-4 border-t border-white/10">
+            <button 
+              onClick={() => {
+                setActiveTab('overview');
+                setMobileMenuOpen(false);
+              }}
+              className={`block w-full text-left px-4 py-2 rounded-lg transition ${activeTab === 'overview' 
+                ? 'bg-white/20 text-white' 
+                : 'text-white/90 hover:bg-white/10 hover:text-white'}`}
+            >
+              Overview
+            </button>
+            <button 
+              onClick={() => {
+                setActiveTab('audience');
+                setMobileMenuOpen(false);
+              }}
+              className={`block w-full text-left px-4 py-2 rounded-lg transition ${activeTab === 'audience' 
+                ? 'bg-white/20 text-white' 
+                : 'text-white/90 hover:bg-white/10 hover:text-white'}`}
+            >
+              Who It's For
+            </button>
+            <button 
+              onClick={() => {
+                setActiveTab('offerings');
+                setMobileMenuOpen(false);
+              }}
+              className={`block w-full text-left px-4 py-2 rounded-lg transition ${activeTab === 'offerings' 
+                ? 'bg-white/20 text-white' 
+                : 'text-white/90 hover:bg-white/10 hover:text-white'}`}
+            >
+              Offerings
+            </button>
+            <a 
+              href="#notify"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-4 py-2 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
+            >
+              Get Notified
+            </a>
           </div>
         </div>
       </header>
@@ -290,17 +376,77 @@ export default function ComingSoonServices() {
         </div>
         
         {/* Introduction section */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold text-white mb-6">Execution Engine for Consultants</h2>
-          <p className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto text-center mb-16 relative">
+          {/* Moving gradient background effect */}
+          <div 
+            className="absolute inset-0 -z-10 rounded-2xl overflow-hidden opacity-60"
+            style={{ 
+              transform: `translateY(${scrollY * 0.03}px)`,
+              transition: 'transform 0.2s ease-out'
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-700/20 to-pink-700/20 blur-xl"></div>
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-purple-500/30 to-transparent rounded-full blur-3xl"
+              style={{ 
+                transform: `translateX(${scrollY * 0.05}px)`,
+                transition: 'transform 0.2s ease-out'
+              }}
+            ></div>
+          </div>
+          
+          <h2 
+            className="text-3xl font-bold text-white mb-6"
+            style={{ 
+              transform: `translateY(${Math.max(0, scrollY - 200) * 0.08}px)`,
+              opacity: 1 - Math.max(0, (scrollY - 300) * 0.002),
+              transition: 'all 0.2s ease-out'
+            }}
+          >
+            Execution Engine for Consultants
+          </h2>
+          
+          <p 
+            className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto"
+            style={{ 
+              transform: `translateY(${Math.max(0, scrollY - 220) * 0.1}px)`,
+              opacity: 1 - Math.max(0, (scrollY - 320) * 0.002),
+              transition: 'all 0.2s ease-out'
+            }}
+          >
             Our PSO helps experts focus on their core competencies by providing comprehensive operational and strategic support including sales, marketing, talent acquisition, payroll and billing.
           </p>
           
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/10">
+          <div 
+            className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/10"
+            style={{ 
+              transform: `translateY(${Math.max(0, scrollY - 240) * 0.05}px)`,
+              opacity: 1 - Math.max(0, (scrollY - 340) * 0.002),
+              transition: 'all 0.2s ease-out'
+            }}
+          >
             <p className="text-lg text-purple-50">
               <span className="font-bold">Mission:</span> To transform how consulting businesses operate by combining AI-powered automation with human expertise, freeing consultants to focus on delivering exceptional client value.
             </p>
           </div>
+          
+          {/* Animated side elements */}
+          <div 
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-xl"
+            style={{ 
+              transform: `translateX(${-50 + scrollY * 0.1}px) scale(${1 + scrollY * 0.001})`,
+              opacity: 0.7 - Math.max(0, (scrollY - 400) * 0.002),
+              transition: 'all 0.2s ease-out'
+            }}
+          ></div>
+          
+          <div 
+            className="absolute right-0 top-1/3 -translate-y-1/2 w-24 h-24 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl"
+            style={{ 
+              transform: `translateX(${50 - scrollY * 0.08}px) translateY(${scrollY * 0.05}px)`,
+              opacity: 0.6 - Math.max(0, (scrollY - 400) * 0.002),
+              transition: 'all 0.2s ease-out'
+            }}
+          ></div>
         </div>
 
         {/* Tabs Navigation */}
@@ -473,7 +619,7 @@ export default function ComingSoonServices() {
         </div>
           
         {/* Notification Form */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/10 max-w-xl mx-auto">
+        <div id="notify" className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/10 max-w-xl mx-auto">
           {submitted ? (
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4 mx-auto">
