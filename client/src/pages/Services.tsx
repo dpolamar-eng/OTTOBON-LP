@@ -1,11 +1,11 @@
 import React from 'react';
-import ProfessionalServicesPage from '@/components/ProfessionalServicesPage';
+import ServicesContent from '@/components/ServicesContent';
 import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Services() {
   return (
     <>
-      <ProfessionalServicesPage />
+      <ServicesContent />
       <ScrollToTop />
     </>
   );
