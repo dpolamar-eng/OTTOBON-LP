@@ -1,11 +1,11 @@
 import React from 'react';
-import ServicesContent from '@/components/ServicesContent';
+import PSO from '@/components/PSO';
 import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Services() {
   return (
     <>
-      <ServicesContent />
+      <PSO />
       <ScrollToTop />
     </>
   );

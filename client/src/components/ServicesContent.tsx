@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 
 export default function ServicesContent() {
@@ -103,6 +103,43 @@ export default function ServicesContent() {
     }
   ];
 
+  // Hero banner slides
+  const heroSlides = [
+    {
+      title: "Professional Services Org",
+      subtitle: "Empowering experts with AI-powered operational support",
+      icon: "💼",
+      imagePath: "/images/consulting-team.jpg",
+      gradient: "from-indigo-900/80 to-purple-900/80"
+    },
+    {
+      title: "End-to-End Business Support",
+      subtitle: "From pre-sales to invoicing, we've got your back office covered",
+      icon: "🔄",
+      imagePath: "/images/business-meeting.jpg",
+      gradient: "from-blue-900/80 to-purple-900/80"
+    },
+    {
+      title: "Focus On Your Expertise",
+      subtitle: "Let our AI handle the routine tasks while you deliver client value",
+      icon: "🚀",
+      imagePath: "/images/ai-automation.jpg",
+      gradient: "from-emerald-900/80 to-blue-900/80"
+    }
+  ];
+  
+  // State for hero banner
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // Auto-advance slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 7000);
+    
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Header */}
@@ -139,20 +176,88 @@ export default function ServicesContent() {
       </header>
 
       <main className="pt-16 pb-16">
-        {/* Hero Banner */}
-        <section className="relative h-[350px] overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center" 
-              style={{backgroundImage: `url('/images/consulting-team.jpg')`}}>
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/90 to-purple-900/80"></div>
-          </div>
-          
-          <div className="relative h-full container mx-auto px-4 flex items-center">
-            <div className="max-w-2xl">
-              <h1 className="text-4xl font-bold mb-4">Professional Services Organization</h1>
-              <p className="text-xl text-white/90 mb-6">
-                Empowering consultants with AI-powered operational support
-              </p>
+        {/* Hero Banner with Multiple Images */}
+        <section className="relative h-auto overflow-hidden container mx-auto px-4">
+          <div className="relative rounded-xl overflow-hidden" style={{height: "400px"}}>
+            {heroSlides.map((slide, index) => (
+              <div 
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+              >
+                {/* Background image with gradient overlay */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${slide.imagePath})` }}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient}`}></div>
+                </div>
+                
+                {/* Content container */}
+                <div className="relative h-full px-6 py-12 flex items-center">
+                  <div className="w-full md:w-1/2">
+                    <h1 className="text-4xl font-bold mb-4 leading-tight">
+                      {slide.title}
+                    </h1>
+                    
+                    <p className="text-xl text-white/90 mb-6">
+                      {slide.subtitle}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-3">
+                      <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Icon display */}
+                  <div className="hidden md:flex items-center justify-center w-1/2">
+                    <div className="relative w-40 h-40 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 z-10">
+                      <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-white/5 to-white/10 blur-xl"></div>
+                      <div className="text-7xl relative z-10">{slide.icon}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            
+            {/* Slide indicators */}
+            <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
+              {heroSlides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentSlide(i)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === currentSlide 
+                      ? 'bg-white w-6' 
+                      : 'bg-white/30 hover:bg-white/50'
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
             </div>
+            
+            {/* Navigation arrows */}
+            <button 
+              onClick={() => setCurrentSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
+              className="absolute top-1/2 left-4 z-20 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white rounded-full p-2 backdrop-blur-sm"
+              aria-label="Previous slide"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <button 
+              onClick={() => setCurrentSlide((currentSlide + 1) % heroSlides.length)}
+              className="absolute top-1/2 right-4 z-20 -translate-y-1/2 bg-black/20 hover:bg-black/40 text-white rounded-full p-2 backdrop-blur-sm"
+              aria-label="Next slide"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
           </div>
         </section>
 
