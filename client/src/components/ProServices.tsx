@@ -208,7 +208,7 @@ export default function ProServices() {
             className="flex items-center gap-0 cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img src="/assets/logo.png" alt="Ottobon Logo" className="h-20" />
-            <h1 className="text-xl font-bold -ml-6">OTTOBON</h1>
+            <h1 className="text-xl font-bold ml-2">OTTOBON</h1>
           </div>
 
         </div>
