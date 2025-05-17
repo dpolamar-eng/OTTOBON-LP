@@ -257,46 +257,46 @@ export default function ProServices() {
               The Ottobon Professional Services Organization (PSO) provides consultants with comprehensive operational and administrative support powered by advanced AI and expert human assistance.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="flex items-center mb-3">
-                  <div className="rounded-full bg-indigo-600/30 p-2 mr-3">
-                    <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+              <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
+                <div className="flex items-center mb-4">
+                  <div className="rounded-full bg-indigo-600/30 p-3 mr-4">
+                    <svg className="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                   </div>
-                  <h3 className="font-semibold">Operational Excellence</h3>
+                  <h3 className="text-lg font-semibold">Operational Excellence</h3>
                 </div>
-                <p className="text-sm text-gray-400">
-                  Our AI agents handle administrative tasks with greater speed and consistency than human staff.
+                <p className="text-gray-300 flex-grow">
+                  Our AI agents handle administrative tasks with greater speed and consistency than human staff, allowing you to focus on high-value client work instead of routine operations.
                 </p>
               </div>
               
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="flex items-center mb-3">
-                  <div className="rounded-full bg-purple-600/30 p-2 mr-3">
-                    <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
+                <div className="flex items-center mb-4">
+                  <div className="rounded-full bg-purple-600/30 p-3 mr-4">
+                    <svg className="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                   </div>
-                  <h3 className="font-semibold">Human-AI Collaboration</h3>
+                  <h3 className="text-lg font-semibold">Human-AI Collaboration</h3>
                 </div>
-                <p className="text-sm text-gray-400">
-                  For complex tasks, our expert human team works seamlessly with AI systems.
+                <p className="text-gray-300 flex-grow">
+                  For complex tasks requiring judgment or personalization, our expert human team works seamlessly with AI systems to provide the perfect balance of efficiency and expertise.
                 </p>
               </div>
               
-              <div className="bg-white/5 rounded-lg p-4">
-                <div className="flex items-center mb-3">
-                  <div className="rounded-full bg-cyan-600/30 p-2 mr-3">
-                    <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
+                <div className="flex items-center mb-4">
+                  <div className="rounded-full bg-cyan-600/30 p-3 mr-4">
+                    <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
                   </div>
-                  <h3 className="font-semibold">Flexible Service Model</h3>
+                  <h3 className="text-lg font-semibold">Flexible Service Model</h3>
                 </div>
-                <p className="text-sm text-gray-400">
-                  Choose AI-only automation or add human expertise based on your needs.
+                <p className="text-gray-300 flex-grow">
+                  Choose AI-only automation for cost efficiency, or add human expertise for specialized tasks. Scale services up or down based on your current project needs with no long-term commitments.
                 </p>
               </div>
             </div>
@@ -345,9 +345,9 @@ export default function ProServices() {
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="min-w-[280px] sm:min-w-[300px] md:min-w-[320px] flex-shrink-0 snap-start"
+                  className="min-w-[300px] sm:min-w-[350px] md:min-w-[400px] flex-shrink-0 snap-start"
                 >
-                  <div className={`h-[380px] perspective-1000 ${expandedCards[service.id] ? 'flipped' : ''}`}>
+                  <div className={`h-[420px] perspective-1000 ${expandedCards[service.id] ? 'flipped' : ''}`}>
                     {/* Front of card - uses opacity instead of transform for better mobile support */}
                     <div 
                       className={`absolute inset-0 rounded-xl bg-white/5 border border-white/20 transition-all duration-300 ${
@@ -358,28 +358,28 @@ export default function ProServices() {
                     >
                       {/* Card header */}
                       <div 
-                        className={`bg-gradient-to-r ${service.color} p-5 rounded-t-xl flex items-center`}
+                        className={`bg-gradient-to-r ${service.color} p-6 rounded-t-xl flex items-center`}
                         style={{ 
                           backgroundSize: '200% 200%',
                           animation: 'gradient-shift 3s ease infinite'
                         }}
                       >
                         <div 
-                          className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mr-4"
+                          className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4"
                           style={{ animation: 'icon-float 3s ease-in-out infinite' }}
                         >
-                          <span className="text-3xl">{service.icon}</span>
+                          <span className="text-4xl">{service.icon}</span>
                         </div>
-                        <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                        <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                       </div>
                       
                       {/* Card content */}
-                      <div className="p-5 flex flex-col h-[calc(100%-88px)]">
-                        <p className="text-gray-200 mb-6">{service.description}</p>
+                      <div className="p-6 flex flex-col h-[calc(100%-112px)]">
+                        <p className="text-gray-200 text-lg mb-6">{service.description}</p>
                         
                         <div className="mt-auto flex justify-between items-center">
-                          <span className="text-indigo-400 text-sm font-medium">View Details</span>
-                          <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <span className="text-indigo-400 text-base font-medium">View Details</span>
+                          <svg className="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                           </svg>
                         </div>
@@ -395,24 +395,24 @@ export default function ProServices() {
                       style={{ animation: expandedCards[service.id] ? 'card-pulse 2s ease-in-out infinite' : 'none' }}
                     >
                       <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-xl font-bold text-white">{service.title}</h3>
-                        <button className="bg-white/10 hover:bg-white/20 p-1 rounded-full">
-                          <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                        <button className="bg-white/10 hover:bg-white/20 p-2 rounded-full">
+                          <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                           </svg>
                         </button>
                       </div>
                       
-                      <p className="text-gray-300 mb-5 text-sm">{service.details}</p>
+                      <p className="text-gray-300 mb-6 text-base">{service.details}</p>
                       
-                      <h4 className="text-sm font-semibold uppercase tracking-wide text-indigo-400 mb-3">Key Features</h4>
-                      <ul className="space-y-2">
+                      <h4 className="text-base font-semibold uppercase tracking-wide text-indigo-400 mb-4">Key Features</h4>
+                      <ul className="space-y-3">
                         {service.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
-                            <svg className="w-4 h-4 text-indigo-500 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-indigo-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span className="text-gray-300 text-sm">{feature}</span>
+                            <span className="text-gray-300 text-base">{feature}</span>
                           </li>
                         ))}
                       </ul>
