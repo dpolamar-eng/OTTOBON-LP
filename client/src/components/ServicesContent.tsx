@@ -146,7 +146,7 @@ export default function ServicesContent() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center">
-            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-10 mr-2" />
+            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-14 mr-3" />
             <h1 className="text-xl font-bold">OTTOBON</h1>
           </div>
           
