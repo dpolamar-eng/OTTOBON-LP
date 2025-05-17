@@ -164,19 +164,28 @@ export default function ComingSoonServices() {
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-6">
             <button 
-              onClick={() => setActiveTab('overview')}
+              onClick={() => {
+                setActiveTab('overview');
+                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className={`text-white/90 hover:text-white font-medium transition ${activeTab === 'overview' ? 'border-b-2 border-pink-400' : ''}`}
             >
               Overview
             </button>
             <button 
-              onClick={() => setActiveTab('audience')}
+              onClick={() => {
+                setActiveTab('audience');
+                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className={`text-white/90 hover:text-white font-medium transition ${activeTab === 'audience' ? 'border-b-2 border-pink-400' : ''}`}
             >
               Who It's For
             </button>
             <button 
-              onClick={() => setActiveTab('offerings')}
+              onClick={() => {
+                setActiveTab('offerings');
+                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className={`text-white/90 hover:text-white font-medium transition ${activeTab === 'offerings' ? 'border-b-2 border-pink-400' : ''}`}
             >
               Offerings
@@ -219,6 +228,7 @@ export default function ComingSoonServices() {
               onClick={() => {
                 setActiveTab('overview');
                 setMobileMenuOpen(false);
+                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className={`block w-full text-left px-4 py-2 rounded-lg transition ${activeTab === 'overview' 
                 ? 'bg-white/20 text-white' 
@@ -230,6 +240,7 @@ export default function ComingSoonServices() {
               onClick={() => {
                 setActiveTab('audience');
                 setMobileMenuOpen(false);
+                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className={`block w-full text-left px-4 py-2 rounded-lg transition ${activeTab === 'audience' 
                 ? 'bg-white/20 text-white' 
@@ -241,6 +252,7 @@ export default function ComingSoonServices() {
               onClick={() => {
                 setActiveTab('offerings');
                 setMobileMenuOpen(false);
+                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className={`block w-full text-left px-4 py-2 rounded-lg transition ${activeTab === 'offerings' 
                 ? 'bg-white/20 text-white' 
@@ -450,7 +462,7 @@ export default function ComingSoonServices() {
         </div>
 
         {/* Tabs Navigation */}
-        <div className="w-full max-w-4xl mx-auto mb-8">
+        <div id="tabs-section" className="w-full max-w-4xl mx-auto mb-8">
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <button 
               onClick={() => setActiveTab('overview')}
