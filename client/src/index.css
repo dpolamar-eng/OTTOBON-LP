@@ -21,6 +21,25 @@
   transform: rotateY(180deg);
 }
 
+/* Custom carousel scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Service card animation */
+@keyframes card-flip {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+.card-flip {
+  animation: card-flip 0.6s ease forwards;
+}
+
+.card-flip-back {
+  animation: card-flip 0.6s ease backwards reverse;
+}
+
 /* Card hover effects */
 @keyframes gentle-wiggle {
   0%, 100% { transform: rotate(0deg); }

@@ -138,10 +138,15 @@ export default function PSO() {
   
   // Toggle card expansion
   const toggleCard = (id: string) => {
-    setExpandedCards(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
+    console.log('Toggling card:', id);
+    setExpandedCards(prev => {
+      const newState = {
+        ...prev,
+        [id]: !prev[id]
+      };
+      console.log('New state:', newState);
+      return newState;
+    });
   };
   
   // Auto-advance slides
@@ -379,15 +384,11 @@ export default function PSO() {
                   key={service.id}
                   className="min-w-[280px] md:min-w-[320px] h-[400px] flex-shrink-0 snap-start"
                 >
-                  <div 
-                    className={`h-full perspective-1000 relative transition-all duration-300 transform ${
-                      expandedCards[service.id] ? 'rotate-y-180' : ''
-                    }`}
-                  >
+                  <div className="h-full w-full relative">
                     {/* Front of card */}
                     <div 
-                      className={`absolute inset-0 duration-500 bg-white/5 rounded-xl border border-white/20 shadow-xl flex flex-col overflow-hidden backface-hidden ${
-                        expandedCards[service.id] ? 'opacity-0' : 'opacity-100'
+                      className={`absolute inset-0 bg-white/5 rounded-xl border border-white/20 shadow-xl flex flex-col overflow-hidden transition-all duration-300 ${
+                        expandedCards[service.id] ? 'opacity-0 pointer-events-none' : 'opacity-100'
                       }`}
                       onClick={() => toggleCard(service.id)}
                     >
@@ -416,8 +417,8 @@ export default function PSO() {
                     
                     {/* Back of card */}
                     <div 
-                      className={`absolute inset-0 duration-500 bg-gray-800 rounded-xl border border-white/10 shadow-xl p-6 flex flex-col rotate-y-180 backface-hidden ${
-                        expandedCards[service.id] ? 'opacity-100' : 'opacity-0'
+                      className={`absolute inset-0 bg-gray-800 rounded-xl border border-white/10 shadow-xl p-6 flex flex-col transition-all duration-300 ${
+                        expandedCards[service.id] ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'
                       }`}
                       onClick={() => toggleCard(service.id)}
                     >
