@@ -11,9 +11,47 @@ export default function ComingSoonServices() {
   // Animation states
   const [scrollY, setScrollY] = useState(0);
   const [heroVisible, setHeroVisible] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
+  
+  // Hero banner slides
+  const heroSlides = [
+    {
+      title: "Professional Services Org",
+      subtitle: "Empowering experts and consulting businesses with operational and strategic support",
+      image: "🤖",
+      tags: [
+        { icon: "🧠", text: "AI-Powered Tools" },
+        { icon: "💼", text: "Expert Support" },
+        { icon: "🚀", text: "Scale On Demand" }
+      ],
+      bgGradient: "from-purple-800 to-pink-800"
+    },
+    {
+      title: "Task AI Agent System",
+      subtitle: "Automated operations that free consultants to focus on high-value client work",
+      image: "🔍",
+      tags: [
+        { icon: "⚙️", text: "Operational Automation" },
+        { icon: "📊", text: "Performance Analytics" },
+        { icon: "⚡", text: "Rapid Deployment" }
+      ],
+      bgGradient: "from-blue-800 to-indigo-800"
+    },
+    {
+      title: "Consulting Acceleration",
+      subtitle: "End-to-end solutions from pre-sales proposals to invoicing and everything in between",
+      image: "📈",
+      tags: [
+        { icon: "📝", text: "Proposal Generation" },
+        { icon: "🤝", text: "Client Management" },
+        { icon: "💰", text: "Billing Automation" }
+      ],
+      bgGradient: "from-teal-800 to-blue-800"
+    }
+  ];
   
   // Track scroll position
   useEffect(() => {
@@ -27,6 +65,20 @@ export default function ComingSoonServices() {
     };
   }, []);
   
+  // Auto-advance hero slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 8000); // Change slide every 8 seconds
+    
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
+  
+  // Function to change slides
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   // Calculate animation values based on scroll position
   useEffect(() => {
     if (!heroRef.current) return;
@@ -67,30 +119,81 @@ export default function ComingSoonServices() {
   const offerings = [
     {
       function: 'Pre-Sales',
-      aiTools: '🧠 Proposal Builder Agent (inputs: problem → outputs: proposal, solution sketch)',
-      peopleServices: 'Proposal writers, demo engineers'
+      icon: '🧠',
+      color: 'from-blue-600 to-indigo-600',
+      aiTools: 'Proposal Builder Agent (inputs: problem → outputs: proposal, solution sketch)',
+      peopleServices: 'Proposal writers, demo engineers',
+      description: 'Generate compelling, tailored proposals and solution sketches in minutes instead of days. Let AI handle the heavy lifting while you focus on client relationships.',
+      benefits: [
+        'Reduce proposal creation time by 80%',
+        'Ensure consistent quality and messaging',
+        'Automatically incorporate best practices'
+      ]
     },
     {
       function: 'Marketing',
-      aiTools: '📢 Marketing Automation (auto-generate social content, blogs, newsletters)',
-      peopleServices: 'Brand consultants'
+      icon: '📢',
+      color: 'from-purple-600 to-pink-600',
+      aiTools: 'Marketing Automation (auto-generate social content, blogs, newsletters)',
+      peopleServices: 'Brand consultants',
+      description: 'Keep your consulting practice visible with automated content creation that maintains your professional voice while requiring minimal time investment.',
+      benefits: [
+        'Maintain consistent social media presence',
+        'Create thought leadership content effortlessly',
+        'Personalized outreach campaigns'
+      ]
     },
     {
       function: 'Talent Acquisition',
-      aiTools: '🔍 Profile search, resume-job match, referral graph, AI interviewer',
-      peopleServices: 'Recruiters, candidate screeners'
+      icon: '🔍',
+      color: 'from-emerald-600 to-cyan-600',
+      aiTools: 'Profile search, resume-job match, referral graph, AI interviewer',
+      peopleServices: 'Recruiters, candidate screeners',
+      description: 'Find the perfect associates and subject matter experts for your projects through intelligent matching and automated initial screening.',
+      benefits: [
+        'Access pre-vetted talent pool',
+        'Intelligent skill matching algorithms',
+        'Automated interview scheduling and screening'
+      ]
     },
     {
       function: 'Delivery Ops',
-      aiTools: '✅ Task AI Agent: assigns, follows up, and updates tools like Jira automatically',
-      peopleServices: 'PMs, delivery coordinators'
+      icon: '✅',
+      color: 'from-amber-600 to-orange-600',
+      aiTools: 'Task AI Agent: assigns, follows up, and updates tools like Jira automatically',
+      peopleServices: 'PMs, delivery coordinators',
+      description: 'Let AI handle the routine project management tasks while you focus on delivering value. Automated updates, reminders, and status tracking.',
+      benefits: [
+        'Automated status tracking and reporting',
+        'Intelligent resource allocation',
+        'Risk identification and mitigation'
+      ]
     },
     {
       function: 'Billing & Agreements',
-      aiTools: '📑 Self-configured invoicing, milestone tracking, contract templates',
-      peopleServices: 'Finance/admin staff if needed'
+      icon: '📑',
+      color: 'from-rose-600 to-red-600',
+      aiTools: 'Self-configured invoicing, milestone tracking, contract templates',
+      peopleServices: 'Finance/admin staff if needed',
+      description: 'Streamline your administrative work with automated invoicing, contract generation, and financial tracking that integrates with popular accounting systems.',
+      benefits: [
+        'Automated invoice generation and tracking',
+        'Customizable contract templates',
+        'Seamless payment processing and reminders'
+      ]
     }
   ];
+  
+  // State for flipped cards
+  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
+  
+  // Function to toggle card flip
+  const toggleFlipCard = (functionName: string) => {
+    setFlippedCards(prev => ({
+      ...prev,
+      [functionName]: !prev[functionName]
+    }));
+  };
 
   // Define audience segments
   const audiences = [
@@ -276,115 +379,161 @@ export default function ComingSoonServices() {
         {/* Hero Banner */}
         <div 
           ref={heroRef}
-          className="w-full relative overflow-hidden rounded-2xl mb-16 bg-gradient-to-r from-purple-800 to-pink-800"
+          className="w-full relative overflow-hidden rounded-2xl mb-16"
           style={{
             transformStyle: 'preserve-3d',
             perspective: '1000px',
-            transition: 'transform 0.3s ease-out'
+            transition: 'transform 0.3s ease-out',
+            height: '540px'
           }}
         >
-          <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
-          
-          {/* Animated background elements */}
-          <div 
-            className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-purple-500/20 to-transparent rounded-full blur-3xl"
-            style={{
-              transform: `translateY(${scrollY * 0.05}px)`,
-              transition: 'transform 0.1s ease-out'
-            }}
-          ></div>
-          <div 
-            className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-pink-500/20 to-transparent rounded-full blur-3xl"
-            style={{
-              transform: `translateY(${-scrollY * 0.08}px)`,
-              transition: 'transform 0.1s ease-out'
-            }}
-          ></div>
-          
-          {/* Floating particles that move with scroll */}
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div 
-              key={i}
-              className="absolute rounded-full bg-white/30"
-              style={{
-                width: `${Math.random() * 8 + 4}px`,
-                height: `${Math.random() * 8 + 4}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                transform: `translateY(${scrollY * (0.1 + Math.random() * 0.1)}px)`,
-                transition: 'transform 0.1s ease-out'
-              }}
-            ></div>
-          ))}
-          
-          <div className="relative z-10 flex flex-col md:flex-row items-center py-16 px-8 md:px-12">
-            <div 
-              ref={heroContentRef}
-              className="w-full md:w-2/3 mb-8 md:mb-0 md:pr-8 transition-all duration-300"
-            >
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-500/30 text-pink-300 font-semibold text-sm mb-6 backdrop-blur-sm">
-                <span className="mr-2">⚡</span>
-                <span>Coming Soon</span>
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                Professional <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">Services Org</span>
-              </h1>
-              
-              <p className="text-xl text-purple-100 mb-8 max-w-3xl">
-                Empowering experts and consulting businesses with operational and strategic support
-              </p>
-              
-              <div className="flex flex-wrap gap-4 mb-4">
-                <div 
-                  className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white"
-                  style={{ 
-                    transform: `translateX(${-scrollY * 0.2}px)`,
-                    transition: 'transform 0.2s ease-out' 
-                  }}
-                >
-                  <span className="text-lg mr-2">🧠</span>
-                  <span>AI-Powered Tools</span>
-                </div>
-                <div 
-                  className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white"
-                  style={{ 
-                    transform: `translateY(${scrollY * 0.1}px)`,
-                    transition: 'transform 0.2s ease-out' 
-                  }}
-                >
-                  <span className="text-lg mr-2">💼</span>
-                  <span>Expert Support</span>
-                </div>
-                <div 
-                  className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white"
-                  style={{ 
-                    transform: `translateX(${scrollY * 0.2}px)`,
-                    transition: 'transform 0.2s ease-out' 
-                  }}
-                >
-                  <span className="text-lg mr-2">🚀</span>
-                  <span>Scale On Demand</span>
-                </div>
-              </div>
-            </div>
-            
-            <div 
-              ref={heroImageRef}
-              className="w-full md:w-1/3 flex justify-center transition-all duration-300"
-            >
+          {/* Slides Container */}
+          <div className="absolute inset-0 transition-all duration-700 ease-in-out">
+            {heroSlides.map((slide, index) => (
               <div 
-                className="relative w-64 h-64 rounded-full bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-lg flex items-center justify-center border border-white/20"
-                style={{
-                  transition: 'all 0.3s ease-out',
-                  boxShadow: `0 0 60px rgba(${(150 - scrollY * 0.5)}, ${(60 - scrollY * 0.2)}, ${(255 - scrollY * 0.5)}, 0.2)`
-                }}
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 bg-gradient-to-r ${slide.bgGradient} ${
+                  currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
               >
-                <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-purple-500/10 to-pink-500/10 blur-xl"></div>
-                <div className="text-8xl z-10 transition-transform duration-300" style={{ transform: `rotate(${scrollY * 0.05}deg)` }}>🤖</div>
+                <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                
+                {/* Animated background elements */}
+                <div 
+                  className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-purple-500/20 to-transparent rounded-full blur-3xl"
+                  style={{
+                    transform: `translateY(${scrollY * 0.05}px)`,
+                    transition: 'transform 0.1s ease-out'
+                  }}
+                ></div>
+                <div 
+                  className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-pink-500/20 to-transparent rounded-full blur-3xl"
+                  style={{
+                    transform: `translateY(${-scrollY * 0.08}px)`,
+                    transition: 'transform 0.1s ease-out'
+                  }}
+                ></div>
+                
+                {/* Floating particles that move with scroll */}
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div 
+                    key={i}
+                    className="absolute rounded-full bg-white/30"
+                    style={{
+                      width: `${Math.random() * 8 + 4}px`,
+                      height: `${Math.random() * 8 + 4}px`,
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      transform: `translateY(${scrollY * (0.1 + Math.random() * 0.1)}px)`,
+                      transition: 'transform 0.1s ease-out'
+                    }}
+                  ></div>
+                ))}
+                
+                <div className="relative z-10 h-full flex flex-col md:flex-row items-center py-16 px-8 md:px-12">
+                  <div 
+                    ref={heroContentRef}
+                    className="w-full md:w-2/3 mb-8 md:mb-0 md:pr-8 transition-all duration-300"
+                  >
+                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 text-white font-semibold text-sm mb-6 backdrop-blur-sm">
+                      <span className="mr-2">⚡</span>
+                      <span>Coming Soon</span>
+                    </div>
+                    
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                      {index === 0 ? (
+                        <>
+                          {slide.title.split(' ')[0]}{' '}
+                          <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
+                            {slide.title.split(' ').slice(1).join(' ')}
+                          </span>
+                        </>
+                      ) : (
+                        slide.title
+                      )}
+                    </h1>
+                    
+                    <p className="text-xl text-white/90 mb-8 max-w-3xl">
+                      {slide.subtitle}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-4 mb-4">
+                      {slide.tags.map((tag, i) => (
+                        <div 
+                          key={i}
+                          className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white"
+                          style={{ 
+                            transform: i === 0 
+                              ? `translateX(${-scrollY * 0.2}px)` 
+                              : i === 1 
+                                ? `translateY(${scrollY * 0.1}px)` 
+                                : `translateX(${scrollY * 0.2}px)`,
+                            transition: 'transform 0.2s ease-out' 
+                          }}
+                        >
+                          <span className="text-lg mr-2">{tag.icon}</span>
+                          <span>{tag.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div 
+                    ref={heroImageRef}
+                    className="w-full md:w-1/3 flex justify-center transition-all duration-300"
+                  >
+                    <div 
+                      className="relative w-64 h-64 rounded-full bg-gradient-to-r from-white/20 to-white/5 backdrop-blur-lg flex items-center justify-center border border-white/20"
+                      style={{
+                        transition: 'all 0.3s ease-out',
+                        boxShadow: `0 0 60px rgba(255, 255, 255, 0.15)`
+                      }}
+                    >
+                      <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-white/10 to-white/5 blur-xl"></div>
+                      <div className="text-8xl z-10 transition-transform duration-300" style={{ transform: `rotate(${scrollY * 0.05}deg)` }}>
+                        {slide.image}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
+          
+          {/* Slide navigation dots */}
+          <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  currentSlide === index 
+                    ? 'bg-white w-8' 
+                    : 'bg-white/40 hover:bg-white/60'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          
+          {/* Slide navigation arrows */}
+          <button 
+            className="absolute top-1/2 left-4 z-20 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 text-white transition-all"
+            onClick={() => goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          
+          <button 
+            className="absolute top-1/2 right-4 z-20 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 text-white transition-all"
+            onClick={() => goToSlide((currentSlide + 1) % heroSlides.length)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
         </div>
         
         {/* Introduction section */}
@@ -598,25 +747,118 @@ export default function ComingSoonServices() {
               <h2 className="text-2xl font-bold text-white mb-6 text-center">PSO Service Offerings</h2>
               <p className="text-center text-purple-100 mb-8">Our execution engine helps experts and consultants scale by automating or augmenting core business functions</p>
               
-              <div className="relative overflow-x-auto rounded-xl border border-white/10 backdrop-blur-sm">
-                <table className="w-full text-left">
-                  <thead className="text-xs uppercase bg-purple-900/50 text-purple-100">
-                    <tr>
-                      <th className="px-6 py-4">Business Function</th>
-                      <th className="px-6 py-4">AI Tools / Features</th>
-                      <th className="px-6 py-4">Optional People Services</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {offerings.map((offering, index) => (
-                      <tr key={index} className={`border-t border-white/10 ${index % 2 === 0 ? 'bg-white/5' : 'bg-white/10'}`}>
-                        <td className="px-6 py-4 text-white font-medium">{offering.function}</td>
-                        <td className="px-6 py-4 text-purple-100">{offering.aiTools}</td>
-                        <td className="px-6 py-4 text-purple-100">{offering.peopleServices}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              {/* Flip card grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
+                {offerings.map((offering, index) => (
+                  <div key={index} className="h-[420px] perspective-1000 cursor-pointer group">
+                    <div 
+                      className={`relative h-full w-full transition-transform duration-700 transform-style-3d ${flippedCards[offering.function] ? 'rotate-y-180' : ''}`}
+                      onClick={() => toggleFlipCard(offering.function)}
+                    >
+                      {/* Front of card */}
+                      <div className="absolute inset-0 backface-hidden rounded-xl overflow-hidden shadow-lg">
+                        <div className={`h-full flex flex-col bg-gradient-to-br ${offering.color} p-1`}>
+                          <div className="flex-1 bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-6 flex flex-col">
+                            {/* Card Header */}
+                            <div className="flex items-center mb-4">
+                              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mr-4">
+                                <span className="text-2xl">{offering.icon}</span>
+                              </div>
+                              <h3 className="text-xl font-bold text-white flex-1">{offering.function}</h3>
+                              <div className="text-white/50 text-sm">
+                                Click for details
+                              </div>
+                            </div>
+                            
+                            {/* Card Content */}
+                            <p className="text-gray-300 mb-6 flex-1">
+                              {offering.description}
+                            </p>
+                            
+                            {/* Features Preview */}
+                            <div className="mt-auto">
+                              <div className="border-t border-gray-700 pt-4">
+                                <div className="flex justify-between text-sm">
+                                  <div className="text-blue-300">
+                                    <span className="font-semibold">AI Tools</span>
+                                  </div>
+                                  <div className="text-pink-300">
+                                    <span className="font-semibold">Human Support</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Back of card */}
+                      <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-xl overflow-hidden shadow-lg">
+                        <div className={`h-full flex flex-col bg-gradient-to-br ${offering.color} p-1`}>
+                          <div className="flex-1 bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-6 flex flex-col">
+                            {/* Card Header */}
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-xl font-bold text-white">{offering.function}</h3>
+                              <button 
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleFlipCard(offering.function);
+                                }}
+                                className="text-white/80 hover:text-white bg-white/10 rounded-full p-1.5"
+                              >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                              </button>
+                            </div>
+                            
+                            {/* Service Components */}
+                            <div className="space-y-4 mb-6">
+                              <div className="bg-white/5 rounded-lg p-3">
+                                <h4 className="text-blue-300 font-medium mb-2 flex items-center">
+                                  <span className="w-5 h-5 bg-blue-900/50 rounded-full flex items-center justify-center mr-2">
+                                    <svg className="w-3 h-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                  </span>
+                                  AI Tools
+                                </h4>
+                                <p className="text-gray-300 text-sm">{offering.aiTools}</p>
+                              </div>
+                              
+                              <div className="bg-white/5 rounded-lg p-3">
+                                <h4 className="text-pink-300 font-medium mb-2 flex items-center">
+                                  <span className="w-5 h-5 bg-pink-900/50 rounded-full flex items-center justify-center mr-2">
+                                    <svg className="w-3 h-3 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                  </span>
+                                  Optional Human Services
+                                </h4>
+                                <p className="text-gray-300 text-sm">{offering.peopleServices}</p>
+                              </div>
+                            </div>
+                            
+                            {/* Benefits */}
+                            <div className="mt-auto">
+                              <h4 className="text-white font-medium mb-2 text-sm">Key Benefits</h4>
+                              <ul className="space-y-1">
+                                {offering.benefits.map((benefit, i) => (
+                                  <li key={i} className="flex items-start text-sm">
+                                    <svg className="w-4 h-4 text-green-400 flex-shrink-0 mr-1.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span className="text-gray-300">{benefit}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
               
               <div className="mt-10 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl p-6 border border-white/10">

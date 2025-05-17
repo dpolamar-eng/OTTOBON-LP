@@ -4,6 +4,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Card hover effects */
+@keyframes gentle-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+.h-[420px]:hover:not(:has(.rotate-y-180)) > div {
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+  animation: gentle-wiggle 1s ease-in-out;
+}
+
 :root {
   --font-primary: 'Poppins', sans-serif;
   --font-secondary: 'Inter', sans-serif;
