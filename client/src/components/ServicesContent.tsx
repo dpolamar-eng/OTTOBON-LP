@@ -154,26 +154,11 @@ export default function ServicesContent() {
           </div>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <button
-              onClick={() => navigate('/')}
-              className="flex items-center text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md transition-colors"
-            >
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-              </svg>
-              Back to Portal
-            </button>
+            {/* Navigation links could be added here if needed */}
           </nav>
           
           <div className="md:hidden">
-            <button
-              onClick={() => navigate('/')}
-              className="flex items-center text-white/80 bg-white/10 hover:bg-white/20 p-2 rounded-md"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-              </svg>
-            </button>
+            {/* Mobile menu button could be added here if needed */}
           </div>
         </div>
       </header>

@@ -210,15 +210,7 @@ export default function ProServices() {
             <img src="/assets/logo.png" alt="Ottobon Logo" className="h-20" />
             <h1 className="text-xl font-bold -ml-1">OTTOBON</h1>
           </div>
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md transition-colors"
-          >
-            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            Back to Portal
-          </button>
+
         </div>
       </header>
 
