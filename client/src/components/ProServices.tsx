@@ -179,7 +179,7 @@ export default function ProServices() {
         <div className="container mx-auto px-4">
           {/* Hero Banner with Icon + Text + Image */}
           <section className="mb-6 mt-4 bg-gray-900 rounded-xl overflow-hidden">
-            <div className="h-[400px] relative">
+            <div className="h-[450px] relative">
               {heroSlides.map((slide, index) => (
                 <div 
                   key={index}
@@ -187,20 +187,20 @@ export default function ProServices() {
                     index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
                   }`}
                 >
-                  {/* Gradient background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient}`}></div>
+                  {/* Subtle gradient overlay to ensure text readability */}
+                  <div className={`absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent z-5`}></div>
 
                   {/* The layout: Icon + Text + Image */}
-                  <div className="relative h-full flex flex-col md:flex-row items-center px-6 py-10">
+                  <div className="relative h-full flex flex-col md:flex-row items-center">
                     {/* Left side: Icon and Text */}
-                    <div className="md:w-1/2 flex flex-col md:flex-row items-center mb-8 md:mb-0">
+                    <div className="md:w-[45%] z-10 flex flex-col md:flex-row items-center p-6 md:p-10 mb-0">
                       {/* Icon */}
                       <div className="mb-4 md:mb-0 md:mr-6">
                         <div 
-                          className="w-24 h-24 md:w-28 md:h-28 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
+                          className="w-20 h-20 md:w-24 md:h-24 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
                           style={{ animation: 'icon-float 3s ease-in-out infinite' }}
                         >
-                          <span className="text-5xl md:text-6xl">{slide.icon}</span>
+                          <span className="text-4xl md:text-5xl">{slide.icon}</span>
                         </div>
                       </div>
                       
@@ -218,13 +218,13 @@ export default function ProServices() {
                       </div>
                     </div>
                     
-                    {/* Right side: Large Image */}
-                    <div className="md:w-1/2 flex justify-center items-center">
-                      <div className="relative w-64 h-64 md:w-[320px] md:h-[300px] rounded-xl overflow-hidden shadow-xl border-2 border-white/20 transform rotate-3 transition-transform hover:rotate-0">
+                    {/* Right side: Full-sized Image */}
+                    <div className="md:w-[55%] h-full">
+                      <div className="w-full h-full overflow-hidden">
                         <img 
                           src={slide.imagePath} 
                           alt={slide.title} 
-                          className="w-full h-full object-cover" 
+                          className="w-full h-full object-cover md:object-contain lg:object-cover" 
                         />
                       </div>
                     </div>
