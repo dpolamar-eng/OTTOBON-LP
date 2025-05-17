@@ -190,34 +190,37 @@ export default function ProServices() {
                   {/* Gradient background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient}`}></div>
 
-                  {/* The three column layout: Icon + Text + Image */}
-                  <div className="relative h-full flex flex-col md:flex-row items-center justify-between px-6 py-10">
-                    {/* Left column: Icon */}
-                    <div className="w-full md:w-1/4 flex justify-center md:justify-end mb-4 md:mb-0">
-                      <div 
-                        className="w-28 h-28 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
-                        style={{ animation: 'icon-float 3s ease-in-out infinite' }}
-                      >
-                        <span className="text-6xl">{slide.icon}</span>
+                  {/* The layout: Icon + Text + Image */}
+                  <div className="relative h-full flex flex-col md:flex-row items-center px-6 py-10">
+                    {/* Left side: Icon and Text */}
+                    <div className="md:w-1/2 flex flex-col md:flex-row items-center mb-8 md:mb-0">
+                      {/* Icon */}
+                      <div className="mb-4 md:mb-0 md:mr-6">
+                        <div 
+                          className="w-24 h-24 md:w-28 md:h-28 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
+                          style={{ animation: 'icon-float 3s ease-in-out infinite' }}
+                        >
+                          <span className="text-5xl md:text-6xl">{slide.icon}</span>
+                        </div>
+                      </div>
+                      
+                      {/* Text */}
+                      <div className="text-center md:text-left">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                          {slide.title}
+                        </h2>
+                        <p className="text-lg text-white/90 mb-4">
+                          {slide.subtitle}
+                        </p>
+                        <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
+                          Learn More
+                        </button>
                       </div>
                     </div>
                     
-                    {/* Middle column: Text */}
-                    <div className="w-full md:w-2/5 text-center md:text-left md:px-6 mb-4 md:mb-0">
-                      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                        {slide.title}
-                      </h2>
-                      <p className="text-lg text-white/90 mb-6">
-                        {slide.subtitle}
-                      </p>
-                      <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
-                        Learn More
-                      </button>
-                    </div>
-                    
-                    {/* Right column: Image */}
-                    <div className="w-full md:w-1/3 flex justify-center md:justify-start">
-                      <div className="relative w-56 h-56 rounded-xl overflow-hidden shadow-xl border-2 border-white/20 transform rotate-3 transition-transform hover:rotate-0">
+                    {/* Right side: Large Image */}
+                    <div className="md:w-1/2 flex justify-center items-center">
+                      <div className="relative w-64 h-64 md:w-[320px] md:h-[300px] rounded-xl overflow-hidden shadow-xl border-2 border-white/20 transform rotate-3 transition-transform hover:rotate-0">
                         <img 
                           src={slide.imagePath} 
                           alt={slide.title} 
