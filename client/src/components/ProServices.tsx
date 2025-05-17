@@ -345,7 +345,7 @@ export default function ProServices() {
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="min-w-[300px] sm:min-w-[350px] md:min-w-[400px] flex-shrink-0 snap-start"
+                  className="min-w-[320px] w-[calc(100%/3-16px)] sm:min-w-[380px] md:min-w-[450px] flex-shrink-0 snap-start"
                 >
                   <div className={`h-[420px] perspective-1000 ${expandedCards[service.id] ? 'flipped' : ''}`}>
                     {/* Front of card - uses opacity instead of transform for better mobile support */}
