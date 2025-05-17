@@ -26,7 +26,7 @@
   display: none;
 }
 
-/* Service card animation */
+/* Service card animations and micro-interactions */
 @keyframes card-flip {
   0% { transform: rotateY(0deg); }
   100% { transform: rotateY(180deg); }
@@ -38,6 +38,33 @@
 
 .card-flip-back {
   animation: card-flip 0.6s ease backwards reverse;
+}
+
+/* Card hover effects */
+@keyframes card-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+  50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+/* Soft glow animation */
+@keyframes soft-glow {
+  0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.3); }
+}
+
+/* Icon float animation */
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Card hover effects */
