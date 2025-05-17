@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
+import CareerPathVisualizer from './CareerPathVisualizer';
 
 export default function ProfessionalServicesPage() {
   const [, navigate] = useLocation();
@@ -258,6 +259,12 @@ export default function ProfessionalServicesPage() {
             >
               Who It's For
             </button>
+            <a 
+              href="#career-path"
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >
+              Career Path Explorer
+            </a>
             <a 
               href="#notify"
               className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
@@ -661,6 +668,54 @@ export default function ProfessionalServicesPage() {
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+        </section>
+        
+        {/* Career Path Visualizer Section */}
+        <section id="career-path" className="py-16 bg-gradient-to-b from-gray-900 to-gray-950">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <h2 className="text-3xl font-bold mb-4">Interactive Career Path Explorer</h2>
+              <p className="text-gray-300">
+                Visualize potential career paths in consulting and professional services. Explore role progression, 
+                required skills, and expected compensation at each stage of your journey.
+              </p>
+            </div>
+            
+            <CareerPathVisualizer initialPath="technical" showSalary={true} />
+            
+            <div className="mt-8 max-w-xl mx-auto bg-indigo-900/20 rounded-xl p-6 border border-indigo-900/30">
+              <h3 className="text-xl font-semibold mb-3 flex items-center">
+                <svg className="w-6 h-6 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Personalized Career Guidance
+              </h3>
+              <p className="text-gray-300 mb-4">
+                Ottobon PSO offers customized career development support that complements our operational services. 
+                Get personalized advice on your career trajectory, skill development priorities, and advancement strategies.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-indigo-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="text-gray-300">AI-powered skills assessment and personalized development plans</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-indigo-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="text-gray-300">Expert coaching from senior consultants in your specialty area</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-indigo-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="text-gray-300">Market-based compensation insights and negotiation support</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
