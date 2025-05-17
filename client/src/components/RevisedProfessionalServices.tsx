@@ -31,8 +31,9 @@ export default function RevisedProfessionalServices() {
       title: "Professional Services Org",
       subtitle: "Empowering experts with AI-powered operational support",
       image: "💼",
+      bgImage: "/images/consulting-team.jpg",
       color: "from-indigo-800 to-purple-700",
-      bgClass: "bg-gradient-to-br from-indigo-800 to-purple-700",
+      bgClass: "bg-gradient-to-br from-indigo-800/90 to-purple-800/90",
       visualElements: [
         { type: "circle", size: "lg", position: "top-right", color: "bg-purple-500/20", blur: true },
         { type: "circle", size: "md", position: "bottom-left", color: "bg-indigo-500/20", blur: true },
@@ -43,8 +44,9 @@ export default function RevisedProfessionalServices() {
       title: "End-to-End Business Support",
       subtitle: "From pre-sales to invoicing, we've got your back office covered",
       image: "🔄",
+      bgImage: "/images/business-meeting.jpg",
       color: "from-blue-800 to-cyan-700",
-      bgClass: "bg-gradient-to-br from-blue-800 to-cyan-700",
+      bgClass: "bg-gradient-to-br from-blue-800/90 to-cyan-800/90",
       visualElements: [
         { type: "circle", size: "xl", position: "center-right", color: "bg-blue-500/20", blur: true },
         { type: "circle", size: "sm", position: "top-left", color: "bg-cyan-500/20", blur: true },
@@ -55,8 +57,9 @@ export default function RevisedProfessionalServices() {
       title: "Focus On Your Expertise",
       subtitle: "Let our AI handle the routine tasks while you deliver client value",
       image: "🚀",
+      bgImage: "/images/ai-automation.jpg",
       color: "from-emerald-800 to-teal-700", 
-      bgClass: "bg-gradient-to-br from-emerald-800 to-teal-700",
+      bgClass: "bg-gradient-to-br from-emerald-800/90 to-teal-800/90",
       visualElements: [
         { type: "circle", size: "lg", position: "bottom-right", color: "bg-teal-500/20", blur: true },
         { type: "circle", size: "md", position: "top-center", color: "bg-emerald-500/20", blur: true },
@@ -364,10 +367,17 @@ export default function RevisedProfessionalServices() {
               key={index}
               className={`absolute inset-0 transition-opacity duration-1000 ${
                 index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              } ${slide.bgClass}`}
+              }`}
+              style={{
+                backgroundImage: `url(${slide.bgImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
             >
-              {/* Dynamic visual elements */}
-              {slide.visualElements?.map((element, i) => {
+              {/* Gradient overlay */}
+              <div className={`absolute inset-0 ${slide.bgClass}`}>
+                {/* Dynamic visual elements */}
+                {slide.visualElements?.map((element, i) => {
                 if (element.type === "circle") {
                   // Position classes
                   const positionClass = element.position === "top-right" ? "top-10 right-10" :
