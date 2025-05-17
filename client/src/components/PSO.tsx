@@ -78,21 +78,6 @@ export default function PSO() {
         'Document generation for project deliverables',
         'Resource allocation and timeline optimization'
       ]
-    },
-    {
-      id: 'admin',
-      title: 'Admin & Billing',
-      icon: '📊',
-      color: 'from-rose-600 to-red-600',
-      description: 'Automated back-office operations for consultants',
-      details: "Streamline administrative tasks with automated invoicing, contract management, and expense tracking that integrates with popular accounting systems to reduce overhead and improve cash flow.",
-      features: [
-        'Automated invoice generation based on time tracking',
-        'Contract management with renewal reminders',
-        'Expense tracking with receipt scanning',
-        'Tax preparation assistance for consultants',
-        'Financial reporting and business analytics'
-      ]
     }
   ];
   
@@ -216,7 +201,16 @@ export default function PSO() {
                   
                   {/* Content container */}
                   <div className="relative h-full px-6 py-12 flex items-center">
-                    <div className="w-full md:w-1/2">
+                    {/* Icon on left */}
+                    <div className="hidden md:flex items-center justify-center w-1/4">
+                      <div className="relative w-28 h-28 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 z-10">
+                        <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-white/5 to-white/10 blur-xl"></div>
+                        <div className="text-5xl relative z-10" style={{ animation: 'icon-float 3s ease-in-out infinite' }}>{slide.icon}</div>
+                      </div>
+                    </div>
+                    
+                    {/* Text in middle */}
+                    <div className="w-full md:w-2/4 md:text-center">
                       <h1 className="text-4xl font-bold mb-4 leading-tight">
                         {slide.title}
                       </h1>
@@ -225,20 +219,15 @@ export default function PSO() {
                         {slide.subtitle}
                       </p>
                       
-                      <div className="flex flex-wrap gap-3">
+                      <div className="flex flex-wrap md:justify-center gap-3">
                         <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
                           Learn More
                         </button>
                       </div>
                     </div>
                     
-                    {/* Icon display */}
-                    <div className="hidden md:flex items-center justify-center w-1/2">
-                      <div className="relative w-40 h-40 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 z-10">
-                        <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-r from-white/5 to-white/10 blur-xl"></div>
-                        <div className="text-7xl relative z-10">{slide.icon}</div>
-                      </div>
-                    </div>
+                    {/* Image area on right */}
+                    <div className="hidden md:block w-1/4"></div>
                   </div>
                 </div>
               ))}
