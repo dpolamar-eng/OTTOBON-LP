@@ -335,65 +335,74 @@ export default function PSO() {
               Each service combines AI automation with optional human support, allowing you to choose the right balance for your needs.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div className="grid grid-cols-1 gap-6 mt-6">
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className={`bg-white/5 rounded-lg overflow-hidden border border-white/10 transition-all duration-300 ${
-                    expandedCards[service.id] 
-                      ? 'bg-white/10 transform scale-[1.02] shadow-lg' 
-                      : 'hover:bg-white/10'
+                  className={`perspective-1000 relative h-[220px] sm:h-[240px] md:h-[260px] transition-all duration-300 transform ${
+                    expandedCards[service.id] ? 'rotate-y-180' : ''
                   }`}
                 >
+                  {/* Front of card */}
                   <div 
-                    className="cursor-pointer"
+                    className={`absolute inset-0 duration-500 bg-white/5 rounded-xl border border-white/20 shadow-xl flex flex-col overflow-hidden backface-hidden ${
+                      expandedCards[service.id] ? 'opacity-0' : 'opacity-100'
+                    }`}
                     onClick={() => toggleCard(service.id)}
                   >
-                    <div className={`bg-gradient-to-r ${service.color} p-4 flex items-center`}>
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-2xl">{service.icon}</span>
+                    <div className={`bg-gradient-to-r ${service.color} p-5 flex items-center`}>
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-4xl">{service.icon}</span>
                       </div>
-                      <h3 className="font-bold text-white flex-1">{service.title}</h3>
-                      <button className="text-white/80 hover:text-white">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth="2" 
-                            d={expandedCards[service.id] ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"}
-                          ></path>
+                      <div>
+                        <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                      </div>
+                    </div>
+                    
+                    <div className="p-6 flex-1 flex flex-col">
+                      <p className="text-lg text-gray-200 mb-4">{service.description}</p>
+                      
+                      <div className="mt-auto flex justify-between items-center">
+                        <span className="text-indigo-400 text-sm">Click to see details</span>
+                        <div className="animate-bounce">
+                          <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8h16M4 16h16"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Back of card */}
+                  <div 
+                    className={`absolute inset-0 duration-500 bg-gray-800 rounded-xl border border-white/10 shadow-xl p-6 flex flex-col rotate-y-180 backface-hidden ${
+                      expandedCards[service.id] ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onClick={() => toggleCard(service.id)}
+                  >
+                    <div className="flex justify-between items-center mb-3">
+                      <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                      <button className="bg-white/10 hover:bg-white/20 p-1 rounded-full">
+                        <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
                       </button>
                     </div>
                     
-                    <div className="p-4">
-                      <p className="text-gray-300">{service.description}</p>
+                    <div className="overflow-y-auto flex-1 pr-1">
+                      <p className="text-gray-300 mb-4 text-sm">{service.details}</p>
                       
-                      <div className={`overflow-hidden transition-all duration-300 ${
-                        expandedCards[service.id] ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'
-                      }`}>
-                        <p className="text-gray-400 mb-4">{service.details}</p>
-                        
-                        <div className="bg-white/5 rounded-lg p-4">
-                          <h4 className="text-sm font-medium text-white/90 mb-3">Key Features</h4>
-                          <ul className="space-y-2">
-                            {service.features.map((feature, i) => (
-                              <li key={i} className="flex items-start">
-                                <svg className="w-4 h-4 text-indigo-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span className="text-gray-300">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                      
-                      <div className={`mt-3 text-sm font-medium text-center text-indigo-400 ${
-                        expandedCards[service.id] ? 'hidden' : 'block'
-                      }`}>
-                        Click for details
-                      </div>
+                      <h4 className="text-sm font-semibold uppercase tracking-wide text-indigo-400 mb-2">Key Features</h4>
+                      <ul className="space-y-2 mb-4">
+                        {service.features.map((feature, i) => (
+                          <li key={i} className="flex items-start">
+                            <svg className="w-4 h-4 text-indigo-500 mt-1 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span className="text-gray-300 text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
