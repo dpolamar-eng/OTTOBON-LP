@@ -326,7 +326,7 @@ export default function ImageServices() {
         {/* Hero section with image backgrounds */}
         <section 
           ref={heroRef}
-          className="relative h-[600px] sm:h-[650px] overflow-hidden"
+          className="relative h-[500px] sm:h-[550px] overflow-hidden"
         >
           {heroSlides.map((slide, index) => (
             <div 
@@ -458,9 +458,9 @@ export default function ImageServices() {
         </section>
         
         {/* Overview section */}
-        <section id="overview" className="py-20 bg-gray-900">
+        <section id="overview" className="py-12 bg-gray-900">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto mb-16">
+            <div className="max-w-4xl mx-auto mb-8">
               <h2 className="text-3xl font-bold mb-6 text-center">Modern Consulting Support</h2>
               <p className="text-gray-300 mb-10 text-center text-lg">
                 The Ottobon Professional Services Organization (PSO) provides consultants with a comprehensive suite of operational and administrative support services powered by advanced AI and human expertise.
@@ -561,12 +561,14 @@ export default function ImageServices() {
         </section>
         
         {/* Services section */}
-        <section id="services" className="py-20 bg-gradient-to-b from-gray-900 to-gray-950">
+        <section id="services" className="py-10 bg-gradient-to-b from-gray-900 to-gray-950">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-6 text-center">Our Service Offerings</h2>
-            <p className="text-gray-300 max-w-3xl mx-auto text-center mb-12">
-              Each service combines AI automation with optional human support, allowing you to choose the right balance for your needs.
-            </p>
+            <div className="bg-indigo-900/30 rounded-xl p-6 border border-indigo-800/30 mb-8">
+              <h2 className="text-3xl font-bold mb-4 text-center">Our Service Offerings</h2>
+              <p className="text-gray-300 max-w-3xl mx-auto text-center">
+                Each service combines AI automation with optional human support, allowing you to choose the right balance for your needs.
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {offerings.map((service) => (
@@ -656,12 +658,14 @@ export default function ImageServices() {
         </section>
         
         {/* Audience section */}
-        <section id="audience" className="py-20 bg-gray-900">
+        <section id="audience" className="py-10 bg-gray-900">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-6 text-center">Who We Serve</h2>
-            <p className="text-gray-300 max-w-3xl mx-auto text-center mb-12">
-              Our flexible service model adapts to different consulting business models and scales.
-            </p>
+            <div className="bg-purple-900/30 rounded-xl p-6 border border-purple-800/30 mb-8">
+              <h2 className="text-3xl font-bold mb-4 text-center">Who We Serve</h2>
+              <p className="text-gray-300 max-w-3xl mx-auto text-center">
+                Our flexible service model adapts to different consulting business models and scales.
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {audiences.map((audience, index) => (
@@ -693,8 +697,14 @@ export default function ImageServices() {
         </section>
         
         {/* Notification form section */}
-        <section id="notify" className="py-20 bg-gradient-to-b from-gray-900 to-gray-950">
+        <section id="notify" className="py-10 bg-gradient-to-b from-gray-900 to-gray-950">
           <div className="container mx-auto px-4">
+            <div className="bg-cyan-900/30 rounded-xl p-6 border border-cyan-800/30 mb-8">
+              <h2 className="text-3xl font-bold mb-4 text-center">Stay Updated</h2>
+              <p className="text-gray-300 max-w-3xl mx-auto text-center">
+                Join our notification list to be the first to know when our services launch.
+              </p>
+            </div>
             <div className="max-w-md mx-auto bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
               <h2 className="text-2xl font-bold mb-2 text-center">Get Notified at Launch</h2>
               <p className="text-gray-400 mb-6 text-center">
