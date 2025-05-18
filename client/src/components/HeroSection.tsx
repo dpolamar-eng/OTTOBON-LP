@@ -1,13 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
+import { useInterval } from '@/hooks/use-interval';
 
 export default function HeroSection() {
-  // State for controlling autoplay
-  const [isPaused, setIsPaused] = useState(false);
-  const autoplayInterval = 5000;
-  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
   // Carousel for hero content
   const [heroViewportRef, heroEmbla] = useEmblaCarousel({ 
     loop: true,
@@ -17,6 +13,8 @@ export default function HeroSection() {
   });
   
   const [heroActiveIndex, setHeroActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const autoplayInterval = 5000;
   
   const heroSlides = [
     {
@@ -48,31 +46,13 @@ export default function HeroSection() {
     if (heroEmbla) heroEmbla.scrollTo(index);
   }, [heroEmbla]);
   
-  // Using a simpler approach for autoplay
-  
-  // Effect to handle autoplay start/stop
-  useEffect(() => {
-    // Start autoplay when component mounts and isPaused is false
-    if (heroEmbla && !isPaused) {
-      const autoplayFunc = () => {
-        autoplayTimeoutRef.current = setTimeout(() => {
-          heroEmbla.scrollNext();
-          autoplayFunc(); // Set up the next one
-        }, autoplayInterval);
-      };
-      
-      // Start the first timeout
-      autoplayFunc();
-    }
-    
-    // Cleanup function that runs when either isPaused changes or component unmounts
-    return () => {
-      if (autoplayTimeoutRef.current) {
-        clearTimeout(autoplayTimeoutRef.current);
-        autoplayTimeoutRef.current = null;
-      }
-    };
-  }, [heroEmbla, isPaused, autoplayInterval]);
+  // Handle auto-scrolling with useInterval hook
+  useInterval(
+    () => {
+      if (heroEmbla) heroEmbla.scrollNext();
+    },
+    isPaused ? null : autoplayInterval
+  );
   
   // Effect to handle embla event listeners
   useEffect(() => {
@@ -129,7 +109,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-grid-pattern opacity-5 z-[-1]"></div>
         
         <div 
-          className="embla overflow-hidden rounded-2xl shadow-2xl" 
+          className="embla overflow-hidden rounded-2xl shadow-2xl relative cursor-pointer" 
           ref={heroViewportRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
