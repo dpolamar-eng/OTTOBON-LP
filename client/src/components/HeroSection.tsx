@@ -12,6 +12,7 @@ export default function HeroSection() {
   });
   
   const [heroActiveIndex, setHeroActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const autoplayInterval = 5000;
   const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
@@ -46,15 +47,15 @@ export default function HeroSection() {
   }, [heroEmbla]);
   
   const autoplayCallback = useCallback(() => {
-    if (!heroEmbla) return;
+    if (!heroEmbla || isPaused) return;
     if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
     
     autoplayTimeoutRef.current = setTimeout(() => {
-      if (!heroEmbla) return;
+      if (!heroEmbla || isPaused) return;
       heroEmbla.scrollNext();
       autoplayCallback();
     }, autoplayInterval);
-  }, [heroEmbla, autoplayInterval]);
+  }, [heroEmbla, autoplayInterval, isPaused]);
   
   useEffect(() => {
     if (!heroEmbla) return;
@@ -113,7 +114,12 @@ export default function HeroSection() {
         {/* Grid pattern overlay */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5 z-[-1]"></div>
         
-        <div className="embla overflow-hidden rounded-2xl shadow-2xl" ref={heroViewportRef}>
+        <div 
+          className="embla overflow-hidden rounded-2xl shadow-2xl" 
+          ref={heroViewportRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="embla__container flex">
             {heroSlides.map((slide, index) => (
               <div key={index} className="embla__slide flex-[0_0_100%] min-w-0">
