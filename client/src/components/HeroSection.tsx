@@ -3,6 +3,11 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
 
 export default function HeroSection() {
+  // State for controlling autoplay
+  const [isPaused, setIsPaused] = useState(false);
+  const autoplayInterval = 5000;
+  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
   // Carousel for hero content
   const [heroViewportRef, heroEmbla] = useEmblaCarousel({ 
     loop: true,
@@ -12,9 +17,6 @@ export default function HeroSection() {
   });
   
   const [heroActiveIndex, setHeroActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const autoplayInterval = 5000;
-  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const heroSlides = [
     {
@@ -46,30 +48,42 @@ export default function HeroSection() {
     if (heroEmbla) heroEmbla.scrollTo(index);
   }, [heroEmbla]);
   
-  const autoplayCallback = useCallback(() => {
-    if (!heroEmbla || isPaused) return;
-    if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
-    
-    autoplayTimeoutRef.current = setTimeout(() => {
-      if (!heroEmbla || isPaused) return;
-      heroEmbla.scrollNext();
-      autoplayCallback();
-    }, autoplayInterval);
-  }, [heroEmbla, autoplayInterval, isPaused]);
+  // Using a simpler approach for autoplay
   
+  // Effect to handle autoplay start/stop
+  useEffect(() => {
+    // Start autoplay when component mounts and isPaused is false
+    if (heroEmbla && !isPaused) {
+      const autoplayFunc = () => {
+        autoplayTimeoutRef.current = setTimeout(() => {
+          heroEmbla.scrollNext();
+          autoplayFunc(); // Set up the next one
+        }, autoplayInterval);
+      };
+      
+      // Start the first timeout
+      autoplayFunc();
+    }
+    
+    // Cleanup function that runs when either isPaused changes or component unmounts
+    return () => {
+      if (autoplayTimeoutRef.current) {
+        clearTimeout(autoplayTimeoutRef.current);
+        autoplayTimeoutRef.current = null;
+      }
+    };
+  }, [heroEmbla, isPaused, autoplayInterval]);
+  
+  // Effect to handle embla event listeners
   useEffect(() => {
     if (!heroEmbla) return;
     onHeroSelect();
     heroEmbla.on('select', onHeroSelect);
-    autoplayCallback();
     
     return () => {
       heroEmbla.off('select', onHeroSelect);
-      if (autoplayTimeoutRef.current) {
-        clearTimeout(autoplayTimeoutRef.current);
-      }
     };
-  }, [heroEmbla, onHeroSelect, autoplayCallback]);
+  }, [heroEmbla, onHeroSelect]);
   
   // Animation refs
   const sectionRef = useAnimation('animate-fade-in');
