@@ -51,8 +51,13 @@ export default function CallToActionSection() {
           
           {/* CTA Actions */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <a 
-              href="#assessment" 
+            <button 
+              onClick={() => {
+                const assessmentElement = document.getElementById('talent-compass');
+                if (assessmentElement) {
+                  assessmentElement.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-4 px-8 rounded-full transition shadow-lg hover:shadow-xl text-lg group"
             >
               <span className="flex items-center">
@@ -61,35 +66,40 @@ export default function CallToActionSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
               </span>
-            </a>
-            <a 
-              href="#enroll" 
+            </button>
+            <button 
+              onClick={() => {
+                const coursesElement = document.getElementById('courses');
+                if (coursesElement) {
+                  coursesElement.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-full transition text-lg"
             >
               View Programs
-            </a>
+            </button>
           </div>
           
           {/* Email signup */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto border border-white/20">
-            <h3 className="text-white font-semibold mb-3">Get Program Updates</h3>
-            <form onSubmit={handleSubmit} className="flex gap-2">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 max-w-md mx-auto border border-white/20">
+            <h3 className="text-white font-semibold mb-3 text-center">Get Program Updates</h3>
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="flex-1 px-3 sm:px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm"
                 required
               />
               <button
                 type="submit"
-                className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition"
+                className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition text-sm whitespace-nowrap"
               >
                 {isSubmitted ? 'Thanks!' : 'Notify Me'}
               </button>
             </form>
-            <p className="text-blue-200 text-xs mt-2">
+            <p className="text-blue-200 text-xs mt-2 text-center">
               Get notified about new programs and special offers
             </p>
           </div>

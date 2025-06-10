@@ -726,6 +726,28 @@ export default function TalentCompassAssessment() {
     setAssessmentStarted(true);
     setCurrentPhase('path-selection');
   };
+
+  // Navigation functions
+  const goBack = () => {
+    if (currentPhase === 'path-selection') {
+      setCurrentPhase('intro');
+      setAssessmentStarted(false);
+    } else if (currentPhase === 'trait-assessment') {
+      setCurrentPhase('path-selection');
+      setCurrentQuestionIndex(0);
+      setAnsweredQuestions([]);
+    } else if (currentPhase === 'background-assessment') {
+      setCurrentPhase('trait-assessment');
+      setCurrentQuestionIndex(0);
+      // Keep trait answers but reset to start of trait questions
+      const traitAnswers = answeredQuestions.filter(id => id <= traitQuestions.length);
+      setAnsweredQuestions(traitAnswers);
+    } else if (currentPhase === 'results') {
+      setCurrentPhase('background-assessment');
+      setCurrentQuestionIndex(traitQuestions.length);
+      setAssessmentComplete(false);
+    }
+  };
   
   // Render trait score card
   const renderTraitScoreCard = (trait: Trait) => {
@@ -875,6 +897,18 @@ export default function TalentCompassAssessment() {
         
         {currentPhase === 'path-selection' && (
           <div className="max-w-4xl mx-auto">
+            <div className="flex justify-between items-center mb-6">
+              <button
+                onClick={goBack}
+                className="flex items-center text-gray-600 hover:text-gray-800 transition"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </button>
+              <span className="text-sm text-gray-500">Step 1 of 3</span>
+            </div>
             <p className="text-center text-gray-600 mb-10">
               Select your current position to customize your assessment journey.
             </p>
@@ -924,6 +958,20 @@ export default function TalentCompassAssessment() {
         
         {(currentPhase === 'trait-assessment' || currentPhase === 'background-assessment') && (
           <div className="max-w-5xl mx-auto">
+            <div className="flex justify-between items-center mb-6">
+              <button
+                onClick={goBack}
+                className="flex items-center text-gray-600 hover:text-gray-800 transition"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </button>
+              <span className="text-sm text-gray-500">
+                {currentPhase === 'trait-assessment' ? 'Step 2 of 3' : 'Step 3 of 3'}
+              </span>
+            </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Compass visualization */}
               <div ref={compassRef} className="hidden lg:block">
@@ -989,6 +1037,18 @@ export default function TalentCompassAssessment() {
         
         {currentPhase === 'results' && (
           <div className="max-w-5xl mx-auto">
+            <div className="flex justify-between items-center mb-6">
+              <button
+                onClick={goBack}
+                className="flex items-center text-gray-600 hover:text-gray-800 transition"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </button>
+              <span className="text-sm text-gray-500">Results</span>
+            </div>
             <p className="text-center text-gray-600 mb-10">
               Based on your responses, we've created a personalized profile highlighting your strengths and optimal paths.
             </p>
