@@ -44,11 +44,17 @@ export default function GatewayPortal() {
             </div>
           </div>
         </div>
-        <div className="max-w-3xl mx-auto px-6">
-          <h1 className="text-xl sm:text-2xl text-blue-100 font-light mb-8">
-            Transforming talent into technology leaders through specialized learning and consulting
+        <div className="max-w-4xl mx-auto px-6">
+          <h1 className="text-xl sm:text-2xl text-blue-100 font-light mb-4">
+            Empowering the Future of AI-Driven Consulting
           </h1>
-          <div className="h-0.5 w-24 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
+          <p className="text-lg text-blue-200 mb-6 max-w-3xl mx-auto">
+            Learn from AI to become faster, smarter, and more effective. Transform into an independent consultant or enhance your professional services with cutting-edge skills.
+          </p>
+          <div className="h-0.5 w-24 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mb-2"></div>
+          <p className="text-sm text-blue-300 italic">
+            "Learning from AI makes things easier, faster, and smarter"
+          </p>
         </div>
       </div>
 
@@ -70,21 +76,21 @@ export default function GatewayPortal() {
                 <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-6">
                   <span className="text-3xl">🎓</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Technology Academy</h2>
-                <p className="text-blue-100 mb-6">Accelerated learning programs for emerging tech professionals with AI-personalized training paths.</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Ottobon Academy</h2>
+                <p className="text-blue-100 mb-6">Transform students and freshers into independent consultants with job-ready skills in high-demand technologies.</p>
                 
                 <div className="space-y-2">
                   <div className="flex items-start">
                     <span className="text-green-400 mr-2">✓</span>
-                    <span className="text-blue-50">AI-personalized curriculum</span>
+                    <span className="text-blue-50">Salesforce & Oracle expertise</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-green-400 mr-2">✓</span>
-                    <span className="text-blue-50">Industry-recognized certifications</span>
+                    <span className="text-blue-50">Cloud Computing & Full Stack Development</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-green-400 mr-2">✓</span>
-                    <span className="text-blue-50">Expert mentorship & coaching</span>
+                    <span className="text-blue-50">AI-enhanced learning paths</span>
                   </div>
                 </div>
               </div>
@@ -119,21 +125,21 @@ export default function GatewayPortal() {
                 <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-6">
                   <span className="text-3xl">🤖</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Professional Services Org</h2>
-                <p className="text-purple-100 mb-6">Empowering experts and consulting businesses with comprehensive operational and strategic support.</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Ottobon Services</h2>
+                <p className="text-purple-100 mb-6">Empowering working professionals to transition into consultant providers with advanced tech learning and professional services.</p>
                 
                 <div className="space-y-2">
                   <div className="flex items-start">
                     <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">AI-powered business functions</span>
+                    <span className="text-purple-50">Independent Consultants</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Executive & operational support</span>
+                    <span className="text-purple-50">Small Consulting Firms</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Flexible service for all expert levels</span>
+                    <span className="text-purple-50">Mid-Size Practices</span>
                   </div>
                 </div>
               </div>

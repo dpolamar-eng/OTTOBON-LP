@@ -8,7 +8,7 @@ export default function Footer() {
               OttoBon
             </div>
             <p className="text-gray-400 mb-4">
-              Accelerating careers in technology consulting with specialized training and mentorship.
+              Empowering the future of AI-driven consulting. Learn from AI to become faster, smarter, and more effective.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition"><i className="fab fa-linkedin"></i></a>
@@ -19,21 +19,21 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Programs</h3>
+            <h3 className="text-lg font-semibold mb-4">Core Skills</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Business Applications</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">AI Consulting</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Salesforce Consulting</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Oracle Systems</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition">Cloud Computing</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Group Enrollment</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Full Stack Development</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Free Skill Assessment</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Blog & Insights</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Success Stories</a></li>
+              <li><a href="#assessment" className="text-gray-400 hover:text-white transition">Talent Compass Assessment</a></li>
+              <li><a href="#success-stories" className="text-gray-400 hover:text-white transition">Student Success Stories</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Partner Companies</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition">Career Support</a></li>
             </ul>
           </div>

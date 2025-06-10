@@ -24,9 +24,9 @@ export default function SuccessStoriesSection() {
   return (
     <section id="success-stories" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Success Stories</h2>
-        <p className="text-center text-gray-700 max-w-2xl mx-auto mb-12">
-          Our graduates have secured positions at top consulting firms and technology companies across the globe.
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Student to Consultant Transformations</h2>
+        <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+          Discover how our AI-enhanced learning approach has empowered students and freshers to become independent consultants in Salesforce, Oracle, Cloud Computing, and Full Stack Development.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -36,15 +36,17 @@ export default function SuccessStoriesSection() {
               <div className="flip-card-front bg-gray-100">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex items-center mb-4">
-                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" className="w-16 h-16 rounded-full mr-4" />
+                    <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                      <span className="text-2xl">👩‍💼</span>
+                    </div>
                     <div>
-                      <h3 className="font-bold text-lg">Sarah Johnson</h3>
-                      <p className="text-primary">Salesforce Consultant at Accenture</p>
+                      <h3 className="font-bold text-lg">Priya Sharma</h3>
+                      <p className="text-primary">Independent Salesforce Consultant</p>
                     </div>
                   </div>
                   <div className="flex-1">
                     <p className="text-gray-700 mb-4">
-                      "The program transformed my career in just 12 weeks..."
+                      "From computer science student to earning $85/hour as a Salesforce consultant..."
                     </p>
                     <div className="text-center mt-2">
                       <button className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto">

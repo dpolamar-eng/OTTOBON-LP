@@ -1,0 +1,100 @@
+import { useState } from 'react';
+
+export default function CallToActionSection() {
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle email signup
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000);
+  };
+
+  return (
+    <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-white/10 rounded-full blur-xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Transform Your Career?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Join thousands of students who have successfully transitioned into independent consultants through our AI-enhanced learning programs.
+          </p>
+          
+          {/* Key benefits */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+              <div className="text-3xl mb-3">🎯</div>
+              <h3 className="text-white font-semibold mb-2">Industry-Ready Skills</h3>
+              <p className="text-blue-100 text-sm">Salesforce, Oracle, Cloud Computing & Full Stack Development</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+              <div className="text-3xl mb-3">🤖</div>
+              <h3 className="text-white font-semibold mb-2">AI-Enhanced Learning</h3>
+              <p className="text-blue-100 text-sm">Personalized curriculum that adapts to your learning style</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+              <div className="text-3xl mb-3">💼</div>
+              <h3 className="text-white font-semibold mb-2">Consulting Success</h3>
+              <p className="text-blue-100 text-sm">Graduate as an independent consultant, not just an employee</p>
+            </div>
+          </div>
+          
+          {/* CTA Actions */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <a 
+              href="#assessment" 
+              className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-4 px-8 rounded-full transition shadow-lg hover:shadow-xl text-lg group"
+            >
+              <span className="flex items-center">
+                Take Free Assessment
+                <svg className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </span>
+            </a>
+            <a 
+              href="#enroll" 
+              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-full transition text-lg"
+            >
+              View Programs
+            </a>
+          </div>
+          
+          {/* Email signup */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto border border-white/20">
+            <h3 className="text-white font-semibold mb-3">Get Program Updates</h3>
+            <form onSubmit={handleSubmit} className="flex gap-2">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition"
+              >
+                {isSubmitted ? 'Thanks!' : 'Notify Me'}
+              </button>
+            </form>
+            <p className="text-blue-200 text-xs mt-2">
+              Get notified about new programs and special offers
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

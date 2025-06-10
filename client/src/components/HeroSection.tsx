@@ -18,22 +18,22 @@ export default function HeroSection() {
   
   const heroSlides = [
     {
-      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700'>Transform</span> Your Career <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-600'>Potential</span>",
-      description: "Ottobon Academy equips you with in-demand technology consulting skills through personalized mentorship and industry-aligned curriculum that accelerates your career path.",
+      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700'>Transform</span> Students into <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-600'>Independent Consultants</span>",
+      description: "Ottobon Academy empowers students and freshers with job-ready skills in Salesforce, Oracle, Cloud Computing, and Full Stack Development through AI-enhanced learning paths.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Technology professional in modern workspace"
     },
     {
-      title: "Learn <span class='bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600'>Today</span>, Lead <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600'>Tomorrow</span>",
-      description: "Our immersive programs focus on practical applications and real-world projects, guided by industry experts who have implemented enterprise technologies at scale.",
+      title: "AI-First <span class='bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600'>Learning</span> for the <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600'>Future</span>",
+      description: "Learn from AI to become faster, smarter, and more effective. Our curriculum blends education with real consulting experience, preparing you for an AI-powered world.",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Collaborative learning environment"
+      alt: "AI-enhanced collaborative learning environment"
     },
     {
-      title: "Discover Your <span class='bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-pink-500'>Perfect</span> Learning Path",
-      description: "Take our Career Fit Assessment to unlock personalized program recommendations and qualify for up to 90% tuition reduction based on your unique skills and background.",
+      title: "Your <span class='bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-pink-500'>Consulting</span> Career Starts Here",
+      description: "Take our Talent Compass Assessment to discover your ideal learning path in high-demand technologies and qualify for up to 90% tuition reduction based on your unique profile.",
       image: "https://images.unsplash.com/photo-1558222218-b7b54eede3f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Professional analyzing data on screen"
+      alt: "Future consultant analyzing career opportunities"
     }
   ];
   

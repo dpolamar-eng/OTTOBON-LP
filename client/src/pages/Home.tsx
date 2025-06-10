@@ -5,6 +5,7 @@ import RequirementsSection from "@/components/RequirementsSection";
 import IntegratedHeroJourney from "@/components/IntegratedHeroJourney";
 import StorytellingOnboarding from "@/components/StorytellingOnboarding";
 import TalentCompassAssessment from "@/components/TalentCompassAssessment";
+import CallToActionSection from "@/components/CallToActionSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <CoursesSection />
         <RequirementsSection />
         <TalentCompassAssessment />
+        <CallToActionSection />
       </main>
       <Footer />
     </div>

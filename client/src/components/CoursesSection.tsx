@@ -44,50 +44,84 @@ export default function CoursesSection() {
   // Courses data
   const courses: Course[] = [
     {
-      id: 'genai',
-      title: 'Generative AI Solutions Architect',
+      id: 'salesforce',
+      title: 'Salesforce Consultant Excellence',
       category: 'Career Launch',
-      categoryLabel: 'AI',
-      color: 'indigo-800',
-      bgColor: 'indigo-100',
-      description: 'Design and implement generative AI solutions for enterprise applications.',
+      categoryLabel: 'CRM',
+      color: 'blue-800',
+      bgColor: 'blue-100',
+      description: 'Master Salesforce implementation and customization to become an independent consultant.',
       outcomes: [
-        'Large language model implementation',
-        'Responsible AI deployment frameworks',
-        'Enterprise-ready AI architectures'
+        'Salesforce Administrator & Developer certifications',
+        'Custom CRM solutions for enterprises',
+        'Independent consulting business skills'
       ],
       logoUrl: '',
-      gradientFrom: 'from-indigo-500',
-      gradientTo: 'to-indigo-700'
+      gradientFrom: 'from-blue-500',
+      gradientTo: 'to-blue-700'
     },
     {
-      id: 'aws',
-      title: 'AWS Solutions Architect',
+      id: 'oracle',
+      title: 'Oracle Database Specialist',
+      category: 'Career Launch',
+      categoryLabel: 'Database',
+      color: 'red-800',
+      bgColor: 'red-100',
+      description: 'Become an Oracle database expert with AI-enhanced learning for enterprise consulting.',
+      outcomes: [
+        'Oracle Certified Professional credentials',
+        'Database performance optimization',
+        'Enterprise data architecture consulting'
+      ],
+      logoUrl: '',
+      gradientFrom: 'from-red-500',
+      gradientTo: 'to-red-700'
+    },
+    {
+      id: 'cloud',
+      title: 'Cloud Computing Mastery',
       category: 'Career Launch',
       categoryLabel: 'Cloud',
-      color: 'yellow-800',
-      bgColor: 'yellow-100',
-      description: 'Design and implement scalable, high-availability systems on AWS.',
+      color: 'green-800',
+      bgColor: 'green-100',
+      description: 'Multi-cloud expertise across AWS, Azure, and GCP for consulting success.',
       outcomes: [
-        'AWS Solutions Architect certification',
-        'Multi-tier cloud architecture design',
-        'Security and cost optimization expertise'
+        'Multi-cloud architecture certifications',
+        'Cloud migration strategies',
+        'Independent cloud consulting practice'
       ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
-      gradientFrom: 'from-yellow-500',
-      gradientTo: 'to-orange-500'
+      logoUrl: '',
+      gradientFrom: 'from-green-500',
+      gradientTo: 'to-green-700'
     },
     {
-      id: 'salesforce',
+      id: 'fullstack',
+      title: 'Full Stack Development Pro',
+      category: 'Career Launch',
+      categoryLabel: 'Development',
+      color: 'purple-800',
+      bgColor: 'purple-100',
+      description: 'Complete full stack development mastery with modern frameworks and AI integration.',
+      outcomes: [
+        'React, Node.js, and database expertise',
+        'AI-powered application development',
+        'Independent software consulting practice'
+      ],
+      logoUrl: '',
+      gradientFrom: 'from-purple-500',
+      gradientTo: 'to-purple-700'
+    },
+    {
+      id: 'salesforce-advanced',
       title: 'Salesforce CX Consultant',
       category: 'Tech Edge',
       categoryLabel: 'Business Apps',
       color: 'blue-800',
       bgColor: 'blue-100',
-      description: 'Become a certified Salesforce consultant specializing in customer experience solutions.',
+      description: 'Advanced Salesforce consulting specializing in customer experience solutions.',
       outcomes: [
-        'Salesforce Administrator & Consultant certifications',
-        'End-to-end implementation expertise',
+        'Salesforce Solution Architect certification',
+        'Complex enterprise implementations',
         'Industry-specific CRM solutions'
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg',
