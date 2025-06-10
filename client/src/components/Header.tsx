@@ -50,8 +50,8 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <img src="/assets/logo.png" alt="Ottobon Logo" className="h-16 sm:h-20" />
-          <div className="text-2xl sm:text-3xl font-extrabold ml-1">
+          <img src="/assets/logo.png" alt="Ottobon Logo" className="h-12 sm:h-16 md:h-20" />
+          <div className="text-lg sm:text-2xl md:text-3xl font-extrabold ml-2 sm:ml-3">
             <span className="text-white">OTTOBON</span>
           </div>
         </Link>
