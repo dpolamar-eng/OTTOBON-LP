@@ -192,11 +192,13 @@ export default function CoursesSection() {
   
   // Embla carousel setup
   const [viewportRef, embla] = useEmblaCarousel({ 
-    loop: false, // Disable loop when fewer items
+    loop: false,
     align: 'start',
     skipSnaps: false,
     slidesToScroll: 1,
-    containScroll: 'keepSnaps' // Prevents scrolling beyond the available slides
+    containScroll: 'keepSnaps',
+    direction: 'ltr',
+    startIndex: 0
   });
   const [autoplay, setAutoplay] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
@@ -233,7 +235,7 @@ export default function CoursesSection() {
     if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
     
     autoplayTimeoutRef.current = setTimeout(() => {
-      if (!embla) return;
+      if (!embla || isHovering) return;
       embla.scrollNext();
       autoplayCallback();
     }, autoplayInterval);
@@ -349,6 +351,10 @@ export default function CoursesSection() {
                   <div 
                     className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative`}
                     onClick={() => toggleFlipCard(course.id)}
+                    onTouchStart={() => setIsHovering(true)}
+                    onTouchEnd={() => setIsHovering(false)}
+                    onMouseDown={() => setIsHovering(true)}
+                    onMouseUp={() => setIsHovering(false)}
                   >
                     {/* No hover tooltip anymore */}
                     <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? 'flipped' : ''}`}>

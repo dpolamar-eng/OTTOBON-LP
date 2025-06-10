@@ -65,7 +65,10 @@ export default function GatewayPortal() {
           className={`gateway-card group ${hoverState === 'academy' ? 'scale-105' : hoverState === 'services' ? 'scale-95 opacity-80' : ''}`}
           onMouseEnter={() => setHoverState('academy')}
           onMouseLeave={() => setHoverState(null)}
-          onClick={() => navigate('/academy')}
+          onClick={() => {
+            navigate('/academy');
+            window.scrollTo(0, 0);
+          }}
         >
           <div className="relative h-full w-full rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-indigo-600 p-0.5">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-80"></div>
@@ -114,7 +117,10 @@ export default function GatewayPortal() {
           className={`gateway-card group ${hoverState === 'services' ? 'scale-105' : hoverState === 'academy' ? 'scale-95 opacity-80' : ''}`}
           onMouseEnter={() => setHoverState('services')}
           onMouseLeave={() => setHoverState(null)}
-          onClick={() => navigate('/services')}
+          onClick={() => {
+            navigate('/services');
+            window.scrollTo(0, 0);
+          }}
         >
           <div className="relative h-full w-full rounded-2xl overflow-hidden bg-gradient-to-br from-purple-500 to-pink-600 p-0.5">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 opacity-80"></div>
