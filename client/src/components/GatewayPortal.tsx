@@ -6,32 +6,10 @@ export default function GatewayPortal() {
   const [hoverState, setHoverState] = useState<'academy' | 'services' | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <div 
-              key={i}
-              className="gateway-bubble"
-              style={{
-                width: `${Math.random() * 20 + 10}px`,
-                height: `${Math.random() * 20 + 10}px`,
-                left: `${Math.random() * 100}%`,
-                background: `radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1))`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 10 + 20}s`
-              }}
-            ></div>
-          ))}
-        </div>
+        <div className="absolute inset-0 bg-background"></div>
       </div>
 
       {/* Logo and Title */}
@@ -45,14 +23,14 @@ export default function GatewayPortal() {
           </div>
         </div>
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-xl sm:text-2xl text-blue-100 font-light mb-4">
+          <h1 className="text-xl sm:text-2xl text-foreground font-light mb-4">
             Empowering the Future of AI-Driven Consulting
           </h1>
-          <p className="text-lg text-blue-200 mb-6 max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
             Learn from AI to become faster, smarter, and more effective. Transform into an independent consultant or enhance your professional services with cutting-edge skills.
           </p>
-          <div className="h-0.5 w-24 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mb-2"></div>
-          <p className="text-sm text-blue-300 italic">
+          <div className="h-0.5 w-24 mx-auto bg-primary rounded-full mb-2"></div>
+          <p className="text-sm text-muted-foreground italic">
             "Learning from AI makes things easier, faster, and smarter"
           </p>
         </div>
@@ -70,36 +48,33 @@ export default function GatewayPortal() {
             window.scrollTo(0, 0);
           }}
         >
-          <div className="relative h-full w-full rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-indigo-600 p-0.5">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-80"></div>
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgyLTJoLTJ6TTM0IDMwaDJoMnpNNDAgMjhWLTJWMjh6TTQyIDMyVjJWMzJ6TTQwIDM2djIyVjM2ek00MiA0MHYxOFY0MHpNNDAgMjhoMnYyaC0yek00MiAzMmgydjJoLTJ6TTQwIDM2aDJ2MmgtMnpNNDIgNDBoMnYyaC0yek0zMiAzNGgyek0zNCAzMGgyek0yOCAzNGgyek0zMCAzMGgyek0yOCAyOHYzMFYyOHpNMzAgMzJ2MjJWMzJ6TTI4IDI4aDJ2MmgtMnpNMzAgMzJoMnYyaC0yek0yOCAzNGgyek0zMCAzOGgydjJoLTJ6Ik0yNCAzNGgyek0yNiAzMGgyek0yMCAzNGgyek0yMiAzMGgyek0yMCAzMnYyMlYzMnpNMjIgMzZ2MTRWMzZ6TTIwIDMyaDJ2MmgtMnpNMjIgMzZoMnYyaC0yek0yMCAzOGgydjJoLTJ6TTIyIDQyaDJ2MmgtMnpNMTYgMzRoek0xOCAzMGgyek0xMiAzNGgyek0xNCAzMGgyek0xMiAyOHYzMFYyOHpNMTQgMzJ2MjJWMzJ6TTEyIDI4aDJ2MmgtMnpNMTQgMzJoMnYyaC0yek0xMiAzNGgyek0xNCAzOGgydjJoLTJ6TTggMzRoek0xMCAzMGgyek00IDM0aHpNNiAzMGgyek00IDMydjIyVjMyek02IDM2djE0VjM2ek00IDMyaDJ2MmgtMnpNNiAzNmgydjJoLTJ6TTQgMzhoMnYyaC0yek02IDQyaDJ2MmgtMnpNNTYgMzRoek01OCAzMGgyek01MiAzNGgyek01NCAzMGgyek01MiAyOHYzMFYyOHpNNTQgMzJ2MjJWMzJ6TTUyIDI4aDJ2MmgtMnpNNTQgMzJoMnYyaC0yek01MiAzNGgyek01NCAzOGgydjJoLTJ6TTQ4IDM0aHpNNTAgMzBoek00NCAzNGh6TTQ2IDMwaHpNNDQgMzJ2MjJWMzJ6TTQ2IDM2djE0VjM2ek00NCAzMmgydjJoLTJ6TTQ2IDM2aDJ2MmgtMnpNNDQgMzhoMnYyaC0yek00NiA0MmgydjJoLTJ6TTYwIDI4djMwVjI4ek0wIDI4djMwVjI4ek0wIDI4aDJ2MmgtMnpNNjAgMjhoLTJ2MmgyeiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')]"></div>
-            
-            <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 bg-gradient-to-br from-blue-900/50 to-indigo-900/50 backdrop-blur-sm rounded-2xl">
+          <div className="relative h-full w-full rounded-2xl overflow-hidden bg-card border shadow-lg">
+            <div className="relative h-full flex flex-col justify-between p-6 sm:p-8">
               <div>
-                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                   <span className="text-3xl">🎓</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Ottobon Academy</h2>
-                <p className="text-blue-100 mb-6">Transform students and freshers into independent consultants with job-ready skills in high-demand technologies.</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground mb-2">Ottobon Academy</h2>
+                <p className="text-muted-foreground mb-6">Transform students and freshers into independent consultants with job-ready skills in high-demand technologies.</p>
                 
                 <div className="space-y-2">
                   <div className="flex items-start">
-                    <span className="text-green-400 mr-2">✓</span>
-                    <span className="text-blue-50">Salesforce & Oracle expertise</span>
+                    <span className="text-primary mr-2">⚡</span>
+                    <span className="text-card-foreground">Salesforce & Oracle expertise</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-400 mr-2">✓</span>
-                    <span className="text-blue-50">Cloud Computing & Full Stack Development</span>
+                    <span className="text-primary mr-2">⚡</span>
+                    <span className="text-card-foreground">Cloud Computing & Full Stack Development</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-green-400 mr-2">✓</span>
-                    <span className="text-blue-50">AI-enhanced learning paths</span>
+                    <span className="text-primary mr-2">⚡</span>
+                    <span className="text-card-foreground">AI-enhanced learning paths</span>
                   </div>
                 </div>
               </div>
               
               <div className="mt-8">
-                <button className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-3 px-6 rounded-full transition shadow-md hover:shadow-lg w-full group relative overflow-hidden">
+                <button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-3 px-6 rounded-lg transition shadow-md hover:shadow-lg w-full group relative overflow-hidden">
                   <span className="relative z-10 flex items-center justify-center">
                     Enter Academy
                     <svg className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -122,40 +97,40 @@ export default function GatewayPortal() {
             window.scrollTo(0, 0);
           }}
         >
-          <div className="relative h-full w-full rounded-2xl overflow-hidden bg-gradient-to-br from-purple-500 to-pink-600 p-0.5">
+          <div className="relative h-full w-full rounded-2xl overflow-hidden bg-card border shadow-lg">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 opacity-80"></div>
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgyLTJoLTJ6TTM0IDMwaDJoMnpNNDAgMjhWLTJWMjh6TTQyIDMyVjJWMzJ6TTQwIDM2djIyVjM2ek00MiA0MHYxOFY0MHpNNDAgMjhoMnYyaC0yek00MiAzMmgydjJoLTJ6TTQwIDM2aDJ2MmgtMnpNNDIgNDBoMnYyaC0yek0zMiAzNGgyek0zNCAzMGgyek0yOCAzNGgyek0zMCAzMGgyek0yOCAyOHYzMFYyOHpNMzAgMzJ2MjJWMzJ6TTI4IDI4aDJ2MmgtMnpNMzAgMzJoMnYyaC0yek0yOCAzNGgyek0zMCAzOGgydjJoLTJ6Ik0yNCAzNGgyek0yNiAzMGgyek0yMCAzNGgyek0yMiAzMGgyek0yMCAzMnYyMlYzMnpNMjIgMzZ2MTRWMzZ6TTIwIDMyaDJ2MmgtMnpNMjIgMzZoMnYyaC0yek0yMCAzOGgydjJoLTJ6TTIyIDQyaDJ2MmgtMnpNMTYgMzRoek0xOCAzMGgyek0xMiAzNGgyek0xNCAzMGgyek0xMiAyOHYzMFYyOHpNMTQgMzJ2MjJWMzJ6TTEyIDI4aDJ2MmgtMnpNMTQgMzJoMnYyaC0yek0xMiAzNGgyek0xNCAzOGgydjJoLTJ6TTggMzRoek0xMCAzMGgyek00IDM0aHpNNiAzMGgyek00IDMydjIyVjMyek02IDM2djE0VjM2ek00IDMyaDJ2MmgtMnpNNiAzNmgydjJoLTJ6TTQgMzhoMnYyaC0yek02IDQyaDJ2MmgtMnpNNTYgMzRoek01OCAzMGgyek01MiAzNGgyek01NCAzMGgyek01MiAyOHYzMFYyOHpNNTQgMzJ2MjJWMzJ6TTUyIDI4aDJ2MmgtMnpNNTQgMzJoMnYyaC0yek01MiAzNGgyek01NCAzOGgydjJoLTJ6TTQ4IDM0aHpNNTAgMzBoek00NCAzNGh6TTQ2IDMwaHpNNDQgMzJ2MjJWMzJ6TTQ2IDM2djE0VjM2ek00NCAzMmgydjJoLTJ6TTQ2IDM2aDJ2MmgtMnpNNDQgMzhoMnYyaC0yek00NiA0MmgydjJoLTJ6TTYwIDI4djMwVjI4ek0wIDI4djMwVjI4ek0wIDI4aDJ2MmgtMnpNNjAgMjhoLTJ2MmgyeiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')]"></div>
             
-            <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm rounded-2xl">
+            <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 bg-card rounded-2xl">
               <div>
-                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                   <span className="text-3xl">🤖</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Ottobon Services</h2>
-                <p className="text-purple-100 mb-6">Empowering working professionals to transition into consultant providers with advanced tech learning and professional services.</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground mb-2">Ottobon Services</h2>
+                <p className="text-muted-foreground mb-6">Empowering working professionals to transition into consultant providers with advanced tech learning and professional services.</p>
                 
                 <div className="space-y-2">
                   <div className="flex items-start">
-                    <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Independent Consultants</span>
+                    <span className="text-primary mr-2">⚡</span>
+                    <span className="text-card-foreground">Independent Consultants</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Small Consulting Firms</span>
+                    <span className="text-primary mr-2">⚡</span>
+                    <span className="text-card-foreground">Small Consulting Firms</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-pink-300 mr-2">⚡</span>
-                    <span className="text-purple-50">Mid-Size Practices</span>
+                    <span className="text-primary mr-2">⚡</span>
+                    <span className="text-card-foreground">Mid-Size Practices</span>
                   </div>
                 </div>
               </div>
               
               <div className="mt-8">
                 <div className="relative">
-                  <div className="absolute -top-16 right-0 bg-gradient-to-r from-yellow-400 to-pink-500 text-xs font-bold px-3 py-1 rounded-full transform rotate-12 shadow-lg">
+                  <div className="absolute -top-16 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full transform rotate-12 shadow-lg">
                     Coming Soon
                   </div>
-                  <button className="bg-white/20 text-white hover:bg-white/30 font-semibold py-3 px-6 rounded-full transition shadow-md hover:shadow-lg w-full backdrop-blur-sm border border-white/20 group relative overflow-hidden">
+                  <button className="bg-secondary text-secondary-foreground hover:bg-secondary/80 font-semibold py-3 px-6 rounded-lg transition shadow-md hover:shadow-lg w-full border border-border group relative overflow-hidden">
                     <span className="relative z-10 flex items-center justify-center">
                       Get Notified
                       <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -171,15 +146,15 @@ export default function GatewayPortal() {
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 w-full py-6 border-t border-white/10">
+      <div className="relative z-10 w-full py-6 border-t border-border">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
-          <div className="text-white/60 text-sm mb-4 sm:mb-0">
+          <div className="text-muted-foreground text-sm mb-4 sm:mb-0">
             © 2025 Ottobon. All rights reserved.
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="text-white/60 hover:text-white transition">Privacy</a>
-            <a href="#" className="text-white/60 hover:text-white transition">Terms</a>
-            <a href="#" className="text-white/60 hover:text-white transition">Contact</a>
+            <a href="#" className="text-muted-foreground hover:text-foreground transition">Privacy</a>
+            <a href="#" className="text-muted-foreground hover:text-foreground transition">Terms</a>
+            <a href="#" className="text-muted-foreground hover:text-foreground transition">Contact</a>
           </div>
         </div>
       </div>

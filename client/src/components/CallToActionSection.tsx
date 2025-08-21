@@ -12,40 +12,37 @@ export default function CallToActionSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
+    <section className="py-20 bg-background relative overflow-hidden border-t border-border">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-black/20"></div>
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-white/10 rounded-full blur-xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-background"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Ready to Transform Your Career?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join thousands of students who have successfully transitioned into independent consultants through our AI-enhanced learning programs.
           </p>
           
           {/* Key benefits */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <div className="bg-card rounded-lg p-6 border border-border shadow-md">
               <div className="text-3xl mb-3">🎯</div>
-              <h3 className="text-white font-semibold mb-2">Industry-Ready Skills</h3>
-              <p className="text-blue-100 text-sm">Salesforce, Oracle, Cloud Computing & Full Stack Development</p>
+              <h3 className="text-card-foreground font-semibold mb-2">Industry-Ready Skills</h3>
+              <p className="text-muted-foreground text-sm">Salesforce, Oracle, Cloud Computing & Full Stack Development</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <div className="bg-card rounded-lg p-6 border border-border shadow-md">
               <div className="text-3xl mb-3">🤖</div>
-              <h3 className="text-white font-semibold mb-2">AI-Enhanced Learning</h3>
-              <p className="text-blue-100 text-sm">Personalized curriculum that adapts to your learning style</p>
+              <h3 className="text-card-foreground font-semibold mb-2">AI-Enhanced Learning</h3>
+              <p className="text-muted-foreground text-sm">Personalized curriculum that adapts to your learning style</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <div className="bg-card rounded-lg p-6 border border-border shadow-md">
               <div className="text-3xl mb-3">💼</div>
-              <h3 className="text-white font-semibold mb-2">Consulting Success</h3>
-              <p className="text-blue-100 text-sm">Graduate as an independent consultant, not just an employee</p>
+              <h3 className="text-card-foreground font-semibold mb-2">Consulting Success</h3>
+              <p className="text-muted-foreground text-sm">Graduate as an independent consultant, not just an employee</p>
             </div>
           </div>
           
@@ -58,7 +55,7 @@ export default function CallToActionSection() {
                   assessmentElement.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-4 px-8 rounded-full transition shadow-lg hover:shadow-xl text-lg group"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-4 px-8 rounded-lg transition shadow-lg hover:shadow-xl text-lg group"
             >
               <span className="flex items-center">
                 Take Free Assessment
@@ -74,32 +71,32 @@ export default function CallToActionSection() {
                   coursesElement.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-full transition text-lg"
+              className="border-2 border-primary text-foreground hover:bg-primary hover:text-primary-foreground font-semibold py-4 px-8 rounded-lg transition text-lg"
             >
               View Programs
             </button>
           </div>
           
           {/* Email signup */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 max-w-md mx-auto border border-white/20">
-            <h3 className="text-white font-semibold mb-3 text-center">Get Program Updates</h3>
+          <div className="bg-card rounded-xl p-4 sm:p-6 max-w-md mx-auto border border-border shadow-md">
+            <h3 className="text-card-foreground font-semibold mb-3 text-center">Get Program Updates</h3>
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-3 sm:px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm"
+                className="flex-1 px-3 sm:px-4 py-2 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                 required
               />
               <button
                 type="submit"
-                className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition text-sm whitespace-nowrap"
+                className="bg-primary text-primary-foreground px-4 sm:px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 transition text-sm whitespace-nowrap"
               >
                 {isSubmitted ? 'Thanks!' : 'Notify Me'}
               </button>
             </form>
-            <p className="text-blue-200 text-xs mt-2 text-center">
+            <p className="text-muted-foreground text-xs mt-2 text-center">
               Get notified about new programs and special offers
             </p>
           </div>

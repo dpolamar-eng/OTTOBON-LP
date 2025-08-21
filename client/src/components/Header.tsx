@@ -25,34 +25,22 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-indigo-900/95 backdrop-blur-md shadow-xl' : 'bg-transparent'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-xl' : 'bg-background'}`}>
       {/* Rich background elements */}
       <div className="absolute inset-0 z-[-2] overflow-hidden">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 opacity-90"></div>
-        
-        {/* Radial pattern overlay */}
-        <div className="absolute inset-0 opacity-10" 
-          style={{ 
-            backgroundImage: "radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)", 
-            backgroundSize: "50px 50px" 
-          }}>
-        </div>
-        
-        {/* Accent color elements */}
-        <div className="absolute top-0 -right-[20%] w-[50%] h-[100%] bg-indigo-500 rounded-full opacity-20 blur-[80px]"></div>
-        <div className="absolute top-0 -left-[10%] w-[40%] h-[100%] bg-purple-500 rounded-full opacity-10 blur-[60px]"></div>
+        {/* Background */}
+        <div className="absolute inset-0 bg-background"></div>
       </div>
       
       {/* Subtle divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border"></div>
       
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <img src="/assets/logo.png" alt="Ottobon Logo" className="h-12 sm:h-16 md:h-20" />
           <div className="text-lg sm:text-2xl md:text-3xl font-extrabold ml-2 sm:ml-3">
-            <span className="text-white">OTTOBON</span>
+            <span className="text-foreground">OTTOBON</span>
           </div>
         </Link>
         
@@ -66,13 +54,13 @@ export default function Header() {
             <a 
               key={index}
               href={item.href} 
-              className="text-white/90 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group"
+              className="text-foreground/90 hover:text-foreground font-medium py-2 px-4 rounded-lg hover:bg-muted transition-all relative overflow-hidden group"
             >
               <div className="flex items-center space-x-1">
-                <span className="text-white/80 group-hover:text-white/100 transition-all">{item.icon}</span>
+                <span className="text-foreground/80 group-hover:text-foreground transition-all">{item.icon}</span>
                 <span>{item.label}</span>
               </div>
-              <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
+              <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-primary transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
             </a>
           ))}
         </nav>
@@ -81,7 +69,7 @@ export default function Header() {
         <div className="hidden md:flex space-x-3">
           <a 
             href="#talent-compass" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-6 rounded-lg transition shadow-md hover:shadow-lg relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center">
               Start Your Journey
