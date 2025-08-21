@@ -60,13 +60,13 @@ export default function ApproachSection() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-black text-white p-6 h-1/2 flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-center text-white">Interpersonal Skills</h3>
-                  <p className="text-gray-300 mb-4 text-sm flex-1 text-center">
+                <div className="bg-white p-6 h-1/2 flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-center">Interpersonal Skills</h3>
+                  <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
                     Technical excellence means little without the ability to communicate effectively and work collaboratively.
                   </p>
                   <button 
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
+                    className="text-primary font-medium py-2 px-4 rounded-full border border-primary hover:bg-primary hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
@@ -82,10 +82,10 @@ export default function ApproachSection() {
                 </div>
               </div>
               
-              <div className="flip-card-back bg-black text-white rounded-lg shadow-md">
+              <div className="flip-card-back bg-white rounded-lg shadow-md">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold flex items-center text-white">
+                    <h3 className="text-xl font-bold flex items-center">
                       <img 
                         src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=80&h=80&q=80" 
                         alt="Team collaboration" 
@@ -94,7 +94,7 @@ export default function ApproachSection() {
                       Interpersonal Skills
                     </h3>
                     <button 
-                      className="text-gray-300 hover:text-white"
+                      className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();
@@ -110,25 +110,25 @@ export default function ApproachSection() {
                   </div>
                   
                   <div className="overflow-y-auto flex-1">
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-700 mb-4">
                       Technical excellence means little without the ability to communicate effectively and work collaboratively. We develop consultants who are:
                     </p>
                     <ul className="space-y-2 mb-4">
                       <li className="flex items-start">
                         <span className="text-primary mr-2"><i className="fas fa-check-circle"></i></span>
-                        <span className="text-gray-300"><strong>Accountable</strong> - Taking ownership of outcomes</span>
+                        <span className="text-gray-700"><strong>Accountable</strong> - Taking ownership of outcomes</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-primary mr-2"><i className="fas fa-check-circle"></i></span>
-                        <span className="text-gray-300"><strong>Adaptable</strong> - Continuously learning and adjusting to new challenges</span>
+                        <span className="text-gray-700"><strong>Adaptable</strong> - Continuously learning and adjusting to new challenges</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-primary mr-2"><i className="fas fa-check-circle"></i></span>
-                        <span className="text-gray-300"><strong>Resilient</strong> - Thriving under pressure and overcoming obstacles</span>
+                        <span className="text-gray-700"><strong>Resilient</strong> - Thriving under pressure and overcoming obstacles</span>
                       </li>
                     </ul>
                     <h4 className="font-semibold mb-2 text-primary">Our Approach:</h4>
-                    <p className="text-gray-300">
+                    <p className="text-gray-700">
                       Our interpersonal skills curriculum includes weekly workshops, regular presentation practice, and team-based projects that mirror real consulting environments. Students receive personalized feedback from industry professionals to refine their consulting presence.
                     </p>
                   </div>
@@ -162,13 +162,13 @@ export default function ApproachSection() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-black text-white p-6 h-1/2 flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-center text-white">Industry Knowledge</h3>
-                  <p className="text-gray-300 mb-4 text-sm flex-1 text-center">
+                <div className="bg-white p-6 h-1/2 flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-center">Industry Knowledge</h3>
+                  <p className="text-gray-700 mb-4 text-sm flex-1 text-center">
                     Technology never exists in a vacuum. Our curriculum emphasizes business context and industry-specific challenges.
                   </p>
                   <button 
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
+                    className="text-blue-600 font-medium py-2 px-4 rounded-full border border-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center justify-center mx-auto mt-auto"
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
@@ -184,19 +184,19 @@ export default function ApproachSection() {
                 </div>
               </div>
               
-              <div className="flip-card-back bg-black text-white rounded-lg shadow-md">
+              <div className="flip-card-back bg-white rounded-lg shadow-md">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold flex items-center text-white">
+                    <h3 className="text-xl font-bold flex items-center">
                       <img 
                         src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=80&h=80&q=80" 
                         alt="Industry analysis" 
-                        className="w-10 h-10 object-cover rounded-full mr-3 border-2 border-primary"
+                        className="w-10 h-10 object-cover rounded-full mr-3 border-2 border-blue-600"
                       />
                       Industry Knowledge
                     </h3>
                     <button 
-                      className="text-gray-300 hover:text-white"
+                      className="text-gray-500 hover:text-gray-700"
                       onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();

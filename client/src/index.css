@@ -159,7 +159,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 0.5rem;
-  background-color: black;
+  background-color: white;
 }
 
 .flip-card.flipped .flip-card-inner {
@@ -177,36 +177,34 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 .flip-card-front {
-  background-color: black;
-  color: white;
+  background-color: white;
 }
 
 .flip-card-back {
-  background-color: black;
-  color: white;
+  background-color: white;
   transform: rotateY(180deg);
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --background: 218 45% 17%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
     --primary: 45 95% 58%;
-    --primary-foreground: 0 0% 0%;
+    --primary-foreground: 218 45% 17%;
     --secondary: 218 20% 25%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 218 30% 20%;
+    --muted-foreground: 0 0% 70%;
     --accent: 45 95% 58%;
-    --accent-foreground: 0 0% 0%;
+    --accent-foreground: 218 45% 17%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 90%;
-    --input: 0 0% 96%;
+    --border: 218 20% 25%;
+    --input: 218 20% 25%;
     --ring: 45 95% 58%;
     --radius: 0.5rem;
 
@@ -269,16 +267,14 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .flip-card-front {
-    background-color: black;
-    color: white;
+    background-color: white;
     display: flex;
     flex-direction: column;
   }
 
   .flip-card-back {
     transform: rotateY(180deg);
-    background-color: black;
-    color: white;
+    background-color: white;
   }
   
   /* Glow effect on hover */

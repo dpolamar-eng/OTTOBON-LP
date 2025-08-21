@@ -284,17 +284,17 @@ export default function CoursesSection() {
   const carouselRef = useAnimation('animate-scale-in delay-300');
   
   return (
-    <section id="courses" className="py-16 bg-background" ref={sectionRef}>
+    <section id="courses" className="py-16 bg-gray-100" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-6">
-          <div className="inline-flex items-center mb-4 bg-primary/10 px-4 py-2 rounded-full">
-            <span className="text-primary mr-2 text-xl">🔥</span>
-            <span className="text-foreground font-medium text-sm uppercase tracking-wider">In-Demand Skills</span>
+          <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
+            <span className="text-blue-600 mr-2 text-xl">🔥</span>
+            <span className="text-blue-800 font-medium text-sm uppercase tracking-wider">In-Demand Skills</span>
           </div>
           <h2 ref={headingRef} className="text-3xl md:text-4xl font-bold text-center mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700">Advance</span> Your Professional Skills
           </h2>
-          <p ref={descriptionRef} className="text-center text-foreground max-w-2xl mx-auto mb-8 text-lg">
+          <p ref={descriptionRef} className="text-center text-gray-700 max-w-2xl mx-auto mb-8 text-lg">
             Gain certification, industry recognition, and career advancement opportunities through our hands-on training programs focused on in-demand technical skills sought by leading employers.
           </p>
           <div className="fancy-divider"></div>
@@ -308,8 +308,8 @@ export default function CoursesSection() {
                 <button 
                   className={`font-medium py-2 px-8 rounded-full transition flex items-center ${
                     activeFilter === category.id
-                      ? 'bg-primary text-primary-foreground shadow-md' 
-                      : 'bg-card text-card-foreground hover:bg-card/90 shadow-sm'
+                      ? 'bg-primary text-white shadow-md' 
+                      : 'bg-white hover:bg-gray-100 text-gray-700 shadow-sm'
                   }`}
                   onClick={() => setActiveFilter(category.id)}
                 >
@@ -326,7 +326,7 @@ export default function CoursesSection() {
           <div className="text-center animate-fade-in">
             {categories.map(category => (
               activeFilter === category.id && (
-                <p key={category.id} className="text-sm text-muted-foreground mt-2">
+                <p key={category.id} className="text-sm text-gray-600 mt-2">
                   {category.description}
                 </p>
               )
