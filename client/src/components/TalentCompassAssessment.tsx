@@ -755,7 +755,7 @@ export default function TalentCompassAssessment() {
     const normalizedScore = Math.min(score / 10, 1) * 100; // 0-100 scale
     
     return (
-      <div key={trait.id} className="bg-white rounded-lg p-4 shadow-md">
+      <div key={trait.id} className="bg-card text-card-foreground rounded-lg p-4 shadow-md">
         <div className="flex items-center mb-2">
           <span className="text-xl mr-2">{trait.icon}</span>
           <h4 className="font-semibold">{trait.name}</h4>
@@ -766,7 +766,7 @@ export default function TalentCompassAssessment() {
             style={{ width: `${normalizedScore}%` }}
           ></div>
         </div>
-        <p className="text-xs text-gray-500">{trait.description}</p>
+        <p className="text-xs text-muted-foreground">{trait.description}</p>
       </div>
     );
   };
@@ -778,9 +778,9 @@ export default function TalentCompassAssessment() {
     return (
       <div 
         key={course.id} 
-        className={`border rounded-lg p-5 ${
-          matchScore > 80 ? 'border-green-400 bg-green-50' : 
-          matchScore > 60 ? 'border-blue-400 bg-blue-50' : 'border-gray-300'
+        className={`border rounded-lg p-5 bg-card text-card-foreground ${
+          matchScore > 80 ? 'border-primary' : 
+          matchScore > 60 ? 'border-primary/50' : 'border-border'
         }`}
       >
         <div className="flex justify-between items-start mb-3">
@@ -788,16 +788,16 @@ export default function TalentCompassAssessment() {
             <span className="text-2xl mr-3">{course.icon}</span>
             <h3 className="font-bold text-lg">{course.title}</h3>
           </div>
-          <div className="bg-white border border-gray-200 rounded-full px-3 py-1 text-sm font-medium">
+          <div className="bg-primary text-primary-foreground rounded-full px-3 py-1 text-sm font-medium">
             {matchScore}% Match
           </div>
         </div>
         
-        <p className="text-gray-700 mb-4">{course.description}</p>
+        <p className="text-muted-foreground mb-4">{course.description}</p>
         
         <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-500">{course.category}</span>
-          <button className="text-primary hover:text-primary/80 text-sm font-medium">
+          <span className="text-xs text-muted-foreground">{course.category}</span>
+          <button className="bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1 rounded text-sm font-medium">
             View Details
           </button>
         </div>
@@ -806,7 +806,7 @@ export default function TalentCompassAssessment() {
   };
   
   return (
-    <section id="talent-compass" className="py-16 bg-gray-50 relative" ref={sectionRef}>
+    <section id="talent-compass" className="py-16 bg-background relative" ref={sectionRef}>
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
