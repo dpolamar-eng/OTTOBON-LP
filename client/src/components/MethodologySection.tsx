@@ -26,7 +26,7 @@ export default function MethodologySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" ref={cardsRef}>
           {/* Pillar 1: Human-Centered */}
           <div 
-            className="flip-card hover-lift" 
+            className="flip-card hover-lift group" 
             style={{height: "450px"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
@@ -41,7 +41,7 @@ export default function MethodologySection() {
                   <img 
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
                     alt="Team collaboration" 
-                    className="w-full h-full object-cover opacity-80"
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-8 h-3/5 flex flex-col justify-between">
@@ -120,7 +120,7 @@ export default function MethodologySection() {
 
           {/* Pillar 2: Industry Knowledge */}
           <div 
-            className="flip-card hover-lift"
+            className="flip-card hover-lift group"
             style={{height: "450px"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
@@ -135,7 +135,7 @@ export default function MethodologySection() {
                   <img 
                     src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=600&q=80" 
                     alt="Industry analysis" 
-                    className="w-full h-full object-cover opacity-80"
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
                 <div className="bg-white p-6 h-3/5 flex flex-col">
@@ -206,7 +206,7 @@ export default function MethodologySection() {
 
           {/* Pillar 3: Technical Expertise */}
           <div 
-            className="flip-card hover-lift"
+            className="flip-card hover-lift group"
             style={{height: "450px"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
@@ -221,7 +221,7 @@ export default function MethodologySection() {
                   <img 
                     src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" 
                     alt="Technical development" 
-                    className="w-full h-full object-cover opacity-75"
+                    className="w-full h-full object-cover opacity-75 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
                 <div className="bg-white p-6 h-3/5 flex flex-col">
@@ -292,7 +292,7 @@ export default function MethodologySection() {
 
           {/* Pillar 4: Career Partnership */}
           <div 
-            className="flip-card hover-lift" 
+            className="flip-card hover-lift group" 
             style={{height: "450px"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
@@ -307,7 +307,7 @@ export default function MethodologySection() {
                   <img 
                     src="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&w=600&q=80" 
                     alt="Career growth" 
-                    className="w-full h-full object-cover opacity-80"
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-8 h-3/5 flex flex-col justify-between">
