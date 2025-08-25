@@ -294,12 +294,11 @@ export default function IntegratedHeroJourney() {
               </div>
             </div>
             
-            {/* Navigation Buttons - Mobile: centered on image, Desktop: centered on container */}
+            {/* Navigation Buttons - Centered on image for both mobile and desktop */}
             <button
               onClick={goToPrevSlide}
-              className="absolute left-2 sm:left-4 z-10 bg-white/90 hover:bg-white text-gray-700 hover:text-blue-600 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300 backdrop-blur-sm
-                md:top-1/2 md:-translate-y-1/2
-                top-[calc(50%+8rem)] -translate-y-1/2"
+              className="absolute left-2 sm:left-4 z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
+                top-[calc(50%+4rem)] md:top-[calc(50%+4rem)] -translate-y-1/2"
               aria-label="Previous slide"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -309,9 +308,8 @@ export default function IntegratedHeroJourney() {
             
             <button
               onClick={goToNextSlide}
-              className="absolute right-2 sm:right-4 z-10 bg-white/90 hover:bg-white text-gray-700 hover:text-blue-600 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300 backdrop-blur-sm
-                md:top-1/2 md:-translate-y-1/2
-                top-[calc(50%+8rem)] -translate-y-1/2"
+              className="absolute right-2 sm:right-4 z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
+                top-[calc(50%+4rem)] md:top-[calc(50%+4rem)] -translate-y-1/2"
               aria-label="Next slide"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
