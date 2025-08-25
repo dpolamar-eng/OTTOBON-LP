@@ -40,7 +40,7 @@ interface Course {
 export default function CoursesSection() {
   const [activeFilter, setActiveFilter] = useState<CourseCategory>('Career Launch');
   const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
-  
+
   // Courses data
   const courses: Course[] = [
     {
@@ -168,7 +168,7 @@ export default function CoursesSection() {
   const filteredCourses = activeFilter === 'all' 
     ? courses 
     : courses.filter(course => course.category === activeFilter);
-    
+
   // Toggle flip card state
   const toggleFlipCard = (courseId: string) => {
     setFlippedCards(prev => ({
@@ -176,7 +176,7 @@ export default function CoursesSection() {
       [courseId]: !prev[courseId]
     }));
   };
-  
+
   // Responsive slide count function
   const getVisibleSlides = () => {
     if (typeof window !== 'undefined') {
@@ -186,10 +186,10 @@ export default function CoursesSection() {
     }
     return 3;
   };
-  
+
   // State for responsive slides
   const [slidesPerView, setSlidesPerView] = useState(getVisibleSlides());
-  
+
   // Embla carousel setup
   const [viewportRef, embla] = useEmblaCarousel({ 
     loop: false,
@@ -204,17 +204,17 @@ export default function CoursesSection() {
   const [isHovering, setIsHovering] = useState(false);
   const autoplayInterval = 3000;
   const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
+
   // Check if we need to show navigation at all
   const [canScroll, setCanScroll] = useState(true);
-  
+
   // Handle resize effect
   useEffect(() => {
     const handleResize = () => {
       const newSlidesPerView = getVisibleSlides();
       if (newSlidesPerView !== slidesPerView) {
         setSlidesPerView(newSlidesPerView);
-        
+
         // Reset and rebuild carousel when window size changes
         if (embla) {
           embla.reInit();
@@ -225,15 +225,15 @@ export default function CoursesSection() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [embla, slidesPerView]);
-  
+
   const onSelect = useCallback(() => {
     if (!embla) return;
   }, [embla]);
-  
+
   const autoplayCallback = useCallback(() => {
     if (!embla || !autoplay || isHovering) return;
     if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
-    
+
     autoplayTimeoutRef.current = setTimeout(() => {
       if (!embla || isHovering) return;
       embla.scrollNext();
@@ -243,23 +243,23 @@ export default function CoursesSection() {
 
   useEffect(() => {
     if (!embla) return;
-    
+
     // Set initial scroll state
     const updateCanScroll = () => {
       const totalSlides = filteredCourses.length;
       const visibleSlides = getVisibleSlides();
       setCanScroll(totalSlides > visibleSlides);
     };
-    
+
     updateCanScroll();
     onSelect();
     embla.on('select', onSelect);
     embla.on('reInit', updateCanScroll);
-    
+
     if (autoplay && canScroll) {
       autoplayCallback();
     }
-    
+
     return () => {
       embla.off('select', onSelect);
       embla.off('reInit', updateCanScroll);
@@ -268,7 +268,7 @@ export default function CoursesSection() {
       }
     };
   }, [autoplay, autoplayCallback, embla, onSelect, isHovering, filteredCourses, canScroll]);
-  
+
   // Effect to restart autoplay when hovering stops
   useEffect(() => {
     if (!isHovering && autoplay) {
@@ -282,9 +282,9 @@ export default function CoursesSection() {
   const descriptionRef = useAnimation('animate-slide-up delay-100');
   const filtersRef = useAnimation('animate-slide-up delay-200');
   const carouselRef = useAnimation('animate-scale-in delay-300');
-  
+
   return (
-    <section id="courses" className="py-16 bg-gray-100" ref={sectionRef}>
+    <section id="courses" className="py-16 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-6">
           <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
@@ -299,7 +299,7 @@ export default function CoursesSection() {
           </p>
           <div className="fancy-divider"></div>
         </div>
-        
+
         {/* Course Filters */}
         <div ref={filtersRef} className="mb-12">
           <div className="flex flex-wrap justify-center gap-4 mb-2">
@@ -321,7 +321,7 @@ export default function CoursesSection() {
               </div>
             ))}
           </div>
-          
+
           {/* Description for selected category only */}
           <div className="text-center animate-fade-in">
             {categories.map(category => (
@@ -333,7 +333,7 @@ export default function CoursesSection() {
             ))}
           </div>
         </div>
-        
+
         {/* Course Carousel */}
         <div ref={carouselRef} className="relative">
           <div 
@@ -368,7 +368,7 @@ export default function CoursesSection() {
                             <div className="absolute top-1/3 right-1/4 w-12 h-12 bg-white/10 rounded-full"></div>
                             <div className="bg-grid-pattern opacity-20 absolute inset-0"></div>
                           </div>
-                          
+
                           {course.logoUrl ? (
                             <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
                           ) : (
@@ -395,7 +395,7 @@ export default function CoursesSection() {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Card Back */}
                       <div className="flip-card-back">
                         <div className="p-6 h-full flex flex-col bg-gradient-to-b from-white to-gray-50">
@@ -419,7 +419,7 @@ export default function CoursesSection() {
                               </svg>
                             </button>
                           </div>
-                          
+
                           <div className="overflow-y-auto flex-1">
                             <div className="bg-blue-50 p-4 rounded-lg mb-4">
                               <h4 className="font-semibold mb-2 text-blue-800 flex items-center">
@@ -438,7 +438,7 @@ export default function CoursesSection() {
                                 ))}
                               </ul>
                             </div>
-                            
+
                             <div className="grid grid-cols-2 gap-4 mb-4">
                               <div className="bg-purple-50 p-4 rounded-lg">
                                 <h4 className="font-semibold mb-2 text-purple-800 flex items-center">
@@ -454,7 +454,7 @@ export default function CoursesSection() {
                                   12-week immersive program
                                 </p>
                               </div>
-                              
+
                               <div className="bg-green-50 p-4 rounded-lg">
                                 <h4 className="font-semibold mb-2 text-green-800 flex items-center">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
@@ -467,7 +467,7 @@ export default function CoursesSection() {
                                 </p>
                               </div>
                             </div>
-                            
+
                             <div className="bg-blue-50 p-4 rounded-lg mb-4">
                               <h4 className="font-semibold mb-2 text-blue-800 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
@@ -483,7 +483,7 @@ export default function CoursesSection() {
                               </p>
                             </div>
                           </div>
-                          
+
                           <div className="mt-4 text-center">
                             <a 
                               href="#talent-compass" 
@@ -506,7 +506,7 @@ export default function CoursesSection() {
               ))}
             </div>
           </div>
-          
+
           {/* Navigation Buttons - Only show if we can scroll */}
           {canScroll && (
             <>
@@ -528,7 +528,7 @@ export default function CoursesSection() {
                   <path d="M9 18l6-6-6-6"/>
                 </svg>
               </button>
-              
+
               {/* Pause/Play Button */}
               <button 
                 className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm shadow-md rounded-full w-10 h-10 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition border border-blue-100"

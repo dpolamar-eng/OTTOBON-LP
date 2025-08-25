@@ -25,62 +25,58 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-xl' : 'bg-background'}`}>
-      {/* Rich background elements */}
-      <div className="absolute inset-0 z-[-2] overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-background"></div>
-      </div>
-      
+    <header className={`fixed w-full z-50 transition-all duration-500 bg-[#0F1E2E] shadow-xl`}>
+
       {/* Subtle divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border"></div>
-      
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <img src="/assets/logo.png" alt="Ottobon Logo" className="h-12 sm:h-16 md:h-20" />
+          <img src="/assets/logo.png" alt="Ottobon Logo" className="h-9 sm:h-14 md:h-20 w-auto" />
           <div className="text-lg sm:text-2xl md:text-3xl font-extrabold ml-2 sm:ml-3">
-            <span className="text-foreground">OTTOBON</span>
+            <span className="text-white">OTTOBON</span>
           </div>
         </Link>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-2">
-          {[
-            { label: "Our Approach", href: "#methodology", icon: "⚡" },
-            { label: "Programs", href: "#courses", icon: "🚀" },
-            { label: "Talent Compass", href: "#talent-compass", icon: "🧭" },
+      {[
+            { label: "Our Approach", href: "#methodology", icon: "" },
+            { label: "Programs", href: "#courses", icon: "" },
+            { label: "Talent Compass", href: "#talent-compass", icon: "" },
           ].map((item, index) => (
             <a 
               key={index}
               href={item.href} 
-              className="text-foreground/90 hover:text-foreground font-medium py-2 px-4 rounded-lg hover:bg-muted transition-all relative overflow-hidden group"
+              className="text-white/90 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group"
             >
               <div className="flex items-center space-x-1">
-                <span className="text-foreground/80 group-hover:text-foreground transition-all">{item.icon}</span>
+                <span className="text-white/80 group-hover:text-white/100 transition-all">{item.icon}</span>
                 <span>{item.label}</span>
               </div>
-              <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-primary transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
+        <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-[#FFC107] transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
             </a>
           ))}
         </nav>
-        
+
         {/* CTA Button */}
         <div className="hidden md:flex space-x-3">
           <a 
             href="#talent-compass" 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-6 rounded-lg transition shadow-md hover:shadow-lg relative overflow-hidden group"
+            className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center">
               Start Your Journey
-              <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="ml-1 w-[20px] h-[20px] translate-y-[2px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
             </span>
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full animate-shine"></span>
+            {/* Button shine effect (brighter + faster) */}
+            <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
           </a>
         </div>
-        
+
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
@@ -92,9 +88,9 @@ export default function Header() {
           </svg>
         </button>
       </div>
-      
+
       {/* Mobile Navigation */}
-      <div className={`md:hidden bg-indigo-900/95 backdrop-blur-md border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+  <div className={`md:hidden bg-[#0F1E2E] border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
           <a 
             href="#methodology" 
@@ -124,13 +120,15 @@ export default function Header() {
           <div className="pt-3 pb-2 flex flex-col space-y-3">
             <a 
               href="#talent-compass" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full transition shadow-md hover:shadow-lg text-center flex items-center justify-center"
+              className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center flex items-center justify-center relative overflow-hidden group"
               onClick={closeMobileMenu}
             >
-              <span>Start Your Journey</span>
-              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <span className="relative z-10">Start Your Journey</span>
+              <svg className="ml-2 w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] translate-y-[1.5px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
+              {/* Button shine effect (brighter + faster) */}
+              <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
             </a>
           </div>
         </div>

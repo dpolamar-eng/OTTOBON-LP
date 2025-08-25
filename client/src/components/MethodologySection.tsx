@@ -7,7 +7,7 @@ export default function MethodologySection() {
   const headerRef = useAnimation('animate-slide-up');
   const cardsRef = useStaggeredAnimation('animate-scale-in');
   return (
-    <section id="methodology" className="pt-8 pb-20 bg-gradient-soft" ref={sectionRef}>
+  <section id="methodology" className="pt-8 pb-20 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12" ref={headerRef}>
           <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
@@ -22,7 +22,7 @@ export default function MethodologySection() {
           </p>
           <div className="fancy-divider"></div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" ref={cardsRef}>
           {/* Pillar 1: Human-Centered */}
           <div 
@@ -56,7 +56,7 @@ export default function MethodologySection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flip-card-back">
                 <div className="h-full p-8 flex flex-col bg-white">
                   <div className="flex justify-between items-start mb-4">
@@ -83,7 +83,7 @@ export default function MethodologySection() {
                       <i className="fas fa-times"></i>
                     </button>
                   </div>
-                  
+
                   <div className="overflow-y-auto flex-1">
                     <p className="text-gray-700 mb-4">
                       Technical excellence alone isn't enough. The most brilliant solutions fail without stakeholder buy-in. Our human-centered approach develops consultants who are:
@@ -117,7 +117,7 @@ export default function MethodologySection() {
               </div>
             </div>
           </div>
-          
+
           {/* Pillar 2: Industry Knowledge */}
           <div 
             className="flip-card hover-lift"
@@ -148,7 +148,7 @@ export default function MethodologySection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flip-card-back bg-white rounded-lg shadow-md">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
@@ -175,7 +175,7 @@ export default function MethodologySection() {
                       <i className="fas fa-times"></i>
                     </button>
                   </div>
-                  
+
                   <div className="overflow-y-auto flex-1">
                     <p className="text-gray-700 mb-4">
                       Technology never exists in a vacuum. Our curriculum focuses on the business context of technical solutions:
@@ -203,7 +203,7 @@ export default function MethodologySection() {
               </div>
             </div>
           </div>
-          
+
           {/* Pillar 3: Technical Expertise */}
           <div 
             className="flip-card hover-lift"
@@ -234,7 +234,7 @@ export default function MethodologySection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flip-card-back bg-white rounded-lg shadow-md">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
@@ -261,7 +261,7 @@ export default function MethodologySection() {
                       <i className="fas fa-times"></i>
                     </button>
                   </div>
-                  
+
                   <div className="overflow-y-auto flex-1">
                     <p className="text-gray-700 mb-4">
                       Our speedway approach accelerates learning through immersive, hands-on experiences with real-world scenarios and industry tools:
@@ -289,7 +289,7 @@ export default function MethodologySection() {
               </div>
             </div>
           </div>
-          
+
           {/* Pillar 4: Career Partnership */}
           <div 
             className="flip-card hover-lift" 
@@ -322,7 +322,7 @@ export default function MethodologySection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flip-card-back">
                 <div className="h-full p-8 flex flex-col bg-white">
                   <div className="flex justify-between items-start mb-6">
@@ -342,7 +342,7 @@ export default function MethodologySection() {
                       <i className="fas fa-times"></i>
                     </button>
                   </div>
-                  
+
                   <div className="flex-1 overflow-y-auto">
                     <p className="text-gray-700 mb-6">
                       We're committed to your long-term success, providing ongoing mentorship and connections to top consulting opportunities.

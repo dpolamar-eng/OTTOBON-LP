@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
-import HeroBackgroundEffect from './HeroBackgroundEffect';
 
 interface OnboardingStep {
   title: string;
@@ -24,16 +23,16 @@ export default function IntegratedHeroJourney() {
     align: "center",
     containScroll: "trimSnaps" 
   });
-  
+
   const [heroActiveIndex, setHeroActiveIndex] = useState(0);
   const autoplayInterval = 5000;
   const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
+
   // Onboarding journey states
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [showJourney, setShowJourney] = useState(false);
-  
+
   // Animation refs
   const headingRef = useAnimation('animate-slide-up');
   const descriptionRef = useAnimation('animate-slide-up delay-100');
@@ -41,28 +40,28 @@ export default function IntegratedHeroJourney() {
   const imageRef = useAnimation('animate-slide-right delay-300');
   const indicatorsRef = useAnimation('animate-fade-in delay-400');
   const journeyRef = useAnimation('animate-slide-up');
-  
+
   const heroSlides = [
     {
-      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700'>Transform</span> Your Career <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-600'>Potential</span>",
+  title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Transform</span> Your Career <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Potential</span>",
       description: "Ottobon equips you with in-demand technology consulting skills through personalized mentorship and industry-aligned curriculum that accelerates your career path.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Technology professional in modern workspace"
     },
     {
-      title: "Learn <span class='bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600'>Today</span>, Lead <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600'>Tomorrow</span>",
+  title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Learn</span> Today,<br /> Lead <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Tomorrow</span>",
       description: "Our immersive programs focus on practical applications and real-world projects, guided by industry experts who have implemented enterprise technologies at scale.",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Collaborative learning environment"
     },
     {
-      title: "Build Your <span class='bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-teal-600'>Technology</span> Consulting <span class='bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-cyan-600'>Career</span>",
+  title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Build</span> Your Technology Consulting <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Career</span>",
       description: "Whether you're pivoting careers or enhancing existing skills, our program bridges the gap between traditional education and industry requirements.",
       image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Professional working on advanced technology"
     }
   ];
-  
+
   // Define the onboarding journey steps
   const onboardingSteps: OnboardingStep[] = [
     {
@@ -114,38 +113,38 @@ export default function IntegratedHeroJourney() {
       }
     }
   ];
-  
+
   // Auto scroll for the hero carousel
   const autoplayCallback = useCallback(() => {
     if (!heroEmbla) return;
     if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
-    
+
     autoplayTimeoutRef.current = setTimeout(() => {
       if (!heroEmbla) return;
       heroEmbla.scrollNext();
     }, autoplayInterval);
   }, [heroEmbla, autoplayInterval]);
-  
+
   // When the carousel scrolls, update the active index
   const onHeroSelect = useCallback(() => {
     if (!heroEmbla) return;
     setHeroActiveIndex(heroEmbla.selectedScrollSnap());
     autoplayCallback();
   }, [heroEmbla, autoplayCallback]);
-  
+
   // Add scroll to specific slide functionality
   const scrollTo = useCallback((index: number) => {
     if (!heroEmbla) return;
     heroEmbla.scrollTo(index);
   }, [heroEmbla]);
-  
+
   useEffect(() => {
     if (!heroEmbla) return;
-    
+
     onHeroSelect();
     heroEmbla.on('select', onHeroSelect);
     autoplayCallback();
-    
+
     return () => {
       heroEmbla.off('select', onHeroSelect);
       if (autoplayTimeoutRef.current) {
@@ -153,18 +152,18 @@ export default function IntegratedHeroJourney() {
       }
     };
   }, [heroEmbla, onHeroSelect, autoplayCallback]);
-  
+
   // Handle journey navigation
   const toggleJourney = () => {
     setShowJourney(!showJourney);
-    
+
     // Scroll to methodology section
     const methodologySection = document.getElementById('methodology');
     if (methodologySection) {
       methodologySection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  
+
   const goToStep = (index: number) => {
     setIsVisible(false);
     setTimeout(() => {
@@ -184,23 +183,10 @@ export default function IntegratedHeroJourney() {
       goToStep(currentStep - 1);
     }
   };
-  
+
   return (
-    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 bg-gray-50 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgyLTJoLTJ6TTM0IDMwaDJoMnpNNDAgMjhWLTJWMjh6TTQyIDMyVjJWMzJ6TTQwIDM2djIyVjM2ek00MiA0MHYxOFY0MHpNNDAgMjhoMnYyaC0yek00MiAzMmgydjJoLTJ6TTQwIDM2aDJ2MmgtMnpNNDIgNDBoMnYyaC0yek0zMiAzNGgyek0zNCAzMGgyek0yOCAzNGgyek0zMCAzMGgyek0yOCAyOHYzMFYyOHpNMzAgMzJ2MjJWMzJ6TTI4IDI4aDJ2MmgtMnpNMzAgMzJoMnYyaC0yek0yOCAzNGgyek0zMCAzOGgydjJoLTJ6Ik0yNCAzNGgyek0yNiAzMGgyek0yMCAzNGgyek0yMiAzMGgyek0yMCAzMnYyMlYzMnpNMjIgMzZ2MTRWMzZ6TTIwIDMyaDJ2MmgtMnpNMjIgMzZoMnYyaC0yek0yMCAzOGgydjJoLTJ6TTIyIDQyaDJ2MmgtMnpNMTYgMzRoek0xOCAzMGgyek0xMiAzNGgyek0xNCAzMGgyek0xMiAyOHYzMFYyOHpNMTQgMzJ2MjJWMzJ6TTEyIDI4aDJ2MmgtMnpNMTQgMzJoMnYyaC0yek0xMiAzNGgyek0xNCAzOGgydjJoLTJ6TTggMzRoek0xMCAzMGgyek00IDM0aHpNNiAzMGgyek00IDMydjIyVjMyek02IDM2djE0VjM2ek00IDMyaDJ2MmgtMnpNNiAzNmgydjJoLTJ6TTQgMzhoMnYyaC0yek02IDQyaDJ2MmgtMnpNNTYgMzRoek01OCAzMGgyek01MiAzNGgyek01NCAzMGgyek01MiAyOHYzMFYyOHpNNTQgMzJ2MjJWMzJ6TTUyIDI4aDJ2MmgtMnpNNTQgMzJoMnYyaC0yek01MiAzNGgyek01NCAzOGgydjJoLTJ6TTQ4IDM0aHpNNTAgMzBoek00NCAzNGh6TTQ2IDMwaHpNNDQgMzJ2MjJWMzJ6TTQ2IDM2djE0VjM2ek00NCAzMmgydjJoLTJ6TTQ2IDM2aDJ2MmgtMnpNNDQgMzhoMnYyaC0yek00NiA0MmgydjJoLTJ6TTYwIDI4djMwVjI4ek0wIDI4djMwVjI4ek0wIDI4aDJ2MmgtMnpNNjAgMjhoLTJ2MmgyeiIgZmlsbD0iIzIwMjAyMCIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')]"></div>
-        
-        {/* Subtle color gradient */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-blue-50 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-50 to-transparent"></div>
-        
-        {/* Accent elements */}
-        <div className="animate-float opacity-10 absolute -top-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl"></div>
-        <div className="animate-float opacity-10 absolute top-[60%] -left-[5%] w-[30%] h-[30%] rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl"></div>
-      </div>
-      
+    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]">
+
       <div className="container mx-auto px-1 sm:px-3 md:px-4 relative z-10 overflow-hidden">
         {/* Hero Content */}
         <div className="mb-12 md:mb-16">
@@ -210,17 +196,13 @@ export default function IntegratedHeroJourney() {
                 <div key={index} className="min-w-full flex-shrink-0 w-screen max-w-full">
                   <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 py-6 md:py-6 relative px-2 sm:px-4 md:px-6">
-                      {/* Add the hero-specific dynamic background effect as an absolute positioned element */}
-                      <div className="absolute inset-0 z-0">
-                        <HeroBackgroundEffect />
-                      </div>
-                      
+
                       <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-1 px-0 pt-1 sm:pt-2 md:pt-0">
 
                         <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
                           <h1 
                             ref={headingRef}
-                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
+                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-black"
                             style={{ 
                               maxWidth: '100%',
                               wordBreak: 'break-word',
@@ -231,17 +213,17 @@ export default function IntegratedHeroJourney() {
                             dangerouslySetInnerHTML={{ __html: slide.title }}
                           ></h1>
                         </div>
-                        <p ref={descriptionRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-4 md:mb-6 max-w-lg leading-relaxed">
+                        <p ref={descriptionRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-black/80 mb-4 md:mb-6 max-w-lg leading-relaxed">
                           {slide.description}
                         </p>
                         <div ref={ctaRef} className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 md:space-x-4">
                           <a 
                             href="#talent-compass" 
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base"
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base"
                           >
                             <span className="relative z-10 flex items-center justify-center">
                               <span className="truncate">Start Your Journey</span>
-                              <svg className="ml-1 w-3 h-3 sm:w-4 sm:h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <svg className="ml-1 w-5 h-4 sm:w-5 sm:h-5 opacity-0 -translate-x-2 translate-y-[2px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                               </svg>
                             </span>
@@ -256,9 +238,9 @@ export default function IntegratedHeroJourney() {
                             <span className="hidden group-hover:inline truncate text-white">View Journey</span>
                           </button>
                         </div>
-                        <div className="mt-4 text-xs sm:text-sm bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-2 sm:p-3 border border-green-200 shadow-sm">
-                          <p className="flex flex-wrap items-center font-medium text-green-700">
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 flex-shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <div className="mt-4 text-xs sm:text-sm">
+                          <p className="flex flex-wrap items-center font-medium text-emerald-600">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 flex-shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             <span className="break-words">Qualify for up to 90% tuition discount through our Talent Compass</span>
@@ -273,8 +255,8 @@ export default function IntegratedHeroJourney() {
                             className="rounded-lg w-full object-cover h-64 sm:h-80 md:h-96 transition duration-500 hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/20 opacity-70 mix-blend-overlay"></div>
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                            <p className="text-white font-medium text-sm">{slide.alt}</p>
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white/80 to-transparent p-4">
+                            <p className="text-black font-medium text-sm">{slide.alt}</p>
                           </div>
                         </div>
                       </div>
@@ -284,10 +266,10 @@ export default function IntegratedHeroJourney() {
               ))}
             </div>
           </div>
-          
+
           {/* Carousel Controls */}
           <div className="flex items-center justify-center mt-8">
-            <div ref={indicatorsRef} className="flex justify-center space-x-2 bg-gray-100 py-2 px-4 rounded-full shadow-md">
+            <div ref={indicatorsRef} className="flex justify-center space-x-2 bg-transparent py-2 px-4">
               {heroSlides.map((_, index) => (
                 <button
                   key={index}
@@ -303,14 +285,14 @@ export default function IntegratedHeroJourney() {
             </div>
           </div>
         </div>
-        
+
         {/* Learning Journey */}
         {showJourney && (
           <div ref={journeyRef} className="max-w-5xl mx-auto mt-8">
-            <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+            <h3 className="text-2xl font-bold text-center mb-6 text-white">
               Your Complete <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Learning Journey</span>
             </h3>
-            
+
             {/* Progress steps with arrows */}
             <div className="mb-8">
               <div className="flex items-center mb-2">
@@ -326,7 +308,7 @@ export default function IntegratedHeroJourney() {
                           index <= currentStep ? 'bg-blue-600' : 'bg-gray-300'
                         } transition-colors duration-300`}></div>
                       )}
-                      
+
                       {/* Step Button */}
                       <button
                         onClick={() => goToStep(index)}
@@ -351,7 +333,7 @@ export default function IntegratedHeroJourney() {
                           </svg>
                         )}
                       </button>
-                      
+
                       {/* Step Connector Line */}
                       {index < onboardingSteps.length - 1 && (
                         <div className={`flex-grow h-[2px] ${
@@ -359,18 +341,18 @@ export default function IntegratedHeroJourney() {
                         } transition-colors duration-300`}></div>
                       )}
                     </div>
-                    
+
                     {/* Step Label */}
                     <div className={`absolute -bottom-6 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs font-medium
                       ${currentStep === index 
-                        ? 'text-blue-600' 
-                        : 'text-gray-500'}`}>
+                        ? 'text-blue-300' 
+                        : 'text-white/70'}`}>
                       {step.title.split(' ')[0]}
                     </div>
                   </div>
                 ))}
               </div>
-              
+
               {/* Progress Bar */}
               <div className="w-full bg-gray-200 rounded-full h-1.5 mt-8">
                 <div 
@@ -392,7 +374,7 @@ export default function IntegratedHeroJourney() {
                   <div className="text-4xl mb-4">{onboardingSteps[currentStep].icon}</div>
                   <h2 className="text-2xl md:text-3xl font-bold mb-4">{onboardingSteps[currentStep].title}</h2>
                   <p className="mb-6 text-white/90">{onboardingSteps[currentStep].description}</p>
-                  
+
                   <div className="flex space-x-3">
                     {currentStep > 0 && (
                       <button 
@@ -402,7 +384,7 @@ export default function IntegratedHeroJourney() {
                         Previous
                       </button>
                     )}
-                    
+
                     {currentStep < onboardingSteps.length - 1 ? (
                       <button 
                         onClick={goToNextStep}
@@ -410,7 +392,7 @@ export default function IntegratedHeroJourney() {
                       >
                         <span className="relative z-10 flex items-center">
                           Continue
-                          <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 translate-y-[1px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                           </svg>
                         </span>
@@ -422,7 +404,7 @@ export default function IntegratedHeroJourney() {
                       >
                         <span className="relative z-10 flex items-center">
                           Start Your Journey
-                          <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg className="ml-1 w-4.5 h-4.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                           </svg>
                         </span>
@@ -430,7 +412,7 @@ export default function IntegratedHeroJourney() {
                     )}
                   </div>
                 </div>
-                
+
                 {/* Right side - Character & quote */}
                 <div className="md:w-1/2 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col">
                   {onboardingSteps[currentStep].character && (
@@ -444,23 +426,23 @@ export default function IntegratedHeroJourney() {
                           />
                         </div>
                         <div>
-                          <h3 className="font-bold text-black">{onboardingSteps[currentStep].character.name}</h3>
-                          <p className="text-sm text-gray-600">{onboardingSteps[currentStep].character.role}</p>
+                          <h3 className="font-bold text-white">{onboardingSteps[currentStep].character.name}</h3>
+                          <p className="text-sm text-white/70">{onboardingSteps[currentStep].character.role}</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex-1 flex flex-col justify-center">
-                        <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-inner border border-gray-300 relative">
+                        <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-inner border border-white/20 relative">
                           <div className="absolute -top-3 -left-2 text-4xl text-white/20">"</div>
                           <div className="absolute -bottom-3 -right-2 text-4xl text-white/20">"</div>
-                          <p className="text-black font-medium italic relative z-10">
+                          <p className="text-white font-medium italic relative z-10">
                             {onboardingSteps[currentStep].character.quote}
                           </p>
                         </div>
                       </div>
                     </>
                   )}
-                  
+
                   {/* Navigation dots */}
                   <div className="flex justify-center space-x-2 mt-8">
                     {onboardingSteps.map((_, index) => (
@@ -479,7 +461,7 @@ export default function IntegratedHeroJourney() {
                 </div>
               </div>
             </div>
-            
+
             {/* Close Button */}
             <div className="text-center mt-6">
               <button 

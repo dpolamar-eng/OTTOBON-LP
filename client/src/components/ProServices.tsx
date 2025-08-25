@@ -5,7 +5,7 @@ export default function ProServices() {
   const [, navigate] = useLocation();
   const [expandedCards, setExpandedCards] = useState<{[key: string]: boolean}>({});
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   // Hero banner slides
   const heroSlides = [
     {
@@ -30,7 +30,7 @@ export default function ProServices() {
       gradient: "from-emerald-900/80 to-blue-900/80"
     }
   ];
-  
+
   // Service offerings data
   const services = [
     {
@@ -112,7 +112,7 @@ export default function ProServices() {
       ]
     }
   ];
-  
+
   // Audience segments
   const audiences = [
     {
@@ -149,10 +149,10 @@ export default function ProServices() {
       ]
     }
   ];
-  
+
   // For carousel navigation
   const carouselRef = useRef<HTMLDivElement>(null);
-  
+
   // Toggle card expansion
   const toggleCard = (id: string) => {
     setExpandedCards(prev => ({
@@ -160,13 +160,13 @@ export default function ProServices() {
       [id]: !prev[id]
     }));
   };
-  
+
   // Auto-advance slides
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 7000);
-    
+
     return () => clearInterval(interval);
   }, [heroSlides.length]);
 
@@ -175,7 +175,7 @@ export default function ProServices() {
     if (carouselRef.current) {
       const container = carouselRef.current;
       const cardWidth = 450; // approx width of each card including gap
-      
+
       if (direction === 'right') {
         // If we're near the end, loop back to the beginning
         if (container.scrollLeft + container.clientWidth >= container.scrollWidth - cardWidth) {
@@ -207,17 +207,17 @@ export default function ProServices() {
             onClick={() => navigate('/')} 
             className="flex items-center gap-0 cursor-pointer hover:opacity-80 transition-opacity"
           >
-            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-20" />
-            <h1 className="text-xl font-bold ml-0">OTTOBON</h1>
+            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-10 sm:h-14 md:h-20 w-auto" />
+            <h1 className="text-lg sm:text-xl font-bold ml-0">OTTOBON</h1>
           </div>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <a href="#overview" className="text-white hover:text-indigo-300 transition-colors">Overview</a>
             <a href="#services" className="text-white hover:text-indigo-300 transition-colors">Services</a>
             <a href="#audience" className="text-white hover:text-indigo-300 transition-colors">Who We Serve</a>
           </nav>
-          
+
           {/* Mobile menu button */}
           <button className="md:hidden text-white">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,7 +256,7 @@ export default function ProServices() {
                           <span className="text-4xl md:text-5xl">{slide.icon}</span>
                         </div>
                       </div>
-                      
+
                       {/* Text */}
                       <div className="text-center md:text-left">
                         <h2 className="text-3xl md:text-4xl font-bold mb-3">
@@ -270,7 +270,7 @@ export default function ProServices() {
                         </button>
                       </div>
                     </div>
-                    
+
                     {/* Right side: Full-sized Image */}
                     <div className="md:w-[55%] h-full">
                       <div className="w-full h-full overflow-hidden">
@@ -284,7 +284,7 @@ export default function ProServices() {
                   </div>
                 </div>
               ))}
-              
+
               {/* Slide navigation */}
               <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
                 {heroSlides.map((_, i) => (
@@ -302,14 +302,14 @@ export default function ProServices() {
               </div>
             </div>
           </section>
-          
+
           {/* Overview Section */}
           <section id="overview" className="bg-indigo-900/20 rounded-xl p-6 border border-indigo-800/30 mb-6">
             <h2 className="text-2xl font-bold mb-3">Overview</h2>
             <p className="text-gray-300 mb-4">
               The Ottobon Professional Services Organization (PSO) provides consultants with comprehensive operational and administrative support powered by advanced AI and expert human assistance.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
               <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
                 <div className="flex items-center mb-4">
@@ -324,7 +324,7 @@ export default function ProServices() {
                   Our AI agents handle administrative tasks with greater speed and consistency than human staff, allowing you to focus on high-value client work instead of routine operations.
                 </p>
               </div>
-              
+
               <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
                 <div className="flex items-center mb-4">
                   <div className="rounded-full bg-purple-600/30 p-3 mr-4">
@@ -338,7 +338,7 @@ export default function ProServices() {
                   For complex tasks requiring judgment or personalization, our expert human team works seamlessly with AI systems to provide the perfect balance of efficiency and expertise.
                 </p>
               </div>
-              
+
               <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
                 <div className="flex items-center mb-4">
                   <div className="rounded-full bg-cyan-600/30 p-3 mr-4">
@@ -354,7 +354,7 @@ export default function ProServices() {
               </div>
             </div>
           </section>
-          
+
           {/* Services Section - Carousel with 3 visible cards */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             <div className="flex justify-between items-center mb-6">
@@ -362,7 +362,7 @@ export default function ProServices() {
                 <h2 className="text-2xl font-bold mb-1">Our Service Offerings</h2>
                 <p className="text-sm text-gray-300">Each service combines AI automation with optional human support</p>
               </div>
-              
+
               {/* Carousel Navigation */}
               <div className="flex space-x-3">
                 <button 
@@ -385,7 +385,7 @@ export default function ProServices() {
                 </button>
               </div>
             </div>
-            
+
             {/* Service Cards Carousel */}
             <div 
               ref={carouselRef}
@@ -425,11 +425,11 @@ export default function ProServices() {
                         </div>
                         <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                       </div>
-                      
+
                       {/* Card content */}
                       <div className="p-6 flex flex-col h-[calc(100%-112px)]">
                         <p className="text-gray-200 text-lg mb-6">{service.description}</p>
-                        
+
                         <div className="mt-auto flex justify-between items-center">
                           <span className="text-indigo-400 text-base font-medium">View Details</span>
                           <svg className="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -438,7 +438,7 @@ export default function ProServices() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Back of card */}
                     <div 
                       className={`absolute inset-0 rounded-xl bg-gray-800 border border-white/10 p-6 transition-all duration-300 ${
@@ -455,9 +455,9 @@ export default function ProServices() {
                           </svg>
                         </button>
                       </div>
-                      
+
                       <p className="text-gray-300 mb-6 text-base">{service.details}</p>
-                      
+
                       <h4 className="text-base font-semibold uppercase tracking-wide text-indigo-400 mb-4">Key Features</h4>
                       <ul className="space-y-3">
                         {service.features.map((feature, i) => (
@@ -475,14 +475,14 @@ export default function ProServices() {
               ))}
             </div>
           </section>
-          
+
           {/* Audience Section */}
           <section id="audience" className="bg-emerald-900/20 rounded-xl p-6 border border-emerald-800/30 mb-6">
             <h2 className="text-2xl font-bold mb-3">Who We Serve</h2>
             <p className="text-gray-300 mb-4">
               Our flexible service model adapts to different consulting business models and scales.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
               {audiences.map((audience, index) => (
                 <div 
@@ -492,10 +492,10 @@ export default function ProServices() {
                   <div className={`w-16 h-16 rounded-full mb-4 bg-gradient-to-br ${audience.color} flex items-center justify-center mx-auto`}>
                     <span className="text-3xl">{audience.icon}</span>
                   </div>
-                  
+
                   <h3 className="text-lg font-bold mb-3 text-center">{audience.title}</h3>
                   <p className="text-gray-400 mb-4 text-center text-sm">{audience.description}</p>
-                  
+
                   <div className="space-y-2">
                     {audience.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-start">
@@ -512,7 +512,7 @@ export default function ProServices() {
           </section>
         </div>
       </main>
-      
+
       {/* Footer */}
       <footer className="bg-gray-900 py-4 border-t border-white/10">
         <div className="container mx-auto px-4">
@@ -524,7 +524,7 @@ export default function ProServices() {
               </div>
               <p className="text-gray-500 text-xs mt-1">Professional Services Organization</p>
             </div>
-            
+
             <div className="text-center md:text-right">
               <p className="text-gray-500 text-xs">
                 © {new Date().getFullYear()} Ottobon Inc. All rights reserved.

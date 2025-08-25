@@ -1,6 +1,6 @@
 export default function RequirementsSection() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Hardware & Connectivity */}
@@ -31,7 +31,7 @@ export default function RequirementsSection() {
               </ul>
             </div>
           </div>
-          
+
           {/* Program Structure */}
           <div>
             <h2 className="text-2xl font-bold mb-6 flex items-center">

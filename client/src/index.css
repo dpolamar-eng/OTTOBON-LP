@@ -187,25 +187,25 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 @layer base {
   :root {
-    --background: 218 45% 17%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 45 95% 58%;
-    --primary-foreground: 218 45% 17%;
-    --secondary: 218 20% 25%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 218 30% 20%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 45 95% 58%;
-    --accent-foreground: 218 45% 17%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 218 20% 25%;
-    --input: 218 20% 25%;
-    --ring: 45 95% 58%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 100% 50%;
     --radius: 0.5rem;
 
     /* Animation timing variables */
@@ -276,47 +276,47 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     transform: rotateY(180deg);
     background-color: white;
   }
-  
+
   /* Glow effect on hover */
   .flip-card:hover .flip-card-inner {
     box-shadow: 0 15px 35px -15px rgba(0, 128, 255, 0.25);
   }
-  
+
   /* Wiggle animation on hover */
   .flip-card:hover .flip-card-inner:not(.flipped) {
     animation: wiggle 0.5s ease-in-out;
   }
-  
+
   /* Stylish backgrounds and design elements */
   .bg-gradient-soft {
     background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f9 100%);
   }
-  
+
   .bg-gradient-primary {
     background: linear-gradient(135deg, #4f83cc 0%, #0072ff 100%);
   }
-  
+
   .pattern-dots {
     background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
   }
-  
+
   .glass-effect {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
-  
+
   /* Animated elements */
   .hover-lift {
     transition: transform 0.3s ease-out;
   }
-  
+
   .hover-lift:hover {
     transform: translateY(-5px);
   }
-  
+
   /* Gateway portal cards */
   .gateway-card {
     width: 100%;
@@ -325,7 +325,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     transform-origin: center;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
-  
+
   /* Fancy dividers */
   .fancy-divider {
     height: 5px;
@@ -334,12 +334,12 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     width: 70%;
     border-radius: 999px;
   }
-  
+
   /* Section styling */
   .section-wave-top {
     position: relative;
   }
-  
+
   .section-wave-top::before {
     content: '';
     position: absolute;
@@ -379,23 +379,23 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   .delay-100 {
     animation-delay: 0.1s;
   }
-  
+
   .delay-200 {
     animation-delay: 0.2s;
   }
-  
+
   .delay-300 {
     animation-delay: 0.3s;
   }
-  
+
   .delay-400 {
     animation-delay: 0.4s;
   }
-  
+
   .delay-500 {
     animation-delay: 0.5s;
   }
-  
+
   .delay-600 {
     animation-delay: 0.6s;
   }
@@ -423,7 +423,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   .animate-pulse {
     animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-  
+
   /* Bubble animation */
   .bubble {
     position: absolute;
@@ -435,7 +435,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     opacity: 0.2;
     bottom: -100px;
   }
-  
+
   /* Portal page bubbles */
   .gateway-bubble {
     position: absolute;
@@ -560,7 +560,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
       opacity: 0.5;
     }
   }
-  
+
   @keyframes bubble-rise {
     0% {
       bottom: -100px;
@@ -574,7 +574,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
       opacity: 0;
     }
   }
-  
+
   @keyframes bubble-float {
     0% {
       transform: translateY(0) translateX(0) scale(1);
@@ -597,7 +597,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
       opacity: 0;
     }
   }
-  
+
   /* Float animations for dynamic background */
   @keyframes float-1 {
     0% { transform: translateY(0) translateX(0); }
@@ -606,7 +606,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     75% { transform: translateY(15px) translateX(5px); }
     100% { transform: translateY(0) translateX(0); }
   }
-  
+
   @keyframes float-2 {
     0% { transform: translateY(0) translateX(0); }
     25% { transform: translateY(20px) translateX(-10px); }
@@ -614,21 +614,21 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     75% { transform: translateY(-10px) translateX(-5px); }
     100% { transform: translateY(0) translateX(0); }
   }
-  
+
   @keyframes float-3 {
     0% { transform: translateY(0) translateX(0); }
     33% { transform: translateY(-20px) translateX(15px); }
     66% { transform: translateY(15px) translateX(-10px); }
     100% { transform: translateY(0) translateX(0); }
   }
-  
+
   @keyframes float-4 {
     0% { transform: translateY(0) translateX(0); }
     33% { transform: translateY(25px) translateX(10px); }
     66% { transform: translateY(-10px) translateX(-15px); }
     100% { transform: translateY(0) translateX(0); }
   }
-  
+
   @keyframes float-5 {
     0% { transform: translateY(0) translateX(0); }
     20% { transform: translateY(-15px) translateX(-10px); }
@@ -637,27 +637,27 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     80% { transform: translateY(-5px) translateX(-15px); }
     100% { transform: translateY(0) translateX(0); }
   }
-  
+
   .animate-float-1 {
     animation: float-1 20s ease-in-out infinite;
   }
-  
+
   .animate-float-2 {
     animation: float-2 18s ease-in-out infinite;
   }
-  
+
   .animate-float-3 {
     animation: float-3 24s ease-in-out infinite;
   }
-  
+
   .animate-float-4 {
     animation: float-4 22s ease-in-out infinite;
   }
-  
+
   .animate-float-5 {
     animation: float-5 26s ease-in-out infinite;
   }
-  
+
   /* Premium button shine animation */
   @keyframes shine {
     0% {
@@ -667,32 +667,42 @@ h1, h2, h3, h4, h5, h6, .font-heading {
       transform: translateX(100%);
     }
   }
-  
+
   .animate-shine {
-    animation: shine 4s infinite;
+    animation: shine 2.5s infinite;
   }
-  
+
+  /* Faster, continuous shine (no dwell) */
+  @keyframes shine-fast {
+    0% { transform: translateX(-140%); }
+    100% { transform: translateX(140%); }
+  }
+
+  .animate-shine-fast {
+    animation: shine-fast 1.6s linear infinite;
+  }
+
   /* Storytelling component styles */
   .typing-cursor {
     display: inline-block;
     animation: cursor-blink 1s step-end infinite;
   }
-  
+
   .fade-transition {
     animation: fade-transition 0.5s ease;
   }
-  
+
   /* Storytelling animations */
   @keyframes cursor-blink {
     from, to { opacity: 1; }
     50% { opacity: 0; }
   }
-  
+
   @keyframes fade-transition {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  
+
   /* Wiggle animation for flip cards */
   @keyframes wiggle {
     0% { transform: rotate(0deg); }

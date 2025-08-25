@@ -32,7 +32,7 @@ export default function StorytellingOnboarding() {
   const sectionRef = useAnimation('animate-fade-in');
   const titleRef = useAnimation('animate-slide-up');
   const storyContainerRef = useAnimation('animate-scale-in delay-100');
-  
+
   // State for tracking current character and story progress
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [currentSegmentId, setCurrentSegmentId] = useState(1);
@@ -41,7 +41,7 @@ export default function StorytellingOnboarding() {
   const [typingText, setTypingText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const storyRef = useRef<HTMLDivElement>(null);
-  
+
   // Characters with their own unique stories and backgrounds
   const characters: Character[] = [
     {
@@ -390,7 +390,7 @@ export default function StorytellingOnboarding() {
       ]
     }
   ];
-  
+
   // Handle character selection
   const selectCharacter = (character: Character) => {
     setSelectedCharacter(character);
@@ -400,7 +400,7 @@ export default function StorytellingOnboarding() {
     setTypingText("");
     typeText(character.story[0].text);
   };
-  
+
   // Go back to character selection
   const resetStory = () => {
     setSelectedCharacter(null);
@@ -409,33 +409,33 @@ export default function StorytellingOnboarding() {
     setPathOutcome(null);
     setTypingText("");
   };
-  
+
   // Handle choice selection
   const makeChoice = (choice: Choice) => {
     if (!selectedCharacter) return;
-    
+
     // Check if this choice leads to an outcome
     if (choice.impact) {
       setPathOutcome(choice.impact);
     }
-    
+
     // Add current segment to history before moving to next
     setStoryHistory(prev => [...prev, currentSegmentId]);
-    
+
     // Find the next segment
     const nextSegment = selectedCharacter.story.find(s => s.id === choice.nextSegmentId);
     if (nextSegment) {
       setCurrentSegmentId(choice.nextSegmentId);
       setTypingText("");
       typeText(nextSegment.text);
-      
+
       // Scroll to the new content
       setTimeout(() => {
         storyRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }, 100);
     }
   };
-  
+
   // Go back to the previous story segment
   const goBack = () => {
     if (storyHistory.length > 0) {
@@ -443,7 +443,7 @@ export default function StorytellingOnboarding() {
       setCurrentSegmentId(prevSegmentId);
       setStoryHistory(prev => prev.slice(0, -1));
       setPathOutcome(null);
-      
+
       // Update typing text for previous segment
       if (selectedCharacter) {
         const prevSegment = selectedCharacter.story.find(s => s.id === prevSegmentId);
@@ -454,13 +454,13 @@ export default function StorytellingOnboarding() {
       }
     }
   };
-  
+
   // Typewriter effect for story text
   const typeText = (text: string) => {
     setIsTyping(true);
     let i = 0;
     setTypingText("");
-    
+
     const typing = setInterval(() => {
       if (i < text.length) {
         setTypingText(prev => prev + text.charAt(i));
@@ -470,44 +470,45 @@ export default function StorytellingOnboarding() {
         setIsTyping(false);
       }
     }, 15); // Speed of typing
-    
+
     return () => clearInterval(typing);
   };
-  
+
   // Get current story segment
   const getCurrentSegment = () => {
     if (!selectedCharacter) return null;
     return selectedCharacter.story.find(s => s.id === currentSegmentId);
   };
-  
+
   // Current segment
   const currentSegment = getCurrentSegment();
-  
+
   return (
-    <section id="stories" className="py-20 relative bg-gray-50" ref={sectionRef}>
+    <section id="stories" className="py-20 relative overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]" ref={sectionRef}>
       {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent"></div>
+        {/* Tinted fades to avoid white band between sections */}
+        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/40 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/40 to-transparent"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-center mb-3">
           Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Transformation</span> Stories
         </h2>
-        
+
         <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
           Explore the journeys of professionals who've transformed their careers through our program. 
           Choose a story that resonates with your situation to see how your own path might unfold.
         </p>
-        
+
         <div ref={storyContainerRef} className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
           {!selectedCharacter ? (
             // Character selection screen
             <div className="p-8">
               <h3 className="text-2xl font-bold text-center mb-8">Choose a Journey to Explore</h3>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {characters.map((character, index) => (
                   <div 
@@ -546,7 +547,7 @@ export default function StorytellingOnboarding() {
                     </svg>
                     Choose Another Story
                   </button>
-                  
+
                   <div className="flex items-center mb-6">
                     <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/50 mr-4">
                       <img 
@@ -560,13 +561,13 @@ export default function StorytellingOnboarding() {
                       <p className="text-white/80">{selectedCharacter.role}</p>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-white/70 text-sm uppercase font-medium mb-1">Background</h4>
                       <p className="text-sm">{selectedCharacter.background}</p>
                     </div>
-                    
+
                     <div>
                       <h4 className="text-white/70 text-sm uppercase font-medium mb-1">Story Progress</h4>
                       <div className="w-full bg-white/10 rounded-full h-1.5 mb-3">
@@ -579,7 +580,7 @@ export default function StorytellingOnboarding() {
                         {pathOutcome ? 'Conclusion' : `Part ${currentSegmentId} of ${selectedCharacter.story.length - 1}`}
                       </p>
                     </div>
-                    
+
                     {pathOutcome === 'assessment' && (
                       <div className="mt-6 bg-white/20 p-4 rounded-lg">
                         <h4 className="font-medium mb-2">Ready for Your Journey?</h4>
@@ -595,7 +596,7 @@ export default function StorytellingOnboarding() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Story content */}
               <div className="md:w-2/3 p-6 md:p-8" ref={storyRef}>
                 {currentSegment && (
@@ -609,14 +610,14 @@ export default function StorytellingOnboarding() {
                         />
                       </div>
                     )}
-                    
+
                     <div className="mb-8">
                       <p className="text-gray-700 leading-relaxed mb-4">
                         {typingText}
                         {isTyping && <span className="typing-cursor">|</span>}
                       </p>
                     </div>
-                    
+
                     {/* Choice options */}
                     {currentSegment.choices && currentSegment.choices.length > 0 && !isTyping && (
                       <div className="space-y-3 mt-6">
@@ -637,7 +638,7 @@ export default function StorytellingOnboarding() {
                         ))}
                       </div>
                     )}
-                    
+
                     {/* Navigation controls */}
                     <div className="flex justify-between mt-8 pt-4 border-t border-gray-100">
                       {storyHistory.length > 0 && !pathOutcome ? (
@@ -653,7 +654,7 @@ export default function StorytellingOnboarding() {
                       ) : (
                         <div></div>
                       )}
-                      
+
                       {pathOutcome === 'assessment' && (
                         <a 
                           href="#assessment"

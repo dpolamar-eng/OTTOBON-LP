@@ -5,7 +5,7 @@ export default function ServicesContent() {
   const [, navigate] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedCards, setExpandedCards] = useState<{[key: string]: boolean}>({});
-  
+
   // Toggle card expansion
   const toggleCard = (id: string) => {
     setExpandedCards(prev => ({
@@ -65,7 +65,7 @@ export default function ServicesContent() {
       ]
     }
   ];
-  
+
   // Audience segments
   const audiences = [
     {
@@ -127,16 +127,16 @@ export default function ServicesContent() {
       gradient: "from-emerald-900/80 to-blue-900/80"
     }
   ];
-  
+
   // State for hero banner
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   // Auto-advance slides
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 7000);
-    
+
     return () => clearInterval(interval);
   }, [heroSlides.length]);
 
@@ -149,14 +149,14 @@ export default function ServicesContent() {
             onClick={() => navigate('/')} 
             className="flex items-center gap-0 cursor-pointer hover:opacity-80 transition-opacity"
           >
-            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-20" />
-            <h1 className="text-xl font-bold ml-0">OTTOBON</h1>
+            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-10 sm:h-14 md:h-20 w-auto" />
+            <h1 className="text-lg sm:text-xl font-bold ml-0">OTTOBON</h1>
           </div>
-          
+
           <nav className="hidden md:flex items-center space-x-6">
             {/* Navigation links could be added here if needed */}
           </nav>
-          
+
           <div className="md:hidden">
             {/* Mobile menu button could be added here if needed */}
           </div>
@@ -181,25 +181,25 @@ export default function ServicesContent() {
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient}`}></div>
                 </div>
-                
+
                 {/* Content container */}
                 <div className="relative h-full px-6 py-12 flex items-center">
                   <div className="w-full md:w-1/2">
                     <h1 className="text-4xl font-bold mb-4 leading-tight">
                       {slide.title}
                     </h1>
-                    
+
                     <p className="text-xl text-white/90 mb-6">
                       {slide.subtitle}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-3">
                       <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
                         Learn More
                       </button>
                     </div>
                   </div>
-                  
+
                   {/* Icon display */}
                   <div className="hidden md:flex items-center justify-center w-1/2">
                     <div className="relative w-40 h-40 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 z-10">
@@ -210,7 +210,7 @@ export default function ServicesContent() {
                 </div>
               </div>
             ))}
-            
+
             {/* Slide indicators */}
             <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
               {heroSlides.map((_, i) => (
@@ -226,7 +226,7 @@ export default function ServicesContent() {
                 />
               ))}
             </div>
-            
+
             {/* Navigation arrows */}
             <button 
               onClick={() => setCurrentSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
@@ -256,7 +256,7 @@ export default function ServicesContent() {
             <p className="text-gray-300 mb-4">
               The Ottobon Professional Services Organization (PSO) provides consultants with comprehensive operational and administrative support powered by advanced AI and expert human assistance.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
               <div className="bg-white/5 rounded-lg p-4">
                 <div className="flex items-center mb-3">
@@ -271,7 +271,7 @@ export default function ServicesContent() {
                   Our AI agents handle administrative tasks with greater speed and consistency than human staff.
                 </p>
               </div>
-              
+
               <div className="bg-white/5 rounded-lg p-4">
                 <div className="flex items-center mb-3">
                   <div className="rounded-full bg-purple-600/30 p-2 mr-3">
@@ -285,7 +285,7 @@ export default function ServicesContent() {
                   For complex tasks, our expert human team works seamlessly with AI systems.
                 </p>
               </div>
-              
+
               <div className="bg-white/5 rounded-lg p-4">
                 <div className="flex items-center mb-3">
                   <div className="rounded-full bg-cyan-600/30 p-2 mr-3">
@@ -301,14 +301,14 @@ export default function ServicesContent() {
               </div>
             </div>
           </section>
-          
+
           {/* Services Section */}
           <section className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             <h2 className="text-2xl font-bold mb-3">Our Service Offerings</h2>
             <p className="text-gray-300 mb-4">
               Each service combines AI automation with optional human support, allowing you to choose the right balance for your needs.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               {services.map((service) => (
                 <div
@@ -335,10 +335,10 @@ export default function ServicesContent() {
                         </svg>
                       </button>
                     </div>
-                    
+
                     <div className="p-4">
                       <p className="text-sm text-gray-300">{service.description}</p>
-                      
+
                       <div className={`overflow-hidden transition-all duration-300 ${
                         expandedCards[service.id] ? 'max-h-[200px] opacity-100 mt-4' : 'max-h-0 opacity-0'
                       }`}>
@@ -356,7 +356,7 @@ export default function ServicesContent() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div className={`mt-2 text-xs font-medium text-center text-indigo-400 ${
                         expandedCards[service.id] ? 'hidden' : 'block'
                       }`}>
@@ -368,14 +368,14 @@ export default function ServicesContent() {
               ))}
             </div>
           </section>
-          
+
           {/* Audience Section */}
           <section className="bg-emerald-900/20 rounded-xl p-6 border border-emerald-800/30 mb-6">
             <h2 className="text-2xl font-bold mb-3">Who We Serve</h2>
             <p className="text-gray-300 mb-4">
               Our flexible service model adapts to different consulting business models and scales.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
               {audiences.map((audience, index) => (
                 <div 
@@ -385,10 +385,10 @@ export default function ServicesContent() {
                   <div className={`w-12 h-12 rounded-full mb-3 bg-gradient-to-br ${audience.color} flex items-center justify-center mx-auto`}>
                     <span className="text-2xl">{audience.icon}</span>
                   </div>
-                  
+
                   <h3 className="text-lg font-bold mb-2 text-center">{audience.title}</h3>
                   <p className="text-sm text-gray-400 mb-3 text-center">{audience.description}</p>
-                  
+
                   <div className="space-y-2">
                     {audience.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-start">
@@ -405,7 +405,7 @@ export default function ServicesContent() {
           </section>
         </div>
       </main>
-      
+
       <footer className="bg-gray-900 py-4 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -416,7 +416,7 @@ export default function ServicesContent() {
               </div>
               <p className="text-gray-500 text-xs mt-1">Professional Services Organization</p>
             </div>
-            
+
             <div className="text-center md:text-right">
               <p className="text-gray-500 text-xs">
                 © {new Date().getFullYear()} Ottobon Inc. All rights reserved.
