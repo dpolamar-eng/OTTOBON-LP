@@ -35,7 +35,7 @@ export default function MethodologySection() {
               }
             }}
           >
-            <div className="flip-card-inner">
+            <div className="flip-card-inner" style={{boxShadow: 'none'}}>
               <div className="flip-card-front glass-effect">
                 <div className="h-2/5 bg-gradient-primary relative overflow-hidden">
                   <img 
@@ -129,8 +129,8 @@ export default function MethodologySection() {
               }
             }}
           >
-            <div className="flip-card-inner">
-              <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
+            <div className="flip-card-inner" style={{boxShadow: 'none'}}>
+              <div className="flip-card-front rounded-lg overflow-hidden">
                 <div className="h-2/5 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=600&q=80" 
@@ -149,7 +149,7 @@ export default function MethodologySection() {
                 </div>
               </div>
 
-              <div className="flip-card-back bg-white rounded-lg shadow-md">
+              <div className="flip-card-back bg-white rounded-lg">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold flex items-center">
@@ -215,8 +215,8 @@ export default function MethodologySection() {
               }
             }}
           >
-            <div className="flip-card-inner">
-              <div className="flip-card-front rounded-lg overflow-hidden shadow-md">
+            <div className="flip-card-inner" style={{boxShadow: 'none'}}>
+              <div className="flip-card-front rounded-lg overflow-hidden">
                 <div className="h-2/5 bg-gradient-to-r from-purple-500 to-purple-700 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" 
@@ -235,7 +235,7 @@ export default function MethodologySection() {
                 </div>
               </div>
 
-              <div className="flip-card-back bg-white rounded-lg shadow-md">
+              <div className="flip-card-back bg-white rounded-lg">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold flex items-center">
@@ -301,7 +301,7 @@ export default function MethodologySection() {
               }
             }}
           >
-            <div className="flip-card-inner">
+            <div className="flip-card-inner" style={{boxShadow: 'none'}}>
               <div className="flip-card-front glass-effect">
                 <div className="h-2/5 bg-gradient-to-r from-green-500 to-green-700 relative overflow-hidden">
                   <img 
