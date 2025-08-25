@@ -26,8 +26,8 @@ export default function MethodologySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" ref={cardsRef}>
           {/* Pillar 1: Human-Centered */}
           <div 
-            className="flip-card group" 
-            style={{height: "450px"}}
+            className="flip-card group hover:scale-105 transition-transform duration-300 ease-out" 
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner && !inner.classList.contains('flipped')) {
@@ -120,8 +120,8 @@ export default function MethodologySection() {
 
           {/* Pillar 2: Industry Knowledge */}
           <div 
-            className="flip-card group"
-            style={{height: "450px"}}
+            className="flip-card group hover:scale-105 transition-transform duration-300 ease-out"
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner && !inner.classList.contains('flipped')) {
@@ -206,8 +206,8 @@ export default function MethodologySection() {
 
           {/* Pillar 3: Technical Expertise */}
           <div 
-            className="flip-card group"
-            style={{height: "450px"}}
+            className="flip-card group hover:scale-105 transition-transform duration-300 ease-out"
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner && !inner.classList.contains('flipped')) {
@@ -292,8 +292,8 @@ export default function MethodologySection() {
 
           {/* Pillar 4: Career Partnership */}
           <div 
-            className="flip-card group" 
-            style={{height: "450px"}}
+            className="flip-card group hover:scale-105 transition-transform duration-300 ease-out" 
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner && !inner.classList.contains('flipped')) {
