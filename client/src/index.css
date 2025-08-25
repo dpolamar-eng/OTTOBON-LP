@@ -703,12 +703,5 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     to { opacity: 1; }
   }
 
-  /* Wiggle animation for flip cards */
-  @keyframes wiggle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(1deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-1deg); }
-    100% { transform: rotate(0deg); }
-  }
+
 }
