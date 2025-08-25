@@ -293,6 +293,7 @@ export default function IntegratedHeroJourney() {
                     </div>
                   </div>
                 </div>
+                </div>
               ))}
             </div>
             
