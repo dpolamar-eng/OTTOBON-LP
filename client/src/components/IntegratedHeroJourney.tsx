@@ -115,15 +115,17 @@ export default function IntegratedHeroJourney() {
   ];
 
   // Auto scroll for the hero carousel
+  const [isHovered, setIsHovered] = useState(false);
+  
   const autoplayCallback = useCallback(() => {
-    if (!heroEmbla) return;
+    if (!heroEmbla || isHovered) return;
     if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
 
     autoplayTimeoutRef.current = setTimeout(() => {
-      if (!heroEmbla) return;
+      if (!heroEmbla || isHovered) return;
       heroEmbla.scrollNext();
     }, autoplayInterval);
-  }, [heroEmbla, autoplayInterval]);
+  }, [heroEmbla, autoplayInterval, isHovered]);
 
   // When the carousel scrolls, update the active index
   const onHeroSelect = useCallback(() => {
@@ -136,6 +138,17 @@ export default function IntegratedHeroJourney() {
   const scrollTo = useCallback((index: number) => {
     if (!heroEmbla) return;
     heroEmbla.scrollTo(index);
+  }, [heroEmbla]);
+
+  // Navigation functions
+  const goToNextSlide = useCallback(() => {
+    if (!heroEmbla) return;
+    heroEmbla.scrollNext();
+  }, [heroEmbla]);
+
+  const goToPrevSlide = useCallback(() => {
+    if (!heroEmbla) return;
+    heroEmbla.scrollPrev();
   }, [heroEmbla]);
 
   useEffect(() => {
@@ -152,6 +165,17 @@ export default function IntegratedHeroJourney() {
       }
     };
   }, [heroEmbla, onHeroSelect, autoplayCallback]);
+
+  // Restart autoplay when hover state changes
+  useEffect(() => {
+    if (!isHovered) {
+      autoplayCallback();
+    } else {
+      if (autoplayTimeoutRef.current) {
+        clearTimeout(autoplayTimeoutRef.current);
+      }
+    }
+  }, [isHovered, autoplayCallback]);
 
   // Handle journey navigation
   const toggleJourney = () => {
@@ -190,8 +214,14 @@ export default function IntegratedHeroJourney() {
       <div className="container mx-auto px-1 sm:px-3 md:px-4 relative z-10 overflow-hidden">
         {/* Hero Content */}
         <div className="mb-12 md:mb-16">
-          <div className="overflow-hidden" ref={heroViewportRef}>
-            <div className="flex">
+          <div className="relative">
+            <div 
+              className="overflow-hidden" 
+              ref={heroViewportRef}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <div className="flex">
               {heroSlides.map((slide, index) => (
                 <div key={index} className="min-w-full flex-shrink-0 w-screen max-w-full">
                   <div className="max-w-7xl mx-auto">
@@ -265,6 +295,27 @@ export default function IntegratedHeroJourney() {
                 </div>
               ))}
             </div>
+            
+            {/* Navigation Buttons */}
+            <button
+              onClick={goToPrevSlide}
+              className="absolute top-1/2 left-4 z-10 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 hover:text-blue-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300 backdrop-blur-sm"
+              aria-label="Previous slide"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            
+            <button
+              onClick={goToNextSlide}
+              className="absolute top-1/2 right-4 z-10 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 hover:text-blue-600 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300 backdrop-blur-sm"
+              aria-label="Next slide"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
           </div>
 
           {/* Carousel Controls */}
