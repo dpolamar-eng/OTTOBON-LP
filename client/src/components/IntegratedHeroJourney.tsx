@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
@@ -43,19 +44,19 @@ export default function IntegratedHeroJourney() {
 
   const heroSlides = [
     {
-  title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Transform</span> Your Career <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Potential</span>",
+      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Transform</span> Your Career <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Potential</span>",
       description: "Ottobon equips you with in-demand technology consulting skills through personalized mentorship and industry-aligned curriculum that accelerates your career path.",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Technology professional in modern workspace"
     },
     {
-  title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Learn</span> Today,<br /> Lead <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Tomorrow</span>",
+      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Learn</span> Today,<br /> Lead <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Tomorrow</span>",
       description: "Our immersive programs focus on practical applications and real-world projects, guided by industry experts who have implemented enterprise technologies at scale.",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Collaborative learning environment"
     },
     {
-  title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Build</span> Your Technology Consulting <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Career</span>",
+      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Build</span> Your Technology Consulting <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Career</span>",
       description: "Whether you're pivoting careers or enhancing existing skills, our program bridges the gap between traditional education and industry requirements.",
       image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Professional working on advanced technology"
@@ -210,7 +211,6 @@ export default function IntegratedHeroJourney() {
 
   return (
     <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]">
-
       <div className="container mx-auto px-1 sm:px-3 md:px-4 relative z-10 overflow-hidden">
         {/* Hero Content */}
         <div className="mb-12 md:mb-16">
@@ -222,78 +222,76 @@ export default function IntegratedHeroJourney() {
               onMouseLeave={() => setIsHovered(false)}
             >
               <div className="flex">
-              {heroSlides.map((slide, index) => (
-                <div key={index} className="min-w-full flex-shrink-0 w-screen max-w-full">
-                  <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 py-6 md:py-6 relative px-2 sm:px-4 md:px-6">
-
-                      <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-1 px-0 pt-1 sm:pt-2 md:pt-0">
-
-                        <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
-                          <h1 
-                            ref={headingRef}
-                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-black"
-                            style={{ 
-                              maxWidth: '100%',
-                              wordBreak: 'break-word',
-                              overflowWrap: 'break-word',
-                              whiteSpace: 'normal',
-                              hyphens: 'auto'
-                            }}
-                            dangerouslySetInnerHTML={{ __html: slide.title }}
-                          ></h1>
-                        </div>
-                        <p ref={descriptionRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-black/80 mb-4 md:mb-6 max-w-lg leading-relaxed">
-                          {slide.description}
-                        </p>
-                        <div ref={ctaRef} className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 md:space-x-4">
-                          <a 
-                            href="#talent-compass" 
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base"
-                          >
-                            <span className="relative z-10 flex items-center justify-center">
-                              <span className="truncate">Start Your Journey</span>
-                              <svg className="ml-1 w-5 h-4 sm:w-5 sm:h-5 opacity-0 -translate-x-2 translate-y-[2px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                              </svg>
-                            </span>
-                            {/* Button shine effect */}
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                          </a>
-                          <button
-                            onClick={toggleJourney}
-                            className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition text-center group text-sm sm:text-base"
-                          >
-                            <span className="group-hover:hidden truncate text-blue-600">Explore Program</span>
-                            <span className="hidden group-hover:inline truncate text-white">View Journey</span>
-                          </button>
-                        </div>
-                        <div className="mt-4 text-xs sm:text-sm">
-                          <p className="flex flex-wrap items-center font-medium text-emerald-600">
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 flex-shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span className="break-words">Qualify for up to 90% tuition discount through our Talent Compass</span>
+                {heroSlides.map((slide, index) => (
+                  <div key={index} className="min-w-full flex-shrink-0 w-screen max-w-full">
+                    <div className="max-w-7xl mx-auto">
+                      <div className="flex flex-col md:flex-row items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 py-6 md:py-6 relative px-2 sm:px-4 md:px-6">
+                        <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-1 px-0 pt-1 sm:pt-2 md:pt-0">
+                          <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
+                            <h1 
+                              ref={headingRef}
+                              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-black"
+                              style={{ 
+                                maxWidth: '100%',
+                                wordBreak: 'break-word',
+                                overflowWrap: 'break-word',
+                                whiteSpace: 'normal',
+                                hyphens: 'auto'
+                              }}
+                              dangerouslySetInnerHTML={{ __html: slide.title }}
+                            ></h1>
+                          </div>
+                          <p ref={descriptionRef} className="text-sm sm:text-base md:text-lg lg:text-xl text-black/80 mb-4 md:mb-6 max-w-lg leading-relaxed">
+                            {slide.description}
                           </p>
+                          <div ref={ctaRef} className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 md:space-x-4">
+                            <a 
+                              href="#talent-compass" 
+                              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base"
+                            >
+                              <span className="relative z-10 flex items-center justify-center">
+                                <span className="truncate">Start Your Journey</span>
+                                <svg className="ml-1 w-5 h-4 sm:w-5 sm:h-5 opacity-0 -translate-x-2 translate-y-[2px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                              </span>
+                              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
+                            </a>
+                            <button
+                              onClick={toggleJourney}
+                              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition text-center group text-sm sm:text-base"
+                            >
+                              <span className="group-hover:hidden truncate text-blue-600">Explore Program</span>
+                              <span className="hidden group-hover:inline truncate text-white">View Journey</span>
+                            </button>
+                          </div>
+                          <div className="mt-4 text-xs sm:text-sm">
+                            <p className="flex flex-wrap items-center font-medium text-emerald-600">
+                              <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 flex-shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                              </svg>
+                              <span className="break-words">Qualify for up to 90% tuition discount through our Talent Compass</span>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div ref={imageRef} className="w-full md:w-1/2 relative z-1">
-                        <div className="max-w-sm mx-auto md:max-w-none relative overflow-hidden rounded-lg hover:-translate-y-1 hover:scale-[1.01] transition duration-300 shadow-xl bg-gradient-to-r p-[3px] from-blue-500 to-purple-600">
-                          <img 
-                            src={slide.image} 
-                            alt={slide.alt} 
-                            className="rounded-lg w-full object-cover h-64 sm:h-80 md:h-96 transition duration-500 hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/20 opacity-70 mix-blend-overlay"></div>
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white/80 to-transparent p-4">
-                            <p className="text-black font-medium text-sm">{slide.alt}</p>
+                        <div ref={imageRef} className="w-full md:w-1/2 relative z-1">
+                          <div className="max-w-sm mx-auto md:max-w-none relative overflow-hidden rounded-lg hover:-translate-y-1 hover:scale-[1.01] transition duration-300 shadow-xl bg-gradient-to-r p-[3px] from-blue-500 to-purple-600">
+                            <img 
+                              src={slide.image} 
+                              alt={slide.alt} 
+                              className="rounded-lg w-full object-cover h-64 sm:h-80 md:h-96 transition duration-500 hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/20 opacity-70 mix-blend-overlay"></div>
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white/80 to-transparent p-4">
+                              <p className="text-black font-medium text-sm">{slide.alt}</p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
             
             {/* Navigation Buttons */}
