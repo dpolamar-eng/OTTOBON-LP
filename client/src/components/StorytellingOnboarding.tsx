@@ -459,12 +459,12 @@ export default function StorytellingOnboarding() {
   // Typewriter effect for story text
   const typeText = (text: string) => {
     setIsTyping(true);
-    let i = 0;
     setTypingText("");
+    let i = 0;
 
     const typing = setInterval(() => {
-      if (i < text.length) {
-        setTypingText(prev => prev + text.charAt(i));
+      if (i <= text.length) {
+        setTypingText(text.substring(0, i));
         i++;
       } else {
         clearInterval(typing);
