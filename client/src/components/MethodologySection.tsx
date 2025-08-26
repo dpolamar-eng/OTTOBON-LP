@@ -26,7 +26,7 @@ export default function MethodologySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" ref={cardsRef}>
           {/* Pillar 1: Human-Centered */}
           <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/50" 
+            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/25" 
             style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
@@ -120,7 +120,8 @@ export default function MethodologySection() {
 
           {/* Pillar 2: Industry Knowledge */}
           <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/50"
+            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/25"
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner && !inner.classList.contains('flipped')) {
@@ -205,7 +206,8 @@ export default function MethodologySection() {
 
           {/* Pillar 3: Technical Expertise */}
           <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-purple-500/50"
+            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-purple-500/25"
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner && !inner.classList.contains('flipped')) {
@@ -290,7 +292,8 @@ export default function MethodologySection() {
 
           {/* Pillar 4: Career Partnership */}
           <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-green-500/50" 
+            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-green-500/25" 
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner && !inner.classList.contains('flipped')) {
