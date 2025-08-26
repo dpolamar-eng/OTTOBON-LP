@@ -49,12 +49,12 @@ export default function StorytellingOnboarding() {
       name: "Arjun Sharma",
       role: "Career Switcher",
       background: "Former CA working in audit, seeking a career transition to tech consulting",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+      avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
       story: [
         {
           id: 1,
           text: "After seven years as a Chartered Accountant in Mumbai's corporate audit sector, I felt trapped in spreadsheets and compliance reports. The work had become mechanical, and I yearned for something that would challenge me intellectually. That's when I discovered how technology consultants were revolutionizing businesses across India...",
-          image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 1,
@@ -93,7 +93,7 @@ export default function StorytellingOnboarding() {
         {
           id: 4,
           text: "I took Ottobon's Career Aptitude Assessment, which revealed my natural strengths in process optimization and system integration. The personalized learning path they created helped me leverage my audit experience while building technical expertise in cloud solutions and business automation.",
-          image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 5,
@@ -132,7 +132,7 @@ export default function StorytellingOnboarding() {
         {
           id: 7,
           text: "Within two months of completing the program, I received three job offers from leading consulting firms. I'm now a Senior Business Technology Consultant at a Big 4 firm, earning 60% more than my CA salary. More importantly, I wake up excited about work - helping Indian businesses digitally transform. The professional network I built through Ottobon continues to create opportunities.",
-          image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 9,
@@ -164,12 +164,12 @@ export default function StorytellingOnboarding() {
       name: "Priya Patel",
       role: "Recent Graduate",
       background: "B.Tech Computer Science graduate from Gujarat seeking specialized expertise",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616c5e95f60?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+      avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
       story: [
         {
           id: 1,
           text: "I completed my B.Tech in Computer Science from NIT Surat feeling both excited and overwhelmed. While I had strong fundamentals and decent grades, I lacked the specialized knowledge that top IT companies were seeking. The campus placement offers I received were generic developer roles that didn't utilize my full potential...",
-          image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 1,
@@ -208,7 +208,7 @@ export default function StorytellingOnboarding() {
         {
           id: 4,
           text: "My college senior, who was working at Infosys, recommended Ottobon's program. What impressed me was their personalized approach. The Career Aptitude Assessment identified my strengths in systems design and machine learning implementation - areas I was passionate about but hadn't considered as specializations.",
-          image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 5,
@@ -247,7 +247,7 @@ export default function StorytellingOnboarding() {
         {
           id: 7,
           text: "The transformation was remarkable! Before Ottobon, I was applying to generic developer roles with limited responses. After completing the program, recruiters from top consulting firms were reaching out directly. I accepted a position as AI Solutions Specialist at TCS Digital, with a package 70% higher than typical campus placements for my batch.",
-          image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 9,
@@ -279,12 +279,12 @@ export default function StorytellingOnboarding() {
       name: "Rajesh Kumar",
       role: "Experienced Professional",
       background: "Senior software developer from Bangalore seeking to update skills for leadership roles",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
       story: [
         {
           id: 1,
           text: "After 12 years as a senior software developer in Bangalore's IT ecosystem, I found myself at a crossroads. The industry was rapidly evolving with AI, cloud-native technologies, and digital transformation initiatives. Despite my experience, I was watching younger colleagues with specialized skills get promoted to architect and leadership positions while I remained stuck...",
-          image: "https://images.unsplash.com/photo-1573496773905-f5b9c4864bd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 1,
@@ -323,7 +323,7 @@ export default function StorytellingOnboarding() {
         {
           id: 4,
           text: "Ottobon's approach for experienced professionals was unique. Their assessment didn't just identify knowledge gaps but recognized my extensive development experience. They created an accelerated program focusing precisely on what I needed - modern cloud architectures, AI integration, and leadership skills for the Indian IT context.",
-          image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 5,
@@ -362,7 +362,7 @@ export default function StorytellingOnboarding() {
         {
           id: 7,
           text: "Within three months of completing the program, I was leading our company's cloud migration initiative. Six months later, I was promoted to Principal Architect with a 45% salary increase. A year later, I joined a fintech startup as their CTO. The transformation wasn't just in salary - I gained confidence to lead technical strategy for digital-first Indian companies.",
-          image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 9,
