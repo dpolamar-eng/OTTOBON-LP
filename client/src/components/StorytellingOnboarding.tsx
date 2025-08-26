@@ -504,7 +504,7 @@ export default function StorytellingOnboarding() {
           Choose a story that resonates with your situation to see how your own path might unfold.
         </p>
 
-        <div ref={storyContainerRef} className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+        <div ref={storyContainerRef} className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden min-h-[600px]">
           {!selectedCharacter ? (
             // Character selection screen
             <div className="p-8">
@@ -535,9 +535,9 @@ export default function StorytellingOnboarding() {
             </div>
           ) : (
             // Story progression screen
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row h-full min-h-[600px]">
               {/* Character info sidebar */}
-              <div className="md:w-1/3 bg-gradient-to-br from-blue-600 to-purple-700 text-white p-6">
+              <div className="md:w-1/3 bg-gradient-to-br from-blue-600 to-purple-700 text-white p-6 flex-shrink-0">
                 <div className="sticky top-6">
                   <button 
                     onClick={resetStory}
@@ -599,7 +599,7 @@ export default function StorytellingOnboarding() {
               </div>
 
               {/* Story content */}
-              <div className="md:w-2/3 p-6 md:p-8" ref={storyRef}>
+              <div className="md:w-2/3 p-6 md:p-8 overflow-y-auto" ref={storyRef}>
                 {currentSegment && (
                   <div className={`story-segment ${currentSegment.animation ? currentSegment.animation : ''}`}>
                     {currentSegment.image && (
@@ -613,7 +613,7 @@ export default function StorytellingOnboarding() {
                     )}
 
                     <div className="mb-8">
-                      <p className="text-gray-700 leading-relaxed mb-4">
+                      <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-4 break-words">
                         {typingText}
                         {isTyping && <span className="typing-cursor">|</span>}
                       </p>
@@ -627,14 +627,14 @@ export default function StorytellingOnboarding() {
                           <button
                             key={choice.id}
                             onClick={() => makeChoice(choice)}
-                            className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-200 transition flex items-center"
+                            className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-200 transition flex items-start"
                           >
-                            <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mr-3 flex-shrink-0">
+                            <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mr-3 flex-shrink-0 mt-1">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                               </svg>
                             </span>
-                            <span>{choice.text}</span>
+                            <span className="break-words">{choice.text}</span>
                           </button>
                         ))}
                       </div>
