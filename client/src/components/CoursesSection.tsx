@@ -50,12 +50,12 @@ export default function CoursesSection() {
       categoryLabel: 'Design Intelligence',
       color: 'indigo-800',
       bgColor: 'indigo-100',
-      description: 'Learn how to integrate Artificial Intelligence into UI/UX workflows for smarter, data-driven design and personalized user experiences.',
+      description: 'Integrate AI into UI/UX workflows for smarter, data-driven design and personalized user experiences.',
       outcomes: [
-        'Understand AI-driven design principles',
-        'Master tools for generative UI/UX prototyping',
-        'Leverage data and AI to improve user research and testing',
-        'Design adaptive, personalized user interfaces with AI'
+        'Master AI-driven design principles and tools',
+        'Build generative UI/UX prototyping systems',
+        'Apply AI to user research and testing workflows',
+        'Design adaptive, personalized interfaces'
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Artificial_Intelligence_Logo.svg',
       gradientFrom: 'from-indigo-500',
@@ -68,12 +68,12 @@ export default function CoursesSection() {
       categoryLabel: 'Marketing Intelligence',
       color: 'pink-800',
       bgColor: 'pink-100',
-      description: 'Master AI-driven marketing strategies, automation tools, and personalization techniques to transform customer engagement and drive business growth.',
+      description: 'Master AI-driven marketing strategies and automation tools to transform customer engagement.',
       outcomes: [
-        'Implement AI-powered marketing automation and personalization',
-        'Master predictive analytics and customer behavior modeling',
-        'Design AI-driven content creation and campaign optimization strategies',
-        'Develop expertise in marketing attribution and ROI measurement with AI'
+        'Build AI-powered marketing automation systems',
+        'Master predictive analytics and behavior modeling',
+        'Create AI-driven content and campaign optimization',
+        'Implement advanced attribution and ROI measurement'
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Marketing_mix_4Ps.svg/512px-Marketing_mix_4Ps.svg.png',
       gradientFrom: 'from-pink-500',
@@ -86,12 +86,12 @@ export default function CoursesSection() {
       categoryLabel: 'Agent Engineering',
       color: 'emerald-800',
       bgColor: 'emerald-100',
-      description: 'Build intelligent AI agents and autonomous systems using cutting-edge frameworks, natural language processing, and multi-agent architectures.',
+      description: 'Build intelligent AI agents and autonomous systems using cutting-edge frameworks and NLP.',
       outcomes: [
-        'Design and deploy conversational AI agents and chatbots',
-        'Master multi-agent systems and autonomous task execution',
-        'Implement advanced NLP and reasoning capabilities in AI agents',
-        'Build scalable agent architectures for enterprise applications'
+        'Design conversational AI agents and chatbots',
+        'Build multi-agent systems and autonomous workflows',
+        'Implement advanced NLP and reasoning capabilities',
+        'Create scalable agent architectures for enterprises'
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png',
       gradientFrom: 'from-emerald-500',
@@ -104,12 +104,12 @@ export default function CoursesSection() {
       categoryLabel: 'Data Intelligence',
       color: 'amber-800',
       bgColor: 'amber-100',
-      description: 'Specialize in high-quality data annotation, labeling workflows, and quality assurance for training robust AI and machine learning models.',
+      description: 'Specialize in high-quality data annotation and labeling workflows for training robust AI models.',
       outcomes: [
-        'Master advanced data annotation techniques and quality control',
-        'Design efficient labeling workflows and annotation guidelines',
-        'Implement automated labeling tools and human-in-the-loop systems',
-        'Develop expertise in domain-specific labeling for various AI applications'
+        'Master advanced data annotation and quality control',
+        'Design efficient labeling workflows and guidelines',
+        'Build automated labeling and human-in-the-loop systems',
+        'Apply domain-specific labeling for various AI applications'
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/512px-Jupyter_logo.svg.png',
       gradientFrom: 'from-amber-500',
@@ -381,26 +381,24 @@ export default function CoursesSection() {
                             </div>
                           )}
                         </div>
-                        <div className="p-6 flex flex-col justify-between h-2/5">
-                          <div>
-                            <div className="flex justify-between items-start mb-3">
-                              <h3 className="text-xl font-bold">{course.title}</h3>
-                              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 flex items-center">
-                                {course.id === 'genai' && '🤖 '}
-                                {course.id === 'cloud' && '☁️ '}
-                                {course.id === 'data' && '📊 '}
-                                {course.id === 'blockchain' && '🔗 '}
-                                {course.id === 'ai-uiux' && '🎨 '}
-                                {course.id === 'ai-marketing' && '📈 '}
-                                {course.id === 'ai-agent-development' && '🤖 '}
-                                {course.id === 'ai-data-labeling' && '🏷️ '}
-                                {course.categoryLabel}
-                              </span>
-                            </div>
-                            <p className="text-gray-700 text-base font-medium">
-                              {course.description}
-                            </p>
+                        <div className="p-6 flex flex-col h-2/5">
+                          <div className="flex justify-between items-start mb-3">
+                            <h3 className="text-xl font-bold pr-2 leading-tight">{course.title}</h3>
+                            <span className="text-xs font-semibold px-2 py-1 rounded-full bg-blue-100 text-blue-800 flex items-center flex-shrink-0">
+                              {course.id === 'genai' && '🤖 '}
+                              {course.id === 'cloud' && '☁️ '}
+                              {course.id === 'data' && '📊 '}
+                              {course.id === 'blockchain' && '🔗 '}
+                              {course.id === 'ai-uiux' && '🎨 '}
+                              {course.id === 'ai-marketing' && '📈 '}
+                              {course.id === 'ai-agent-development' && '🤖 '}
+                              {course.id === 'ai-data-labeling' && '🏷️ '}
+                              {course.categoryLabel}
+                            </span>
                           </div>
+                          <p className="text-gray-700 text-sm font-medium leading-relaxed flex-1">
+                            {course.description}
+                          </p>
                         </div>
                       </div>
 
