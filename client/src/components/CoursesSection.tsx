@@ -62,55 +62,58 @@ export default function CoursesSection() {
       gradientTo: 'to-indigo-700'
     },
     {
-      id: 'oracle',
-      title: 'Oracle Database Specialist',
+      id: 'ai-marketing',
+      title: 'AI in Marketing',
       category: 'Career Launch',
-      categoryLabel: 'Database',
-      color: 'red-800',
-      bgColor: 'red-100',
-      description: 'Become an Oracle database expert with AI-enhanced learning for enterprise consulting.',
+      categoryLabel: 'Marketing Intelligence',
+      color: 'pink-800',
+      bgColor: 'pink-100',
+      description: 'Master AI-driven marketing strategies, automation tools, and personalization techniques to transform customer engagement and drive business growth.',
       outcomes: [
-        'Oracle Certified Professional credentials',
-        'Database performance optimization',
-        'Enterprise data architecture consulting'
+        'Implement AI-powered marketing automation and personalization',
+        'Master predictive analytics and customer behavior modeling',
+        'Design AI-driven content creation and campaign optimization strategies',
+        'Develop expertise in marketing attribution and ROI measurement with AI'
       ],
-      logoUrl: '',
-      gradientFrom: 'from-red-500',
-      gradientTo: 'to-red-700'
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Marketing_mix_4Ps.svg/512px-Marketing_mix_4Ps.svg.png',
+      gradientFrom: 'from-pink-500',
+      gradientTo: 'to-pink-700'
     },
     {
-      id: 'cloud',
-      title: 'Cloud Computing Mastery',
+      id: 'ai-agent-development',
+      title: 'AI Agent Development',
       category: 'Career Launch',
-      categoryLabel: 'Cloud',
-      color: 'green-800',
-      bgColor: 'green-100',
-      description: 'Multi-cloud expertise across AWS, Azure, and GCP for consulting success.',
+      categoryLabel: 'Agent Engineering',
+      color: 'emerald-800',
+      bgColor: 'emerald-100',
+      description: 'Build intelligent AI agents and autonomous systems using cutting-edge frameworks, natural language processing, and multi-agent architectures.',
       outcomes: [
-        'Multi-cloud architecture certifications',
-        'Cloud migration strategies',
-        'Independent cloud consulting practice'
+        'Design and deploy conversational AI agents and chatbots',
+        'Master multi-agent systems and autonomous task execution',
+        'Implement advanced NLP and reasoning capabilities in AI agents',
+        'Build scalable agent architectures for enterprise applications'
       ],
-      logoUrl: '',
-      gradientFrom: 'from-green-500',
-      gradientTo: 'to-green-700'
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png',
+      gradientFrom: 'from-emerald-500',
+      gradientTo: 'to-emerald-700'
     },
     {
-      id: 'fullstack',
-      title: 'Full Stack Development Pro',
+      id: 'ai-data-labeling',
+      title: 'AI Data Labeling',
       category: 'Career Launch',
-      categoryLabel: 'Development',
-      color: 'purple-800',
-      bgColor: 'purple-100',
-      description: 'Complete full stack development mastery with modern frameworks and AI integration.',
+      categoryLabel: 'Data Intelligence',
+      color: 'amber-800',
+      bgColor: 'amber-100',
+      description: 'Specialize in high-quality data annotation, labeling workflows, and quality assurance for training robust AI and machine learning models.',
       outcomes: [
-        'React, Node.js, and database expertise',
-        'AI-powered application development',
-        'Independent software consulting practice'
+        'Master advanced data annotation techniques and quality control',
+        'Design efficient labeling workflows and annotation guidelines',
+        'Implement automated labeling tools and human-in-the-loop systems',
+        'Develop expertise in domain-specific labeling for various AI applications'
       ],
-      logoUrl: '',
-      gradientFrom: 'from-purple-500',
-      gradientTo: 'to-purple-700'
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/512px-Jupyter_logo.svg.png',
+      gradientFrom: 'from-amber-500',
+      gradientTo: 'to-amber-700'
     },
     {
       id: 'salesforce-advanced',
@@ -374,7 +377,7 @@ export default function CoursesSection() {
                             <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
                           ) : (
                             <div className="relative z-10 text-white text-7xl">
-                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : '💻'}
+                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : '💻'}
                             </div>
                           )}
                         </div>
@@ -388,6 +391,9 @@ export default function CoursesSection() {
                                 {course.id === 'data' && '📊 '}
                                 {course.id === 'blockchain' && '🔗 '}
                                 {course.id === 'ai-uiux' && '🎨 '}
+                                {course.id === 'ai-marketing' && '📈 '}
+                                {course.id === 'ai-agent-development' && '🤖 '}
+                                {course.id === 'ai-data-labeling' && '🏷️ '}
                                 {course.categoryLabel}
                               </span>
                             </div>
@@ -404,7 +410,7 @@ export default function CoursesSection() {
                           <div className="flex justify-between items-start mb-4">
                             <h3 className="text-xl font-bold flex items-center">
                               <span className="text-2xl mr-2">
-                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : '💻'}
+                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : '💻'}
                               </span>
                               {course.title}
                             </h3>
