@@ -44,21 +44,22 @@ export default function CoursesSection() {
   // Courses data
   const courses: Course[] = [
     {
-      id: 'salesforce',
-      title: 'Salesforce Consultant Excellence',
+      id: 'ai-uiux',
+      title: 'AI for UI/UX Designer',
       category: 'Career Launch',
-      categoryLabel: 'CRM',
-      color: 'blue-800',
-      bgColor: 'blue-100',
-      description: 'Master Salesforce implementation and customization to become an independent consultant.',
+      categoryLabel: 'Design Intelligence',
+      color: 'indigo-800',
+      bgColor: 'indigo-100',
+      description: 'Learn how to integrate Artificial Intelligence into UI/UX workflows for smarter, data-driven design and personalized user experiences.',
       outcomes: [
-        'Salesforce Administrator & Developer certifications',
-        'Custom CRM solutions for enterprises',
-        'Independent consulting business skills'
+        'Understand AI-driven design principles',
+        'Master tools for generative UI/UX prototyping',
+        'Leverage data and AI to improve user research and testing',
+        'Design adaptive, personalized user interfaces with AI'
       ],
-      logoUrl: '',
-      gradientFrom: 'from-blue-500',
-      gradientTo: 'to-blue-700'
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Artificial_Intelligence_Logo.svg',
+      gradientFrom: 'from-indigo-500',
+      gradientTo: 'to-indigo-700'
     },
     {
       id: 'oracle',
@@ -373,7 +374,7 @@ export default function CoursesSection() {
                             <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
                           ) : (
                             <div className="relative z-10 text-white text-7xl">
-                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : '💻'}
+                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : '💻'}
                             </div>
                           )}
                         </div>
@@ -386,6 +387,7 @@ export default function CoursesSection() {
                                 {course.id === 'cloud' && '☁️ '}
                                 {course.id === 'data' && '📊 '}
                                 {course.id === 'blockchain' && '🔗 '}
+                                {course.id === 'ai-uiux' && '🎨 '}
                                 {course.categoryLabel}
                               </span>
                             </div>
