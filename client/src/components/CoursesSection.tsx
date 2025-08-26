@@ -57,7 +57,7 @@ export default function CoursesSection() {
         'Apply AI to user research and testing workflows',
         'Design adaptive, personalized interfaces'
       ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Artificial_Intelligence_Logo.svg',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/4712/4712027.png',
       gradientFrom: 'from-indigo-500',
       gradientTo: 'to-indigo-700'
     },
@@ -75,7 +75,7 @@ export default function CoursesSection() {
         'Create AI-driven content and campaign optimization',
         'Implement advanced attribution and ROI measurement'
       ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Marketing_mix_4Ps.svg/512px-Marketing_mix_4Ps.svg.png',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
       gradientFrom: 'from-pink-500',
       gradientTo: 'to-pink-700'
     },
