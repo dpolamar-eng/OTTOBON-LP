@@ -75,7 +75,7 @@ export default function CoursesSection() {
         'Create AI-driven content and campaign optimization',
         'Implement advanced attribution and ROI measurement'
       ],
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Marketing_mix_4Ps.svg/512px-Marketing_mix_4Ps.svg.png',
       gradientFrom: 'from-pink-500',
       gradientTo: 'to-pink-700'
     },
@@ -93,7 +93,7 @@ export default function CoursesSection() {
         'Implement advanced NLP and reasoning capabilities',
         'Create scalable agent architectures for enterprises'
       ],
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/8943/8943377.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png',
       gradientFrom: 'from-emerald-500',
       gradientTo: 'to-emerald-700'
     },
