@@ -49,13 +49,13 @@ export default function Header() {
             <a 
               key={index}
               href={item.href} 
-              className="text-white/90 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group"
+              className="text-white/90 hover:text-white font-medium py-2 px-4 rounded-lg bg-white/10 hover:bg-white/10 transition-all relative overflow-hidden group"
             >
               <div className="flex items-center space-x-1">
                 <span className="text-white/80 group-hover:text-white/100 transition-all">{item.icon}</span>
                 <span>{item.label}</span>
               </div>
-        <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-[#FFC107] transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
+        <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-[#FFC107] opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
             </a>
           ))}
         </nav>
