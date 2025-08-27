@@ -1,11 +1,10 @@
-
 export default function RequirementsSection() {
   return (
     <section className="py-16 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Hardware & Connectivity */}
-          <div className="w-full max-w-2xl mx-auto">
+          <div className="w-full max-w-2xl mx-auto mb-8 lg:mb-0">
             <div className="text-center mb-6">
               <h2 className="text-xl sm:text-2xl font-bold flex items-center justify-center">
                 <i className="fas fa-laptop text-primary mr-3"></i>
