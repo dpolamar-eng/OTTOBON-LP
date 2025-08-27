@@ -57,7 +57,7 @@ export default function CoursesSection() {
         'Apply AI to user research and testing workflows',
         'Design adaptive, personalized interfaces'
       ],
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2721/2721991.png',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/4712/4712027.png',
       gradientFrom: 'from-indigo-500',
       gradientTo: 'to-indigo-700'
     },
