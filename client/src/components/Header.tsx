@@ -40,7 +40,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-2">
+        <nav className="hidden md:flex space-x-6">
       {[
             { label: "Our Approach", href: "#methodology", icon: "" },
             { label: "Programs", href: "#courses", icon: "" },
