@@ -66,8 +66,8 @@ export default function CoursesSection() {
       title: 'AI in Marketing',
       category: 'Career Launch',
       categoryLabel: 'Marketing Intelligence',
-      color: 'pink-800',
-      bgColor: 'pink-100',
+      color: 'amber-800',
+      bgColor: 'amber-100',
       description: 'Master AI-driven marketing strategies and automation tools to transform customer engagement.',
       outcomes: [
         'Build AI-powered marketing automation systems',
@@ -76,8 +76,8 @@ export default function CoursesSection() {
         'Implement advanced attribution and ROI measurement'
       ],
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-      gradientFrom: 'from-pink-500',
-      gradientTo: 'to-pink-700'
+      gradientFrom: 'from-amber-500',
+      gradientTo: 'to-amber-700'
     },
     {
       id: 'ai-agent-development',
@@ -102,8 +102,8 @@ export default function CoursesSection() {
       title: 'AI Data Labeling',
       category: 'Career Launch',
       categoryLabel: 'Data Intelligence',
-      color: 'amber-800',
-      bgColor: 'amber-100',
+      color: 'pink-800',
+      bgColor: 'pink-100',
       description: 'Specialize in high-quality data annotation and labeling workflows for training robust AI models.',
       outcomes: [
         'Master advanced data annotation and quality control',
@@ -112,8 +112,8 @@ export default function CoursesSection() {
         'Apply domain-specific labeling for various AI applications'
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/512px-Jupyter_logo.svg.png',
-      gradientFrom: 'from-amber-500',
-      gradientTo: 'to-amber-700'
+      gradientFrom: 'from-pink-500',
+      gradientTo: 'to-pink-700'
     },
     {
       id: 'salesforce-advanced',
