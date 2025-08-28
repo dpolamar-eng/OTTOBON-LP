@@ -129,7 +129,7 @@ export default function CoursesSection() {
         'Highlight key skills and achievements effectively',
         'Export resumes in multiple professional formats'
       ],
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135673.png',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2920/2920249.png',
       gradientFrom: 'from-blue-500',
       gradientTo: 'to-blue-700'
     },
@@ -147,7 +147,7 @@ export default function CoursesSection() {
         'Save time by filtering jobs automatically',
         'Receive tailored career growth suggestions'
       ],
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2920/2920277.png',
       gradientFrom: 'from-green-500',
       gradientTo: 'to-green-700'
     },
