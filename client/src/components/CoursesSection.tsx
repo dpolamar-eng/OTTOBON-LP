@@ -116,55 +116,58 @@ export default function CoursesSection() {
       gradientTo: 'to-pink-700'
     },
     {
-      id: 'salesforce-advanced',
-      title: 'Salesforce CX Consultant',
+      id: 'resume-builder',
+      title: 'Resume Builder',
       category: 'Tech Edge',
-      categoryLabel: 'Business Apps',
+      categoryLabel: 'Career Tools',
       color: 'blue-800',
       bgColor: 'blue-100',
-      description: 'Advanced Salesforce consulting specializing in customer experience solutions.',
+      description: 'Create professional, ATS-friendly resumes tailored to your career goals and industry standards.',
       outcomes: [
-        'Salesforce Solution Architect certification',
-        'Complex enterprise implementations',
-        'Industry-specific CRM solutions'
+        'Design tailored resumes for different job roles',
+        'Leverage templates optimized for applicant tracking systems',
+        'Highlight key skills and achievements effectively',
+        'Export resumes in multiple professional formats'
       ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Microsoft_Office_Word_%282019%E2%80%93present%29.svg',
       gradientFrom: 'from-blue-500',
       gradientTo: 'to-blue-700'
     },
     {
-      id: 'oracle',
-      title: 'Oracle ERP Consultant',
+      id: 'job-matching',
+      title: 'Find a Job / Job Matching',
       category: 'Tech Edge',
-      categoryLabel: 'Business Apps',
-      color: 'red-800',
-      bgColor: 'red-100',
-      description: 'Master Oracle ERP Cloud implementation, configuration and integration.',
-      outcomes: [
-        'Oracle Cloud ERP certification',
-        'Financial and operational module expertise',
-        'Business process optimization'
-      ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg',
-      gradientFrom: 'from-red-500',
-      gradientTo: 'to-red-700'
-    },
-    {
-      id: 'microsoft',
-      title: 'Microsoft Dynamics SCM',
-      category: 'Tech Edge',
-      categoryLabel: 'Business Apps',
+      categoryLabel: 'Career Opportunities',
       color: 'green-800',
       bgColor: 'green-100',
-      description: 'Specialize in Microsoft Dynamics 365 Supply Chain Management solutions.',
+      description: 'Discover personalized job opportunities using AI-powered job matching systems.',
       outcomes: [
-        'Microsoft Dynamics 365 SCM certification',
-        'End-to-end supply chain optimization',
-        'Power Platform integration expertise'
+        'Match skills with the most relevant job postings',
+        'Access hidden opportunities through smart recommendations',
+        'Save time by filtering jobs automatically',
+        'Receive tailored career growth suggestions'
       ],
-      logoUrl: 'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/LinkedIn_logo_initials.png',
       gradientFrom: 'from-green-500',
       gradientTo: 'to-green-700'
+    },
+    {
+      id: 'mock-interviews',
+      title: 'Mock Interviews',
+      category: 'Tech Edge',
+      categoryLabel: 'Interview Preparation',
+      color: 'purple-800',
+      bgColor: 'purple-100',
+      description: 'Prepare for interviews with realistic practice sessions and AI-driven feedback.',
+      outcomes: [
+        'Practice technical and behavioral interviews',
+        'Receive real-time performance analysis and feedback',
+        'Build confidence with simulated interview environments',
+        'Identify areas for improvement before real interviews'
+      ],
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Google_Forms_2020_Logo.svg',
+      gradientFrom: 'from-purple-500',
+      gradientTo: 'to-purple-700'
     }
   ];
 
