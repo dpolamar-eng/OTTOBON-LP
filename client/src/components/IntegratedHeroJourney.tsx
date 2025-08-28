@@ -279,14 +279,14 @@ export default function IntegratedHeroJourney() {
                           >
                             <a
                               href="#talent-compass"
-                              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 md:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base w-fit mx-auto sm:mx-0 sm:w-auto"
+                              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 md:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base inline-flex items-center justify-center"
                             >
                               <span className="relative z-10 flex items-center justify-center transition-all duration-300">
-                                <span className="truncate whitespace-nowrap">
+                                <span className="whitespace-nowrap">
                                   Start Your Journey
                                 </span>
                                 <svg
-                                  className="w-5 h-4 sm:w-5 sm:h-5 opacity-0 scale-0 -ml-1 group-hover:opacity-100 group-hover:scale-100 group-hover:ml-1 transition-all duration-300 flex-shrink-0"
+                                  className="w-0 h-5 sm:h-5 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 group-hover:w-5 group-hover:ml-2 transition-all duration-300 flex-shrink-0"
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
@@ -568,12 +568,12 @@ export default function IntegratedHeroJourney() {
                     {currentStep < onboardingSteps.length - 1 ? (
                       <button
                         onClick={goToNextStep}
-                        className="bg-white text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                        className="bg-white text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group inline-flex items-center justify-center"
                       >
-                        <span className="relative z-10 flex items-center transition-all duration-300">
+                        <span className="relative z-10 flex items-center justify-center transition-all duration-300">
                           <span className="whitespace-nowrap">Continue</span>
                           <svg
-                            className="w-4 h-4 opacity-0 scale-0 -ml-1 group-hover:opacity-100 group-hover:scale-100 group-hover:ml-1 transition-all duration-300"
+                            className="w-0 h-4 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 group-hover:w-4 group-hover:ml-2 transition-all duration-300 flex-shrink-0"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -591,12 +591,12 @@ export default function IntegratedHeroJourney() {
                     ) : (
                       <a
                         href="#talent-compass"
-                        className="bg-white text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                        className="bg-white text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group inline-flex items-center justify-center"
                       >
-                        <span className="relative z-10 flex items-center transition-all duration-300">
+                        <span className="relative z-10 flex items-center justify-center transition-all duration-300">
                           <span className="whitespace-nowrap">Start Your Journey</span>
                           <svg
-                            className="w-4.5 h-4.5 opacity-0 scale-0 -ml-1 group-hover:opacity-100 group-hover:scale-100 group-hover:ml-1 transition-all duration-300"
+                            className="w-0 h-4 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 group-hover:w-4 group-hover:ml-2 transition-all duration-300 flex-shrink-0"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
