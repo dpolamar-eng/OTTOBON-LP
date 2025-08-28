@@ -129,7 +129,7 @@ export default function CoursesSection() {
         'Highlight key skills and achievements effectively',
         'Export resumes in multiple professional formats'
       ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Microsoft_Office_Word_%282019%E2%80%93present%29.svg',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135673.png',
       gradientFrom: 'from-blue-500',
       gradientTo: 'to-blue-700'
     },
@@ -147,7 +147,7 @@ export default function CoursesSection() {
         'Save time by filtering jobs automatically',
         'Receive tailored career growth suggestions'
       ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/LinkedIn_logo_initials.png',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png',
       gradientFrom: 'from-green-500',
       gradientTo: 'to-green-700'
     },
@@ -165,7 +165,7 @@ export default function CoursesSection() {
         'Build confidence with simulated interview environments',
         'Identify areas for improvement before real interviews'
       ],
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Google_Forms_2020_Logo.svg',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',
       gradientFrom: 'from-purple-500',
       gradientTo: 'to-purple-700'
     }
