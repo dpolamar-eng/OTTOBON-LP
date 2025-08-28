@@ -279,7 +279,7 @@ export default function IntegratedHeroJourney() {
                           >
                             <a
                               href="#talent-compass"
-                              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base"
+                              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 md:px-8 rounded-full transition shadow-md hover:shadow-lg text-center relative overflow-hidden group text-sm sm:text-base w-fit mx-auto sm:mx-0 sm:w-auto"
                             >
                               <span className="relative z-10 flex items-center justify-center">
                                 <span className="truncate">
