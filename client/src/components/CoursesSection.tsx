@@ -129,7 +129,7 @@ export default function CoursesSection() {
         'Highlight key skills and achievements effectively',
         'Export resumes in multiple professional formats'
       ],
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2920/2920249.png',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135673.png',
       gradientFrom: 'from-blue-500',
       gradientTo: 'to-blue-700'
     },
