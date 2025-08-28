@@ -286,7 +286,7 @@ export default function IntegratedHeroJourney() {
                                   Start Your Journey
                                 </span>
                                 <svg
-                                  className="w-4 h-4 sm:w-5 sm:h-5 opacity-0 scale-0 -ml-1 group-hover:opacity-100 group-hover:scale-100 group-hover:ml-2 transition-all duration-300 flex-shrink-0 inline-block align-middle"
+                                  className="w-5 h-4 sm:w-5 sm:h-5 opacity-0 scale-0 -ml-1 group-hover:opacity-100 group-hover:scale-100 group-hover:ml-1 transition-all duration-300 flex-shrink-0"
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
