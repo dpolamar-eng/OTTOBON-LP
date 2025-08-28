@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
 
-type CourseCategory = 'all' | 'Career Launch' | 'Tech Edge' | 'Job Assist';
+type CourseCategory = 'all' | 'Career Launch' | 'Tech Edge';
 
 interface CategoryInfo {
   id: CourseCategory;
@@ -26,7 +26,7 @@ const categories: CategoryInfo[] = [
 interface Course {
   id: string;
   title: string;
-  category: 'Career Launch' | 'Tech Edge' | 'Job Assist';
+  category: 'Career Launch' | 'Tech Edge';
   categoryLabel: string;
   color: string;
   bgColor: string;
@@ -165,57 +165,6 @@ export default function CoursesSection() {
       logoUrl: 'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31',
       gradientFrom: 'from-green-500',
       gradientTo: 'to-green-700'
-    },
-    {
-      id: 'resume-builder',
-      title: 'Resume Builder',
-      category: 'Job Assist',
-      categoryLabel: 'Career Tools',
-      color: 'blue-800',
-      bgColor: 'blue-100',
-      description: 'Create professional resumes tailored to job roles with AI-powered suggestions and formatting.',
-      outcomes: [
-        'Polished, ATS-friendly resumes',
-        'Role-specific templates',
-        'Time-saving guided builder'
-      ],
-      logoUrl: 'https://img.icons8.com/ios-filled/100/000000/resume.png',
-      gradientFrom: 'from-blue-500',
-      gradientTo: 'to-blue-700'
-    },
-    {
-      id: 'job-matching',
-      title: 'Find a Job / Job Matching',
-      category: 'Job Assist',
-      categoryLabel: 'Opportunities',
-      color: 'green-800',
-      bgColor: 'green-100',
-      description: 'Discover relevant job opportunities with smart matching based on your skills, experience, and preferences.',
-      outcomes: [
-        'Personalized job recommendations',
-        'Skill-based matching',
-        'Direct application support'
-      ],
-      logoUrl: 'https://img.icons8.com/ios-filled/100/000000/job.png',
-      gradientFrom: 'from-green-500',
-      gradientTo: 'to-green-700'
-    },
-    {
-      id: 'mock-interviews',
-      title: 'Mock Interviews',
-      category: 'Job Assist',
-      categoryLabel: 'Interview Prep',
-      color: 'purple-800',
-      bgColor: 'purple-100',
-      description: 'Practice interviews with real-world questions, instant feedback, and performance insights.',
-      outcomes: [
-        'Boost interview confidence',
-        'Feedback on answers and body language',
-        'Industry-specific mock sessions'
-      ],
-      logoUrl: 'https://img.icons8.com/ios-filled/100/000000/interview.png',
-      gradientFrom: 'from-purple-500',
-      gradientTo: 'to-purple-700'
     }
   ];
 
@@ -377,12 +326,7 @@ export default function CoursesSection() {
             ))}
             <div className="text-center">
               <button 
-                className={`font-medium py-2 px-8 rounded-full transition flex items-center ${
-                  activeFilter === 'Job Assist'
-                    ? 'bg-primary text-white shadow-md' 
-                    : 'bg-white hover:bg-gray-100 text-gray-700 shadow-sm'
-                }`}
-                onClick={() => setActiveFilter('Job Assist')}
+                className="font-medium py-2 px-8 rounded-full transition flex items-center bg-white hover:bg-gray-100 text-gray-700 shadow-sm"
               >
                 <span className="mr-2 text-lg">
                   🎯
@@ -401,11 +345,6 @@ export default function CoursesSection() {
                 </p>
               )
             ))}
-            {activeFilter === 'Job Assist' && (
-              <p className="text-sm text-gray-600 mt-2">
-                Essential tools and support for job search success
-              </p>
-            )}
           </div>
         </div>
 
@@ -448,7 +387,7 @@ export default function CoursesSection() {
                             <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
                           ) : (
                             <div className="relative z-10 text-white text-7xl">
-                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'resume-builder' ? '📄' : course.id === 'job-matching' ? '💼' : course.id === 'mock-interviews' ? '🎤' : '💻'}
+                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : '💻'}
                             </div>
                           )}
                         </div>
@@ -464,9 +403,6 @@ export default function CoursesSection() {
                               {course.id === 'ai-marketing' && '📈 '}
                               {course.id === 'ai-agent-development' && '🤖 '}
                               {course.id === 'ai-data-labeling' && '🏷️ '}
-                              {course.id === 'resume-builder' && '📄 '}
-                              {course.id === 'job-matching' && '💼 '}
-                              {course.id === 'mock-interviews' && '🎤 '}
                               {course.categoryLabel}
                             </span>
                           </div>
@@ -482,7 +418,7 @@ export default function CoursesSection() {
                           <div className="flex justify-between items-start mb-4">
                             <h3 className="text-xl font-bold flex items-center">
                               <span className="text-2xl mr-2">
-                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'resume-builder' ? '📄' : course.id === 'job-matching' ? '💼' : course.id === 'mock-interviews' ? '🎤' : '💻'}
+                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : '💻'}
                               </span>
                               {course.title}
                             </h3>
