@@ -302,17 +302,6 @@ export default function IntegratedHeroJourney() {
                               </span>
                               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
                             </a>
-                            <button
-                              onClick={toggleJourney}
-                              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 font-semibold py-2 sm:py-3 px-5 sm:px-6 md:px-8 rounded-full transition text-center group text-sm sm:text-base"
-                            >
-                              <span className="group-hover:hidden truncate text-blue-600">
-                                Explore Program
-                              </span>
-                              <span className="hidden group-hover:inline truncate text-white">
-                                View Journey
-                              </span>
-                            </button>
                           </div>
                           <div className="mt-4 text-xs sm:text-sm">
                             <p className="flex flex-wrap items-center font-medium text-emerald-600">
