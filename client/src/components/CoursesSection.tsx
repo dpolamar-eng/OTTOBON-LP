@@ -13,12 +13,12 @@ interface CategoryInfo {
 const categories: CategoryInfo[] = [
   {
     id: 'Career Launch',
-    title: 'Career Launch',
+    title: 'Up-Skill',
     description: 'Placement Guaranteed path'
   },
   {
     id: 'Tech Edge',
-    title: 'Tech Edge',
+    title: 'Job Assist',
     description: 'High demand skills in Market'
   }
 ];
@@ -324,6 +324,16 @@ export default function CoursesSection() {
                 </button>
               </div>
             ))}
+            <div className="text-center">
+              <button 
+                className="font-medium py-2 px-8 rounded-full transition flex items-center bg-white hover:bg-gray-100 text-gray-700 shadow-sm"
+              >
+                <span className="mr-2 text-lg">
+                  🎯
+                </span>
+                Career Assist
+              </button>
+            </div>
           </div>
 
           {/* Description for selected category only */}
