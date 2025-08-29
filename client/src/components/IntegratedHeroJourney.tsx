@@ -44,30 +44,30 @@ export default function IntegratedHeroJourney() {
   const heroSlides = [
     {
       title:
-        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Transform</span> Your Career <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Potential</span>",
+        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Up-Skill</span> for Career <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Growth</span>",
       description:
-        "Ottobon equips you with in-demand technology consulting skills through personalized mentorship and industry-aligned curriculum that accelerates your career path.",
+        "Master AI-driven technologies with placement guaranteed programs. From AI for UI/UX Design to Agent Development, gain cutting-edge skills that employers demand with expert mentorship and hands-on projects.",
       image:
-        "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Technology professional in modern workspace",
+        "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      alt: "Indian professional learning AI technologies",
     },
     {
       title:
-        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Learn</span> Today,<br /> Lead <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Tomorrow</span>",
+        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Job Assist</span> Tools for <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Success</span>",
       description:
-        "Our immersive programs focus on practical applications and real-world projects, guided by industry experts who have implemented enterprise technologies at scale.",
+        "Access comprehensive job search tools including ATS-friendly resume builders, AI-powered job matching, and realistic mock interview preparation to accelerate your career transition and land your dream role.",
       image:
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Collaborative learning environment",
+        "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      alt: "Indian professional preparing for career opportunities",
     },
     {
       title:
-        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Build</span> Your Technology Consulting <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Career</span>",
+        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Career Assist</span> with Expert <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Guidance</span>",
       description:
-        "Whether you're pivoting careers or enhancing existing skills, our program bridges the gap between traditional education and industry requirements.",
+        "Get personalized mentorship from AI-powered experts in Python, eCommerce, and emerging technologies. Receive real-time guidance, technical answers, and career advice tailored to your professional journey.",
       image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Professional working on advanced technology",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      alt: "Indian professional receiving expert career guidance",
     },
   ];
 
