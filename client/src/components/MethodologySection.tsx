@@ -30,8 +30,12 @@ export default function MethodologySection() {
             style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
-              if (inner && !inner.classList.contains('flipped')) {
-                inner.classList.add('flipped');
+              if (inner) {
+                if (inner.classList.contains('flipped')) {
+                  inner.classList.remove('flipped');
+                } else {
+                  inner.classList.add('flipped');
+                }
               }
             }}
           >
@@ -59,7 +63,7 @@ export default function MethodologySection() {
 
               <div className="flip-card-back">
                 <div className="h-full p-8 flex flex-col bg-white">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="mb-4">
                     <h3 className="text-xl font-bold flex items-center">
                       <img 
                         src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=80&h=80&q=80" 
@@ -68,20 +72,6 @@ export default function MethodologySection() {
                       />
                       Human-Centered Excellence
                     </h3>
-                    <button 
-                      className="text-gray-500 hover:text-gray-700"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        const parent = e.currentTarget.closest('.flip-card');
-                        if (parent) {
-                          const inner = parent.querySelector('.flip-card-inner');
-                          if (inner) inner.classList.remove('flipped');
-                        }
-                      }}
-                    >
-                      <i className="fas fa-times"></i>
-                    </button>
                   </div>
 
                   <div className="overflow-y-auto flex-1">
@@ -124,8 +114,12 @@ export default function MethodologySection() {
             style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
-              if (inner && !inner.classList.contains('flipped')) {
-                inner.classList.add('flipped');
+              if (inner) {
+                if (inner.classList.contains('flipped')) {
+                  inner.classList.remove('flipped');
+                } else {
+                  inner.classList.add('flipped');
+                }
               }
             }}
           >
@@ -151,7 +145,7 @@ export default function MethodologySection() {
 
               <div className="flip-card-back bg-white rounded-lg">
                 <div className="p-6 h-full flex flex-col">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="mb-4">
                     <h3 className="text-xl font-bold flex items-center">
                       <img 
                         src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=80&h=80&q=80" 
@@ -160,20 +154,6 @@ export default function MethodologySection() {
                       />
                       Business & Industry Mastery
                     </h3>
-                    <button 
-                      className="text-gray-500 hover:text-gray-700"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        const parent = e.currentTarget.closest('.flip-card');
-                        if (parent) {
-                          const inner = parent.querySelector('.flip-card-inner');
-                          if (inner) inner.classList.remove('flipped');
-                        }
-                      }}
-                    >
-                      <i className="fas fa-times"></i>
-                    </button>
                   </div>
 
                   <div className="overflow-y-auto flex-1">
@@ -210,8 +190,12 @@ export default function MethodologySection() {
             style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
-              if (inner && !inner.classList.contains('flipped')) {
-                inner.classList.add('flipped');
+              if (inner) {
+                if (inner.classList.contains('flipped')) {
+                  inner.classList.remove('flipped');
+                } else {
+                  inner.classList.add('flipped');
+                }
               }
             }}
           >
@@ -237,7 +221,7 @@ export default function MethodologySection() {
 
               <div className="flip-card-back bg-white rounded-lg">
                 <div className="p-6 h-full flex flex-col">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="mb-4">
                     <h3 className="text-xl font-bold flex items-center">
                       <img 
                         src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=80&h=80&q=80" 
@@ -246,20 +230,6 @@ export default function MethodologySection() {
                       />
                       Technical Acceleration
                     </h3>
-                    <button 
-                      className="text-gray-500 hover:text-gray-700"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        const parent = e.currentTarget.closest('.flip-card');
-                        if (parent) {
-                          const inner = parent.querySelector('.flip-card-inner');
-                          if (inner) inner.classList.remove('flipped');
-                        }
-                      }}
-                    >
-                      <i className="fas fa-times"></i>
-                    </button>
                   </div>
 
                   <div className="overflow-y-auto flex-1">
