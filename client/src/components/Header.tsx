@@ -40,7 +40,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex space-x-6">
+        <nav className="hidden md:flex space-x-6">
       {[
             { label: "Our Approach", href: "#methodology", icon: "" },
             { label: "Programs", href: "#courses", icon: "" },
@@ -49,11 +49,11 @@ export default function Header() {
             <a 
               key={index}
               href={item.href} 
-              className="text-white/90 hover:text-white font-medium py-2 px-3 lg:px-4 rounded-lg bg-white/10 hover:bg-white/10 transition-all relative overflow-hidden group text-sm lg:text-base"
+              className="text-white/90 hover:text-white font-medium py-2 px-4 rounded-lg bg-white/10 hover:bg-white/10 transition-all relative overflow-hidden group"
             >
               <div className="flex items-center space-x-1">
                 <span className="text-white/80 group-hover:text-white/100 transition-all">{item.icon}</span>
-                <span className="whitespace-nowrap">{item.label}</span>
+                <span>{item.label}</span>
               </div>
         <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-[#FFC107] opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
             </a>
@@ -61,10 +61,10 @@ export default function Header() {
         </nav>
 
         {/* CTA Button */}
-        <div className="hidden lg:flex space-x-3">
+        <div className="hidden md:flex space-x-3">
           <a 
             href="#talent-compass" 
-            className="bg-[#FFC107] text-black font-semibold py-2 lg:py-3 px-4 lg:px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-sm lg:text-base"
+            className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center">
               Start Your Journey
@@ -80,7 +80,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
-          className="lg:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm"
+          className="md:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm"
           aria-label="Toggle mobile menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,7 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-  <div className={`lg:hidden bg-[#0F1E2E] border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+  <div className={`md:hidden bg-[#0F1E2E] border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
           <a 
             href="#methodology" 

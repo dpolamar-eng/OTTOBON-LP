@@ -9,25 +9,25 @@ export default function MethodologySection() {
   return (
   <section id="methodology" className="pt-8 pb-20 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-4xl mx-auto mb-8 lg:mb-12 px-4" ref={headerRef}>
-          <div className="inline-flex items-center mb-4 bg-blue-50 px-3 sm:px-4 py-2 rounded-full">
-            <span className="text-blue-600 mr-2 text-lg sm:text-xl">⚡</span>
-            <span className="text-blue-800 font-medium text-xs sm:text-sm uppercase tracking-wider">Learning Accelerator</span>
+        <div className="text-center max-w-3xl mx-auto mb-12" ref={headerRef}>
+          <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
+            <span className="text-blue-600 mr-2 text-xl">⚡</span>
+            <span className="text-blue-800 font-medium text-sm uppercase tracking-wider">Learning Accelerator</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 leading-tight px-2">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 leading-tight">
             Our Game-Changing Methodology
           </h2>
-          <p className="text-gray-700 mb-6 lg:mb-8 text-base lg:text-lg px-2 max-w-3xl mx-auto">
+          <p className="text-gray-700 mb-8 text-lg">
             Ottobon's unique approach transforms promising talent into elite technology consultants through these core pillars.
           </p>
           <div className="fancy-divider"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mt-8 lg:mt-12 max-w-7xl mx-auto px-4" ref={cardsRef}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto" ref={cardsRef}>
           {/* Pillar 1: Human-Centered */}
           <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/25 mx-auto max-w-sm lg:max-w-none" 
-            style={{height: "400px", transformOrigin: "center"}}
+            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/25" 
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner) {
@@ -48,13 +48,13 @@ export default function MethodologySection() {
                     className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="p-4 lg:p-6 h-3/5 flex flex-col justify-between">
+                <div className="p-8 h-3/5 flex flex-col justify-between">
                   <div>
-                    <div className="text-primary text-2xl lg:text-3xl mb-3 lg:mb-4 flex justify-center">
+                    <div className="text-primary text-3xl mb-4 flex justify-center">
                       <i className="fas fa-users"></i>
                     </div>
-                    <h3 className="text-lg lg:text-xl font-bold mb-2 lg:mb-3 text-center">Human-Centered Excellence</h3>
-                    <p className="text-gray-700 text-center text-sm lg:text-base leading-relaxed">
+                    <h3 className="text-xl font-bold mb-3 text-center">Human-Centered Excellence</h3>
+                    <p className="text-gray-700 text-center">
                       Technical expertise must be paired with exceptional communication, adaptability, and emotional intelligence.
                     </p>
                   </div>
@@ -110,8 +110,8 @@ export default function MethodologySection() {
 
           {/* Pillar 2: Industry Knowledge */}
           <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/25 mx-auto max-w-sm lg:max-w-none"
-            style={{height: "400px", transformOrigin: "center"}}
+            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/25"
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner) {
@@ -132,12 +132,12 @@ export default function MethodologySection() {
                     className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="bg-white p-4 lg:p-6 h-3/5 flex flex-col">
-                  <div className="text-blue-600 text-2xl lg:text-3xl mb-3 lg:mb-4 flex justify-center">
+                <div className="bg-white p-6 h-3/5 flex flex-col">
+                  <div className="text-blue-600 text-3xl mb-4 flex justify-center">
                     <i className="fas fa-chart-line"></i>
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold mb-2 lg:mb-3 text-center">Business & Industry Mastery</h3>
-                  <p className="text-gray-700 text-center text-sm lg:text-base leading-relaxed">
+                  <h3 className="text-xl font-bold mb-3 text-center">Business & Industry Mastery</h3>
+                  <p className="text-gray-700 text-center">
                     Technology solutions exist to solve business problems. Our curriculum emphasizes context and industry-specific challenges.
                   </p>
                 </div>
@@ -186,8 +186,8 @@ export default function MethodologySection() {
 
           {/* Pillar 3: Technical Expertise */}
           <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-purple-500/25 mx-auto max-w-sm lg:max-w-none"
-            style={{height: "400px", transformOrigin: "center"}}
+            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-purple-500/25"
+            style={{height: "450px", transformOrigin: "center"}}
             onClick={(e) => {
               const inner = e.currentTarget.querySelector('.flip-card-inner');
               if (inner) {
@@ -208,12 +208,12 @@ export default function MethodologySection() {
                     className="w-full h-full object-cover opacity-75 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="bg-white p-4 lg:p-6 h-3/5 flex flex-col">
-                  <div className="text-purple-600 text-2xl lg:text-3xl mb-3 lg:mb-4 flex justify-center">
+                <div className="bg-white p-6 h-3/5 flex flex-col">
+                  <div className="text-purple-600 text-3xl mb-4 flex justify-center">
                     <i className="fas fa-code"></i>
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold mb-2 lg:mb-3 text-center">Technical Acceleration</h3>
-                  <p className="text-gray-700 text-center text-sm lg:text-base leading-relaxed">
+                  <h3 className="text-xl font-bold mb-3 text-center">Technical Acceleration</h3>
+                  <p className="text-gray-700 text-center">
                     Build robust technical foundations across high-demand domains through our accelerated, hands-on approach.
                   </p>
                 </div>
