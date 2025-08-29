@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
 
-type CourseCategory = 'all' | 'Career Launch' | 'Tech Edge';
+type CourseCategory = 'all' | 'Career Launch' | 'Tech Edge' | 'Career Assist';
 
 interface CategoryInfo {
   id: CourseCategory;
@@ -20,13 +20,18 @@ const categories: CategoryInfo[] = [
     id: 'Tech Edge',
     title: 'Job Assist',
     description: 'High demand skills in Market'
+  },
+  {
+    id: 'Career Assist',
+    title: 'Career Assist',
+    description: 'Expert guidance for your career journey'
   }
 ];
 
 interface Course {
   id: string;
   title: string;
-  category: 'Career Launch' | 'Tech Edge';
+  category: 'Career Launch' | 'Tech Edge' | 'Career Assist';
   categoryLabel: string;
   color: string;
   bgColor: string;
@@ -168,6 +173,25 @@ export default function CoursesSection() {
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',
       gradientFrom: 'from-purple-500',
       gradientTo: 'to-purple-700'
+    },
+    {
+      id: 'expert-app',
+      title: 'Expert App',
+      category: 'Career Assist',
+      categoryLabel: 'AI Expert Guidance',
+      color: 'teal-800',
+      bgColor: 'teal-100',
+      description: 'Get personalized guidance from AI-powered experts in Python, eCommerce, and various tech domains.',
+      outcomes: [
+        'Access expert knowledge in Python programming',
+        'Learn eCommerce best practices and strategies',
+        'Get personalized career advice from domain experts',
+        'Receive real-time answers to technical questions',
+        'Build skills through interactive expert sessions'
+      ],
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/4712/4712038.png',
+      gradientFrom: 'from-teal-500',
+      gradientTo: 'to-teal-700'
     }
   ];
 
@@ -321,22 +345,12 @@ export default function CoursesSection() {
                   onClick={() => setActiveFilter(category.id)}
                 >
                   <span className="mr-2 text-lg">
-                    {category.id === 'Career Launch' ? '🚀' : '⚙️'}
+                    {category.id === 'Career Launch' ? '🚀' : category.id === 'Tech Edge' ? '⚙️' : '🎯'}
                   </span>
                   {category.title}
                 </button>
               </div>
             ))}
-            <div className="text-center">
-              <button 
-                className="font-medium py-2 px-8 rounded-full transition flex items-center bg-white hover:bg-gray-100 text-gray-700 shadow-sm"
-              >
-                <span className="mr-2 text-lg">
-                  🎯
-                </span>
-                Career Assist
-              </button>
-            </div>
           </div>
 
           {/* Description for selected category only */}
@@ -390,7 +404,7 @@ export default function CoursesSection() {
                             <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
                           ) : (
                             <div className="relative z-10 text-white text-7xl">
-                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : '💻'}
+                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
                             </div>
                           )}
                         </div>
@@ -406,6 +420,7 @@ export default function CoursesSection() {
                               {course.id === 'ai-marketing' && '📈 '}
                               {course.id === 'ai-agent-development' && '🤖 '}
                               {course.id === 'ai-data-labeling' && '🏷️ '}
+                              {course.id === 'expert-app' && '🧠 '}
                               {course.categoryLabel}
                             </span>
                           </div>
@@ -421,7 +436,7 @@ export default function CoursesSection() {
                           <div className="flex justify-between items-start mb-4">
                             <h3 className="text-xl font-bold flex items-center">
                               <span className="text-2xl mr-2">
-                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : '💻'}
+                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
                               </span>
                               {course.title}
                             </h3>
