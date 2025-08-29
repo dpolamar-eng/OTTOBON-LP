@@ -373,11 +373,11 @@ export default function CoursesSection() {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
-            <div className="flex">
+            <div className={`flex ${filteredCourses.length === 1 ? 'justify-center' : ''}`}>
               {filteredCourses.map(course => (
                 <div 
                   key={course.id}
-                  className="min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)] px-4 flex-shrink-0"
+                  className={`${filteredCourses.length === 1 ? 'w-full max-w-sm' : 'min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)]'} px-4 flex-shrink-0`}
                 >
                   <div 
                     className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative`}
