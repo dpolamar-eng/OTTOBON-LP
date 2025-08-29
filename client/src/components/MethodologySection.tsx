@@ -23,7 +23,7 @@ export default function MethodologySection() {
           <div className="fancy-divider"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12" ref={cardsRef}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto" ref={cardsRef}>
           {/* Pillar 1: Human-Centered */}
           <div 
             className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-blue-500/25" 
@@ -290,80 +290,7 @@ export default function MethodologySection() {
             </div>
           </div>
 
-          {/* Pillar 4: Career Partnership */}
-          <div 
-            className="flip-card group hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-green-500/25" 
-            style={{height: "450px", transformOrigin: "center"}}
-            onClick={(e) => {
-              const inner = e.currentTarget.querySelector('.flip-card-inner');
-              if (inner && !inner.classList.contains('flipped')) {
-                inner.classList.add('flipped');
-              }
-            }}
-          >
-            <div className="flip-card-inner" style={{boxShadow: 'none'}}>
-              <div className="flip-card-front glass-effect">
-                <div className="h-2/5 bg-gradient-to-r from-green-500 to-green-700 relative overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&w=600&q=80" 
-                    alt="Career growth" 
-                    className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-8 h-3/5 flex flex-col justify-between">
-                  <div>
-                    <div className="text-green-600 text-3xl mb-4 flex justify-center">
-                      <i className="fas fa-handshake"></i>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-center">Career Partnership</h3>
-                    <p className="text-gray-700 text-center">
-                      We're committed to your long-term professional success beyond graduation.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flip-card-back">
-                <div className="h-full p-8 flex flex-col bg-white">
-                  <div className="flex justify-between items-start mb-6">
-                    <h3 className="text-xl font-bold">Career Partnership</h3>
-                    <button 
-                      className="text-gray-500 hover:text-gray-700"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        const parent = e.currentTarget.closest('.flip-card');
-                        if (parent) {
-                          const inner = parent.querySelector('.flip-card-inner');
-                          if (inner) inner.classList.remove('flipped');
-                        }
-                      }}
-                    >
-                      <i className="fas fa-times"></i>
-                    </button>
-                  </div>
-
-                  <div className="flex-1 overflow-y-auto">
-                    <p className="text-gray-700 mb-6">
-                      We're committed to your long-term success, providing ongoing mentorship and connections to top consulting opportunities.
-                    </p>
-                    <h4 className="font-semibold mb-2 text-green-600">Why It Matters:</h4>
-                    <p className="text-gray-700 mb-6">
-                      Your success is our success. Our extensive industry network and career support services ensure you land not just any job, but the right job with substantial growth potential.
-                    </p>
-                    <h4 className="font-semibold mb-2 text-green-600">Our Commitment Includes:</h4>
-                    <ul className="text-gray-700 space-y-2">
-                      <li>• Personalized career coaching</li>
-                      <li>• Interview preparation with industry veterans</li>
-                      <li>• Exclusive recruiting events</li>
-                      <li>• Alumni network of 2,000+ professionals</li>
-                      <li>• Ongoing learning opportunities</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>
