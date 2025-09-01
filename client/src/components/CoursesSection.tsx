@@ -176,12 +176,12 @@ export default function CoursesSection() {
     },
     {
       id: 'expert-app',
-      title: 'Expert App',
+      title: 'Guidance Hub',
       category: 'Career Assist',
-      categoryLabel: 'AI Expert Guidance',
+      categoryLabel: 'Guidance from Experts',
       color: 'teal-800',
       bgColor: 'teal-100',
-      description: 'Get personalized guidance from AI-powered experts in Python, eCommerce, and various tech domains.',
+      description: 'Helps you to solve everyday technical challenges, grow within your organization, and map a clear path to success.',
       outcomes: [
         'Access expert knowledge in Python programming',
         'Learn eCommerce best practices and strategies',
