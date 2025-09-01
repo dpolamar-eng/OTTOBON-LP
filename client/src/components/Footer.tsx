@@ -43,15 +43,15 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="flex items-start">
                 <i className="fas fa-envelope text-primary mr-2 mt-1"></i>
-                <a href="mailto:info@ottobon.com" className="text-gray-400 hover:text-white transition">info@ottobon.com</a>
+                <a href="mailto:hr@ottobon.in" className="text-gray-400 hover:text-white transition">hr@ottobon.in</a>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-phone text-primary mr-2 mt-1"></i>
-                <a href="tel:+18005551234" className="text-gray-400 hover:text-white transition">+1 (800) 555-1234</a>
+                <a href="tel:+919281011683" className="text-gray-400 hover:text-white transition">+91 9281011683</a>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-map-marker-alt text-primary mr-2 mt-1"></i>
-                <span className="text-gray-400">123 Tech Lane, San Francisco, CA 94107</span>
+                <span className="text-gray-400">D No 10-28-2/1/3, 1st Floor 102, A Square Business Centre, Waltair Uplands, Waltair Main Road, Chinawaltair, Visakhapatnam, Andhra Pradesh, India, 530003</span>
               </li>
             </ul>
           </div>
