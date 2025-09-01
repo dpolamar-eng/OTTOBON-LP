@@ -356,7 +356,7 @@ export default function GatewayPortal() {
               { q: 'How does Human + AI collaboration work?', a: 'AI handles speed, drafting, and analysis; mentors calibrate judgment, standards, and nuance. You learn the professional way to combine both.' },
               { q: 'How do I get started?', a: 'Pick Academy to launch/accelerate your career, or PSO to streamline your consulting operations. We’ll guide you from there.' },
             ].map((item, idx) => (
-              <details key={idx} className="bg-[#112537]/70 backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105 hover:bg-[#112537]/80 hover:shadow-xl hover:shadow-blue-500/20">
+              <details key={idx} className="bg-[#112537]/70 backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105 hover:bg-[#112537]/80" style={{boxShadow: 'none'}} onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.4)'} onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}>
                 <summary className="cursor-pointer text-white font-medium select-none text-base md:text-lg">{item.q}</summary>
                 <p className="text-blue-100 mt-2 text-sm md:text-base">{item.a}</p>
               </details>
