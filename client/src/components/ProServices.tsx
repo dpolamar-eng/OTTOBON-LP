@@ -430,11 +430,8 @@ export default function ProServices() {
                       <div className="p-6 flex flex-col h-[calc(100%-112px)]">
                         <p className="text-gray-200 text-lg mb-6">{service.description}</p>
 
-                        <div className="mt-auto flex justify-between items-center">
-                          <span className="text-indigo-400 text-base font-medium">View Details</span>
-                          <svg className="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                          </svg>
+                        <div className="mt-auto">
+                          {/* Removed View Details text and flip icon */}
                         </div>
                       </div>
                     </div>
