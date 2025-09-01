@@ -49,7 +49,7 @@ export default function StorytellingOnboarding() {
       name: "Arjun Sharma",
       role: "Career Switcher",
       background: "Former CA working in audit, seeking a career transition to tech consulting",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
       story: [
         {
           id: 1,
@@ -164,7 +164,7 @@ export default function StorytellingOnboarding() {
       name: "Priya Patel",
       role: "Recent Graduate",
       background: "B.Tech Computer Science graduate from Gujarat seeking specialized expertise",
-      avatar: "https://images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616c5e95f60?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
       story: [
         {
           id: 1,
@@ -279,7 +279,7 @@ export default function StorytellingOnboarding() {
       name: "Rajesh Kumar",
       role: "Experienced Professional",
       background: "Senior software developer from Bangalore seeking to update skills for leadership roles",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
       story: [
         {
           id: 1,
