@@ -398,9 +398,18 @@ export default function ProServices() {
           {/* Services Section - Clean Grid Layout */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             <div className="flex justify-between items-center mb-6">
-              <div>
-                <h2 className="text-2xl font-bold mb-1">Our Service Offerings</h2>
-                <p className="text-sm text-gray-300">Each service combines AI automation with optional human support</p>
+              <div className="flex items-center">
+                <div className="flex space-x-3 mr-4">
+                  {services.map((service) => (
+                    <div key={service.id} className={`w-8 h-8 ${service.iconBg} rounded-lg flex items-center justify-center`}>
+                      <span className="text-lg">{service.icon}</span>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold mb-1">Our Service Offerings</h2>
+                  <p className="text-sm text-gray-300">Each service combines AI automation with optional human support</p>
+                </div>
               </div>
 
               {/* Carousel Navigation */}
@@ -435,10 +444,10 @@ export default function ProServices() {
                 >
                   {/* Simple card with clean design */}
                   <div 
-                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer"
+                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer transform hover:scale-105 active:scale-95"
                     onClick={() => toggleCard(service.id)}
                   >
-                    {/* Header with icon and image */}
+                    {/* Header with image */}
                     <div className="relative h-48 overflow-hidden">
                       <img 
                         src={service.image}
@@ -446,13 +455,6 @@ export default function ProServices() {
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
-                      
-                      {/* Icon overlay */}
-                      <div className="absolute top-4 left-4">
-                        <div className={`w-12 h-12 ${service.iconBg} rounded-lg flex items-center justify-center shadow-lg`}>
-                          <span className="text-2xl">{service.icon}</span>
-                        </div>
-                      </div>
 
                       {/* Expand button - only show on mobile */}
                       <div className="absolute bottom-4 right-4 md:hidden">
@@ -592,7 +594,7 @@ export default function ProServices() {
           ></div>
           
           {/* Modal Content */}
-          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-lg w-full mx-4 max-h-[70vh] overflow-y-auto">
+          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
             {(() => {
               const service = getModalService();
               if (!service) return null;
@@ -642,8 +644,6 @@ export default function ProServices() {
                         ))}
                       </div>
                     </div>
-
-                    
                   </div>
                 </>
               );
