@@ -31,7 +31,7 @@ export default function HomeHeader() {
         </Link>
 
         {/* Desktop nav */}
-    <nav className="hidden md:flex items-center space-x-2">
+        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
           {[
             { label: "About", href: "#about" },
             { label: "Our Services", href: "#services-overview" },
@@ -43,7 +43,7 @@ export default function HomeHeader() {
             <a
               key={item.label}
               href={item.href}
-      className="text-white/90 hover:text-white font-medium py-2 px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group"
+              className="text-white/90 hover:text-white font-medium py-2 px-2 xl:px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group text-sm xl:text-base"
             >
               <div className="flex items-center space-x-1">
                 <span>{item.label}</span>
@@ -54,14 +54,14 @@ export default function HomeHeader() {
         </nav>
 
         {/* CTA */}
-  <div className="hidden md:flex">
+        <div className="hidden lg:flex">
           <a
             href="#services-overview"
-            className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group"
+            className="bg-[#FFC107] text-black font-semibold py-2 xl:py-3 px-4 xl:px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-sm xl:text-base"
           >
             <span className="relative z-10 flex items-center">
               Begin Your Journey
-              <svg className="ml-1 w-[20px] h-[20px] translate-y-[2px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-1 w-[16px] h-[16px] xl:w-[20px] xl:h-[20px] translate-y-[1px] xl:translate-y-[2px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
@@ -72,7 +72,7 @@ export default function HomeHeader() {
         {/* Mobile toggle */}
         <button
           onClick={toggleMobileMenu}
-          className="md:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm"
+          className="lg:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm"
           aria-label="Toggle mobile menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ export default function HomeHeader() {
       </div>
 
       {/* Mobile nav */}
-      <div className={`md:hidden bg-[#0F1E2E] border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+      <div className={`lg:hidden bg-[#0F1E2E] border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
         <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
           {[
             { label: "About", href: "#about", icon: "📜" },
