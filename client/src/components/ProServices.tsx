@@ -592,7 +592,7 @@ export default function ProServices() {
           ></div>
           
           {/* Modal Content */}
-          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-lg w-full mx-4 max-h-[70vh] overflow-y-auto">
             {(() => {
               const service = getModalService();
               if (!service) return null;
@@ -607,16 +607,6 @@ export default function ProServices() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
-                    
-                    {/* Close button */}
-                    <button 
-                      onClick={closeModal}
-                      className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 p-2 rounded-full transition-colors"
-                    >
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                      </svg>
-                    </button>
 
                     {/* Service icon and title overlay */}
                     <div className="absolute bottom-4 left-6">
@@ -653,18 +643,7 @@ export default function ProServices() {
                       </div>
                     </div>
 
-                    {/* Action buttons */}
-                    <div className="flex justify-end space-x-3 pt-4 border-t border-gray-700">
-                      <button 
-                        onClick={closeModal}
-                        className="px-4 py-2 text-gray-300 hover:text-white transition-colors"
-                      >
-                        Close
-                      </button>
-                      <button className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
-                        Learn More
-                      </button>
-                    </div>
+                    
                   </div>
                 </>
               );
