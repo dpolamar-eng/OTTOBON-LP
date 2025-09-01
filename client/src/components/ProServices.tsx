@@ -433,26 +433,45 @@ export default function ProServices() {
                         <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                       </div>
 
-                      {/* Card content */}
-                      <div className="p-6 flex flex-col h-[calc(100%-112px)] relative">
-                        <p className="text-gray-200 text-lg mb-6">{service.description}</p>
+                      {/* Card content with background image */}
+                      <div className="p-6 flex flex-col h-[calc(100%-112px)] relative overflow-hidden">
+                        {/* Background image based on service type */}
+                        <div className="absolute inset-0 opacity-10">
+                          <img 
+                            src={
+                              service.id === 'presales' ? 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80' :
+                              service.id === 'marketing' ? 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' :
+                              service.id === 'talent' ? 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80' :
+                              service.id === 'delivery' ? 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=600&q=80' :
+                              service.id === 'admin' ? 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80' :
+                              'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80'
+                            }
+                            alt={`${service.title} background`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        
+                        {/* Content overlay */}
+                        <div className="relative z-10">
+                          <p className="text-gray-200 text-lg mb-6">{service.description}</p>
 
-                        <div className="mt-auto">
-                          {/* Flip indicator icon */}
-                          <div className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20">
-                            <svg 
-                              className="w-5 h-5 text-white/70" 
-                              fill="none" 
-                              stroke="currentColor" 
-                              viewBox="0 0 24 24"
-                            >
-                              <path 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth="2" 
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                              />
-                            </svg>
+                          <div className="mt-auto">
+                            {/* Flip indicator icon */}
+                            <div className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20">
+                              <svg 
+                                className="w-5 h-5 text-white/70" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                              >
+                                <path 
+                                  strokeLinecap="round" 
+                                  strokeLinejoin="round" 
+                                  strokeWidth="2" 
+                                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                                />
+                              </svg>
+                            </div>
                           </div>
                         </div>
                       </div>
