@@ -59,11 +59,8 @@ export default function HomeHeader() {
             href="#services-overview"
             className="bg-[#FFC107] text-black font-semibold py-2 xl:py-3 px-4 xl:px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-sm xl:text-base"
           >
-            <span className="relative z-10 flex items-center">
+            <span className="relative z-10">
               Begin Your Journey
-              <svg className="ml-1 w-[16px] h-[16px] xl:w-[20px] xl:h-[20px] translate-y-[1px] xl:translate-y-[2px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
             </span>
             <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
           </a>
@@ -73,13 +70,10 @@ export default function HomeHeader() {
         <div className="lg:hidden flex items-center space-x-2">
           <a
             href="#services-overview"
-            className="bg-[#FFC107] text-black font-semibold py-2 px-3 sm:px-4 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-xs sm:text-sm"
+            className="bg-[#FFC107] text-black font-semibold py-2 px-3 sm:px-4 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-xs sm:text-sm whitespace-nowrap"
           >
-            <span className="relative z-10 flex items-center">
+            <span className="relative z-10">
               Begin Your Journey
-              <svg className="ml-1 w-3 h-3 sm:w-4 sm:h-4 translate-y-[1px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
             </span>
             <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
           </a>
@@ -122,13 +116,10 @@ export default function HomeHeader() {
           <div className="pt-3 pb-2 flex flex-col space-y-3">
             <a
               href="#services-overview"
-              className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center flex items-center justify-center relative overflow-hidden group"
+              className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center relative overflow-hidden group"
               onClick={closeMobileMenu}
             >
               <span className="relative z-10">Start Your Journey</span>
-              <svg className="ml-2 w-[18px] h-[18px] translate-y-[1.5px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
               <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
             </a>
           </div>
