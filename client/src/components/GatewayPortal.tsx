@@ -137,15 +137,15 @@ export default function GatewayPortal() {
                     <div className="space-y-2">
                       <div className="flex items-start">
                         <span className="text-green-400 mr-2">✓</span>
-                        <span className="text-blue-50">Up-Skilling</span>
+                        <span className="text-blue-50">AI-Powered Skill Growth</span>
                       </div>
                       <div className="flex items-start">
                         <span className="text-green-400 mr-2">✓</span>
-                        <span className="text-blue-50"> Job Assistance </span>
+                        <span className="text-blue-50"> Land Your Dream Job </span>
                       </div>
                       <div className="flex items-start">
                         <span className="text-green-400 mr-2">✓</span>
-                        <span className="text-blue-50"> Career Support </span>
+                        <span className="text-blue-50"> Thrive With Expert Guidance </span>
                       </div>
                     </div>
                   </div>
