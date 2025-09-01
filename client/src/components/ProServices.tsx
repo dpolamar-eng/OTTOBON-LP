@@ -227,6 +227,13 @@ export default function ProServices() {
         </div>
       </header>
 
+      <style jsx>{`
+        @keyframes gentle-bounce {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-3px) rotate(5deg); }
+        }
+      `}</style>
+      
       <main className="pt-16 pb-16">
         {/* Container for all sections */}
         <div className="container mx-auto px-4">
@@ -427,11 +434,27 @@ export default function ProServices() {
                       </div>
 
                       {/* Card content */}
-                      <div className="p-6 flex flex-col h-[calc(100%-112px)]">
+                      <div className="p-6 flex flex-col h-[calc(100%-112px)] relative">
                         <p className="text-gray-200 text-lg mb-6">{service.description}</p>
 
                         <div className="mt-auto">
-                          {/* Removed View Details text and flip icon */}
+                          {/* Flip indicator icon */}
+                          <div className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20">
+                            <svg 
+                              className="w-5 h-5 text-white/70" 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                              style={{ animation: 'gentle-bounce 2s ease-in-out infinite' }}
+                            >
+                              <path 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth="2" 
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                              />
+                            </svg>
+                          </div>
                         </div>
                       </div>
                     </div>
