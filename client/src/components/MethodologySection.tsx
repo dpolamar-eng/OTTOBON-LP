@@ -40,7 +40,7 @@ export default function MethodologySection() {
             }}
           >
             <div className="flip-card-inner" style={{boxShadow: 'none'}}>
-              <div className="flip-card-front glass-effect">
+              <div className="flip-card-front bg-white rounded-lg overflow-hidden">
                 <div className="h-2/5 bg-gradient-primary relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
@@ -48,21 +48,19 @@ export default function MethodologySection() {
                     className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="p-8 h-3/5 flex flex-col justify-between">
-                  <div>
-                    <div className="text-primary text-3xl mb-4 flex justify-center">
-                      <i className="fas fa-users"></i>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-center">Human-Centered Excellence</h3>
-                    <p className="text-gray-700 text-center">
-                      Technical expertise must be paired with exceptional communication, adaptability, and emotional intelligence.
-                    </p>
+                <div className="p-6 h-3/5 flex flex-col">
+                  <div className="text-primary text-3xl mb-4 flex justify-center">
+                    <i className="fas fa-users"></i>
                   </div>
+                  <h3 className="text-xl font-bold mb-3 text-center">Human-Centered Excellence</h3>
+                  <p className="text-gray-700 text-center">
+                    Technical expertise must be paired with exceptional communication, adaptability, and emotional intelligence.
+                  </p>
                 </div>
               </div>
 
-              <div className="flip-card-back">
-                <div className="h-full p-8 flex flex-col bg-white">
+              <div className="flip-card-back bg-white rounded-lg">
+                <div className="h-full p-6 flex flex-col">
                   <div className="mb-4">
                     <h3 className="text-xl font-bold flex items-center">
                       <img 
