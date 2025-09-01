@@ -202,15 +202,15 @@ export default function GatewayPortal() {
                     <div className="space-y-2">
                       <div className="flex items-start">
                         <span className="text-pink-300 mr-2">⚡</span>
-                        <span className="text-purple-50">Independent Consultants</span>
+                        <span className="text-purple-50"> Transforming Health with Innovation </span>
                       </div>
                       <div className="flex items-start">
                         <span className="text-pink-300 mr-2">⚡</span>
-                        <span className="text-purple-50">Small Consulting Firms</span>
+                        <span className="text-purple-50"> Driving Innovation with Expertise </span>
                       </div>
                       <div className="flex items-start">
                         <span className="text-pink-300 mr-2">⚡</span>
-                        <span className="text-purple-50">Mid-Size Practices</span>
+                        <span className="text-purple-50"> Legal & Finance </span>
                       </div>
                     </div>
                   </div>
@@ -271,9 +271,9 @@ export default function GatewayPortal() {
                 subtitle:
                   'Talent Compass maps you into the right stream—Upskilling, Job Assistance, or Career Assistance—with clear milestones and weekly cadence.',
                 bullets: [
-                  'Upskilling: hands‑on AI tracks across design, marketing, automation agents, and data operations.',
-                  'Job Assistance: resume polish, tailored role matching, and interview practice tuned to real hiring loops.',
-                  'Career Assistance: expert mentorship to shape your path and deepen skills within your chosen domain.',
+                  'AI tracks in design, marketing, automation, and data.',
+                  'Resume boost, role matching, and interview prep.',
+                  'Mentorship to refine direction and grow skills.',
                 ],
               },
               {
