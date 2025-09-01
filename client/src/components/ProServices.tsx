@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 
@@ -37,6 +38,7 @@ export default function ProServices() {
       id: 'presales',
       title: 'Pre-Sales Support',
       icon: '📝',
+      iconBg: 'bg-blue-500',
       color: 'from-blue-600 to-indigo-600',
       description: 'Generate compelling proposals in minutes, not days',
       details: "Our AI-powered proposal engine analyzes your prospect's requirements and creates tailored, professional proposals with customized solution designs.",
@@ -44,12 +46,14 @@ export default function ProServices() {
         'AI-powered proposal builder that learns your style',
         'Solution architecture sketches and diagrams',
         'Automated pricing recommendations based on market data'
-      ]
+      ],
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'
     },
     {
       id: 'marketing',
       title: 'Marketing & Visibility',
       icon: '📣',
+      iconBg: 'bg-purple-500',
       color: 'from-purple-600 to-pink-600',
       description: 'Maintain a professional presence with minimal effort',
       details: "Automated content creation that maintains your professional voice while requiring minimal time investment from busy consultants.",
@@ -57,12 +61,14 @@ export default function ProServices() {
         'AI-generated social media content customized to your brand',
         'Thought leadership articles on trending industry topics',
         'Email newsletter campaigns with performance analytics'
-      ]
+      ],
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80'
     },
     {
       id: 'talent',
       title: 'Talent Acquisition',
       icon: '🔍',
+      iconBg: 'bg-emerald-500',
       color: 'from-emerald-600 to-cyan-600',
       description: 'Find the perfect experts for your client projects',
       details: "Our AI matching system connects you with pre-vetted talent for your specific project needs, whether for staff augmentation or specialized expertise.",
@@ -70,12 +76,14 @@ export default function ProServices() {
         'AI-Powered Skill Matching for precise matching',
         'Background Verification and quality assurance',
         'Streamlined Interviewing and onboarding process'
-      ]
+      ],
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80'
     },
     {
       id: 'delivery',
       title: 'Project Delivery Support',
       icon: '✅',
+      iconBg: 'bg-orange-500',
       color: 'from-amber-600 to-orange-600',
       description: 'Streamline project management with AI assistance',
       details: "Let AI handle routine tasks and documentation while you focus on high-value client strategy and relationship management.",
@@ -83,12 +91,14 @@ export default function ProServices() {
         'AI-powered task management integrated with popular tools',
         'Automated status reports and client updates',
         'Risk identification and mitigation suggestions'
-      ]
+      ],
+      image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80'
     },
     {
       id: 'admin',
       title: 'Admin & Billing',
       icon: '📊',
+      iconBg: 'bg-red-500',
       color: 'from-rose-600 to-red-600',
       description: 'Automated back-office operations for consultants',
       details: "Streamline administrative tasks with automated invoicing, contract management, and expense tracking that integrates with popular accounting systems.",
@@ -96,12 +106,14 @@ export default function ProServices() {
         'Automated invoice generation based on time tracking',
         'Contract management with renewal reminders',
         'Expense tracking with receipt scanning'
-      ]
+      ],
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80'
     },
     {
       id: 'payroll',
       title: 'Payroll Management',
       icon: '💰',
+      iconBg: 'bg-cyan-500',
       color: 'from-blue-600 to-cyan-600',
       description: 'Automated payroll processing for your consultants',
       details: "Simplify complex payroll requirements for consultants with varying contracts, payment schedules, and international tax regulations.",
@@ -109,7 +121,8 @@ export default function ProServices() {
         'Multi-currency payment processing with optimal rates',
         'Tax compliance across multiple jurisdictions',
         'Consultant self-service portal for payment tracking'
-      ]
+      ],
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80'
     }
   ];
 
@@ -362,7 +375,7 @@ export default function ProServices() {
             </div>
           </section>
 
-          {/* Services Section - Carousel with 3 visible cards */}
+          {/* Services Section - Clean Grid Layout */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             <div className="flex justify-between items-center mb-6">
               <div>
@@ -393,120 +406,76 @@ export default function ProServices() {
               </div>
             </div>
 
-            {/* Service Cards Carousel */}
-            <div 
-              ref={carouselRef}
-              className="flex overflow-x-auto pb-6 scrollbar-hide gap-4 snap-x"
-              style={{ 
-                scrollbarWidth: 'none', 
-                msOverflowStyle: 'none' 
-              }}
-            >
+            {/* Service Cards - Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="min-w-[320px] w-[calc(100%/3-16px)] sm:min-w-[380px] md:min-w-[450px] flex-shrink-0 snap-start"
+                  className="group"
                 >
-                  <div className={`h-[420px] perspective-1000 ${expandedCards[service.id] ? 'flipped' : ''}`}>
-                    {/* Front of card - uses opacity instead of transform for better mobile support */}
-                    <div 
-                      className={`absolute inset-0 rounded-xl bg-white/5 border border-white/20 transition-all duration-300 ${
-                        expandedCards[service.id] ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                      }`}
-                      onClick={() => toggleCard(service.id)}
-                      style={{ animation: 'soft-glow 3s infinite ease-in-out' }}
-                    >
-                      {/* Card header */}
-                      <div 
-                        className={`bg-gradient-to-r ${service.color} p-6 rounded-t-xl flex items-center`}
-                        style={{ 
-                          backgroundSize: '200% 200%',
-                          animation: 'gradient-shift 3s ease infinite'
-                        }}
-                      >
-                        <div 
-                          className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4"
-                          style={{ animation: 'icon-float 3s ease-in-out infinite' }}
+                  {/* Simple card with clean design */}
+                  <div className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
+                    {/* Header with icon and image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                      
+                      {/* Icon overlay */}
+                      <div className="absolute top-4 left-4">
+                        <div className={`w-12 h-12 ${service.iconBg} rounded-lg flex items-center justify-center shadow-lg`}>
+                          <span className="text-2xl">{service.icon}</span>
+                        </div>
+                      </div>
+
+                      {/* Expand button */}
+                      <div className="absolute bottom-4 right-4">
+                        <button 
+                          onClick={() => toggleCard(service.id)}
+                          className="bg-white/10 backdrop-blur-sm hover:bg-white/20 p-2 rounded-full transition-colors"
                         >
-                          <span className="text-4xl">{service.icon}</span>
-                        </div>
-                        <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                      </div>
-
-                      {/* Card content with background image */}
-                      <div className="p-6 flex flex-col h-[calc(100%-112px)] relative overflow-hidden">
-                        {/* Background image based on service type */}
-                        <div className="absolute inset-0 opacity-10">
-                          <img 
-                            src={
-                              service.id === 'presales' ? 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80' :
-                              service.id === 'marketing' ? 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' :
-                              service.id === 'talent' ? 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80' :
-                              service.id === 'delivery' ? 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=600&q=80' :
-                              service.id === 'admin' ? 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80' :
-                              'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80'
-                            }
-                            alt={`${service.title} background`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        
-                        {/* Content overlay */}
-                        <div className="relative z-10">
-                          <p className="text-gray-200 text-lg mb-6">{service.description}</p>
-
-                          <div className="mt-auto">
-                            {/* Flip indicator icon */}
-                            <div className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20">
-                              <svg 
-                                className="w-5 h-5 text-white/70" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                viewBox="0 0 24 24"
-                              >
-                                <path 
-                                  strokeLinecap="round" 
-                                  strokeLinejoin="round" 
-                                  strokeWidth="2" 
-                                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                                />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Back of card */}
-                    <div 
-                      className={`absolute inset-0 rounded-xl bg-gray-800 border border-white/10 p-6 transition-all duration-300 ${
-                        expandedCards[service.id] ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'
-                      }`}
-                      onClick={() => toggleCard(service.id)}
-                      style={{ animation: expandedCards[service.id] ? 'card-pulse 2s ease-in-out infinite' : 'none' }}
-                    >
-                      <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                        <button className="bg-white/10 hover:bg-white/20 p-2 rounded-full">
-                          <svg className="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                          <svg 
+                            className={`w-5 h-5 text-white transition-transform duration-300 ${
+                              expandedCards[service.id] ? 'rotate-180' : ''
+                            }`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                           </svg>
                         </button>
                       </div>
+                    </div>
 
-                      <p className="text-gray-300 mb-6 text-base">{service.details}</p>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                      <p className="text-gray-300 mb-4">{service.description}</p>
 
-                      <h4 className="text-base font-semibold uppercase tracking-wide text-indigo-400 mb-4">Key Features</h4>
-                      <ul className="space-y-3">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="flex items-start">
-                            <svg className="w-5 h-5 text-indigo-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span className="text-gray-300 text-base">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      {/* Expanded details */}
+                      <div className={`overflow-hidden transition-all duration-300 ${
+                        expandedCards[service.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      }`}>
+                        <div className="pt-4 border-t border-gray-700/50">
+                          <p className="text-gray-400 text-sm mb-4">{service.details}</p>
+                          
+                          <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
+                          <ul className="space-y-2">
+                            {service.features.map((feature, i) => (
+                              <li key={i} className="flex items-start text-sm">
+                                <svg className="w-4 h-4 text-indigo-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span className="text-gray-300">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
