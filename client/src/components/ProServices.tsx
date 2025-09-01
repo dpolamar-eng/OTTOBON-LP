@@ -6,6 +6,7 @@ export default function ProServices() {
   const [, navigate] = useLocation();
   const [expandedCards, setExpandedCards] = useState<{[key: string]: boolean}>({});
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [modalService, setModalService] = useState<string | null>(null);
 
   // Hero banner slides
   const heroSlides = [
@@ -168,10 +169,29 @@ export default function ProServices() {
 
   // Toggle card expansion
   const toggleCard = (id: string) => {
-    setExpandedCards(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
+    // Check if we're on desktop (md breakpoint and above)
+    const isDesktop = window.innerWidth >= 768;
+    
+    if (isDesktop) {
+      // On desktop, use modal
+      setModalService(modalService === id ? null : id);
+    } else {
+      // On mobile, use inline expansion
+      setExpandedCards(prev => ({
+        ...prev,
+        [id]: !prev[id]
+      }));
+    }
+  };
+
+  // Close modal
+  const closeModal = () => {
+    setModalService(null);
+  };
+
+  // Get modal service data
+  const getModalService = () => {
+    return services.find(s => s.id === modalService);
   };
 
   // Auto-advance slides
@@ -414,7 +434,10 @@ export default function ProServices() {
                   className="group"
                 >
                   {/* Simple card with clean design */}
-                  <div className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
+                  <div 
+                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer"
+                    onClick={() => toggleCard(service.id)}
+                  >
                     {/* Header with icon and image */}
                     <div className="relative h-48 overflow-hidden">
                       <img 
@@ -431,10 +454,13 @@ export default function ProServices() {
                         </div>
                       </div>
 
-                      {/* Expand button */}
-                      <div className="absolute bottom-4 right-4">
+                      {/* Expand button - only show on mobile */}
+                      <div className="absolute bottom-4 right-4 md:hidden">
                         <button 
-                          onClick={() => toggleCard(service.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleCard(service.id);
+                          }}
                           className="bg-white/10 backdrop-blur-sm hover:bg-white/20 p-2 rounded-full transition-colors"
                         >
                           <svg 
@@ -449,6 +475,16 @@ export default function ProServices() {
                           </svg>
                         </button>
                       </div>
+
+                      {/* Desktop click indicator */}
+                      <div className="hidden md:block absolute bottom-4 right-4">
+                        <div className="bg-white/10 backdrop-blur-sm p-2 rounded-full">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Content */}
@@ -456,8 +492,13 @@ export default function ProServices() {
                       <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
                       <p className="text-gray-300 mb-4">{service.description}</p>
 
-                      {/* Expanded details */}
-                      <div className={`overflow-hidden transition-all duration-300 ${
+                      {/* Desktop hover indicator */}
+                      <div className="hidden md:block text-center text-sm text-gray-400 mt-4">
+                        Click to view details
+                      </div>
+
+                      {/* Expanded details - only on mobile */}
+                      <div className={`md:hidden overflow-hidden transition-all duration-300 ${
                         expandedCards[service.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                       }`}>
                         <div className="pt-4 border-t border-gray-700/50">
@@ -540,6 +581,97 @@ export default function ProServices() {
           </div>
         </div>
       </footer>
+
+      {/* Modal Overlay for Desktop */}
+      {modalService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop with blur */}
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            {(() => {
+              const service = getModalService();
+              if (!service) return null;
+              
+              return (
+                <>
+                  {/* Modal Header */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                    
+                    {/* Close button */}
+                    <button 
+                      onClick={closeModal}
+                      className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 p-2 rounded-full transition-colors"
+                    >
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                      </svg>
+                    </button>
+
+                    {/* Service icon and title overlay */}
+                    <div className="absolute bottom-4 left-6">
+                      <div className="flex items-center">
+                        <div className={`w-16 h-16 ${service.iconBg} rounded-lg flex items-center justify-center shadow-lg mr-4`}>
+                          <span className="text-3xl">{service.icon}</span>
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                          <p className="text-white/80">{service.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Modal Body */}
+                  <div className="p-6">
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold text-white mb-3">About This Service</h4>
+                      <p className="text-gray-300">{service.details}</p>
+                    </div>
+
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold text-white mb-3">Key Features</h4>
+                      <div className="grid grid-cols-1 gap-3">
+                        {service.features.map((feature, i) => (
+                          <div key={i} className="flex items-start bg-gray-700/50 rounded-lg p-4">
+                            <svg className="w-5 h-5 text-indigo-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span className="text-gray-300">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="flex justify-end space-x-3 pt-4 border-t border-gray-700">
+                      <button 
+                        onClick={closeModal}
+                        className="px-4 py-2 text-gray-300 hover:text-white transition-colors"
+                      >
+                        Close
+                      </button>
+                      <button className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
