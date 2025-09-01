@@ -398,18 +398,9 @@ export default function ProServices() {
           {/* Services Section - Clean Grid Layout */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center">
-                <div className="flex space-x-3 mr-4">
-                  {services.map((service) => (
-                    <div key={service.id} className={`w-8 h-8 ${service.iconBg} rounded-lg flex items-center justify-center`}>
-                      <span className="text-lg">{service.icon}</span>
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold mb-1">Our Service Offerings</h2>
-                  <p className="text-sm text-gray-300">Each service combines AI automation with optional human support</p>
-                </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-1">Our Service Offerings</h2>
+                <p className="text-sm text-gray-300">Each service combines AI automation with optional human support</p>
               </div>
 
               {/* Carousel Navigation */}
