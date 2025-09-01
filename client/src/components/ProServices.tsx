@@ -265,6 +265,21 @@ export default function ProServices() {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-3px) rotate(5deg); }
         }
+        
+        @keyframes modal-in {
+          0% { 
+            opacity: 0; 
+            transform: scale(0.8) translateY(-20px); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: scale(1) translateY(0); 
+          }
+        }
+        
+        .animate-modal-in {
+          animation: modal-in 0.7s ease-out forwards;
+        }
       `}</style>
       
       <main className="pt-16 pb-16">
@@ -444,7 +459,7 @@ export default function ProServices() {
                 >
                   {/* Simple card with clean design */}
                   <div 
-                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer transform hover:scale-105 active:scale-95"
+                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer transform hover:scale-105 active:scale-95"
                     onClick={() => toggleCard(service.id)}
                   >
                     {/* Header with image */}
@@ -452,7 +467,7 @@ export default function ProServices() {
                       <img 
                         src={service.image}
                         alt={service.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
 
@@ -594,7 +609,7 @@ export default function ProServices() {
           ></div>
           
           {/* Modal Content */}
-          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
+          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden transform transition-all duration-700 ease-out scale-95 animate-modal-in"></div>
             {(() => {
               const service = getModalService();
               if (!service) return null;
