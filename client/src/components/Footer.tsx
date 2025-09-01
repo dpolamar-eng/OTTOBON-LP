@@ -19,22 +19,22 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Core Skills</h3>
+            <h3 className="text-lg font-semibold mb-4">Career Launch</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Salesforce Consulting</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Oracle Systems</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Cloud Computing</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Full Stack Development</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI for UI/UX Designer</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI in Marketing</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI Agent Development</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI Data Labeling</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold mb-4">Tech Edge & Career Assist</h3>
             <ul className="space-y-2">
-              <li><a href="#assessment" className="text-gray-400 hover:text-white transition">Talent Compass Assessment</a></li>
-              <li><a href="#success-stories" className="text-gray-400 hover:text-white transition">Student Success Stories</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Partner Companies</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Career Support</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Resume Builder</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Job Matching</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Mock Interviews</a></li>
+              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Guidance Hub</a></li>
             </ul>
           </div>
 
