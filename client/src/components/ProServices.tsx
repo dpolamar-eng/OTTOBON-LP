@@ -445,7 +445,6 @@ export default function ProServices() {
                               fill="none" 
                               stroke="currentColor" 
                               viewBox="0 0 24 24"
-                              style={{ animation: 'gentle-bounce 2s ease-in-out infinite' }}
                             >
                               <path 
                                 strokeLinecap="round" 
