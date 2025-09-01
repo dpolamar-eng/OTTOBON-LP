@@ -216,33 +216,28 @@ export default function GatewayPortal() {
                   </div>
 
                   <div className="mt-8">
-                    <div className="relative">
-                      <div className="absolute -top-16 right-0 bg-gradient-to-r from-yellow-400 to-pink-500 text-xs font-bold px-3 py-1 rounded-full transform rotate-12 shadow-lg">
-                        Coming Soon
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (pressing) return;
-                          setPressing('services');
-                          setTimeout(() => {
-                            navigate('/services');
-                            window.scrollTo(0, 0);
-                          }, 160);
-                        }}
-                        aria-pressed={pressing === 'services'}
-                        className={`bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg w-full backdrop-blur-sm border border-transparent relative overflow-hidden cursor-pointer filter focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 
-                          group-hover:scale-105 group-hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.65)] hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] 
-                          ${pressing === 'services' ? 'scale-110 drop-shadow-[0_12px_28px_rgba(212,175,55,0.75)]' : ''}`}
-                      >
-                        <span className="relative z-10 flex items-center justify-center">
-                          Get Notified
-                          <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (pressing) return;
+                        setPressing('services');
+                        setTimeout(() => {
+                          navigate('/services');
+                          window.scrollTo(0, 0);
+                        }, 160);
+                      }}
+                      aria-pressed={pressing === 'services'}
+                      className={`bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg w-full relative overflow-hidden cursor-pointer filter focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 
+                        group-hover:scale-105 group-hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.65)] hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] 
+                        ${pressing === 'services' ? 'scale-110 drop-shadow-[0_12px_28px_rgba(212,175,55,0.75)]' : ''}`}
+                    >
+                      <span className="relative z-10 flex items-center justify-center">
+                        Get Started
+                        <svg className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                      </span>
+                    </button>
                   </div>
                 </div>
               </div>
