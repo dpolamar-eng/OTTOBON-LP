@@ -281,6 +281,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   .flip-card:hover .flip-card-inner {
     box-shadow: 0 15px 35px -15px rgba(0, 128, 255, 0.25);
   }
+  /* Keep inner shadow consistent; background glow layer handles hover visuals */
+  .flip-card:hover .flip-card-inner {
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Disable wiggle/jitter on hover (keeps glow only) */
+  .flip-card:hover .flip-card-inner:not(.flipped) {
+    animation: none;
+  }
 
   /* Wiggle animation on hover */
   .flip-card:hover .flip-card-inner:not(.flipped) {

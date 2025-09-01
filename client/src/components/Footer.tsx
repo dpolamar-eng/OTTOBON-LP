@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Career Launch</h3>
+            <h3 className="text-lg font-semibold mb-4">Up-Skill</h3>
             <ul className="space-y-2">
               <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI for UI/UX Designer</a></li>
               <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI in Marketing</a></li>
@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Tech Edge & Career Assist</h3>
+            <h3 className="text-lg font-semibold mb-4">Job Assist & Career Support</h3>
             <ul className="space-y-2">
               <li><a href="#courses" className="text-gray-400 hover:text-white transition">Resume Builder</a></li>
               <li><a href="#courses" className="text-gray-400 hover:text-white transition">Job Matching</a></li>
