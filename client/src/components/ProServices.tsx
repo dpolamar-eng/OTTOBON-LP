@@ -368,6 +368,16 @@ export default function ProServices() {
           50% { transform: translateY(-8px) scale(1.05) rotate(0deg); }
           75% { transform: translateY(-4px) scale(1.02) rotate(-2deg); }
         }
+
+        .animate-icon-float {
+          animation: icon-float 4s ease-in-out infinite;
+          animation-delay: 0.3s;
+        }
+
+        .animate-icon-float-mobile {
+          animation: icon-float 4s ease-in-out infinite;
+          animation-delay: 0.5s;
+        }
         
         @keyframes pulse-glow {
           0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
@@ -377,22 +387,44 @@ export default function ProServices() {
         @keyframes slide-fade-in {
           0% { 
             opacity: 0; 
-            transform: translateY(30px) scale(0.95);
+            transform: translateX(-50px) translateY(20px) scale(0.95);
           }
           100% { 
             opacity: 1; 
-            transform: translateY(0) scale(1);
+            transform: translateX(0) translateY(0) scale(1);
           }
         }
         
         @keyframes slide-fade-out {
           0% { 
             opacity: 1; 
-            transform: translateY(0) scale(1);
+            transform: translateX(0) translateY(0) scale(1);
           }
           100% { 
             opacity: 0; 
-            transform: translateY(-30px) scale(0.95);
+            transform: translateX(50px) translateY(-20px) scale(0.95);
+          }
+        }
+
+        @keyframes slide-in-from-left {
+          0% { 
+            opacity: 0; 
+            transform: translateX(-100px) scale(0.9);
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateX(0) scale(1);
+          }
+        }
+
+        @keyframes slide-out-to-right {
+          0% { 
+            opacity: 1; 
+            transform: translateX(0) scale(1);
+          }
+          100% { 
+            opacity: 0; 
+            transform: translateX(100px) scale(0.9);
           }
         }
         
@@ -415,9 +447,18 @@ export default function ProServices() {
         }
         
         @keyframes image-pan {
-          0% { transform: scale(1.05) translateX(0); }
-          50% { transform: scale(1.1) translateX(-10px); }
-          100% { transform: scale(1.05) translateX(0); }
+          0% { transform: scale(1.05) translateX(0) translateY(0); }
+          25% { transform: scale(1.08) translateX(-15px) translateY(-5px); }
+          50% { transform: scale(1.1) translateX(-10px) translateY(-10px); }
+          75% { transform: scale(1.08) translateX(5px) translateY(-5px); }
+          100% { transform: scale(1.05) translateX(0) translateY(0); }
+        }
+
+        @keyframes image-pan-mobile {
+          0% { transform: scale(1.1) translateX(0) translateY(0); }
+          33% { transform: scale(1.15) translateX(-10px) translateY(-5px); }
+          66% { transform: scale(1.15) translateX(10px) translateY(-5px); }
+          100% { transform: scale(1.1) translateX(0) translateY(0); }
         }
         
         @keyframes shimmer {
@@ -437,6 +478,14 @@ export default function ProServices() {
         
         .slide-exit {
           animation: slide-fade-out 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+        }
+
+        .slide-content-enter {
+          animation: slide-in-from-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .slide-content-exit {
+          animation: slide-out-to-right 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
         }
         
         .slide-image {
@@ -523,7 +572,7 @@ export default function ProServices() {
           }
           
           .slide-active .slide-image {
-            animation: image-pan 15s ease-in-out infinite;
+            animation: image-pan-mobile 15s ease-in-out infinite;
           }
         }
         
@@ -602,11 +651,9 @@ export default function ProServices() {
                       {/* Enhanced floating icon with glassmorphism */}
                       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20">
                         <div 
-                          className="w-20 h-20 icon-enhanced rounded-full flex items-center justify-center shadow-2xl"
-                          style={{ 
-                            animation: index === currentSlide ? 'icon-float 4s ease-in-out infinite' : 'none',
-                            animationDelay: '0.5s'
-                          }}
+                          className={`w-20 h-20 icon-enhanced rounded-full flex items-center justify-center shadow-2xl ${
+                            index === currentSlide ? 'animate-icon-float-mobile' : ''
+                          }`}
                         >
                           <span className="text-4xl filter drop-shadow-lg">{slide.icon}</span>
                         </div>
@@ -614,7 +661,9 @@ export default function ProServices() {
                     </div>
 
                     {/* Mobile: Enhanced content section */}
-                    <div className="h-2/5 relative z-10 flex flex-col items-center justify-center px-6 py-8 slide-content">
+                    <div className={`h-2/5 relative z-10 flex flex-col items-center justify-center px-6 py-8 slide-content ${
+                      index === currentSlide ? 'slide-content-enter' : 'slide-content-exit'
+                    }`}>
                       {/* Animated text content */}
                       <div className="text-center max-w-sm mx-auto">
                         <h2 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight text-white ${
@@ -656,15 +705,15 @@ export default function ProServices() {
                     {/* Enhanced layout with better proportions */}
                     <div className="relative h-full flex flex-row items-center">
                       {/* Left side: Enhanced icon and text section */}
-                      <div className="w-[45%] z-10 flex flex-row items-center p-10 desktop-slide-content rounded-r-2xl">
+                      <div className={`w-[45%] z-10 flex flex-row items-center p-10 desktop-slide-content rounded-r-2xl ${
+                        index === currentSlide ? 'slide-content-enter' : 'slide-content-exit'
+                      }`}>
                         {/* Enhanced icon */}
                         <div className="mr-8">
                           <div 
-                            className="w-28 h-28 icon-enhanced rounded-full flex items-center justify-center shadow-2xl"
-                            style={{ 
-                              animation: index === currentSlide ? 'icon-float 4s ease-in-out infinite' : 'none',
-                              animationDelay: '0.3s'
-                            }}
+                            className={`w-28 h-28 icon-enhanced rounded-full flex items-center justify-center shadow-2xl ${
+                              index === currentSlide ? 'animate-icon-float' : ''
+                            }`}
                           >
                             <span className="text-6xl filter drop-shadow-lg">{slide.icon}</span>
                           </div>
