@@ -307,34 +307,9 @@ export default function ProServices() {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-3px) rotate(5deg); }
         }
-        @keyframes pulse-glow {
-          0%, 100% { 
-            background-color: rgba(99, 102, 241, 0.1);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-          }
-          50% { 
-            background-color: rgba(99, 102, 241, 0.2);
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
-          }
-        }
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
         .coming-soon-button {
           position: relative;
           overflow: hidden;
-          animation: pulse-glow 2s ease-in-out infinite;
-        }
-        .coming-soon-button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-          animation: shimmer 2s infinite;
         }
       `}</style>
       
@@ -466,6 +441,12 @@ export default function ProServices() {
             </div>
           </section>
 
+          {/* Service Offerings Header */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Our Service Offerings</h2>
+            <p className="text-gray-300 text-lg">Each service combines AI automation with optional human support</p>
+          </div>
+
           {/* Category Filters */}
           <div className="mb-8">
             <div className="flex flex-wrap justify-center gap-4 mb-2">
@@ -512,34 +493,6 @@ export default function ProServices() {
 
           {/* Services Section - Clean Grid Layout */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
-            <div className="flex justify-between items-center mb-6">
-              <div>
-                <h2 className="text-2xl font-bold mb-1">Our Service Offerings</h2>
-                <p className="text-sm text-gray-300">Each service combines AI automation with optional human support</p>
-              </div>
-
-              {/* Carousel Navigation */}
-              <div className="flex space-x-3">
-                <button 
-                  onClick={() => scrollCards('left')}
-                  className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
-                  aria-label="Previous services"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                  </svg>
-                </button>
-                <button 
-                  onClick={() => scrollCards('right')}
-                  className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
-                  aria-label="Next services"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
 
             {/* Service Cards - Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
