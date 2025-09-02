@@ -44,46 +44,28 @@ export default function ProServices() {
   // Hero banner slides
   const heroSlides = [
     {
-      title: "Pre-Sales Support",
-      subtitle: "Generate compelling proposals in minutes with AI-powered automation",
-      icon: "📝",
+      title: "Health Care Solutions",
+      subtitle: "AI-powered personal care companions for fertility and parenthood journey",
+      icon: "🏥",
       imagePath: "/images/business-meeting.jpg",
-      gradient: "from-blue-900/80 to-indigo-900/80"
+      gradient: "from-teal-900/80 to-emerald-900/80",
+      category: "Health Care" as ServiceCategory
     },
     {
-      title: "Marketing & Visibility",
-      subtitle: "Maintain professional presence with automated content creation",
-      icon: "📣",
-      imagePath: "/images/digital-marketing.jpg",
-      gradient: "from-purple-900/80 to-pink-900/80"
-    },
-    {
-      title: "Talent Acquisition",
-      subtitle: "Find perfect experts for your projects with AI matching",
-      icon: "🔍",
+      title: "Technology Consulting",
+      subtitle: "End-to-end business support from pre-sales to project delivery",
+      icon: "💻",
       imagePath: "/images/consulting-team.jpg",
-      gradient: "from-emerald-900/80 to-cyan-900/80"
+      gradient: "from-blue-900/80 to-indigo-900/80",
+      category: "Technology Consulting" as ServiceCategory
     },
     {
-      title: "Project Delivery Support", 
-      subtitle: "Streamline project management with intelligent assistance",
-      icon: "✅",
+      title: "Legal & Finance",
+      subtitle: "Professional legal and financial advisory services for businesses",
+      icon: "⚖️",
       imagePath: "/images/ai-automation.jpg",
-      gradient: "from-amber-900/80 to-orange-900/80"
-    },
-    {
-      title: "Admin & Billing",
-      subtitle: "Automated back-office operations for seamless workflow",
-      icon: "📊",
-      imagePath: "/images/business-meeting.jpg",
-      gradient: "from-rose-900/80 to-red-900/80"
-    },
-    {
-      title: "Payroll Management",
-      subtitle: "Streamlined payroll processing with multi-currency support",
-      icon: "💰",
-      imagePath: "/images/consulting-team.jpg",
-      gradient: "from-cyan-900/80 to-blue-900/80"
+      gradient: "from-purple-900/80 to-violet-900/80",
+      category: "Legal and Finance" as ServiceCategory
     }
   ];
 
@@ -300,6 +282,15 @@ export default function ProServices() {
     return () => clearInterval(interval);
   }, [heroSlides.length]);
 
+  // Function to scroll to services section and set filter
+  const scrollToServices = (category: ServiceCategory) => {
+    setActiveFilter(category);
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Create a looping carousel effect
   const scrollCards = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -408,7 +399,10 @@ export default function ProServices() {
                         <p className="text-lg text-white/90 mb-4">
                           {slide.subtitle}
                         </p>
-                        <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors">
+                        <button 
+                          className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                          onClick={() => scrollToServices(slide.category)}
+                        >
                           Learn More
                         </button>
                       </div>
