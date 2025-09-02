@@ -287,7 +287,12 @@ export default function ProServices() {
     setActiveFilter(category);
     const servicesSection = document.getElementById('services');
     if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 120; // Account for fixed header height
+      const elementPosition = servicesSection.offsetTop - headerHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
