@@ -163,6 +163,40 @@ export default function ProServices() {
       ],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80',
       category: 'Health Care' as ServiceCategory
+    },
+    {
+      id: 'fertility-care',
+      title: 'Personal Fertility Care Companion',
+      icon: '🌸',
+      iconBg: 'bg-pink-500',
+      color: 'from-pink-600 to-rose-600',
+      description: 'AI-powered personalized fertility tracking and guidance',
+      details: "Comprehensive fertility support combining AI-driven cycle tracking, personalized insights, and expert guidance to optimize your reproductive health journey.",
+      features: [
+        'Intelligent cycle prediction and ovulation tracking',
+        'Personalized nutrition and lifestyle recommendations',
+        'Real-time symptom analysis and health insights',
+        'Secure data management with privacy-first approach'
+      ],
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&q=80',
+      category: 'Health Care' as ServiceCategory
+    },
+    {
+      id: 'parenthood-journey',
+      title: 'Journey to Parenthood',
+      icon: '👶',
+      iconBg: 'bg-teal-500',
+      color: 'from-teal-600 to-emerald-600',
+      description: 'Comprehensive support for your path to becoming parents',
+      details: "End-to-end guidance and support throughout your parenthood journey, from conception planning to early pregnancy care, powered by AI insights and expert medical advice.",
+      features: [
+        'Preconception health optimization and planning',
+        'Early pregnancy monitoring and milestone tracking',
+        'Personalized care plans based on medical history',
+        'Integration with healthcare providers and specialists'
+      ],
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=400&q=80',
+      category: 'Health Care' as ServiceCategory
     }
   ];
 
