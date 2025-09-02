@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 
@@ -249,7 +250,7 @@ export default function ProServices() {
   const toggleCard = (id: string) => {
     // Check if we're on desktop (md breakpoint and above)
     const isDesktop = window.innerWidth >= 768;
-
+    
     if (isDesktop) {
       // On desktop, use modal
       setModalService(modalService === id ? null : id);
@@ -364,7 +365,7 @@ export default function ProServices() {
           overflow: hidden;
         }
       `}</style>
-
+      
       <main className="pt-24 pb-16">
         {/* Container for all sections */}
         <div className="container mx-auto px-4">
@@ -627,7 +628,7 @@ export default function ProServices() {
                       }`}>
                         <div className="pt-4 border-t border-gray-700/50">
                           <p className="text-gray-400 text-sm mb-4">{service.details}</p>
-
+                          
                           <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
                           <ul className="space-y-2">
                             {service.features.map((feature, i) => (
@@ -714,13 +715,13 @@ export default function ProServices() {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={closeModal}
           ></div>
-
+          
           {/* Modal Content */}
           <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
             {(() => {
               const service = getModalService();
               if (!service) return null;
-
+              
               return (
                 <>
                   {/* Modal Header */}
