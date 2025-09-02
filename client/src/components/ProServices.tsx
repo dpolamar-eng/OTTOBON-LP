@@ -371,7 +371,7 @@ export default function ProServices() {
         <div className="container mx-auto px-4">
           {/* Hero Banner with Icon + Text + Image */}
           <section className="mb-6 mt-4 bg-gray-900 rounded-xl overflow-hidden">
-            <div className="h-[450px] relative">
+            <div className="h-[450px] sm:h-[500px] md:h-[450px] relative">
               {heroSlides.map((slide, index) => (
                 <div 
                   key={index}
@@ -379,29 +379,36 @@ export default function ProServices() {
                     index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
                   }`}
                 >
-                  {/* Subtle gradient overlay to ensure text readability */}
-                  <div className={`absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent z-5`}></div>
+                  {/* Mobile layout - Stack vertically */}
+                  <div className="md:hidden h-full flex flex-col">
+                    {/* Mobile: Image first (top half) */}
+                    <div className="h-1/2 relative overflow-hidden">
+                      <img 
+                        src={slide.imagePath} 
+                        alt={slide.title} 
+                        className="w-full h-full object-cover" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/80"></div>
+                    </div>
 
-                  {/* The layout: Icon + Text + Image */}
-                  <div className="relative h-full flex flex-col md:flex-row items-center">
-                    {/* Left side: Icon and Text */}
-                    <div className="md:w-[45%] z-10 flex flex-col md:flex-row items-center p-6 md:p-10 mb-0">
+                    {/* Mobile: Content (bottom half) */}
+                    <div className="h-1/2 relative z-10 flex flex-col items-center justify-center p-6 bg-gray-900">
                       {/* Icon */}
-                      <div className="mb-4 md:mb-0 md:mr-6">
+                      <div className="mb-4">
                         <div 
-                          className="w-20 h-20 md:w-24 md:h-24 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
+                          className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
                           style={{ animation: 'icon-float 3s ease-in-out infinite' }}
                         >
-                          <span className="text-4xl md:text-5xl">{slide.icon}</span>
+                          <span className="text-3xl">{slide.icon}</span>
                         </div>
                       </div>
 
                       {/* Text */}
-                      <div className="text-center md:text-left">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                      <div className="text-center">
+                        <h2 className="text-2xl sm:text-3xl font-bold mb-3">
                           {slide.title}
                         </h2>
-                        <p className="text-lg text-white/90 mb-4">
+                        <p className="text-base text-white/90 mb-4 px-2">
                           {slide.subtitle}
                         </p>
                         <button 
@@ -412,15 +419,53 @@ export default function ProServices() {
                         </button>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Right side: Full-sized Image */}
-                    <div className="md:w-[55%] h-full">
-                      <div className="w-full h-full overflow-hidden">
-                        <img 
-                          src={slide.imagePath} 
-                          alt={slide.title} 
-                          className="w-full h-full object-cover md:object-contain lg:object-cover" 
-                        />
+                  {/* Desktop layout - Side by side */}
+                  <div className="hidden md:block h-full">
+                    {/* Subtle gradient overlay to ensure text readability */}
+                    <div className={`absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent z-5`}></div>
+
+                    {/* The layout: Icon + Text + Image */}
+                    <div className="relative h-full flex flex-row items-center">
+                      {/* Left side: Icon and Text */}
+                      <div className="w-[45%] z-10 flex flex-row items-center p-10">
+                        {/* Icon */}
+                        <div className="mr-6">
+                          <div 
+                            className="w-24 h-24 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
+                            style={{ animation: 'icon-float 3s ease-in-out infinite' }}
+                          >
+                            <span className="text-5xl">{slide.icon}</span>
+                          </div>
+                        </div>
+
+                        {/* Text */}
+                        <div className="text-left">
+                          <h2 className="text-4xl font-bold mb-3">
+                            {slide.title}
+                          </h2>
+                          <p className="text-lg text-white/90 mb-4">
+                            {slide.subtitle}
+                          </p>
+                          <button 
+                            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                            onClick={() => scrollToServices(slide.category)}
+                          >
+                            Learn More
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Right side: Full-sized Image */}
+                      <div className="w-[55%] h-full">
+                        <div className="w-full h-full overflow-hidden">
+                          <img 
+                            src={slide.imagePath} 
+                            alt={slide.title} 
+                            className="w-full h-full object-cover" 
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
