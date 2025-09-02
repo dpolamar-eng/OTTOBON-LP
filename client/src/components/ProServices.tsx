@@ -356,14 +356,17 @@ export default function ProServices() {
       </header>
 
       <style jsx>{`
+        /* Enhanced keyframe animations */
         @keyframes gentle-bounce {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-3px) rotate(5deg); }
         }
         
         @keyframes icon-float {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-8px) scale(1.05); }
+          0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+          25% { transform: translateY(-4px) scale(1.02) rotate(2deg); }
+          50% { transform: translateY(-8px) scale(1.05) rotate(0deg); }
+          75% { transform: translateY(-4px) scale(1.02) rotate(-2deg); }
         }
         
         @keyframes pulse-glow {
@@ -371,26 +374,170 @@ export default function ProServices() {
           50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.6); }
         }
         
+        @keyframes slide-fade-in {
+          0% { 
+            opacity: 0; 
+            transform: translateY(30px) scale(0.95);
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        @keyframes slide-fade-out {
+          0% { 
+            opacity: 1; 
+            transform: translateY(0) scale(1);
+          }
+          100% { 
+            opacity: 0; 
+            transform: translateY(-30px) scale(0.95);
+          }
+        }
+        
+        @keyframes text-reveal {
+          0% { 
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(4px);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translateY(10px);
+            filter: blur(2px);
+          }
+          100% { 
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+          }
+        }
+        
+        @keyframes image-pan {
+          0% { transform: scale(1.05) translateX(0); }
+          50% { transform: scale(1.1) translateX(-10px); }
+          100% { transform: scale(1.05) translateX(0); }
+        }
+        
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        
         .coming-soon-button {
           position: relative;
           overflow: hidden;
         }
         
+        /* Enhanced slide transitions */
+        .slide-enter {
+          animation: slide-fade-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        .slide-exit {
+          animation: slide-fade-out 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+        }
+        
         .slide-image {
-          transition: transform 0.7s ease-out;
+          transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transform: scale(1.05);
+        }
+        
+        .slide-active .slide-image {
+          animation: image-pan 20s ease-in-out infinite;
         }
         
         .slide-content {
-          backdrop-filter: blur(8px);
+          backdrop-filter: blur(12px);
+          background: rgba(17, 24, 39, 0.85);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* Text animation classes */
+        .text-animate-in {
+          animation: text-reveal 1s ease-out forwards;
+        }
+        
+        .text-animate-delayed {
+          animation: text-reveal 1s ease-out 0.3s forwards;
+          opacity: 0;
+        }
+        
+        .text-animate-delayed-2 {
+          animation: text-reveal 1s ease-out 0.6s forwards;
+          opacity: 0;
+        }
+        
+        /* Button shimmer effect */
+        .btn-shimmer {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .btn-shimmer::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+          );
+          transform: translateX(-100%);
+          animation: shimmer 2s infinite;
+          animation-delay: 1s;
+        }
+        
+        /* Icon enhancement */
+        .icon-enhanced {
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(20px);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Mobile optimizations */
         @media (max-width: 768px) {
           .mobile-slide-container {
             min-height: 500px;
           }
           
           .mobile-image-section {
-            background: linear-gradient(to bottom, transparent 0%, rgba(17, 24, 39, 0.8) 100%);
+            background: linear-gradient(
+              to bottom, 
+              transparent 0%, 
+              rgba(17, 24, 39, 0.4) 40%,
+              rgba(17, 24, 39, 0.9) 100%
+            );
+          }
+          
+          .slide-image {
+            transform: scale(1.1);
+          }
+          
+          .slide-active .slide-image {
+            animation: image-pan 15s ease-in-out infinite;
+          }
+        }
+        
+        /* Enhanced responsive design */
+        @media (min-width: 769px) {
+          .desktop-slide-content {
+            background: linear-gradient(
+              135deg,
+              rgba(17, 24, 39, 0.95) 0%,
+              rgba(17, 24, 39, 0.85) 50%,
+              rgba(17, 24, 39, 0.75) 100%
+            );
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
           }
         }
         
@@ -402,6 +549,22 @@ export default function ProServices() {
           
           button {
             -webkit-tap-highlight-color: rgba(99, 102, 241, 0.3);
+            transform: scale(1);
+            transition: transform 0.2s ease;
+          }
+          
+          button:active {
+            transform: scale(0.95);
+          }
+        }
+        
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+          .slide-image,
+          .icon-enhanced,
+          .btn-shimmer::before {
+            animation: none !important;
+            transition: none !important;
           }
         }
       `}</style>
@@ -415,47 +578,61 @@ export default function ProServices() {
               {heroSlides.map((slide, index) => (
                 <div 
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
-                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  className={`absolute inset-0 transition-all duration-1200 ease-out ${
+                    index === currentSlide 
+                      ? 'opacity-100 z-10 slide-enter slide-active' 
+                      : 'opacity-0 z-0 slide-exit'
                   }`}
                 >
                   {/* Mobile layout - Stack vertically */}
-                  <div className="md:hidden h-full flex flex-col relative">
-                    {/* Mobile: Image with overlay (enhanced) */}
-                    <div className="h-3/5 relative overflow-hidden">
+                  <div className="md:hidden h-full flex flex-col relative mobile-slide-container">
+                    {/* Mobile: Image with enhanced overlay and effects */}
+                    <div className="h-3/5 relative overflow-hidden mobile-image-section">
                       <img 
                         src={slide.imagePath} 
                         alt={slide.title} 
-                        className="w-full h-full object-cover scale-110 transition-transform duration-700" 
+                        className={`w-full h-full object-cover slide-image ${
+                          index === currentSlide ? 'slide-active' : ''
+                        }`}
                       />
-                      {/* Enhanced gradient overlay for better text readability */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-gray-900/40 to-gray-900/95"></div>
+                      {/* Multi-layered gradient overlay for depth */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/10 via-gray-900/30 to-gray-900/95"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                       
-                      {/* Floating Icon on Image */}
+                      {/* Enhanced floating icon with glassmorphism */}
                       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20">
                         <div 
-                          className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/30 shadow-2xl"
-                          style={{ animation: 'icon-float 3s ease-in-out infinite' }}
+                          className="w-20 h-20 icon-enhanced rounded-full flex items-center justify-center shadow-2xl"
+                          style={{ 
+                            animation: index === currentSlide ? 'icon-float 4s ease-in-out infinite' : 'none',
+                            animationDelay: '0.5s'
+                          }}
                         >
-                          <span className="text-4xl">{slide.icon}</span>
+                          <span className="text-4xl filter drop-shadow-lg">{slide.icon}</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Mobile: Content (enhanced bottom section) */}
-                    <div className="h-2/5 relative z-10 flex flex-col items-center justify-center px-6 py-8 bg-gradient-to-b from-gray-900 to-gray-800">
-                      {/* Text Content */}
+                    {/* Mobile: Enhanced content section */}
+                    <div className="h-2/5 relative z-10 flex flex-col items-center justify-center px-6 py-8 slide-content">
+                      {/* Animated text content */}
                       <div className="text-center max-w-sm mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight text-white">
+                        <h2 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight text-white ${
+                          index === currentSlide ? 'text-animate-in' : ''
+                        }`}>
                           {slide.title}
                         </h2>
-                        <p className="text-sm sm:text-base text-white/85 mb-6 leading-relaxed px-2">
+                        <p className={`text-sm sm:text-base text-white/90 mb-6 leading-relaxed px-2 ${
+                          index === currentSlide ? 'text-animate-delayed' : ''
+                        }`}>
                           {slide.subtitle}
                         </p>
                         
-                        {/* Enhanced CTA Button */}
+                        {/* Enhanced CTA Button with shimmer effect */}
                         <button 
-                          className="group relative px-8 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
+                          className={`group relative px-8 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 btn-shimmer ${
+                            index === currentSlide ? 'text-animate-delayed-2' : ''
+                          }`}
                           onClick={() => scrollToServices(slide.category)}
                         >
                           <span className="relative z-10 flex items-center">
@@ -464,57 +641,76 @@ export default function ProServices() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                           </span>
-                          {/* Button shine effect */}
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                          {/* Enhanced button shine effect */}
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  {/* Desktop layout - Side by side */}
+                  {/* Desktop layout - Enhanced side by side */}
                   <div className="hidden md:block h-full">
-                    {/* Subtle gradient overlay to ensure text readability */}
-                    <div className={`absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent z-5`}></div>
+                    {/* Enhanced gradient overlay with better blending */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/20 z-5"></div>
 
-                    {/* The layout: Icon + Text + Image */}
+                    {/* Enhanced layout with better proportions */}
                     <div className="relative h-full flex flex-row items-center">
-                      {/* Left side: Icon and Text */}
-                      <div className="w-[45%] z-10 flex flex-row items-center p-10">
-                        {/* Icon */}
-                        <div className="mr-6">
+                      {/* Left side: Enhanced icon and text section */}
+                      <div className="w-[45%] z-10 flex flex-row items-center p-10 desktop-slide-content rounded-r-2xl">
+                        {/* Enhanced icon */}
+                        <div className="mr-8">
                           <div 
-                            className="w-24 h-24 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
-                            style={{ animation: 'icon-float 3s ease-in-out infinite' }}
+                            className="w-28 h-28 icon-enhanced rounded-full flex items-center justify-center shadow-2xl"
+                            style={{ 
+                              animation: index === currentSlide ? 'icon-float 4s ease-in-out infinite' : 'none',
+                              animationDelay: '0.3s'
+                            }}
                           >
-                            <span className="text-5xl">{slide.icon}</span>
+                            <span className="text-6xl filter drop-shadow-lg">{slide.icon}</span>
                           </div>
                         </div>
 
-                        {/* Text */}
-                        <div className="text-left">
-                          <h2 className="text-4xl font-bold mb-3">
+                        {/* Enhanced text section */}
+                        <div className="text-left flex-1">
+                          <h2 className={`text-4xl lg:text-5xl font-bold mb-4 leading-tight ${
+                            index === currentSlide ? 'text-animate-in' : ''
+                          }`}>
                             {slide.title}
                           </h2>
-                          <p className="text-lg text-white/90 mb-4">
+                          <p className={`text-lg lg:text-xl text-white/90 mb-6 leading-relaxed ${
+                            index === currentSlide ? 'text-animate-delayed' : ''
+                          }`}>
                             {slide.subtitle}
                           </p>
                           <button 
-                            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                            className={`group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 btn-shimmer ${
+                              index === currentSlide ? 'text-animate-delayed-2' : ''
+                            }`}
                             onClick={() => scrollToServices(slide.category)}
                           >
-                            Learn More
+                            <span className="relative z-10 flex items-center">
+                              Learn More
+                              <svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                              </svg>
+                            </span>
+                            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/25 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                           </button>
                         </div>
                       </div>
 
-                      {/* Right side: Full-sized Image */}
+                      {/* Right side: Enhanced image section */}
                       <div className="w-[55%] h-full">
-                        <div className="w-full h-full overflow-hidden">
+                        <div className="w-full h-full overflow-hidden rounded-l-2xl shadow-2xl">
                           <img 
                             src={slide.imagePath} 
                             alt={slide.title} 
-                            className="w-full h-full object-cover" 
+                            className={`w-full h-full object-cover slide-image ${
+                              index === currentSlide ? 'slide-active' : ''
+                            }`}
                           />
+                          {/* Subtle overlay for better integration */}
+                          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-gray-900/10"></div>
                         </div>
                       </div>
                     </div>
@@ -522,32 +718,45 @@ export default function ProServices() {
                 </div>
               ))}
 
-              {/* Enhanced Slide Navigation */}
+              {/* Enhanced Slide Navigation with progress indicators */}
               <div className="absolute bottom-4 left-0 right-0 z-30 flex justify-center items-center gap-3">
-                <div className="bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2">
-                  {heroSlides.map((_, i) => (
+                <div className="bg-black/30 backdrop-blur-md rounded-full px-6 py-3 flex items-center gap-3 border border-white/10 shadow-xl">
+                  {heroSlides.map((slide, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentSlide(i)}
-                      className={`rounded-full transition-all duration-300 ${
+                      className={`relative rounded-full transition-all duration-500 ease-out group ${
                         i === currentSlide 
-                          ? 'bg-white w-8 h-2.5 shadow-lg' 
-                          : 'bg-white/40 hover:bg-white/60 w-2.5 h-2.5'
+                          ? 'bg-white w-10 h-3 shadow-lg' 
+                          : 'bg-white/30 hover:bg-white/50 w-3 h-3'
                       }`}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
+                      aria-label={`Go to slide ${i + 1}: ${slide.title}`}
+                    >
+                      {/* Progress indicator for active slide */}
+                      {i === currentSlide && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-pulse"></div>
+                      )}
+                      
+                      {/* Hover tooltip */}
+                      <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <div className="bg-gray-900/90 backdrop-blur-sm text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg border border-white/10">
+                          {slide.title}
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900/90"></div>
+                        </div>
+                      </div>
+                    </button>
                   ))}
                 </div>
               </div>
 
-              {/* Swipe Indicator for Mobile */}
-              <div className="md:hidden absolute bottom-12 left-0 right-0 z-25 flex justify-center">
-                <div className="bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Enhanced swipe indicator for mobile with animation */}
+              <div className="md:hidden absolute bottom-16 left-0 right-0 z-25 flex justify-center">
+                <div className="bg-black/40 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-3 border border-white/10 shadow-lg animate-bounce">
+                  <svg className="w-4 h-4 text-white/70 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
                   </svg>
-                  <span className="text-xs text-white/60 font-medium">Swipe</span>
-                  <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="text-xs text-white/70 font-medium tracking-wider">Swipe to explore</span>
+                  <svg className="w-4 h-4 text-white/70 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                   </svg>
                 </div>
