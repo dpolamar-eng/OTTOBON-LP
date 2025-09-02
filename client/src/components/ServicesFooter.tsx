@@ -20,22 +20,24 @@ export default function ServicesFooter() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Up-Skill</h3>
+            <h3 className="text-lg font-semibold mb-4">Health Care 🏥</h3>
             <ul className="space-y-2">
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI for UI/UX Designer</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI in Marketing</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI Agent Development</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI Data Labeling</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Personal Fertility Care Companion</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Journey to Parenthood</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">AI-powered Health Tracking</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Reproductive Health Support</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Job Assist & Career Support</h3>
+            <h3 className="text-lg font-semibold mb-4">Enterprise Support Services 💻</h3>
             <ul className="space-y-2">
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Resume Builder</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Job Matching</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Mock Interviews</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Guidance Hub</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Pre-Sales Support</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Marketing & Visibility</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Talent Acquisition</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Project Delivery Support</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Admin & Billing</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition">Payroll Management</a></li>
             </ul>
           </div>
 
