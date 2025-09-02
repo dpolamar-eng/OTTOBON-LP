@@ -397,7 +397,7 @@ export default function ProServices() {
         {/* Container for all sections */}
         <div className="container mx-auto px-4">
           {/* Hero Banner with Simple Left-to-Right Slide Transition */}
-          <section className="mb-6 mt-4 bg-gray-900 rounded-xl overflow-hidden">
+          <section className="mb-12 mt-8 bg-gray-900 rounded-xl overflow-hidden">
             <div className="h-[500px] sm:h-[550px] md:h-[450px] relative">
               {heroSlides.map((slide, index) => (
                 <div 
@@ -588,7 +588,7 @@ export default function ProServices() {
                 >
                   {/* Simple card with clean design */}
                   <div 
-                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer transform hover:scale-105 active:scale-95"
+                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer"
                     onClick={() => toggleCard(service.id)}
                   >
                     {/* Header with image */}
@@ -596,7 +596,7 @@ export default function ProServices() {
                       <img 
                         src={service.image}
                         alt={service.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
 
