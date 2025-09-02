@@ -46,7 +46,7 @@ export default function ProServices() {
       title: "Health Care Solutions",
       subtitle: "AI-powered personal care companions for fertility and parenthood journey",
       icon: "🏥",
-      imagePath: "/images/business-meeting.jpg",
+      imagePath: "/images/health-care-.jpg",
       gradient: "from-teal-900/80 to-emerald-900/80",
       category: "Health Care" as ServiceCategory
     },
@@ -54,7 +54,7 @@ export default function ProServices() {
       title: "Enterprise Support Services",
       subtitle: "End-to-end business support from pre-sales to project delivery",
       icon: "💻",
-      imagePath: "/images/consulting-team.jpg",
+      imagePath: "/images/Enterpeise.jpg",
       gradient: "from-blue-900/80 to-indigo-900/80",
       category: "Enterprise Support Services" as ServiceCategory
     },
@@ -62,7 +62,7 @@ export default function ProServices() {
       title: "Legal & Finance",
       subtitle: "Professional legal and financial advisory services for businesses",
       icon: "⚖️",
-      imagePath: "/images/ai-automation.jpg",
+      imagePath: "/images/Legal.jpg",
       gradient: "from-purple-900/80 to-violet-900/80",
       category: "Legal and Finance" as ServiceCategory
     }
