@@ -2,11 +2,44 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 
+type ServiceCategory = 'Health Care' | 'Technology Consulting' | 'Legal and Finance';
+
+interface CategoryInfo {
+  id: ServiceCategory;
+  title: string;
+  description: string;
+  icon: string;
+  isComingSoon?: boolean;
+}
+
+const categories: CategoryInfo[] = [
+  {
+    id: 'Health Care',
+    title: 'Health Care',
+    description: 'Medical practice management and patient care optimization',
+    icon: '🏥'
+  },
+  {
+    id: 'Technology Consulting',
+    title: 'Technology Consulting',
+    description: 'IT consulting and digital transformation services',
+    icon: '💻'
+  },
+  {
+    id: 'Legal and Finance',
+    title: 'Legal and Finance',
+    description: 'Legal services and financial consulting solutions',
+    icon: '⚖️',
+    isComingSoon: true
+  }
+];
+
 export default function ProServices() {
   const [, navigate] = useLocation();
   const [expandedCards, setExpandedCards] = useState<{[key: string]: boolean}>({});
   const [currentSlide, setCurrentSlide] = useState(0);
   const [modalService, setModalService] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<ServiceCategory>('Health Care');
 
   // Hero banner slides
   const heroSlides = [
@@ -48,7 +81,8 @@ export default function ProServices() {
         'Solution architecture sketches and diagrams',
         'Automated pricing recommendations based on market data'
       ],
-      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80',
+      category: 'Technology Consulting' as ServiceCategory
     },
     {
       id: 'marketing',
@@ -63,7 +97,8 @@ export default function ProServices() {
         'Thought leadership articles on trending industry topics',
         'Email newsletter campaigns with performance analytics'
       ],
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80'
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80',
+      category: 'Technology Consulting' as ServiceCategory
     },
     {
       id: 'talent',
@@ -78,7 +113,8 @@ export default function ProServices() {
         'Background Verification and quality assurance',
         'Streamlined Interviewing and onboarding process'
       ],
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80'
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80',
+      category: 'Health Care' as ServiceCategory
     },
     {
       id: 'delivery',
@@ -93,7 +129,8 @@ export default function ProServices() {
         'Automated status reports and client updates',
         'Risk identification and mitigation suggestions'
       ],
-      image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80'
+      image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80',
+      category: 'Health Care' as ServiceCategory
     },
     {
       id: 'admin',
@@ -108,7 +145,8 @@ export default function ProServices() {
         'Contract management with renewal reminders',
         'Expense tracking with receipt scanning'
       ],
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80'
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80',
+      category: 'Technology Consulting' as ServiceCategory
     },
     {
       id: 'payroll',
@@ -123,7 +161,8 @@ export default function ProServices() {
         'Tax compliance across multiple jurisdictions',
         'Consultant self-service portal for payment tracking'
       ],
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80'
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80',
+      category: 'Health Care' as ServiceCategory
     }
   ];
 
@@ -163,6 +202,9 @@ export default function ProServices() {
       ]
     }
   ];
+
+  // Filter services based on selected category
+  const filteredServices = services.filter(service => service.category === activeFilter);
 
   // For carousel navigation
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -264,6 +306,35 @@ export default function ProServices() {
         @keyframes gentle-bounce {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-3px) rotate(5deg); }
+        }
+        @keyframes pulse-glow {
+          0%, 100% { 
+            background-color: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+          }
+          50% { 
+            background-color: rgba(99, 102, 241, 0.2);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+          }
+        }
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .coming-soon-button {
+          position: relative;
+          overflow: hidden;
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+        .coming-soon-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          animation: shimmer 2s infinite;
         }
       `}</style>
       
@@ -395,6 +466,50 @@ export default function ProServices() {
             </div>
           </section>
 
+          {/* Category Filters */}
+          <div className="mb-8">
+            <div className="flex flex-wrap justify-center gap-4 mb-2">
+              {categories.map(category => (
+                <div key={category.id} className="text-center">
+                  <button 
+                    className={`font-medium py-3 px-6 rounded-full transition flex items-center relative ${
+                      activeFilter === category.id
+                        ? 'bg-indigo-600 text-white shadow-lg' 
+                        : category.isComingSoon 
+                          ? 'coming-soon-button text-indigo-300 border border-indigo-500/50'
+                          : 'bg-white/10 hover:bg-white/20 text-white shadow-sm border border-white/20'
+                    }`}
+                    onClick={() => {
+                      if (!category.isComingSoon) {
+                        setActiveFilter(category.id);
+                      }
+                    }}
+                    disabled={category.isComingSoon}
+                  >
+                    <span className="mr-2 text-lg">{category.icon}</span>
+                    {category.title}
+                    {category.isComingSoon && (
+                      <span className="ml-2 text-xs bg-yellow-500 text-black px-2 py-1 rounded-full font-bold animate-pulse">
+                        Soon
+                      </span>
+                    )}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* Description for selected category */}
+            <div className="text-center animate-fade-in">
+              {categories.map(category => (
+                activeFilter === category.id && (
+                  <p key={category.id} className="text-sm text-gray-300 mt-2">
+                    {category.description}
+                  </p>
+                )
+              ))}
+            </div>
+          </div>
+
           {/* Services Section - Clean Grid Layout */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             <div className="flex justify-between items-center mb-6">
@@ -428,7 +543,7 @@ export default function ProServices() {
 
             {/* Service Cards - Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((service) => (
+              {filteredServices.map((service) => (
                 <div
                   key={service.id}
                   className="group"
