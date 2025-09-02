@@ -44,25 +44,46 @@ export default function ProServices() {
   // Hero banner slides
   const heroSlides = [
     {
-      title: "Professional Services Org",
-      subtitle: "Empowering experts with AI-powered operational support",
-      icon: "💼",
-      imagePath: "/images/consulting-team.jpg",
-      gradient: "from-indigo-900/80 to-purple-900/80"
-    },
-    {
-      title: "End-to-End Business Support",
-      subtitle: "From pre-sales to invoicing, we've got your back office covered",
-      icon: "🔄",
+      title: "Pre-Sales Support",
+      subtitle: "Generate compelling proposals in minutes with AI-powered automation",
+      icon: "📝",
       imagePath: "/images/business-meeting.jpg",
-      gradient: "from-blue-900/80 to-purple-900/80"
+      gradient: "from-blue-900/80 to-indigo-900/80"
     },
     {
-      title: "Focus On Your Expertise",
-      subtitle: "Let our AI handle the routine tasks while you deliver client value",
-      icon: "🚀",
+      title: "Marketing & Visibility",
+      subtitle: "Maintain professional presence with automated content creation",
+      icon: "📣",
+      imagePath: "/images/digital-marketing.jpg",
+      gradient: "from-purple-900/80 to-pink-900/80"
+    },
+    {
+      title: "Talent Acquisition",
+      subtitle: "Find perfect experts for your projects with AI matching",
+      icon: "🔍",
+      imagePath: "/images/consulting-team.jpg",
+      gradient: "from-emerald-900/80 to-cyan-900/80"
+    },
+    {
+      title: "Project Delivery Support", 
+      subtitle: "Streamline project management with intelligent assistance",
+      icon: "✅",
       imagePath: "/images/ai-automation.jpg",
-      gradient: "from-emerald-900/80 to-blue-900/80"
+      gradient: "from-amber-900/80 to-orange-900/80"
+    },
+    {
+      title: "Admin & Billing",
+      subtitle: "Automated back-office operations for seamless workflow",
+      icon: "📊",
+      imagePath: "/images/business-meeting.jpg",
+      gradient: "from-rose-900/80 to-red-900/80"
+    },
+    {
+      title: "Payroll Management",
+      subtitle: "Streamlined payroll processing with multi-currency support",
+      icon: "💰",
+      imagePath: "/images/consulting-team.jpg",
+      gradient: "from-cyan-900/80 to-blue-900/80"
     }
   ];
 
@@ -311,13 +332,15 @@ export default function ProServices() {
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-white/10">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-3 lg:py-4 flex justify-between items-center">
           <div 
             onClick={() => navigate('/')} 
-            className="flex items-center gap-0 cursor-pointer hover:opacity-80 transition-opacity"
+            className="flex items-center cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
           >
-            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-10 sm:h-14 md:h-20 w-auto" />
-            <h1 className="text-lg sm:text-xl font-bold ml-0">OTTOBON</h1>
+            <img src="/assets/logo.png" alt="Ottobon Logo" className="h-8 sm:h-12 lg:h-16 xl:h-20 w-auto" />
+            <div className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-extrabold ml-2">
+              <span className="text-white">OTTOBON</span>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -347,7 +370,7 @@ export default function ProServices() {
         }
       `}</style>
       
-      <main className="pt-16 pb-16">
+      <main className="pt-24 pb-16">
         {/* Container for all sections */}
         <div className="container mx-auto px-4">
           {/* Hero Banner with Icon + Text + Image */}
