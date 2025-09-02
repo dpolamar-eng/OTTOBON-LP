@@ -281,7 +281,7 @@ export default function ProServices() {
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 7000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [heroSlides.length, isHovered]);
@@ -384,11 +384,11 @@ export default function ProServices() {
         }
         
         .slide-enter {
-          animation: slideInFromRight 0.6s ease-out forwards;
+          animation: slideInFromRight 0.4s ease-out forwards;
         }
         
         .slide-exit {
-          animation: slideOutToLeft 0.6s ease-out forwards;
+          animation: slideOutToLeft 0.4s ease-out forwards;
         }
         
         .coming-soon-button {
