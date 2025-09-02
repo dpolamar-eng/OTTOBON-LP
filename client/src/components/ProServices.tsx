@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
+import ServicesFooter from './ServicesFooter';
 
 type ServiceCategory = 'Health Care' | 'Enterprise Support Services' | 'Legal and Finance';
 
@@ -686,25 +687,7 @@ export default function ProServices() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-4 border-t border-white/10">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <div className="flex items-center text-white">
-                <span className="text-xl mr-2">🤖</span>
-                <span className="font-bold text-lg">OTTOBON</span>
-              </div>
-              <p className="text-gray-500 text-xs mt-1">Professional Services Organization</p>
-            </div>
-
-            <div className="text-center md:text-right">
-              <p className="text-gray-500 text-xs">
-                © {new Date().getFullYear()} Ottobon Inc. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <ServicesFooter />
 
       {/* Modal Overlay for Desktop */}
       {modalService && (
