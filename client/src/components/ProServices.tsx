@@ -529,11 +529,19 @@ export default function ProServices() {
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
 
             {/* Service Cards - Grid Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid gap-6 ${
+              filteredServices.length === 1 
+                ? 'grid-cols-1 justify-items-center' 
+                : filteredServices.length === 2 
+                  ? 'grid-cols-1 md:grid-cols-2 justify-items-center' 
+                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+            }`}>
               {filteredServices.map((service) => (
                 <div
                   key={service.id}
-                  className="group"
+                  className={`group ${
+                    filteredServices.length <= 2 ? 'max-w-md w-full' : ''
+                  }`}
                 >
                   {/* Simple card with clean design */}
                   <div 
