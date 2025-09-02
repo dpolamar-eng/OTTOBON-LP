@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 
-type ServiceCategory = 'Health Care' | 'Technology Consulting' | 'Legal and Finance';
+type ServiceCategory = 'Health Care' | 'Enterprise Support Services' | 'Legal and Finance';
 
 interface CategoryInfo {
   id: ServiceCategory;
@@ -20,8 +19,8 @@ const categories: CategoryInfo[] = [
     icon: '🏥'
   },
   {
-    id: 'Technology Consulting',
-    title: 'Technology Consulting',
+    id: 'Enterprise Support Services',
+    title: 'Enterprise Support Services',
     description: '',
     icon: '💻'
   },
@@ -52,12 +51,12 @@ export default function ProServices() {
       category: "Health Care" as ServiceCategory
     },
     {
-      title: "Technology Consulting",
+      title: "Enterprise Support Services",
       subtitle: "End-to-end business support from pre-sales to project delivery",
       icon: "💻",
       imagePath: "/images/consulting-team.jpg",
       gradient: "from-blue-900/80 to-indigo-900/80",
-      category: "Technology Consulting" as ServiceCategory
+      category: "Enterprise Support Services" as ServiceCategory
     },
     {
       title: "Legal & Finance",
@@ -85,7 +84,7 @@ export default function ProServices() {
         'Automated pricing recommendations based on market data'
       ],
       image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80',
-      category: 'Technology Consulting' as ServiceCategory
+      category: 'Enterprise Support Services' as ServiceCategory
     },
     {
       id: 'marketing',
@@ -101,7 +100,7 @@ export default function ProServices() {
         'Email newsletter campaigns with performance analytics'
       ],
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80',
-      category: 'Technology Consulting' as ServiceCategory
+      category: 'Enterprise Support Services' as ServiceCategory
     },
     {
       id: 'talent',
@@ -117,7 +116,7 @@ export default function ProServices() {
         'Streamlined Interviewing and onboarding process'
       ],
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80',
-      category: 'Technology Consulting' as ServiceCategory
+      category: 'Enterprise Support Services' as ServiceCategory
     },
     {
       id: 'delivery',
@@ -133,7 +132,7 @@ export default function ProServices() {
         'Risk identification and mitigation suggestions'
       ],
       image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80',
-      category: 'Technology Consulting' as ServiceCategory
+      category: 'Enterprise Support Services' as ServiceCategory
     },
     {
       id: 'admin',
@@ -149,7 +148,7 @@ export default function ProServices() {
         'Expense tracking with receipt scanning'
       ],
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80',
-      category: 'Technology Consulting' as ServiceCategory
+      category: 'Enterprise Support Services' as ServiceCategory
     },
     {
       id: 'payroll',
@@ -165,7 +164,7 @@ export default function ProServices() {
         'Consultant self-service portal for payment tracking'
       ],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80',
-      category: 'Technology Consulting' as ServiceCategory
+      category: 'Enterprise Support Services' as ServiceCategory
     },
     {
       id: 'fertility-care',
@@ -250,7 +249,7 @@ export default function ProServices() {
   const toggleCard = (id: string) => {
     // Check if we're on desktop (md breakpoint and above)
     const isDesktop = window.innerWidth >= 768;
-    
+
     if (isDesktop) {
       // On desktop, use modal
       setModalService(modalService === id ? null : id);
@@ -365,7 +364,7 @@ export default function ProServices() {
           overflow: hidden;
         }
       `}</style>
-      
+
       <main className="pt-24 pb-16">
         {/* Container for all sections */}
         <div className="container mx-auto px-4">
@@ -628,7 +627,7 @@ export default function ProServices() {
                       }`}>
                         <div className="pt-4 border-t border-gray-700/50">
                           <p className="text-gray-400 text-sm mb-4">{service.details}</p>
-                          
+
                           <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
                           <ul className="space-y-2">
                             {service.features.map((feature, i) => (
@@ -715,13 +714,13 @@ export default function ProServices() {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={closeModal}
           ></div>
-          
+
           {/* Modal Content */}
           <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
             {(() => {
               const service = getModalService();
               if (!service) return null;
-              
+
               return (
                 <>
                   {/* Modal Header */}

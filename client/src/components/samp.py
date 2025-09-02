@@ -43,7 +43,7 @@ export default function IntegratedHeroJourney() {
       alt: "Collaborative learning environment"
     },
     {
-      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Build</span> Your Technology Consulting <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Career</span>",
+      title: "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Build</span> Your Enterprise Support Services <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Career</span>",
       description: "Whether you're pivoting careers or enhancing existing skills, our program bridges the gap between traditional education and industry requirements.",
       image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       alt: "Professional working on advanced technology"

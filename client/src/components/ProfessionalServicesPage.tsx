@@ -461,7 +461,7 @@ export default function ProfessionalServicesPage() {
                 <span className="text-xl mr-2">🤖</span>
                 <span className="font-bold text-xl">OTTOBON</span>
               </div>
-              <p className="text-gray-500 text-sm mt-1">Professional Services Organization</p>
+              <p className="text-gray-500 text-sm mt-1">Enterprise Support Services Organization</p>
             </div>
             
             <div className="flex items-center space-x-6">
