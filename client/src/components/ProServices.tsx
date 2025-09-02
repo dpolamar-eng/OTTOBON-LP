@@ -114,7 +114,7 @@ export default function ProServices() {
         'Streamlined Interviewing and onboarding process'
       ],
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80',
-      category: 'Health Care' as ServiceCategory
+      category: 'Technology Consulting' as ServiceCategory
     },
     {
       id: 'delivery',
@@ -130,7 +130,7 @@ export default function ProServices() {
         'Risk identification and mitigation suggestions'
       ],
       image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80',
-      category: 'Health Care' as ServiceCategory
+      category: 'Technology Consulting' as ServiceCategory
     },
     {
       id: 'admin',
@@ -162,7 +162,7 @@ export default function ProServices() {
         'Consultant self-service portal for payment tracking'
       ],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80',
-      category: 'Health Care' as ServiceCategory
+      category: 'Technology Consulting' as ServiceCategory
     },
     {
       id: 'fertility-care',
