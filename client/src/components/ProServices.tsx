@@ -273,14 +273,18 @@ export default function ProServices() {
     return services.find(s => s.id === modalService);
   };
 
-  // Auto-advance slides
+  // Auto-advance slides with hover pause functionality
+  const [isHovered, setIsHovered] = useState(false);
+  
   useEffect(() => {
+    if (isHovered) return; // Don't set interval if hovered
+    
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 7000);
 
     return () => clearInterval(interval);
-  }, [heroSlides.length]);
+  }, [heroSlides.length, isHovered]);
 
   // Function to scroll to services section and set filter
   const scrollToServices = (category: ServiceCategory) => {
@@ -398,7 +402,11 @@ export default function ProServices() {
         <div className="container mx-auto px-4">
           {/* Hero Banner with Simple Left-to-Right Slide Transition */}
           <section className="mb-12 mt-8 bg-gray-900 rounded-xl overflow-hidden">
-            <div className="h-[500px] sm:h-[550px] md:h-[450px] relative">
+            <div 
+              className="h-[500px] sm:h-[550px] md:h-[450px] relative"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               {heroSlides.map((slide, index) => (
                 <div 
                   key={index}
