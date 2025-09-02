@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 
@@ -178,7 +177,7 @@ export default function ProServices() {
         'Real-time symptom analysis and health insights',
         'Secure data management with privacy-first approach'
       ],
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&q=80',
+      image: 'https://unsplash.com/photos/a-piece-of-paper-that-says-parental-self-care-next-to-a-typewriter-G0OtptdyhO8',
       category: 'Health Care' as ServiceCategory
     },
     {
@@ -195,7 +194,7 @@ export default function ProServices() {
         'Personalized care plans based on medical history',
         'Integration with healthcare providers and specialists'
       ],
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=400&q=80',
+      image: 'https://unsplash.com/photos/silhouette-of-family-Rnblyfqp7bk',
       category: 'Health Care' as ServiceCategory
     }
   ];
@@ -247,7 +246,7 @@ export default function ProServices() {
   const toggleCard = (id: string) => {
     // Check if we're on desktop (md breakpoint and above)
     const isDesktop = window.innerWidth >= 768;
-    
+
     if (isDesktop) {
       // On desktop, use modal
       setModalService(modalService === id ? null : id);
@@ -346,7 +345,7 @@ export default function ProServices() {
           overflow: hidden;
         }
       `}</style>
-      
+
       <main className="pt-16 pb-16">
         {/* Container for all sections */}
         <div className="container mx-auto px-4">
@@ -463,7 +462,7 @@ export default function ProServices() {
                 <div className="flex items-center mb-4">
                   <div className="rounded-full bg-cyan-600/30 p-3 mr-4">
                     <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357 2m15.357 2H15"></path>
                     </svg>
                   </div>
                   <h3 className="text-lg font-semibold">Flexible Service Model</h3>
@@ -516,7 +515,7 @@ export default function ProServices() {
             {/* Description for selected category */}
             <div className="text-center animate-fade-in">
               {categories.map(category => (
-                activeFilter === category.id && (
+                activeFilter === category.id && category.description && (
                   <p key={category.id} className="text-sm text-gray-300 mt-2">
                     {category.description}
                   </p>
@@ -598,7 +597,7 @@ export default function ProServices() {
                       }`}>
                         <div className="pt-4 border-t border-gray-700/50">
                           <p className="text-gray-400 text-sm mb-4">{service.details}</p>
-                          
+
                           <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
                           <ul className="space-y-2">
                             {service.features.map((feature, i) => (
@@ -685,13 +684,13 @@ export default function ProServices() {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={closeModal}
           ></div>
-          
+
           {/* Modal Content */}
           <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
             {(() => {
               const service = getModalService();
               if (!service) return null;
-              
+
               return (
                 <>
                   {/* Modal Header */}
