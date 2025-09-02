@@ -178,7 +178,7 @@ export default function ProServices() {
         'Real-time symptom analysis and health insights',
         'Secure data management with privacy-first approach'
       ],
-      image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=400&q=80',
+      image: '/attached_assets/markus-winkler-G0OtptdyhO8-unsplash_1756791000256.jpg',
       category: 'Health Care' as ServiceCategory
     },
     {
@@ -195,7 +195,7 @@ export default function ProServices() {
         'Personalized care plans based on medical history',
         'Integration with healthcare providers and specialists'
       ],
-      image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=400&q=80',
+      image: '/attached_assets/cassidy-rowell-Rnblyfqp7bk-unsplash_1756791015230.jpg',
       category: 'Health Care' as ServiceCategory
     }
   ];
