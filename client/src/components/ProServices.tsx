@@ -275,13 +275,13 @@ export default function ProServices() {
 
   // Auto-advance slides with hover pause functionality
   const [isHovered, setIsHovered] = useState(false);
-  
+
   useEffect(() => {
     if (isHovered) return; // Don't set interval if hovered
-    
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 7000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [heroSlides.length, isHovered]);
@@ -371,7 +371,7 @@ export default function ProServices() {
             opacity: 1;
           }
         }
-        
+
         @keyframes slideOutToLeft {
           0% { 
             transform: translateX(0);
@@ -382,15 +382,15 @@ export default function ProServices() {
             opacity: 0;
           }
         }
-        
+
         .slide-enter {
-          animation: slideInFromRight 0.6s ease-out forwards;
+          animation: slideInFromRight 0.8s ease-out forwards;
         }
-        
+
         .slide-exit {
-          animation: slideOutToLeft 0.6s ease-out forwards;
+          animation: slideOutToLeft 0.8s ease-out forwards;
         }
-        
+
         .coming-soon-button {
           position: relative;
           overflow: hidden;
@@ -440,7 +440,7 @@ export default function ProServices() {
                       <p className="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
                         {slide.subtitle}
                       </p>
-                      
+
                       {/* Learn More Button */}
                       <button 
                         className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
