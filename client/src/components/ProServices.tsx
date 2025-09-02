@@ -360,9 +360,49 @@ export default function ProServices() {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-3px) rotate(5deg); }
         }
+        
+        @keyframes icon-float {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-8px) scale(1.05); }
+        }
+        
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+          50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.6); }
+        }
+        
         .coming-soon-button {
           position: relative;
           overflow: hidden;
+        }
+        
+        .slide-image {
+          transition: transform 0.7s ease-out;
+        }
+        
+        .slide-content {
+          backdrop-filter: blur(8px);
+        }
+        
+        @media (max-width: 768px) {
+          .mobile-slide-container {
+            min-height: 500px;
+          }
+          
+          .mobile-image-section {
+            background: linear-gradient(to bottom, transparent 0%, rgba(17, 24, 39, 0.8) 100%);
+          }
+        }
+        
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+          .mobile-slide-container {
+            -webkit-tap-highlight-color: transparent;
+          }
+          
+          button {
+            -webkit-tap-highlight-color: rgba(99, 102, 241, 0.3);
+          }
         }
       `}</style>
 
@@ -371,7 +411,7 @@ export default function ProServices() {
         <div className="container mx-auto px-4">
           {/* Hero Banner with Icon + Text + Image */}
           <section className="mb-6 mt-4 bg-gray-900 rounded-xl overflow-hidden">
-            <div className="h-[450px] sm:h-[500px] md:h-[450px] relative">
+            <div className="h-[500px] sm:h-[550px] md:h-[450px] relative">
               {heroSlides.map((slide, index) => (
                 <div 
                   key={index}
@@ -380,42 +420,52 @@ export default function ProServices() {
                   }`}
                 >
                   {/* Mobile layout - Stack vertically */}
-                  <div className="md:hidden h-full flex flex-col">
-                    {/* Mobile: Image first (top half) */}
-                    <div className="h-1/2 relative overflow-hidden">
+                  <div className="md:hidden h-full flex flex-col relative">
+                    {/* Mobile: Image with overlay (enhanced) */}
+                    <div className="h-3/5 relative overflow-hidden">
                       <img 
                         src={slide.imagePath} 
                         alt={slide.title} 
-                        className="w-full h-full object-cover" 
+                        className="w-full h-full object-cover scale-110 transition-transform duration-700" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/80"></div>
-                    </div>
-
-                    {/* Mobile: Content (bottom half) */}
-                    <div className="h-1/2 relative z-10 flex flex-col items-center justify-center p-6 bg-gray-900">
-                      {/* Icon */}
-                      <div className="mb-4">
+                      {/* Enhanced gradient overlay for better text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-gray-900/40 to-gray-900/95"></div>
+                      
+                      {/* Floating Icon on Image */}
+                      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20">
                         <div 
-                          className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
+                          className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/30 shadow-2xl"
                           style={{ animation: 'icon-float 3s ease-in-out infinite' }}
                         >
-                          <span className="text-3xl">{slide.icon}</span>
+                          <span className="text-4xl">{slide.icon}</span>
                         </div>
                       </div>
+                    </div>
 
-                      {/* Text */}
-                      <div className="text-center">
-                        <h2 className="text-2xl sm:text-3xl font-bold mb-3">
+                    {/* Mobile: Content (enhanced bottom section) */}
+                    <div className="h-2/5 relative z-10 flex flex-col items-center justify-center px-6 py-8 bg-gradient-to-b from-gray-900 to-gray-800">
+                      {/* Text Content */}
+                      <div className="text-center max-w-sm mx-auto">
+                        <h2 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight text-white">
                           {slide.title}
                         </h2>
-                        <p className="text-base text-white/90 mb-4 px-2">
+                        <p className="text-sm sm:text-base text-white/85 mb-6 leading-relaxed px-2">
                           {slide.subtitle}
                         </p>
+                        
+                        {/* Enhanced CTA Button */}
                         <button 
-                          className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                          className="group relative px-8 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
                           onClick={() => scrollToServices(slide.category)}
                         >
-                          Learn More
+                          <span className="relative z-10 flex items-center">
+                            Learn More
+                            <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                          </span>
+                          {/* Button shine effect */}
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         </button>
                       </div>
                     </div>
@@ -472,20 +522,35 @@ export default function ProServices() {
                 </div>
               ))}
 
-              {/* Slide navigation */}
-              <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
-                {heroSlides.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentSlide(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all ${
-                      i === currentSlide 
-                        ? 'bg-white w-10' 
-                        : 'bg-white/30 hover:bg-white/50'
-                    }`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
+              {/* Enhanced Slide Navigation */}
+              <div className="absolute bottom-4 left-0 right-0 z-30 flex justify-center items-center gap-3">
+                <div className="bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2">
+                  {heroSlides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      className={`rounded-full transition-all duration-300 ${
+                        i === currentSlide 
+                          ? 'bg-white w-8 h-2.5 shadow-lg' 
+                          : 'bg-white/40 hover:bg-white/60 w-2.5 h-2.5'
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Swipe Indicator for Mobile */}
+              <div className="md:hidden absolute bottom-12 left-0 right-0 z-25 flex justify-center">
+                <div className="bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                  </svg>
+                  <span className="text-xs text-white/60 font-medium">Swipe</span>
+                  <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </div>
               </div>
             </div>
           </section>
