@@ -453,44 +453,44 @@ export default function ProServices() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
-                <div className="flex items-center mb-4">
-                  <div className="rounded-full bg-indigo-600/30 p-3 mr-4">
-                    <svg className="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="rounded-full bg-indigo-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-start">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold">Operational Excellence</h3>
+                  <h3 className="text-base sm:text-lg font-semibold leading-tight">Operational Excellence</h3>
                 </div>
-                <p className="text-gray-300 flex-grow">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                   Our AI agents handle administrative tasks with greater speed and consistency than human staff, allowing you to focus on high-value client work instead of routine operations.
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
-                <div className="flex items-center mb-4">
-                  <div className="rounded-full bg-purple-600/30 p-3 mr-4">
-                    <svg className="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="rounded-full bg-purple-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-start">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold">Human-AI Collaboration</h3>
+                  <h3 className="text-base sm:text-lg font-semibold leading-tight">Human-AI Collaboration</h3>
                 </div>
-                <p className="text-gray-300 flex-grow">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                   For complex tasks requiring judgment or personalization, our expert human team works seamlessly with AI systems to provide the perfect balance of efficiency and expertise.
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-colors h-[220px] flex flex-col">
-                <div className="flex items-center mb-4">
-                  <div className="rounded-full bg-cyan-600/30 p-3 mr-4">
-                    <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="rounded-full bg-cyan-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-start">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold">Flexible Service Model</h3>
+                  <h3 className="text-base sm:text-lg font-semibold leading-tight">Flexible Service Model</h3>
                 </div>
-                <p className="text-gray-300 flex-grow">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                   Choose AI-only automation for cost efficiency, or add human expertise for specialized tasks. Scale services up or down based on your current project needs with no long-term commitments.
                 </p>
               </div>
