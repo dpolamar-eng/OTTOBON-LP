@@ -16,19 +16,19 @@ const categories: CategoryInfo[] = [
   {
     id: 'Health Care',
     title: 'Health Care',
-    description: 'Medical practice management and patient care optimization',
+    description: '',
     icon: '🏥'
   },
   {
     id: 'Technology Consulting',
     title: 'Technology Consulting',
-    description: 'IT consulting and digital transformation services',
+    description: '',
     icon: '💻'
   },
   {
     id: 'Legal and Finance',
     title: 'Legal and Finance',
-    description: 'Legal services and financial consulting solutions',
+    description: '',
     icon: '⚖️',
     isComingSoon: true
   }
@@ -178,7 +178,7 @@ export default function ProServices() {
         'Real-time symptom analysis and health insights',
         'Secure data management with privacy-first approach'
       ],
-      image: '/attached_assets/markus-winkler-G0OtptdyhO8-unsplash_1756791000256.jpg',
+      image: 'https://images.unsplash.com/photo-1559334941-acb7bc1ae33a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       category: 'Health Care' as ServiceCategory
     },
     {
@@ -195,7 +195,7 @@ export default function ProServices() {
         'Personalized care plans based on medical history',
         'Integration with healthcare providers and specialists'
       ],
-      image: '/attached_assets/cassidy-rowell-Rnblyfqp7bk-unsplash_1756791015230.jpg',
+      image: 'https://images.unsplash.com/photo-1695313486168-30b4d2183d1b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       category: 'Health Care' as ServiceCategory
     }
   ];
