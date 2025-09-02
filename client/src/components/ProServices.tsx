@@ -356,7 +356,7 @@ export default function ProServices() {
       </header>
 
       <style jsx>{`
-        /* Enhanced keyframe animations */
+        /* Enhanced keyframe animations - Matching IntegratedHeroJourney */
         @keyframes gentle-bounce {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-3px) rotate(5deg); }
@@ -430,7 +430,7 @@ export default function ProServices() {
           overflow: hidden;
         }
         
-        /* Enhanced slide transitions */
+        /* Enhanced slide transitions - Matching IntegratedHeroJourney */
         .slide-enter {
           animation: slide-fade-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
@@ -454,7 +454,7 @@ export default function ProServices() {
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Text animation classes */
+        /* Text animation classes - Matching IntegratedHeroJourney */
         .text-animate-in {
           animation: text-reveal 1s ease-out forwards;
         }
@@ -503,7 +503,7 @@ export default function ProServices() {
             inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
-        /* Mobile optimizations */
+        /* Mobile optimizations - Enhanced for smooth transitions */
         @media (max-width: 768px) {
           .mobile-slide-container {
             min-height: 500px;
@@ -527,7 +527,7 @@ export default function ProServices() {
           }
         }
         
-        /* Enhanced responsive design */
+        /* Enhanced responsive design - Matching IntegratedHeroJourney */
         @media (min-width: 769px) {
           .desktop-slide-content {
             background: linear-gradient(
