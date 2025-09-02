@@ -533,7 +533,7 @@ export default function ProServices() {
               filteredServices.length === 1 
                 ? 'grid-cols-1 justify-items-center gap-6' 
                 : filteredServices.length === 2 
-                  ? 'grid-cols-1 md:grid-cols-2 justify-items-center gap-4 md:gap-3 max-w-4xl mx-auto' 
+                  ? 'grid-cols-1 md:grid-cols-2 justify-items-center gap-6 md:gap-8 max-w-5xl mx-auto' 
                   : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
             }`}>
               {filteredServices.map((service) => (
