@@ -283,7 +283,7 @@ export default function StorytellingOnboarding() {
         {
           id: 1,
           text: "After 12 years as a senior software developer in Bangalore's IT ecosystem, I found myself at a crossroads. The industry was rapidly evolving with AI, cloud-native technologies, and digital transformation initiatives. Despite my experience, I was watching younger colleagues with specialized skills get promoted to architect and leadership positions while I remained stuck...",
-          image: "https://images.unsplash.com/photo-1629904841431-b8c2418d7c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 1,
