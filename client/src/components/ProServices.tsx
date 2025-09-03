@@ -373,7 +373,7 @@ export default function ProServices() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden fixed top-0 right-0 h-full w-80 bg-gray-900/95 backdrop-blur-md border-l border-white/10 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
+        <div className={`md:hidden fixed top-0 right-0 min-h-fit w-80 max-w-[85vw] bg-gray-900 border-l border-gray-700 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           <div className="p-6">
@@ -381,7 +381,7 @@ export default function ProServices() {
             <div className="flex justify-end mb-6">
               <button
                 onClick={closeMobileMenu}
-                className="text-white p-2 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+                className="text-white p-2 rounded-md bg-gray-800 hover:bg-gray-700 transition-colors"
                 aria-label="Close mobile menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -394,31 +394,31 @@ export default function ProServices() {
             <nav className="flex flex-col space-y-4">
               <a 
                 href="#overview" 
-                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-gray-800 flex items-center"
                 onClick={closeMobileMenu}
               >
-                <span className="w-8 h-8 flex items-center justify-center bg-indigo-600/20 rounded-full mr-3 text-lg">📊</span>
+                <span className="w-8 h-8 flex items-center justify-center bg-indigo-600/30 rounded-full mr-3 text-lg">📊</span>
                 <span>Overview</span>
               </a>
               <a 
                 href="#services" 
-                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-gray-800 flex items-center"
                 onClick={closeMobileMenu}
               >
-                <span className="w-8 h-8 flex items-center justify-center bg-purple-600/20 rounded-full mr-3 text-lg">🛠️</span>
+                <span className="w-8 h-8 flex items-center justify-center bg-purple-600/30 rounded-full mr-3 text-lg">🛠️</span>
                 <span>Services</span>
               </a>
               <a 
                 href="#audience" 
-                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-gray-800 flex items-center"
                 onClick={closeMobileMenu}
               >
-                <span className="w-8 h-8 flex items-center justify-center bg-emerald-600/20 rounded-full mr-3 text-lg">👥</span>
+                <span className="w-8 h-8 flex items-center justify-center bg-emerald-600/30 rounded-full mr-3 text-lg">👥</span>
                 <span>Who We Serve</span>
               </a>
 
               {/* Back to home button */}
-              <div className="pt-4 border-t border-white/20">
+              <div className="pt-4 border-t border-gray-700">
                 <button
                   onClick={() => {
                     navigate('/');
