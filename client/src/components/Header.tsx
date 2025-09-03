@@ -119,106 +119,72 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation - Curved Slide */}
-      <div className={`lg:hidden fixed top-0 right-0 min-h-screen w-80 max-w-[85vw] transform transition-all duration-500 ease-in-out z-50 ${
+      {/* Mobile Navigation - Sideways Slide */}
+      <div className={`lg:hidden fixed top-0 right-0 min-h-fit w-80 max-w-[85vw] bg-[#0F1E2E]/95 backdrop-blur-md border-l border-indigo-800/50 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
         mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        {/* Curved background with gradient */}
-        <div className="relative h-full">
-          {/* Main curved panel */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F1E2E]/98 via-[#1A2B3D]/98 to-[#0F1E2E]/98 backdrop-blur-xl shadow-2xl">
-            {/* Curved left edge */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-indigo-500/20 to-indigo-500/10 rounded-l-[3rem]"></div>
-            
-            {/* Subtle border glow */}
-            <div className="absolute inset-0 border border-indigo-400/20 rounded-l-[2rem] shadow-inner"></div>
-            
-            {/* Content container */}
-            <div className="relative h-full p-6 rounded-l-[2rem]">
-              {/* Close button with enhanced styling */}
-              <div className="flex justify-end mb-8">
-                <button
-                  onClick={closeMobileMenu}
-                  className="text-white p-3 rounded-xl bg-gradient-to-r from-white/10 to-white/5 hover:from-white/20 hover:to-white/15 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm border border-white/10"
-                  aria-label="Close mobile menu"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                  </svg>
-                </button>
-              </div>
-
-              {/* Navigation links with enhanced styling */}
-              <nav className="flex flex-col space-y-4">
-                <a 
-                  href="#methodology" 
-                  className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-indigo-500/10"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector('#methodology');
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                    closeMobileMenu();
-                  }}
-                >
-                  <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-blue-600/30 to-indigo-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">⚡</span>
-                  <span className="font-medium">Our Approach</span>
-                  <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <a 
-                  href="#courses" 
-                  className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-purple-500/10"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector('#courses');
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                    closeMobileMenu();
-                  }}
-                >
-                  <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">🚀</span>
-                  <span className="font-medium">Programs</span>
-                  <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <a 
-                  href="#talent-compass" 
-                  className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-emerald-500/10"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector('#talent-compass');
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                    closeMobileMenu();
-                  }}
-                >
-                  <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-emerald-600/30 to-cyan-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">🧭</span>
-                  <span className="font-medium">Talent Compass</span>
-                  <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </nav>
-
-              {/* Decorative elements */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                <div className="mt-4 text-center">
-                  <div className="inline-flex items-center space-x-2 text-white/60 text-xs">
-                    <div className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></div>
-                    <span>Ottobon</span>
-                    <div className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="p-6">
+          {/* Close button */}
+          <div className="flex justify-end mb-6">
+            <button
+              onClick={closeMobileMenu}
+              className="text-white p-2 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Close mobile menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
           </div>
+
+          {/* Navigation links */}
+          <nav className="flex flex-col space-y-4">
+            <a 
+              href="#methodology" 
+              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#methodology');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">⚡</span>
+              <span>Our Approach</span>
+            </a>
+            <a 
+              href="#courses" 
+              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#courses');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🚀</span>
+              <span>Programs</span>
+            </a>
+            <a 
+              href="#talent-compass" 
+              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#talent-compass');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🧭</span>
+              <span>Talent Compass</span>
+            </a>
+          </nav>
         </div>
       </div>
 
