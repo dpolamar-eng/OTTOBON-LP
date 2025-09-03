@@ -377,92 +377,89 @@ export default function ProServices() {
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           {/* Curved background with enhanced gradient */}
-          <div className="relative h-full">
-            {/* Main curved panel */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/98 via-gray-800/98 to-gray-900/98 backdrop-blur-xl shadow-2xl">
-              {/* Curved left edge with glow */}
-              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-purple-500/20 to-purple-500/10 rounded-l-[3rem]"></div>
-              
-              {/* Subtle border glow */}
-              <div className="absolute inset-0 border border-purple-400/20 rounded-l-[2rem] shadow-inner"></div>
-              
-              {/* Content container */}
-              <div className="relative h-full p-6 rounded-l-[2rem]">
-                {/* Close button with enhanced styling */}
-                <div className="flex justify-end mb-8">
+          <div className="relative h-full bg-gray-900/98 backdrop-blur-xl shadow-2xl rounded-l-[3rem] border-l border-white/5">
+            {/* Curved left edge with glow */}
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-purple-500/20 to-purple-500/10 rounded-l-[3rem]"></div>
+
+            {/* Subtle border glow */}
+            <div className="absolute inset-0 border border-purple-400/20 rounded-l-[2rem] shadow-inner"></div>
+
+            {/* Content container */}
+            <div className="relative h-full p-6 rounded-l-[2rem]">
+              {/* Close button with enhanced styling */}
+              <div className="flex justify-end mb-8">
+                <button
+                  onClick={closeMobileMenu}
+                  className="text-white p-3 rounded-xl bg-gradient-to-r from-white/10 to-white/5 hover:from-white/20 hover:to-white/15 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm border border-white/10"
+                  aria-label="Close mobile menu"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Navigation links with enhanced styling */}
+              <nav className="flex flex-col space-y-4">
+                <a 
+                  href="#overview" 
+                  className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-indigo-500/10"
+                  onClick={closeMobileMenu}
+                >
+                  <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-indigo-600/30 to-purple-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">📊</span>
+                  <span className="font-medium">Overview</span>
+                  <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+                <a 
+                  href="#services" 
+                  className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-purple-500/10"
+                  onClick={closeMobileMenu}
+                >
+                  <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">🛠️</span>
+                  <span className="font-medium">Services</span>
+                  <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+                <a 
+                  href="#audience" 
+                  className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-emerald-500/10"
+                  onClick={closeMobileMenu}
+                >
+                  <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-emerald-600/30 to-cyan-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">👥</span>
+                  <span className="font-medium">Who We Serve</span>
+                  <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+
+                {/* Back to home button with enhanced styling */}
+                <div className="pt-6 border-t border-white/10">
                   <button
-                    onClick={closeMobileMenu}
-                    className="text-white p-3 rounded-xl bg-gradient-to-r from-white/10 to-white/5 hover:from-white/20 hover:to-white/15 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm border border-white/10"
-                    aria-label="Close mobile menu"
+                    onClick={() => {
+                      navigate('/');
+                      closeMobileMenu();
+                    }}
+                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center border border-white/10"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                    <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
+                    <span>Back to Home</span>
                   </button>
                 </div>
+              </nav>
 
-                {/* Navigation links with enhanced styling */}
-                <nav className="flex flex-col space-y-4">
-                  <a 
-                    href="#overview" 
-                    className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-indigo-500/10"
-                    onClick={closeMobileMenu}
-                  >
-                    <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-indigo-600/30 to-purple-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">📊</span>
-                    <span className="font-medium">Overview</span>
-                    <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </a>
-                  <a 
-                    href="#services" 
-                    className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-purple-500/10"
-                    onClick={closeMobileMenu}
-                  >
-                    <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">🛠️</span>
-                    <span className="font-medium">Services</span>
-                    <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </a>
-                  <a 
-                    href="#audience" 
-                    className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-emerald-500/10"
-                    onClick={closeMobileMenu}
-                  >
-                    <span className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-emerald-600/30 to-cyan-600/30 rounded-2xl mr-4 text-lg group-hover:scale-110 transition-transform duration-300 shadow-lg">👥</span>
-                    <span className="font-medium">Who We Serve</span>
-                    <svg className="ml-auto w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </a>
-
-                  {/* Back to home button with enhanced styling */}
-                  <div className="pt-6 border-t border-white/10">
-                    <button
-                      onClick={() => {
-                        navigate('/');
-                        closeMobileMenu();
-                      }}
-                      className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center border border-white/10"
-                    >
-                      <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                      </svg>
-                      <span>Back to Home</span>
-                    </button>
-                  </div>
-                </nav>
-
-                {/* Decorative elements */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                  <div className="mt-4 text-center">
-                    <div className="inline-flex items-center space-x-2 text-white/60 text-xs">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                      <span>Professional Services</span>
-                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                    </div>
+              {/* Decorative elements */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                <div className="mt-4 text-center">
+                  <div className="inline-flex items-center space-x-2 text-white/60 text-xs">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                    <span>Professional Services</span>
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
                   </div>
                 </div>
               </div>
