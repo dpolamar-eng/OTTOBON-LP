@@ -495,7 +495,7 @@ export default function StorytellingOnboarding() {
 
       <div className="container mx-auto px-4 relative z-10">
         <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-center mb-3">
-          Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Success</span> Stories
+          Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-green-700">Success</span> Stories
         </h2>
 
         <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
