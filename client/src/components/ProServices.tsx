@@ -40,6 +40,7 @@ export default function ProServices() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [modalService, setModalService] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<ServiceCategory>('Health Care');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Hero banner slides
   const heroSlides = [
@@ -246,6 +247,15 @@ export default function ProServices() {
   // For carousel navigation
   const carouselRef = useRef<HTMLDivElement>(null);
 
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   // Toggle card expansion
   const toggleCard = (id: string) => {
     // Check if we're on desktop (md breakpoint and above)
@@ -351,12 +361,88 @@ export default function ProServices() {
           </nav>
 
           {/* Mobile menu button */}
-          <button className="md:hidden text-white">
+          <button 
+            onClick={toggleMobileMenu}
+            className="md:hidden text-white p-2 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+            aria-label="Toggle mobile menu"
+          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
             </svg>
           </button>
         </div>
+
+        {/* Mobile Navigation */}
+        <div className={`md:hidden fixed top-0 right-0 h-full w-80 bg-gray-900/95 backdrop-blur-md border-l border-white/10 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}>
+          <div className="p-6">
+            {/* Close button */}
+            <div className="flex justify-end mb-6">
+              <button
+                onClick={closeMobileMenu}
+                className="text-white p-2 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close mobile menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+
+            {/* Navigation links */}
+            <nav className="flex flex-col space-y-4">
+              <a 
+                href="#overview" 
+                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+                onClick={closeMobileMenu}
+              >
+                <span className="w-8 h-8 flex items-center justify-center bg-indigo-600/20 rounded-full mr-3 text-lg">📊</span>
+                <span>Overview</span>
+              </a>
+              <a 
+                href="#services" 
+                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+                onClick={closeMobileMenu}
+              >
+                <span className="w-8 h-8 flex items-center justify-center bg-purple-600/20 rounded-full mr-3 text-lg">🛠️</span>
+                <span>Services</span>
+              </a>
+              <a 
+                href="#audience" 
+                className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+                onClick={closeMobileMenu}
+              >
+                <span className="w-8 h-8 flex items-center justify-center bg-emerald-600/20 rounded-full mr-3 text-lg">👥</span>
+                <span>Who We Serve</span>
+              </a>
+
+              {/* Back to home button */}
+              <div className="pt-4 border-t border-white/20">
+                <button
+                  onClick={() => {
+                    navigate('/');
+                    closeMobileMenu();
+                  }}
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 flex items-center justify-center"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                  </svg>
+                  Back to Home
+                </button>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        {/* Overlay */}
+        {mobileMenuOpen && (
+          <div 
+            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={closeMobileMenu}
+          ></div>
+        )}
       </header>
 
       <style jsx>{`

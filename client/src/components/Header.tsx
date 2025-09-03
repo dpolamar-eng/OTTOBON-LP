@@ -97,71 +97,96 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-  <div className={`lg:hidden bg-[#0F1E2E] border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
-          <a 
-            href="#methodology" 
-            className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = document.querySelector('#methodology');
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-              closeMobileMenu();
-            }}
-          >
-            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">⚡</span>
-            <span>Our Approach</span>
-          </a>
-          <a 
-            href="#courses" 
-            className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = document.querySelector('#courses');
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-              closeMobileMenu();
-            }}
-          >
-            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🚀</span>
-            <span>Programs</span>
-          </a>
-          <a 
-            href="#talent-compass" 
-            className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = document.querySelector('#talent-compass');
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-              closeMobileMenu();
-            }}
-          >
-            <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🧭</span>
-            <span>Talent Compass</span>
-          </a>
+      {/* Mobile Navigation - Sideways Slide */}
+      <div className={`lg:hidden fixed top-0 right-0 h-full w-80 bg-[#0F1E2E]/95 backdrop-blur-md border-l border-indigo-800/50 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
+        mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="p-6">
+          {/* Close button */}
+          <div className="flex justify-end mb-6">
+            <button
+              onClick={closeMobileMenu}
+              className="text-white p-2 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Close mobile menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
 
-          <div className="pt-3 pb-2 flex flex-col space-y-3">
+          {/* Navigation links */}
+          <nav className="flex flex-col space-y-4">
+            <a 
+              href="#methodology" 
+              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#methodology');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">⚡</span>
+              <span>Our Approach</span>
+            </a>
+            <a 
+              href="#courses" 
+              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#courses');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🚀</span>
+              <span>Programs</span>
+            </a>
             <a 
               href="#talent-compass" 
-              className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center flex items-center justify-center relative overflow-hidden group"
-              onClick={closeMobileMenu}
+              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#talent-compass');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
             >
-              <span className="relative z-10">Start Your Journey</span>
-              <svg className="ml-2 w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] translate-y-[1.5px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-              {/* Button shine effect (brighter + faster) */}
-              <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
+              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🧭</span>
+              <span>Talent Compass</span>
             </a>
-          </div>
+
+            <div className="pt-4 border-t border-white/20">
+              <a 
+                href="#talent-compass" 
+                className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center flex items-center justify-center relative overflow-hidden group w-full"
+                onClick={closeMobileMenu}
+              >
+                <span className="relative z-10">Start Your Journey</span>
+                <svg className="ml-2 w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] translate-y-[1.5px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+                <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
+              </a>
+            </div>
+          </nav>
         </div>
       </div>
+
+      {/* Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+          onClick={closeMobileMenu}
+        ></div>
+      )}
     </header>
   );
 }
