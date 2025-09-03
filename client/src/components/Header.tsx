@@ -84,21 +84,43 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={toggleMobileMenu} 
-            className="lg:hidden bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm flex-shrink-0"
-            aria-label="Toggle mobile menu"
-          >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
-            </svg>
-          </button>
+          {/* Mobile CTA and Menu Button */}
+          <div className="lg:hidden flex items-center space-x-3">
+            <a 
+              href="#talent-compass" 
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#talent-compass');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="bg-[#FFC107] text-black font-semibold py-2 px-4 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-xs sm:text-sm whitespace-nowrap flex-shrink-0"
+            >
+              <span className="relative z-10 flex items-center">
+                Start Your Journey
+                <svg className="ml-1 w-3 h-3 sm:w-4 sm:h-4 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </span>
+              <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
+            </a>
+
+            <button 
+              onClick={toggleMobileMenu} 
+              className="bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm flex-shrink-0"
+              aria-label="Toggle mobile menu"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile Navigation - Sideways Slide */}
-      <div className={`lg:hidden fixed top-0 right-0 h-full w-80 bg-[#0F1E2E]/95 backdrop-blur-md border-l border-indigo-800/50 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
+      <div className={`lg:hidden fixed top-0 right-0 min-h-fit w-80 max-w-[85vw] bg-[#0F1E2E]/95 backdrop-blur-md border-l border-indigo-800/50 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
         mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="p-6">
@@ -162,20 +184,6 @@ export default function Header() {
               <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🧭</span>
               <span>Talent Compass</span>
             </a>
-
-            <div className="pt-4 border-t border-white/20">
-              <a 
-                href="#talent-compass" 
-                className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center flex items-center justify-center relative overflow-hidden group w-full"
-                onClick={closeMobileMenu}
-              >
-                <span className="relative z-10">Start Your Journey</span>
-                <svg className="ml-2 w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] translate-y-[1.5px] transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                </svg>
-                <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
-              </a>
-            </div>
           </nav>
         </div>
       </div>
