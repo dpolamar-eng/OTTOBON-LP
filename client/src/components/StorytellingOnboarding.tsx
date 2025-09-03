@@ -279,7 +279,7 @@ export default function StorytellingOnboarding() {
       name: "Rajesh Kumar",
       role: "Experienced Professional",
       background: "Senior software developer from Bangalore seeking to update skills for leadership roles",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
       story: [
         {
           id: 1,
