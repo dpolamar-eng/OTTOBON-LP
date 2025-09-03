@@ -64,6 +64,13 @@ export default function HomeHeader() {
         <div className="hidden lg:flex">
           <a
             href="#services-overview"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector('#services-overview');
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
             className="bg-[#FFC107] text-black font-semibold py-2 xl:py-3 px-4 xl:px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-sm xl:text-base"
           >
             <span className="relative z-10">
@@ -77,6 +84,13 @@ export default function HomeHeader() {
         <div className="lg:hidden flex items-center space-x-2">
           <a
             href="#services-overview"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector('#services-overview');
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
             className="bg-[#FFC107] text-black font-semibold py-2 px-3 sm:px-4 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-xs sm:text-sm whitespace-nowrap"
           >
             <span className="relative z-10">
@@ -131,7 +145,14 @@ export default function HomeHeader() {
             <a
               href="#services-overview"
               className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center relative overflow-hidden group"
-              onClick={closeMobileMenu}
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#services-overview');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
             >
               <span className="relative z-10">Start Your Journey</span>
               <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
