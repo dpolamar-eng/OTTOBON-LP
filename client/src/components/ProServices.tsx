@@ -281,7 +281,7 @@ export default function ProServices() {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [heroSlides.length, isHovered]);
