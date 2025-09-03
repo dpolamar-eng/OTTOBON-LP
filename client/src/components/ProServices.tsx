@@ -379,7 +379,7 @@ export default function ProServices() {
           {/* Curved background with enhanced gradient */}
           <div className="relative h-full">
             {/* Main curved panel */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/98 via-gray-800/98 to-gray-900/98 backdrop-blur-xl shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 backdrop-blur-xl shadow-2xl"></div>
               {/* Curved left edge with glow */}
               <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-purple-500/20 to-purple-500/10 rounded-l-[3rem]"></div>
               

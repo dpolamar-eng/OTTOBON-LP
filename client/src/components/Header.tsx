@@ -47,9 +47,9 @@ export default function Header() {
               { label: "Programs", href: "#courses", icon: "" },
               { label: "Talent Compass", href: "#talent-compass", icon: "" },
             ].map((item, index) => (
-              <a 
+              <a
                 key={index}
-                href={item.href} 
+                href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
                   const target = document.querySelector(item.href);
@@ -70,8 +70,8 @@ export default function Header() {
 
           {/* CTA Button - Responsive sizing */}
           <div className="hidden lg:flex space-x-3 flex-shrink-0">
-            <a 
-              href="#talent-compass" 
+            <a
+              href="#talent-compass"
               className="bg-[#FFC107] text-black font-semibold py-2 xl:py-3 px-4 xl:px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-sm xl:text-base whitespace-nowrap"
             >
               <span className="relative z-10 flex items-center">
@@ -86,8 +86,8 @@ export default function Header() {
 
           {/* Mobile CTA and Menu Button */}
           <div className="lg:hidden flex items-center space-x-3">
-            <a 
-              href="#talent-compass" 
+            <a
+              href="#talent-compass"
               onClick={(e) => {
                 e.preventDefault();
                 const target = document.querySelector('#talent-compass');
@@ -106,8 +106,8 @@ export default function Header() {
               <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
             </a>
 
-            <button 
-              onClick={toggleMobileMenu} 
+            <button
+              onClick={toggleMobileMenu}
               className="bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm flex-shrink-0"
               aria-label="Toggle mobile menu"
             >
@@ -126,13 +126,14 @@ export default function Header() {
         {/* Curved background with gradient */}
         <div className="relative h-full">
           {/* Main curved panel */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F1E2E]/98 via-[#1A2B3D]/98 to-[#0F1E2E]/98 backdrop-blur-xl shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0F1E2E] via-[#1A2B3D] to-[#0F1E2E] backdrop-blur-xl shadow-2xl"></div>
+
             {/* Curved left edge */}
             <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-indigo-500/20 to-indigo-500/10 rounded-l-[3rem]"></div>
-            
+
             {/* Subtle border glow */}
             <div className="absolute inset-0 border border-indigo-400/20 rounded-l-[2rem] shadow-inner"></div>
-            
+
             {/* Content container */}
             <div className="relative h-full p-6 rounded-l-[2rem]">
               {/* Close button with enhanced styling */}
@@ -150,8 +151,8 @@ export default function Header() {
 
               {/* Navigation links with enhanced styling */}
               <nav className="flex flex-col space-y-4">
-                <a 
-                  href="#methodology" 
+                <a
+                  href="#methodology"
                   className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-indigo-500/10"
                   onClick={(e) => {
                     e.preventDefault();
@@ -168,8 +169,8 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                   </svg>
                 </a>
-                <a 
-                  href="#courses" 
+                <a
+                  href="#courses"
                   className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-purple-500/10"
                   onClick={(e) => {
                     e.preventDefault();
@@ -186,8 +187,8 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                   </svg>
                 </a>
-                <a 
-                  href="#talent-compass" 
+                <a
+                  href="#talent-compass"
                   className="group text-white/90 hover:text-white transition-all duration-300 py-4 px-5 rounded-2xl hover:bg-gradient-to-r hover:from-white/15 hover:to-white/5 flex items-center border border-transparent hover:border-white/10 hover:shadow-lg hover:shadow-emerald-500/10"
                   onClick={(e) => {
                     e.preventDefault();
@@ -224,7 +225,7 @@ export default function Header() {
 
       {/* Overlay */}
       {mobileMenuOpen && (
-        <div 
+        <div
           className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
           onClick={closeMobileMenu}
         ></div>
