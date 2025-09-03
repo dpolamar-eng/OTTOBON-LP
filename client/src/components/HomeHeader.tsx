@@ -43,6 +43,13 @@ export default function HomeHeader() {
             <a
               key={item.label}
               href={item.href}
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector(item.href);
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
               className="text-white/90 hover:text-white font-medium py-2 px-2 xl:px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group text-sm xl:text-base"
             >
               <div className="flex items-center space-x-1">
@@ -106,7 +113,14 @@ export default function HomeHeader() {
               key={item.label}
               href={item.href}
               className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-              onClick={closeMobileMenu}
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector(item.href);
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                closeMobileMenu();
+              }}
             >
               <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">{item.icon}</span>
               <span>{item.label}</span>

@@ -50,6 +50,13 @@ export default function Header() {
               <a 
                 key={index}
                 href={item.href} 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(item.href);
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
                 className="text-white/90 hover:text-white font-medium py-2 px-3 xl:px-4 rounded-lg bg-white/10 hover:bg-white/15 transition-all relative overflow-hidden group text-sm xl:text-base whitespace-nowrap"
               >
                 <div className="flex items-center space-x-1">
@@ -96,7 +103,14 @@ export default function Header() {
           <a 
             href="#methodology" 
             className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-            onClick={closeMobileMenu}
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector('#methodology');
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+              closeMobileMenu();
+            }}
           >
             <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">⚡</span>
             <span>Our Approach</span>
@@ -104,7 +118,14 @@ export default function Header() {
           <a 
             href="#courses" 
             className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-            onClick={closeMobileMenu}
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector('#courses');
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+              closeMobileMenu();
+            }}
           >
             <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🚀</span>
             <span>Programs</span>
@@ -112,7 +133,14 @@ export default function Header() {
           <a 
             href="#talent-compass" 
             className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-            onClick={closeMobileMenu}
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.querySelector('#talent-compass');
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+              closeMobileMenu();
+            }}
           >
             <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">🧭</span>
             <span>Talent Compass</span>
