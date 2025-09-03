@@ -126,13 +126,13 @@ export default function Header() {
         {/* Curved background with gradient */}
         <div className="relative h-full">
           {/* Main curved panel */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F1E2E]/98 via-[#1A2B3D]/98 to-[#0F1E2E]/98 backdrop-blur-xl shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0F1E2E] via-[#1A2B3D] to-[#0F1E2E] backdrop-blur-xl shadow-2xl">
             {/* Curved left edge */}
             <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-indigo-500/20 to-indigo-500/10 rounded-l-[3rem]"></div>
-            
+
             {/* Subtle border glow */}
             <div className="absolute inset-0 border border-indigo-400/20 rounded-l-[2rem] shadow-inner"></div>
-            
+
             {/* Content container */}
             <div className="relative h-full p-6 rounded-l-[2rem]">
               {/* Close button with enhanced styling */}

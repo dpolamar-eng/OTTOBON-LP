@@ -117,7 +117,7 @@ export default function ProServices() {
         'Background Verification and quality assurance',
         'Streamlined Interviewing and onboarding process'
       ],
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca893ff4?auto=format&fit=crop&w=400&q=80',
       category: 'Enterprise Support Services' as ServiceCategory
     },
     {
@@ -379,13 +379,13 @@ export default function ProServices() {
           {/* Curved background with enhanced gradient */}
           <div className="relative h-full">
             {/* Main curved panel */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/98 via-gray-800/98 to-gray-900/98 backdrop-blur-xl shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 backdrop-blur-xl shadow-2xl">
               {/* Curved left edge with glow */}
               <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-purple-500/20 to-purple-500/10 rounded-l-[3rem]"></div>
-              
+
               {/* Subtle border glow */}
               <div className="absolute inset-0 border border-purple-400/20 rounded-l-[2rem] shadow-inner"></div>
-              
+
               {/* Content container */}
               <div className="relative h-full p-6 rounded-l-[2rem]">
                 {/* Close button with enhanced styling */}
