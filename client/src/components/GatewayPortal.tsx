@@ -38,34 +38,6 @@ export default function GatewayPortal() {
             <source src="/assets/Video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-
-          {/* Video overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
-        </div>
-
-        {/* Content overlay on video */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-          <div className="flex flex-col items-center justify-center mb-8">
-            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6">
-              <img
-                src="/assets/logo.png"
-                alt="Ottobon Logo"
-                className="h-10 sm:h-12 md:h-20 lg:h-24 w-auto object-contain drop-shadow-lg"
-              />
-              <div className="font-extrabold text-white tracking-tight leading-none text-3xl sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg">
-                OTTOBON
-              </div>
-            </div>
-            <h1 className="text-xl sm:text-2xl text-blue-100 font-light mb-4 drop-shadow-md">
-              Empowering the Future of AI-Driven Consulting
-            </h1>
-            <p className="text-lg text-blue-200 mb-6 max-w-3xl mx-auto drop-shadow-md">
-              Learn from AI to become faster, smarter, and more effective.
-              Transform into an independent consultant or enhance your
-              professional services with cutting-edge skills.
-            </p>
-            <div className="h-0.5 w-24 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
-          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -74,6 +46,33 @@ export default function GatewayPortal() {
             <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Content Section - Below Video */}
+      <section className="relative z-10 py-16 sm:py-20 bg-black">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex flex-col items-center justify-center mb-8">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6">
+              <img
+                src="/assets/logo.png"
+                alt="Ottobon Logo"
+                className="h-10 sm:h-12 md:h-20 lg:h-24 w-auto object-contain"
+              />
+              <div className="font-extrabold text-white tracking-tight leading-none text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+                OTTOBON
+              </div>
+            </div>
+            <h1 className="text-xl sm:text-2xl text-blue-100 font-light mb-4">
+              Empowering the Future of AI-Driven Consulting
+            </h1>
+            <p className="text-lg text-blue-200 mb-6 max-w-3xl mx-auto">
+              Learn from AI to become faster, smarter, and more effective.
+              Transform into an independent consultant or enhance your
+              professional services with cutting-edge skills.
+            </p>
+            <div className="h-0.5 w-24 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
           </div>
         </div>
       </section>
