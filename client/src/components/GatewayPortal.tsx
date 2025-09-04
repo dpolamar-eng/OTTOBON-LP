@@ -26,10 +26,10 @@ export default function GatewayPortal() {
       <HomeHeader />
 
       {/* Hero Video Section - Responsive Height */}
-      <section className="relative h-[60vh] sm:h-[70vh] md:h-screen w-full overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative h-auto md:h-screen w-full overflow-hidden">
+        <div className="relative md:absolute md:inset-0">
           <video
-            className="w-full h-full object-contain md:object-cover"
+            className="w-full h-auto md:h-full object-contain md:object-cover"
             autoPlay
             loop
             muted
