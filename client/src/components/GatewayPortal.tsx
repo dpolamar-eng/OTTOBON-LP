@@ -26,7 +26,7 @@ export default function GatewayPortal() {
       <HomeHeader />
 
       {/* Hero Video Section - Responsive Height */}
-      <section className="relative h-auto md:h-screen w-full overflow-hidden">
+      <section className="relative h-auto md:h-screen w-full overflow-hidden pt-20 sm:pt-24 md:pt-0">
         <div className="relative md:absolute md:inset-0">
           <video
             className="w-full h-auto md:h-full object-contain md:object-cover"
