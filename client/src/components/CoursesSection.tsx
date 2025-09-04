@@ -473,49 +473,142 @@ export default function CoursesSection() {
                               </ul>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-4 mb-4">
-                              <div className="bg-purple-50 p-4 rounded-lg">
-                                <h4 className="font-semibold mb-2 text-purple-800 flex items-center">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                  </svg>
-                                  Duration
-                                </h4>
-                                <p className="text-gray-700 text-sm">
-                                  12-week immersive program
-                                </p>
-                              </div>
+                            {/* Conditional content based on course category */}
+                            {course.category === 'Career Launch' ? (
+                              <>
+                                <div className="grid grid-cols-2 gap-4 mb-4">
+                                  <div className="bg-purple-50 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-purple-800 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                      </svg>
+                                      Duration
+                                    </h4>
+                                    <p className="text-gray-700 text-sm">
+                                      12-week immersive program
+                                    </p>
+                                  </div>
 
-                              <div className="bg-green-50 p-4 rounded-lg">
-                                <h4 className="font-semibold mb-2 text-green-800 flex items-center">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                    <path d="M12 3v19M5 8h14M5 18h14"></path>
-                                  </svg>
-                                  Format
-                                </h4>
-                                <p className="text-gray-700 text-sm">
-                                  Hands-on projects with expert mentors
-                                </p>
-                              </div>
-                            </div>
+                                  <div className="bg-green-50 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-green-800 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M12 3v19M5 8h14M5 18h14"></path>
+                                      </svg>
+                                      Format
+                                    </h4>
+                                    <p className="text-gray-700 text-sm">
+                                      Hands-on projects with expert mentors
+                                    </p>
+                                  </div>
+                                </div>
 
-                            <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                              <h4 className="font-semibold mb-2 text-blue-800 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                  <path d="M20 7h-9"></path>
-                                  <path d="M14 17H5"></path>
-                                  <circle cx="17" cy="17" r="3"></circle>
-                                  <circle cx="7" cy="7" r="3"></circle>
-                                </svg>
-                                Career Opportunities
-                              </h4>
-                              <p className="text-gray-700 text-sm">
-                                Graduates work as specialized consultants in top firms with average starting salaries of $85,000-$115,000.
-                              </p>
-                            </div>
+                                <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                                  <h4 className="font-semibold mb-2 text-blue-800 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                      <path d="M20 7h-9"></path>
+                                      <path d="M14 17H5"></path>
+                                      <circle cx="17" cy="17" r="3"></circle>
+                                      <circle cx="7" cy="7" r="3"></circle>
+                                    </svg>
+                                    Career Opportunities
+                                  </h4>
+                                  <p className="text-gray-700 text-sm">
+                                    Graduates work as specialized consultants in top firms with average starting salaries of $85,000-$115,000.
+                                  </p>
+                                </div>
+                              </>
+                            ) : course.category === 'Tech Edge' ? (
+                              <>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                  <div className="bg-blue-50 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-blue-800 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                      </svg>
+                                      Instant Access
+                                    </h4>
+                                    <p className="text-gray-700 text-sm">
+                                      Available 24/7 with real-time processing
+                                    </p>
+                                  </div>
+
+                                  <div className="bg-green-50 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-green-800 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M9 12l2 2 4-4"></path>
+                                        <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                                        <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                                      </svg>
+                                      AI-Powered
+                                    </h4>
+                                    <p className="text-gray-700 text-sm">
+                                      Smart algorithms for best matches
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="bg-purple-50 p-4 rounded-lg mb-4">
+                                  <h4 className="font-semibold mb-2 text-purple-800 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                      <circle cx="8.5" cy="7" r="4"></circle>
+                                      <polyline points="17 11 19 13 23 9"></polyline>
+                                    </svg>
+                                    Success Rate
+                                  </h4>
+                                  <p className="text-gray-700 text-sm">
+                                    85% of users find relevant opportunities within the first month of using our platform.
+                                  </p>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                  <div className="bg-teal-50 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-teal-800 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <path d="m21 2-1 1"></path>
+                                        <path d="m22 5-1-1"></path>
+                                        <path d="m21 6-1-1"></path>
+                                      </svg>
+                                      Expert Mentors
+                                    </h4>
+                                    <p className="text-gray-700 text-sm">
+                                      Industry professionals with 10+ years experience
+                                    </p>
+                                  </div>
+
+                                  <div className="bg-orange-50 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-orange-800 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                      </svg>
+                                      Personalized
+                                    </h4>
+                                    <p className="text-gray-700 text-sm">
+                                      Tailored guidance based on your goals
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="bg-indigo-50 p-4 rounded-lg mb-4">
+                                  <h4 className="font-semibold mb-2 text-indigo-800 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                    Investment
+                                  </h4>
+                                  <p className="text-gray-700 text-sm">
+                                    Affordable monthly subscription with unlimited access to expert guidance and resources.
+                                  </p>
+                                </div>
+                              </>
+                            )}
                           </div>
 
                           <div className="mt-4 text-center">
