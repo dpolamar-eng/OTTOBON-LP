@@ -5,8 +5,15 @@ export default function ServicesFooter() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 mb-4">
-              OTTOBON
+            <div className="flex items-center mb-4">
+              <img
+                src="/assets/logo.png"
+                alt="Ottobon Logo"
+                className="h-8 w-auto object-contain mr-3"
+              />
+              <div className="text-2xl font-extrabold text-white">
+                OTTOBON
+              </div>
             </div>
             <p className="text-gray-400 mb-4">
               Empowering the future of AI-driven consulting. Learn from AI to become faster, smarter, and more effective.
