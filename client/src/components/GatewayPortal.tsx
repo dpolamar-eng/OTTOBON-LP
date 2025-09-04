@@ -29,7 +29,7 @@ export default function GatewayPortal() {
       <section className="relative h-[60vh] sm:h-[70vh] md:h-screen w-full overflow-hidden">
         <div className="absolute inset-0">
           <video
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain md:object-cover"
             autoPlay
             loop
             muted
