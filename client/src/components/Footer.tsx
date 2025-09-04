@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 mb-4">
-              OttoBon
+              OTTOBON
             </div>
             <p className="text-gray-400 mb-4">
               Empowering the future of AI-driven consulting. Learn from AI to become faster, smarter, and more effective.

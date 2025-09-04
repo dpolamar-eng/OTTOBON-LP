@@ -560,7 +560,7 @@ export default function CoursesSection() {
                                     Success Rate
                                   </h4>
                                   <p className="text-gray-700 text-sm">
-                                    85% of users find relevant opportunities within the first month of using our platform.
+                                    93% of users find relevant opportunities within the first month of using our platform.
                                   </p>
                                 </div>
                               </>
