@@ -1,75 +1,176 @@
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div className="flex items-center mb-4">
-              <img
-                src="/assets/logo.png"
-                alt="Ottobon Logo"
-                className="h-8 w-auto object-contain mr-3"
-              />
-              <div className="text-2xl font-extrabold text-white">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          {/* Company Info */}
+          <div className="md:col-span-1">
+            <div className="flex items-center mb-6">
+              <div className="relative">
+                <img
+                  src="/assets/logo.png"
+                  alt="Ottobon Logo"
+                  className="h-10 w-auto object-contain mr-4 filter drop-shadow-lg"
+                />
+              </div>
+              <div className="text-2xl font-bold text-white tracking-wide">
                 OTTOBON
               </div>
             </div>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-300 mb-6 leading-relaxed text-sm">
               Empowering the future of AI-driven consulting. Learn from AI to become faster, smarter, and more effective.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition"><i className="fab fa-linkedin"></i></a>
-              <a href="#" className="text-gray-400 hover:text-white transition"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="text-gray-400 hover:text-white transition"><i className="fab fa-facebook"></i></a>
-              <a href="#" className="text-gray-400 hover:text-white transition"><i className="fab fa-instagram"></i></a>
+              <a href="#" className="group">
+                <div className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                  <i className="fab fa-linkedin text-gray-300 group-hover:text-white"></i>
+                </div>
+              </a>
+              <a href="#" className="group">
+                <div className="w-10 h-10 bg-gray-800 hover:bg-blue-400 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                  <i className="fab fa-twitter text-gray-300 group-hover:text-white"></i>
+                </div>
+              </a>
+              <a href="#" className="group">
+                <div className="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                  <i className="fab fa-facebook text-gray-300 group-hover:text-white"></i>
+                </div>
+              </a>
+              <a href="#" className="group">
+                <div className="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                  <i className="fab fa-instagram text-gray-300 group-hover:text-white"></i>
+                </div>
+              </a>
             </div>
           </div>
 
+          {/* Up-Skill Section */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Up-Skill</h3>
-            <ul className="space-y-2">
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI for UI/UX Designer</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI in Marketing</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI Agent Development</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">AI Data Labeling</a></li>
+            <h3 className="text-lg font-bold mb-6 text-white relative">
+              Up-Skill
+              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-blue-500"></div>
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  AI for UI/UX Designer
+                </a>
+              </li>
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  AI in Marketing
+                </a>
+              </li>
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  AI Agent Development
+                </a>
+              </li>
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  AI Data Labeling
+                </a>
+              </li>
             </ul>
           </div>
 
+          {/* Job Assist Section */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Job Assist & Career Support</h3>
-            <ul className="space-y-2">
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Resume Builder</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Job Matching</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Mock Interviews</a></li>
-              <li><a href="#courses" className="text-gray-400 hover:text-white transition">Guidance Hub</a></li>
+            <h3 className="text-lg font-bold mb-6 text-white relative">
+              Job Assist & Career Support
+              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-green-500"></div>
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Resume Builder
+                </a>
+              </li>
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Job Matching
+                </a>
+              </li>
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Mock Interviews
+                </a>
+              </li>
+              <li>
+                <a href="#courses" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Guidance Hub
+                </a>
+              </li>
             </ul>
           </div>
 
+          {/* Contact Section */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start">
-                <i className="fas fa-envelope text-primary mr-2 mt-1"></i>
-                <a href="mailto:hr@ottobon.in" className="text-gray-400 hover:text-white transition">hr@ottobon.in</a>
+            <h3 className="text-lg font-bold mb-6 text-white relative">
+              Contact Us
+              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-purple-500"></div>
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-3 mt-0.5 group-hover:bg-purple-600 transition-colors">
+                  <i className="fas fa-envelope text-purple-400 text-sm group-hover:text-white"></i>
+                </div>
+                <a href="mailto:hr@ottobon.in" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm">
+                  hr@ottobon.in
+                </a>
               </li>
-              <li className="flex items-start">
-                <i className="fas fa-phone text-primary mr-2 mt-1"></i>
-                <a href="tel:+919281011683" className="text-gray-400 hover:text-white transition">+91 9281011683</a>
+              <li className="flex items-start group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-3 mt-0.5 group-hover:bg-purple-600 transition-colors">
+                  <i className="fas fa-phone text-purple-400 text-sm group-hover:text-white"></i>
+                </div>
+                <a href="tel:+919281011683" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm">
+                  +91 9281011683
+                </a>
               </li>
-              <li className="flex items-start">
-                <i className="fas fa-map-marker-alt text-primary mr-2 mt-1"></i>
-                <span className="text-gray-400">D No 10-28-2/1/3, 1st Floor 102, A Square Business Centre, Waltair Uplands, Waltair Main Road, Chinawaltair, Visakhapatnam, Andhra Pradesh, India, 530003</span>
+              <li className="flex items-start group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-3 mt-0.5 group-hover:bg-purple-600 transition-colors">
+                  <i className="fas fa-map-marker-alt text-purple-400 text-sm group-hover:text-white"></i>
+                </div>
+                <span className="text-gray-300 text-sm leading-relaxed">
+                  D No 10-28-2/1/3, 1st Floor 102, A Square Business Centre, Waltair Uplands, Waltair Main Road, Chinawaltair, Visakhapatnam, Andhra Pradesh, India, 530003
+                </span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:text-left">
-          <p className="text-gray-500 mb-4 md:mb-0">© {new Date().getFullYear()} OttoBon Technology Consulting Academy. All rights reserved.</p>
-          <div className="space-x-4">
-            <a href="#" className="text-gray-500 hover:text-white transition">Privacy Policy</a>
-            <a href="#" className="text-gray-500 hover:text-white transition">Terms of Service</a>
-            <a href="#" className="text-gray-500 hover:text-white transition">Accessibility</a>
+        {/* Bottom Section */}
+        <div className="pt-8 border-t border-gray-700/50">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} OttoBon Technology Consulting Academy. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                Accessibility
+              </a>
+            </div>
           </div>
         </div>
       </div>
