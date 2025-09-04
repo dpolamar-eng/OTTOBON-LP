@@ -6,7 +6,7 @@ export default function ServicesFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 mb-4">
-              OttoBon
+              OTTOBON
             </div>
             <p className="text-gray-400 mb-4">
               Empowering the future of AI-driven consulting. Learn from AI to become faster, smarter, and more effective.
@@ -46,7 +46,7 @@ export default function ServicesFooter() {
             <ul className="space-y-2">
               <li className="flex items-start">
                 <i className="fas fa-envelope text-primary mr-2 mt-1"></i>
-                <a href="mailto:hr@ottobon.in" className="text-gray-400 hover:text-white transition">hr@ottobon.in</a>
+                <a href="mailto:hr.services@ottobon.in" className="text-gray-400 hover:text-white transition">hr.services@ottobon.in</a>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-phone text-primary mr-2 mt-1"></i>
