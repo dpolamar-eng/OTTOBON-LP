@@ -1050,7 +1050,7 @@ export default function TalentCompassAssessment() {
                         {currentPhase === 'trait-assessment' ? 'Trait Assessment' : 'Background Assessment'}
                       </span>
                       <span className="text-sm font-medium text-gray-500">
-                        Question {(currentQuestionIndex % (currentPhase === 'trait-assessment' ? traitQuestions.length : backgroundQuestions.length)) + 1} of {currentPhase === 'trait-assessment' ? traitQuestions.length : backgroundQuestions.length}
+                        Question {currentQuestionIndex + 1} of {allQuestions.length}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
