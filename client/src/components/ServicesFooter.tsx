@@ -28,22 +28,22 @@ export default function ServicesFooter() {
               Empowering the future of AI-driven consulting. Learn from AI to become faster, smarter, and more effective.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="group">
+              <a href="https://www.linkedin.com/company/ottobon-prof-svc-ltd/" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
                   <i className="fab fa-linkedin text-gray-300 group-hover:text-white"></i>
                 </div>
               </a>
-              <a href="#" className="group">
-                <div className="w-10 h-10 bg-gray-800 hover:bg-blue-400 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-                  <i className="fab fa-twitter text-gray-300 group-hover:text-white"></i>
+              <div className="group cursor-not-allowed opacity-50">
+                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                  <i className="fab fa-twitter text-gray-300"></i>
                 </div>
-              </a>
-              <a href="#" className="group">
-                <div className="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-                  <i className="fab fa-facebook text-gray-300 group-hover:text-white"></i>
+              </div>
+              <div className="group cursor-not-allowed opacity-50">
+                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                  <i className="fab fa-facebook text-gray-300"></i>
                 </div>
-              </a>
-              <a href="#" className="group">
+              </div>
+              <a href="https://www.instagram.com/ottobon.verse/" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
                   <i className="fab fa-instagram text-gray-300 group-hover:text-white"></i>
                 </div>
