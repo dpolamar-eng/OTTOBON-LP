@@ -156,7 +156,7 @@ export default function GatewayPortal() {
           </div>
         </div>
 
-        {/* Exact two-card flex layout as original top section (full-width like the hero) */}
+        {/* Optimized two-card flex layout with reduced height */}
         <div className="relative z-10 flex-grow flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 px-4 pb-16">
           {/* Academy Card */}
           <div
@@ -164,51 +164,49 @@ export default function GatewayPortal() {
             onMouseEnter={() => setHoverState("academy")}
             onMouseLeave={() => setHoverState(null)}
           >
-            <div className="relative h-full w-full rounded-2xl overflow-hidden bg-[#0F1E2E] p-0.5">
+            <div className="relative w-full max-w-md h-96 rounded-2xl overflow-hidden bg-[#0F1E2E] p-0.5">
               {/* Solid brand background replacing previous blue gradient */}
               <div className="absolute inset-0 bg-[#0F1E2E]"></div>
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgyLTJoLTJ6TTM0IDMwaDJoMnpNNDAgMjhWLTJWMjh6TTQyIDMyVjJWMzJ6TTQwIDM2djIyVjM2ek00MiA0MHYxOFY0MHpNNDAgMjhoMnYyaC0yek00MiAzMmgydjJoLTJ6TTQwIDM2aDJ2MmgtMnpNNDIgNDBoMnYyaC0yek0zMiAzNGgyek0zNCAzMGgyek0yOCAzNGgyek0zMCAzMGgyek0yOCAyOHYzMFYyOHpNMzAgMzJ2MjJWMzJ6TTI4IDI4aDJ2MmgtMnpNMzAgMzJoMnYyaC0yek0yOCAzNGgyek0zMCAzOGgydjJoLTJ6Ik0yNCAzNGgyek0yNiAzMGgyek0yMCAzNGgyek0yMiAzMGgyek0yMCAzMnYyMlYzMnpNMjIgMzZ2MTRWMzZ6TTIwIDMyaDJ2MmgtMnpNMjIgMzZoMnYyaC0yek0yMCAzOGgydjJoLTJ6TTIyIDQyaDJ2MmgtMnpNMTYgMzRoek0xOCAzMGgyek0xMiAzNGgyek0xNCAzMGgyek0xMiAyOHYzMFYyOHpNMTQgMzJ2MjJWMzJ6TTEyIDI4aDJ2MmgtMnpNMTQgMzJoMnYyaC0yek0xMiAzNGgyek0xNCAzOGgydjJoLTJ6TTggMzRoek0xMCAzMGgyek00IDM0aHpNNiAzMGgyek00IDMydjIyVjMyek02IDM2djE0VjM2ek00IDMyaDJ2MmgtMnpNNiAzNmgydjJoLTJ6TTQgMzhoMnYyaC0yek02IDQyaDJ2MmgtMnpNNTYgMzRoek01OCAzMGgyek01MiAzNGgyek01NCAzMGgyek01MiAyOHYzMFYyOHpNNTQgMzJ2MjJWMzJ6TTUyIDI4aDJ2MmgtMnpNNTQgMzJoMnYyaC0yek01MiAzNGgyek01NCAzOGgydjJoLTJ6TTQ4IDM0aHpNNTAgMzBoek00NCAzNGh6TTQ2IDMwaHpNNDQgMzJ2MjJWMzJ6TTQ2IDM2djE0VjM2ek00NCAzMmgydjJoLTJ6TTQ2IDM2aDJ2MmgtMnpNNDQgMzhoMnYyaC0yek00NiA0MmgydjJoLTJ6TTYwIDI4djMwVjI4ek0wIDI4djMwVjI4ek0wIDI4aDJ2MmgtMnpNNjAgMjhoLTJ2MmgyeiIgZmlsbD0iI2ZmZiIgZmlsbC13b3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]"></div>
 
-              <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 bg-[#112537]/70 backdrop-blur-sm rounded-2xl">
-                <div>
-                  <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
-                      <span className="text-3xl">🎓</span>
+              <div className="relative h-full flex flex-col p-6 bg-[#112537]/70 backdrop-blur-sm rounded-2xl">
+                <div className="flex-1">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                      <span className="text-2xl">🎓</span>
                     </div>
-                    <h2 className="ml-4 text-2xl sm:text-2xl font-bold text-white">
+                    <h2 className="ml-3 text-xl font-bold text-white">
                       Ottobon Academy
                     </h2>
                   </div>
-                  <p className="text-blue-100 mb-6">
+                  <p className="text-blue-100 text-sm mb-4">
                     Transform students and freshers into independent consultants
                     with job-ready skills in high-demand technologies.
                   </p>
 
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     <div className="flex items-start">
-                      <span className="text-green-400 mr-2">✓</span>
-                      <span className="text-blue-50">
+                      <span className="text-green-400 mr-2 text-sm">✓</span>
+                      <span className="text-blue-50 text-sm">
                         AI-Powered Skill Growth
                       </span>
                     </div>
                     <div className="flex items-start">
-                      <span className="text-green-400 mr-2">✓</span>
-                      <span className="text-blue-50">
-                        {" "}
-                        Land Your Dream Job{" "}
+                      <span className="text-green-400 mr-2 text-sm">✓</span>
+                      <span className="text-blue-50 text-sm">
+                        Land Your Dream Job
                       </span>
                     </div>
                     <div className="flex items-start">
-                      <span className="text-green-400 mr-2">✓</span>
-                      <span className="text-blue-50">
-                        {" "}
-                        Thrive With Expert Guidance{" "}
+                      <span className="text-green-400 mr-2 text-sm">✓</span>
+                      <span className="text-blue-50 text-sm">
+                        Thrive With Expert Guidance
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-4">
                   <button
                     type="button"
                     onClick={() => {
@@ -253,50 +251,48 @@ export default function GatewayPortal() {
             onMouseEnter={() => setHoverState("services")}
             onMouseLeave={() => setHoverState(null)}
           >
-            <div className="relative h-full w-full rounded-2xl overflow-hidden bg-[#0F1E2E] p-0.5">
+            <div className="relative w-full max-w-md h-96 rounded-2xl overflow-hidden bg-[#0F1E2E] p-0.5">
               {/* Solid brand background replacing previous purple/pink gradient */}
               <div className="absolute inset-0 bg-[#0F1E2E]"></div>
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgyLTJoLTJ6TTM0IDMwaDJoMnpNNDAgMjhWLTJWMjh6TTQyIDMyVjJWMzJ6TTQwIDM2djIyVjM2ek00MiA0MHYxOFY0MHpNNDAgMjhoMnYyaC0yek00MiAzMmgydjJoLTJ6TTQwIDM2aDJ2MmgtMnpNNDIgNDBoMnYyaC0yek0zMiAzNGgyek0zNCAzMGgyek0yOCAzNGgyek0zMCAzMGgyek0yOCAyOHYzMFYyOHpNMzAgMzJ2MjJWMzJ6TTI4IDI4aDJ2MmgtMnpNMzAgMzJoMnYyaC0yek0yOCAzNGgyek0zMCAzOGgydjJoLTJ6Ik0yNCAzNGgyek0yNiAzMGgyek0yMCAzNGgyek0yMiAzMGgyek0yMCAzMnYyMlYzMnpNMjIgMzZ2MTRWMzZ6TTIwIDMyaDJ2MmgtMnpNMjIgMzZoMnYyaC0yek0yMCAzOGgydjJoLTJ6TTIyIDQyaDJ2MmgtMnpNMTYgMzRoek0xOCAzMGgyek0xMiAzNGgyek0xNCAzMGgyek0xMiAyOHYzMFYyOHpNMTQgMzJ2MjJWMzJ6TTEyIDI4aDJ2MmgtMnpNMTQgMzJoMnYyaC0yek0xMiAzNGgyek0xNCAzOGgydjJoLTJ6TTggMzRoek0xMCAzMGgyek00IDM0aHpNNiAzMGgyek00IDMydjIyVjMyek02IDM2djE0VjM2ek00IDMyaDJ2MmgtMnpNNiAzNmgydjJoLTJ6TTQgMzhoMnYyaC0yek02IDQyaDJ2MmgtMnpNNTYgMzRoek01OCAzMGgyek01MiAzNGgyek01NCAzMGgyek01MiAyOHYzMFYyOHpNNTQgMzJ2MjJWMzJ6TTUyIDI4aDJ2MmgtMnpNNTQgMzJoMnYyaC0yek01MiAzNGgyek01NCAzOGgydjJoLTJ6TTQ4IDM0aHpNNTAgMzBoek00NCAzNGh6TTQ2IDMwaHpNNDQgMzJ2MjJWMzJ6TTQ2IDM2djE0VjM2ek00NCAzMmgydjJoLTJ6TTQ2IDM2aDJ2MmgtMnpNNDQgMzhoMnYyaC0yek00NiA0MmgydjJoLTJ6TTYwIDI4djMwVjI4ek0wIDI4djMwVjI4ek0wIDI4aDJ2MmgtMnpNNjAgMjhoLTJ2MmgyeiIgZmlsbD0iI2ZmZiIgZmlsbC13b3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]"></div>
 
-              <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 bg-[#112537]/70 backdrop-blur-sm rounded-2xl">
-                <div>
-                  <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
-                      <span className="text-3xl">🤖</span>
+              <div className="relative h-full flex flex-col p-6 bg-[#112537]/70 backdrop-blur-sm rounded-2xl">
+                <div className="flex-1">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                      <span className="text-2xl">🤖</span>
                     </div>
-                    <h2 className="ml-4 text-2xl sm:text-2xl font-bold text-white">
+                    <h2 className="ml-3 text-xl font-bold text-white">
                       Ottobon Services
                     </h2>
                   </div>
-                  <p className="text-purple-100 mb-6">
+                  <p className="text-purple-100 text-sm mb-4">
                     Empowering working professionals to transition into
                     consultant providers with advanced tech learning and
                     professional services.
                   </p>
 
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     <div className="flex items-start">
-                      <span className="text-pink-300 mr-2">⚡</span>
-                      <span className="text-purple-50">
-                        {" "}
-                        Transforming Health with Innovation{" "}
+                      <span className="text-pink-300 mr-2 text-sm">⚡</span>
+                      <span className="text-purple-50 text-sm">
+                        Transforming Health with Innovation
                       </span>
                     </div>
                     <div className="flex items-start">
-                      <span className="text-pink-300 mr-2">⚡</span>
-                      <span className="text-purple-50">
-                        {" "}
-                        Driving Innovation with Expertise{" "}
+                      <span className="text-pink-300 mr-2 text-sm">⚡</span>
+                      <span className="text-purple-50 text-sm">
+                        Driving Innovation with Expertise
                       </span>
                     </div>
                     <div className="flex items-start">
-                      <span className="text-pink-300 mr-2">⚡</span>
-                      <span className="text-purple-50"> Legal & Finance </span>
+                      <span className="text-pink-300 mr-2 text-sm">⚡</span>
+                      <span className="text-purple-50 text-sm">Legal & Finance</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-4">
                   <button
                     type="button"
                     onClick={() => {
