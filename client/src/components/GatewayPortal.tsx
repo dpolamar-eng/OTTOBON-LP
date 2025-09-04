@@ -68,9 +68,7 @@ export default function GatewayPortal() {
             Learn from AI to become faster, smarter, and more effective. Transform into an independent consultant or enhance your professional services with cutting-edge skills.
           </p>
           <div className="h-0.5 w-24 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mb-2"></div>
-          <p className="text-sm text-blue-300 italic">
-            "Learning from AI makes things easier, faster, and smarter"
-          </p>
+          
         </div>
       </div>
 
