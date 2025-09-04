@@ -54,7 +54,7 @@ export default function GatewayPortal() {
       </div>
 
       {/* Logo and Title */}
-      <div className="relative z-10 text-center pt-20 pb-16">
+      <div className="relative z-10 text-center pt-20 pb-12 -mt-10">
         <div className="flex flex-col items-center justify-center">
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <img
@@ -80,13 +80,19 @@ export default function GatewayPortal() {
         </div>
       </div>
 
-      {/* Hero Video Section */}
-      <section className="relative z-10 py-8 px-4">
-        <div className="container mx-auto">
-          <div className="relative max-w-7xl mx-auto">
-            <div className="relative overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+      {/* Gateway Options removed: cards moved to Services section for single-source layout */}
+
+      {/* About / Our Vision */}
+      <section
+        id="about"
+        className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28"
+      >
+        <div className="container mx-auto px-4">
+          {/* Video Section */}
+          <div className="mb-12 -mt-20">
+            <div className="max-w-4xl mx-auto px-6">
               <video
-                className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] object-cover"
+                className="w-full h-auto rounded-2xl shadow-2xl"
                 autoPlay
                 loop
                 muted
@@ -96,27 +102,8 @@ export default function GatewayPortal() {
                 <source src="/assets/Video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              
-              {/* Video overlay gradient for better text readability if needed */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10 pointer-events-none"></div>
-              
-              {/* Optional play button overlay for better UX */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                  <div className="w-0 h-0 border-l-[12px] border-l-white border-y-[8px] border-y-transparent ml-1"></div>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* About / Our Vision */}
-      <section
-        id="about"
-        className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28"
-      >
-        <div className="container mx-auto px-4">
 
           {/* Heading outside the content container for parity with Services */}
           <div className="text-center mb-6">
