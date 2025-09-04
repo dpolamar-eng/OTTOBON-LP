@@ -26,7 +26,7 @@ export default function GatewayPortal() {
       <HomeHeader />
 
       {/* Hero Video Section - Full Viewport */}
-      <section className="relative h-screen w-full overflow-hidden -mx-4 sm:mx-0">
+      <section className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0">
           <video
             className="w-full h-full object-cover"
