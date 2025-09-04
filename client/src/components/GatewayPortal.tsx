@@ -79,6 +79,22 @@ export default function GatewayPortal() {
       {/* About / Our Vision */}
   <section id="about" className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28">
         <div className="container mx-auto px-4">
+          {/* Video Section */}
+          <div className="mb-12">
+            <div className="max-w-4xl mx-auto px-6">
+              <video 
+                className="w-full h-auto rounded-2xl shadow-2xl"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src="/attached_assets/Video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
           {/* Heading outside the content container for parity with Services */}
           <div className="text-center mb-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
