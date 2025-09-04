@@ -1182,6 +1182,7 @@ export default function TalentCompassAssessment() {
                       {courses
                         .filter(course => course.id !== bestMatch?.course?.id)
                         .sort((a, b) => (userProfile.courseMatches[b.id] || 0) - (userProfile.courseMatches[a.id] || 0))
+                        .slice(0, 2)
                         .map(course => renderCourseCard(course))
                       }
                     </div>
