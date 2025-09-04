@@ -88,8 +88,9 @@ export default function GatewayPortal() {
                 loop
                 muted
                 playsInline
+                controls={false}
               >
-                <source src="/attached_assets/Video.mp4" type="video/mp4" />
+                <source src="/assets/Video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
