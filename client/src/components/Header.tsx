@@ -57,7 +57,7 @@ export default function Header() {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
-                className="text-white/90 hover:text-white font-medium py-2 px-3 xl:px-4 rounded-lg bg-white/10 hover:bg-white/15 transition-all relative overflow-hidden group text-sm xl:text-base whitespace-nowrap"
+                className="text-white/90 hover:text-white font-medium py-2 px-3 xl:px-4 rounded-lg hover:bg-white/15 transition-all relative overflow-hidden group text-sm xl:text-base whitespace-nowrap"
               >
                 <div className="flex items-center space-x-1">
                   <span className="text-white/80 group-hover:text-white/100 transition-all">{item.icon}</span>
