@@ -724,6 +724,11 @@ export default function TalentCompassAssessment() {
     updateCompassVisualization();
   }, [compassCanvas]);
 
+  // Update compass visualization when user profile changes
+  useEffect(() => {
+    updateCompassVisualization();
+  }, [userProfile.traits]);
+
   // Get best course match
   const getBestCourseMatch = () => {
     if (!Object.keys(userProfile.courseMatches).length) return null;
@@ -759,6 +764,27 @@ export default function TalentCompassAssessment() {
       setCurrentPhase('path-selection');
       setCurrentQuestionIndex(0);
       setAnsweredQuestions([]);
+      // Reset user profile
+      setUserProfile({
+        traits: {
+          ambition: 0,
+          learnability: 0,
+          accountability: 0,
+          integrity: 0,
+          curiosity: 0,
+          adaptability: 0,
+          emotionalIntelligence: 0
+        },
+        background: {
+          education: '',
+          languages: 0,
+          yearsExperience: 0,
+          relevantProjects: 0
+        },
+        currentPath: 'recent-graduate',
+        discountEligibility: 0,
+        courseMatches: {}
+      });
     } else if (currentPhase === 'background-assessment') {
       setCurrentPhase('trait-assessment');
       setCurrentQuestionIndex(0);
@@ -1024,13 +1050,17 @@ export default function TalentCompassAssessment() {
                         {currentPhase === 'trait-assessment' ? 'Trait Assessment' : 'Background Assessment'}
                       </span>
                       <span className="text-sm font-medium text-gray-500">
-                        Question {answeredQuestions.length + 1} of {allQuestions.length}
+                        Question {(currentQuestionIndex % (currentPhase === 'trait-assessment' ? traitQuestions.length : backgroundQuestions.length)) + 1} of {currentPhase === 'trait-assessment' ? traitQuestions.length : backgroundQuestions.length}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <div 
                         className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
-                        style={{ width: `${((answeredQuestions.length) / allQuestions.length) * 100}%` }}
+                        style={{ 
+                          width: currentPhase === 'trait-assessment' 
+                            ? `${((currentQuestionIndex + 1) / traitQuestions.length) * 100}%`
+                            : `${(((currentQuestionIndex - traitQuestions.length) + 1) / backgroundQuestions.length) * 100}%`
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -1070,7 +1100,6 @@ export default function TalentCompassAssessment() {
                 </svg>
                 Back
               </button>
-              <span className="text-sm text-gray-500">Results</span>
             </div>
             <p className="text-center text-gray-600 mb-10">
               Based on your responses, we've created a personalized profile highlighting your strengths and optimal paths.
