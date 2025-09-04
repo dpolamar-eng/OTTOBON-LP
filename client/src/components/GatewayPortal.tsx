@@ -51,7 +51,7 @@ export default function GatewayPortal() {
       </section>
 
       {/* Hero Content Section - Below Video */}
-      <section className="relative z-10 py-16 sm:py-20 bg-black">
+      <section className="relative z-10 py-16 sm:py-20">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-col items-center justify-center mb-8">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6">
