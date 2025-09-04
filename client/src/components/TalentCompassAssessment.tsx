@@ -152,73 +152,96 @@ export default function TalentCompassAssessment() {
   // Define courses with trait importance weights
   const courses: Course[] = [
     {
-      id: 'genai',
-      title: 'Generative AI Solutions Architect',
-      description: 'Design and implement generative AI solutions for enterprise applications.',
+      id: 'ai-uiux',
+      title: 'AI for UI/UX Designer',
+      description: 'Integrate AI into UI/UX workflows for smarter, data-driven design and personalized user experiences.',
       category: 'Career Launch',
       traitMatches: {
         curiosity: 0.9,
         learnability: 0.8,
         adaptability: 0.7,
+        emotionalIntelligence: 0.8,
         accountability: 0.6,
-        emotionalIntelligence: 0.5,
         integrity: 0.5,
         ambition: 0.7
       },
       backgroundFactors: {
         education: 0.6,
-        languages: 0.7,
+        languages: 0.5,
         yearsExperience: 0.5,
         relevantProjects: 0.8
       },
-      icon: '🤖',
+      icon: '🎨',
       color: 'from-indigo-500 to-indigo-700'
     },
     {
-      id: 'aws',
-      title: 'AWS Solutions Architect',
-      description: 'Design and implement scalable, high-availability systems on AWS.',
+      id: 'ai-marketing',
+      title: 'AI in Marketing',
+      description: 'Master AI-driven marketing strategies and automation tools to transform customer engagement.',
       category: 'Career Launch',
       traitMatches: {
-        accountability: 0.9,
-        adaptability: 0.8,
-        learnability: 0.7,
-        integrity: 0.7,
-        curiosity: 0.6,
-        emotionalIntelligence: 0.4,
-        ambition: 0.7
+        adaptability: 0.9,
+        learnability: 0.8,
+        curiosity: 0.8,
+        emotionalIntelligence: 0.7,
+        accountability: 0.7,
+        ambition: 0.8,
+        integrity: 0.6
       },
       backgroundFactors: {
         education: 0.5,
         languages: 0.6,
-        yearsExperience: 0.7,
-        relevantProjects: 0.8
-      },
-      icon: '☁️',
-      color: 'from-yellow-500 to-orange-500'
-    },
-    {
-      id: 'salesforce',
-      title: 'Salesforce CX Consultant',
-      description: 'Become a certified Salesforce consultant specializing in customer experience solutions.',
-      category: 'Tech Edge',
-      traitMatches: {
-        emotionalIntelligence: 0.9,
-        accountability: 0.8,
-        adaptability: 0.7,
-        integrity: 0.8,
-        curiosity: 0.5,
-        learnability: 0.6,
-        ambition: 0.6
-      },
-      backgroundFactors: {
-        education: 0.5,
-        languages: 0.5,
         yearsExperience: 0.6,
         relevantProjects: 0.7
       },
-      icon: '☁️',
-      color: 'from-blue-500 to-blue-700'
+      icon: '📈',
+      color: 'from-amber-500 to-amber-700'
+    },
+    {
+      id: 'ai-agent-development',
+      title: 'AI Agent Development',
+      description: 'Build intelligent AI agents and autonomous systems using cutting-edge frameworks and NLP.',
+      category: 'Career Launch',
+      traitMatches: {
+        curiosity: 0.9,
+        learnability: 0.9,
+        adaptability: 0.8,
+        accountability: 0.8,
+        ambition: 0.7,
+        integrity: 0.7,
+        emotionalIntelligence: 0.5
+      },
+      backgroundFactors: {
+        education: 0.7,
+        languages: 0.8,
+        yearsExperience: 0.6,
+        relevantProjects: 0.9
+      },
+      icon: '🤖',
+      color: 'from-emerald-500 to-emerald-700'
+    },
+    {
+      id: 'ai-data-labeling',
+      title: 'AI Data Labeling',
+      description: 'Specialize in high-quality data annotation and labeling workflows for training robust AI models.',
+      category: 'Career Launch',
+      traitMatches: {
+        accountability: 0.9,
+        integrity: 0.9,
+        learnability: 0.7,
+        adaptability: 0.6,
+        curiosity: 0.6,
+        ambition: 0.5,
+        emotionalIntelligence: 0.4
+      },
+      backgroundFactors: {
+        education: 0.5,
+        languages: 0.6,
+        yearsExperience: 0.4,
+        relevantProjects: 0.7
+      },
+      icon: '🏷️',
+      color: 'from-pink-500 to-pink-700'
     }
   ];
 
