@@ -586,7 +586,7 @@ export default function StorytellingOnboarding() {
                         <h4 className="font-medium mb-2">Ready for Your Journey?</h4>
                         <p className="text-sm mb-4">Take the assessment to discover your ideal path in technology consulting.</p>
                         <a 
-                          href="#assessment"
+                          href="#talent-compass"
                           className="block w-full bg-white text-blue-700 text-center font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition"
                         >
                           Take Assessment Now
@@ -657,7 +657,7 @@ export default function StorytellingOnboarding() {
 
                       {pathOutcome === 'assessment' && (
                         <a 
-                          href="#assessment"
+                          href="#talent-compass"
                           className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg flex items-center"
                         >
                           Begin Assessment
