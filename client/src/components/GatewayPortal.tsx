@@ -138,7 +138,7 @@ export default function GatewayPortal() {
       {/* Our Services (Academy + Professional Services) */}
       <section
         id="services-overview"
-        className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28"
+        className="relative z-10 py-8 sm:py-10 scroll-mt-24 md:scroll-mt-28"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
