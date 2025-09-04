@@ -78,7 +78,7 @@ export default function GatewayPortal() {
   <section id="about" className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28">
         <div className="container mx-auto px-4">
           {/* Video Section */}
-          <div className="mb-12">
+          <div className="mb-12 -mt-4">
             <div className="max-w-4xl mx-auto px-6">
               <video 
                 className="w-full h-auto rounded-2xl shadow-2xl"
