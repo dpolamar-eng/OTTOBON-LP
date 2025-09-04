@@ -55,30 +55,30 @@ export default function ServicesFooter() {
           <div>
             <h3 className="text-lg font-bold mb-6 text-white relative">
               Health Care 🏥
-              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-red-500"></div>
+              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-blue-500"></div>
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Personal Fertility Care Companion
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Journey to Parenthood
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   AI-powered Health Tracking
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Reproductive Health Support
                 </a>
               </li>
