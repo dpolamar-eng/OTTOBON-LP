@@ -624,19 +624,16 @@ export default function TalentCompassAssessment() {
     const height = canvas.height;
     const centerX = width / 2;
     const centerY = height / 2;
-    const radius = Math.min(width, height) / 2 - 40;
+    const radius = Math.min(width, height) / 2 - 20;
 
     // Clear canvas
     ctx.clearRect(0, 0, width, height);
 
-    // Draw compass background circle
+    // Draw compass background
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
     ctx.fill();
-    ctx.strokeStyle = 'rgba(200, 200, 200, 0.3)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
 
     // Draw trait sections
     const numTraits = traits.length;
@@ -645,100 +642,70 @@ export default function TalentCompassAssessment() {
     traits.forEach((trait, index) => {
       const startAngle = index * angleStep - Math.PI / 2;
       const endAngle = (index + 1) * angleStep - Math.PI / 2;
-      const midAngle = startAngle + angleStep / 2;
 
       // Get trait score (normalized to 0-1)
       const score = (userProfile.traits[trait.id] || 0) / 10;
-      const traitRadius = radius * Math.max(0.1, score || 0.1); // Show minimum section even with 0 score
+      const traitRadius = radius * Math.max(0.1, score);
 
-      // Draw section lines to create segments
+      // Draw section
       ctx.beginPath();
       ctx.moveTo(centerX, centerY);
-      ctx.lineTo(
-        centerX + Math.cos(startAngle) * radius,
-        centerY + Math.sin(startAngle) * radius
-      );
-      ctx.strokeStyle = 'rgba(200, 200, 200, 0.3)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
+      ctx.arc(centerX, centerY, traitRadius, startAngle, endAngle);
+      ctx.closePath();
 
-      // Only draw filled sections if there's a score
-      if (score > 0) {
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, traitRadius, startAngle, endAngle);
-        ctx.closePath();
+      // Create gradient based on trait color
+      const colorParts = trait.color.split(' ');
+      const fromColor = colorParts[0].replace('from-', '').replace('-400', '');
+      const toColor = colorParts[1].replace('to-', '').replace('-600', '');
 
-        // Create gradient based on trait color
-        const colorParts = trait.color.split(' ');
-        const fromColor = colorParts[0].replace('from-', '').replace('-400', '');
-        const toColor = colorParts[1].replace('to-', '').replace('-600', '');
-
-        const getColor = (name: string) => {
-          const colors: Record<string, string> = {
-            'blue': '#3b82f6',
-            'purple': '#9333ea',
-            'green': '#10b981',
-            'gray': '#6b7280',
-            'amber': '#f59e0b',
-            'teal': '#14b8a6',
-            'red': '#ef4444',
-            'indigo': '#6366f1'
-          };
-          return colors[name] || '#000000';
+      const getColor = (name: string) => {
+        const colors: Record<string, string> = {
+          'blue': '#3b82f6',
+          'purple': '#9333ea',
+          'green': '#10b981',
+          'gray': '#6b7280',
+          'amber': '#f59e0b',
+          'teal': '#14b8a6',
+          'red': '#ef4444',
+          'indigo': '#6366f1'
         };
+        return colors[name] || '#000000';
+      };
 
-        const gradient = ctx.createRadialGradient(
-          centerX, centerY, 0,
-          centerX, centerY, traitRadius
-        );
-        gradient.addColorStop(0, getColor(fromColor));
-        gradient.addColorStop(1, getColor(toColor));
+      const gradient = ctx.createRadialGradient(
+        centerX, centerY, 0,
+        centerX, centerY, traitRadius
+      );
+      gradient.addColorStop(0, getColor(fromColor));
+      gradient.addColorStop(1, getColor(toColor));
 
-        ctx.fillStyle = gradient;
-        ctx.fill();
-      }
+      ctx.fillStyle = gradient;
+      ctx.fill();
 
-      // Add trait label with icon (always visible)
-      const labelRadius = radius + 25;
-      const labelX = centerX + Math.cos(midAngle) * labelRadius;
-      const labelY = centerY + Math.sin(midAngle) * labelRadius;
+      // Add trait label
+      const labelRadius = radius + 15;
+      const labelX = centerX + Math.cos(startAngle + angleStep / 2) * labelRadius;
+      const labelY = centerY + Math.sin(startAngle + angleStep / 2) * labelRadius;
 
-      // Draw trait icon
-      ctx.font = '16px Arial';
-      ctx.fillStyle = '#666666';
+      ctx.font = '12px Arial';
+      ctx.fillStyle = '#000000';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(trait.icon, labelX, labelY - 10);
-
-      // Draw trait name
-      ctx.font = 'bold 10px Arial';
-      ctx.fillStyle = '#333333';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      
-      // Split long names into two lines if needed
-      const words = trait.name.split(' ');
-      if (words.length > 1 && trait.name.length > 12) {
-        ctx.fillText(words[0], labelX, labelY + 8);
-        ctx.fillText(words.slice(1).join(' '), labelX, labelY + 18);
-      } else {
-        ctx.fillText(trait.name, labelX, labelY + 13);
-      }
+      ctx.fillText(trait.name, labelX, labelY);
     });
 
     // Draw center circle
     ctx.beginPath();
-    ctx.arc(centerX, centerY, 25, 0, Math.PI * 2);
+    ctx.arc(centerX, centerY, 20, 0, Math.PI * 2);
     ctx.fillStyle = 'white';
     ctx.fill();
-    ctx.strokeStyle = '#cccccc';
+    ctx.strokeStyle = '#000000';
     ctx.lineWidth = 2;
     ctx.stroke();
 
     // Draw compass icon in center
-    ctx.font = '24px Arial';
-    ctx.fillStyle = '#666666';
+    ctx.font = '20px Arial';
+    ctx.fillStyle = '#000000';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('🧭', centerX, centerY);
