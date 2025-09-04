@@ -157,7 +157,7 @@ export default function GatewayPortal() {
         </div>
 
         {/* Optimized two-card flex layout with reduced height */}
-        <div className="relative z-10 flex-grow flex flex-col md:flex-row items-center justify-center gap-2 md:gap-12 px-4 pb-16">
+        <div className="relative z-10 flex-grow flex flex-col md:flex-row items-center justify-center gap-0 md:gap-12 px-4 pb-16">
           {/* Academy Card */}
           <div
             className={`gateway-card group ${hoverState === "academy" ? "scale-105" : hoverState === "services" ? "scale-95 opacity-80" : ""}`}
