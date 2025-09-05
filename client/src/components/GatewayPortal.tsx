@@ -540,17 +540,11 @@ export default function GatewayPortal() {
               </h2>
               <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
               <p className="text-blue-200 mt-3 text-base md:text-lg">
-                Tell us about your goals—learning or services—and we’ll point
-                you in the right direction. Prefer email?{" "}
-                <a
-                  className="underline hover:no-underline"
-                  href="mailto:hello@ottobon.com"
-                >
-                  hello@ottobon.com
-                </a>
+                Tell us about your goals—learning or services—and we'll point
+                you in the right direction.
               </p>
             </div>
-            <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => {
@@ -566,12 +560,6 @@ export default function GatewayPortal() {
                 className="bg-white/10 text-white font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:bg-[#FFC107] hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 w-full text-center"
               >
                 View Services
-              </a>
-              <a
-                href="#contact"
-                className="bg-white/10 text-white font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:bg-[#FFC107] hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 w-full text-center"
-              >
-                Email Us
               </a>
             </div>
           </div>
