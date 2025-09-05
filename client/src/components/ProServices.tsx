@@ -806,15 +806,15 @@ export default function ProServices() {
 
       {/* Modal Overlay for Desktop */}
       {modalService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center animate-in fade-in duration-500">
           {/* Backdrop with blur */}
           <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-all duration-500 ease-out"
             onClick={closeModal}
           ></div>
 
           {/* Modal Content */}
-          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
+          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden transform transition-all duration-500 ease-out animate-in zoom-in-95 slide-in-from-bottom-4">
             {(() => {
               const service = getModalService();
               if (!service) return null;
