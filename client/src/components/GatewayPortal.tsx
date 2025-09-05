@@ -533,18 +533,18 @@ export default function GatewayPortal() {
         className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28"
       >
         <div className="container mx-auto px-4">
-          <div className="bg-[#112537]/70 backdrop-blur-sm rounded-2xl border border-white/10 p-8 sm:p-12">
+          <div className="max-w-2xl mx-auto bg-[#112537]/70 backdrop-blur-sm rounded-2xl border border-white/10 p-6 sm:p-8">
             <div className="text-center mb-6">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
                 Get in Touch
               </h2>
-              <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
-              <p className="text-blue-200 mt-3 text-base md:text-lg">
+              <div className="h-0.5 w-20 md:w-24 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
+              <p className="text-blue-200 mt-3 text-sm md:text-base">
                 Tell us about your goals—learning or services—and we'll point
                 you in the right direction.
               </p>
             </div>
-            <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => {
