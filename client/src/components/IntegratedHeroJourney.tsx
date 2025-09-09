@@ -124,10 +124,11 @@ export default function IntegratedHeroJourney() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 lg:pt-28"
+      className="relative min-h-screen overflow-hidden"
+      style={{ marginTop: '80px' }}
     >
       {/* Hero Carousel */}
-      <div className="embla w-full h-[calc(100vh-8rem)] lg:h-[calc(100vh-10rem)] relative" ref={heroViewportRef}>
+      <div className="embla w-full h-[calc(100vh-80px)] relative" ref={heroViewportRef}>
         <div className="embla__container flex h-full">
           {heroSlides.map((slide, index) => (
             <div key={index} className={`embla__slide flex-shrink-0 w-full h-full relative ${slide.background}`}>
@@ -143,7 +144,7 @@ export default function IntegratedHeroJourney() {
 
               {/* Content */}
               <div className="relative z-10 h-full flex items-center">
-                <div className="container mx-auto px-6 lg:px-8">
+                <div className="container mx-auto px-6 lg:px-8 w-full">
                   <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
                     <div className="text-white space-y-6">
