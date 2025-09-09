@@ -236,7 +236,7 @@ export default function IntegratedHeroJourney() {
     <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]">
       <div className="container mx-auto px-1 sm:px-3 md:px-4 relative z-10 overflow-hidden">
         {/* Hero Content */}
-        <div className="mb-12 md:mb-16">
+        <div className="mb-12 md:mb-16 relative">
           <div className="relative">
             <div
               className="overflow-hidden"
@@ -401,9 +401,8 @@ export default function IntegratedHeroJourney() {
           {/* Desktop/Tablet Navigation Buttons - Outside container */}
           <button
             onClick={goToPrevSlide}
-            className="hidden md:block fixed z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
-              left-4 lg:left-8 top-1/2 -translate-y-1/2"
-            style={{ top: 'calc(50% - 50px)' }}
+            className="hidden md:block absolute z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
+              -left-16 lg:-left-20 top-1/2 -translate-y-1/2"
             aria-label="Previous slide"
           >
             <svg
@@ -424,9 +423,8 @@ export default function IntegratedHeroJourney() {
 
           <button
             onClick={goToNextSlide}
-            className="hidden md:block fixed z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
-              right-4 lg:right-8 top-1/2 -translate-y-1/2"
-            style={{ top: 'calc(50% - 50px)' }}
+            className="hidden md:block absolute z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
+              -right-16 lg:-right-20 top-1/2 -translate-y-1/2"
             aria-label="Next slide"
           >
             <svg
