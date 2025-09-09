@@ -53,7 +53,7 @@ export default function IntegratedHeroJourney() {
     },
     {
       title:
-        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Job Assist</span> Tools for <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Success</span>",
+        "<span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Job Assistance</span> for <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-800 drop-shadow-sm'>Success</span>",
       description:
         "Access comprehensive job search tools including ATS-friendly resume builders, AI-powered job matching, and realistic mock interview preparation to accelerate your career transition and land your dream role.",
       image:
