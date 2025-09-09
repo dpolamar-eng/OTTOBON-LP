@@ -124,10 +124,10 @@ export default function IntegratedHeroJourney() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 lg:pt-28"
     >
       {/* Hero Carousel */}
-      <div className="embla w-full h-[calc(100vh-5rem)] lg:h-[calc(100vh-6rem)] relative" ref={heroViewportRef}>
+      <div className="embla w-full h-[calc(100vh-8rem)] lg:h-[calc(100vh-10rem)] relative" ref={heroViewportRef}>
         <div className="embla__container flex h-full">
           {heroSlides.map((slide, index) => (
             <div key={index} className={`embla__slide flex-shrink-0 w-full h-full relative ${slide.background}`}>
