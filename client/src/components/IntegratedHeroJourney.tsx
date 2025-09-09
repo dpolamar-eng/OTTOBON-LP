@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation } from '@/hooks/use-animation';
@@ -14,11 +13,11 @@ interface HeroSlide {
 
 export default function IntegratedHeroJourney() {
   // Hero section states
-  const [heroViewportRef, heroEmbla] = useEmblaCarousel({ 
+  const [heroViewportRef, heroEmbla] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
     align: "center",
-    containScroll: "trimSnaps" 
+    containScroll: "trimSnaps"
   });
 
   const [heroActiveIndex, setHeroActiveIndex] = useState(0);
@@ -60,7 +59,7 @@ export default function IntegratedHeroJourney() {
   // Auto-scroll functionality
   const startAutoplay = useCallback(() => {
     if (!heroEmbla || !isAutoplay) return;
-    
+
     autoplayTimeoutRef.current = setTimeout(() => {
       heroEmbla.scrollNext();
     }, autoplayInterval);
@@ -123,19 +122,19 @@ export default function IntegratedHeroJourney() {
   }, [heroEmbla, stopAutoplay]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Hero Carousel */}
-      <div className="embla w-full h-screen relative" ref={heroViewportRef}>
+      <div className="embla w-full h-[calc(100vh-5rem)] lg:h-[calc(100vh-6rem)] relative" ref={heroViewportRef}>
         <div className="embla__container flex h-full">
           {heroSlides.map((slide, index) => (
             <div key={index} className={`embla__slide flex-shrink-0 w-full h-full relative ${slide.background}`}>
               {/* Background Image with Overlay */}
               <div className="absolute inset-0">
-                <img 
-                  src={slide.image} 
+                <img
+                  src={slide.image}
                   alt={slide.title}
                   className="w-full h-full object-cover opacity-20"
                 />
@@ -156,7 +155,7 @@ export default function IntegratedHeroJourney() {
                           {slide.subtitle}
                         </h2>
                       </div>
-                      
+
                       <p className="text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-2xl">
                         {slide.description}
                       </p>
@@ -182,8 +181,8 @@ export default function IntegratedHeroJourney() {
                     {/* Image Content */}
                     <div className="hidden lg:block">
                       <div className="relative">
-                        <img 
-                          src={slide.image} 
+                        <img
+                          src={slide.image}
                           alt="Technology professional in modern workspace"
                           className="rounded-2xl shadow-2xl w-full h-96 object-cover"
                         />
@@ -200,7 +199,7 @@ export default function IntegratedHeroJourney() {
         </div>
 
         {/* Navigation Arrows - Separated from content */}
-        <button 
+        <button
           onClick={scrollPrev}
           className="absolute top-1/2 left-8 lg:left-16 z-20 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white rounded-full p-3 lg:p-4 backdrop-blur-sm transition-all duration-300 hover:scale-110"
           aria-label="Previous slide"
@@ -209,8 +208,8 @@ export default function IntegratedHeroJourney() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        
-        <button 
+
+        <button
           onClick={scrollNext}
           className="absolute top-1/2 right-8 lg:right-16 z-20 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white rounded-full p-3 lg:p-4 backdrop-blur-sm transition-all duration-300 hover:scale-110"
           aria-label="Next slide"
@@ -228,8 +227,8 @@ export default function IntegratedHeroJourney() {
                 key={index}
                 onClick={() => scrollTo(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === heroActiveIndex 
-                    ? 'bg-white scale-125' 
+                  index === heroActiveIndex
+                    ? 'bg-white scale-125'
                     : 'bg-white/50 hover:bg-white/70'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
