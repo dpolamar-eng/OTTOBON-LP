@@ -23,7 +23,7 @@ const categories: CategoryInfo[] = [
   },
   {
     id: 'Career Assist',
-    title: 'Career Assist',
+    title: 'Career Support',
     description: 'Expert guidance for your career journey'
   }
 ];
@@ -122,7 +122,7 @@ export default function CoursesSection() {
     },
     {
       id: 'resume-builder',
-      title: 'Resume Builder',
+      title: 'Resume Building',
       category: 'Tech Edge',
       categoryLabel: 'Career Tools',
       color: 'blue-800',
@@ -140,7 +140,7 @@ export default function CoursesSection() {
     },
     {
       id: 'job-matching',
-      title: 'Find a Job / Job Matching',
+      title: 'Find a Job',
       category: 'Tech Edge',
       categoryLabel: 'Career Opportunities',
       color: 'green-800',
