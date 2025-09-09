@@ -351,12 +351,11 @@ export default function IntegratedHeroJourney() {
               </div>
             </div>
 
-            {/* Navigation Buttons - Mobile: inside content, Desktop/Tablet: at screen edges */}
+            {/* Navigation Buttons - Positioned relative to slider container */}
             <button
               onClick={goToPrevSlide}
               className="absolute z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
-                left-5 top-[75%] -translate-y-1/2
-                md:fixed md:left-4 md:top-1/2 md:-translate-y-1/2"
+                left-2 sm:left-4 top-1/2 -translate-y-1/2"
               aria-label="Previous slide"
             >
               <svg
@@ -378,8 +377,7 @@ export default function IntegratedHeroJourney() {
             <button
               onClick={goToNextSlide}
               className="absolute z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
-                right-5 top-[75%] -translate-y-1/2
-                md:fixed md:right-4 md:top-1/2 md:-translate-y-1/2"
+                right-2 sm:right-4 top-1/2 -translate-y-1/2"
               aria-label="Next slide"
             >
               <svg
