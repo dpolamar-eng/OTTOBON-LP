@@ -351,15 +351,16 @@ export default function IntegratedHeroJourney() {
               </div>
             </div>
 
-            {/* Navigation Buttons - positioned within the slides container */}
+            {/* Navigation Buttons - Mobile: inside container, Desktop/Tablet: outside container */}
+            {/* Mobile Navigation Buttons */}
             <button
               onClick={goToPrevSlide}
-              className="absolute z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-2 md:p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
-                left-2 md:left-4 top-1/2 -translate-y-1/2"
+              className="absolute z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
+                left-2 top-1/2 -translate-y-1/2 md:hidden"
               aria-label="Previous slide"
             >
               <svg
-                className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -376,12 +377,12 @@ export default function IntegratedHeroJourney() {
 
             <button
               onClick={goToNextSlide}
-              className="absolute z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-2 md:p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
-                right-2 md:right-4 top-1/2 -translate-y-1/2"
+              className="absolute z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
+                right-2 top-1/2 -translate-y-1/2 md:hidden"
               aria-label="Next slide"
             >
               <svg
-                className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -396,6 +397,51 @@ export default function IntegratedHeroJourney() {
               </svg>
             </button>
           </div>
+
+          {/* Desktop/Tablet Navigation Buttons - Outside container */}
+          <button
+            onClick={goToPrevSlide}
+            className="hidden md:block absolute z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
+              -left-16 lg:-left-20 top-1/2 -translate-y-1/2"
+            aria-label="Previous slide"
+          >
+            <svg
+              className="w-6 h-6 lg:w-7 lg:h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 19l-7-7 7-7"
+              ></path>
+            </svg>
+          </button>
+
+          <button
+            onClick={goToNextSlide}
+            className="hidden md:block absolute z-20 bg-blue-600/90 hover:bg-blue-700 text-white rounded-full p-3 lg:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-400 hover:border-blue-300 backdrop-blur-sm
+              -right-16 lg:-right-20 top-1/2 -translate-y-1/2"
+            aria-label="Next slide"
+          >
+            <svg
+              className="w-6 h-6 lg:w-7 lg:h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </button>
 
           {/* Carousel Controls */}
           <div className="flex items-center justify-center mt-8">
