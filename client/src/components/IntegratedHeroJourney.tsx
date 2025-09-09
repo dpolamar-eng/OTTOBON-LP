@@ -351,11 +351,12 @@ export default function IntegratedHeroJourney() {
               </div>
             </div>
 
-            {/* Navigation Buttons - Centered vertically with the image */}
+            {/* Navigation Buttons - Mobile: inside content, Desktop/Tablet: outside content */}
             <button
               onClick={goToPrevSlide}
-              className="absolute left-5 sm:left-4 z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
-                top-[75%] md:top-[65%] -translate-y-1/2"
+              className="absolute z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
+                left-5 top-[75%] -translate-y-1/2
+                md:left-[-3rem] md:top-1/2 md:-translate-y-1/2"
               aria-label="Previous slide"
             >
               <svg
@@ -376,8 +377,9 @@ export default function IntegratedHeroJourney() {
 
             <button
               onClick={goToNextSlide}
-              className="absolute right-5 sm:right-4 z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
-                top-[75%] md:top-[65%] -translate-y-1/2"
+              className="absolute z-10 bg-gray-600/80 hover:bg-gray-700/90 text-white hover:text-gray-200 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-500 hover:border-gray-400 backdrop-blur-sm
+                right-5 top-[75%] -translate-y-1/2
+                md:right-[-3rem] md:top-1/2 md:-translate-y-1/2"
               aria-label="Next slide"
             >
               <svg
