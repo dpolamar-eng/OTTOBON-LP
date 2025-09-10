@@ -46,12 +46,12 @@ interface UserProfile {
 }
 
 // Define component phases
-type AssessmentPhase = 
-  | 'intro' 
-  | 'path-selection' 
+type AssessmentPhase =
+  | 'intro'
+  | 'path-selection'
   | 'skills-collection'
-  | 'trait-assessment' 
-  | 'background-assessment' 
+  | 'trait-assessment'
+  | 'background-assessment'
   | 'results';
 
 // Define skill categories and suggestions
@@ -517,6 +517,33 @@ export default function TalentCompassAssessment() {
           }
         ],
         type: 'background'
+      },
+      {
+        id: 10,
+        text: "When starting your new career path, your biggest priority is:",
+        options: [
+          {
+            text: "Building a strong portfolio of work",
+            traits: { ambition: 1, accountability: 1 },
+            backgroundFactors: { priority: 'portfolio' }
+          },
+          {
+            text: "Networking with industry professionals",
+            traits: { emotionalIntelligence: 1, adaptability: 1 },
+            backgroundFactors: { priority: 'networking' }
+          },
+          {
+            text: "Gaining hands-on experience quickly",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { priority: 'experience' }
+          },
+          {
+            text: "Understanding industry standards and practices",
+            traits: { integrity: 1, accountability: 1 },
+            backgroundFactors: { priority: 'standards' }
+          }
+        ],
+        type: 'background'
       }
     ];
 
@@ -738,6 +765,33 @@ export default function TalentCompassAssessment() {
             text: "Preparing datasets for AI training ",
             traits: { accountability: 1, integrity: 1 },
             backgroundFactors: { projectPreference: 'dataset-prep' }
+          }
+        ],
+        type: 'background'
+      },
+      {
+        id: 10,
+        text: "What do you hope to achieve in your first year of work?",
+        options: [
+          {
+            text: "Become proficient in industry-standard tools",
+            traits: { learnability: 1, accountability: 1 },
+            backgroundFactors: { firstYearGoal: 'tools-proficiency' }
+          },
+          {
+            text: "Build meaningful relationships with colleagues",
+            traits: { emotionalIntelligence: 1, adaptability: 1 },
+            backgroundFactors: { firstYearGoal: 'relationships' }
+          },
+          {
+            text: "Contribute to innovative projects",
+            traits: { curiosity: 1, ambition: 1 },
+            backgroundFactors: { firstYearGoal: 'innovation' }
+          },
+          {
+            text: "Establish a reputation for reliability",
+            traits: { integrity: 1, accountability: 1 },
+            backgroundFactors: { firstYearGoal: 'reliability' }
           }
         ],
         type: 'background'
@@ -965,6 +1019,33 @@ export default function TalentCompassAssessment() {
           }
         ],
         type: 'background'
+      },
+      {
+        id: 10,
+        text: "Looking ahead, your main professional aspiration is to:",
+        options: [
+          {
+            text: "Lead strategic initiatives and drive organizational change",
+            traits: { ambition: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { aspiration: 'strategic-leadership' }
+          },
+          {
+            text: "Become a recognized expert in emerging technologies",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { aspiration: 'technical-expertise' }
+          },
+          {
+            text: "Mentor and develop the next generation of professionals",
+            traits: { emotionalIntelligence: 1, integrity: 1 },
+            backgroundFactors: { aspiration: 'mentorship' }
+          },
+          {
+            text: "Build and optimize high-performing teams",
+            traits: { accountability: 1, adaptability: 1 },
+            backgroundFactors: { aspiration: 'team-building' }
+          }
+        ],
+        type: 'background'
       }
     ];
 
@@ -1111,9 +1192,9 @@ export default function TalentCompassAssessment() {
 
       // Calculate skills match component (25% weight)
       const courseRelevantSkills = getCourseRelevantSkills(course.id);
-      const skillsMatchCount = selectedSkills.filter(skill => 
-        courseRelevantSkills.some(relevant => 
-          relevant.toLowerCase().includes(skill.toLowerCase()) || 
+      const skillsMatchCount = selectedSkills.filter(skill =>
+        courseRelevantSkills.some(relevant =>
+          relevant.toLowerCase().includes(skill.toLowerCase()) ||
           skill.toLowerCase().includes(relevant.toLowerCase())
         )
       ).length;
@@ -1138,7 +1219,7 @@ export default function TalentCompassAssessment() {
     const experienceValue = Number(userProfile.background.yearsExperience) || 0;
     const projectsValue = Number(userProfile.background.relevantProjects) || 0;
 
-    const backgroundComponent = 
+    const backgroundComponent =
       (educationValue / 4) * 15 + // 15% from education
       (experienceValue / 3) * 15 + // 15% from experience
       (projectsValue / 3) * 10;    // 10% from projects
@@ -1369,8 +1450,8 @@ export default function TalentCompassAssessment() {
           <h4 className="font-semibold">{trait.name}</h4>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
-          <div 
-            className={`h-2 rounded-full bg-gradient-to-r ${trait.color}`} 
+          <div
+            className={`h-2 rounded-full bg-gradient-to-r ${trait.color}`}
             style={{ width: `${normalizedScore}%` }}
           ></div>
         </div>
@@ -1384,10 +1465,10 @@ export default function TalentCompassAssessment() {
     const matchScore = userProfile.courseMatches[course.id] || 0;
 
     return (
-      <div 
-        key={course.id} 
+      <div
+        key={course.id}
         className={`border rounded-lg p-5 ${
-          matchScore > 80 ? 'border-green-400 bg-green-50' : 
+          matchScore > 80 ? 'border-green-400 bg-green-50' :
           matchScore > 60 ? 'border-blue-400 bg-blue-50' : 'border-gray-300'
         }`}
       >
@@ -1414,13 +1495,13 @@ export default function TalentCompassAssessment() {
   };
 
   return (
-    <section 
-      id="talent-compass" 
+    <section
+      id="talent-compass"
       className={`overflow-hidden relative ${
-        currentPhase === 'trait-assessment' || currentPhase === 'background-assessment' 
-          ? 'bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF] min-h-screen' 
+        currentPhase === 'trait-assessment' || currentPhase === 'background-assessment'
+          ? 'bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF] min-h-screen'
           : 'py-16 bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]'
-      }`} 
+      }`}
       ref={sectionRef}
     >
       {/* Background decorations - only show for non-assessment phases */}
@@ -1433,8 +1514,8 @@ export default function TalentCompassAssessment() {
       )}
 
       <div className={`${
-        currentPhase === 'trait-assessment' || currentPhase === 'background-assessment' 
-          ? '' 
+        currentPhase === 'trait-assessment' || currentPhase === 'background-assessment'
+          ? ''
           : 'container mx-auto px-4 relative z-10'
       }`}>
         <div className="text-center mb-6">
@@ -1453,8 +1534,8 @@ export default function TalentCompassAssessment() {
         {currentPhase === 'intro' && (
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-gray-600 mb-8">
-              Discover your unique path in technology consulting through our personalized assessment tool. 
-              Based on your core strengths and background, we'll identify your ideal learning track and 
+              Discover your unique path in technology consulting through our personalized assessment tool.
+              Based on your core strengths and background, we'll identify your ideal learning track and
               potential for tuition discounts of up to 90%.
             </p>
 
@@ -1508,8 +1589,8 @@ export default function TalentCompassAssessment() {
             <div className="flex justify-center">
               <div className="max-w-md">
                 <p className="text-sm text-gray-500 mb-4">
-                  The assessment takes approximately 5 minutes to complete and provides 
-                  immediate results. Your answers help us tailor a personalized learning 
+                  The assessment takes approximately 5 minutes to complete and provides
+                  immediate results. Your answers help us tailor a personalized learning
                   experience that maximizes your strengths.
                 </p>
               </div>
@@ -1536,7 +1617,7 @@ export default function TalentCompassAssessment() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div 
+              <div
                 className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
                 onClick={() => selectPath('career-switcher')}
               >
@@ -1549,7 +1630,7 @@ export default function TalentCompassAssessment() {
                 </p>
               </div>
 
-              <div 
+              <div
                 className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
                 onClick={() => selectPath('recent-graduate')}
               >
@@ -1562,7 +1643,7 @@ export default function TalentCompassAssessment() {
                 </p>
               </div>
 
-              <div 
+              <div
                 className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
                 onClick={() => selectPath('experienced')}
               >
@@ -1621,10 +1702,10 @@ export default function TalentCompassAssessment() {
                     Add Skill
                   </button>
                 </div>
-                
+
                 <div className="flex justify-between text-sm text-gray-500">
                   <span>
-                    {selectedSkills.length < 3 
+                    {selectedSkills.length < 3
                       ? `Add at least ${3 - selectedSkills.length} more skill${3 - selectedSkills.length !== 1 ? 's' : ''} to continue`
                       : `${selectedSkills.length} of 15 skills added`
                     }
@@ -1656,12 +1737,12 @@ export default function TalentCompassAssessment() {
                 </div>
               )}
 
-              
+
 
               {/* Skill Categories and Suggestions */}
               <div className="mb-6">
                 <h3 className="font-semibold mb-4">Browse by Category</h3>
-                
+
                 {/* Category Tabs */}
                 <div className="flex gap-2 mb-4 flex-wrap">
                   {skillCategories.map((category) => (
@@ -1748,9 +1829,9 @@ export default function TalentCompassAssessment() {
                   <div className="bg-white rounded-xl shadow-md p-6">
                     <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
                     <div className="flex justify-center mb-4">
-                      <canvas 
-                        ref={compassCanvas} 
-                        width="300" 
+                      <canvas
+                        ref={compassCanvas}
+                        width="300"
                         height="300"
                         className="max-w-full"
                       ></canvas>
@@ -1773,10 +1854,10 @@ export default function TalentCompassAssessment() {
                         </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
-                          style={{ 
-                            width: currentPhase === 'trait-assessment' 
+                        <div
+                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600"
+                          style={{
+                            width: currentPhase === 'trait-assessment'
                               ? `${((currentQuestionIndex + 1) / traitQuestions.length) * 100}%`
                               : `${(((currentQuestionIndex - traitQuestions.length) + 1) / backgroundQuestions.length) * 100}%`
                           }}
@@ -1830,9 +1911,9 @@ export default function TalentCompassAssessment() {
                 <div className="bg-white rounded-xl shadow-md p-6 mb-8">
                   <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
                   <div className="flex justify-center mb-4">
-                    <canvas 
-                      ref={compassCanvas} 
-                      width="400" 
+                    <canvas
+                      ref={compassCanvas}
+                      width="400"
                       height="400"
                       className="max-w-full"
                     ></canvas>
@@ -1867,16 +1948,16 @@ export default function TalentCompassAssessment() {
                     <div className="flex items-start">
                       <span className="text-white mr-2 mt-1">✨</span>
                       <p>
-                        Your unique combination of traits and background makes you eligible 
-                        for up to <strong>{userProfile.discountEligibility}% off your tuition</strong>. 
+                        Your unique combination of traits and background makes you eligible
+                        for up to <strong>{userProfile.discountEligibility}% off your tuition</strong>.
                         This discount will be applied automatically when you enroll in any of our programs.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex justify-end">
-                    <a 
-                      href="#enroll" 
+                    <a
+                      href="#enroll"
                       className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                     >
                       <span className="relative z-10 flex items-center justify-center">
@@ -1909,8 +1990,8 @@ export default function TalentCompassAssessment() {
                           {bestMatch.course.description}
                         </p>
                         <div className="flex justify-end">
-                          <a 
-                            href="#enroll" 
+                          <a
+                            href="#enroll"
                             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                           >
                             <span className="relative z-10 flex items-center justify-center">
@@ -1937,8 +2018,8 @@ export default function TalentCompassAssessment() {
                   </div>
 
                   <div className="flex justify-center pt-4 border-t border-gray-200">
-                    <a 
-                      href="#enroll" 
+                    <a
+                      href="#enroll"
                       className="text-blue-600 hover:text-blue-800 font-medium"
                     >
                       Schedule a Consultation
