@@ -1022,7 +1022,6 @@ export default function TalentCompassAssessment() {
   const proceedFromSkills = () => {
     if (selectedSkills.length >= 3) {
       setCurrentPhase('trait-assessment');
-      setCurrentQuestionIndex(0); // Start from first trait question
     }
   };
 
@@ -1696,7 +1695,22 @@ export default function TalentCompassAssessment() {
         )}
 
         {(currentPhase === 'trait-assessment' || currentPhase === 'background-assessment') && (
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex justify-between items-center mb-6">
+              <button
+                onClick={goBack}
+                className="flex items-center text-gray-600 hover:text-gray-800 transition"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </button>
+              <span className="text-sm text-gray-500">
+                {currentPhase === 'trait-assessment' ? 'Step 3 of 4' : 'Step 4 of 4'}
+              </span>
+            </div>
+
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
@@ -1708,17 +1722,16 @@ export default function TalentCompassAssessment() {
                 }
               </p>
             </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Left Panel - Compass visualization */}
-              <div ref={compassRef}>
-                <div className="bg-white rounded-xl shadow-md p-6 h-full">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Compass visualization */}
+              <div ref={compassRef} className="hidden lg:block">
+                <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
                   <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
                   <div className="flex justify-center mb-4">
                     <canvas 
                       ref={compassCanvas} 
-                      width="350" 
-                      height="350"
+                      width="400" 
+                      height="400"
                       className="max-w-full"
                     ></canvas>
                   </div>
@@ -1729,19 +1742,16 @@ export default function TalentCompassAssessment() {
                 </div>
               </div>
 
-              {/* Right Panel - Question section */}
-              <div>
-                <div className="bg-white rounded-xl shadow-md p-6 h-full">
+              {/* Question section */}
+              <div className="lg:col-span-2">
+                <div className="bg-white rounded-xl shadow-md p-8">
                   <div className="mb-6">
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-medium text-gray-500">
                         {currentPhase === 'trait-assessment' ? 'Trait Assessment' : 'Background Assessment'}
                       </span>
                       <span className="text-sm font-medium text-gray-500">
-                        Question {currentPhase === 'trait-assessment' 
-                          ? currentQuestionIndex + 1 
-                          : (currentQuestionIndex - traitQuestions.length) + 1
-                        } of {currentPhase === 'trait-assessment' ? traitQuestions.length : backgroundQuestions.length}
+                        Question {currentQuestionIndex + 1} of {allQuestions.length}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
@@ -1758,14 +1768,14 @@ export default function TalentCompassAssessment() {
 
                   {currentQuestion && (
                     <div>
-                      <h3 className="text-lg font-bold mb-6 text-gray-800">{currentQuestion.text}</h3>
+                      <h3 className="text-xl font-bold mb-6">{currentQuestion.text}</h3>
 
                       <div className="space-y-3">
                         {currentQuestion.options.map((option, index) => (
                           <button
                             key={index}
                             onClick={() => selectAnswer(index)}
-                            className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition text-gray-700"
+                            className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition"
                           >
                             {option.text}
                           </button>
