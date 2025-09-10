@@ -1710,6 +1710,18 @@ export default function TalentCompassAssessment() {
                 {currentPhase === 'trait-assessment' ? 'Step 3 of 4' : 'Step 4 of 4'}
               </span>
             </div>
+
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
+              </h2>
+              <p className="text-gray-600">
+                {currentPhase === 'trait-assessment' 
+                  ? "Let's discover your core strengths and natural talents through personalized questions."
+                  : "Now let's understand your background to match you with the perfect learning path."
+                }
+              </p>
+            </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Compass visualization */}
               <div ref={compassRef} className="hidden lg:block">
