@@ -1637,19 +1637,7 @@ export default function TalentCompassAssessment() {
                 </div>
               )}
 
-              {/* Progress indicator */}
-              <div className="mb-6">
-                <div className="flex justify-between text-sm text-gray-500 mb-2">
-                  <span>Progress</span>
-                  <span>{Math.min(selectedSkills.length, 3)}/3 minimum skills</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
-                    style={{ width: `${Math.min((selectedSkills.length / 3) * 100, 100)}%` }}
-                  ></div>
-                </div>
-              </div>
+              
 
               {/* Skill Categories and Suggestions */}
               <div className="mb-6">

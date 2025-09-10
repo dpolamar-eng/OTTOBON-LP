@@ -131,7 +131,6 @@ shared/
   - Duplicate prevention
 - **Visual Interface:** 
   - Skills displayed as removable tags/chips
-  - Progress tracking sidebar (desktop)
   - Grid layout matching assessment section height
   - Responsive design for all screen sizes
 
