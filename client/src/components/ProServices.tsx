@@ -690,7 +690,7 @@ export default function ProServices() {
             {/* Carousel Container */}
             <div className="relative">
               {/* Navigation Buttons */}
-              {filteredServices.length > 3 && (
+              {filteredServices.length >= 4 && (
                 <>
                   <button
                     onClick={() => scrollCards('left')}
@@ -716,14 +716,16 @@ export default function ProServices() {
               {/* Carousel Track */}
               <div 
                 ref={carouselRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4"
+                className={`flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4 ${
+                  filteredServices.length < 4 ? 'justify-center' : ''
+                }`}
                 style={{
                   scrollbarWidth: 'none',
                   msOverflowStyle: 'none',
                   WebkitScrollbar: { display: 'none' }
                 }}
               >
-                {/* Duplicate services for seamless loop if we have 4 or more */}
+                {/* Show services normally if less than 4, duplicate for loop if 4 or more */}
                 {(filteredServices.length >= 4 ? [...filteredServices, ...filteredServices] : filteredServices).map((service, index) => (
                   <div
                     key={`${service.id}-${index}`}
