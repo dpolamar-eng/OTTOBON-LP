@@ -459,15 +459,6 @@ export default function ProServices() {
         )}
       </header>
 
-        {/* Overlay */}
-        {mobileMenuOpen && (
-          <div 
-            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            onClick={closeMobileMenu}
-          ></div>
-        )}
-      </header>
-
       <style jsx>{`
         /* Simple left-to-right slide transition */
         @keyframes slideInFromRight {
