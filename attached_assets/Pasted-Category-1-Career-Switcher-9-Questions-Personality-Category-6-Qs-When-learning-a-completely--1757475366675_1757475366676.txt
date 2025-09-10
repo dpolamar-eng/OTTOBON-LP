@@ -1,0 +1,284 @@
+Category 1: Career Switcher (9 Questions)
+Personality & Category (6 Qs)
+
+When learning a completely new skill, you usually:
+
+Follow structured lessons carefully step by step
+
+Experiment with hands-on practice immediately
+
+Seek mentors or peers for guidance
+
+Research deeply before taking action
+
+Transitioning into a new career excites you because:
+
+It’s an ambitious challenge worth pursuing
+
+It offers opportunities to learn continuously
+
+It allows you to adapt and reinvent yourself
+
+It lets you work with diverse people and teams
+
+When faced with unfamiliar technology, you:
+
+Persist until you master it fully
+
+Break it into smaller parts to understand
+
+Look for practical applications to learn by doing
+
+Ask others how they solved similar issues
+
+The biggest strength you bring from your previous field is:
+
+Accountability and discipline
+
+Curiosity to explore new paths
+
+Adaptability in uncertain environments
+
+Emotional intelligence with people
+
+If you face self-doubt in your transition, you:
+
+Push through with determination
+
+Seek structured learning paths
+
+Experiment with smaller wins to build confidence
+
+Rely on peer/community encouragement
+
+To succeed in your new career, you value most:
+
+Clear milestones and accountability
+
+Opportunities to be innovative
+
+Flexibility in exploring different paths
+
+Collaboration and mentorship
+
+Course-Oriented (3 Qs)
+
+Which type of project excites you most?
+
+Designing user-friendly experiences with AI (AI in UI/UX)
+
+Creating campaigns with AI tools (AI in Marketing)
+
+Building intelligent assistants (AI Agent Dev)
+
+Organizing/labeling data for AI systems (AI Data Labeling)
+
+If you had to pick a learning style, you’d prefer:
+
+Visual and design-driven learning
+
+Business and communication-focused learning
+
+Technical and coding-heavy projects
+
+Structured data handling and accuracy
+
+In your new career, you’d like to:
+
+Make products more usable (UI/UX)
+
+Drive customer engagement (Marketing)
+
+Develop smart tools (Agent Development)
+
+Ensure AI systems have clean data (Data Labeling)
+
+🔹 Category 2: Recent Graduate (9 Questions)
+Personality & Category (6 Qs)
+
+As you start your career, you are most motivated by:
+
+Building ambitious projects
+
+Exploring and experimenting with new tech
+
+Adapting to industry trends quickly
+
+Working in supportive teams
+
+When faced with a challenge you’ve never seen before, you:
+
+Keep trying until you crack it
+
+Break it down into parts and test solutions
+
+Search forums/videos for approaches
+
+Ask peers or mentors for advice
+
+As a student-turned-professional, you want to focus on:
+
+Accountability and results
+
+Creativity and innovation
+
+Flexibility and adaptability
+
+Collaboration and communication
+
+Your preferred way of learning outside academics is:
+
+Online courses/certifications
+
+Building personal projects
+
+Joining communities/events
+
+Reading technical articles
+
+In your first professional project, you’d like to be known for:
+
+Delivering on time with discipline
+
+Bringing fresh creative ideas
+
+Quickly adapting to new tech stacks
+
+Supporting teammates and clients well
+
+To feel successful early in your career, you’d want:
+
+A strong track record of achievements
+
+Space to explore new technologies
+
+Opportunities to work across multiple roles
+
+Recognition for teamwork
+
+Course-Oriented (3 Qs)
+
+If you had to pick a role right after graduation, you’d choose:
+
+Designing smart, user-friendly interfaces (UI/UX)
+
+Supporting marketing teams with AI tools
+
+Developing AI-driven agents
+
+Handling AI datasets
+
+What excites you most about AI?
+
+Enhancing human experiences
+
+Optimizing business growth
+
+Creating intelligent tools
+
+Structuring and cleaning information
+
+As a graduate, your ideal first project would involve:
+
+Improving product usability (UI/UX)
+
+Supporting a brand launch with AI (Marketing)
+
+Coding a chatbot (Agent Development)
+
+Preparing datasets for AI training (Data Labeling)
+
+🔹 Category 3: Experienced Professional (9 Questions)
+Personality & Category (6 Qs)
+
+At this stage of your career, you value most:
+
+Taking on ambitious leadership challenges
+
+Continuously learning emerging technologies
+
+Adapting expertise across industries
+
+Mentoring and collaborating
+
+When managing complex projects, your approach is:
+
+Accountability—ensure deadlines are met
+
+Innovation—find smarter methods
+
+Flexibility—adjust plans as needed
+
+Empathy—understand team needs
+
+The biggest driver for your career growth is:
+
+Achieving ambitious outcomes
+
+Exploring cutting-edge solutions
+
+Remaining versatile in changing markets
+
+Building strong networks
+
+When reskilling into new domains, you prefer:
+
+Structured, outcome-driven learning
+
+Experimental, hands-on exploration
+
+Flexible, adaptive approaches
+
+Peer-driven collaborations
+
+If a team is stuck, your likely action is:
+
+Step in with direct accountability
+
+Propose innovative alternatives
+
+Adjust timelines/methods
+
+Motivate with empathy
+
+In upgrading your skills, you prioritize:
+
+Practical impact and results
+
+Exposure to new fields
+
+Transferability across industries
+
+Building influence and leadership
+
+Course-Oriented (3 Qs)
+
+Which AI-driven skill would enhance your current expertise?
+
+Designing next-gen experiences (UI/UX)
+
+Scaling customer impact (Marketing)
+
+Building automation tools (Agent Development)
+
+Managing reliable datasets (Data Labeling)
+
+If you reskill, you’d like your learning to directly impact:
+
+End-user experience (UI/UX)
+
+Business strategy (Marketing)
+
+Technical innovation (Agent Development)
+
+Data reliability (Data Labeling)
+
+As an experienced professional, you’d prefer a course that:
+
+Helps you innovate in design thinking (UI/UX)
+
+Boosts your influence in business growth (Marketing)
+
+Strengthens your technical authority (Agent Dev)
+
+Improves your accuracy in data management (Labeling)
