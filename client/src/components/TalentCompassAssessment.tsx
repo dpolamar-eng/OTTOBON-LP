@@ -245,246 +245,701 @@ export default function TalentCompassAssessment() {
     }
   ];
 
-  // Define questions for the trait assessment
-  const traitQuestions: Question[] = [
-    {
-      id: 1,
-      text: "When faced with a complex technological problem, you typically:",
-      options: [
-        {
-          text: "Persist until you solve it completely, even if it takes extra time",
-          traits: { ambition: 2, accountability: 1, learnability: 1 }
-        },
-        {
-          text: "Break it down into smaller parts and solve systematically",
-          traits: { adaptability: 1, accountability: 2, learnability: 1 }
-        },
-        {
-          text: "Research multiple solutions and test different approaches",
-          traits: { curiosity: 2, learnability: 2, adaptability: 1 }
-        },
-        {
-          text: "Collaborate with others to gain different perspectives",
-          traits: { emotionalIntelligence: 2, adaptability: 1, integrity: 1 }
-        }
-      ],
-      type: 'trait'
-    },
-    {
-      id: 2,
-      text: "When learning a new technology or framework, you:",
-      options: [
-        {
-          text: "Follow tutorials meticulously, step by step",
-          traits: { accountability: 2, integrity: 1, learnability: 1 }
-        },
-        {
-          text: "Experiment by building your own small projects",
-          traits: { curiosity: 2, learnability: 2, ambition: 1 }
-        },
-        {
-          text: "Join communities to learn from others' approaches",
-          traits: { emotionalIntelligence: 1, adaptability: 1, learnability: 2 }
-        },
-        {
-          text: "Study the documentation comprehensively before starting",
-          traits: { integrity: 1, accountability: 1, learnability: 2 }
-        }
-      ],
-      type: 'trait'
-    },
-    {
-      id: 3,
-      text: "When a deadline for a project is approaching, but you discover it needs significant changes, you:",
-      options: [
-        {
-          text: "Immediately communicate the issue and propose solutions",
-          traits: { integrity: 2, accountability: 2, emotionalIntelligence: 1 }
-        },
-        {
-          text: "Work extra hours to ensure the deliverable meets requirements",
-          traits: { ambition: 2, accountability: 2 }
-        },
-        {
-          text: "Quickly adapt your approach to prioritize essential features",
-          traits: { adaptability: 2, learnability: 1, accountability: 1 }
-        },
-        {
-          text: "Look for creative workarounds to meet the core requirements",
-          traits: { curiosity: 2, adaptability: 2, learnability: 1 }
-        }
-      ],
-      type: 'trait'
-    },
-    {
-      id: 4,
-      text: "When you notice a teammate is struggling with their tasks, you:",
-      options: [
-        {
-          text: "Offer to help them directly with their tasks",
-          traits: { emotionalIntelligence: 2, integrity: 1, accountability: 1 }
-        },
-        {
-          text: "Share resources that could help them overcome obstacles",
-          traits: { learnability: 1, emotionalIntelligence: 1, curiosity: 1 }
-        },
-        {
-          text: "Suggest they speak with the team leader for guidance",
-          traits: { integrity: 1, accountability: 1 }
-        },
-        {
-          text: "Ask questions to better understand their challenges",
-          traits: { emotionalIntelligence: 2, curiosity: 2, adaptability: 1 }
-        }
-      ],
-      type: 'trait'
-    },
-    {
-      id: 5,
-      text: "Your preferred approach to staying current with industry developments is:",
-      options: [
-        {
-          text: "Following structured online courses and certifications",
-          traits: { learnability: 2, accountability: 1, integrity: 1 }
-        },
-        {
-          text: "Regularly experimenting with new technologies in side projects",
-          traits: { curiosity: 2, ambition: 2, adaptability: 1 }
-        },
-        {
-          text: "Participating in communities, forums, and tech discussions",
-          traits: { emotionalIntelligence: 1, curiosity: 1, learnability: 1 }
-        },
-        {
-          text: "Reading documentation, research papers, and technical blogs",
-          traits: { learnability: 2, curiosity: 2, integrity: 1 }
-        }
-      ],
-      type: 'trait'
-    }
-  ];
+  // Define category-specific questions
+  const getQuestionsForPath = (path: 'career-switcher' | 'recent-graduate' | 'experienced'): Question[] => {
+    const careerSwitcherQuestions: Question[] = [
+      // Personality & Category Questions (6)
+      {
+        id: 1,
+        text: "When learning a completely new skill, you usually:",
+        options: [
+          {
+            text: "Follow structured lessons carefully step by step",
+            traits: { accountability: 2, integrity: 1, learnability: 1 }
+          },
+          {
+            text: "Experiment with hands-on practice immediately",
+            traits: { curiosity: 2, adaptability: 1, ambition: 1 }
+          },
+          {
+            text: "Seek mentors or peers for guidance",
+            traits: { emotionalIntelligence: 2, learnability: 1, adaptability: 1 }
+          },
+          {
+            text: "Research deeply before taking action",
+            traits: { learnability: 2, curiosity: 1, integrity: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 2,
+        text: "Transitioning into a new career excites you because:",
+        options: [
+          {
+            text: "It's an ambitious challenge worth pursuing",
+            traits: { ambition: 2, accountability: 1, learnability: 1 }
+          },
+          {
+            text: "It offers opportunities to learn continuously",
+            traits: { learnability: 2, curiosity: 2, adaptability: 1 }
+          },
+          {
+            text: "It allows you to adapt and reinvent yourself",
+            traits: { adaptability: 2, ambition: 1, curiosity: 1 }
+          },
+          {
+            text: "It lets you work with diverse people and teams",
+            traits: { emotionalIntelligence: 2, adaptability: 1, integrity: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 3,
+        text: "When faced with unfamiliar technology, you:",
+        options: [
+          {
+            text: "Persist until you master it fully",
+            traits: { ambition: 2, accountability: 2, learnability: 1 }
+          },
+          {
+            text: "Break it into smaller parts to understand",
+            traits: { adaptability: 2, accountability: 1, learnability: 1 }
+          },
+          {
+            text: "Look for practical applications to learn by doing",
+            traits: { curiosity: 2, adaptability: 1, learnability: 1 }
+          },
+          {
+            text: "Ask others how they solved similar issues",
+            traits: { emotionalIntelligence: 2, learnability: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 4,
+        text: "The biggest strength you bring from your previous field is:",
+        options: [
+          {
+            text: "Accountability and discipline",
+            traits: { accountability: 2, integrity: 1, ambition: 1 }
+          },
+          {
+            text: "Curiosity to explore new paths",
+            traits: { curiosity: 2, learnability: 2, adaptability: 1 }
+          },
+          {
+            text: "Adaptability in uncertain environments",
+            traits: { adaptability: 2, learnability: 1, emotionalIntelligence: 1 }
+          },
+          {
+            text: "Emotional intelligence with people",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 5,
+        text: "If you face self-doubt in your transition, you:",
+        options: [
+          {
+            text: "Push through with determination",
+            traits: { ambition: 2, accountability: 1, integrity: 1 }
+          },
+          {
+            text: "Seek structured learning paths",
+            traits: { learnability: 2, accountability: 1, integrity: 1 }
+          },
+          {
+            text: "Experiment with smaller wins to build confidence",
+            traits: { adaptability: 2, curiosity: 1, learnability: 1 }
+          },
+          {
+            text: "Rely on peer/community encouragement",
+            traits: { emotionalIntelligence: 2, adaptability: 1, learnability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 6,
+        text: "To succeed in your new career, you value most:",
+        options: [
+          {
+            text: "Clear milestones and accountability",
+            traits: { accountability: 2, ambition: 1, integrity: 1 }
+          },
+          {
+            text: "Opportunities to be innovative",
+            traits: { curiosity: 2, learnability: 1, ambition: 1 }
+          },
+          {
+            text: "Flexibility in exploring different paths",
+            traits: { adaptability: 2, curiosity: 1, learnability: 1 }
+          },
+          {
+            text: "Collaboration and mentorship",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      // Course-Oriented Questions (3)
+      {
+        id: 7,
+        text: "Which type of project excites you most?",
+        options: [
+          {
+            text: "Designing user-friendly experiences with AI (AI in UI/UX)",
+            traits: { curiosity: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { coursePreference: 'ai-uiux' }
+          },
+          {
+            text: "Creating campaigns with AI tools (AI in Marketing)",
+            traits: { adaptability: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { coursePreference: 'ai-marketing' }
+          },
+          {
+            text: "Building intelligent assistants (AI Agent Dev)",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { coursePreference: 'ai-agent-development' }
+          },
+          {
+            text: "Organizing/labeling data for AI systems (AI Data Labeling)",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { coursePreference: 'ai-data-labeling' }
+          }
+        ],
+        type: 'background'
+      },
+      {
+        id: 8,
+        text: "If you had to pick a learning style, you'd prefer:",
+        options: [
+          {
+            text: "Visual and design-driven learning",
+            traits: { curiosity: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { learningStyle: 'visual' }
+          },
+          {
+            text: "Business and communication-focused learning",
+            traits: { emotionalIntelligence: 1, adaptability: 1 },
+            backgroundFactors: { learningStyle: 'business' }
+          },
+          {
+            text: "Technical and coding-heavy projects",
+            traits: { learnability: 1, curiosity: 1 },
+            backgroundFactors: { learningStyle: 'technical' }
+          },
+          {
+            text: "Structured data handling and accuracy",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { learningStyle: 'structured' }
+          }
+        ],
+        type: 'background'
+      },
+      {
+        id: 9,
+        text: "In your new career, you'd like to:",
+        options: [
+          {
+            text: "Make products more usable (UI/UX)",
+            traits: { emotionalIntelligence: 1, curiosity: 1 },
+            backgroundFactors: { careerGoal: 'usability' }
+          },
+          {
+            text: "Drive customer engagement (Marketing)",
+            traits: { emotionalIntelligence: 1, adaptability: 1 },
+            backgroundFactors: { careerGoal: 'engagement' }
+          },
+          {
+            text: "Develop smart tools (Agent Development)",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { careerGoal: 'development' }
+          },
+          {
+            text: "Ensure AI systems have clean data (Data Labeling)",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { careerGoal: 'data-quality' }
+          }
+        ],
+        type: 'background'
+      }
+    ];
 
-  // Define questions for the background assessment
-  const backgroundQuestions: Question[] = [
-    {
-      id: 6,
-      text: "What is your highest level of formal education?",
-      options: [
-        {
-          text: "High school or equivalent",
-          traits: {},
-          backgroundFactors: { education: 1 }
-        },
-        {
-          text: "Associate degree or some college",
-          traits: {},
-          backgroundFactors: { education: 2 }
-        },
-        {
-          text: "Bachelor's degree",
-          traits: {},
-          backgroundFactors: { education: 3 }
-        },
-        {
-          text: "Master's degree or higher",
-          traits: {},
-          backgroundFactors: { education: 4 }
-        }
-      ],
-      type: 'background',
-      category: 'education'
-    },
-    {
-      id: 7,
-      text: "How many programming languages are you proficient in?",
-      options: [
-        {
-          text: "None yet",
-          traits: {},
-          backgroundFactors: { languages: 0 }
-        },
-        {
-          text: "1 language",
-          traits: {},
-          backgroundFactors: { languages: 1 }
-        },
-        {
-          text: "2-3 languages",
-          traits: {},
-          backgroundFactors: { languages: 2 }
-        },
-        {
-          text: "4+ languages",
-          traits: {},
-          backgroundFactors: { languages: 3 }
-        }
-      ],
-      type: 'background',
-      category: 'technical'
-    },
-    {
-      id: 8,
-      text: "How many years of professional experience do you have in technology or related fields?",
-      options: [
-        {
-          text: "No professional experience yet",
-          traits: {},
-          backgroundFactors: { yearsExperience: 0 }
-        },
-        {
-          text: "Less than 2 years",
-          traits: {},
-          backgroundFactors: { yearsExperience: 1 }
-        },
-        {
-          text: "2-5 years",
-          traits: {},
-          backgroundFactors: { yearsExperience: 2 }
-        },
-        {
-          text: "More than 5 years",
-          traits: {},
-          backgroundFactors: { yearsExperience: 3 }
-        }
-      ],
-      type: 'background',
-      category: 'experience'
-    },
-    {
-      id: 9,
-      text: "How many relevant projects have you completed (personal, educational, or professional)?",
-      options: [
-        {
-          text: "No projects yet",
-          traits: {},
-          backgroundFactors: { relevantProjects: 0 }
-        },
-        {
-          text: "1-2 projects",
-          traits: {},
-          backgroundFactors: { relevantProjects: 1 }
-        },
-        {
-          text: "3-5 projects",
-          traits: {},
-          backgroundFactors: { relevantProjects: 2 }
-        },
-        {
-          text: "More than 5 projects",
-          traits: {},
-          backgroundFactors: { relevantProjects: 3 }
-        }
-      ],
-      type: 'background',
-      category: 'experience'
-    }
-  ];
+    const recentGraduateQuestions: Question[] = [
+      // Personality & Category Questions (6)
+      {
+        id: 1,
+        text: "As you start your career, you are most motivated by:",
+        options: [
+          {
+            text: "Building ambitious projects",
+            traits: { ambition: 2, accountability: 1, learnability: 1 }
+          },
+          {
+            text: "Exploring and experimenting with new tech",
+            traits: { curiosity: 2, learnability: 2, adaptability: 1 }
+          },
+          {
+            text: "Adapting to industry trends quickly",
+            traits: { adaptability: 2, learnability: 1, curiosity: 1 }
+          },
+          {
+            text: "Working in supportive teams",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 2,
+        text: "When faced with a challenge you've never seen before, you:",
+        options: [
+          {
+            text: "Keep trying until you crack it",
+            traits: { ambition: 2, accountability: 1, learnability: 1 }
+          },
+          {
+            text: "Break it down into parts and test solutions",
+            traits: { adaptability: 2, accountability: 1, learnability: 1 }
+          },
+          {
+            text: "Search forums/videos for approaches",
+            traits: { curiosity: 2, learnability: 1, adaptability: 1 }
+          },
+          {
+            text: "Ask peers or mentors for advice",
+            traits: { emotionalIntelligence: 2, learnability: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 3,
+        text: "As a student-turned-professional, you want to focus on:",
+        options: [
+          {
+            text: "Accountability and results",
+            traits: { accountability: 2, ambition: 1, integrity: 1 }
+          },
+          {
+            text: "Creativity and innovation",
+            traits: { curiosity: 2, learnability: 1, adaptability: 1 }
+          },
+          {
+            text: "Flexibility and adaptability",
+            traits: { adaptability: 2, learnability: 1, curiosity: 1 }
+          },
+          {
+            text: "Collaboration and communication",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 4,
+        text: "Your preferred way of learning outside academics is:",
+        options: [
+          {
+            text: "Online courses/certifications",
+            traits: { learnability: 2, accountability: 1, integrity: 1 }
+          },
+          {
+            text: "Building personal projects",
+            traits: { curiosity: 2, ambition: 1, learnability: 1 }
+          },
+          {
+            text: "Joining communities/events",
+            traits: { emotionalIntelligence: 2, adaptability: 1, learnability: 1 }
+          },
+          {
+            text: "Reading technical articles",
+            traits: { learnability: 2, curiosity: 1, integrity: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 5,
+        text: "In your first professional project, you'd like to be known for:",
+        options: [
+          {
+            text: "Delivering on time with discipline",
+            traits: { accountability: 2, integrity: 1, ambition: 1 }
+          },
+          {
+            text: "Bringing fresh creative ideas",
+            traits: { curiosity: 2, learnability: 1, adaptability: 1 }
+          },
+          {
+            text: "Quickly adapting to new tech stacks",
+            traits: { adaptability: 2, learnability: 2, curiosity: 1 }
+          },
+          {
+            text: "Supporting teammates and clients well",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 6,
+        text: "To feel successful early in your career, you'd want:",
+        options: [
+          {
+            text: "A strong track record of achievements",
+            traits: { ambition: 2, accountability: 1, integrity: 1 }
+          },
+          {
+            text: "Space to explore new technologies",
+            traits: { curiosity: 2, learnability: 2, adaptability: 1 }
+          },
+          {
+            text: "Opportunities to work across multiple roles",
+            traits: { adaptability: 2, learnability: 1, curiosity: 1 }
+          },
+          {
+            text: "Recognition for teamwork",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      // Course-Oriented Questions (3)
+      {
+        id: 7,
+        text: "If you had to pick a role right after graduation, you'd choose:",
+        options: [
+          {
+            text: "Designing smart, user-friendly interfaces (UI/UX)",
+            traits: { curiosity: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { coursePreference: 'ai-uiux' }
+          },
+          {
+            text: "Supporting marketing teams with AI tools",
+            traits: { adaptability: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { coursePreference: 'ai-marketing' }
+          },
+          {
+            text: "Developing AI-driven agents",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { coursePreference: 'ai-agent-development' }
+          },
+          {
+            text: "Handling AI datasets",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { coursePreference: 'ai-data-labeling' }
+          }
+        ],
+        type: 'background'
+      },
+      {
+        id: 8,
+        text: "What excites you most about AI?",
+        options: [
+          {
+            text: "Enhancing human experiences",
+            traits: { emotionalIntelligence: 1, curiosity: 1 },
+            backgroundFactors: { aiInterest: 'human-enhancement' }
+          },
+          {
+            text: "Optimizing business growth",
+            traits: { ambition: 1, adaptability: 1 },
+            backgroundFactors: { aiInterest: 'business-optimization' }
+          },
+          {
+            text: "Creating intelligent tools",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { aiInterest: 'tool-creation' }
+          },
+          {
+            text: "Structuring and cleaning information",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { aiInterest: 'data-structuring' }
+          }
+        ],
+        type: 'background'
+      },
+      {
+        id: 9,
+        text: "As a graduate, your ideal first project would involve:",
+        options: [
+          {
+            text: "Improving product usability (UI/UX)",
+            traits: { emotionalIntelligence: 1, curiosity: 1 },
+            backgroundFactors: { projectPreference: 'usability' }
+          },
+          {
+            text: "Supporting a brand launch with AI (Marketing)",
+            traits: { adaptability: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { projectPreference: 'brand-launch' }
+          },
+          {
+            text: "Coding a chatbot (Agent Development)",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { projectPreference: 'chatbot' }
+          },
+          {
+            text: "Preparing datasets for AI training (Data Labeling)",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { projectPreference: 'dataset-prep' }
+          }
+        ],
+        type: 'background'
+      }
+    ];
 
-  // Combined questions list
-  const allQuestions = [...traitQuestions, ...backgroundQuestions];
+    const experiencedProfessionalQuestions: Question[] = [
+      // Personality & Category Questions (6)
+      {
+        id: 1,
+        text: "At this stage of your career, you value most:",
+        options: [
+          {
+            text: "Taking on ambitious leadership challenges",
+            traits: { ambition: 2, accountability: 1, emotionalIntelligence: 1 }
+          },
+          {
+            text: "Continuously learning emerging technologies",
+            traits: { learnability: 2, curiosity: 2, adaptability: 1 }
+          },
+          {
+            text: "Adapting expertise across industries",
+            traits: { adaptability: 2, learnability: 1, curiosity: 1 }
+          },
+          {
+            text: "Mentoring and collaborating",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 2,
+        text: "When managing complex projects, your approach is:",
+        options: [
+          {
+            text: "Accountability—ensure deadlines are met",
+            traits: { accountability: 2, ambition: 1, integrity: 1 }
+          },
+          {
+            text: "Innovation—find smarter methods",
+            traits: { curiosity: 2, learnability: 1, adaptability: 1 }
+          },
+          {
+            text: "Flexibility—adjust plans as needed",
+            traits: { adaptability: 2, emotionalIntelligence: 1, learnability: 1 }
+          },
+          {
+            text: "Empathy—understand team needs",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 3,
+        text: "The biggest driver for your career growth is:",
+        options: [
+          {
+            text: "Achieving ambitious outcomes",
+            traits: { ambition: 2, accountability: 1, learnability: 1 }
+          },
+          {
+            text: "Exploring cutting-edge solutions",
+            traits: { curiosity: 2, learnability: 2, adaptability: 1 }
+          },
+          {
+            text: "Remaining versatile in changing markets",
+            traits: { adaptability: 2, learnability: 1, curiosity: 1 }
+          },
+          {
+            text: "Building strong networks",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 4,
+        text: "When reskilling into new domains, you prefer:",
+        options: [
+          {
+            text: "Structured, outcome-driven learning",
+            traits: { accountability: 2, learnability: 1, integrity: 1 }
+          },
+          {
+            text: "Experimental, hands-on exploration",
+            traits: { curiosity: 2, adaptability: 1, learnability: 1 }
+          },
+          {
+            text: "Flexible, adaptive approaches",
+            traits: { adaptability: 2, learnability: 1, curiosity: 1 }
+          },
+          {
+            text: "Peer-driven collaborations",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 5,
+        text: "If a team is stuck, your likely action is:",
+        options: [
+          {
+            text: "Step in with direct accountability",
+            traits: { accountability: 2, ambition: 1, integrity: 1 }
+          },
+          {
+            text: "Propose innovative alternatives",
+            traits: { curiosity: 2, learnability: 1, adaptability: 1 }
+          },
+          {
+            text: "Adjust timelines/methods",
+            traits: { adaptability: 2, emotionalIntelligence: 1, learnability: 1 }
+          },
+          {
+            text: "Motivate with empathy",
+            traits: { emotionalIntelligence: 2, integrity: 1, adaptability: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      {
+        id: 6,
+        text: "In upgrading your skills, you prioritize:",
+        options: [
+          {
+            text: "Practical impact and results",
+            traits: { accountability: 2, ambition: 1, integrity: 1 }
+          },
+          {
+            text: "Exposure to new fields",
+            traits: { curiosity: 2, learnability: 2, adaptability: 1 }
+          },
+          {
+            text: "Transferability across industries",
+            traits: { adaptability: 2, learnability: 1, curiosity: 1 }
+          },
+          {
+            text: "Building influence and leadership",
+            traits: { emotionalIntelligence: 2, ambition: 1, integrity: 1 }
+          }
+        ],
+        type: 'trait'
+      },
+      // Course-Oriented Questions (3)
+      {
+        id: 7,
+        text: "Which AI-driven skill would enhance your current expertise?",
+        options: [
+          {
+            text: "Designing next-gen experiences (UI/UX)",
+            traits: { curiosity: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { coursePreference: 'ai-uiux' }
+          },
+          {
+            text: "Scaling customer impact (Marketing)",
+            traits: { ambition: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { coursePreference: 'ai-marketing' }
+          },
+          {
+            text: "Building automation tools (Agent Development)",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { coursePreference: 'ai-agent-development' }
+          },
+          {
+            text: "Managing reliable datasets (Data Labeling)",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { coursePreference: 'ai-data-labeling' }
+          }
+        ],
+        type: 'background'
+      },
+      {
+        id: 8,
+        text: "If you reskill, you'd like your learning to directly impact:",
+        options: [
+          {
+            text: "End-user experience (UI/UX)",
+            traits: { emotionalIntelligence: 1, curiosity: 1 },
+            backgroundFactors: { impactArea: 'user-experience' }
+          },
+          {
+            text: "Business strategy (Marketing)",
+            traits: { ambition: 1, adaptability: 1 },
+            backgroundFactors: { impactArea: 'business-strategy' }
+          },
+          {
+            text: "Technical innovation (Agent Development)",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { impactArea: 'technical-innovation' }
+          },
+          {
+            text: "Data reliability (Data Labeling)",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { impactArea: 'data-reliability' }
+          }
+        ],
+        type: 'background'
+      },
+      {
+        id: 9,
+        text: "As an experienced professional, you'd prefer a course that:",
+        options: [
+          {
+            text: "Helps you innovate in design thinking (UI/UX)",
+            traits: { curiosity: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { courseStyle: 'design-innovation' }
+          },
+          {
+            text: "Boosts your influence in business growth (Marketing)",
+            traits: { ambition: 1, emotionalIntelligence: 1 },
+            backgroundFactors: { courseStyle: 'business-influence' }
+          },
+          {
+            text: "Strengthens your technical authority (Agent Dev)",
+            traits: { curiosity: 1, learnability: 1 },
+            backgroundFactors: { courseStyle: 'technical-authority' }
+          },
+          {
+            text: "Improves your accuracy in data management (Labeling)",
+            traits: { accountability: 1, integrity: 1 },
+            backgroundFactors: { courseStyle: 'data-accuracy' }
+          }
+        ],
+        type: 'background'
+      }
+    ];
+
+    switch (path) {
+      case 'career-switcher':
+        return careerSwitcherQuestions;
+      case 'recent-graduate':
+        return recentGraduateQuestions;
+      case 'experienced':
+        return experiencedProfessionalQuestions;
+      default:
+        return careerSwitcherQuestions;
+    }
+  };
+
+  // Get questions based on current user path
+  const allQuestions = getQuestionsForPath(userProfile.currentPath);
 
   // Get current question
   const currentQuestion = allQuestions[currentQuestionIndex];
+
+  // Split questions into trait and background for UI purposes
+  const traitQuestions = allQuestions.filter(q => q.type === 'trait');
+  const backgroundQuestions = allQuestions.filter(q => q.type === 'background');
 
   // Handle path selection
   const selectPath = (path: 'career-switcher' | 'recent-graduate' | 'experienced') => {
