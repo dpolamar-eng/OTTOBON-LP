@@ -21,7 +21,7 @@ const categories: CategoryInfo[] = [
   },
   {
     id: 'OOps Agent',
-    title: 'OOps Agent',
+    title: 'Enterprise Enablement',
     description: '',
     icon: '🤖'
   },
