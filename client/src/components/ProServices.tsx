@@ -201,17 +201,16 @@ export default function ProServices() {
     },
     {
       id: 'parenthood-journey',
-      title: 'Journey to Parenthood',
-      icon: '👶',
+      title: 'Health Tech Solutions',
+      icon: '🏥',
       iconBg: 'bg-teal-500',
       color: 'from-teal-600 to-emerald-600',
-      description: 'Comprehensive support for your path to becoming parents',
-      details: "End-to-end guidance and support throughout your parenthood journey, from conception planning to early pregnancy care, powered by AI insights and expert medical advice.",
+      description: 'Innovative technology support for smarter healthcare delivery',
+      details: "Health Tech Solutions provides advanced technology-driven healthcare support, helping organizations and individuals optimize care, streamline operations, and improve patient outcomes. With AI-powered insights, data-driven tools, and digital health innovations, we enable smarter decision-making in the healthcare ecosystem.",
       features: [
-        'Preconception health optimization and planning',
-        'Early pregnancy monitoring and milestone tracking',
-        'Personalized care plans based on medical history',
-        'Integration with healthcare providers and specialists'
+        'AI-powered health analytics and predictive insights',
+        'Digital tools for patient engagement and monitoring',
+        'Customized technology solutions for healthcare providers and organizations'
       ],
       image: 'https://images.unsplash.com/photo-1695313486168-30b4d2183d1b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       category: 'Health Care' as ServiceCategory
