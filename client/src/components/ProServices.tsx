@@ -494,6 +494,15 @@ export default function ProServices() {
           position: relative;
           overflow: hidden;
         }
+
+        /* Hide scrollbars */
+        .scrollbar-hide {
+          -ms-overflow-style: none;  /* Internet Explorer 10+ */
+          scrollbar-width: none;  /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar { 
+          display: none;  /* Safari and Chrome */
+        }
       `}</style>
 
       <main className="pt-24 pb-16">
@@ -675,105 +684,145 @@ export default function ProServices() {
             </div>
           </div>
 
-          {/* Services Section - Clean Grid Layout */}
+          {/* Services Section - Horizontal Sliding Carousel */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
-
-            {/* Service Cards - Grid Layout */}
-            <div className={`grid ${
-              filteredServices.length === 1 
-                ? 'grid-cols-1 justify-items-center gap-6' 
-                : filteredServices.length === 2 
-                  ? 'grid-cols-1 md:grid-cols-2 justify-items-center gap-6 md:gap-8 max-w-5xl mx-auto' 
-                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-            }`}>
-              {filteredServices.map((service) => (
-                <div
-                  key={service.id}
-                  className={`group h-full ${
-                    filteredServices.length <= 2 ? 'max-w-md w-full' : ''
-                  }`}
-                >
-                  {/* Simple card with clean design */}
-                  <div 
-                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer h-full flex flex-col"
-                    onClick={() => toggleCard(service.id)}
+            
+            {/* Carousel Container */}
+            <div className="relative">
+              {/* Navigation Buttons */}
+              {filteredServices.length > 3 && (
+                <>
+                  <button
+                    onClick={() => scrollCards('left')}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                    aria-label="Scroll left"
                   >
-                    {/* Header with image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => scrollCards('right')}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                    aria-label="Scroll right"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </>
+              )}
 
-                      {/* Expand button - only show on mobile */}
-                      <div className="absolute bottom-4 right-4 md:hidden">
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleCard(service.id);
-                          }}
-                          className="bg-white/10 backdrop-blur-sm hover:bg-white/20 p-2 rounded-full transition-colors"
-                        >
-                          <svg 
-                            className={`w-5 h-5 text-white transition-transform duration-300 ${
-                              expandedCards[service.id] ? 'rotate-180' : ''
-                            }`} 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
+              {/* Carousel Track */}
+              <div 
+                ref={carouselRef}
+                className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4"
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                  WebkitScrollbar: { display: 'none' }
+                }}
+              >
+                {/* Duplicate services for seamless loop if we have 4 or more */}
+                {(filteredServices.length >= 4 ? [...filteredServices, ...filteredServices] : filteredServices).map((service, index) => (
+                  <div
+                    key={`${service.id}-${index}`}
+                    className="group min-w-[320px] max-w-[320px] snap-start flex-shrink-0"
+                  >
+                    {/* Simple card with clean design */}
+                    <div 
+                      className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer h-full flex flex-col"
+                      onClick={() => toggleCard(service.id)}
+                    >
+                      {/* Header with image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+
+                        {/* Expand button - only show on mobile */}
+                        <div className="absolute bottom-4 right-4 md:hidden">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleCard(service.id);
+                            }}
+                            className="bg-white/10 backdrop-blur-sm hover:bg-white/20 p-2 rounded-full transition-colors"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                          </svg>
-                        </button>
-                      </div>
+                            <svg 
+                              className={`w-5 h-5 text-white transition-transform duration-300 ${
+                                expandedCards[service.id] ? 'rotate-180' : ''
+                              }`} 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </button>
+                        </div>
 
-                      {/* Desktop click indicator */}
-                      <div className="hidden md:block absolute bottom-4 right-4">
-                        <div className="bg-white/10 backdrop-blur-sm p-2 rounded-full">
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                          </svg>
+                        {/* Desktop click indicator */}
+                        <div className="hidden md:block absolute bottom-4 right-4">
+                          <div className="bg-white/10 backdrop-blur-sm p-2 rounded-full">
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Content */}
-                    <div className="p-6 flex flex-col flex-1">
-                      <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
-                      <p className="text-gray-300 mb-4 flex-1">{service.description}</p>
+                      {/* Content */}
+                      <div className="p-6 flex flex-col flex-1">
+                        <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
+                        <p className="text-gray-300 mb-4 flex-1">{service.description}</p>
 
-                      {/* Desktop hover indicator */}
-                      <div className="hidden md:block text-center text-sm text-gray-400 mt-auto">
-                        Click to view details
-                      </div>
+                        {/* Desktop hover indicator */}
+                        <div className="hidden md:block text-center text-sm text-gray-400 mt-auto">
+                          Click to view details
+                        </div>
 
-                      {/* Expanded details - only on mobile */}
-                      <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-                        expandedCards[service.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                      }`}>
-                        <div className="pt-4 border-t border-gray-700/50">
-                          <p className="text-gray-400 text-sm mb-4">{service.details}</p>
+                        {/* Expanded details - only on mobile */}
+                        <div className={`md:hidden overflow-hidden transition-all duration-300 ${
+                          expandedCards[service.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        }`}>
+                          <div className="pt-4 border-t border-gray-700/50">
+                            <p className="text-gray-400 text-sm mb-4">{service.details}</p>
 
-                          <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
-                          <ul className="space-y-2">
-                            {service.features.map((feature, i) => (
-                              <li key={i} className="flex items-start text-sm">
-                                <svg className="w-4 h-4 text-indigo-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span className="text-gray-300">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
+                            <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
+                            <ul className="space-y-2">
+                              {service.features.map((feature, i) => (
+                                <li key={i} className="flex items-start text-sm">
+                                  <svg className="w-4 h-4 text-indigo-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                                  </svg>
+                                  <span className="text-gray-300">{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Scroll Indicators for smaller screens */}
+              {filteredServices.length > 1 && (
+                <div className="flex justify-center mt-4 gap-2 md:hidden">
+                  {filteredServices.map((_, index) => (
+                    <div
+                      key={index}
+                      className="w-2 h-2 rounded-full bg-gray-600"
+                    />
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
           </section>
 
