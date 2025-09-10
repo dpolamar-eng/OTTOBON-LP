@@ -1258,13 +1258,18 @@ export default function TalentCompassAssessment() {
     const canvas = compassCanvas.current;
     if (!canvas) return;
 
-    // Set canvas dimensions
-    canvas.width = 400;
-    canvas.height = 400;
+    // Set canvas dimensions based on phase
+    if (currentPhase === 'trait-assessment' || currentPhase === 'background-assessment') {
+      canvas.width = 300;
+      canvas.height = 300;
+    } else {
+      canvas.width = 400;
+      canvas.height = 400;
+    }
 
     // Initial visualization
     updateCompassVisualization();
-  }, [compassCanvas]);
+  }, [compassCanvas, currentPhase]);
 
   // Update compass visualization when user profile changes
   useEffect(() => {
@@ -1409,15 +1414,29 @@ export default function TalentCompassAssessment() {
   };
 
   return (
-    <section id="talent-compass" className="py-16 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF] relative" ref={sectionRef}>
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/40 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/40 to-transparent"></div>
-      </div>
+    <section 
+      id="talent-compass" 
+      className={`overflow-hidden relative ${
+        currentPhase === 'trait-assessment' || currentPhase === 'background-assessment' 
+          ? 'bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF] min-h-screen' 
+          : 'py-16 bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]'
+      }`} 
+      ref={sectionRef}
+    >
+      {/* Background decorations - only show for non-assessment phases */}
+      {currentPhase !== 'trait-assessment' && currentPhase !== 'background-assessment' && (
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/40 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/40 to-transparent"></div>
+        </div>
+      )}
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className={`${
+        currentPhase === 'trait-assessment' || currentPhase === 'background-assessment' 
+          ? '' 
+          : 'container mx-auto px-4 relative z-10'
+      }`}>
         <div className="text-center mb-6">
           <div className="inline-flex items-center mb-4 bg-purple-50 px-4 py-2 rounded-full">
             <svg className="text-purple-600 mr-2 w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -1695,98 +1714,125 @@ export default function TalentCompassAssessment() {
         )}
 
         {(currentPhase === 'trait-assessment' || currentPhase === 'background-assessment') && (
-          <div className="max-w-5xl mx-auto">
-            <div className="flex justify-between items-center mb-6">
-              <button
-                onClick={goBack}
-                className="flex items-center text-gray-600 hover:text-gray-800 transition"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-                Back
-              </button>
-              <span className="text-sm text-gray-500">
-                {currentPhase === 'trait-assessment' ? 'Step 3 of 4' : 'Step 4 of 4'}
-              </span>
+          <>
+            {/* Header Navigation */}
+            <div className="fixed top-0 left-0 right-0 bg-slate-800 text-white z-50 py-4">
+              <div className="container mx-auto px-4 flex items-center justify-between">
+                {/* Logo */}
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-slate-800 font-bold text-sm">B</span>
+                  </div>
+                  <span className="font-bold text-lg">OTTOBON</span>
+                </div>
+
+                {/* Navigation */}
+                <nav className="hidden md:flex items-center space-x-8">
+                  <a href="#approach" className="text-white/90 hover:text-white transition">Our Approach</a>
+                  <a href="#courses" className="text-white/90 hover:text-white transition">Programs</a>
+                  <a href="#talent-compass" className="text-white/90 hover:text-white transition">Talent Compass</a>
+                </nav>
+
+                {/* Start Your Journey Button */}
+                <button className="bg-yellow-500 hover:bg-yellow-600 text-slate-800 font-semibold py-2 px-6 rounded-full transition">
+                  Start Your Journey →
+                </button>
+              </div>
             </div>
 
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
-              </h2>
-              <p className="text-gray-600">
-                {currentPhase === 'trait-assessment' 
-                  ? "Let's discover your core strengths and natural talents through personalized questions."
-                  : "Now let's understand your background to match you with the perfect learning path."
-                }
-              </p>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Compass visualization */}
-              <div ref={compassRef} className="hidden lg:block">
-                <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                  <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
-                  <div className="flex justify-center mb-4">
-                    <canvas 
-                      ref={compassCanvas} 
-                      width="400" 
-                      height="400"
-                      className="max-w-full"
-                    ></canvas>
-                  </div>
-                  <p className="text-sm text-gray-500 text-center">
-                    This visualization updates in real-time as you answer questions,
-                    showing how your unique strengths are being mapped.
+            {/* Main Content */}
+            <div className="pt-20 min-h-screen">
+              <div className="container mx-auto px-4">
+                {/* Back Button and Step Indicator */}
+                <div className="flex justify-between items-center mb-6">
+                  <button
+                    onClick={goBack}
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Back
+                  </button>
+                  <span className="text-sm text-gray-500">
+                    {currentPhase === 'trait-assessment' ? 'Step 3 of 4' : 'Step 4 of 4'}
+                  </span>
+                </div>
+
+                {/* Page Title */}
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
+                  </h2>
+                  <p className="text-gray-600">
+                    Let's discover your core strengths and natural talents through personalized questions.
                   </p>
                 </div>
-              </div>
 
-              {/* Question section */}
-              <div className="lg:col-span-2">
-                <div className="bg-white rounded-xl shadow-md p-8">
-                  <div className="mb-6">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-500">
-                        {currentPhase === 'trait-assessment' ? 'Trait Assessment' : 'Background Assessment'}
-                      </span>
-                      <span className="text-sm font-medium text-gray-500">
-                        Question {currentQuestionIndex + 1} of {allQuestions.length}
-                      </span>
+                {/* Main Assessment Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                  {/* Left Side - Compass Visualization */}
+                  <div className="bg-white rounded-xl shadow-md p-6">
+                    <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
+                    <div className="flex justify-center mb-4">
+                      <canvas 
+                        ref={compassCanvas} 
+                        width="300" 
+                        height="300"
+                        className="max-w-full"
+                      ></canvas>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
-                        style={{ 
-                          width: currentPhase === 'trait-assessment' 
-                            ? `${((currentQuestionIndex + 1) / traitQuestions.length) * 100}%`
-                            : `${(((currentQuestionIndex - traitQuestions.length) + 1) / backgroundQuestions.length) * 100}%`
-                        }}
-                      ></div>
-                    </div>
+                    <p className="text-sm text-gray-500 text-center">
+                      This visualization updates in real-time as you answer questions,
+                      showing how your unique strengths are being mapped.
+                    </p>
                   </div>
 
-                  {currentQuestion && (
-                    <div>
-                      <h3 className="text-xl font-bold mb-6">{currentQuestion.text}</h3>
-
-                      <div className="space-y-3">
-                        {currentQuestion.options.map((option, index) => (
-                          <button
-                            key={index}
-                            onClick={() => selectAnswer(index)}
-                            className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition"
-                          >
-                            {option.text}
-                          </button>
-                        ))}
+                  {/* Right Side - Question Section */}
+                  <div className="bg-white rounded-xl shadow-md p-6">
+                    <div className="mb-6">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium text-gray-500">
+                          {currentPhase === 'trait-assessment' ? 'Trait Assessment' : 'Background Assessment'}
+                        </span>
+                        <span className="text-sm font-medium text-gray-500">
+                          Question {currentQuestionIndex + 1} of {currentPhase === 'trait-assessment' ? traitQuestions.length : backgroundQuestions.length}
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
+                          style={{ 
+                            width: currentPhase === 'trait-assessment' 
+                              ? `${((currentQuestionIndex + 1) / traitQuestions.length) * 100}%`
+                              : `${(((currentQuestionIndex - traitQuestions.length) + 1) / backgroundQuestions.length) * 100}%`
+                          }}
+                        ></div>
                       </div>
                     </div>
-                  )}
+
+                    {currentQuestion && (
+                      <div>
+                        <h3 className="text-xl font-bold mb-6">{currentQuestion.text}</h3>
+
+                        <div className="space-y-3">
+                          {currentQuestion.options.map((option, index) => (
+                            <button
+                              key={index}
+                              onClick={() => selectAnswer(index)}
+                              className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition"
+                            >
+                              {option.text}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
 
         {currentPhase === 'results' && (
