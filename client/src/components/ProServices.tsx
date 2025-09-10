@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 import ServicesFooter from './ServicesFooter';
 
-type ServiceCategory = 'Health Care' | 'Enterprise Support Services' | 'Legal and Finance';
+type ServiceCategory = 'Health Care' | 'OOps Agent' | 'Business Development' | 'Legal and Finance';
 
 interface CategoryInfo {
   id: ServiceCategory;
@@ -20,10 +20,16 @@ const categories: CategoryInfo[] = [
     icon: '🏥'
   },
   {
-    id: 'Enterprise Support Services',
-    title: 'Enterprise Support Services',
+    id: 'OOps Agent',
+    title: 'OOps Agent',
     description: '',
-    icon: '💻'
+    icon: '🤖'
+  },
+  {
+    id: 'Business Development',
+    title: 'Business Development',
+    description: '',
+    icon: '📈'
   },
   {
     id: 'Legal and Finance',
@@ -53,12 +59,20 @@ export default function ProServices() {
       category: "Health Care" as ServiceCategory
     },
     {
-      title: "Enterprise Support Services",
-      subtitle: "End-to-end business support from pre-sales to project delivery",
-      icon: "💻",
+      title: "OOps Agent",
+      subtitle: "Intelligent automation for operational excellence and support",
+      icon: "🤖",
       imagePath: "/images/Enterpeise.jpg",
       gradient: "from-blue-900/80 to-indigo-900/80",
-      category: "Enterprise Support Services" as ServiceCategory
+      category: "OOps Agent" as ServiceCategory
+    },
+    {
+      title: "Business Development",
+      subtitle: "Strategic growth solutions and market expansion services",
+      icon: "📈",
+      imagePath: "/images/business-meeting.jpg",
+      gradient: "from-green-900/80 to-emerald-900/80",
+      category: "Business Development" as ServiceCategory
     },
     {
       title: "Legal & Finance",
@@ -86,7 +100,7 @@ export default function ProServices() {
         'Automated pricing recommendations based on market data'
       ],
       image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80',
-      category: 'Enterprise Support Services' as ServiceCategory
+      category: 'Business Development' as ServiceCategory
     },
     {
       id: 'marketing',
@@ -102,7 +116,7 @@ export default function ProServices() {
         'Email newsletter campaigns with performance analytics'
       ],
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80',
-      category: 'Enterprise Support Services' as ServiceCategory
+      category: 'Business Development' as ServiceCategory
     },
     {
       id: 'talent',
@@ -118,7 +132,7 @@ export default function ProServices() {
         'Streamlined Interviewing and onboarding process'
       ],
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80',
-      category: 'Enterprise Support Services' as ServiceCategory
+      category: 'OOps Agent' as ServiceCategory
     },
     {
       id: 'delivery',
@@ -134,7 +148,7 @@ export default function ProServices() {
         'Risk identification and mitigation suggestions'
       ],
       image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80',
-      category: 'Enterprise Support Services' as ServiceCategory
+      category: 'OOps Agent' as ServiceCategory
     },
     {
       id: 'admin',
@@ -150,7 +164,7 @@ export default function ProServices() {
         'Expense tracking with receipt scanning'
       ],
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80',
-      category: 'Enterprise Support Services' as ServiceCategory
+      category: 'OOps Agent' as ServiceCategory
     },
     {
       id: 'payroll',
@@ -166,7 +180,7 @@ export default function ProServices() {
         'Consultant self-service portal for payment tracking'
       ],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80',
-      category: 'Enterprise Support Services' as ServiceCategory
+      category: 'OOps Agent' as ServiceCategory
     },
     {
       id: 'fertility-care',
