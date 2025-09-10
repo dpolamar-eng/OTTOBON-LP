@@ -103,9 +103,10 @@ shared/
 - **Phases:**
   1. **Intro** - Assessment overview and benefits
   2. **Path Selection** - Career stage identification (Career Switcher, Recent Graduate, Experienced Professional)
-  3. **Trait Assessment** - 6 questions measuring 7 core traits
-  4. **Background Assessment** - 3 questions for course matching
-  5. **Results** - Personalized recommendations and discount eligibility
+  3. **Skills Collection** - Interactive skills input and categorization
+  4. **Trait Assessment** - 6 questions measuring 7 core traits
+  5. **Background Assessment** - 3 questions for course matching
+  6. **Results** - Personalized recommendations and discount eligibility
 
 **Assessment Framework:**
 - **7 Core Traits Measured:**
@@ -117,9 +118,22 @@ shared/
   6. Adaptability - Flexibility in changing environments
   7. Emotional Intelligence - Awareness and management of emotions
 
+**Skills Collection System:**
+- **Interactive Input:** Users can type and add custom skills
+- **Skill Categories:**
+  1. **Technical Skills** - Programming languages, tools, software (JavaScript, Python, React, etc.)
+  2. **Soft Skills** - Communication, leadership, problem-solving, etc.
+  3. **Industry Knowledge** - Domain expertise, methodologies, consulting experience
+- **Smart Suggestions:** Category-based skill recommendations
+- **Validation Rules:**
+  - Minimum 3 skills required to proceed
+  - Maximum 15 skills allowed
+  - Duplicate prevention
+- **Visual Interface:** Skills displayed as removable tags/chips
+
 **Path-Specific Questions:**
 - **Career Switcher (9 questions)** - Focus on transition challenges and transferable skills
-- **Recent Graduate (9 questions)** - Emphasis on learning preferences and career motivation
+- **Recent Graduate (9 questions)** - Emphasis on learning preferences and career goalsd career motivation
 - **Experienced Professional (9 questions)** - Leadership, expertise application, and skill advancement
 
 **Results & Recommendations:**
@@ -225,10 +239,17 @@ shared/
 
 ### Course Matching Algorithm
 ```typescript
-matchScore = (traitComponent * 0.7) + (backgroundComponent * 0.3)
+matchScore = (traitComponent * 0.5) + (backgroundComponent * 0.25) + (skillsComponent * 0.25)
 traitComponent = Σ(normalizedTraitScore * traitImportance)
 backgroundComponent = Σ(normalizedBackgroundValue * backgroundImportance)
+skillsComponent = matchingSkillsCount / totalUserSkills
 ```
+
+**Skills Matching Logic:**
+- Each course has predefined relevant skills mapped to it
+- User skills are compared against course-relevant skills using fuzzy matching
+- Skills component contributes 25% to overall course match score
+- Enhances recommendation accuracy by considering practical competencies
 
 ### Discount Calculation
 - **Trait Component:** 60% weight, based on average trait scores

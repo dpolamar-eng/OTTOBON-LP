@@ -49,9 +49,53 @@ interface UserProfile {
 type AssessmentPhase = 
   | 'intro' 
   | 'path-selection' 
+  | 'skills-collection'
   | 'trait-assessment' 
   | 'background-assessment' 
   | 'results';
+
+// Define skill categories and suggestions
+interface SkillCategory {
+  id: string;
+  name: string;
+  suggestions: string[];
+}
+
+const skillCategories: SkillCategory[] = [
+  {
+    id: 'technical',
+    name: 'Technical Skills',
+    suggestions: [
+      'JavaScript', 'Python', 'React', 'Node.js', 'HTML/CSS', 'SQL', 'Git',
+      'AWS', 'Docker', 'MongoDB', 'PostgreSQL', 'TypeScript', 'Vue.js',
+      'Angular', 'PHP', 'Java', 'C++', 'REST APIs', 'GraphQL', 'Redis',
+      'Kubernetes', 'Jenkins', 'Figma', 'Adobe Creative Suite', 'Sketch',
+      'AutoCAD', 'Salesforce', 'Tableau', 'Power BI', 'Excel', 'JIRA'
+    ]
+  },
+  {
+    id: 'soft',
+    name: 'Soft Skills',
+    suggestions: [
+      'Leadership', 'Communication', 'Team Management', 'Project Management',
+      'Problem Solving', 'Critical Thinking', 'Time Management', 'Adaptability',
+      'Negotiation', 'Public Speaking', 'Mentoring', 'Conflict Resolution',
+      'Strategic Planning', 'Decision Making', 'Creativity', 'Collaboration',
+      'Customer Service', 'Sales', 'Marketing', 'Training & Development'
+    ]
+  },
+  {
+    id: 'industry',
+    name: 'Industry Knowledge',
+    suggestions: [
+      'Healthcare', 'Finance', 'E-commerce', 'Education', 'Manufacturing',
+      'Retail', 'Telecommunications', 'Real Estate', 'Legal', 'Government',
+      'Agile/Scrum', 'DevOps', 'Machine Learning', 'Data Science', 'Cybersecurity',
+      'Cloud Computing', 'Digital Marketing', 'SEO/SEM', 'Business Analysis',
+      'Quality Assurance', 'UI/UX Design', 'Product Management', 'Consulting'
+    ]
+  }
+];
 
 export default function TalentCompassAssessment() {
   // Animation refs
@@ -88,6 +132,11 @@ export default function TalentCompassAssessment() {
     discountEligibility: 0,
     courseMatches: {}
   });
+
+  // Skills collection state
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [skillInput, setSkillInput] = useState('');
+  const [activeSkillCategory, setActiveSkillCategory] = useState<string>('technical');
 
   // Define the 7 core traits
   const traits: Trait[] = [
@@ -947,7 +996,33 @@ export default function TalentCompassAssessment() {
       ...userProfile,
       currentPath: path
     });
-    setCurrentPhase('trait-assessment');
+    setCurrentPhase('skills-collection');
+  };
+
+  // Skills collection functions
+  const addSkill = (skill: string) => {
+    const trimmedSkill = skill.trim();
+    if (trimmedSkill && !selectedSkills.includes(trimmedSkill) && selectedSkills.length < 15) {
+      setSelectedSkills([...selectedSkills, trimmedSkill]);
+      setSkillInput('');
+    }
+  };
+
+  const removeSkill = (skillToRemove: string) => {
+    setSelectedSkills(selectedSkills.filter(skill => skill !== skillToRemove));
+  };
+
+  const handleSkillInputKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addSkill(skillInput);
+    }
+  };
+
+  const proceedFromSkills = () => {
+    if (selectedSkills.length >= 3) {
+      setCurrentPhase('trait-assessment');
+    }
   };
 
   // Handle answer selection
@@ -1009,30 +1084,42 @@ export default function TalentCompassAssessment() {
 
   // Calculate final results
   const calculateResults = () => {
-    // Calculate course matches based on traits and background
+    // Calculate course matches based on traits, background, and skills
     const matches: Record<string, number> = {};
 
     courses.forEach(course => {
       let matchScore = 0;
       let totalWeight = 0;
 
-      // Calculate trait match component (70% weight)
+      // Calculate trait match component (50% weight)
       Object.entries(course.traitMatches).forEach(([traitId, importance]) => {
         const traitScore = userProfile.traits[traitId] || 0;
         // Normalize trait score to 0-1 range (assuming max score of 10)
         const normalizedScore = Math.min(traitScore / 10, 1);
-        matchScore += normalizedScore * importance * 0.7;
-        totalWeight += importance * 0.7;
+        matchScore += normalizedScore * importance * 0.5;
+        totalWeight += importance * 0.5;
       });
 
-      // Calculate background match component (30% weight)
+      // Calculate background match component (25% weight)
       Object.entries(course.backgroundFactors).forEach(([factor, importance]) => {
         const factorValue = userProfile.background[factor] || 0;
         // Normalize factor value to 0-1 range (assuming max value of 4)
         const normalizedValue = typeof factorValue === 'number' ? Math.min(factorValue / 4, 1) : 0;
-        matchScore += normalizedValue * importance * 0.3;
-        totalWeight += importance * 0.3;
+        matchScore += normalizedValue * importance * 0.25;
+        totalWeight += importance * 0.25;
       });
+
+      // Calculate skills match component (25% weight)
+      const courseRelevantSkills = getCourseRelevantSkills(course.id);
+      const skillsMatchCount = selectedSkills.filter(skill => 
+        courseRelevantSkills.some(relevant => 
+          relevant.toLowerCase().includes(skill.toLowerCase()) || 
+          skill.toLowerCase().includes(relevant.toLowerCase())
+        )
+      ).length;
+      const skillsMatchRatio = selectedSkills.length > 0 ? skillsMatchCount / selectedSkills.length : 0;
+      matchScore += skillsMatchRatio * 0.25;
+      totalWeight += 0.25;
 
       // Normalize final score as percentage
       matches[course.id] = Math.round((matchScore / totalWeight) * 100);
@@ -1201,6 +1288,35 @@ export default function TalentCompassAssessment() {
     return { course, score: bestMatchScore };
   };
 
+  // Get relevant skills for each course
+  const getCourseRelevantSkills = (courseId: string): string[] => {
+    const skillMaps: Record<string, string[]> = {
+      'ai-uiux': [
+        'Figma', 'Adobe Creative Suite', 'Sketch', 'UI/UX Design', 'Design',
+        'JavaScript', 'React', 'HTML/CSS', 'Prototyping', 'User Research',
+        'Creativity', 'Problem Solving', 'Communication', 'Critical Thinking'
+      ],
+      'ai-marketing': [
+        'Digital Marketing', 'SEO/SEM', 'Marketing', 'Google Analytics',
+        'Social Media', 'Content Marketing', 'Email Marketing', 'CRM',
+        'Communication', 'Sales', 'Creativity', 'Data Analysis',
+        'Customer Service', 'Strategic Planning'
+      ],
+      'ai-agent-development': [
+        'Python', 'JavaScript', 'Node.js', 'Machine Learning', 'AI/ML',
+        'Natural Language Processing', 'TensorFlow', 'PyTorch', 'APIs',
+        'Programming', 'Software Development', 'Problem Solving',
+        'Critical Thinking', 'Learning', 'Technical Writing'
+      ],
+      'ai-data-labeling': [
+        'Data Analysis', 'Data Science', 'Excel', 'SQL', 'Python', 'R',
+        'Data Visualization', 'Quality Assurance', 'Attention to Detail',
+        'Documentation', 'Process Improvement', 'Accuracy', 'Patience'
+      ]
+    };
+    return skillMaps[courseId] || [];
+  };
+
   // Cache best match to avoid repetitive calls
   const bestMatch = getBestCourseMatch();
 
@@ -1215,31 +1331,14 @@ export default function TalentCompassAssessment() {
     if (currentPhase === 'path-selection') {
       setCurrentPhase('intro');
       setAssessmentStarted(false);
-    } else if (currentPhase === 'trait-assessment') {
+    } else if (currentPhase === 'skills-collection') {
       setCurrentPhase('path-selection');
+      setSelectedSkills([]);
+      setSkillInput('');
+    } else if (currentPhase === 'trait-assessment') {
+      setCurrentPhase('skills-collection');
       setCurrentQuestionIndex(0);
       setAnsweredQuestions([]);
-      // Reset user profile
-      setUserProfile({
-        traits: {
-          ambition: 0,
-          learnability: 0,
-          accountability: 0,
-          integrity: 0,
-          curiosity: 0,
-          adaptability: 0,
-          emotionalIntelligence: 0
-        },
-        background: {
-          education: '',
-          languages: 0,
-          yearsExperience: 0,
-          relevantProjects: 0
-        },
-        currentPath: 'recent-graduate',
-        discountEligibility: 0,
-        courseMatches: {}
-      });
     } else if (currentPhase === 'background-assessment') {
       setCurrentPhase('trait-assessment');
       setCurrentQuestionIndex(0);
@@ -1460,6 +1559,139 @@ export default function TalentCompassAssessment() {
           </div>
         )}
 
+        {currentPhase === 'skills-collection' && (
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-between items-center mb-6">
+              <button
+                onClick={goBack}
+                className="flex items-center text-gray-600 hover:text-gray-800 transition"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </button>
+              <span className="text-sm text-gray-500">Step 2 of 4</span>
+            </div>
+
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-4">Tell us about your skills</h2>
+              <p className="text-gray-600">
+                Add your key technical and professional skills to help us recommend the perfect courses for you.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-8">
+              {/* Skills Input Section */}
+              <div className="mb-8">
+                <div className="flex flex-col sm:flex-row gap-3 mb-4">
+                  <input
+                    type="text"
+                    value={skillInput}
+                    onChange={(e) => setSkillInput(e.target.value)}
+                    onKeyPress={handleSkillInputKeyPress}
+                    placeholder="Type a skill and press Enter..."
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    disabled={selectedSkills.length >= 15}
+                  />
+                  <button
+                    onClick={() => addSkill(skillInput)}
+                    disabled={!skillInput.trim() || selectedSkills.length >= 15}
+                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition"
+                  >
+                    Add Skill
+                  </button>
+                </div>
+                
+                <div className="flex justify-between text-sm text-gray-500">
+                  <span>
+                    {selectedSkills.length < 3 
+                      ? `Add at least ${3 - selectedSkills.length} more skill${3 - selectedSkills.length !== 1 ? 's' : ''} to continue`
+                      : `${selectedSkills.length} of 15 skills added`
+                    }
+                  </span>
+                  <span>{15 - selectedSkills.length} slots remaining</span>
+                </div>
+              </div>
+
+              {/* Selected Skills Display */}
+              {selectedSkills.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="font-semibold mb-4">Your Skills ({selectedSkills.length})</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedSkills.map((skill, index) => (
+                      <div
+                        key={index}
+                        className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center gap-2"
+                      >
+                        <span>{skill}</span>
+                        <button
+                          onClick={() => removeSkill(skill)}
+                          className="text-blue-600 hover:text-blue-800 font-bold"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Skill Categories and Suggestions */}
+              <div className="mb-8">
+                <h3 className="font-semibold mb-4">Browse by Category</h3>
+                
+                {/* Category Tabs */}
+                <div className="flex gap-2 mb-4 flex-wrap">
+                  {skillCategories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setActiveSkillCategory(category.id)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                        activeSkillCategory === category.id
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Skill Suggestions */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+                  {skillCategories
+                    .find(cat => cat.id === activeSkillCategory)
+                    ?.suggestions.filter(suggestion => !selectedSkills.includes(suggestion))
+                    .slice(0, 20)
+                    .map((suggestion, index) => (
+                      <button
+                        key={index}
+                        onClick={() => addSkill(suggestion)}
+                        disabled={selectedSkills.length >= 15}
+                        className="px-3 py-2 text-sm bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg text-left transition disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {suggestion}
+                      </button>
+                    ))
+                  }
+                </div>
+              </div>
+
+              {/* Continue Button */}
+              <div className="flex justify-end">
+                <button
+                  onClick={proceedFromSkills}
+                  disabled={selectedSkills.length < 3}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Continue Assessment
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {(currentPhase === 'trait-assessment' || currentPhase === 'background-assessment') && (
           <div className="max-w-5xl mx-auto">
             <div className="flex justify-between items-center mb-6">
@@ -1473,7 +1705,7 @@ export default function TalentCompassAssessment() {
                 Back
               </button>
               <span className="text-sm text-gray-500">
-                {currentPhase === 'trait-assessment' ? 'Step 2 of 3' : 'Step 3 of 3'}
+                {currentPhase === 'trait-assessment' ? 'Step 3 of 4' : 'Step 4 of 4'}
               </span>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
