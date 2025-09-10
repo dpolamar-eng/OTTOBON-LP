@@ -259,11 +259,6 @@ export default function ProServices() {
 
   // For carousel navigation
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [currentServiceSlide, setCurrentServiceSlide] = useState(0);
-
-  // Check if current category needs carousel (Enterprise Enablement with 4+ services)
-  const needsCarousel = activeFilter === 'Enterprise Enablement' && filteredServices.length > 3;
-  const visibleServices = needsCarousel ? filteredServices.slice(currentServiceSlide, currentServiceSlide + 3) : filteredServices;
 
   // Toggle mobile menu
   const toggleMobileMenu = () => {
@@ -317,7 +312,6 @@ export default function ProServices() {
   // Function to scroll to services section and set filter
   const scrollToServices = (category: ServiceCategory) => {
     setActiveFilter(category);
-    setCurrentServiceSlide(0); // Reset carousel when changing categories
     const servicesSection = document.getElementById('services');
     if (servicesSection) {
       const headerHeight = 120; // Account for fixed header height
@@ -328,11 +322,6 @@ export default function ProServices() {
       });
     }
   };
-
-  // Reset carousel when activeFilter changes
-  useEffect(() => {
-    setCurrentServiceSlide(0);
-  }, [activeFilter]);
 
   // Create a looping carousel effect
   const scrollCards = (direction: 'left' | 'right') => {
@@ -658,7 +647,6 @@ export default function ProServices() {
                     onClick={() => {
                       if (!category.isComingSoon) {
                         setActiveFilter(category.id);
-                        setCurrentServiceSlide(0);
                       }
                     }}
                     disabled={category.isComingSoon}
@@ -690,52 +678,15 @@ export default function ProServices() {
           {/* Services Section - Clean Grid Layout */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
 
-            {/* Carousel Navigation for Enterprise Enablement */}
-            {needsCarousel && (
-              <div className="flex justify-between items-center mb-6">
-                <button
-                  onClick={() => setCurrentServiceSlide(Math.max(0, currentServiceSlide - 1))}
-                  disabled={currentServiceSlide === 0}
-                  className="bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed p-3 rounded-full transition-colors"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                  </svg>
-                </button>
-                
-                <div className="flex space-x-2">
-                  {Array.from({ length: filteredServices.length - 2 }, (_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentServiceSlide(i)}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        i === currentServiceSlide ? 'bg-indigo-500' : 'bg-white/30'
-                      }`}
-                    />
-                  ))}
-                </div>
-                
-                <button
-                  onClick={() => setCurrentServiceSlide(Math.min(filteredServices.length - 3, currentServiceSlide + 1))}
-                  disabled={currentServiceSlide >= filteredServices.length - 3}
-                  className="bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed p-3 rounded-full transition-colors"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </div>
-              </div>
-            )}
-
             {/* Service Cards - Grid Layout */}
             <div className={`grid ${
-              visibleServices.length === 1 
+              filteredServices.length === 1 
                 ? 'grid-cols-1 justify-items-center gap-6' 
-                : visibleServices.length === 2 
+                : filteredServices.length === 2 
                   ? 'grid-cols-1 md:grid-cols-2 justify-items-center gap-6 md:gap-8 max-w-5xl mx-auto' 
                   : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-            } transition-all duration-300 ease-in-out`}>
-              {visibleServices.map((service) => (
+            }`}>
+              {filteredServices.map((service) => (
                 <div
                   key={service.id}
                   className={`group h-full ${
