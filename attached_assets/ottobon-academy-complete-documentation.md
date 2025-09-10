@@ -1,4 +1,3 @@
-
 # Ottobon Academy - Complete Project Documentation
 
 ## 🎯 Project Overview
@@ -256,7 +255,7 @@ skillsComponent = matchingSkillsCount / totalUserSkills
 
 ### Discount Calculation
 - **Trait Component:** 60% weight, based on average trait scores
-- **Background Component:** 40% weight, from education/experience factors
+- **Background Component:** 40% weight, based on education/experience factors
 - **Maximum Discount:** 90% tuition reduction
 - **Eligibility Factors:** Education level, experience years, project portfolio
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 import ServicesFooter from './ServicesFooter';
 
-type ServiceCategory = 'Health Care' | 'OOps Agent' | 'Business Development' | 'Legal and Finance';
+type ServiceCategory = 'Health Care' | 'Enterprise Enablement' | 'Business Development' | 'Legal and Finance';
 
 interface CategoryInfo {
   id: ServiceCategory;
@@ -20,7 +20,7 @@ const categories: CategoryInfo[] = [
     icon: '🏥'
   },
   {
-    id: 'OOps Agent',
+    id: 'Enterprise Enablement',
     title: 'Enterprise Enablement',
     description: '',
     icon: '🤖'
@@ -59,12 +59,12 @@ export default function ProServices() {
       category: "Health Care" as ServiceCategory
     },
     {
-      title: "OOps Agent",
+      title: "Enterprise Enablement",
       subtitle: "Intelligent automation for operational excellence and support",
       icon: "🤖",
       imagePath: "/images/Enterpeise.jpg",
       gradient: "from-blue-900/80 to-indigo-900/80",
-      category: "OOps Agent" as ServiceCategory
+      category: "Enterprise Enablement" as ServiceCategory
     },
     {
       title: "Business Development",
@@ -132,7 +132,7 @@ export default function ProServices() {
         'Streamlined Interviewing and onboarding process'
       ],
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80',
-      category: 'OOps Agent' as ServiceCategory
+      category: 'Enterprise Enablement' as ServiceCategory
     },
     {
       id: 'delivery',
@@ -148,7 +148,7 @@ export default function ProServices() {
         'Risk identification and mitigation suggestions'
       ],
       image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=400&q=80',
-      category: 'OOps Agent' as ServiceCategory
+      category: 'Enterprise Enablement' as ServiceCategory
     },
     {
       id: 'admin',
@@ -164,7 +164,7 @@ export default function ProServices() {
         'Expense tracking with receipt scanning'
       ],
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80',
-      category: 'OOps Agent' as ServiceCategory
+      category: 'Enterprise Enablement' as ServiceCategory
     },
     {
       id: 'payroll',
@@ -180,7 +180,7 @@ export default function ProServices() {
         'Consultant self-service portal for payment tracking'
       ],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80',
-      category: 'OOps Agent' as ServiceCategory
+      category: 'Enterprise Enablement' as ServiceCategory
     },
     {
       id: 'fertility-care',
@@ -449,6 +449,7 @@ export default function ProServices() {
             </nav>
           </div>
         </div>
+      </div>
 
         {/* Overlay */}
         {mobileMenuOpen && (
