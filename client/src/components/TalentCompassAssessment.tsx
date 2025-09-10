@@ -1714,50 +1714,23 @@ export default function TalentCompassAssessment() {
         )}
 
         {(currentPhase === 'trait-assessment' || currentPhase === 'background-assessment') && (
-          <>
-            {/* Header Navigation */}
-            <div className="fixed top-0 left-0 right-0 bg-slate-800 text-white z-50 py-4">
-              <div className="container mx-auto px-4 flex items-center justify-between">
-                {/* Logo */}
-                <div className="flex items-center">
-                  <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-slate-800 font-bold text-sm">B</span>
-                  </div>
-                  <span className="font-bold text-lg">OTTOBON</span>
-                </div>
-
-                {/* Navigation */}
-                <nav className="hidden md:flex items-center space-x-8">
-                  <a href="#approach" className="text-white/90 hover:text-white transition">Our Approach</a>
-                  <a href="#courses" className="text-white/90 hover:text-white transition">Programs</a>
-                  <a href="#talent-compass" className="text-white/90 hover:text-white transition">Talent Compass</a>
-                </nav>
-
-                {/* Start Your Journey Button */}
-                <button className="bg-yellow-500 hover:bg-yellow-600 text-slate-800 font-semibold py-2 px-6 rounded-full transition">
-                  Start Your Journey →
-                </button>
-              </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="pt-20 min-h-screen">
+          <div className="min-h-screen">
               <div className="container mx-auto px-4">
-                {/* Back Button and Step Indicator */}
-                <div className="flex justify-between items-center mb-6">
-                  <button
-                    onClick={goBack}
-                    className="flex items-center text-gray-600 hover:text-gray-800 transition"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                    Back
-                  </button>
-                  <span className="text-sm text-gray-500">
-                    {currentPhase === 'trait-assessment' ? 'Step 3 of 4' : 'Step 4 of 4'}
-                  </span>
-                </div>
+              {/* Back Button and Step Indicator */}
+              <div className="flex justify-between items-center mb-6 pt-6">
+                <button
+                  onClick={goBack}
+                  className="flex items-center text-gray-600 hover:text-gray-800 transition"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                  </svg>
+                  Back
+                </button>
+                <span className="text-sm text-gray-500">
+                  {currentPhase === 'trait-assessment' ? 'Step 3 of 4' : 'Step 4 of 4'}
+                </span>
+              </div>
 
                 {/* Page Title */}
                 <div className="text-center mb-8">
@@ -1830,9 +1803,8 @@ export default function TalentCompassAssessment() {
                     )}
                   </div>
                 </div>
-              </div>
             </div>
-          </>
+          </div>
         )}
 
         {currentPhase === 'results' && (
