@@ -129,7 +129,11 @@ shared/
   - Minimum 3 skills required to proceed
   - Maximum 15 skills allowed
   - Duplicate prevention
-- **Visual Interface:** Skills displayed as removable tags/chips
+- **Visual Interface:** 
+  - Skills displayed as removable tags/chips
+  - Progress tracking sidebar (desktop)
+  - Grid layout matching assessment section height
+  - Responsive design for all screen sizes
 
 **Path-Specific Questions:**
 - **Career Switcher (9 questions)** - Focus on transition challenges and transferable skills
