@@ -184,7 +184,7 @@ export default function ProServices() {
     },
     {
       id: 'fertility-care',
-      title: 'Personal Fertility Care Companion',
+      title: 'Health Companion',
       icon: '🌸',
       iconBg: 'bg-pink-500',
       color: 'from-pink-600 to-rose-600',
@@ -689,13 +689,13 @@ export default function ProServices() {
               {filteredServices.map((service) => (
                 <div
                   key={service.id}
-                  className={`group ${
+                  className={`group h-full ${
                     filteredServices.length <= 2 ? 'max-w-md w-full' : ''
                   }`}
                 >
                   {/* Simple card with clean design */}
                   <div 
-                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer"
+                    className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer h-full flex flex-col"
                     onClick={() => toggleCard(service.id)}
                   >
                     {/* Header with image */}
@@ -741,12 +741,12 @@ export default function ProServices() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-1">
                       <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
-                      <p className="text-gray-300 mb-4">{service.description}</p>
+                      <p className="text-gray-300 mb-4 flex-1">{service.description}</p>
 
                       {/* Desktop hover indicator */}
-                      <div className="hidden md:block text-center text-sm text-gray-400 mt-4">
+                      <div className="hidden md:block text-center text-sm text-gray-400 mt-auto">
                         Click to view details
                       </div>
 
