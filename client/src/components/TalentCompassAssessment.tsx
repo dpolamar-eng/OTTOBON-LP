@@ -1560,7 +1560,7 @@ export default function TalentCompassAssessment() {
         )}
 
         {currentPhase === 'skills-collection' && (
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="flex justify-between items-center mb-6">
               <button
                 onClick={goBack}
@@ -1581,164 +1581,126 @@ export default function TalentCompassAssessment() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Skills Preview/Status */}
-              <div className="hidden lg:block">
-                <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                  <h3 className="text-xl font-bold mb-4 text-center">Skills Collection Progress</h3>
-                  
-                  <div className="text-center mb-6">
-                    <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-2xl mb-4 mx-auto">
-                      🎯
-                    </div>
-                    <p className="text-sm text-gray-600">
-                      {selectedSkills.length < 3 
-                        ? `Add ${3 - selectedSkills.length} more skills to continue`
-                        : `Great! ${selectedSkills.length} skills added`
-                      }
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex justify-between text-sm text-gray-500 mb-1">
-                        <span>Progress</span>
-                        <span>{Math.min(selectedSkills.length, 3)}/3</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
-                          style={{ width: `${Math.min((selectedSkills.length / 3) * 100, 100)}%` }}
-                        ></div>
-                      </div>
-                    </div>
-
-                    {selectedSkills.length > 0 && (
-                      <div>
-                        <h4 className="font-medium text-sm text-gray-700 mb-2">Your Skills</h4>
-                        <div className="max-h-40 overflow-y-auto space-y-1">
-                          {selectedSkills.map((skill, index) => (
-                            <div key={index} className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded">
-                              {skill}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
+            <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+              {/* Skills Input Section */}
+              <div className="mb-6">
+                <div className="flex flex-col sm:flex-row gap-3 mb-4">
+                  <input
+                    type="text"
+                    value={skillInput}
+                    onChange={(e) => setSkillInput(e.target.value)}
+                    onKeyPress={handleSkillInputKeyPress}
+                    placeholder="Type a skill and press Enter..."
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    disabled={selectedSkills.length >= 15}
+                  />
+                  <button
+                    onClick={() => addSkill(skillInput)}
+                    disabled={!skillInput.trim() || selectedSkills.length >= 15}
+                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition"
+                  >
+                    Add Skill
+                  </button>
+                </div>
+                
+                <div className="flex justify-between text-sm text-gray-500">
+                  <span>
+                    {selectedSkills.length < 3 
+                      ? `Add at least ${3 - selectedSkills.length} more skill${3 - selectedSkills.length !== 1 ? 's' : ''} to continue`
+                      : `${selectedSkills.length} of 15 skills added`
+                    }
+                  </span>
+                  <span>{15 - selectedSkills.length} slots remaining</span>
                 </div>
               </div>
 
-              {/* Main Skills Input Section */}
-              <div className="lg:col-span-2">
-                <div className="bg-white rounded-xl shadow-md p-8 min-h-[600px] flex flex-col">
-                  {/* Skills Input Section */}
-                  <div className="mb-8">
-                    <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                      <input
-                        type="text"
-                        value={skillInput}
-                        onChange={(e) => setSkillInput(e.target.value)}
-                        onKeyPress={handleSkillInputKeyPress}
-                        placeholder="Type a skill and press Enter..."
-                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        disabled={selectedSkills.length >= 15}
-                      />
-                      <button
-                        onClick={() => addSkill(skillInput)}
-                        disabled={!skillInput.trim() || selectedSkills.length >= 15}
-                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition"
+              {/* Selected Skills Display */}
+              {selectedSkills.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="font-semibold mb-3">Your Skills ({selectedSkills.length})</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedSkills.map((skill, index) => (
+                      <div
+                        key={index}
+                        className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full text-sm flex items-center gap-2"
                       >
-                        Add Skill
-                      </button>
-                    </div>
-                    
-                    <div className="flex justify-between text-sm text-gray-500">
-                      <span>
-                        {selectedSkills.length < 3 
-                          ? `Add at least ${3 - selectedSkills.length} more skill${3 - selectedSkills.length !== 1 ? 's' : ''} to continue`
-                          : `${selectedSkills.length} of 15 skills added`
-                        }
-                      </span>
-                      <span>{15 - selectedSkills.length} slots remaining</span>
-                    </div>
-                  </div>
-
-                  {/* Selected Skills Display for mobile */}
-                  {selectedSkills.length > 0 && (
-                    <div className="mb-8 lg:hidden">
-                      <h3 className="font-semibold mb-4">Your Skills ({selectedSkills.length})</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedSkills.map((skill, index) => (
-                          <div
-                            key={index}
-                            className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center gap-2"
-                          >
-                            <span>{skill}</span>
-                            <button
-                              onClick={() => removeSkill(skill)}
-                              className="text-blue-600 hover:text-blue-800 font-bold"
-                            >
-                              ×
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Skill Categories and Suggestions */}
-                  <div className="flex-1 mb-8">
-                    <h3 className="font-semibold mb-4">Browse by Category</h3>
-                    
-                    {/* Category Tabs */}
-                    <div className="flex gap-2 mb-4 flex-wrap">
-                      {skillCategories.map((category) => (
+                        <span>{skill}</span>
                         <button
-                          key={category.id}
-                          onClick={() => setActiveSkillCategory(category.id)}
-                          className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                            activeSkillCategory === category.id
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          onClick={() => removeSkill(skill)}
+                          className="text-blue-600 hover:text-blue-800 font-bold"
                         >
-                          {category.name}
+                          ×
                         </button>
-                      ))}
-                    </div>
-
-                    {/* Skill Suggestions */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-                      {skillCategories
-                        .find(cat => cat.id === activeSkillCategory)
-                        ?.suggestions.filter(suggestion => !selectedSkills.includes(suggestion))
-                        .slice(0, 20)
-                        .map((suggestion, index) => (
-                          <button
-                            key={index}
-                            onClick={() => addSkill(suggestion)}
-                            disabled={selectedSkills.length >= 15}
-                            className="px-3 py-2 text-sm bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg text-left transition disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            {suggestion}
-                          </button>
-                        ))
-                      }
-                    </div>
-                  </div>
-
-                  {/* Continue Button */}
-                  <div className="flex justify-end mt-auto">
-                    <button
-                      onClick={proceedFromSkills}
-                      disabled={selectedSkills.length < 3}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      Continue Assessment
-                    </button>
+                      </div>
+                    ))}
                   </div>
                 </div>
+              )}
+
+              {/* Progress indicator */}
+              <div className="mb-6">
+                <div className="flex justify-between text-sm text-gray-500 mb-2">
+                  <span>Progress</span>
+                  <span>{Math.min(selectedSkills.length, 3)}/3 minimum skills</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" 
+                    style={{ width: `${Math.min((selectedSkills.length / 3) * 100, 100)}%` }}
+                  ></div>
+                </div>
+              </div>
+
+              {/* Skill Categories and Suggestions */}
+              <div className="mb-6">
+                <h3 className="font-semibold mb-4">Browse by Category</h3>
+                
+                {/* Category Tabs */}
+                <div className="flex gap-2 mb-4 flex-wrap">
+                  {skillCategories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setActiveSkillCategory(category.id)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                        activeSkillCategory === category.id
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Skill Suggestions - More columns for wider layout */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2">
+                  {skillCategories
+                    .find(cat => cat.id === activeSkillCategory)
+                    ?.suggestions.filter(suggestion => !selectedSkills.includes(suggestion))
+                    .slice(0, 32)
+                    .map((suggestion, index) => (
+                      <button
+                        key={index}
+                        onClick={() => addSkill(suggestion)}
+                        disabled={selectedSkills.length >= 15}
+                        className="px-3 py-2 text-sm bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg text-left transition disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {suggestion}
+                      </button>
+                    ))
+                  }
+                </div>
+              </div>
+
+              {/* Continue Button */}
+              <div className="flex justify-end">
+                <button
+                  onClick={proceedFromSkills}
+                  disabled={selectedSkills.length < 3}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Continue Assessment
+                </button>
               </div>
             </div>
           </div>
