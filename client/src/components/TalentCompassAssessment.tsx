@@ -393,22 +393,22 @@ export default function TalentCompassAssessment() {
         text: "Which type of project excites you most?",
         options: [
           {
-            text: "Designing user-friendly experiences with AI (AI in UI/UX)",
+            text: "Designing user-friendly experiences with AI ",
             traits: { curiosity: 1, emotionalIntelligence: 1 },
             backgroundFactors: { coursePreference: 'ai-uiux' }
           },
           {
-            text: "Creating campaigns with AI tools (AI in Marketing)",
+            text: "Creating campaigns with AI tools ",
             traits: { adaptability: 1, emotionalIntelligence: 1 },
             backgroundFactors: { coursePreference: 'ai-marketing' }
           },
           {
-            text: "Building intelligent assistants (AI Agent Dev)",
+            text: "Building intelligent assistants",
             traits: { curiosity: 1, learnability: 1 },
             backgroundFactors: { coursePreference: 'ai-agent-development' }
           },
           {
-            text: "Organizing/labeling data for AI systems (AI Data Labeling)",
+            text: "Organizing/labeling data for AI systems ",
             traits: { accountability: 1, integrity: 1 },
             backgroundFactors: { coursePreference: 'ai-data-labeling' }
           }
@@ -447,22 +447,22 @@ export default function TalentCompassAssessment() {
         text: "In your new career, you'd like to:",
         options: [
           {
-            text: "Make products more usable (UI/UX)",
+            text: "Make products more usable ",
             traits: { emotionalIntelligence: 1, curiosity: 1 },
             backgroundFactors: { careerGoal: 'usability' }
           },
           {
-            text: "Drive customer engagement (Marketing)",
+            text: "Drive customer engagement ",
             traits: { emotionalIntelligence: 1, adaptability: 1 },
             backgroundFactors: { careerGoal: 'engagement' }
           },
           {
-            text: "Develop smart tools (Agent Development)",
+            text: "Develop smart tools ",
             traits: { curiosity: 1, learnability: 1 },
             backgroundFactors: { careerGoal: 'development' }
           },
           {
-            text: "Ensure AI systems have clean data (Data Labeling)",
+            text: "Ensure AI systems have clean data ",
             traits: { accountability: 1, integrity: 1 },
             backgroundFactors: { careerGoal: 'data-quality' }
           }
@@ -617,7 +617,7 @@ export default function TalentCompassAssessment() {
         text: "If you had to pick a role right after graduation, you'd choose:",
         options: [
           {
-            text: "Designing smart, user-friendly interfaces (UI/UX)",
+            text: "Designing smart, user-friendly interfaces ",
             traits: { curiosity: 1, emotionalIntelligence: 1 },
             backgroundFactors: { coursePreference: 'ai-uiux' }
           },
@@ -671,22 +671,22 @@ export default function TalentCompassAssessment() {
         text: "As a graduate, your ideal first project would involve:",
         options: [
           {
-            text: "Improving product usability (UI/UX)",
+            text: "Improving product usability ",
             traits: { emotionalIntelligence: 1, curiosity: 1 },
             backgroundFactors: { projectPreference: 'usability' }
           },
           {
-            text: "Supporting a brand launch with AI (Marketing)",
+            text: "Supporting a brand launch with AI ",
             traits: { adaptability: 1, emotionalIntelligence: 1 },
             backgroundFactors: { projectPreference: 'brand-launch' }
           },
           {
-            text: "Coding a chatbot (Agent Development)",
+            text: "Coding a chatbot ",
             traits: { curiosity: 1, learnability: 1 },
             backgroundFactors: { projectPreference: 'chatbot' }
           },
           {
-            text: "Preparing datasets for AI training (Data Labeling)",
+            text: "Preparing datasets for AI training ",
             traits: { accountability: 1, integrity: 1 },
             backgroundFactors: { projectPreference: 'dataset-prep' }
           }
@@ -841,22 +841,22 @@ export default function TalentCompassAssessment() {
         text: "Which AI-driven skill would enhance your current expertise?",
         options: [
           {
-            text: "Designing next-gen experiences (UI/UX)",
+            text: "Designing next-gen experiences ",
             traits: { curiosity: 1, emotionalIntelligence: 1 },
             backgroundFactors: { coursePreference: 'ai-uiux' }
           },
           {
-            text: "Scaling customer impact (Marketing)",
+            text: "Scaling customer impact ",
             traits: { ambition: 1, emotionalIntelligence: 1 },
             backgroundFactors: { coursePreference: 'ai-marketing' }
           },
           {
-            text: "Building automation tools (Agent Development)",
+            text: "Building automation tools ",
             traits: { curiosity: 1, learnability: 1 },
             backgroundFactors: { coursePreference: 'ai-agent-development' }
           },
           {
-            text: "Managing reliable datasets (Data Labeling)",
+            text: "Managing reliable datasets ",
             traits: { accountability: 1, integrity: 1 },
             backgroundFactors: { coursePreference: 'ai-data-labeling' }
           }
@@ -868,22 +868,22 @@ export default function TalentCompassAssessment() {
         text: "If you reskill, you'd like your learning to directly impact:",
         options: [
           {
-            text: "End-user experience (UI/UX)",
+            text: "End-user experience ",
             traits: { emotionalIntelligence: 1, curiosity: 1 },
             backgroundFactors: { impactArea: 'user-experience' }
           },
           {
-            text: "Business strategy (Marketing)",
+            text: "Business strategy ",
             traits: { ambition: 1, adaptability: 1 },
             backgroundFactors: { impactArea: 'business-strategy' }
           },
           {
-            text: "Technical innovation (Agent Development)",
+            text: "Technical innovation",
             traits: { curiosity: 1, learnability: 1 },
             backgroundFactors: { impactArea: 'technical-innovation' }
           },
           {
-            text: "Data reliability (Data Labeling)",
+            text: "Data reliability ",
             traits: { accountability: 1, integrity: 1 },
             backgroundFactors: { impactArea: 'data-reliability' }
           }
@@ -895,22 +895,22 @@ export default function TalentCompassAssessment() {
         text: "As an experienced professional, you'd prefer a course that:",
         options: [
           {
-            text: "Helps you innovate in design thinking (UI/UX)",
+            text: "Helps you innovate in design thinking ",
             traits: { curiosity: 1, emotionalIntelligence: 1 },
             backgroundFactors: { courseStyle: 'design-innovation' }
           },
           {
-            text: "Boosts your influence in business growth (Marketing)",
+            text: "Boosts your influence in business growth ",
             traits: { ambition: 1, emotionalIntelligence: 1 },
             backgroundFactors: { courseStyle: 'business-influence' }
           },
           {
-            text: "Strengthens your technical authority (Agent Dev)",
+            text: "Strengthens your technical authority ",
             traits: { curiosity: 1, learnability: 1 },
             backgroundFactors: { courseStyle: 'technical-authority' }
           },
           {
-            text: "Improves your accuracy in data management (Labeling)",
+            text: "Improves your accuracy in data management ",
             traits: { accountability: 1, integrity: 1 },
             backgroundFactors: { courseStyle: 'data-accuracy' }
           }
