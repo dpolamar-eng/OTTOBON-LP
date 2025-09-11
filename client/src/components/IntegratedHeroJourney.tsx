@@ -233,7 +233,12 @@ export default function IntegratedHeroJourney() {
   };
 
   return (
-    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]">
+    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 overflow-hidden bg-black">
+      {/* Background effects */}
+      <div className="fixed inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
       <div className="container mx-auto px-1 sm:px-3 md:px-4 relative z-10 overflow-hidden">
         {/* Hero Content */}
         <div className="mb-12 md:mb-16 relative">

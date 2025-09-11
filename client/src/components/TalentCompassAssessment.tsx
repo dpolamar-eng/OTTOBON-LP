@@ -1499,11 +1499,16 @@ export default function TalentCompassAssessment() {
       id="talent-compass"
       className={`overflow-hidden relative ${
         currentPhase === 'trait-assessment' || currentPhase === 'background-assessment'
-          ? 'bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF] min-h-screen'
-          : 'py-16 bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]'
+          ? 'bg-black min-h-screen'
+          : 'py-16 bg-black'
       }`}
       ref={sectionRef}
     >
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
       {/* Background decorations - only show for non-assessment phases */}
       {currentPhase !== 'trait-assessment' && currentPhase !== 'background-assessment' && (
         <div className="absolute inset-0 overflow-hidden">
@@ -1519,21 +1524,21 @@ export default function TalentCompassAssessment() {
           : 'container mx-auto px-4 relative z-10'
       }`}>
         <div className="text-center mb-6">
-          <div className="inline-flex items-center mb-4 bg-purple-50 px-4 py-2 rounded-full">
-            <svg className="text-purple-600 mr-2 w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="inline-flex items-center mb-4 bg-purple-500/20 px-4 py-2 rounded-full">
+            <svg className="text-purple-400 mr-2 w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
             </svg>
-            <span className="text-purple-800 font-medium text-sm uppercase tracking-wider">Personalized Assessment</span>
+            <span className="text-purple-300 font-medium text-sm uppercase tracking-wider">Personalized Assessment</span>
           </div>
-          <h2 ref={titleRef} className="text-4xl md:text-6xl font-bold text-center mb-3 leading-tight">
-            Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
+          <h2 ref={titleRef} className="text-4xl md:text-6xl font-bold text-center mb-3 leading-tight text-white">
+            Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Talent Compass</span> Journey
           </h2>
         </div>
 
         {currentPhase === 'intro' && (
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-gray-600 mb-8">
+            <p className="text-blue-100 mb-8">
               Discover your unique path in technology consulting through our personalized assessment tool.
               Based on your core strengths and background, we'll identify your ideal learning track and
               potential for tuition discounts of up to 90%.

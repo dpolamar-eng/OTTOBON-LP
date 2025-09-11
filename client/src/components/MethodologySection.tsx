@@ -7,17 +7,22 @@ export default function MethodologySection() {
   const headerRef = useAnimation('animate-slide-up');
   const cardsRef = useStaggeredAnimation('animate-scale-in');
   return (
-  <section id="methodology" className="pt-8 pb-20 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]" ref={sectionRef}>
-      <div className="container mx-auto px-4">
+  <section id="methodology" className="pt-8 pb-20 overflow-hidden bg-black relative" ref={sectionRef}>
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12" ref={headerRef}>
           <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
             <span className="text-blue-600 mr-2 text-xl">⚡</span>
             <span className="text-blue-800 font-medium text-sm uppercase tracking-wider">Learning Accelerator</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 leading-tight">
             Our Game-Changing Methodology
           </h2>
-          <p className="text-gray-700 mb-8 text-lg">
+          <p className="text-blue-100 mb-8 text-lg">
             Ottobon's unique approach transforms promising talent into elite technology consultants through these core pillars.
           </p>
           <div className="fancy-divider"></div>

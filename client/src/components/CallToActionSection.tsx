@@ -12,7 +12,12 @@ export default function CallToActionSection() {
   };
 
   return (
-    <section className="py-20 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF] relative">
+    <section className="py-20 overflow-hidden bg-black relative">
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
@@ -25,10 +30,10 @@ export default function CallToActionSection() {
 
     <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your Career?
           </h2>
-      <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Join thousands of students who have successfully transitioned into independent consultants through our AI-enhanced learning programs.
           </p>
 

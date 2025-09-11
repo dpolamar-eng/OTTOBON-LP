@@ -315,17 +315,22 @@ export default function CoursesSection() {
   const carouselRef = useAnimation('animate-scale-in delay-300');
 
   return (
-    <section id="courses" className="py-16 overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]" ref={sectionRef}>
-      <div className="container mx-auto px-4">
+    <section id="courses" className="py-16 overflow-hidden bg-black relative" ref={sectionRef}>
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-6">
-          <div className="inline-flex items-center mb-4 bg-blue-50 px-4 py-2 rounded-full">
-            <span className="text-blue-600 mr-2 text-xl">🔥</span>
-            <span className="text-blue-800 font-medium text-sm uppercase tracking-wider">In-Demand Skills</span>
+          <div className="inline-flex items-center mb-4 bg-blue-500/20 px-4 py-2 rounded-full">
+            <span className="text-blue-400 mr-2 text-xl">🔥</span>
+            <span className="text-blue-300 font-medium text-sm uppercase tracking-wider">In-Demand Skills</span>
           </div>
           <h2 ref={headingRef} className="text-3xl md:text-4xl font-bold text-center mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-700">Advance</span> Your Professional Skills
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Advance</span> Your Professional Skills
           </h2>
-          <p ref={descriptionRef} className="text-center text-gray-700 max-w-2xl mx-auto mb-8 text-lg">
+          <p ref={descriptionRef} className="text-center text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
             Gain certification, industry recognition, and career advancement opportunities through our hands-on training programs focused on in-demand technical skills sought by leading employers.
           </p>
           <div className="fancy-divider"></div>

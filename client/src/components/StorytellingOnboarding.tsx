@@ -484,7 +484,12 @@ export default function StorytellingOnboarding() {
   const currentSegment = getCurrentSegment();
 
   return (
-    <section id="stories" className="py-20 relative overflow-hidden bg-gradient-to-r from-[#CDFFD8] to-[#94B9FF]" ref={sectionRef}>
+    <section id="stories" className="py-20 relative overflow-hidden bg-black" ref={sectionRef}>
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
       {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -494,11 +499,11 @@ export default function StorytellingOnboarding() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-center mb-3">
-          Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-green-700">Success</span> Stories
+        <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-center mb-3 text-white">
+          Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Success</span> Stories
         </h2>
 
-        <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+        <p className="text-center text-blue-100 max-w-3xl mx-auto mb-12">
           Explore the journeys of Indian professionals who've transformed their careers through our program. 
           Choose a story that resonates with your situation to see how your own path might unfold.
         </p>
