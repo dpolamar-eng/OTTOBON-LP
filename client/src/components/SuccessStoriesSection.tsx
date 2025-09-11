@@ -38,7 +38,7 @@ export default function SuccessStoriesSection() {
         <p className="text-center text-blue-100 max-w-3xl mx-auto mb-12">
           Discover how our AI-enhanced learning approach has empowered students and freshers to become independent consultants in Salesforce, Oracle, Cloud Computing, and Full Stack Development.
         </p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Success Story 1 */}
           <div className="flip-card h-[320px]" onClick={() => toggleFlipCard('story1')}>
@@ -70,7 +70,7 @@ export default function SuccessStoriesSection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flip-card-back bg-gray-100">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
@@ -104,7 +104,7 @@ export default function SuccessStoriesSection() {
               </div>
             </div>
           </div>
-          
+
           {/* Success Story 2 */}
           <div className="flip-card h-[320px]" onClick={() => toggleFlipCard('story2')}>
             <div className={`flip-card-inner ${flippedCards.story2 ? 'flipped' : ''}`}>
@@ -133,7 +133,7 @@ export default function SuccessStoriesSection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flip-card-back bg-gray-100">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
@@ -167,7 +167,7 @@ export default function SuccessStoriesSection() {
               </div>
             </div>
           </div>
-          
+
           {/* Success Story 3 */}
           <div className="flip-card h-[320px]" onClick={() => toggleFlipCard('story3')}>
             <div className={`flip-card-inner ${flippedCards.story3 ? 'flipped' : ''}`}>
@@ -196,7 +196,7 @@ export default function SuccessStoriesSection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flip-card-back bg-gray-100">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-4">
@@ -231,7 +231,7 @@ export default function SuccessStoriesSection() {
             </div>
           </div>
         </div>
-        
+
         <div className="text-center mt-12">
           <div className="bg-gray-200 p-4 rounded-lg inline-block mb-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -253,7 +253,7 @@ export default function SuccessStoriesSection() {
               </div>
             </div>
           </div>
-          
+
           <button className="text-primary hover:text-primary/80 font-medium flex items-center justify-center mx-auto">
             View More Success Stories <i className="fas fa-chevron-right ml-1 text-sm"></i>
           </button>
