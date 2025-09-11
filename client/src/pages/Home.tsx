@@ -54,37 +54,36 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-        <div style={{ background: 'transparent' }}>
+        <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
           <Header />
         </div>
-        <main style={{ background: 'transparent' }}>
-          <div style={{ background: 'transparent' }}>
+        <main className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
+          <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
             <IntegratedHeroJourney />
           </div>
-          <div style={{ background: 'transparent' }}>
+          <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
             <MethodologySection />
           </div>
-          <div style={{ background: 'transparent' }}>
+          <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
             <StorytellingOnboarding />
           </div>
-          <div style={{ background: 'transparent' }}>
+          <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
             <CoursesSection />
           </div>
-          <div style={{ background: 'transparent' }}>
+          <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
             <RequirementsSection />
           </div>
-          <div style={{ background: 'transparent' }}>
+          <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
             <TalentCompassAssessment />
           </div>
-          <div style={{ background: 'transparent' }}>
+          <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
             <CallToActionSection />
           </div>
           
           {/* Academy FAQ Section */}
           <section
             id="faq"
-            className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28"
-            style={{ background: 'transparent' }}
+            className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28 !bg-transparent [&>*]:!bg-transparent [&_*]:!bg-transparent"
           >
             <div className="container mx-auto px-4">
               <div className="text-center mb-8">
@@ -126,8 +125,8 @@ export default function Home() {
                 ].map((item, idx) => (
                   <details
                     key={idx}
-                    className="backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105"
-                    style={{ background: 'transparent', boxShadow: "none" }}
+                    className="!bg-transparent backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105 [&>*]:!bg-transparent [&_*]:!bg-transparent"
+                    style={{ boxShadow: "none" }}
                     onMouseEnter={(e) =>
                       (e.currentTarget.style.boxShadow =
                         "0 0 30px rgba(59, 130, 246, 0.4)")
@@ -146,7 +145,7 @@ export default function Home() {
             </div>
           </section>
         </main>
-        <div style={{ background: 'transparent' }}>
+        <div className="[&>*]:!bg-transparent [&_*]:!bg-transparent">
           <Footer />
         </div>
       </div>
