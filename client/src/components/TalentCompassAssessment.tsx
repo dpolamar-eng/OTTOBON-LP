@@ -1820,10 +1820,10 @@ export default function TalentCompassAssessment() {
 
                 {/* Page Title */}
                 <div className="text-center mb-8">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                    Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Talent Compass</span> Journey
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                    Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Talent Compass</span> Journey
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-blue-100">
                     Let's discover your core strengths and natural talents through personalized questions.
                   </p>
                 </div>
@@ -1831,8 +1831,8 @@ export default function TalentCompassAssessment() {
                 {/* Main Assessment Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                   {/* Left Side - Compass Visualization */}
-                  <div className="bg-white rounded-xl shadow-md p-6">
-                    <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
+                  <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 border border-gray-700/50">
+                    <h3 className="text-xl font-bold mb-4 text-center text-white">Your Talent Compass</h3>
                     <div className="flex justify-center mb-4">
                       <canvas
                         ref={compassCanvas}
@@ -1841,24 +1841,24 @@ export default function TalentCompassAssessment() {
                         className="max-w-full"
                       ></canvas>
                     </div>
-                    <p className="text-sm text-gray-500 text-center">
+                    <p className="text-sm text-gray-300 text-center">
                       This visualization updates in real-time as you answer questions,
                       showing how your unique strengths are being mapped.
                     </p>
                   </div>
 
                   {/* Right Side - Question Section */}
-                  <div className="bg-white rounded-xl shadow-md p-6">
+                  <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 border border-gray-700/50">
                     <div className="mb-6">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-500">
+                        <span className="text-sm font-medium text-gray-300">
                           {currentPhase === 'trait-assessment' ? 'Trait Assessment' : 'Background Assessment'}
                         </span>
-                        <span className="text-sm font-medium text-gray-500">
+                        <span className="text-sm font-medium text-gray-300">
                           Question {currentQuestionIndex + 1} of {allQuestions.length}
                         </span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-700 rounded-full h-2">
                         <div
                           className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600"
                           style={{
@@ -1870,14 +1870,14 @@ export default function TalentCompassAssessment() {
 
                     {currentQuestion && (
                       <div>
-                        <h3 className="text-xl font-bold mb-6">{currentQuestion.text}</h3>
+                        <h3 className="text-xl font-bold mb-6 text-white">{currentQuestion.text}</h3>
 
                         <div className="space-y-3">
                           {currentQuestion.options.map((option, index) => (
                             <button
                               key={index}
                               onClick={() => selectAnswer(index)}
-                              className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition"
+                              className="w-full text-left p-4 border border-gray-600 bg-gray-700/50 rounded-lg hover:bg-blue-600/20 hover:border-blue-400 transition text-gray-200"
                             >
                               {option.text}
                             </button>
