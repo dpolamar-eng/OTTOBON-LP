@@ -1934,7 +1934,7 @@ export default function TalentCompassAssessment() {
               {/* Results and recommendations */}
               <div className="lg:col-span-2">
                 {/* Discount eligibility card */}
-                <div className="bg-gradient-to-br from-blue-600/90 via-purple-600/90 to-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg p-8 text-white mb-8 border border-blue-400/20"></div>
+                <div className="bg-gradient-to-r from-green-600 to-black rounded-xl shadow-lg p-8 text-white mb-8">
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="text-2xl font-bold mb-2">Congratulations!</h3>
@@ -1995,8 +1995,8 @@ export default function TalentCompassAssessment() {
                         <div className="flex justify-end">
                           <a
                             href="#enroll"
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
-                          ></div>
+                            className="bg-gradient-to-r from-green-600 to-black hover:from-green-700 hover:to-gray-900 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
+                          >
                             <span className="relative z-10 flex items-center justify-center">
                               Apply Now
                               <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
