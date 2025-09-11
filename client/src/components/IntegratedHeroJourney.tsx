@@ -261,7 +261,7 @@ export default function IntegratedHeroJourney() {
                           <div className="w-full max-w-full overflow-hidden mb-3 md:mb-4">
                             <h1
                               ref={headingRef}
-                              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-black"
+                              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white"
                               style={{
                                 maxWidth: "100%",
                                 wordBreak: "break-word",
@@ -274,7 +274,7 @@ export default function IntegratedHeroJourney() {
                           </div>
                           <p
                             ref={descriptionRef}
-                            className="text-sm sm:text-base md:text-lg lg:text-xl text-black/80 mb-4 md:mb-6 max-w-lg leading-relaxed"
+                            className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-4 md:mb-6 max-w-lg leading-relaxed"
                           >
                             {slide.description}
                           </p>
@@ -342,8 +342,8 @@ export default function IntegratedHeroJourney() {
                               className="rounded-lg w-full object-cover h-64 sm:h-80 md:h-96 transition duration-500 hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/20 opacity-70 mix-blend-overlay"></div>
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white/80 to-transparent p-4">
-                              <p className="text-black font-medium text-sm">
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                              <p className="text-white font-medium text-sm">
                                 {slide.alt}
                               </p>
                             </div>
