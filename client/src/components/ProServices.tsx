@@ -323,11 +323,13 @@ export default function ProServices() {
     }
   };
 
-  // Create a looping carousel effect
+  // Create a responsive carousel effect
   const scrollCards = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
       const container = carouselRef.current;
-      const cardWidth = 450; // approx width of each card including gap
+      const isMobile = window.innerWidth < 768;
+      // On mobile, scroll one full card width (85vw + gap), on desktop use existing logic
+      const cardWidth = isMobile ? window.innerWidth * 0.85 + 16 : 450;
 
       if (direction === 'right') {
         // If we're near the end, loop back to the beginning
@@ -725,11 +727,35 @@ export default function ProServices() {
             
             {/* Carousel Container */}
             <div className="relative">
+              {/* Mobile Navigation Buttons */}
+              {filteredServices.length > 1 && (
+                <div className="md:hidden flex justify-center space-x-4 mb-4">
+                  <button
+                    onClick={() => scrollCards('left')}
+                    className="bg-gray-800/90 hover:bg-gray-700 text-white p-2 rounded-full shadow-lg transition-all duration-300"
+                    aria-label="Previous slide"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => scrollCards('right')}
+                    className="bg-gray-800/90 hover:bg-gray-700 text-white p-2 rounded-full shadow-lg transition-all duration-300"
+                    aria-label="Next slide"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              )}
+
               {/* Carousel Track */}
               <div 
                 ref={carouselRef}
                 className={`flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4 px-2 md:px-0 ${
-                  filteredServices.length < 4 ? 'justify-center' : ''
+                  filteredServices.length < 4 ? 'md:justify-center' : ''
                 }`}
                 style={{
                   scrollbarWidth: 'none',
@@ -741,7 +767,7 @@ export default function ProServices() {
                 {(filteredServices.length >= 4 ? [...filteredServices, ...filteredServices] : filteredServices).map((service, index) => (
                   <div
                     key={`${service.id}-${index}`}
-                    className="group min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] snap-start flex-shrink-0"
+                    className="group min-w-[85vw] md:min-w-[320px] max-w-[85vw] md:max-w-[320px] snap-start flex-shrink-0"
                   >
                     {/* Simple card with clean design */}
                     <div 
@@ -826,15 +852,18 @@ export default function ProServices() {
                 ))}
               </div>
 
-              {/* Scroll Indicators for smaller screens */}
+              {/* Mobile Slide Indicators */}
               {filteredServices.length > 1 && (
                 <div className="flex justify-center mt-4 gap-2 md:hidden">
                   {filteredServices.map((_, index) => (
                     <div
                       key={index}
-                      className="w-2 h-2 rounded-full bg-gray-600"
+                      className="w-2 h-2 rounded-full bg-gray-600 transition-colors duration-300"
                     />
                   ))}
+                  <div className="text-xs text-gray-400 ml-4">
+                    Swipe or use buttons to navigate
+                  </div>
                 </div>
               )}
             </div>
