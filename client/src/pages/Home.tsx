@@ -1,4 +1,5 @@
 
+
 import { useMemo } from "react";
 import Header from "@/components/Header";
 import MethodologySection from "@/components/MethodologySection";
@@ -25,7 +26,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-black flex flex-col">
-      {/* Background effects */}
+      {/* Background effects for sections below */}
       <div className="fixed inset-0 overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
@@ -133,3 +134,4 @@ export default function Home() {
     </div>
   );
 }
+
