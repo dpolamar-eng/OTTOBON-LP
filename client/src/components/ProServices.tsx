@@ -771,8 +771,12 @@ export default function ProServices() {
                   >
                     {/* Simple card with clean design */}
                     <div 
-                      className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer h-full flex flex-col"
+                      className="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 cursor-pointer flex flex-col"
                       onClick={() => toggleCard(service.id)}
+                      style={{
+                        minHeight: expandedCards[service.id] ? 'auto' : '400px',
+                        height: 'auto'
+                      }}
                     >
                       {/* Header with image */}
                       <div className="relative h-48 overflow-hidden">
@@ -827,23 +831,41 @@ export default function ProServices() {
                         </div>
 
                         {/* Expanded details - only on mobile */}
-                        <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-                          expandedCards[service.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+                          expandedCards[service.id] ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <div className="pt-4 border-t border-gray-700/50">
-                            <p className="text-gray-400 text-sm mb-4">{service.details}</p>
+                          <div className="overflow-hidden">
+                            <div className="pt-4 border-t border-gray-700/50">
+                              <p className="text-gray-400 text-sm mb-4 leading-relaxed">{service.details}</p>
 
-                            <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
-                            <ul className="space-y-2">
-                              {service.features.map((feature, i) => (
-                                <li key={i} className="flex items-start text-sm">
-                                  <svg className="w-4 h-4 text-indigo-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                                  </svg>
-                                  <span className="text-gray-300">{feature}</span>
-                                </li>
-                              ))}
-                            </ul>
+                              <h4 className="text-sm font-semibold text-white mb-3">Key Features</h4>
+                              <ul className="space-y-2 mb-4">
+                                {service.features.map((feature, i) => (
+                                  <li key={i} className="flex items-start text-sm">
+                                    <svg className="w-4 h-4 text-indigo-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span className="text-gray-300 leading-relaxed">{feature}</span>
+                                  </li>
+                                ))}
+                              </ul>
+
+                              {/* Close button for mobile */}
+                              <div className="flex justify-center pt-2 pb-2">
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setExpandedCards(prev => ({
+                                      ...prev,
+                                      [service.id]: false
+                                    }));
+                                  }}
+                                  className="text-indigo-400 hover:text-indigo-300 text-sm font-medium py-2 px-4 rounded-full border border-indigo-400/30 hover:border-indigo-400/50 transition-colors"
+                                >
+                                  Close Details
+                                </button>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
