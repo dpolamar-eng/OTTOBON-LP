@@ -516,7 +516,7 @@ export default function CoursesSection() {
                                     Career Opportunities
                                   </h4>
                                   <p className="text-gray-700 text-sm">
-                                    Graduates work as specialized consultants in top firms with average starting salaries of $85,000-$115,000.
+                                    Graduates work as specialized consultants in top firms with excellent career advancement opportunities and competitive compensation packages.
                                   </p>
                                 </div>
                               </>
