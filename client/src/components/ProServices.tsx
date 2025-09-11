@@ -687,14 +687,23 @@ export default function ProServices() {
           {/* Services Section - Horizontal Sliding Carousel */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
             
-            {/* Carousel Container */}
-            <div className="relative">
-              {/* Navigation Buttons */}
-              {filteredServices.length >= 4 && (
-                <>
+            {/* Section Header with Navigation */}
+            <div className="flex justify-between items-center mb-6">
+              <div>
+                <h2 className="text-2xl font-bold mb-2">{activeFilter === 'Health Care' ? '🏥 Health Care and Business Development' : `${categories.find(c => c.id === activeFilter)?.icon} ${activeFilter}`}</h2>
+                <p className="text-gray-300">
+                  {activeFilter === 'Health Care' 
+                    ? 'Advanced healthcare solutions and business development services' 
+                    : 'AI-powered solutions with optional human support'}
+                </p>
+              </div>
+              
+              {/* Navigation Buttons - Show for all sections with multiple services */}
+              {filteredServices.length > 1 && (
+                <div className="hidden md:flex space-x-2">
                   <button
                     onClick={() => scrollCards('left')}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                    className="bg-gray-800/90 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
                     aria-label="Scroll left"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -703,15 +712,20 @@ export default function ProServices() {
                   </button>
                   <button
                     onClick={() => scrollCards('right')}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                    className="bg-gray-800/90 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
                     aria-label="Scroll right"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                   </button>
-                </>
+                </div>
               )}
+            </div>
+            
+            {/* Carousel Container */}
+            <div className="relative"></div>
+              
 
               {/* Carousel Track */}
               <div 
