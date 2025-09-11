@@ -1831,20 +1831,25 @@ export default function TalentCompassAssessment() {
                 {/* Main Assessment Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                   {/* Left Side - Compass Visualization */}
-                  <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 border border-gray-700/50">
-                    <h3 className="text-xl font-bold mb-4 text-center text-white">Your Talent Compass</h3>
-                    <div className="flex justify-center mb-4">
-                      <canvas
-                        ref={compassCanvas}
-                        width="300"
-                        height="300"
-                        className="max-w-full"
-                      ></canvas>
+                  <div>
+                    <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 mb-8 border border-gray-700/50">
+                      <h3 className="text-xl font-bold mb-4 text-center text-white">Your Talent Compass</h3>
+                      <div className="flex justify-center mb-4">
+                        <canvas
+                          ref={compassCanvas}
+                          width="400"
+                          height="400"
+                          className="max-w-full"
+                        ></canvas>
+                      </div>
                     </div>
-                    <p className="text-sm text-gray-300 text-center">
-                      This visualization updates in real-time as you answer questions,
-                      showing how your unique strengths are being mapped.
-                    </p>
+
+                    <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 border border-gray-700/50">
+                      <h3 className="text-xl font-bold mb-4 text-white">Your Core Strengths</h3>
+                      <div className="space-y-4">
+                        {traits.map(trait => renderTraitScoreCard(trait))}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Right Side - Question Section */}
@@ -1911,8 +1916,8 @@ export default function TalentCompassAssessment() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Compass and traits visualization */}
               <div>
-                <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-                  <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
+                <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 mb-8 border border-gray-700/50">
+                  <h3 className="text-xl font-bold mb-4 text-center text-white">Your Talent Compass</h3>
                   <div className="flex justify-center mb-4">
                     <canvas
                       ref={compassCanvas}
@@ -1923,8 +1928,8 @@ export default function TalentCompassAssessment() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl shadow-md p-6">
-                  <h3 className="text-xl font-bold mb-4">Your Core Strengths</h3>
+                <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 border border-gray-700/50">
+                  <h3 className="text-xl font-bold mb-4 text-white">Your Core Strengths</h3>
                   <div className="space-y-4">
                     {traits.map(trait => renderTraitScoreCard(trait))}
                   </div>
