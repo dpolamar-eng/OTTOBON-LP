@@ -724,9 +724,7 @@ export default function ProServices() {
             </div>
             
             {/* Carousel Container */}
-            <div className="relative"></div>
-              
-
+            <div className="relative">
               {/* Carousel Track */}
               <div 
                 ref={carouselRef}
