@@ -55,77 +55,117 @@ export default function ServicesFooter() {
           <div>
             <h3 className="text-lg font-bold mb-6 text-white relative">
               Health Care 🏥
-              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-blue-500"></div>
+              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-pink-500"></div>
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Personal Fertility Care Companion
+                <a href="/services#services" className="text-gray-300 hover:text-pink-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-pink-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Health Companion
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Journey to Parenthood
+                <a href="/services#services" className="text-gray-300 hover:text-pink-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-pink-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Health Tech Solutions
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  AI-powered Health Tracking
+                <a href="/services#services" className="text-gray-300 hover:text-pink-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-pink-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  AI-powered Fertility Tracking
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Reproductive Health Support
+                <a href="/services#services" className="text-gray-300 hover:text-pink-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-pink-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Digital Health Innovations
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Enterprise Support Section */}
+          {/* Enterprise Enablement Section */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-white relative">
-              Enterprise Support Services 💻
+              Enterprise Enablement 🤖
               <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-blue-500"></div>
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Pre-Sales Support
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
-                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Marketing & Visibility
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                <a href="/services#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
                   <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Talent Acquisition
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                <a href="/services#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
                   <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Project Delivery Support
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                <a href="/services#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
                   <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Admin & Billing
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                <a href="/services#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
                   <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Payroll Management
+                </a>
+              </li>
+              <li>
+                <a href="/services#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  AI-powered Automation
+                </a>
+              </li>
+              <li>
+                <a href="/services#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Operational Excellence
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Business Development Section */}
+          <div>
+            <h3 className="text-lg font-bold mb-6 text-white relative">
+              Business Development 📈
+              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-green-500"></div>
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="/services#services" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Pre-Sales Support
+                </a>
+              </li>
+              <li>
+                <a href="/services#services" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Marketing & Visibility
+                </a>
+              </li>
+              <li>
+                <a href="/services#services" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Strategic Growth Solutions
+                </a>
+              </li>
+              <li>
+                <a href="/services#services" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Market Expansion Services
+                </a>
+              </li>
+              <li>
+                <a href="/services#services" className="text-gray-300 hover:text-green-400 transition-colors duration-200 text-sm flex items-center group">
+                  <span className="w-1 h-1 bg-green-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Proposal Generation
                 </a>
               </li>
             </ul>
