@@ -1444,18 +1444,18 @@ export default function TalentCompassAssessment() {
     const normalizedScore = Math.min(score / 10, 1) * 100; // 0-100 scale
 
     return (
-      <div key={trait.id} className="bg-white rounded-lg p-4 shadow-md">
+      <div key={trait.id} className="bg-gray-800 rounded-lg p-4 shadow-md border border-gray-700">
         <div className="flex items-center mb-2">
           <span className="text-xl mr-2">{trait.icon}</span>
-          <h4 className="font-semibold">{trait.name}</h4>
+          <h4 className="font-semibold text-white">{trait.name}</h4>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
+        <div className="w-full bg-gray-700 rounded-full h-2 mb-1">
           <div
             className={`h-2 rounded-full bg-gradient-to-r ${trait.color}`}
             style={{ width: `${normalizedScore}%` }}
           ></div>
         </div>
-        <p className="text-xs text-gray-500">{trait.description}</p>
+        <p className="text-xs text-gray-400">{trait.description}</p>
       </div>
     );
   };
@@ -1468,25 +1468,25 @@ export default function TalentCompassAssessment() {
       <div
         key={course.id}
         className={`border rounded-lg p-5 ${
-          matchScore > 80 ? 'border-green-400 bg-green-50' :
-          matchScore > 60 ? 'border-blue-400 bg-blue-50' : 'border-gray-300'
+          matchScore > 80 ? 'border-green-400 bg-green-900/30' :
+          matchScore > 60 ? 'border-blue-400 bg-blue-900/30' : 'border-gray-600 bg-gray-700/50'
         }`}
       >
         <div className="flex justify-between items-start mb-3">
           <div className="flex items-center">
             <span className="text-2xl mr-3">{course.icon}</span>
-            <h3 className="font-bold text-lg">{course.title}</h3>
+            <h3 className="font-bold text-lg text-white">{course.title}</h3>
           </div>
-          <div className="bg-white border border-gray-200 rounded-full px-3 py-1 text-sm font-medium">
+          <div className="bg-gray-700 border border-gray-600 rounded-full px-3 py-1 text-sm font-medium text-white">
             {matchScore}% Match
           </div>
         </div>
 
-        <p className="text-gray-700 mb-4">{course.description}</p>
+        <p className="text-gray-300 mb-4">{course.description}</p>
 
         <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-500">{course.category}</span>
-          <button className="text-primary hover:text-primary/80 text-sm font-medium">
+          <span className="text-xs text-gray-400">{course.category}</span>
+          <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
             View Details
           </button>
         </div>
@@ -1911,8 +1911,8 @@ export default function TalentCompassAssessment() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Compass and traits visualization */}
               <div>
-                <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-                  <h3 className="text-xl font-bold mb-4 text-center">Your Talent Compass</h3>
+                <div className="bg-gray-800 rounded-xl shadow-md p-6 mb-8 border border-gray-700">
+                  <h3 className="text-xl font-bold mb-4 text-center text-white">Your Talent Compass</h3>
                   <div className="flex justify-center mb-4">
                     <canvas
                       ref={compassCanvas}
@@ -1923,8 +1923,8 @@ export default function TalentCompassAssessment() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl shadow-md p-6">
-                  <h3 className="text-xl font-bold mb-4">Your Core Strengths</h3>
+                <div className="bg-gray-800 rounded-xl shadow-md p-6 border border-gray-700">
+                  <h3 className="text-xl font-bold mb-4 text-white">Your Core Strengths</h3>
                   <div className="space-y-4">
                     {traits.map(trait => renderTraitScoreCard(trait))}
                   </div>
@@ -1974,8 +1974,8 @@ export default function TalentCompassAssessment() {
                 </div>
 
                 {/* Course matches */}
-                <div className="bg-white rounded-xl shadow-md p-8">
-                  <h3 className="text-xl font-bold mb-6">Your Recommended Paths</h3>
+                <div className="bg-gray-800 rounded-xl shadow-md p-8 border border-gray-700">
+                  <h3 className="text-xl font-bold mb-6 text-white">Your Recommended Paths</h3>
 
                   <div className="space-y-6 mb-8">
                     {bestMatch?.course && (
@@ -2020,10 +2020,10 @@ export default function TalentCompassAssessment() {
                     </div>
                   </div>
 
-                  <div className="flex justify-center pt-4 border-t border-gray-200">
+                  <div className="flex justify-center pt-4 border-t border-gray-600">
                     <a
                       href="#enroll"
-                      className="text-blue-600 hover:text-blue-800 font-medium"
+                      className="text-blue-400 hover:text-blue-300 font-medium"
                     >
                       Schedule a Consultation
                     </a>
