@@ -180,28 +180,28 @@ export default function ServicesFooter() {
               Contact Us
               <div className="absolute -bottom-2 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-purple-500"></div>
             </h3>
-            <div className="flex flex-col md:flex-row md:justify-center md:space-x-16 space-y-6 md:space-y-0">
-              <div className="flex flex-col md:flex-row md:items-center group">
-                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-0 md:mr-4 mb-2 md:mb-0 group-hover:bg-purple-600 transition-colors mx-auto md:mx-0">
+            <div className="flex flex-col md:flex-row md:justify-center md:space-x-16 space-y-8 md:space-y-0">
+              <div className="flex flex-col items-center md:flex-row md:items-center group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mb-3 md:mr-4 md:mb-0 group-hover:bg-purple-600 transition-colors">
                   <i className="fas fa-envelope text-purple-400 text-sm group-hover:text-white"></i>
                 </div>
                 <a href="mailto:hr.services@ottobon.in" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm text-center md:text-left">
                   hr.services@ottobon.in
                 </a>
               </div>
-              <div className="flex flex-col md:flex-row md:items-center group">
-                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-0 md:mr-4 mb-2 md:mb-0 group-hover:bg-purple-600 transition-colors mx-auto md:mx-0">
+              <div className="flex flex-col items-center md:flex-row md:items-center group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mb-3 md:mr-4 md:mb-0 group-hover:bg-purple-600 transition-colors">
                   <i className="fas fa-phone text-purple-400 text-sm group-hover:text-white"></i>
                 </div>
                 <a href="tel:+919281011683" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm text-center md:text-left">
                   +91 9281011683
                 </a>
               </div>
-              <div className="flex flex-col md:flex-row md:items-center group">
-                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-0 md:mr-4 mb-2 md:mb-0 group-hover:bg-purple-600 transition-colors mx-auto md:mx-0 flex-shrink-0">
+              <div className="flex flex-col items-center md:flex-row md:items-center group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mb-3 md:mr-4 md:mb-0 group-hover:bg-purple-600 transition-colors flex-shrink-0">
                   <i className="fas fa-map-marker-alt text-purple-400 text-sm group-hover:text-white"></i>
                 </div>
-                <span className="text-gray-300 text-sm leading-relaxed text-center md:text-left md:max-w-sm">
+                <span className="text-gray-300 text-sm leading-relaxed text-center md:text-left md:max-w-sm px-4 md:px-0">
                   D No 10-28-2/1/3, 1st Floor 102, A Square Business Centre, Waltair Uplands, Waltair Main Road, Chinawaltair, Visakhapatnam, Andhra Pradesh, India, 530003
                 </span>
               </div>
