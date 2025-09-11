@@ -1513,8 +1513,8 @@ export default function TalentCompassAssessment() {
       {currentPhase !== 'trait-assessment' && currentPhase !== 'background-assessment' && (
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-          <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/40 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/40 to-transparent"></div>
+          <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/10 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/10 to-transparent"></div>
         </div>
       )}
 

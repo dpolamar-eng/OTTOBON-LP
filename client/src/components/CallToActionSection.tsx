@@ -25,8 +25,8 @@ export default function CallToActionSection() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
       </div>
       {/* Gradient fades to match TalentCompassAssessment and avoid banding */}
-      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/40 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/40 to-transparent"></div>
+      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/10 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/10 to-transparent"></div>
 
     <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">

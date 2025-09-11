@@ -22,10 +22,20 @@ export default function SuccessStoriesSection() {
   };
 
   return (
-    <section id="success-stories" className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Student to Consultant Transformations</h2>
-        <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+    <section id="success-stories" className="py-16 overflow-hidden bg-black relative">
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      {/* Subtle gradient fades */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/10 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/10 to-transparent"></div>
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white">Student to Consultant Transformations</h2>
+        <p className="text-center text-blue-100 max-w-3xl mx-auto mb-12">
           Discover how our AI-enhanced learning approach has empowered students and freshers to become independent consultants in Salesforce, Oracle, Cloud Computing, and Full Stack Development.
         </p>
         
