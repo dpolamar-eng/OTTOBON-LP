@@ -1979,17 +1979,17 @@ export default function TalentCompassAssessment() {
 
                   <div className="space-y-6 mb-8">
                     {bestMatch?.course && (
-                      <div className="border-2 border-green-400 rounded-lg p-6 bg-green-50">
+                      <div className="border-2 border-green-400 rounded-lg p-6 bg-gray-800/90 backdrop-blur-sm">
                         <div className="flex justify-between items-start mb-4">
-                          <h4 className="text-lg font-bold flex items-center">
+                          <h4 className="text-lg font-bold flex items-center text-white">
                             <span className="text-xl mr-2">🏆</span>
                             Best Match: {bestMatch.course.title}
                           </h4>
-                          <span className="bg-green-100 text-green-800 font-medium px-3 py-1 rounded-full text-sm">
+                          <span className="bg-green-500/20 text-green-400 border border-green-400/30 font-medium px-3 py-1 rounded-full text-sm">
                             {bestMatch.score}% Match
                           </span>
                         </div>
-                        <p className="text-gray-700 mb-4">
+                        <p className="text-gray-300 mb-4">
                           {bestMatch.course.description}
                         </p>
                         <div className="flex justify-end">
