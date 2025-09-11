@@ -1544,40 +1544,40 @@ export default function TalentCompassAssessment() {
               potential for tuition discounts of up to 90%.
             </p>
 
-            <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg p-8 mb-8 border border-gray-700/50">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-left">Personalized Path Discovery</h3>
+                  <h3 className="text-xl font-bold mb-4 text-left text-white">Personalized Path Discovery</h3>
                   <ul className="text-left space-y-3">
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
-                      <span>Identify your natural strengths across 7 key traits</span>
+                      <span className="text-green-400 mr-2 mt-1">✓</span>
+                      <span className="text-gray-200">Identify your natural strengths across 7 key traits</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
-                      <span>Get matched with optimal learning tracks</span>
+                      <span className="text-green-400 mr-2 mt-1">✓</span>
+                      <span className="text-gray-200">Get matched with optimal learning tracks</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
-                      <span>See how your background enhances your potential</span>
+                      <span className="text-green-400 mr-2 mt-1">✓</span>
+                      <span className="text-gray-200">See how your background enhances your potential</span>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-left">Unlock Your Potential</h3>
+                  <h3 className="text-xl font-bold mb-4 text-left text-white">Unlock Your Potential</h3>
                   <ul className="text-left space-y-3">
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
-                      <span>Qualify for up to 90% tuition discounts</span>
+                      <span className="text-green-400 mr-2 mt-1">✓</span>
+                      <span className="text-gray-200">Qualify for up to 90% tuition discounts</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
-                      <span>Join the Fast Lane application process</span>
+                      <span className="text-green-400 mr-2 mt-1">✓</span>
+                      <span className="text-gray-200">Join the Fast Lane application process</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
-                      <span>Get a personalized learning roadmap</span>
+                      <span className="text-green-400 mr-2 mt-1">✓</span>
+                      <span className="text-gray-200">Get a personalized learning roadmap</span>
                     </li>
                   </ul>
                 </div>
@@ -1623,40 +1623,40 @@ export default function TalentCompassAssessment() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <div
-                className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
+                className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 border-gray-700/50 hover:border-blue-400"
                 onClick={() => selectPath('career-switcher')}
               >
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-3xl mb-4 mx-auto">
+                <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 text-3xl mb-4 mx-auto">
                   🔄
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Career Switcher</h3>
-                <p className="text-gray-600 text-center">
+                <h3 className="text-xl font-bold text-center mb-2 text-white">Career Switcher</h3>
+                <p className="text-gray-300 text-center">
                   Coming from another field and looking to transition into technology consulting.
                 </p>
               </div>
 
               <div
-                className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
+                className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 border-gray-700/50 hover:border-blue-400"
                 onClick={() => selectPath('recent-graduate')}
               >
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-3xl mb-4 mx-auto">
+                <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 text-3xl mb-4 mx-auto">
                   🎓
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Recent Graduate</h3>
-                <p className="text-gray-600 text-center">
+                <h3 className="text-xl font-bold text-center mb-2 text-white">Recent Graduate</h3>
+                <p className="text-gray-300 text-center">
                   Starting your professional journey with a focus on technology.
                 </p>
               </div>
 
               <div
-                className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 hover:border-blue-400"
+                className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition hover:-translate-y-1 border-2 border-gray-700/50 hover:border-blue-400"
                 onClick={() => selectPath('experienced')}
               >
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl mb-4 mx-auto">
+                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 text-3xl mb-4 mx-auto">
                   💼
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Experienced Professional</h3>
-                <p className="text-gray-600 text-center">
+                <h3 className="text-xl font-bold text-center mb-2 text-white">Experienced Professional</h3>
+                <p className="text-gray-300 text-center">
                   Looking to specialize or update your skills in the tech industry.
                 </p>
               </div>
@@ -1680,13 +1680,13 @@ export default function TalentCompassAssessment() {
             </div>
 
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Tell us about your skills</h2>
-              <p className="text-gray-600">
+              <h2 className="text-3xl font-bold mb-4 text-white">Tell us about your skills</h2>
+              <p className="text-gray-300">
                 Add your key technical and professional skills to help us recommend the perfect courses for you.
               </p>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+            <div className="bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md p-6 md:p-8 border border-gray-700/50">
               {/* Skills Input Section */}
               <div className="mb-6">
                 <div className="flex flex-col sm:flex-row gap-3 mb-4">
@@ -1696,7 +1696,7 @@ export default function TalentCompassAssessment() {
                     onChange={(e) => setSkillInput(e.target.value)}
                     onKeyPress={handleSkillInputKeyPress}
                     placeholder="Type a skill and press Enter..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 px-4 py-2 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     disabled={selectedSkills.length >= 15}
                   />
                   <button
@@ -1708,7 +1708,7 @@ export default function TalentCompassAssessment() {
                   </button>
                 </div>
 
-                <div className="flex justify-between text-sm text-gray-500">
+                <div className="flex justify-between text-sm text-gray-400">
                   <span>
                     {selectedSkills.length < 3
                       ? `Add at least ${3 - selectedSkills.length} more skill${3 - selectedSkills.length !== 1 ? 's' : ''} to continue`
@@ -1722,7 +1722,7 @@ export default function TalentCompassAssessment() {
               {/* Selected Skills Display */}
               {selectedSkills.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-semibold mb-3">Your Skills ({selectedSkills.length})</h3>
+                  <h3 className="font-semibold mb-3 text-white">Your Skills ({selectedSkills.length})</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedSkills.map((skill, index) => (
                       <div
@@ -1746,7 +1746,7 @@ export default function TalentCompassAssessment() {
 
               {/* Skill Categories and Suggestions */}
               <div className="mb-6">
-                <h3 className="font-semibold mb-4">Browse by Category</h3>
+                <h3 className="font-semibold mb-4 text-white">Browse by Category</h3>
 
                 {/* Category Tabs */}
                 <div className="flex gap-2 mb-4 flex-wrap">
@@ -1757,7 +1757,7 @@ export default function TalentCompassAssessment() {
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                         activeSkillCategory === category.id
                           ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                       }`}
                     >
                       {category.name}
@@ -1776,7 +1776,7 @@ export default function TalentCompassAssessment() {
                         key={index}
                         onClick={() => addSkill(suggestion)}
                         disabled={selectedSkills.length >= 15}
-                        className="px-3 py-2 text-sm bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg text-left transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-2 text-sm bg-gray-700 hover:bg-blue-600/20 border border-gray-600 hover:border-blue-400 rounded-lg text-left transition disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 hover:text-white"
                       >
                         {suggestion}
                       </button>
