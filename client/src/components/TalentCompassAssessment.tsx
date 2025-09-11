@@ -1896,7 +1896,7 @@ export default function TalentCompassAssessment() {
             <div className="flex justify-between items-center mb-6">
               <button
                 onClick={goBack}
-                className="flex items-center text-gray-600 hover:text-gray-800 transition"
+                className="flex items-center text-white hover:text-gray-300 transition"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
@@ -1904,7 +1904,7 @@ export default function TalentCompassAssessment() {
                 Back
               </button>
             </div>
-            <p className="text-center text-gray-600 mb-10">
+            <p className="text-center text-white mb-10">
               Based on your responses, we've created a personalized profile highlighting your strengths and optimal paths.
             </p>
 
@@ -1934,7 +1934,7 @@ export default function TalentCompassAssessment() {
               {/* Results and recommendations */}
               <div className="lg:col-span-2">
                 {/* Discount eligibility card */}
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg p-8 text-white mb-8">
+                <div className="bg-gradient-to-r from-green-600 to-black rounded-xl shadow-lg p-8 text-white mb-8">
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="text-2xl font-bold mb-2">Congratulations!</h3>
