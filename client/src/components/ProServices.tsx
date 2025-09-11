@@ -928,6 +928,68 @@ export default function ProServices() {
         </div>
       </main>
 
+      {/* Professional Services FAQ Section */}
+      <section className="bg-indigo-900/20 rounded-xl p-6 border border-indigo-800/30 mb-6">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+              Professional Services FAQ
+            </h2>
+            <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            {[
+              {
+                q: "Who is the Professional Services Organization (PSO) for?",
+                a: "Independent consultants, small firms, and mid-size practices that want AI-powered pre‑sales, marketing, delivery support, and admin/billing automation.",
+              },
+              {
+                q: "How does Human + AI collaboration work?",
+                a: "AI handles speed, drafting, and analysis; mentors calibrate judgment, standards, and nuance. You learn the professional way to combine both.",
+              },
+              {
+                q: "What services are included in the PSO offering?",
+                a: "Pre-sales support, marketing & visibility, talent acquisition, project delivery support, admin & billing, payroll management, and specialized health care solutions.",
+              },
+              {
+                q: "Can I choose specific services or do I need the full package?",
+                a: "Our services are modular. You can select individual services that meet your current needs and scale up or down as your business requirements change.",
+              },
+              {
+                q: "How do you ensure data security and confidentiality?",
+                a: "We maintain enterprise-grade security with encrypted data transmission, secure storage, and strict confidentiality agreements. Your client data remains protected at all times.",
+              },
+              {
+                q: "What's the difference between AI-only and AI+Human services?",
+                a: "AI-only provides automated efficiency for routine tasks. AI+Human adds expert judgment for complex decisions, personalization, and quality assurance.",
+              },
+              {
+                q: "How quickly can I get started with PSO services?",
+                a: "Most services can be activated within 24-48 hours. Complex integrations may take 1-2 weeks depending on your existing systems and requirements.",
+              },
+            ].map((item, idx) => (
+              <details
+                key={idx}
+                className="bg-[#112537]/70 backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105 hover:bg-[#112537]/80"
+                style={{ boxShadow: "none" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 0 30px rgba(59, 130, 246, 0.4)")
+                }
+                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
+              >
+                <summary className="cursor-pointer text-white font-medium select-none text-base md:text-lg">
+                  {item.q}
+                </summary>
+                <p className="text-blue-100 mt-2 text-sm md:text-base">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <ServicesFooter />
 

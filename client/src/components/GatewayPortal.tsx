@@ -333,7 +333,7 @@ export default function GatewayPortal() {
         </div>
       </section>
 
-      
+
 
       {/* Team / Leadership */}
       <section
@@ -378,71 +378,6 @@ export default function GatewayPortal() {
                 <div className="text-white font-medium">{m.role}</div>
                 <p className="text-blue-100 text-sm mt-2">{m.blurb}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section
-        id="faq"
-        className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              FAQ
-            </h2>
-            <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            {[
-              {
-                q: "What does Ottobon Academy include?",
-                a: "Guided learning paths, mentor sessions, portfolio projects, assessments, resume craft, role matching, and interview prep—optimized with AI to cut learning time.",
-              },
-              {
-                q: "Who is the Professional Services Organization (PSO) for?",
-                a: "Independent consultants, small firms, and mid-size practices that want AI-powered pre‑sales, marketing, delivery support, and admin/billing automation.",
-              },
-              {
-                q: "Do you help with job placement?",
-                a: "We support your full job journey: ATS-ready resume, role targeting, mock interviews with feedback, and post-placement check-ins.",
-              },
-              {
-                q: "How much time should I budget for Academy?",
-                a: "Expect structured weekly cadence with project work. Many learners complete core paths in 12–16 weeks, depending on prior experience.",
-              },
-              {
-                q: "Can I join while working full-time?",
-                a: "Yes. We design schedules for working professionals with asynchronous modules plus mentor checkpoints.",
-              },
-              {
-                q: "How does Human + AI collaboration work?",
-                a: "AI handles speed, drafting, and analysis; mentors calibrate judgment, standards, and nuance. You learn the professional way to combine both.",
-              },
-              {
-                q: "How do I get started?",
-                a: "Pick Academy to launch/accelerate your career, or PSO to streamline your consulting operations. We’ll guide you from there.",
-              },
-            ].map((item, idx) => (
-              <details
-                key={idx}
-                className="bg-[#112537]/70 backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105 hover:bg-[#112537]/80"
-                style={{ boxShadow: "none" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.boxShadow =
-                    "0 0 30px rgba(59, 130, 246, 0.4)")
-                }
-                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
-              >
-                <summary className="cursor-pointer text-white font-medium select-none text-base md:text-lg">
-                  {item.q}
-                </summary>
-                <p className="text-blue-100 mt-2 text-sm md:text-base">
-                  {item.a}
-                </p>
-              </details>
             ))}
           </div>
         </div>
