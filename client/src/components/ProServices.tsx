@@ -589,45 +589,45 @@ export default function ProServices() {
               The Ottobon Professional Services Organization (PSO) provides consultants with comprehensive operational and administrative support powered by advanced AI and expert human assistance.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-6 px-2 md:px-0">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto mx-auto w-full max-w-sm md:max-w-none">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="rounded-full bg-indigo-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-start">
+                  <div className="rounded-full bg-indigo-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-center sm:self-start">
                     <svg className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold leading-tight">Operational Excellence</h3>
+                  <h3 className="text-base sm:text-lg font-semibold leading-tight text-center sm:text-left">Operational Excellence</h3>
                 </div>
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed text-center sm:text-left">
                   Our AI agents handle administrative tasks with greater speed and consistency than human staff, allowing you to focus on high-value client work instead of routine operations.
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto mx-auto w-full max-w-sm md:max-w-none">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="rounded-full bg-purple-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-start">
+                  <div className="rounded-full bg-purple-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-center sm:self-start">
                     <svg className="w-6 h-6 sm:w-7 sm:h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold leading-tight">Human-AI Collaboration</h3>
+                  <h3 className="text-base sm:text-lg font-semibold leading-tight text-center sm:text-left">Human-AI Collaboration</h3>
                 </div>
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed text-center sm:text-left">
                   For complex tasks requiring judgment or personalization, our expert human team works seamlessly with AI systems to provide the perfect balance of efficiency and expertise.
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto">
+              <div className="bg-white/5 rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-colors flex flex-col min-h-[200px] md:h-auto mx-auto w-full max-w-sm md:max-w-none">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="rounded-full bg-cyan-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-start">
+                  <div className="rounded-full bg-cyan-600/30 p-2 sm:p-3 mr-0 sm:mr-4 mb-3 sm:mb-0 self-center sm:self-start">
                     <svg className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold leading-tight">Flexible Service Model</h3>
+                  <h3 className="text-base sm:text-lg font-semibold leading-tight text-center sm:text-left">Flexible Service Model</h3>
                 </div>
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed text-center sm:text-left">
                   Choose AI-only automation for cost efficiency, or add human expertise for specialized tasks. Scale services up or down based on your current project needs with no long-term commitments.
                 </p>
               </div>
@@ -641,12 +641,12 @@ export default function ProServices() {
           </div>
 
           {/* Category Filters */}
-          <div className="mb-8">
-            <div className="flex flex-wrap justify-center gap-4 mb-2">
+          <div className="mb-8 px-2 md:px-0">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-2">
               {categories.map(category => (
                 <div key={category.id} className="text-center">
                   <button 
-                    className={`font-medium py-3 px-6 rounded-full transition flex items-center relative ${
+                    className={`font-medium py-2 md:py-3 px-3 md:px-6 rounded-full transition flex items-center relative text-sm md:text-base ${
                       activeFilter === category.id
                         ? 'bg-indigo-600 text-white shadow-lg' 
                         : category.isComingSoon 
@@ -660,10 +660,10 @@ export default function ProServices() {
                     }}
                     disabled={category.isComingSoon}
                   >
-                    <span className="mr-2 text-lg">{category.icon}</span>
-                    {category.title}
+                    <span className="mr-1 md:mr-2 text-base md:text-lg">{category.icon}</span>
+                    <span className="whitespace-nowrap">{category.title}</span>
                     {category.isComingSoon && (
-                      <span className="ml-2 text-xs bg-yellow-500 text-black px-2 py-1 rounded-full font-bold animate-pulse">
+                      <span className="ml-1 md:ml-2 text-xs bg-yellow-500 text-black px-1 md:px-2 py-1 rounded-full font-bold animate-pulse">
                         Soon
                       </span>
                     )}
@@ -716,7 +716,7 @@ export default function ProServices() {
               {/* Carousel Track */}
               <div 
                 ref={carouselRef}
-                className={`flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4 ${
+                className={`flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4 px-2 md:px-0 ${
                   filteredServices.length < 4 ? 'justify-center' : ''
                 }`}
                 style={{
@@ -729,7 +729,7 @@ export default function ProServices() {
                 {(filteredServices.length >= 4 ? [...filteredServices, ...filteredServices] : filteredServices).map((service, index) => (
                   <div
                     key={`${service.id}-${index}`}
-                    className="group min-w-[320px] max-w-[320px] snap-start flex-shrink-0"
+                    className="group min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] snap-start flex-shrink-0"
                   >
                     {/* Simple card with clean design */}
                     <div 
@@ -835,11 +835,11 @@ export default function ProServices() {
               Our flexible service model adapts to different consulting business models and scales.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-4 px-2 md:px-0">
               {audiences.map((audience, index) => (
                 <div 
                   key={index}
-                  className="bg-white/5 rounded-lg p-5 border border-white/10 hover:bg-white/10 transition-colors"
+                  className="bg-white/5 rounded-lg p-5 border border-white/10 hover:bg-white/10 transition-colors mx-auto w-full max-w-sm md:max-w-none"
                 >
                   <div className={`w-16 h-16 rounded-full mb-4 bg-gradient-to-br ${audience.color} flex items-center justify-center mx-auto`}>
                     <span className="text-3xl">{audience.icon}</span>
