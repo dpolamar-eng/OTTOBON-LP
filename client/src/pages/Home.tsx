@@ -54,20 +54,37 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-        <Header />
-        <main>
-          <IntegratedHeroJourney />
-          <MethodologySection />
-          <StorytellingOnboarding />
-          <CoursesSection />
-          <RequirementsSection />
-          <TalentCompassAssessment />
-          <CallToActionSection />
+        <div style={{ background: 'transparent' }}>
+          <Header />
+        </div>
+        <main style={{ background: 'transparent' }}>
+          <div style={{ background: 'transparent' }}>
+            <IntegratedHeroJourney />
+          </div>
+          <div style={{ background: 'transparent' }}>
+            <MethodologySection />
+          </div>
+          <div style={{ background: 'transparent' }}>
+            <StorytellingOnboarding />
+          </div>
+          <div style={{ background: 'transparent' }}>
+            <CoursesSection />
+          </div>
+          <div style={{ background: 'transparent' }}>
+            <RequirementsSection />
+          </div>
+          <div style={{ background: 'transparent' }}>
+            <TalentCompassAssessment />
+          </div>
+          <div style={{ background: 'transparent' }}>
+            <CallToActionSection />
+          </div>
           
           {/* Academy FAQ Section */}
           <section
             id="faq"
             className="relative z-10 py-14 sm:py-16 scroll-mt-24 md:scroll-mt-28"
+            style={{ background: 'transparent' }}
           >
             <div className="container mx-auto px-4">
               <div className="text-center mb-8">
@@ -109,8 +126,8 @@ export default function Home() {
                 ].map((item, idx) => (
                   <details
                     key={idx}
-                    className="bg-[#112537]/70 backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105 hover:bg-[#112537]/80"
-                    style={{ boxShadow: "none" }}
+                    className="backdrop-blur-sm rounded-2xl border border-white/10 p-5 mb-3 transition-all duration-300 hover:scale-105"
+                    style={{ background: 'transparent', boxShadow: "none" }}
                     onMouseEnter={(e) =>
                       (e.currentTarget.style.boxShadow =
                         "0 0 30px rgba(59, 130, 246, 0.4)")
@@ -129,7 +146,9 @@ export default function Home() {
             </div>
           </section>
         </main>
-        <Footer />
+        <div style={{ background: 'transparent' }}>
+          <Footer />
+        </div>
       </div>
     </div>
   );
