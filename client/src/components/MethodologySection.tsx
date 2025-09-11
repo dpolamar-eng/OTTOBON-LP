@@ -46,14 +46,14 @@ export default function MethodologySection() {
           >
             <div className="flip-card-inner" style={{boxShadow: 'none'}}>
               <div className="flip-card-front bg-gray-800/90 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50">
-                <div className="h-2/5 bg-gradient-primary relative overflow-hidden">
+                <div className="h-2/5 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
                     alt="Team collaboration" 
                     className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="p-6 h-3/5 flex flex-col">
+                <div className="bg-gray-800/90 backdrop-blur-sm p-6 h-3/5 flex flex-col">
                   <div className="text-blue-400 text-3xl mb-4 flex justify-center">
                     <i className="fas fa-users"></i>
                   </div>
