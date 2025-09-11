@@ -1311,7 +1311,7 @@ export default function TalentCompassAssessment() {
       const labelY = centerY + Math.sin(startAngle + angleStep / 2) * labelRadius;
 
       ctx.font = '12px Arial';
-      ctx.fillStyle = '#000000';
+      ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(trait.name, labelX, labelY);
@@ -1328,7 +1328,7 @@ export default function TalentCompassAssessment() {
 
     // Draw compass icon in center
     ctx.font = '20px Arial';
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('🧭', centerX, centerY);
@@ -1995,7 +1995,7 @@ export default function TalentCompassAssessment() {
                         <div className="flex justify-end">
                           <a
                             href="#enroll"
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
+                            className="bg-gradient-to-r from-green-600 to-black hover:from-green-700 hover:to-gray-900 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                           >
                             <span className="relative z-10 flex items-center justify-center">
                               Apply Now
