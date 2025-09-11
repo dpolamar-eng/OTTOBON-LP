@@ -9,6 +9,7 @@ export default function ServicesFooter() {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
+        {/* Services Grid - 3 columns on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div className="md:col-span-1">
@@ -170,39 +171,41 @@ export default function ServicesFooter() {
               </li>
             </ul>
           </div>
+        </div>
 
-          {/* Contact Section */}
-          <div>
-            <h3 className="text-lg font-bold mb-6 text-white relative">
+        {/* Contact Section - Horizontal layout on desktop */}
+        <div className="mb-12">
+          <div className="border-t border-gray-700/50 pt-12">
+            <h3 className="text-lg font-bold mb-8 text-white text-center md:text-left relative">
               Contact Us
-              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-purple-500"></div>
+              <div className="absolute -bottom-2 left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 w-12 h-0.5 bg-purple-500"></div>
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start group">
-                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-3 mt-0.5 group-hover:bg-purple-600 transition-colors">
+            <div className="flex flex-col md:flex-row md:justify-center md:space-x-16 space-y-6 md:space-y-0">
+              <div className="flex flex-col md:flex-row md:items-center group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-0 md:mr-4 mb-2 md:mb-0 group-hover:bg-purple-600 transition-colors mx-auto md:mx-0">
                   <i className="fas fa-envelope text-purple-400 text-sm group-hover:text-white"></i>
                 </div>
-                <a href="mailto:hr.services@ottobon.in" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm">
+                <a href="mailto:hr.services@ottobon.in" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm text-center md:text-left">
                   hr.services@ottobon.in
                 </a>
-              </li>
-              <li className="flex items-start group">
-                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-3 mt-0.5 group-hover:bg-purple-600 transition-colors">
+              </div>
+              <div className="flex flex-col md:flex-row md:items-center group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-0 md:mr-4 mb-2 md:mb-0 group-hover:bg-purple-600 transition-colors mx-auto md:mx-0">
                   <i className="fas fa-phone text-purple-400 text-sm group-hover:text-white"></i>
                 </div>
-                <a href="tel:+919281011683" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm">
+                <a href="tel:+919281011683" className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm text-center md:text-left">
                   +91 9281011683
                 </a>
-              </li>
-              <li className="flex items-start group">
-                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-3 mt-0.5 group-hover:bg-purple-600 transition-colors">
+              </div>
+              <div className="flex flex-col md:flex-row md:items-center group">
+                <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center mr-0 md:mr-4 mb-2 md:mb-0 group-hover:bg-purple-600 transition-colors mx-auto md:mx-0 flex-shrink-0">
                   <i className="fas fa-map-marker-alt text-purple-400 text-sm group-hover:text-white"></i>
                 </div>
-                <span className="text-gray-300 text-sm leading-relaxed">
+                <span className="text-gray-300 text-sm leading-relaxed text-center md:text-left md:max-w-sm">
                   D No 10-28-2/1/3, 1st Floor 102, A Square Business Centre, Waltair Uplands, Waltair Main Road, Chinawaltair, Visakhapatnam, Andhra Pradesh, India, 530003
                 </span>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
 
