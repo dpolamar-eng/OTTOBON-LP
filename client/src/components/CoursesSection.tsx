@@ -327,8 +327,8 @@ export default function CoursesSection() {
             <span className="text-blue-400 mr-2 text-xl">🔥</span>
             <span className="text-blue-300 font-medium text-sm uppercase tracking-wider">In-Demand Skills</span>
           </div>
-          <h2 ref={headingRef} className="text-3xl md:text-4xl font-bold text-center mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Advance</span> Your Professional Skills
+          <h2 ref={headingRef} className="text-3xl md:text-4xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
+            Advance Your Professional Skills
           </h2>
           <p ref={descriptionRef} className="text-center text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
             Gain certification, industry recognition, and career advancement opportunities through our hands-on training programs focused on in-demand technical skills sought by leading employers.
