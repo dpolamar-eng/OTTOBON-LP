@@ -328,8 +328,8 @@ export default function ProServices() {
     if (carouselRef.current) {
       const container = carouselRef.current;
       const isMobile = window.innerWidth < 768;
-      // On mobile, scroll one full card width (85vw + gap), on desktop use existing logic
-      const cardWidth = isMobile ? window.innerWidth * 0.85 + 16 : 450;
+      // On mobile, scroll one full card width (90vw + gap), on desktop use existing logic
+      const cardWidth = isMobile ? window.innerWidth * 0.90 + 16 : 450;
 
       if (direction === 'right') {
         // If we're near the end, loop back to the beginning
@@ -754,7 +754,7 @@ export default function ProServices() {
               {/* Carousel Track */}
               <div 
                 ref={carouselRef}
-                className={`flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4 px-2 md:px-0 ${
+                className={`flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-4 px-4 md:px-0 ${
                   filteredServices.length < 4 ? 'md:justify-center' : ''
                 }`}
                 style={{
@@ -767,7 +767,7 @@ export default function ProServices() {
                 {(filteredServices.length >= 4 ? [...filteredServices, ...filteredServices] : filteredServices).map((service, index) => (
                   <div
                     key={`${service.id}-${index}`}
-                    className="group min-w-[85vw] md:min-w-[320px] max-w-[85vw] md:max-w-[320px] snap-start flex-shrink-0"
+                    className="group w-[90vw] md:min-w-[320px] md:max-w-[320px] md:w-auto snap-start flex-shrink-0"
                   >
                     {/* Simple card with clean design */}
                     <div 
