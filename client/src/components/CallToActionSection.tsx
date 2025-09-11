@@ -39,20 +39,20 @@ export default function CallToActionSection() {
 
           {/* Key benefits */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-md">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-md">
               <div className="text-3xl mb-3">🎯</div>
-              <h3 className="text-gray-900 font-semibold mb-2">Industry-Ready Skills</h3>
-              <p className="text-gray-600 text-sm">Salesforce, Oracle, Cloud Computing & Full Stack Development</p>
+              <h3 className="text-white font-semibold mb-2">Industry-Ready Skills</h3>
+              <p className="text-blue-100 text-sm">Salesforce, Oracle, Cloud Computing & Full Stack Development</p>
             </div>
-            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-md">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-md">
               <div className="text-3xl mb-3">🤖</div>
-              <h3 className="text-gray-900 font-semibold mb-2">AI-Enhanced Learning</h3>
-              <p className="text-gray-600 text-sm">Personalized curriculum that adapts to your learning style</p>
+              <h3 className="text-white font-semibold mb-2">AI-Enhanced Learning</h3>
+              <p className="text-blue-100 text-sm">Personalized curriculum that adapts to your learning style</p>
             </div>
-            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-md">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-md">
               <div className="text-3xl mb-3">💼</div>
-              <h3 className="text-gray-900 font-semibold mb-2">Consulting Success</h3>
-              <p className="text-gray-600 text-sm">Graduate as an independent consultant, not just an employee</p>
+              <h3 className="text-white font-semibold mb-2">Consulting Success</h3>
+              <p className="text-blue-100 text-sm">Graduate as an independent consultant, not just an employee</p>
             </div>
           </div>
 
