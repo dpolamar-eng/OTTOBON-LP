@@ -113,7 +113,7 @@ export default function GatewayPortal() {
           {/* Heading outside the content container for parity with Services */}
           <div className="text-center mb-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              About Us • Our Vision
+               Our Vision
             </h2>
             <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
           </div>
