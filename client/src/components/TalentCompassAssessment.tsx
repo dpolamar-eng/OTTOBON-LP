@@ -1702,7 +1702,7 @@ export default function TalentCompassAssessment() {
                   <button
                     onClick={() => addSkill(skillInput)}
                     disabled={!skillInput.trim() || selectedSkills.length >= 15}
-                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition"
+                    className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg disabled:bg-gray-500 disabled:text-gray-300 disabled:cursor-not-allowed transition-colors duration-200 shadow-md hover:shadow-lg"
                   >
                     Add Skill
                   </button>
