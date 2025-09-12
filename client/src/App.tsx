@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Portal from "@/pages/Portal";
 import Services from "@/pages/Services";
+import EnrollmentSection from "@/components/EnrollmentSection";
 import ScrollToTop from "@/components/ScrollToTop";
 import OnboardingExperience from "@/components/OnboardingExperience";
 import DynamicBackground from "@/components/DynamicBackground";
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/" component={Portal} />
       <Route path="/academy" component={Home} />
       <Route path="/services" component={Services} />
+      <Route path="/enroll" component={EnrollmentSection} />
       <Route component={NotFound} />
     </Switch>
   );

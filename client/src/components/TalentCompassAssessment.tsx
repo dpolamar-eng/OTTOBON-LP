@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'wouter';
 import { useAnimation } from '@/hooks/use-animation';
 
 // Define types for trait assessment
@@ -98,6 +99,9 @@ const skillCategories: SkillCategory[] = [
 ];
 
 export default function TalentCompassAssessment() {
+  // Navigation
+  const [, setLocation] = useLocation();
+  
   // Animation refs
   const sectionRef = useAnimation('animate-fade-in');
   const titleRef = useAnimation('animate-slide-up');
@@ -1959,8 +1963,8 @@ export default function TalentCompassAssessment() {
                   </div>
 
                   <div className="flex justify-end">
-                    <a
-                      href="#enroll"
+                    <button
+                      onClick={() => setLocation('/enroll')}
                       className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                     >
                       <span className="relative z-10 flex items-center justify-center">
@@ -1969,7 +1973,7 @@ export default function TalentCompassAssessment() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
                       </span>
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -1993,8 +1997,8 @@ export default function TalentCompassAssessment() {
                           {bestMatch.course.description}
                         </p>
                         <div className="flex justify-end">
-                          <a
-                            href="#enroll"
+                          <button
+                            onClick={() => setLocation('/enroll')}
                             className="bg-gradient-to-r from-green-600 to-black hover:from-green-700 hover:to-gray-900 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                           >
                             <span className="relative z-10 flex items-center justify-center">
@@ -2004,7 +2008,7 @@ export default function TalentCompassAssessment() {
                               </svg>
                             </span>
                             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                          </a>
+                          </button>
                         </div>
                       </div>
                     )}
@@ -2021,12 +2025,12 @@ export default function TalentCompassAssessment() {
                   </div>
 
                   <div className="flex justify-center pt-4 border-t border-gray-600">
-                    <a
-                      href="#enroll"
+                    <button
+                      onClick={() => setLocation('/enroll')}
                       className="text-blue-400 hover:text-blue-300 font-medium"
                     >
                       Schedule a Consultation
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
