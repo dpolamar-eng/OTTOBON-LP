@@ -382,50 +382,6 @@ export default function EnrollmentSection() {
                         />
                         <span className="text-gray-300">AI Data Labeling</span>
                       </label>
-                      <label className="flex items-center">
-                        <input 
-                          type="checkbox" 
-                          name="interest" 
-                          value="resume-builder"
-                          checked={formData.interests.includes('resume-builder')}
-                          onChange={handleCheckboxChange}
-                          className="mr-2"
-                        />
-                        <span className="text-gray-300">Resume Building</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input 
-                          type="checkbox" 
-                          name="interest" 
-                          value="job-matching"
-                          checked={formData.interests.includes('job-matching')}
-                          onChange={handleCheckboxChange}
-                          className="mr-2"
-                        />
-                        <span className="text-gray-300">Find a Job</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input 
-                          type="checkbox" 
-                          name="interest" 
-                          value="mock-interviews"
-                          checked={formData.interests.includes('mock-interviews')}
-                          onChange={handleCheckboxChange}
-                          className="mr-2"
-                        />
-                        <span className="text-gray-300">Mock Interviews</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input 
-                          type="checkbox" 
-                          name="interest" 
-                          value="expert-app"
-                          checked={formData.interests.includes('expert-app')}
-                          onChange={handleCheckboxChange}
-                          className="mr-2"
-                        />
-                        <span className="text-gray-300">Guidance Hub</span>
-                      </label>
                     </div>
                   </div>
                   
