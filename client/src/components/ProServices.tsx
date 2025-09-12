@@ -359,7 +359,16 @@ export default function ProServices() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4 py-3 lg:py-4 flex justify-between items-center">
           <div 
-            onClick={() => navigate('/')} 
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/');
+              setTimeout(() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }, 100);
+            }}
             className="flex items-center cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
           >
             <img src="/assets/logo.png" alt="Ottobon Logo" className="h-8 sm:h-12 lg:h-16 xl:h-20 w-auto" />
