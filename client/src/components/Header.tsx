@@ -37,6 +37,16 @@ export default function Header() {
           <Link
             href="/"
             className="flex items-center group flex-shrink-0"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "/";
+              setTimeout(() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }, 100);
+            }}
           >
             <img
               src="/assets/logo.png"
