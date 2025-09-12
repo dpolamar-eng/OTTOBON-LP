@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAnimation } from '@/hooks/use-animation';
 
 // Define types for trait assessment
@@ -99,9 +98,6 @@ const skillCategories: SkillCategory[] = [
 ];
 
 export default function TalentCompassAssessment() {
-  // Navigation
-  const navigate = useNavigate();
-
   // Animation refs
   const sectionRef = useAnimation('animate-fade-in');
   const titleRef = useAnimation('animate-slide-up');
@@ -1963,8 +1959,8 @@ export default function TalentCompassAssessment() {
                   </div>
 
                   <div className="flex justify-end">
-                    <button
-                      onClick={() => navigate('/enroll')}
+                    <a
+                      href="#enroll"
                       className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                     >
                       <span className="relative z-10 flex items-center justify-center">
@@ -1973,7 +1969,7 @@ export default function TalentCompassAssessment() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
                       </span>
-                    </button>
+                    </a>
                   </div>
                 </div>
 
