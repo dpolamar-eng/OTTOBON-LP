@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
@@ -152,33 +153,39 @@ export default function EnrollmentSection() {
   };
 
   return (
-    <section id="enroll" className="py-16 bg-gray-100">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Join the Fast lane</h2>
-        <p className="text-center text-gray-700 max-w-2xl mx-auto mb-12">
+    <section id="enroll" className="py-16 bg-black relative">
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white">Join the Fast lane</h2>
+        <p className="text-center text-gray-300 max-w-2xl mx-auto mb-12">
           Complete this simple form to begin your application process, and one of our advisors will contact you within 24 hours.
         </p>
         
-        <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="max-w-2xl mx-auto bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-gray-700/50">
           <div className="p-8">
             <div className="flex mb-8">
-              <div className={`flex items-center ${step >= 1 ? 'text-gray-900' : 'text-gray-500'}`}>
+              <div className={`flex items-center ${step >= 1 ? 'text-white' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
-                  step >= 1 ? 'bg-primary text-white' : 'bg-gray-200 text-gray-500'
+                  step >= 1 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
                 }`}>1</div>
                 <span className="text-sm font-medium">Basic Info</span>
-                <div className="h-1 w-12 bg-gray-200 mx-2"></div>
+                <div className="h-1 w-12 bg-gray-600 mx-2"></div>
               </div>
-              <div className={`flex items-center ${step >= 2 ? 'text-gray-900' : 'text-gray-500'}`}>
+              <div className={`flex items-center ${step >= 2 ? 'text-white' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
-                  step >= 2 ? 'bg-primary text-white' : 'bg-gray-200 text-gray-500'
+                  step >= 2 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
                 }`}>2</div>
                 <span className="text-sm font-medium">Experience</span>
-                <div className="h-1 w-12 bg-gray-200 mx-2"></div>
+                <div className="h-1 w-12 bg-gray-600 mx-2"></div>
               </div>
-              <div className={`flex items-center ${step >= 3 ? 'text-gray-900' : 'text-gray-500'}`}>
+              <div className={`flex items-center ${step >= 3 ? 'text-white' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
-                  step >= 3 ? 'bg-primary text-white' : 'bg-gray-200 text-gray-500'
+                  step >= 3 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
                 }`}>3</div>
                 <span className="text-sm font-medium">Preferences</span>
               </div>
@@ -190,7 +197,7 @@ export default function EnrollmentSection() {
                 <div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-1">First Name*</label>
                       <input 
                         type="text" 
                         id="firstName" 
@@ -198,11 +205,11 @@ export default function EnrollmentSection() {
                         value={formData.firstName}
                         onChange={handleChange}
                         required 
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                        className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                       />
                     </div>
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
+                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-1">Last Name*</label>
                       <input 
                         type="text" 
                         id="lastName" 
@@ -210,13 +217,13 @@ export default function EnrollmentSection() {
                         value={formData.lastName}
                         onChange={handleChange}
                         required 
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                        className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                       />
                     </div>
                   </div>
                   
                   <div className="mb-6">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address*</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email Address*</label>
                     <input 
                       type="email" 
                       id="email" 
@@ -224,19 +231,19 @@ export default function EnrollmentSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                     />
                   </div>
                   
                   <div className="mb-6">
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number (Optional)</label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">Phone Number (Optional)</label>
                     <input 
                       type="tel" 
                       id="phone" 
                       name="phone" 
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                     />
                   </div>
                   
@@ -256,7 +263,7 @@ export default function EnrollmentSection() {
               {step === 2 && (
                 <div>
                   <div className="mb-6">
-                    <label htmlFor="currentRole" className="block text-sm font-medium text-gray-700 mb-1">Current Role/Position*</label>
+                    <label htmlFor="currentRole" className="block text-sm font-medium text-gray-300 mb-1">Current Role/Position*</label>
                     <input 
                       type="text" 
                       id="currentRole" 
@@ -264,19 +271,19 @@ export default function EnrollmentSection() {
                       value={formData.currentRole}
                       onChange={handleChange}
                       required 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                     />
                   </div>
                   
                   <div className="mb-6">
-                    <label htmlFor="education" className="block text-sm font-medium text-gray-700 mb-1">Education Background*</label>
+                    <label htmlFor="education" className="block text-sm font-medium text-gray-300 mb-1">Education Background*</label>
                     <select 
                       id="education" 
                       name="education" 
                       value={formData.education}
                       onChange={handleChange}
                       required 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                     >
                       <option value="">Select your highest education level</option>
                       <option value="high-school">High School</option>
@@ -288,14 +295,14 @@ export default function EnrollmentSection() {
                   </div>
                   
                   <div className="mb-6">
-                    <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-1">Years of Professional Experience*</label>
+                    <label htmlFor="experience" className="block text-sm font-medium text-gray-300 mb-1">Years of Professional Experience*</label>
                     <select 
                       id="experience" 
                       name="experience" 
                       value={formData.experience}
                       onChange={handleChange}
                       required 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                     >
                       <option value="">Select your experience level</option>
                       <option value="0-1">0-1 years</option>
@@ -310,7 +317,7 @@ export default function EnrollmentSection() {
                     <button 
                       type="button" 
                       onClick={prevStep}
-                      className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-6 rounded-full transition"
+                      className="bg-gray-600 hover:bg-gray-500 text-white font-medium py-2 px-6 rounded-full transition"
                     >
                       Back
                     </button>
@@ -329,7 +336,7 @@ export default function EnrollmentSection() {
               {step === 3 && (
                 <div>
                   <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-3">Areas of Interest*</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">Areas of Interest*</label>
                     <div className="space-y-2">
                       <label className="flex items-center">
                         <input 
@@ -340,7 +347,7 @@ export default function EnrollmentSection() {
                           onChange={handleCheckboxChange}
                           className="mr-2"
                         />
-                        <span>Business Applications (Salesforce, Oracle, Microsoft)</span>
+                        <span className="text-gray-300">Business Applications (Salesforce, Oracle, Microsoft)</span>
                       </label>
                       <label className="flex items-center">
                         <input 
@@ -351,7 +358,7 @@ export default function EnrollmentSection() {
                           onChange={handleCheckboxChange}
                           className="mr-2"
                         />
-                        <span>AI Consulting</span>
+                        <span className="text-gray-300">AI Consulting</span>
                       </label>
                       <label className="flex items-center">
                         <input 
@@ -362,19 +369,19 @@ export default function EnrollmentSection() {
                           onChange={handleCheckboxChange}
                           className="mr-2"
                         />
-                        <span>Cloud Computing</span>
+                        <span className="text-gray-300">Cloud Computing</span>
                       </label>
                     </div>
                   </div>
                   
                   <div className="mb-6">
-                    <label htmlFor="referral" className="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?</label>
+                    <label htmlFor="referral" className="block text-sm font-medium text-gray-300 mb-1">How did you hear about us?</label>
                     <select 
                       id="referral" 
                       name="referral" 
                       value={formData.referral}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                     >
                       <option value="">Select an option</option>
                       <option value="search">Search Engine</option>
@@ -395,7 +402,7 @@ export default function EnrollmentSection() {
                         required 
                         className="mt-1 mr-2"
                       />
-                      <span className="text-sm text-gray-700">
+                      <span className="text-sm text-gray-300">
                         I consent to OttoBon processing my personal data in accordance with the <a href="#" className="text-primary hover:underline">Privacy Policy</a>*
                       </span>
                     </label>
@@ -405,7 +412,7 @@ export default function EnrollmentSection() {
                     <button 
                       type="button" 
                       onClick={prevStep}
-                      className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-6 rounded-full transition"
+                      className="bg-gray-600 hover:bg-gray-500 text-white font-medium py-2 px-6 rounded-full transition"
                     >
                       Back
                     </button>
@@ -424,7 +431,7 @@ export default function EnrollmentSection() {
         </div>
         
         <div className="text-center mt-8">
-          <p className="text-gray-700 text-sm">
+          <p className="text-gray-400 text-sm">
             Need help? Contact our admissions team at <a href="mailto:admissions@ottobon.com" className="text-primary hover:underline">admissions@ottobon.com</a>
           </p>
         </div>
