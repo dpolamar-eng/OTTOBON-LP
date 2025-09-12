@@ -118,12 +118,49 @@ export default function EnrollmentSection() {
     setIsSubmitting(true);
     
     try {
-      await apiRequest('POST', '/api/enroll', formData);
+      // Get assessment results from localStorage if available
+      const assessmentResults = localStorage.getItem('assessmentResults');
+      const userProfile = localStorage.getItem('userProfile');
+      
+      let parsedAssessmentResults = null;
+      if (assessmentResults || userProfile) {
+        try {
+          const results = assessmentResults ? JSON.parse(assessmentResults) : null;
+          const profile = userProfile ? JSON.parse(userProfile) : null;
+          
+          parsedAssessmentResults = {
+            courseMatches: profile?.courseMatches || {},
+            discountEligibility: profile?.discountEligibility || 0,
+            traits: profile?.traits || {},
+            suggestedCourses: results?.recommendedPaths?.map((path: any) => path.name) || []
+          };
+        } catch (parseError) {
+          console.warn('Error parsing assessment results:', parseError);
+        }
+      }
+
+      // Prepare submission data with assessment results
+      const submissionData = {
+        ...formData,
+        assessmentResults: parsedAssessmentResults
+      };
+      
+      const response = await apiRequest('POST', '/api/enroll', submissionData);
       
       toast({
         title: "Application Submitted",
         description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
       });
+
+      // Show spreadsheet link if available
+      if (response.spreadsheetUrl) {
+        setTimeout(() => {
+          toast({
+            title: "Data Recorded",
+            description: "Your information has been saved to our tracking system.",
+          });
+        }, 2000);
+      }
       
       // Reset form after successful submission
       setFormData({
