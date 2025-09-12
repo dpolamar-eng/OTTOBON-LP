@@ -152,12 +152,12 @@ export default function EnrollmentSection() {
         description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
       });
 
-      // Show spreadsheet link if available
-      if (response.spreadsheetUrl) {
+      // Show CSV file info if available
+      if (response.csvFilePath) {
         setTimeout(() => {
           toast({
             title: "Data Recorded",
-            description: "Your information has been saved to our tracking system.",
+            description: "Your information has been saved to enrollment-data.csv in the project directory.",
           });
         }, 2000);
       }

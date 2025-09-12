@@ -1,7 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { google } from 'googleapis';
+import * as fs from 'fs';
+import * as path from 'path';
 
 // This is a simple interface for enrollment data
 interface EnrollmentData {
@@ -24,121 +25,88 @@ interface EnrollmentData {
   };
 }
 
-// Google Sheets configuration
-const SPREADSHEET_ID = process.env.GOOGLE_SPREADSHEET_ID || '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
-const SHEET_NAME = 'EnrollmentData';
+// Local CSV file configuration
+const CSV_FILE_PATH = path.join(process.cwd(), 'enrollment-data.csv');
+const HEADERS = [
+  'Timestamp',
+  'First Name',
+  'Last Name', 
+  'Email',
+  'Phone',
+  'Current Role',
+  'Education',
+  'Experience',
+  'Interests',
+  'Referral Source',
+  'Discount Eligibility (%)',
+  'Suggested Courses',
+  'Top Course Matches',
+  'Assessment Traits'
+];
 
-// Helper function to authenticate with Google Sheets
-async function getGoogleSheetsAuth() {
+// Helper function to ensure CSV file exists with headers
+function ensureCSVFile() {
   try {
-    // Use service account key from environment variable
-    const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
-    if (!serviceAccountKey) {
-      console.warn('Google Service Account Key not found. Using demo spreadsheet.');
-      return null;
+    if (!fs.existsSync(CSV_FILE_PATH)) {
+      // Create file with headers
+      fs.writeFileSync(CSV_FILE_PATH, HEADERS.join(',') + '\n', 'utf8');
+      console.log('Created new enrollment data CSV file');
     }
-
-    const credentials = JSON.parse(serviceAccountKey);
-    const auth = new google.auth.GoogleAuth({
-      credentials,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
-
-    return await auth.getClient();
   } catch (error) {
-    console.error('Error authenticating with Google Sheets:', error);
-    return null;
+    console.error('Error creating CSV file:', error);
   }
 }
 
-// Helper function to append data to Google Sheets
-async function appendToGoogleSheets(enrollmentData: EnrollmentData) {
-  try {
-    const auth = await getGoogleSheetsAuth();
-    if (!auth) {
-      console.log('Google Sheets authentication failed, skipping sheet update');
-      return;
-    }
+// Helper function to escape CSV values
+function escapeCSVValue(value: string): string {
+  if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+    return `"${value.replace(/"/g, '""')}"`;
+  }
+  return value;
+}
 
-    const sheets = google.sheets({ version: 'v4', auth });
+// Helper function to append data to CSV file
+async function appendToCSV(enrollmentData: EnrollmentData) {
+  try {
+    // Ensure CSV file exists
+    ensureCSVFile();
     
     // Prepare row data
     const timestamp = new Date().toISOString();
-    const interests = enrollmentData.interests.join(', ');
-    const suggestedCourses = enrollmentData.assessmentResults?.suggestedCourses?.join(', ') || 'N/A';
+    const interests = enrollmentData.interests.join('; ');
+    const suggestedCourses = enrollmentData.assessmentResults?.suggestedCourses?.join('; ') || 'N/A';
     const topCourseMatches = enrollmentData.assessmentResults?.courseMatches 
       ? Object.entries(enrollmentData.assessmentResults.courseMatches)
           .sort(([,a], [,b]) => b - a)
           .slice(0, 3)
           .map(([course, score]) => `${course}: ${score}%`)
-          .join(', ')
+          .join('; ')
       : 'N/A';
 
     const rowData = [
-      timestamp,
-      enrollmentData.firstName,
-      enrollmentData.lastName,
-      enrollmentData.email,
-      enrollmentData.phone || 'N/A',
-      enrollmentData.currentRole,
-      enrollmentData.education,
-      enrollmentData.experience,
-      interests,
-      enrollmentData.referral || 'N/A',
-      enrollmentData.assessmentResults?.discountEligibility || 'N/A',
-      suggestedCourses,
-      topCourseMatches,
-      JSON.stringify(enrollmentData.assessmentResults?.traits || {})
+      escapeCSVValue(timestamp),
+      escapeCSVValue(enrollmentData.firstName),
+      escapeCSVValue(enrollmentData.lastName),
+      escapeCSVValue(enrollmentData.email),
+      escapeCSVValue(enrollmentData.phone || 'N/A'),
+      escapeCSVValue(enrollmentData.currentRole),
+      escapeCSVValue(enrollmentData.education),
+      escapeCSVValue(enrollmentData.experience),
+      escapeCSVValue(interests),
+      escapeCSVValue(enrollmentData.referral || 'N/A'),
+      escapeCSVValue(String(enrollmentData.assessmentResults?.discountEligibility || 'N/A')),
+      escapeCSVValue(suggestedCourses),
+      escapeCSVValue(topCourseMatches),
+      escapeCSVValue(JSON.stringify(enrollmentData.assessmentResults?.traits || {}))
     ];
 
-    // Check if sheet exists, if not create it with headers
-    try {
-      await sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEET_NAME}!A1`,
-      });
-    } catch (error) {
-      // Sheet doesn't exist, create it with headers
-      const headers = [
-        'Timestamp',
-        'First Name',
-        'Last Name',
-        'Email',
-        'Phone',
-        'Current Role',
-        'Education',
-        'Experience',
-        'Interests',
-        'Referral Source',
-        'Discount Eligibility (%)',
-        'Suggested Courses',
-        'Top Course Matches',
-        'Assessment Traits'
-      ];
+    // Append the new row to CSV file
+    const csvRow = rowData.join(',') + '\n';
+    fs.appendFileSync(CSV_FILE_PATH, csvRow, 'utf8');
 
-      await sheets.spreadsheets.values.update({
-        spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEET_NAME}!A1:N1`,
-        valueInputOption: 'RAW',
-        requestBody: {
-          values: [headers],
-        },
-      });
-    }
-
-    // Append the new data
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A:N`,
-      valueInputOption: 'RAW',
-      requestBody: {
-        values: [rowData],
-      },
-    });
-
-    console.log('Successfully added enrollment data to Google Sheets');
+    console.log('Successfully added enrollment data to CSV file');
   } catch (error) {
-    console.error('Error updating Google Sheets:', error);
+    console.error('Error updating CSV file:', error);
   }
 }
 
@@ -156,8 +124,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Log enrollment data
       console.log('Enrollment submission received:', enrollmentData);
       
-      // Add to Google Sheets
-      await appendToGoogleSheets(enrollmentData);
+      // Add to CSV file
+      await appendToCSV(enrollmentData);
       
       // Simulate processing delay
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -165,7 +133,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(200).json({ 
         message: 'Enrollment submitted successfully',
         success: true,
-        spreadsheetUrl: `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}`
+        csvFilePath: CSV_FILE_PATH,
+        message2: 'Data saved to local CSV file in project root directory'
       });
     } catch (error) {
       console.error('Error processing enrollment:', error);
@@ -176,18 +145,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // API endpoint to get spreadsheet URL
-  app.get('/api/spreadsheet-url', async (req, res) => {
+  // API endpoint to get CSV file info
+  app.get('/api/csv-file-info', async (req, res) => {
     try {
+      ensureCSVFile();
       return res.status(200).json({
         success: true,
-        spreadsheetUrl: `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}`,
-        message: 'This spreadsheet contains all enrollment data with assessment results'
+        csvFilePath: CSV_FILE_PATH,
+        relativePath: './enrollment-data.csv',
+        message: 'This CSV file contains all enrollment data with assessment results'
       });
     } catch (error) {
-      console.error('Error getting spreadsheet URL:', error);
+      console.error('Error getting CSV file info:', error);
       return res.status(500).json({ 
-        message: 'An error occurred while getting spreadsheet URL',
+        message: 'An error occurred while getting CSV file info',
         success: false
       });
     }
