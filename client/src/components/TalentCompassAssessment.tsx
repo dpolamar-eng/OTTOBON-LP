@@ -1959,22 +1959,17 @@ export default function TalentCompassAssessment() {
                   </div>
 
                   <div className="flex justify-end">
-                    <button
-                      onClick={() => {
-                        const enrollSection = document.querySelector('#enroll');
-                        if (enrollSection) {
-                          enrollSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }}
-                      className="bg-gradient-to-r from-green-600 to-black hover:from-green-700 hover:to-gray-900 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
+                    <a
+                      href="#enroll"
+                      className="bg-white text-blue-600 hover:bg-blue-50 font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group"
                     >
                       <span className="relative z-10 flex items-center justify-center">
                         Join Fast Lane
-                        <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
                       </span>
-                    </button>
+                    </a>
                   </div>
                 </div>
 
