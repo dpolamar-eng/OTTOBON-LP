@@ -10,6 +10,7 @@ import Services from "@/pages/Services";
 import ScrollToTop from "@/components/ScrollToTop";
 import OnboardingExperience from "@/components/OnboardingExperience";
 import DynamicBackground from "@/components/DynamicBackground";
+import EnrollmentSection from './components/EnrollmentSection';
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/" component={Portal} />
       <Route path="/academy" component={Home} />
       <Route path="/services" component={Services} />
+      <Route path="/enroll" component={EnrollmentSection} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -24,22 +26,22 @@ function Router() {
 
 function App() {
   const [showOnboarding, setShowOnboarding] = useState(false);
-  
+
   // Disabled automatic onboarding popup since we have the journey integrated in the hero section
   useEffect(() => {
     // For future functionality if needed
     const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
-    
+
     if (!hasSeenOnboarding) {
       // Mark as seen for future visits in case we re-enable this
       localStorage.setItem('hasSeenOnboarding', 'true');
     }
   }, []);
-  
+
   const handleOnboardingClose = () => {
     setShowOnboarding(false);
   };
-  
+
   return (
     <QueryClientProvider client={queryClient}>
       <DynamicBackground colorShift={true} parallax={true} bubbles={true} noise={true} />
