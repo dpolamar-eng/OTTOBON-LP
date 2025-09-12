@@ -35,10 +35,6 @@ export default function HomeHeader() {
           {[
             { label: "About", href: "#about" },
             { label: "Our Services", href: "#services-overview" },
-            { label: "Why Us?", href: "#why" },
-            { label: "Team", href: "#team" },
-            { label: "FAQ", href: "#faq" },
-            { label: "Contact", href: "#contact" },
           ].map((item) => (
             <a
               key={item.label}
@@ -62,26 +58,8 @@ export default function HomeHeader() {
 
         
 
-        {/* Mobile CTA Button */}
-        <div className="lg:hidden flex items-center space-x-2">
-          <a
-            href="#services-overview"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = document.querySelector('#services-overview');
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            }}
-            className="bg-[#FFC107] text-black font-semibold py-2 px-3 sm:px-4 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-xs sm:text-sm whitespace-nowrap"
-          >
-            <span className="relative z-10">
-              Begin Your Journey
-            </span>
-            <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
-          </a>
-
-          {/* Mobile toggle */}
+        {/* Mobile menu button */}
+        <div className="lg:hidden">
           <button
             onClick={toggleMobileMenu}
             className="bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm"
@@ -100,10 +78,6 @@ export default function HomeHeader() {
           {[
             { label: "About", href: "#about", icon: "📜" },
             { label: "Our Services", href: "#services-overview", icon: "🧩" },
-            { label: "Why Us", href: "#why", icon: "⭐" },
-            { label: "Team", href: "#team", icon: "👥" },
-            { label: "FAQ", href: "#faq", icon: "❓" },
-            { label: "Contact", href: "#contact", icon: "✉️" },
           ].map((item) => (
             <a
               key={item.label}
@@ -122,24 +96,6 @@ export default function HomeHeader() {
               <span>{item.label}</span>
             </a>
           ))}
-
-          <div className="pt-3 pb-2 flex flex-col space-y-3">
-            <a
-              href="#services-overview"
-              className="bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 text-center relative overflow-hidden group"
-              onClick={(e) => {
-                e.preventDefault();
-                const target = document.querySelector('#services-overview');
-                if (target) {
-                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-                closeMobileMenu();
-              }}
-            >
-              <span className="relative z-10">Start Your Journey</span>
-              <span aria-hidden="true" className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 -translate-x-full animate-shine-fast"></span>
-            </a>
-          </div>
         </div>
       </div>
     </header>
