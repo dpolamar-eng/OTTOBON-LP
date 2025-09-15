@@ -1,0 +1,94 @@
+ADD POSTGRESQL DATABASE AND BACKEND API TO the PROJECT
+
+DATABASE SETUP:
+• Create PostgreSQL database with these tables:
+
+-- Main application table
+applications (
+  id SERIAL PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  phone TEXT,
+  years_experience TEXT,
+  how_heard_about_us TEXT,
+  submitted_at TIMESTAMPTZ DEFAULT NOW()
+)
+
+-- Areas of interest (many-to-many relationship)
+interest_areas (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE
+)
+
+application_interests (
+  id SERIAL PRIMARY KEY,
+  application_id INT REFERENCES applications(id) ON DELETE CASCADE,
+  interest_area_id INT REFERENCES interest_areas(id)
+)
+
+-- Skills (many-to-many relationship)  
+skills (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
+  category TEXT NOT NULL -- 'Technical Skills', 'Soft Skills', 'Industry Knowledge'
+)
+
+application_skills (
+  id SERIAL PRIMARY KEY,
+  application_id INT REFERENCES applications(id) ON DELETE CASCADE,
+  skill_id INT REFERENCES skills(id)
+)
+
+BACKEND API (Node.js/Express):
+• Add these endpoints to my existing Express server:
+  1. GET /api/interest-areas - return all available interest areas
+  2. GET /api/skills - return all available skills grouped by category
+  3. POST /api/submit-application - accept complete form data and save to database
+
+• For POST /api/submit-application, accept JSON structure:
+{
+  "basicInfo": {
+    "firstName": "string",
+    "lastName": "string", 
+    "email": "string",
+    "phone": "string"
+  },
+  "experience": {
+    "currentRole": "string",
+    "educationBackground": "string",
+    "yearsExperience": "string"
+  },
+  "preferences": {
+    "areasOfInterest": ["string array"],
+    "howHeardAboutUs": "string",
+    "privacyConsent": boolean
+  },
+  "skills": ["string array"]
+}
+
+REQUIREMENTS:
+• Use pg (node-postgres) for PostgreSQL connection  
+• Add proper validation (email format, required fields, etc.)
+• Return detailed success/error messages
+• Enable CORS for frontend integration
+• Connect using DATABASE_URL environment variable
+• Install required dependencies 
+
+SAMPLE DATA:
+• Pre-populate interest_areas table with:
+  - "AI for UI/UX Designer"
+  - "AI in Marketing" 
+  - "AI Agent Development"
+  - "AI Data Labeling"
+
+• Pre-populate skills table with categories:
+  Technical Skills: JavaScript, Python, React, Node.js, HTML/CSS, SQL, TypeScript, PostgreSQL, MongoDB, Docker, Git, AWS, etc.
+  Soft Skills: Communication, Leadership, Problem Solving, Team Work, etc.
+  Industry Knowledge: Digital Marketing, Data Analysis, Project Management, etc.
+
+INTEGRATION:
+• Update my existing server/index.ts with the new API routes
+• Create database connection and models
+• Add transaction handling for multi-table inserts
+• Ensure all form data is properly stored with relationships
