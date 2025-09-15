@@ -3,6 +3,13 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import * as fs from 'fs';
 import * as path from 'path';
+import cors from 'cors';
+import { 
+  submitApplication, 
+  getAllInterestAreas, 
+  getAllSkills,
+  type ApplicationSubmission 
+} from './database';
 
 // This is a simple interface for enrollment data
 interface EnrollmentData {
@@ -111,6 +118,106 @@ async function appendToCSV(enrollmentData: EnrollmentData) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Enable CORS for frontend integration
+  app.use('/api', cors());
+  
+  // Validation middleware
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateApplicationData = (data: any): string[] => {
+    const errors: string[] = [];
+    
+    if (!data.basicInfo?.firstName) errors.push('First name is required');
+    if (!data.basicInfo?.lastName) errors.push('Last name is required');
+    if (!data.basicInfo?.email) errors.push('Email is required');
+    if (data.basicInfo?.email && !validateEmail(data.basicInfo.email)) {
+      errors.push('Invalid email format');
+    }
+    if (data.preferences?.privacyConsent !== true) {
+      errors.push('Privacy consent is required');
+    }
+    
+    return errors;
+  };
+
+  // GET /api/interest-areas - return all available interest areas
+  app.get('/api/interest-areas', async (req, res) => {
+    try {
+      const interestAreas = await getAllInterestAreas();
+      res.json({ success: true, data: interestAreas });
+    } catch (error) {
+      console.error('Error fetching interest areas:', error);
+      res.status(500).json({ 
+        success: false, 
+        message: 'Failed to fetch interest areas' 
+      });
+    }
+  });
+
+  // GET /api/skills - return all available skills grouped by category
+  app.get('/api/skills', async (req, res) => {
+    try {
+      const skillsByCategory = await getAllSkills();
+      res.json({ success: true, data: skillsByCategory });
+    } catch (error) {
+      console.error('Error fetching skills:', error);
+      res.status(500).json({ 
+        success: false, 
+        message: 'Failed to fetch skills' 
+      });
+    }
+  });
+
+  // POST /api/submit-application - accept complete form data and save to database
+  app.post('/api/submit-application', async (req, res) => {
+    try {
+      const applicationData: ApplicationSubmission = req.body;
+      
+      // Validate required fields
+      const validationErrors = validateApplicationData(applicationData);
+      if (validationErrors.length > 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'Validation failed',
+          errors: validationErrors
+        });
+      }
+
+      // Submit application to database
+      const result = await submitApplication(applicationData);
+      
+      console.log('Application submitted successfully:', {
+        id: result.id,
+        email: result.email
+      });
+
+      res.status(201).json({
+        success: true,
+        message: 'Application submitted successfully',
+        applicationId: result.id
+      });
+      
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      
+      // Handle unique constraint violations (duplicate email)
+      if (error instanceof Error && error.message.includes('duplicate key')) {
+        return res.status(409).json({
+          success: false,
+          message: 'An application with this email already exists'
+        });
+      }
+      
+      res.status(500).json({
+        success: false,
+        message: 'Failed to submit application. Please try again.'
+      });
+    }
+  });
+
   // API endpoint to handle enrollment form submissions
   app.post('/api/enroll', async (req, res) => {
     try {
