@@ -3,6 +3,8 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import * as fs from 'fs';
 import * as path from 'path';
+import { insertEnrollment, getAllEnrollments } from './database';
+import type { InsertEnrollment } from '../shared/schema';
 
 // This is a simple interface for enrollment data
 interface EnrollmentData {
@@ -124,7 +126,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Log enrollment data
       console.log('Enrollment submission received:', enrollmentData);
       
-      // Add to CSV file
+      // Prepare data for database insertion
+      const dbData: InsertEnrollment = {
+        firstName: enrollmentData.firstName,
+        lastName: enrollmentData.lastName,
+        email: enrollmentData.email,
+        phone: enrollmentData.phone || null,
+        currentRole: enrollmentData.currentRole,
+        education: enrollmentData.education,
+        experience: enrollmentData.experience,
+        interests: enrollmentData.interests,
+        referral: enrollmentData.referral || null,
+        consent: enrollmentData.consent,
+        assessmentResults: enrollmentData.assessmentResults || null,
+      };
+
+      // Save to PostgreSQL database
+      const savedEnrollment = await insertEnrollment(dbData);
+      
+      // Also save to CSV file as backup
       await appendToCSV(enrollmentData);
       
       // Simulate processing delay
@@ -133,8 +153,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(200).json({ 
         message: 'Enrollment submitted successfully',
         success: true,
+        enrollmentId: savedEnrollment.id,
         csvFilePath: CSV_FILE_PATH,
-        message2: 'Data saved to local CSV file in project root directory'
+        message2: 'Data saved to PostgreSQL database and local CSV file'
       });
     } catch (error) {
       console.error('Error processing enrollment:', error);
@@ -159,6 +180,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error('Error getting CSV file info:', error);
       return res.status(500).json({ 
         message: 'An error occurred while getting CSV file info',
+        success: false
+      });
+    }
+  });
+
+  // API endpoint to get all enrollments from database
+  app.get('/api/enrollments', async (req, res) => {
+    try {
+      const enrollments = await getAllEnrollments();
+      return res.status(200).json({
+        success: true,
+        enrollments: enrollments,
+        count: enrollments.length,
+        message: 'Enrollments retrieved successfully from PostgreSQL database'
+      });
+    } catch (error) {
+      console.error('Error getting enrollments:', error);
+      return res.status(500).json({ 
+        message: 'An error occurred while retrieving enrollments',
         success: false
       });
     }

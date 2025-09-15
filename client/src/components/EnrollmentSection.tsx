@@ -152,12 +152,12 @@ export default function EnrollmentSection() {
         description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
       });
 
-      // Show CSV file info if available
-      if (response.csvFilePath) {
+      // Show database save confirmation
+      if (response.enrollmentId) {
         setTimeout(() => {
           toast({
-            title: "Data Recorded",
-            description: "Your information has been saved to enrollment-data.csv in the project directory.",
+            title: "Data Securely Stored",
+            description: `Your application (#${response.enrollmentId}) has been saved to our database and backup files.`,
           });
         }, 2000);
       }
