@@ -118,20 +118,34 @@ export default function EnrollmentSection() {
     setIsSubmitting(true);
     
     try {
-      // Prepare application data for new PostgreSQL applications table
-      const applicationData = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone || null,
-        currentRole: formData.currentRole,
-        educationBackground: formData.education,
-        yearsExperience: formData.experience,
-        areasOfInterest: formData.interests,
-        skills: ["JavaScript", "React"] // Default skills - you can enhance this to collect actual skills from the form
+      // Get assessment results from localStorage if available
+      const assessmentResults = localStorage.getItem('assessmentResults');
+      const userProfile = localStorage.getItem('userProfile');
+      
+      let parsedAssessmentResults = null;
+      if (assessmentResults || userProfile) {
+        try {
+          const results = assessmentResults ? JSON.parse(assessmentResults) : null;
+          const profile = userProfile ? JSON.parse(userProfile) : null;
+          
+          parsedAssessmentResults = {
+            courseMatches: profile?.courseMatches || {},
+            discountEligibility: profile?.discountEligibility || 0,
+            traits: profile?.traits || {},
+            suggestedCourses: results?.recommendedPaths?.map((path: any) => path.name) || []
+          };
+        } catch (parseError) {
+          console.warn('Error parsing assessment results:', parseError);
+        }
+      }
+
+      // Prepare submission data with assessment results
+      const submissionData = {
+        ...formData,
+        assessmentResults: parsedAssessmentResults
       };
       
-      const response = await apiRequest('POST', '/api/submit-application', applicationData);
+      const response = await apiRequest('POST', '/api/enroll', submissionData);
       
       toast({
         title: "Application Submitted",
@@ -139,11 +153,11 @@ export default function EnrollmentSection() {
       });
 
       // Show database save confirmation
-      if (response.applicationId) {
+      if (response.enrollmentId) {
         setTimeout(() => {
           toast({
             title: "Data Securely Stored",
-            description: `Your application (#${response.applicationId}) has been saved to our PostgreSQL database.`,
+            description: `Your application (#${response.enrollmentId}) has been saved to our database and backup files.`,
           });
         }, 2000);
       }
@@ -163,20 +177,13 @@ export default function EnrollmentSection() {
       });
       setStep(1);
       
-    } catch (error: any) {
-      let errorMessage = "There was a problem submitting your application. Please try again.";
-      
-      // Handle specific error messages from the API
-      if (error?.response?.data?.message) {
-        errorMessage = error.response.data.message;
-      }
-      
+    } catch (error) {
       toast({
         title: "Submission Error",
-        description: errorMessage,
+        description: "There was a problem submitting your application. Please try again.",
         variant: "destructive"
       });
-      console.error("Application submission error:", error);
+      console.error("Enrollment submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
