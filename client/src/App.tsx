@@ -1,3 +1,4 @@
+
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -27,13 +28,10 @@ function Router() {
 function App() {
   const [showOnboarding, setShowOnboarding] = useState(false);
   
-  // Disabled automatic onboarding popup since we have the journey integrated in the hero section
   useEffect(() => {
-    // For future functionality if needed
     const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
     
     if (!hasSeenOnboarding) {
-      // Mark as seen for future visits in case we re-enable this
       localStorage.setItem('hasSeenOnboarding', 'true');
     }
   }, []);
