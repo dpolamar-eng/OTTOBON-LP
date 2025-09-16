@@ -11,11 +11,20 @@ import {
 import { eq, inArray } from 'drizzle-orm';
 
 if (!process.env.DATABASE_URL) {
+  console.error('❌ DATABASE_URL environment variable is required');
+  console.error('Available environment variables:', Object.keys(process.env).filter(key => 
+    key.includes('PG') || key.includes('DATABASE')
+  ));
   throw new Error('DATABASE_URL environment variable is required');
 }
 
+console.log('🔗 Initializing database connection...');
+console.log('Database URL pattern:', process.env.DATABASE_URL.replace(/:[^:@]*@/, ':***@'));
+
 const client = neon(process.env.DATABASE_URL);
 export const db = drizzle(client);
+
+console.log('✅ Database client initialized');
 
 export interface ApplicationSubmission {
   basicInfo: {
