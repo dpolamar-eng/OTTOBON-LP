@@ -37,11 +37,11 @@ export const applications = pgTable("applications", {
   lastName: text("last_name").notNull(),
   email: text("email").notNull().unique(),
   phone: text("phone"),
-  currentRole: text("current_role").notNull(),
+  currentRole: text("currentrole").notNull(), // Match actual PostgreSQL column name
   educationBackground: text("education_background").notNull(),
   yearsExperience: text("years_experience").notNull(),
-  areasOfInterest: json("areas_of_interest").$type<string[]>().notNull(),
-  skills: json("skills").$type<string[]>().notNull(),
+  areasOfInterest: text("areas_of_interest").array().notNull(), // Use text array instead of JSON
+  skills: text("skills").array().notNull(), // Use text array instead of JSON
   submittedAt: timestamp("submitted_at").defaultNow().notNull(),
 });
 
