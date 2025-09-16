@@ -1,10 +1,11 @@
+
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import * as fs from 'fs';
 import * as path from 'path';
-import { insertEnrollment, getAllEnrollments } from './database';
-import type { InsertEnrollment } from '../shared/schema';
+import { insertEnrollment, getAllEnrollments, insertApplication, getApplicationByEmail, getAllApplications } from './database';
+import type { InsertEnrollment, InsertApplication } from '../shared/schema';
 
 // This is a simple interface for enrollment data
 interface EnrollmentData {
@@ -26,6 +27,20 @@ interface EnrollmentData {
     traits?: Record<string, number>;
   };
 }
+
+// Predefined data for the new API endpoints
+const INTEREST_AREAS = [
+  "AI for UI/UX Designer",
+  "AI in Marketing", 
+  "AI Agent Development",
+  "AI Data Labeling"
+];
+
+const SKILLS_BY_CATEGORY = {
+  "Technical Skills": ["JavaScript", "Python", "React", "Node.js", "HTML/CSS", "TypeScript"],
+  "Soft Skills": ["Communication", "Leadership", "Problem Solving"],
+  "Industry Knowledge": ["Digital Marketing", "Data Analysis"]
+};
 
 // Local CSV file configuration
 const CSV_FILE_PATH = path.join(process.cwd(), 'enrollment-data.csv');
@@ -113,6 +128,148 @@ async function appendToCSV(enrollmentData: EnrollmentData) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // NEW API ENDPOINTS FOR APPLICATIONS
+
+  // GET /api/interest-areas - Return predefined interest areas
+  app.get('/api/interest-areas', (req, res) => {
+    try {
+      res.json({
+        success: true,
+        data: INTEREST_AREAS
+      });
+    } catch (error) {
+      console.error('Error fetching interest areas:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error fetching interest areas'
+      });
+    }
+  });
+
+  // GET /api/skills - Return predefined skills grouped by category
+  app.get('/api/skills', (req, res) => {
+    try {
+      res.json({
+        success: true,
+        data: SKILLS_BY_CATEGORY
+      });
+    } catch (error) {
+      console.error('Error fetching skills:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error fetching skills'
+      });
+    }
+  });
+
+  // POST /api/submit-application - Submit application to PostgreSQL
+  app.post('/api/submit-application', async (req, res) => {
+    try {
+      const {
+        firstName,
+        lastName,
+        email,
+        phone,
+        currentRole,
+        educationBackground,
+        yearsExperience,
+        areasOfInterest,
+        skills
+      } = req.body;
+
+      // Input validation
+      if (!firstName || !lastName || !email || !currentRole || !educationBackground || !yearsExperience) {
+        return res.status(400).json({
+          success: false,
+          message: 'Missing required fields: firstName, lastName, email, currentRole, educationBackground, yearsExperience'
+        });
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid email format'
+        });
+      }
+
+      // Validate arrays
+      if (!Array.isArray(areasOfInterest) || areasOfInterest.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'At least one area of interest must be selected'
+        });
+      }
+
+      if (!Array.isArray(skills) || skills.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'At least one skill must be selected'
+        });
+      }
+
+      // Check for duplicate email
+      const existingApplication = await getApplicationByEmail(email);
+      if (existingApplication) {
+        return res.status(409).json({
+          success: false,
+          message: 'An application with this email already exists'
+        });
+      }
+
+      // Prepare application data
+      const applicationData: InsertApplication = {
+        firstName,
+        lastName,
+        email,
+        phone: phone || null,
+        currentRole,
+        educationBackground,
+        yearsExperience,
+        areasOfInterest,
+        skills
+      };
+
+      // Insert into database
+      const savedApplication = await insertApplication(applicationData);
+
+      res.status(201).json({
+        success: true,
+        message: 'Application submitted successfully',
+        applicationId: savedApplication.id,
+        data: savedApplication
+      });
+
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while submitting your application. Please try again.'
+      });
+    }
+  });
+
+  // GET /api/applications - Get all applications (admin endpoint)
+  app.get('/api/applications', async (req, res) => {
+    try {
+      const applications = await getAllApplications();
+      res.json({
+        success: true,
+        data: applications,
+        count: applications.length
+      });
+    } catch (error) {
+      console.error('Error fetching applications:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Error fetching applications'
+      });
+    }
+  });
+
+  // EXISTING ENDPOINTS (kept for backwards compatibility)
+
   // API endpoint to handle enrollment form submissions
   app.post('/api/enroll', async (req, res) => {
     try {
