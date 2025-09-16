@@ -3,7 +3,6 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import * as fs from 'fs';
 import * as path from 'path';
-import cors from 'cors';
 import { 
   submitApplication, 
   getAllInterestAreas, 
@@ -77,7 +76,7 @@ async function appendToCSV(enrollmentData: EnrollmentData) {
   try {
     // Ensure CSV file exists
     ensureCSVFile();
-    
+
     // Prepare row data
     const timestamp = new Date().toISOString();
     const interests = enrollmentData.interests.join('; ');
@@ -119,8 +118,8 @@ async function appendToCSV(enrollmentData: EnrollmentData) {
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Enable CORS for frontend integration
-  app.use('/api', cors());
-  
+  // app.use('/api', cors()); // This line is removed as per the fix.
+
   // Validation middleware
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -129,7 +128,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   const validateApplicationData = (data: any): string[] => {
     const errors: string[] = [];
-    
+
     if (!data.basicInfo?.firstName) errors.push('First name is required');
     if (!data.basicInfo?.lastName) errors.push('Last name is required');
     if (!data.basicInfo?.email) errors.push('Email is required');
@@ -139,7 +138,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (data.preferences?.privacyConsent !== true) {
       errors.push('Privacy consent is required');
     }
-    
+
     return errors;
   };
 
@@ -175,7 +174,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/submit-application', async (req, res) => {
     try {
       const applicationData: ApplicationSubmission = req.body;
-      
+
       // Validate required fields
       const validationErrors = validateApplicationData(applicationData);
       if (validationErrors.length > 0) {
@@ -188,7 +187,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Submit application to database
       const result = await submitApplication(applicationData);
-      
+
       console.log('Application submitted successfully:', {
         id: result.id,
         email: result.email
@@ -199,10 +198,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: 'Application submitted successfully',
         applicationId: result.id
       });
-      
+
     } catch (error) {
       console.error('Error submitting application:', error);
-      
+
       // Handle unique constraint violations (duplicate email)
       if (error instanceof Error && error.message.includes('duplicate key')) {
         return res.status(409).json({
@@ -210,7 +209,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: 'An application with this email already exists'
         });
       }
-      
+
       res.status(500).json({
         success: false,
         message: 'Failed to submit application. Please try again.'
@@ -222,21 +221,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/enroll', async (req, res) => {
     try {
       const enrollmentData: EnrollmentData = req.body;
-      
+
       // Validate required fields
       if (!enrollmentData.firstName || !enrollmentData.lastName || !enrollmentData.email) {
         return res.status(400).json({ message: 'Missing required fields' });
       }
-      
+
       // Log enrollment data
       console.log('Enrollment submission received:', enrollmentData);
-      
+
       // Add to CSV file
       await appendToCSV(enrollmentData);
-      
+
       // Simulate processing delay
       await new Promise(resolve => setTimeout(resolve, 500));
-      
+
       return res.status(200).json({ 
         message: 'Enrollment submitted successfully',
         success: true,
@@ -275,10 +274,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/assessment', async (req, res) => {
     try {
       const assessmentData = req.body;
-      
+
       // Simulate processing delay
       await new Promise(resolve => setTimeout(resolve, 500));
-      
+
       // Return mock assessment results
       return res.status(200).json({
         success: true,
