@@ -133,10 +133,14 @@ export default function EnrollmentSection() {
       
       const response = await apiRequest('POST', '/api/submit-application', applicationData);
       
-      toast({
-        title: "Application Submitted",
-        description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
-      });
+      if (response.success) {
+        toast({
+          title: "Application Submitted",
+          description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
+        });
+      } else {
+        throw new Error(response.message || 'Submission failed');
+      }
 
       // Show database save confirmation
       if (response.applicationId) {
