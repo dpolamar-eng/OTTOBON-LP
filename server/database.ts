@@ -1,6 +1,6 @@
 
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
 import { 
   applications, 
   interestAreas, 
@@ -21,7 +21,7 @@ if (!process.env.DATABASE_URL) {
 console.log('🔗 Initializing database connection...');
 console.log('Database URL pattern:', process.env.DATABASE_URL.replace(/:[^:@]*@/, ':***@'));
 
-const client = neon(process.env.DATABASE_URL);
+const client = postgres(process.env.DATABASE_URL);
 export const db = drizzle(client);
 
 console.log('✅ Database client initialized');

@@ -37,7 +37,10 @@ export async function runMigrations() {
   }
 }
 
-if (require.main === module) {
+// Check if this module is being run directly
+const isMainModule = import.meta.url === `file://${process.argv[1]}`;
+
+if (isMainModule) {
   runMigrations()
     .then((success) => {
       console.log(success ? '✅ Migrations completed successfully' : '❌ Migrations failed');
@@ -46,5 +49,7 @@ if (require.main === module) {
     .catch((error) => {
       console.error('💥 Migration script error:', error);
       process.exit(1);
+    });
+}s.exit(1);
     });
 }
