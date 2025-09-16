@@ -13,20 +13,12 @@ export async function getDatabase() {
       throw new Error('DATABASE_URL environment variable is not set');
     }
 
-    console.log('Connecting to database...');
-    
     const client = new Client({
       connectionString: databaseUrl,
     });
 
-    try {
-      await client.connect();
-      console.log('Connected to PostgreSQL database');
-      db = drizzle(client);
-    } catch (error) {
-      console.error('Failed to connect to database:', error);
-      throw error;
-    }
+    await client.connect();
+    db = drizzle(client);
   }
   return db;
 }

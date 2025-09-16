@@ -131,31 +131,19 @@ export default function EnrollmentSection() {
         skills: ["JavaScript", "React"] // Default skills - you can enhance this to collect actual skills from the form
       };
       
-      const response = await fetch('/api/submit-application', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(applicationData),
+      const response = await apiRequest('POST', '/api/submit-application', applicationData);
+      
+      toast({
+        title: "Application Submitted",
+        description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
       });
-      
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
-        toast({
-          title: "Application Submitted",
-          description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
-        });
-      } else {
-        throw new Error(result.message || 'Submission failed');
-      }
 
       // Show database save confirmation
-      if (result.applicationId) {
+      if (response.applicationId) {
         setTimeout(() => {
           toast({
             title: "Data Securely Stored",
-            description: `Your application (#${result.applicationId}) has been saved to our PostgreSQL database.`,
+            description: `Your application (#${response.applicationId}) has been saved to our PostgreSQL database.`,
           });
         }, 2000);
       }

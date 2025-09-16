@@ -1,11 +1,11 @@
 
-import { pgTable, text, serial, timestamp, boolean, json } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, timestamp, json } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
-  username: text("username").unique().notNull(),
+  username: text("username").notNull().unique(),
   password: text("password").notNull(),
 });
 
@@ -18,14 +18,19 @@ export const enrollments = pgTable("enrollments", {
   currentRole: text("current_role").notNull(),
   education: text("education").notNull(),
   experience: text("experience").notNull(),
-  interests: text("interests").array().notNull(),
+  interests: json("interests").$type<string[]>().notNull(),
   referral: text("referral"),
   consent: boolean("consent").notNull(),
-  assessmentResults: json("assessment_results"),
+  assessmentResults: json("assessment_results").$type<{
+    courseMatches?: Record<string, number>;
+    discountEligibility?: number;
+    suggestedCourses?: string[];
+    traits?: Record<string, number>;
+  }>(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-// Applications table schema matching your PostgreSQL structure
+// New applications table schema matching your PostgreSQL structure
 export const applications = pgTable("applications", {
   id: serial("id").primaryKey(),
   firstName: text("first_name").notNull(),
@@ -35,8 +40,8 @@ export const applications = pgTable("applications", {
   currentRole: text("currentrole").notNull(), // Match actual PostgreSQL column name
   educationBackground: text("education_background").notNull(),
   yearsExperience: text("years_experience").notNull(),
-  areasOfInterest: text("areas_of_interest").array().notNull(),
-  skills: text("skills").array().notNull(),
+  areasOfInterest: text("areas_of_interest").array().notNull(), // Use text array instead of JSON
+  skills: text("skills").array().notNull(), // Use text array instead of JSON
   submittedAt: timestamp("submitted_at").defaultNow().notNull(),
 });
 
