@@ -46,7 +46,13 @@ async function runMigrations() {
 }
 
 // Check if this file is being run directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+if (process.argv[1] === __filename) {
   runMigrations()
     .then(() => {
       console.log('Migration completed');
