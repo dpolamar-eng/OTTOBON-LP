@@ -145,17 +145,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // GET /api/interest-areas - return all available interest areas
   app.get('/api/interest-areas', async (req, res) => {
     try {
-      console.log('📞 API call: GET /api/interest-areas');
       const interestAreas = await getAllInterestAreas();
-      console.log(`✅ Retrieved ${interestAreas.length} interest areas`);
       res.json({ success: true, data: interestAreas });
     } catch (error) {
-      console.error('❌ Error fetching interest areas:', error);
-      console.error('Stack trace:', error instanceof Error ? error.stack : 'No stack trace');
+      console.error('Error fetching interest areas:', error);
       res.status(500).json({ 
         success: false, 
-        message: 'Failed to fetch interest areas',
-        error: error instanceof Error ? error.message : 'Unknown error'
+        message: 'Failed to fetch interest areas' 
       });
     }
   });
