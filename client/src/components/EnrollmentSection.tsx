@@ -1,287 +1,489 @@
-import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
+
+import { useState } from 'react';
+import { apiRequest } from '@/lib/queryClient';
+import { useToast } from '@/hooks/use-toast';
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  currentRole: string;
+  education: string;
+  experience: string;
+  interests: string[];
+  referral: string;
+  consent: boolean;
+}
 
 export default function EnrollmentSection() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     currentRole: '',
-    educationBackground: '',
-    yearsExperience: '',
-    areasOfInterest: [] as string[],
-    howHeardAboutUs: '',
-    privacyConsent: false,
-    skills: [] as string[]
+    education: '',
+    experience: '',
+    interests: [],
+    referral: '',
+    consent: false
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const interestAreas = [
-    'AI Consulting',
-    'Business Applications',
-    'Cloud Computing',
-    'Data Analytics',
-    'UI/UX Design',
-    'Digital Marketing'
-  ];
-
-  const skillCategories = {
-    'Programming': ['JavaScript', 'Python', 'React', 'Node.js'],
-    'Cloud': ['AWS', 'Azure', 'Google Cloud'],
-    'AI/ML': ['Machine Learning', 'Natural Language Processing', 'Computer Vision'],
-    'Business': ['Project Management', 'Business Analysis', 'Strategy']
-  };
-
-  const handleInputChange = (field: string, value: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [field]: value
+      [name]: value
     }));
   };
 
-  const handleInterestToggle = (interest: string) => {
-    setFormData(prev => ({
-      ...prev,
-      areasOfInterest: prev.areasOfInterest.includes(interest)
-        ? prev.areasOfInterest.filter(i => i !== interest)
-        : [...prev.areasOfInterest, interest]
-    }));
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked, value } = e.target;
+    
+    if (name === 'interest') {
+      setFormData(prev => {
+        const updatedInterests = checked 
+          ? [...prev.interests, value]
+          : prev.interests.filter(interest => interest !== value);
+          
+        return {
+          ...prev,
+          interests: updatedInterests
+        };
+      });
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: checked
+      }));
+    }
   };
 
-  const handleSkillToggle = (skill: string) => {
-    setFormData(prev => ({
-      ...prev,
-      skills: prev.skills.includes(skill)
-        ? prev.skills.filter(s => s !== skill)
-        : [...prev.skills, skill]
-    }));
+  const nextStep = () => {
+    // Basic validation for required fields before proceeding
+    if (step === 1) {
+      if (!formData.firstName || !formData.lastName || !formData.email) {
+        toast({
+          title: "Missing Information",
+          description: "Please fill in all required fields.",
+          variant: "destructive"
+        });
+        return;
+      }
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        toast({
+          title: "Invalid Email",
+          description: "Please enter a valid email address.",
+          variant: "destructive"
+        });
+        return;
+      }
+    } else if (step === 2) {
+      if (!formData.currentRole || !formData.education || !formData.experience) {
+        toast({
+          title: "Missing Information",
+          description: "Please fill in all required fields.",
+          variant: "destructive"
+        });
+        return;
+      }
+    }
+    
+    setStep(step + 1);
+  };
+
+  const prevStep = () => {
+    setStep(step - 1);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.privacyConsent) {
+    
+    // Validate final step
+    if (formData.interests.length === 0 || !formData.consent) {
       toast({
-        title: "Error",
-        description: "Please fill in all required fields and accept the privacy policy.",
-        variant: "destructive",
+        title: "Missing Information",
+        description: "Please select at least one area of interest and confirm your consent.",
+        variant: "destructive"
       });
       return;
     }
-
+    
     setIsSubmitting(true);
-
+    
     try {
-      // Store data locally instead of sending to backend
-      const applicationData = {
+      // Get assessment results from localStorage if available
+      const assessmentResults = localStorage.getItem('assessmentResults');
+      const userProfile = localStorage.getItem('userProfile');
+      
+      let parsedAssessmentResults = null;
+      if (assessmentResults || userProfile) {
+        try {
+          const results = assessmentResults ? JSON.parse(assessmentResults) : null;
+          const profile = userProfile ? JSON.parse(userProfile) : null;
+          
+          parsedAssessmentResults = {
+            courseMatches: profile?.courseMatches || {},
+            discountEligibility: profile?.discountEligibility || 0,
+            traits: profile?.traits || {},
+            suggestedCourses: results?.recommendedPaths?.map((path: any) => path.name) || []
+          };
+        } catch (parseError) {
+          console.warn('Error parsing assessment results:', parseError);
+        }
+      }
+
+      // Prepare submission data with assessment results
+      const submissionData = {
         ...formData,
-        timestamp: new Date().toISOString(),
-        id: Math.random().toString(36).substr(2, 9)
+        assessmentResults: parsedAssessmentResults
       };
-
-      // Save to localStorage
-      const existingApplications = JSON.parse(localStorage.getItem('applications') || '[]');
-      existingApplications.push(applicationData);
-      localStorage.setItem('applications', JSON.stringify(existingApplications));
-
+      
+      const response = await apiRequest('POST', '/api/enroll', submissionData);
+      
       toast({
-        title: "Application Submitted!",
-        description: "Your application has been saved locally. Thank you for your interest!",
+        title: "Application Submitted",
+        description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
       });
 
-      // Reset form
+      // Show CSV file info if available
+      if (response.csvFilePath) {
+        setTimeout(() => {
+          toast({
+            title: "Data Recorded",
+            description: "Your information has been saved to enrollment-data.csv in the project directory.",
+          });
+        }, 2000);
+      }
+      
+      // Reset form after successful submission
       setFormData({
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
         currentRole: '',
-        educationBackground: '',
-        yearsExperience: '',
-        areasOfInterest: [],
-        howHeardAboutUs: '',
-        privacyConsent: false,
-        skills: []
+        education: '',
+        experience: '',
+        interests: [],
+        referral: '',
+        consent: false
       });
-
+      setStep(1);
+      
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to save application. Please try again.",
-        variant: "destructive",
+        title: "Submission Error",
+        description: "There was a problem submitting your application. Please try again.",
+        variant: "destructive"
       });
+      console.error("Enrollment submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-16 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Join Ottobon Academy
-          </h1>
-          <p className="text-xl text-gray-600">
-            Start your journey to becoming a technology consultant
-          </p>
-        </div>
-
-        <Card className="shadow-xl">
-          <CardHeader>
-            <CardTitle>Application Form</CardTitle>
-            <CardDescription>
-              Please fill out the form below to apply for our technology consultant program.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Basic Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section id="enroll" className="py-16 bg-black relative">
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white">Join the Fast lane</h2>
+        <p className="text-center text-gray-300 max-w-2xl mx-auto mb-12">
+          Complete this simple form to begin your application process, and one of our advisors will contact you within 24 hours.
+        </p>
+        
+        <div className="max-w-2xl mx-auto bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-gray-700/50">
+          <div className="p-8">
+            <div className="flex mb-8">
+              <div className={`flex items-center ${step >= 1 ? 'text-white' : 'text-gray-500'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
+                  step >= 1 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
+                }`}>1</div>
+                <span className="text-sm font-medium">Basic Info</span>
+                <div className="h-1 w-12 bg-gray-600 mx-2"></div>
+              </div>
+              <div className={`flex items-center ${step >= 2 ? 'text-white' : 'text-gray-500'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
+                  step >= 2 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
+                }`}>2</div>
+                <span className="text-sm font-medium">Experience</span>
+                <div className="h-1 w-12 bg-gray-600 mx-2"></div>
+              </div>
+              <div className={`flex items-center ${step >= 3 ? 'text-white' : 'text-gray-500'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
+                  step >= 3 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
+                }`}>3</div>
+                <span className="text-sm font-medium">Preferences</span>
+              </div>
+            </div>
+            
+            <form onSubmit={handleSubmit}>
+              {/* Step 1: Basic Information */}
+              {step === 1 && (
                 <div>
-                  <label className="block text-sm font-medium mb-2">First Name *</label>
-                  <Input
-                    value={formData.firstName}
-                    onChange={(e) => handleInputChange('firstName', e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Last Name *</label>
-                  <Input
-                    value={formData.lastName}
-                    onChange={(e) => handleInputChange('lastName', e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email *</label>
-                  <Input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Phone</label>
-                  <Input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                  />
-                </div>
-              </div>
-
-              {/* Experience Information */}
-              <div>
-                <label className="block text-sm font-medium mb-2">Current Role</label>
-                <Input
-                  value={formData.currentRole}
-                  onChange={(e) => handleInputChange('currentRole', e.target.value)}
-                  placeholder="e.g., Software Developer, Business Analyst"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Education Background</label>
-                <Textarea
-                  value={formData.educationBackground}
-                  onChange={(e) => handleInputChange('educationBackground', e.target.value)}
-                  placeholder="Tell us about your educational background"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Years of Experience</label>
-                <Input
-                  value={formData.yearsExperience}
-                  onChange={(e) => handleInputChange('yearsExperience', e.target.value)}
-                  placeholder="e.g., 0-2 years, 3-5 years, 5+ years"
-                />
-              </div>
-
-              {/* Areas of Interest */}
-              <div>
-                <label className="block text-sm font-medium mb-4">Areas of Interest</label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {interestAreas.map((interest) => (
-                    <div key={interest} className="flex items-center space-x-2">
-                      <Checkbox
-                        checked={formData.areasOfInterest.includes(interest)}
-                        onCheckedChange={() => handleInterestToggle(interest)}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-1">First Name*</label>
+                      <input 
+                        type="text" 
+                        id="firstName" 
+                        name="firstName" 
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required 
+                        className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
                       />
-                      <label className="text-sm">{interest}</label>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Skills */}
-              <div>
-                <label className="block text-sm font-medium mb-4">Skills</label>
-                {Object.entries(skillCategories).map(([category, skills]) => (
-                  <div key={category} className="mb-4">
-                    <h4 className="font-medium text-sm text-gray-700 mb-2">{category}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.map((skill) => (
-                        <Badge
-                          key={skill}
-                          variant={formData.skills.includes(skill) ? "default" : "outline"}
-                          className="cursor-pointer"
-                          onClick={() => handleSkillToggle(skill)}
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-1">Last Name*</label>
+                      <input 
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required 
+                        className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                      />
                     </div>
                   </div>
-                ))}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">How did you hear about us?</label>
-                <Input
-                  value={formData.howHeardAboutUs}
-                  onChange={(e) => handleInputChange('howHeardAboutUs', e.target.value)}
-                  placeholder="e.g., Social media, friend referral, search engine"
-                />
-              </div>
-
-              {/* Privacy Consent */}
-              <div className="flex items-start space-x-2">
-                <Checkbox
-                  checked={formData.privacyConsent}
-                  onCheckedChange={(checked) => handleInputChange('privacyConsent', checked)}
-                  required
-                />
-                <label className="text-sm text-gray-600">
-                  I consent to the processing of my personal data for the purpose of this application and future communications about Ottobon Academy programs. *
-                </label>
-              </div>
-
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit Application'}
-              </Button>
+                  
+                  <div className="mb-6">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email Address*</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      name="email" 
+                      value={formData.email}
+                      onChange={handleChange}
+                      required 
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                    />
+                  </div>
+                  
+                  <div className="mb-6">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">Phone Number (Optional)</label>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      name="phone" 
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                    />
+                  </div>
+                  
+                  <div className="mt-8">
+                    <button 
+                      type="button" 
+                      onClick={nextStep}
+                      className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg"
+                    >
+                      Continue to Experience
+                    </button>
+                  </div>
+                </div>
+              )}
+              
+              {/* Step 2: Experience */}
+              {step === 2 && (
+                <div>
+                  <div className="mb-6">
+                    <label htmlFor="currentRole" className="block text-sm font-medium text-gray-300 mb-1">Current Role/Position*</label>
+                    <input 
+                      type="text" 
+                      id="currentRole" 
+                      name="currentRole" 
+                      value={formData.currentRole}
+                      onChange={handleChange}
+                      required 
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                    />
+                  </div>
+                  
+                  <div className="mb-6">
+                    <label htmlFor="education" className="block text-sm font-medium text-gray-300 mb-1">Education Background*</label>
+                    <select 
+                      id="education" 
+                      name="education" 
+                      value={formData.education}
+                      onChange={handleChange}
+                      required 
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                    >
+                      <option value="">Select your highest education level</option>
+                      <option value="high-school">High School</option>
+                      <option value="associates">Associate's Degree</option>
+                      <option value="bachelors">Bachelor's Degree</option>
+                      <option value="masters">Master's Degree</option>
+                      <option value="doctorate">Doctorate</option>
+                    </select>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <label htmlFor="experience" className="block text-sm font-medium text-gray-300 mb-1">Years of Professional Experience*</label>
+                    <select 
+                      id="experience" 
+                      name="experience" 
+                      value={formData.experience}
+                      onChange={handleChange}
+                      required 
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                    >
+                      <option value="">Select your experience level</option>
+                      <option value="0-1">0-1 years</option>
+                      <option value="1-3">1-3 years</option>
+                      <option value="3-5">3-5 years</option>
+                      <option value="5-10">5-10 years</option>
+                      <option value="10+">10+ years</option>
+                    </select>
+                  </div>
+                  
+                  <div className="flex justify-between mt-8">
+                    <button 
+                      type="button" 
+                      onClick={prevStep}
+                      className="bg-gray-600 hover:bg-gray-500 text-white font-medium py-2 px-6 rounded-full transition"
+                    >
+                      Back
+                    </button>
+                    <button 
+                      type="button" 
+                      onClick={nextStep}
+                      className="bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg"
+                    >
+                      Continue to Preferences
+                    </button>
+                  </div>
+                </div>
+              )}
+              
+              {/* Step 3: Preferences */}
+              {step === 3 && (
+                <div>
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-300 mb-3">Areas of Interest*</label>
+                    <div className="space-y-2">
+                      <label className="flex items-center">
+                        <input 
+                          type="checkbox" 
+                          name="interest" 
+                          value="ai-uiux"
+                          checked={formData.interests.includes('ai-uiux')}
+                          onChange={handleCheckboxChange}
+                          className="mr-2"
+                        />
+                        <span className="text-gray-300">AI for UI/UX Designer</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input 
+                          type="checkbox" 
+                          name="interest" 
+                          value="ai-marketing"
+                          checked={formData.interests.includes('ai-marketing')}
+                          onChange={handleCheckboxChange}
+                          className="mr-2"
+                        />
+                        <span className="text-gray-300">AI in Marketing</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input 
+                          type="checkbox" 
+                          name="interest" 
+                          value="ai-agent-development"
+                          checked={formData.interests.includes('ai-agent-development')}
+                          onChange={handleCheckboxChange}
+                          className="mr-2"
+                        />
+                        <span className="text-gray-300">AI Agent Development</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input 
+                          type="checkbox" 
+                          name="interest" 
+                          value="ai-data-labeling"
+                          checked={formData.interests.includes('ai-data-labeling')}
+                          onChange={handleCheckboxChange}
+                          className="mr-2"
+                        />
+                        <span className="text-gray-300">AI Data Labeling</span>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <label htmlFor="referral" className="block text-sm font-medium text-gray-300 mb-1">How did you hear about us?</label>
+                    <select 
+                      id="referral" 
+                      name="referral" 
+                      value={formData.referral}
+                      onChange={handleChange}
+                      className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="search">Search Engine</option>
+                      <option value="social">Social Media</option>
+                      <option value="friend">Friend or Colleague</option>
+                      <option value="alumni">Alumni Recommendation</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div className="mb-8">
+                    <label className="flex items-start">
+                      <input 
+                        type="checkbox" 
+                        name="consent" 
+                        checked={formData.consent}
+                        onChange={handleCheckboxChange}
+                        required 
+                        className="mt-1 mr-2"
+                      />
+                      <span className="text-sm text-gray-300">
+                        I consent to OttoBon processing my personal data in accordance with the <a href="#" className="text-primary hover:underline">Privacy Policy</a>*
+                      </span>
+                    </label>
+                  </div>
+                  
+                  <div className="flex justify-between">
+                    <button 
+                      type="button" 
+                      onClick={prevStep}
+                      className="bg-gray-600 hover:bg-gray-500 text-white font-medium py-2 px-6 rounded-full transition"
+                    >
+                      Back
+                    </button>
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-full transition shadow-md hover:shadow-lg disabled:opacity-70"
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                    </button>
+                  </div>
+                </div>
+              )}
             </form>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+        
+        <div className="text-center mt-8">
+          <p className="text-gray-400 text-sm">
+            Need help? Contact our admissions team at <a href="mailto:admissions@ottobon.com" className="text-primary hover:underline">admissions@ottobon.com</a>
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
