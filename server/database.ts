@@ -26,13 +26,13 @@ export async function insertEnrollment(enrollmentData: InsertEnrollment) {
   const database = await getDatabase();
   
   try {
-    const [result] = await database
+    const result = await database
       .insert(enrollments)
-      .values(enrollmentData)
+      .values([enrollmentData as typeof enrollments.$inferInsert])
       .returning();
     
-    console.log('Successfully inserted enrollment:', result.id);
-    return result;
+    console.log('Successfully inserted enrollment:', result[0].id);
+    return result[0];
   } catch (error) {
     console.error('Error inserting enrollment:', error);
     throw error;
