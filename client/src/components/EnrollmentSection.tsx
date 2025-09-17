@@ -14,6 +14,7 @@ interface FormData {
   interests: string[];
   referral: string;
   consent: boolean;
+  skills: string[];
 }
 
 export default function EnrollmentSection() {
@@ -29,9 +30,57 @@ export default function EnrollmentSection() {
     experience: '',
     interests: [],
     referral: '',
-    consent: false
+    consent: false,
+    skills: []
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Skills collection state
+  const [skillInput, setSkillInput] = useState('');
+  const [activeSkillCategory, setActiveSkillCategory] = useState<string>('technical');
+
+  // Define skill categories and suggestions
+  interface SkillCategory {
+    id: string;
+    name: string;
+    suggestions: string[];
+  }
+
+  const skillCategories: SkillCategory[] = [
+    {
+      id: 'technical',
+      name: 'Technical Skills',
+      suggestions: [
+        'JavaScript', 'Python', 'React', 'Node.js', 'HTML/CSS', 'SQL', 'Git',
+        'AWS', 'Docker', 'MongoDB', 'PostgreSQL', 'TypeScript', 'Vue.js',
+        'Angular', 'PHP', 'Java', 'C++', 'REST APIs', 'GraphQL', 'Redis',
+        'Kubernetes', 'Jenkins', 'Figma', 'Adobe Creative Suite', 'Sketch',
+        'AutoCAD', 'Salesforce', 'Tableau', 'Power BI', 'Excel', 'JIRA'
+      ]
+    },
+    {
+      id: 'soft',
+      name: 'Soft Skills',
+      suggestions: [
+        'Leadership', 'Communication', 'Team Management', 'Project Management',
+        'Problem Solving', 'Critical Thinking', 'Time Management', 'Adaptability',
+        'Negotiation', 'Public Speaking', 'Mentoring', 'Conflict Resolution',
+        'Strategic Planning', 'Decision Making', 'Creativity', 'Collaboration',
+        'Customer Service', 'Sales', 'Marketing', 'Training & Development'
+      ]
+    },
+    {
+      id: 'industry',
+      name: 'Industry Knowledge',
+      suggestions: [
+        'Healthcare', 'Finance', 'E-commerce', 'Education', 'Manufacturing',
+        'Retail', 'Telecommunications', 'Real Estate', 'Legal', 'Government',
+        'Agile/Scrum', 'DevOps', 'Machine Learning', 'Data Science', 'Cybersecurity',
+        'Cloud Computing', 'Digital Marketing', 'SEO/SEM', 'Business Analysis',
+        'Quality Assurance', 'UI/UX Design', 'Product Management', 'Consulting'
+      ]
+    }
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -63,6 +112,32 @@ export default function EnrollmentSection() {
     }
   };
 
+  // Skills management functions
+  const addSkill = (skill: string) => {
+    const trimmedSkill = skill.trim();
+    if (trimmedSkill && !formData.skills.includes(trimmedSkill) && formData.skills.length < 15) {
+      setFormData(prev => ({
+        ...prev,
+        skills: [...prev.skills, trimmedSkill]
+      }));
+      setSkillInput('');
+    }
+  };
+
+  const removeSkill = (skillToRemove: string) => {
+    setFormData(prev => ({
+      ...prev,
+      skills: prev.skills.filter(skill => skill !== skillToRemove)
+    }));
+  };
+
+  const handleSkillInputKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addSkill(skillInput);
+    }
+  };
+
   const nextStep = () => {
     // Basic validation for required fields before proceeding
     if (step === 1) {
@@ -89,6 +164,15 @@ export default function EnrollmentSection() {
         toast({
           title: "Missing Information",
           description: "Please fill in all required fields.",
+          variant: "destructive"
+        });
+        return;
+      }
+    } else if (step === 3) {
+      if (formData.skills.length < 3) {
+        toast({
+          title: "Missing Skills",
+          description: "Please add at least 3 skills to continue.",
           variant: "destructive"
         });
         return;
@@ -128,7 +212,8 @@ export default function EnrollmentSection() {
         educationLevel: formData.education,
         yearsExperience: formData.experience,
         interests: formData.interests,
-        referralSource: formData.referral
+        referralSource: formData.referral,
+        skills: formData.skills
       };
       
       // Send to n8n webhook
@@ -161,9 +246,12 @@ export default function EnrollmentSection() {
         experience: '',
         interests: [],
         referral: '',
-        consent: false
+        consent: false,
+        skills: []
       });
       setStep(1);
+      setSkillInput('');
+      setActiveSkillCategory('technical');
       
     } catch (error) {
       console.error("Webhook submission error:", error);
@@ -195,25 +283,32 @@ export default function EnrollmentSection() {
         
         <div className="max-w-2xl mx-auto bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-gray-700/50">
           <div className="p-8">
-            <div className="flex mb-8">
+            <div className="flex mb-8 overflow-x-auto">
               <div className={`flex items-center ${step >= 1 ? 'text-white' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
                   step >= 1 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
                 }`}>1</div>
                 <span className="text-sm font-medium">Basic Info</span>
-                <div className="h-1 w-12 bg-gray-600 mx-2"></div>
+                <div className="h-1 w-8 bg-gray-600 mx-2"></div>
               </div>
               <div className={`flex items-center ${step >= 2 ? 'text-white' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
                   step >= 2 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
                 }`}>2</div>
                 <span className="text-sm font-medium">Experience</span>
-                <div className="h-1 w-12 bg-gray-600 mx-2"></div>
+                <div className="h-1 w-8 bg-gray-600 mx-2"></div>
               </div>
               <div className={`flex items-center ${step >= 3 ? 'text-white' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
                   step >= 3 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
                 }`}>3</div>
+                <span className="text-sm font-medium">Skills</span>
+                <div className="h-1 w-8 bg-gray-600 mx-2"></div>
+              </div>
+              <div className={`flex items-center ${step >= 4 ? 'text-white' : 'text-gray-500'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-2 ${
+                  step >= 4 ? 'bg-primary text-white' : 'bg-gray-600 text-gray-400'
+                }`}>4</div>
                 <span className="text-sm font-medium">Preferences</span>
               </div>
             </div>
@@ -359,8 +454,138 @@ export default function EnrollmentSection() {
                 </div>
               )}
               
-              {/* Step 3: Preferences */}
+              {/* Step 3: Skills */}
               {step === 3 && (
+                <div>
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-bold mb-2 text-white">Tell us about your skills</h3>
+                    <p className="text-gray-300">
+                      Add your key technical and professional skills to help us recommend the perfect courses for you.
+                    </p>
+                  </div>
+
+                  {/* Skills Input Section */}
+                  <div className="mb-6">
+                    <div className="flex flex-col sm:flex-row gap-3 mb-4">
+                      <input
+                        type="text"
+                        value={skillInput}
+                        onChange={(e) => setSkillInput(e.target.value)}
+                        onKeyPress={handleSkillInputKeyPress}
+                        placeholder="Type a skill and press Enter..."
+                        className="flex-1 px-4 py-2 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                        disabled={formData.skills.length >= 15}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => addSkill(skillInput)}
+                        disabled={!skillInput.trim() || formData.skills.length >= 15}
+                        className="px-6 py-2 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg disabled:bg-gray-500 disabled:text-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
+                      >
+                        Add Skill
+                      </button>
+                    </div>
+
+                    <div className="flex justify-between text-sm text-gray-400">
+                      <span>
+                        {formData.skills.length < 3
+                          ? `Add at least ${3 - formData.skills.length} more skill${3 - formData.skills.length !== 1 ? 's' : ''} to continue`
+                          : `${formData.skills.length} of 15 skills added`
+                        }
+                      </span>
+                      <span>{15 - formData.skills.length} slots remaining</span>
+                    </div>
+                  </div>
+
+                  {/* Selected Skills Display */}
+                  {formData.skills.length > 0 && (
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-3 text-white">Your Skills ({formData.skills.length})</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {formData.skills.map((skill, index) => (
+                          <div
+                            key={index}
+                            className="bg-primary/20 text-primary border border-primary/30 px-3 py-2 rounded-full text-sm flex items-center gap-2"
+                          >
+                            <span>{skill}</span>
+                            <button
+                              type="button"
+                              onClick={() => removeSkill(skill)}
+                              className="text-primary hover:text-white font-bold"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Skill Categories and Suggestions */}
+                  <div className="mb-6">
+                    <h4 className="font-semibold mb-4 text-white">Browse by Category</h4>
+
+                    {/* Category Tabs */}
+                    <div className="flex gap-2 mb-4 flex-wrap">
+                      {skillCategories.map((category) => (
+                        <button
+                          key={category.id}
+                          type="button"
+                          onClick={() => setActiveSkillCategory(category.id)}
+                          className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                            activeSkillCategory === category.id
+                              ? 'bg-primary text-white'
+                              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                          }`}
+                        >
+                          {category.name}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Skill Suggestions */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-h-48 overflow-y-auto">
+                      {skillCategories
+                        .find(cat => cat.id === activeSkillCategory)
+                        ?.suggestions.filter(suggestion => !formData.skills.includes(suggestion))
+                        .slice(0, 32)
+                        .map((suggestion, index) => (
+                          <button
+                            key={index}
+                            type="button"
+                            onClick={() => addSkill(suggestion)}
+                            disabled={formData.skills.length >= 15}
+                            className="px-3 py-2 text-sm bg-gray-700 hover:bg-primary/20 border border-gray-600 hover:border-primary/50 rounded-lg text-left transition disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 hover:text-white"
+                          >
+                            {suggestion}
+                          </button>
+                        ))
+                      }
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between mt-8">
+                    <button 
+                      type="button" 
+                      onClick={prevStep}
+                      className="bg-gray-600 hover:bg-gray-500 text-white font-medium py-2 px-6 rounded-full transition"
+                    >
+                      Back
+                    </button>
+                    <button 
+                      type="button" 
+                      onClick={nextStep}
+                      disabled={formData.skills.length < 3}
+                      className="bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-full transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Continue to Preferences
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Step 4: Preferences */}
+              {step === 4 && (
                 <div>
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-300 mb-3">Areas of Interest*</label>
