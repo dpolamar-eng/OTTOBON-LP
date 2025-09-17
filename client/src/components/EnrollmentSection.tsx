@@ -118,49 +118,37 @@ export default function EnrollmentSection() {
     setIsSubmitting(true);
     
     try {
-      // Get assessment results from localStorage if available
-      const assessmentResults = localStorage.getItem('assessmentResults');
-      const userProfile = localStorage.getItem('userProfile');
-      
-      let parsedAssessmentResults = null;
-      if (assessmentResults || userProfile) {
-        try {
-          const results = assessmentResults ? JSON.parse(assessmentResults) : null;
-          const profile = userProfile ? JSON.parse(userProfile) : null;
-          
-          parsedAssessmentResults = {
-            courseMatches: profile?.courseMatches || {},
-            discountEligibility: profile?.discountEligibility || 0,
-            traits: profile?.traits || {},
-            suggestedCourses: results?.recommendedPaths?.map((path: any) => path.name) || []
-          };
-        } catch (parseError) {
-          console.warn('Error parsing assessment results:', parseError);
-        }
-      }
-
-      // Prepare submission data with assessment results
-      const submissionData = {
-        ...formData,
-        assessmentResults: parsedAssessmentResults
+      // Prepare data for n8n webhook
+      const webhookData = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        currentRole: formData.currentRole,
+        educationLevel: formData.education,
+        yearsExperience: formData.experience,
+        interests: formData.interests,
+        referralSource: formData.referral
       };
       
-      const response = await apiRequest('POST', '/api/enroll', submissionData);
+      // Send to n8n webhook
+      const response = await fetch('https://vanapallijaswanth.app.n8n.cloud/webhook-test/4582a252-6beb-471f-b965-c52a55ae285a', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData)
+      });
       
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      // Success message
       toast({
         title: "Application Submitted",
         description: "Thank you for your interest in OttoBon! Our team will contact you within 24 hours.",
       });
-
-      // Show CSV file info if available
-      if (response.csvFilePath) {
-        setTimeout(() => {
-          toast({
-            title: "Data Recorded",
-            description: "Your information has been saved to enrollment-data.csv in the project directory.",
-          });
-        }, 2000);
-      }
       
       // Reset form after successful submission
       setFormData({
@@ -178,12 +166,14 @@ export default function EnrollmentSection() {
       setStep(1);
       
     } catch (error) {
+      console.error("Webhook submission error:", error);
+      
+      // Show user-friendly error message
       toast({
         title: "Submission Error",
-        description: "There was a problem submitting your application. Please try again.",
+        description: "There was a problem submitting your application. Please check your connection and try again.",
         variant: "destructive"
       });
-      console.error("Enrollment submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
