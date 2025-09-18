@@ -16,7 +16,6 @@ interface FormData {
   consent: boolean;
   skills: string[];
   bestMatch: string;
-  bestMatchScore: number;
 }
 
 export default function EnrollmentSection() {
@@ -34,10 +33,10 @@ export default function EnrollmentSection() {
     referral: '',
     consent: false,
     skills: [],
-    bestMatch: '',
-    bestMatchScore: 0
+    bestMatch: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [displayScore, setDisplayScore] = useState<number>(0);
   
   // Load assessment results on component mount
   useEffect(() => {
@@ -45,12 +44,14 @@ export default function EnrollmentSection() {
     if (assessmentResults) {
       try {
         const results = JSON.parse(assessmentResults);
-        if (results.bestMatch && results.bestMatchScore) {
+        if (results.bestMatch) {
           setFormData(prev => ({
             ...prev,
-            bestMatch: results.bestMatch,
-            bestMatchScore: results.bestMatchScore
+            bestMatch: results.bestMatch
           }));
+          if (results.bestMatchScore) {
+            setDisplayScore(results.bestMatchScore);
+          }
         }
       } catch (error) {
         console.error('Error parsing assessment results:', error);
@@ -237,8 +238,7 @@ export default function EnrollmentSection() {
         interests: formData.interests,
         referralSource: formData.referral,
         skills: formData.skills,
-        bestMatch: formData.bestMatch,
-        bestMatchScore: formData.bestMatchScore
+        bestMatch: formData.bestMatch
       };
       
       // Send to n8n webhook
@@ -273,9 +273,9 @@ export default function EnrollmentSection() {
         referral: '',
         consent: false,
         skills: [],
-        bestMatch: '',
-        bestMatchScore: 0
+        bestMatch: ''
       });
+      setDisplayScore(0);
       setStep(1);
       setSkillInput('');
       setActiveSkillCategory('technical');
@@ -622,9 +622,11 @@ export default function EnrollmentSection() {
                           <span className="text-xl mr-2">🏆</span>
                           Your Best Match
                         </h3>
-                        <span className="bg-blue-500/20 text-blue-400 border border-blue-400/30 font-medium px-3 py-1 rounded-full text-sm">
-                          {formData.bestMatchScore}% Match
-                        </span>
+                        {displayScore > 0 && (
+                          <span className="bg-blue-500/20 text-blue-400 border border-blue-400/30 font-medium px-3 py-1 rounded-full text-sm">
+                            {displayScore}% Match
+                          </span>
+                        )}
                       </div>
                       <p className="text-gray-300 text-sm">
                         Based on your assessment: <strong className="text-blue-400">{formData.bestMatch}</strong>
