@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 
@@ -15,6 +15,8 @@ interface FormData {
   referral: string;
   consent: boolean;
   skills: string[];
+  bestMatch: string;
+  bestMatchScore: number;
 }
 
 export default function EnrollmentSection() {
@@ -31,9 +33,30 @@ export default function EnrollmentSection() {
     interests: [],
     referral: '',
     consent: false,
-    skills: []
+    skills: [],
+    bestMatch: '',
+    bestMatchScore: 0
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Load assessment results on component mount
+  useEffect(() => {
+    const assessmentResults = localStorage.getItem('assessmentResults');
+    if (assessmentResults) {
+      try {
+        const results = JSON.parse(assessmentResults);
+        if (results.bestMatch && results.bestMatchScore) {
+          setFormData(prev => ({
+            ...prev,
+            bestMatch: results.bestMatch,
+            bestMatchScore: results.bestMatchScore
+          }));
+        }
+      } catch (error) {
+        console.error('Error parsing assessment results:', error);
+      }
+    }
+  }, []);
   
   // Skills collection state
   const [skillInput, setSkillInput] = useState('');
@@ -213,7 +236,9 @@ export default function EnrollmentSection() {
         yearsExperience: formData.experience,
         interests: formData.interests,
         referralSource: formData.referral,
-        skills: formData.skills
+        skills: formData.skills,
+        bestMatch: formData.bestMatch,
+        bestMatchScore: formData.bestMatchScore
       };
       
       // Send to n8n webhook
@@ -247,7 +272,9 @@ export default function EnrollmentSection() {
         interests: [],
         referral: '',
         consent: false,
-        skills: []
+        skills: [],
+        bestMatch: '',
+        bestMatchScore: 0
       });
       setStep(1);
       setSkillInput('');
@@ -587,6 +614,27 @@ export default function EnrollmentSection() {
               {/* Step 4: Preferences */}
               {step === 4 && (
                 <div>
+                  {/* Best Match Display */}
+                  {formData.bestMatch && (
+                    <div className="mb-6 p-4 bg-blue-900/30 border border-blue-400/50 rounded-lg">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="text-lg font-semibold text-white flex items-center">
+                          <span className="text-xl mr-2">🏆</span>
+                          Your Best Match
+                        </h3>
+                        <span className="bg-blue-500/20 text-blue-400 border border-blue-400/30 font-medium px-3 py-1 rounded-full text-sm">
+                          {formData.bestMatchScore}% Match
+                        </span>
+                      </div>
+                      <p className="text-gray-300 text-sm">
+                        Based on your assessment: <strong className="text-blue-400">{formData.bestMatch}</strong>
+                      </p>
+                      <p className="text-gray-400 text-xs mt-1">
+                        This recommendation is based on your assessment results and cannot be modified.
+                      </p>
+                    </div>
+                  )}
+                  
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-300 mb-3">Areas of Interest*</label>
                     <div className="space-y-2">

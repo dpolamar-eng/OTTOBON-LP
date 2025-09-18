@@ -1232,11 +1232,27 @@ export default function TalentCompassAssessment() {
     const calculatedDiscount = Math.min(Math.round(traitComponent + backgroundComponent), 90);
 
     // Update user profile with results
-    setUserProfile({
+    const updatedProfile = {
       ...userProfile,
       courseMatches: matches,
       discountEligibility: calculatedDiscount
-    });
+    };
+    
+    setUserProfile(updatedProfile);
+
+    // Save assessment results to localStorage for EnrollmentSection
+    const bestMatch = getBestCourseMatchFromResults(matches);
+    if (bestMatch) {
+      const assessmentResults = {
+        bestMatch: bestMatch.course.title,
+        bestMatchScore: bestMatch.score,
+        courseMatches: matches,
+        discountEligibility: calculatedDiscount,
+        traits: updatedProfile.traits,
+        skills: selectedSkills
+      };
+      localStorage.setItem('assessmentResults', JSON.stringify(assessmentResults));
+    }
   };
 
   // Update the compass visualization
@@ -1366,6 +1382,23 @@ export default function TalentCompassAssessment() {
     if (!Object.keys(userProfile.courseMatches).length) return null;
 
     const sortedMatches = Object.entries(userProfile.courseMatches)
+      .sort(([, scoreA], [, scoreB]) => scoreB - scoreA);
+
+    if (!sortedMatches.length) return null;
+
+    const [bestMatchId, bestMatchScore] = sortedMatches[0];
+    const course = courses.find(c => c.id === bestMatchId);
+
+    if (!course) return null;
+
+    return { course, score: bestMatchScore };
+  };
+
+  // Helper function to get best match from calculated results
+  const getBestCourseMatchFromResults = (matches: Record<string, number>) => {
+    if (!Object.keys(matches).length) return null;
+
+    const sortedMatches = Object.entries(matches)
       .sort(([, scoreA], [, scoreB]) => scoreB - scoreA);
 
     if (!sortedMatches.length) return null;
