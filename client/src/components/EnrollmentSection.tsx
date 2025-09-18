@@ -47,7 +47,8 @@ export default function EnrollmentSection() {
         if (results.bestMatch) {
           setFormData(prev => ({
             ...prev,
-            bestMatch: results.bestMatch
+            bestMatch: results.bestMatch,
+            skills: results.skills || [] // Pre-populate skills from assessment
           }));
           if (results.bestMatchScore) {
             setDisplayScore(results.bestMatchScore);
@@ -485,9 +486,12 @@ export default function EnrollmentSection() {
               {step === 3 && (
                 <div>
                   <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold mb-2 text-white">Tell us about your skills</h3>
+                    <h3 className="text-xl font-bold mb-2 text-white">Review and modify your skills</h3>
                     <p className="text-gray-300">
-                      Add your key technical and professional skills to help us recommend the perfect courses for you.
+                      {formData.skills.length > 0 ? 
+                        'We\'ve pre-filled your skills from the assessment. Feel free to add, remove, or modify them as needed.' : 
+                        'Add your key technical and professional skills to help us recommend the perfect courses for you.'
+                      }
                     </p>
                   </div>
 
@@ -527,7 +531,14 @@ export default function EnrollmentSection() {
                   {/* Selected Skills Display */}
                   {formData.skills.length > 0 && (
                     <div className="mb-6">
-                      <h4 className="font-semibold mb-3 text-white">Your Skills ({formData.skills.length})</h4>
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="font-semibold text-white">Your Skills ({formData.skills.length})</h4>
+                        {localStorage.getItem('assessmentResults') && (
+                          <span className="text-xs text-blue-400 bg-blue-500/20 px-2 py-1 rounded-full">
+                            Pre-filled from assessment
+                          </span>
+                        )}
+                      </div>
                       <div className="flex flex-wrap gap-2">
                         {formData.skills.map((skill, index) => (
                           <div
@@ -539,6 +550,7 @@ export default function EnrollmentSection() {
                               type="button"
                               onClick={() => removeSkill(skill)}
                               className="text-primary hover:text-white font-bold"
+                              title="Remove skill"
                             >
                               ×
                             </button>
