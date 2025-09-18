@@ -217,7 +217,7 @@ export default function EnrollmentSection() {
       };
       
       // Send to n8n webhook
-      const response = await fetch('https://vanapallijaswanth.app.n8n.cloud/webhook/4582a252-6beb-471f-b965-c52a55ae285a', {
+      const response = await fetch('https://vanapallijaswanth.app.n8n.cloud/webhook-test/4582a252-6beb-471f-b965-c52a55ae285a', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
