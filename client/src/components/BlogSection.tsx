@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLocation } from 'wouter';
 import { useAnimation } from '@/hooks/use-animation';
@@ -225,7 +224,7 @@ export default function BlogSection() {
           </div>
         )}
 
-        
+
       </div>
     </section>
   );

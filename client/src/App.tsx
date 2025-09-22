@@ -7,6 +7,8 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Portal from "@/pages/Portal";
 import Services from "@/pages/Services";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import EnrollmentSection from "@/components/EnrollmentSection";
 import ScrollToTop from "@/components/ScrollToTop";
 import OnboardingExperience from "@/components/OnboardingExperience";
@@ -18,6 +20,8 @@ function Router() {
       <Route path="/" component={Portal} />
       <Route path="/academy" component={Home} />
       <Route path="/services" component={Services} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/enroll" component={EnrollmentSection} />
       <Route component={NotFound} />
     </Switch>
