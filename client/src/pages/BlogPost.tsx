@@ -646,7 +646,7 @@ export default function BlogPost() {
               <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
               <p className="text-gray-400 mb-8">The blog post you're looking for doesn't exist.</p>
               <Link 
-                to="/#blog" 
+                to="/academy#blog" 
                 className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
               >
                 Back to Knowledge Hub
@@ -706,7 +706,7 @@ export default function BlogPost() {
             {/* Back to Blog */}
             <div className="text-center mb-12">
               <Link 
-                to="/#blog" 
+                to="/academy#blog" 
                 className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -757,19 +757,9 @@ export default function BlogPost() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join thousands of students who have transformed their careers with Ottobon's comprehensive AI programs.
           </p>
-          <a 
-            href="/academy#courses" 
+          <Link 
+            to="/academy#courses" 
             className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors text-lg"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/academy#courses';
-              setTimeout(() => {
-                const coursesSection = document.getElementById('courses');
-                if (coursesSection) {
-                  coursesSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }, 100);
-            }}
           >
             Explore Our Courses
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
