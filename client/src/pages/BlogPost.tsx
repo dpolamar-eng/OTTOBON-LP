@@ -28,14 +28,14 @@ const blogPosts: { [key: string]: BlogPost } = {
     author: 'Ottobon Team',
     readTime: '5 min read',
     content: `
-      <h2>🚀 The AI Marketing Revolution is Here</h2>
+      <h2>The AI Marketing Revolution is Here</h2>
       <p>AI is <strong>transforming marketing strategies</strong> across industries. Companies are leveraging AI technologies to enhance customer experiences and optimize their marketing operations.</p>
       
       <div class="info-box">
         <p><strong>Key Insight:</strong> AI marketing tools are becoming essential for modern businesses to stay competitive in today's digital landscape.</p>
       </div>
       
-      <h2>🎯 Top 3 AI Marketing Technologies</h2>
+      <h2>Top 3 AI Marketing Technologies</h2>
       
       <h3>1. AI-Powered Personalization</h3>
       <p>Create <em>hyper-personalized customer experiences</em> using advanced algorithms:</p>
@@ -84,14 +84,14 @@ const blogPosts: { [key: string]: BlogPost } = {
     author: 'Ottobon Team',
     readTime: '4 min read',
     content: `
-      <h2>🌟 Real Students, Real Learning</h2>
+      <h2>Real Students, Real Learning</h2>
       <p>Our students come from diverse backgrounds and successfully master AI concepts through structured learning. These are real people who dedicated themselves to understanding AI technologies in 12 weeks.</p>
       
       <div class="info-box">
         <p><strong>Learning Focus:</strong> Our students develop strong foundational knowledge in AI through hands-on projects and comprehensive coursework.</p>
       </div>
       
-      <h2>🎯 Sarah Chen: Marketing Background → AI Product Development</h2>
+      <h2>Sarah Chen: Marketing Background → AI Product Development</h2>
       <p><strong>Background:</strong> Marketing professional with no AI experience<br>
       <strong>Journey:</strong> Completed AI fundamentals and machine learning modules<br>
       <strong>Achievement:</strong> Built AI-powered product recommendation system</p>
@@ -100,7 +100,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         "The structured approach helped me understand AI concepts that seemed impossible at first. The hands-on projects made everything click." - Sarah Chen
       </blockquote>
       
-      <h2>🚀 Marcus Rodriguez: Construction Background → AI Engineering</h2>
+      <h2>Marcus Rodriguez: Construction Background → AI Engineering</h2>
       <p><strong>Background:</strong> 8 years in construction, new to technology<br>
       <strong>Journey:</strong> Started with Python basics, progressed to neural networks<br>
       <strong>Achievement:</strong> Developed computer vision model for defect detection</p>
@@ -109,7 +109,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         "I discovered that AI concepts are logical and learnable, just like any other skill. The step-by-step progression was key." - Marcus Rodriguez
       </blockquote>
       
-      <h2>💡 Priya Patel: Teaching Background → AI Implementation</h2>
+      <h2>Priya Patel: Teaching Background → AI Implementation</h2>
       <p><strong>Background:</strong> High school math teacher for 12 years<br>
       <strong>Journey:</strong> Applied mathematical background to machine learning<br>
       <strong>Achievement:</strong> Created AI tutoring system for personalized learning</p>
@@ -121,7 +121,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <strong>Structured Learning:</strong> Progressive curriculum building expertise step-by-step</p>
       </div>
       
-      <h2>📊 Learning Outcomes</h2>
+      <h2>Learning Outcomes</h2>
       <ul>
         <li><strong>Comprehensive Understanding:</strong> Core AI and ML concepts</li>
         <li><strong>Practical Skills:</strong> Real-world project experience</li>
@@ -129,7 +129,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Open Access:</strong> No specific degree requirements</li>
       </ul>
       
-      <h2>⏰ Your 12-Week Learning Path</h2>
+      <h2>Your 12-Week Learning Path</h2>
       <ul>
         <li><strong>Weeks 1-4:</strong> AI foundations and Python programming</li>
         <li><strong>Weeks 5-8:</strong> Machine learning and hands-on projects</li>
@@ -156,14 +156,14 @@ const blogPosts: { [key: string]: BlogPost } = {
     author: 'Ottobon Team',
     readTime: '5 min read',
     content: `
-      <h2>🏷️ The Critical Foundation Behind Every AI System</h2>
+      <h2>The Critical Foundation Behind Every AI System</h2>
       <p>While everyone talks about AI, <strong>data labeling specialists</strong> are quietly building the foundation that makes AI possible through precise annotation and quality control processes.</p>
       
       <div class="info-box">
         <p><strong>Technical Reality:</strong> Data labeling market is expanding rapidly as AI applications become more sophisticated and require higher-quality training data.</p>
       </div>
       
-      <h2>🤖 What is AI Data Labeling?</h2>
+      <h2>What is AI Data Labeling?</h2>
       <p>Data labeling is <em>the process of annotating raw data</em> to create training datasets for machine learning models. Every autonomous vehicle, medical AI system, and recommendation engine requires labeled data to function.</p>
       
       <h3>Technical Specializations</h3>
@@ -189,7 +189,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Healthcare AI:</strong> Medical diagnostic system development</li>
       </ul>
       
-      <h2>🛠️ Essential Technical Skills</h2>
+      <h2>Essential Technical Skills</h2>
       <ul>
         <li><strong>Annotation Tools:</strong> Labelbox, Scale AI platforms, CVAT</li>
         <li><strong>Python Programming:</strong> Data manipulation and analysis</li>
@@ -197,7 +197,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Quality Assurance:</strong> Accuracy validation and consistency checking</li>
       </ul>
       
-      <h2>🚀 Understanding the Technical Landscape</h2>
+      <h2>Understanding the Technical Landscape</h2>
       <p>AI systems require <strong>massive amounts</strong> of accurately labeled training data. This creates a continuous need for skilled annotation specialists who understand both the technical requirements and domain-specific nuances.</p>
       
       <h3>Technical Considerations</h3>
@@ -264,14 +264,14 @@ const blogPosts: { [key: string]: BlogPost } = {
     author: 'Ottobon Team',
     readTime: '10 min read',
     content: `
-      <h2>🤖 What are AI Agents?</h2>
+      <h2>What are AI Agents?</h2>
       <p>AI agents are <strong>autonomous software entities</strong> that perceive their environment, make decisions, and take actions to achieve specific goals. Unlike traditional software with predetermined instructions, these intelligent systems can <em>adapt</em> and <em>learn</em> from their interactions.</p>
       
       <div class="info-box">
         <p><strong>Key Characteristics:</strong> Autonomy, Reactivity, Pro-activeness, and Social Ability</p>
       </div>
       
-      <h2>⚙️ Development Process</h2>
+      <h2>Development Process</h2>
       <p>Creating effective AI agents involves a systematic approach that combines theoretical understanding with practical implementation:</p>
       
       <h3>Phase 1: Problem Definition & Analysis</h3>
@@ -280,7 +280,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Phase 2: Architecture Design</h3>
       <p>Design the agent's cognitive architecture, including perception modules, decision-making algorithms, and action execution systems.</p>
       
-      <h2>🛠️ Key Technologies & Frameworks</h2>
+      <h2>Key Technologies & Frameworks</h2>
       <ul>
         <li><strong>Python:</strong> The most popular language with rich AI libraries and extensive community support</li>
         <li><strong>LangChain:</strong> Powerful framework specifically designed for building LLM-powered applications</li>
@@ -296,7 +296,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <strong>Hybrid Agents:</strong> Combine reactive and deliberative approaches</p>
       </div>
       
-      <h2>🎓 Ottobon's AI Agent Development Program</h2>
+      <h2>Ottobon's AI Agent Development Program</h2>
       <p>Our comprehensive curriculum is designed to take you from beginner to expert level, covering:</p>
       
       <h3>Foundation Module</h3>
@@ -308,7 +308,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h3>Advanced Techniques</h3>
       <p>Multi-agent systems, reinforcement learning, and neural-symbolic integration.</p>
       
-      <h2>🚀 Getting Started on Your Journey</h2>
+      <h2>Getting Started on Your Journey</h2>
       <p>Ready to begin? Here's your roadmap:</p>
       <ul>
         <li><strong>Master the Fundamentals:</strong> Start with basic AI and machine learning concepts</li>
@@ -317,7 +317,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Explore Advanced Topics:</strong> Dive into reinforcement learning and multi-agent systems</li>
       </ul>
       
-      <h2>💡 Conclusion</h2>
+      <h2>Conclusion</h2>
       <p>AI agent development represents one of the most <strong>exciting and rapidly growing</strong> fields in technology today. With abundant career opportunities and the potential to create meaningful impact across industries, there has never been a better time to start your journey.</p>
       
       <div class="cta-section">
