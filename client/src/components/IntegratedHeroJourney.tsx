@@ -57,8 +57,8 @@ export default function IntegratedHeroJourney() {
       description:
         "Access comprehensive job search tools including ATS-friendly resume builders, AI-powered job matching, and realistic mock interview preparation to accelerate your career transition and land your dream role.",
       image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Professional job interview and career success",
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      alt: "Professional team celebrating career success and achievement",
     },
     {
       title:
