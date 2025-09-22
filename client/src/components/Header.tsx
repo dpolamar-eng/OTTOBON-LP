@@ -35,7 +35,7 @@ export default function Header() {
         <div className="flex justify-between items-center">
           {/* Logo - Responsive sizing */}
           <Link
-            href="/atewayportal"
+            href="/"
             className="flex items-center group flex-shrink-0"
           >
             <img
