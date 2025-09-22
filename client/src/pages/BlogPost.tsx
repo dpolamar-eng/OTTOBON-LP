@@ -2,7 +2,6 @@
 import React from 'react';
 import { useParams, Link } from 'wouter';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 interface BlogPost {
   id: string;
@@ -308,19 +307,28 @@ export default function BlogPost() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join thousands of students who have transformed their careers with Ottobon's comprehensive AI programs.
           </p>
-          <Link 
-            to="/#courses" 
+          <a 
+            href="/academy#courses" 
             className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors text-lg"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = '/academy#courses';
+              setTimeout(() => {
+                const coursesSection = document.getElementById('courses');
+                if (coursesSection) {
+                  coursesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 100);
+            }}
           >
             Explore Our Courses
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </Link>
+          </a>
         </div>
       </section>
 
-      <Footer />
-    </div>
+      </div>
   );
 }

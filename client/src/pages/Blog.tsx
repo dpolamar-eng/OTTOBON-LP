@@ -2,7 +2,6 @@
 import React from 'react';
 import BlogSection from '@/components/BlogSection';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function Blog() {
   return (
@@ -11,7 +10,6 @@ export default function Blog() {
       <main className="pt-20">
         <BlogSection />
       </main>
-      <Footer />
     </div>
   );
 }
