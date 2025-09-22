@@ -217,7 +217,7 @@ export default function BlogPost() {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-20 pb-8 relative overflow-hidden">
+      <section className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-8 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={post.image} 
