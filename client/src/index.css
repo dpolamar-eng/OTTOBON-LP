@@ -609,7 +609,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .blog-content .cta-button {
-    @apply inline-flex items-center px-8 py-4 font-bold rounded-lg transition-colors text-lg no-underline;
+    @apply inline-flex items-center px-8 py-4 font-bold rounded-lg transition-colors text-lg no-underline cursor-pointer;
   }
 
   .blog-content .cta-button.primary {
@@ -618,6 +618,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
   .blog-content .cta-button.secondary {
     @apply bg-purple-600 hover:bg-purple-700 text-white;
+  }
+
+  /* Handle CTA button clicks */
+  .blog-content .cta-button[href="#courses"] {
+    @apply cursor-pointer;
+  }
+
+  .blog-content .cta-button[href="#talent-compass"] {
+    @apply cursor-pointer;
   }
 
   /* Enhanced styling for the content */
