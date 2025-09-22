@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { useParams, Link, navigate } from 'wouter';
+import { useParams, Link } from 'wouter';
 import Header from '@/components/Header';
 
 interface BlogPost {
@@ -87,13 +88,13 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <h2>The AI Marketing Revolution is Here</h2>
       <p>AI is <strong>transforming marketing strategies</strong> across industries. Companies are leveraging AI technologies to enhance customer experiences and optimize their marketing operations.</p>
-
+      
       <div class="info-box">
         <p><strong>Key Insight:</strong> AI marketing tools are becoming essential for modern businesses to stay competitive in today's digital landscape.</p>
       </div>
-
+      
       <h2>Top 3 AI Marketing Technologies</h2>
-
+      
       <h3>1. AI-Powered Personalization</h3>
       <p>Create <em>hyper-personalized customer experiences</em> using advanced algorithms:</p>
       <ul>
@@ -101,7 +102,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Smart Recommendations:</strong> Netflix-style recommendation engines</li>
         <li><strong>Predictive Analytics:</strong> Customer behavior prediction models</li>
       </ul>
-
+      
       <h3>2. Automated Content Creation</h3>
       <p>Explore AI tools that generate marketing content efficiently:</p>
       <ul>
@@ -109,7 +110,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Visual AI:</strong> Automated image and video creation</li>
         <li><strong>Voice AI:</strong> Synthetic voice generation for audio content</li>
       </ul>
-
+      
       <h3>3. Smart Campaign Optimization</h3>
       <p>Implement AI systems to enhance marketing campaigns:</p>
       <ul>
@@ -117,12 +118,12 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Email Intelligence:</strong> Optimal timing and content selection</li>
         <li><strong>Performance Analytics:</strong> AI-driven marketing insights</li>
       </ul>
-
+      
       <div class="highlight-section">
         <h3>🔍 Understanding AI Marketing</h3>
         <p>AI marketing involves using artificial intelligence technologies to make automated decisions based on data collection, audience analysis, and economic trends.</p>
       </div>
-
+      
       <div class="cta-section">
         <h3>🚀 Learn AI Marketing Fundamentals</h3>
         <p>Explore Ottobon's AI Marketing course to understand the technologies and methodologies behind modern marketing automation.</p>
@@ -133,8 +134,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <a href="#courses" class="cta-button primary" onClick={(e) => { e.preventDefault(); document.getElementById('courses-cta-handler')?.click(); }}>Explore Our Courses</a>
-          <a href="#talent-compass" class="cta-button secondary" onClick={(e) => { e.preventDefault(); document.getElementById('talent-compass-cta-handler')?.click(); }}>Begin Assessment</a>
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
         </div>
       </div>
     `
@@ -152,41 +153,41 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <h2>Real Students, Real Learning</h2>
       <p>Our students come from diverse backgrounds and successfully master AI concepts through structured learning. These are real people who dedicated themselves to understanding AI technologies in 12 weeks.</p>
-
+      
       <div class="info-box">
         <p><strong>Learning Focus:</strong> Our students develop strong foundational knowledge in AI through hands-on projects and comprehensive coursework.</p>
       </div>
-
+      
       <h2>Sarah Chen: Marketing Background → AI Product Development</h2>
       <p><strong>Background:</strong> Marketing professional with no AI experience<br>
       <strong>Journey:</strong> Completed AI fundamentals and machine learning modules<br>
       <strong>Achievement:</strong> Built AI-powered product recommendation system</p>
-
+      
       <blockquote style="border-left: 4px solid #8B5CF6; padding-left: 1rem; font-style: italic; color: #C4B5FD;">
         "The structured approach helped me understand AI concepts that seemed impossible at first. The hands-on projects made everything click." - Sarah Chen
       </blockquote>
-
+      
       <h2>Marcus Rodriguez: Construction Background → AI Engineering</h2>
       <p><strong>Background:</strong> 8 years in construction, new to technology<br>
       <strong>Journey:</strong> Started with Python basics, progressed to neural networks<br>
       <strong>Achievement:</strong> Developed computer vision model for defect detection</p>
-
+      
       <blockquote style="border-left: 4px solid #8B5CF6; padding-left: 1rem; font-style: italic; color: #C4B5FD;">
         "I discovered that AI concepts are logical and learnable, just like any other skill. The step-by-step progression was key." - Marcus Rodriguez
       </blockquote>
-
+      
       <h2>Priya Patel: Teaching Background → AI Implementation</h2>
       <p><strong>Background:</strong> High school math teacher for 12 years<br>
       <strong>Journey:</strong> Applied mathematical background to machine learning<br>
       <strong>Achievement:</strong> Created AI tutoring system for personalized learning</p>
-
+      
       <div class="highlight-section">
         <h3>🎯 What Makes Our Approach Effective?</h3>
         <p><strong>1:1 Mentorship:</strong> Personal guidance from experienced instructors<br>
         <strong>Real Projects:</strong> 8+ portfolio pieces demonstrating practical skills<br>
         <strong>Structured Learning:</strong> Progressive curriculum building expertise step-by-step</p>
       </div>
-
+      
       <h2>Learning Outcomes</h2>
       <ul>
         <li><strong>Comprehensive Understanding:</strong> Core AI and ML concepts</li>
@@ -194,7 +195,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Technical Foundation:</strong> Python, TensorFlow, PyTorch proficiency</li>
         <li><strong>Open Access:</strong> No specific degree requirements</li>
       </ul>
-
+      
       <h2>Your 12-Week Learning Path</h2>
       <ul>
         <li><strong>Weeks 1-4:</strong> AI foundations and Python programming</li>
@@ -202,7 +203,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Weeks 9-12:</strong> Advanced AI techniques and capstone project</li>
         <li><strong>Beyond:</strong> Continued learning support and community access</li>
       </ul>
-
+      
       <div class="cta-section">
         <h3>🚀 Start Your AI Learning Journey</h3>
         <p><strong>Limited seats available for next cohort starting soon.</strong></p>
@@ -214,8 +215,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <a href="#courses" class="cta-button primary" onClick={(e) => { e.preventDefault(); document.getElementById('courses-cta-handler')?.click(); }}>Explore Our Courses</a>
-          <a href="#talent-compass" class="cta-button secondary" onClick={(e) => { e.preventDefault(); document.getElementById('talent-compass-cta-handler')?.click(); }}>Begin Assessment</a>
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
         </div>
       </div>
     `
@@ -233,14 +234,14 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <h2>The Critical Foundation Behind Every AI System</h2>
       <p>While everyone talks about AI, <strong>data labeling specialists</strong> are quietly building the foundation that makes AI possible through precise annotation and quality control processes.</p>
-
+      
       <div class="info-box">
         <p><strong>Technical Reality:</strong> Data labeling market is expanding rapidly as AI applications become more sophisticated and require higher-quality training data.</p>
       </div>
-
+      
       <h2>What is AI Data Labeling?</h2>
       <p>Data labeling is <em>the process of annotating raw data</em> to create training datasets for machine learning models. Every autonomous vehicle, medical AI system, and recommendation engine requires labeled data to function.</p>
-
+      
       <h3>Technical Specializations</h3>
       <ul>
         <li><strong>Medical AI:</strong> Annotate X-rays, MRIs, and medical images for diagnostic systems</li>
@@ -248,14 +249,14 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Computer Vision:</strong> Identify and annotate objects, faces, and scene elements</li>
         <li><strong>NLP Training:</strong> Annotate text data for language understanding models</li>
       </ul>
-
+      
       <div class="highlight-section">
         <h3>📈 Technical Skill Development</h3>
         <p><strong>Foundation:</strong> Understanding annotation standards and quality metrics<br>
         <strong>Intermediate:</strong> Domain-specific annotation techniques<br>
         <strong>Advanced:</strong> Quality assurance and annotation workflow optimization</p>
       </div>
-
+      
       <h3>Companies Using Data Labeling</h3>
       <ul>
         <li><strong>Scale AI:</strong> Leading AI infrastructure company</li>
@@ -263,7 +264,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Tesla/Waymo:</strong> Autonomous vehicle development</li>
         <li><strong>Healthcare AI:</strong> Medical diagnostic system development</li>
       </ul>
-
+      
       <h2>Essential Technical Skills</h2>
       <ul>
         <li><strong>Annotation Tools:</strong> Labelbox, Scale AI platforms, CVAT</li>
@@ -271,10 +272,10 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Domain Knowledge:</strong> Medical, legal, or industry-specific expertise</li>
         <li><strong>Quality Assurance:</strong> Accuracy validation and consistency checking</li>
       </ul>
-
+      
       <h2>Understanding the Technical Landscape</h2>
       <p>AI systems require <strong>massive amounts</strong> of accurately labeled training data. This creates a continuous need for skilled annotation specialists who understand both the technical requirements and domain-specific nuances.</p>
-
+      
       <h3>Technical Considerations</h3>
       <ul>
         <li>Machine learning models require human-annotated training data</li>
@@ -282,7 +283,7 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li>Specialized knowledge creates technical barriers to entry</li>
         <li>Remote work compatibility with digital annotation tools</li>
       </ul>
-
+      
       <div class="cta-section">
         <h3>🎯 Learn Data Labeling Fundamentals</h3>
         <p><strong>Explore this growing field.</strong> Understanding data labeling is essential for anyone working in AI and machine learning.</p>
@@ -294,8 +295,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <a href="#courses" class="cta-button primary" onClick={(e) => { e.preventDefault(); document.getElementById('courses-cta-handler')?.click(); }}>Explore Our Courses</a>
-          <a href="#talent-compass" class="cta-button secondary" onClick={(e) => { e.preventDefault(); document.getElementById('talent-compass-cta-handler')?.click(); }}>Begin Assessment</a>
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
         </div>
       </div>
     `
@@ -313,7 +314,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <h2>Introduction</h2>
       <p>AI is revolutionizing web development, making it essential for freshers to embrace these technologies for career success.</p>
-
+      
       <h2>Key AI Tools for Web Development</h2>
       <ul>
         <li><strong>GitHub Copilot:</strong> AI pair programmer for real-time code suggestions</li>
@@ -321,16 +322,16 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Figma AI:</strong> Automated design suggestions</li>
         <li><strong>Testim:</strong> AI-powered automated testing</li>
       </ul>
-
+      
       <h2>Career Benefits</h2>
       <p>AI tools boost productivity by 30-50%, improve code quality, and give you a competitive edge in the job market.</p>
-
+      
       <h2>Getting Started</h2>
       <p>Master web development fundamentals first, then integrate AI coding assistants like GitHub Copilot into your workflow. Build AI-enhanced portfolio projects to showcase your skills.</p>
-
+      
       <h2>Conclusion</h2>
       <p>AI enhances developer capabilities rather than replacing them. Start integrating AI tools today to position yourself as a future leader in web development.</p>
-
+      
       <div class="cta-section">
         <h3>Ready to Start Your AI Web Development Journey?</h3>
         <p>Join Ottobon's comprehensive AI Web Development course and learn from industry experts.</p>
@@ -340,8 +341,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <a href="#courses" class="cta-button primary" onClick={(e) => { e.preventDefault(); document.getElementById('courses-cta-handler')?.click(); }}>Explore Our Courses</a>
-          <a href="#talent-compass" class="cta-button secondary" onClick={(e) => { e.preventDefault(); document.getElementById('talent-compass-cta-handler')?.click(); }}>Begin Assessment</a>
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
         </div>
       </div>
     `
@@ -359,20 +360,20 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <h2>What are AI Agents?</h2>
       <p>AI agents are <strong>autonomous software entities</strong> that perceive their environment, make decisions, and take actions to achieve specific goals. Unlike traditional software with predetermined instructions, these intelligent systems can <em>adapt</em> and <em>learn</em> from their interactions.</p>
-
+      
       <div class="info-box">
         <p><strong>Key Characteristics:</strong> Autonomy, Reactivity, Pro-activeness, and Social Ability</p>
       </div>
-
+      
       <h2>Development Process</h2>
       <p>Creating effective AI agents involves a systematic approach that combines theoretical understanding with practical implementation:</p>
-
+      
       <h3>Phase 1: Problem Definition & Analysis</h3>
       <p>Before diving into development, we must clearly define the problem space and analyze the environment where our agent will operate.</p>
-
+      
       <h3>Phase 2: Architecture Design</h3>
       <p>Design the agent's cognitive architecture, including perception modules, decision-making algorithms, and action execution systems.</p>
-
+      
       <h2>Key Technologies & Frameworks</h2>
       <ul>
         <li><strong>Python:</strong> The most popular language with rich AI libraries and extensive community support</li>
@@ -381,26 +382,26 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>OpenAI Gym:</strong> Standardized testing environment for reinforcement learning agents</li>
         <li><strong>Hugging Face Transformers:</strong> State-of-the-art pre-trained models for NLP tasks</li>
       </ul>
-
+      
       <div class="highlight-section">
         <h3>🎯 Popular Agent Types</h3>
         <p><strong>Reactive Agents:</strong> Respond directly to environmental stimuli<br>
         <strong>Deliberative Agents:</strong> Plan actions based on internal models<br>
         <strong>Hybrid Agents:</strong> Combine reactive and deliberative approaches</p>
       </div>
-
+      
       <h2>Ottobon's AI Agent Development Program</h2>
       <p>Our comprehensive curriculum is designed to take you from beginner to expert level, covering:</p>
-
+      
       <h3>Foundation Module</h3>
       <p>Understanding AI agent theory, types, and real-world applications across industries.</p>
-
+      
       <h3>Practical Development</h3>
       <p>Hands-on coding experience with popular frameworks and libraries.</p>
-
+      
       <h3>Advanced Techniques</h3>
       <p>Multi-agent systems, reinforcement learning, and neural-symbolic integration.</p>
-
+      
       <h2>Getting Started on Your Journey</h2>
       <p>Ready to begin? Here's your roadmap:</p>
       <ul>
@@ -409,10 +410,10 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Build Simple Projects:</strong> Create chatbots, game AI, and automation scripts</li>
         <li><strong>Explore Advanced Topics:</strong> Dive into reinforcement learning and multi-agent systems</li>
       </ul>
-
+      
       <h2>Conclusion</h2>
       <p>AI agent development represents one of the most <strong>exciting and rapidly growing</strong> fields in technology today. With abundant career opportunities and the potential to create meaningful impact across industries, there has never been a better time to start your journey.</p>
-
+      
       <div class="cta-section">
         <h3>🎯 Ready to Master AI Agent Development?</h3>
         <p>Join the waitlist for Ottobon's upcoming AI Agent Development course and secure your spot with exclusive early-bird pricing!</p>
@@ -422,8 +423,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <a href="#courses" class="cta-button primary" onClick={(e) => { e.preventDefault(); document.getElementById('courses-cta-handler')?.click(); }}>Explore Our Courses</a>
-          <a href="#talent-compass" class="cta-button secondary" onClick={(e) => { e.preventDefault(); document.getElementById('talent-compass-cta-handler')?.click(); }}>Begin Assessment</a>
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
         </div>
       </div>
     `
@@ -441,32 +442,32 @@ const blogPosts: { [key: string]: BlogPost } = {
     content: `
       <h2>Introduction</h2>
       <p>The AI field evolves rapidly, with new technologies and methodologies emerging regularly. Staying current in 2025 requires a combination of deep technical knowledge, effective communication skills, and ethical awareness.</p>
-
+      
       <h2>1. Advanced Machine Learning and Deep Learning</h2>
       <p>Master cutting-edge architectures including transformer models, multimodal AI systems, few-shot learning techniques, reinforcement learning algorithms, and federated learning approaches. Develop proficiency with PyTorch, TensorFlow, and contribute to open-source AI projects.</p>
-
+      
       <h2>2. Programming Languages and Frameworks</h2>
       <ul>
         <li><strong>Core Languages:</strong> Python, JavaScript/TypeScript, Julia, Rust, SQL</li>
         <li><strong>AI Frameworks:</strong> Hugging Face Transformers, LangChain, Ray, MLflow, FastAPI</li>
         <li><strong>Cloud Platforms:</strong> AWS SageMaker, Google AI Platform, Azure Machine Learning</li>
       </ul>
-
+      
       <h2>3. Communication and Collaboration</h2>
       <p>Develop strong technical writing abilities, data visualization skills, and presentation techniques. Practice explaining complex AI concepts to non-technical audiences and collaborating effectively in multidisciplinary teams.</p>
-
+      
       <h2>4. AI Ethics and Responsible Development</h2>
       <p>Understand bias detection and mitigation techniques, model transparency requirements, privacy-preserving methods, and emerging regulatory frameworks. Implement ethical AI practices and develop governance protocols for AI systems.</p>
-
+      
       <h2>5. Domain Expertise and Application</h2>
       <p>Develop deep understanding in specific application areas such as healthcare informatics, financial modeling, manufacturing optimization, or natural language processing. Learn to bridge technical capabilities with domain-specific requirements.</p>
-
+      
       <h2>Learning Progression</h2>
       <p>Start with foundational concepts (months 1-3), then expand into specialized areas (months 4-6), followed by advanced techniques and real-world applications (months 7-12). Continuous learning is essential in this rapidly evolving field.</p>
-
+      
       <h2>Conclusion</h2>
       <p>Excellence in AI requires balancing technical depth with communication skills, ethical considerations, and domain knowledge. Focus on building solutions that address real-world problems responsibly and effectively.</p>
-
+      
       <div class="cta-section">
         <h3>Develop Your AI Expertise</h3>
         <p>Explore Ottobon's comprehensive AI education programs designed to build both technical proficiency and practical problem-solving skills.</p>
@@ -476,8 +477,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <a href="#courses" class="cta-button primary" onClick={(e) => { e.preventDefault(); document.getElementById('courses-cta-handler')?.click(); }}>Explore Our Courses</a>
-          <a href="#talent-compass" class="cta-button secondary" onClick={(e) => { e.preventDefault(); document.getElementById('talent-compass-cta-handler')?.click(); }}>Begin Assessment</a>
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
         </div>
       </div>
     `
@@ -507,7 +508,7 @@ export default function BlogPost() {
             </div>
           </div>
         </main>
-
+        
       </div>
     );
   }
@@ -520,7 +521,7 @@ export default function BlogPost() {
   return (
     <div className="font-sans text-white bg-black min-h-screen">
       <Header />
-
+      
       {/* Hero Section */}
       <section className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-8 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -531,13 +532,13 @@ export default function BlogPost() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30"></div>
         </div>
-
+        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center mb-4 bg-indigo-500/20 px-4 py-2 rounded-full">
               <span className="text-indigo-300 font-medium text-sm uppercase tracking-wider">{post.category}</span>
             </div>
-
+            
             <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
               {post.title}
             </h1>
@@ -549,34 +550,6 @@ export default function BlogPost() {
       <main className="pb-16 pt-8">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            {/* CTA Buttons Handler */}
-            <div className="blog-cta-handlers" style={{ display: 'none' }}>
-              <button 
-                id="courses-cta-handler"
-                onClick={() => {
-                  navigate('/academy');
-                  setTimeout(() => {
-                    const target = document.querySelector('#courses');
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }, 100);
-                }}
-              />
-              <button 
-                id="talent-compass-cta-handler"
-                onClick={() => {
-                  navigate('/academy');
-                  setTimeout(() => {
-                    const target = document.querySelector('#talent-compass');
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }, 100);
-                }}
-              />
-            </div>
-
             {/* Article Content */}
             <article className="prose prose-lg prose-invert max-w-none mb-12">
               <div 
@@ -585,9 +558,9 @@ export default function BlogPost() {
               />
             </article>
 
+            
 
-
-
+            
 
             {/* Related Articles */}
             {related.length > 0 && (
@@ -626,7 +599,7 @@ export default function BlogPost() {
         </div>
       </main>
 
-
+      
 
       </div>
   );
