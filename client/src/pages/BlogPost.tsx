@@ -133,8 +133,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
         <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
         <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
+          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
         <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
@@ -216,8 +216,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
         <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
         <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
+          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
         <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
@@ -298,8 +298,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
         <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
         <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
+          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
         <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
@@ -346,8 +346,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
         <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
         <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
+          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
         <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
@@ -430,8 +430,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
         <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
         <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
+          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
         <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
@@ -486,8 +486,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
         <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
         <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
+          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
         <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
