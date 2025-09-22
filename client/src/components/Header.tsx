@@ -87,7 +87,20 @@ export default function Header() {
           {/* CTA Button - Responsive sizing */}
           <div className="hidden lg:flex space-x-3 flex-shrink-0">
             <a
-              href="#talent-compass"
+              href="/academy#talent-compass"
+              onClick={(e) => {
+                e.preventDefault();
+                // Check if we're already on the academy page
+                if (window.location.pathname === '/academy' || window.location.pathname === '/') {
+                  const target = document.querySelector("#talent-compass");
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                } else {
+                  // Navigate to academy page with anchor
+                  window.location.href = '/academy#talent-compass';
+                }
+              }}
               className="bg-[#FFC107] text-black font-semibold py-2 xl:py-3 px-4 xl:px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-sm xl:text-base whitespace-nowrap"
             >
               <span className="relative z-10 flex items-center">
@@ -117,12 +130,18 @@ export default function Header() {
           {/* Mobile CTA and Menu Button */}
           <div className="lg:hidden flex items-center space-x-3">
             <a
-              href="#talent-compass"
+              href="/academy#talent-compass"
               onClick={(e) => {
                 e.preventDefault();
-                const target = document.querySelector("#talent-compass");
-                if (target) {
-                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                // Check if we're already on the academy page
+                if (window.location.pathname === '/academy' || window.location.pathname === '/') {
+                  const target = document.querySelector("#talent-compass");
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                } else {
+                  // Navigate to academy page with anchor
+                  window.location.href = '/academy#talent-compass';
                 }
               }}
               className="bg-[#FFC107] text-black font-semibold py-2 px-4 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 relative overflow-hidden group text-xs sm:text-sm whitespace-nowrap flex-shrink-0"
@@ -245,13 +264,19 @@ export default function Header() {
               <span>Programs</span>
             </a>
             <a
-              href="#talent-compass"
+              href="/academy#talent-compass"
               className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
               onClick={(e) => {
                 e.preventDefault();
-                const target = document.querySelector("#talent-compass");
-                if (target) {
-                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                // Check if we're already on the academy page
+                if (window.location.pathname === '/academy' || window.location.pathname === '/') {
+                  const target = document.querySelector("#talent-compass");
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                } else {
+                  // Navigate to academy page with anchor
+                  window.location.href = '/academy#talent-compass';
                 }
                 closeMobileMenu();
               }}
