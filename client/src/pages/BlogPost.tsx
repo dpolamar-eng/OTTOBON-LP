@@ -16,6 +16,64 @@ interface BlogPost {
   readTime: string;
 }
 
+// Import blog posts from BlogSection to maintain consistency
+const blogPostsFromSection = [
+  {
+    id: '1',
+    title: 'Why AI in Web Development is the Future for Freshers',
+    excerpt: 'Discover how AI is revolutionizing web development and why freshers should embrace this technology to accelerate their careers in the modern tech landscape.',
+    category: 'Career Tips',
+    date: '2024-01-15',
+    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    slug: 'ai-web-development-future-freshers'
+  },
+  {
+    id: '2',
+    title: 'Getting Started with AI Agent Development: What to Expect',
+    excerpt: 'A comprehensive guide to understanding AI agent development, from basic concepts to advanced implementations that will shape the future of automation.',
+    category: 'Course Updates',
+    date: '2024-01-12',
+    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    slug: 'getting-started-ai-agent-development'
+  },
+  {
+    id: '3',
+    title: '5 Essential Skills Every AI Professional Needs in 2025',
+    excerpt: 'Stay ahead in the AI industry by mastering these crucial skills that top employers are looking for in 2025 and beyond.',
+    category: 'Career Tips',
+    date: '2024-01-10',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    slug: 'essential-skills-ai-professional-2025'
+  },
+  {
+    id: '4',
+    title: 'How AI is Transforming Modern Marketing Strategies',
+    excerpt: 'Explore the latest AI-driven marketing trends and techniques that are reshaping how businesses connect with their customers in the digital age.',
+    category: 'AI Trends',
+    date: '2024-01-08',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    slug: 'ai-transforming-marketing-strategies'
+  },
+  {
+    id: '5',
+    title: 'Student Success: From Zero to AI Expert in 12 Weeks',
+    excerpt: 'Read inspiring stories of our students who transformed their careers through our intensive AI programs and landed their dream jobs.',
+    category: 'Student Success',
+    date: '2024-01-05',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    slug: 'student-success-zero-to-ai-expert'
+  },
+  {
+    id: '6',
+    title: 'The Future of AI Data Labeling: Trends and Opportunities',
+    excerpt: 'Understand the growing importance of data labeling in AI development and discover the career opportunities in this expanding field.',
+    category: 'AI Trends',
+    date: '2024-01-03',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    slug: 'future-ai-data-labeling'
+  }
+];
+
 const blogPosts: { [key: string]: BlogPost } = {
   'ai-transforming-marketing-strategies': {
     id: '4',
@@ -427,16 +485,6 @@ const blogPosts: { [key: string]: BlogPost } = {
   }
 };
 
-// Related articles for each post
-const relatedArticles: { [key: string]: string[] } = {
-  'ai-transforming-marketing-strategies': ['student-success-zero-to-ai-expert', 'essential-skills-ai-professional-2025'],
-  'student-success-zero-to-ai-expert': ['ai-transforming-marketing-strategies', 'future-ai-data-labeling'],
-  'future-ai-data-labeling': ['student-success-zero-to-ai-expert', 'getting-started-ai-agent-development'],
-  'ai-web-development-future-freshers': ['getting-started-ai-agent-development', 'essential-skills-ai-professional-2025'],
-  'getting-started-ai-agent-development': ['ai-web-development-future-freshers', 'future-ai-data-labeling'],
-  'essential-skills-ai-professional-2025': ['ai-web-development-future-freshers', 'ai-transforming-marketing-strategies']
-};
-
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? blogPosts[slug] : null;
@@ -465,7 +513,10 @@ export default function BlogPost() {
     );
   }
 
-  const related = relatedArticles[slug!]?.map(relatedSlug => blogPosts[relatedSlug]).filter(Boolean) || [];
+  // Get related articles from the same data source as BlogSection
+  const related = blogPostsFromSection
+    .filter(p => p.slug !== slug) // Exclude current post
+    .slice(0, 2); // Show only 2 related articles
 
   return (
     <div className="font-sans text-white bg-black min-h-screen">
