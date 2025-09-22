@@ -1,0 +1,38 @@
+Add a professional blog section to my existing company website with the following specifications:
+
+CONTEXT: This is an AI education company website that offers courses in AI Web Development, AI Agent Development (coming soon), AI Marketing (coming soon), and AI Data Labeling. Our target audience is students, freshers, and career switchers aged 17-30.
+
+BLOG SECTION REQUIREMENTS:
+1. Create a dedicated "Blogs" page/section accessible from the main navigation
+2. Display 4-6 blog post cards on the main blog page in a clean, modern grid layout
+3. Each blog card should include: title, brief excerpt (2-3 lines), publication date, "Read More" button, and a placeholder image
+4. Make it mobile-responsive and visually appealing for young tech learners
+
+DESIGN SPECIFICATIONS:
+- Use clean, modern styling that matches the existing website theme
+- Include hover effects on blog cards
+- Add a search bar at the top of the blog section
+- Create category filters for: "Course Updates", "Career Tips", "AI Trends", "Student Success"
+- Use attractive colors and fonts suitable for an educational tech platform
+
+SAMPLE BLOG POSTS TO CREATE:
+1. "Why AI in Web Development is the Future for Freshers" - Career tips category
+2. "Getting Started with AI Agent Development: What to Expect" - Course updates category  
+3. "5 Essential Skills Every AI Professional Needs in 2025" - Career tips category
+4. "How AI is Transforming Modern Marketing Strategies" - AI trends category
+
+FUNCTIONALITY:
+- Each blog post should have its own dedicated page with full content
+- Add social sharing buttons for each post
+- Include a "Related Posts" section at the bottom
+- Add a comment section placeholder for future implementation
+- Create an admin-friendly structure for easy content updates
+
+TECHNICAL DETAILS:
+- Use semantic HTML structure
+- Implement proper SEO meta tags
+- Ensure fast loading times
+- Add breadcrumb navigation
+- Include a "Back to Blogs" button on individual post pages
+
+Please create this complete blog system with placeholder content that demonstrates the layout and functionality.
