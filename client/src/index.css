@@ -536,23 +536,82 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .blog-content li {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-base md:text-lg leading-relaxed mb-3 pl-2;
+    position: relative;
+  }
+
+  .blog-content li::before {
+    content: '▸';
+    @apply text-indigo-400 font-bold absolute left-0 top-0;
   }
 
   .blog-content strong {
-    @apply text-white font-semibold;
+    @apply text-white font-semibold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .blog-content h2 {
+    @apply text-2xl md:text-3xl font-bold text-white mb-6 mt-8 pb-3 border-b-2 border-gradient-to-r from-indigo-500/50 to-purple-500/50 relative;
+  }
+
+  .blog-content h2::before {
+    content: '';
+    @apply absolute bottom-0 left-0 w-16 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500;
+  }
+
+  .blog-content h3 {
+    @apply text-xl md:text-2xl font-semibold text-gray-200 mb-4 mt-6;
+  }
+
+  .blog-content p {
+    @apply text-gray-300 text-base md:text-lg leading-relaxed mb-6;
+  }
+
+  .blog-content ul {
+    @apply bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 mb-6 border border-gray-700/50;
   }
 
   .blog-content .cta-section {
-    @apply bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-xl p-6 md:p-8 mt-8 mb-8 text-center;
+    @apply bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-xl p-6 md:p-8 mt-8 mb-8 text-center border border-indigo-600/30 shadow-2xl relative overflow-hidden;
+  }
+
+  .blog-content .cta-section::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-purple-600/10 blur-xl;
   }
 
   .blog-content .cta-section h3 {
-    @apply text-xl md:text-2xl font-bold text-white mb-3 mt-0;
+    @apply text-xl md:text-2xl font-bold text-white mb-3 mt-0 relative z-10;
   }
 
   .blog-content .cta-section p {
-    @apply text-gray-300 mb-0;
+    @apply text-gray-300 mb-0 relative z-10;
+  }
+
+  /* Enhanced styling for the content */
+  .enhanced-content {
+    @apply relative;
+  }
+
+  .enhanced-content::before {
+    content: '';
+    @apply absolute -inset-6 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 rounded-2xl -z-10;
+  }
+
+  /* Info boxes and highlight sections */
+  .blog-content .info-box {
+    @apply bg-blue-900/30 border border-blue-500/50 rounded-lg p-4 mb-6 backdrop-blur-sm;
+  }
+
+  .blog-content .highlight-section {
+    @apply bg-gradient-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/50 rounded-lg p-6 mb-6 backdrop-blur-sm;
+  }
+
+  .blog-content .highlight-section h3 {
+    @apply text-purple-300 mb-4;
+  }
+
+  .blog-content em {
+    @apply text-indigo-300 font-medium;
   }
 
   /* Mobile responsive adjustments */
