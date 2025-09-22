@@ -1,0 +1,29 @@
+[vite] connecting...
+[vite] connected.
+Warning: Received &#x60;true&#x60; for a non-boolean attribute &#x60;jsx&#x60;.
+
+If you want to write it to the DOM, pass a string instead: jsx=&quot;true&quot; or jsx={value.toString()}.
+    at style
+    at div
+    at ProServices (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/src/components/ProServices.tsx:50:24)
+    at Services
+    at Route (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=5550a195:323:16)
+    at Switch (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=5550a195:379:17)
+    at Router
+    at QueryClientProvider (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=5550a195:2805:3)
+    at App (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/src/App.tsx?t=1758542590890&v=vI1mhgVfuImAAFVCNKY-m:79:47)
+
+If you want to write it to the DOM, pass a string instead: jsx=&amp;quot;true&amp;quot; or jsx={value.toString()}.
+at style
+at div
+at ProServices (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/src/components/ProServices.tsx:50:24)
+at Services
+at Route (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=5550a195:323:16)
+at Switch (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=5550a195:379:17)
+at Router
+at QueryClientProvider (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=5550a195:2805:3)
+at App (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/src/App.tsx?t=1758542590890&amp;v=vI1mhgVfuImAAFVCNKY-m:79:47)
+at t.value (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://3a9534c7-061e-4c71-911e-c4c430ac3e84-00-7j8y67vbfo77.pike.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
