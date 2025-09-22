@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAnimation } from '@/hooks/use-animation';
 
 interface BlogPost {
@@ -74,6 +75,7 @@ const categories = ['All', 'Course Updates', 'Career Tips', 'AI Trends', 'Studen
 export default function BlogSection() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   // Animation refs
   const sectionRef = useAnimation('animate-fade-in');
@@ -177,7 +179,7 @@ export default function BlogSection() {
               key={post.id}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700/50 group cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => window.location.href = `/blog/${post.slug}`}
+              onClick={() => navigate(`/blog/${post.slug}`)}
             >
               {/* Image */}
               <div className="relative overflow-hidden">
