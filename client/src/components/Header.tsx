@@ -258,16 +258,6 @@ export default function Header() {
               </span>
               <span>Talent Compass</span>
             </a>
-            <a
-              href="/blog"
-              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
-              onClick={() => closeMobileMenu()}
-            >
-              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">
-                📖
-              </span>
-              <span>Blog</span>
-            </a>
           </nav>
         </div>
       </div>
