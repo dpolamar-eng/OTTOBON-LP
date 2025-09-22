@@ -61,9 +61,6 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Performance Analytics:</strong> AI-driven insights</li>
       </ul>
       
-      <h2>💰 Career Impact</h2>
-      <p>AI Marketing Specialists earn <strong>$85K-$150K annually</strong> with high job security and remote work options.</p>
-      
       <div class="highlight-section">
         <h3>⚠️ Don't Get Left Behind</h3>
         <p>Traditional marketers are being replaced by AI-savvy professionals. Companies need experts who can implement these tools TODAY.</p>
@@ -97,7 +94,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>🎯 Sarah Chen: Marketing Manager → AI Product Manager</h2>
       <p><strong>Before:</strong> Traditional marketer feeling left behind<br>
       <strong>After:</strong> AI Product Manager at Fortune 500 company<br>
-      <strong>Salary Jump:</strong> 85% increase ($95K to $175K)</p>
+      <strong>Success:</strong> Landed dream job at Fortune 500 company</p>
       
       <blockquote style="border-left: 4px solid #8B5CF6; padding-left: 1rem; font-style: italic; color: #C4B5FD;">
         "I got my dream job offer 3 weeks after graduation. Ottobon changed my life." - Sarah Chen
@@ -106,7 +103,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>🚀 Marcus Rodriguez: Construction Worker → AI Engineer</h2>
       <p><strong>Before:</strong> 8 years in construction, zero tech experience<br>
       <strong>After:</strong> Junior AI Engineer at tech startup<br>
-      <strong>Salary Jump:</strong> From $45K to $85K annually</p>
+      <strong>Success:</strong> Complete career transformation in 12 weeks</p>
       
       <blockquote style="border-left: 4px solid #8B5CF6; padding-left: 1rem; font-style: italic; color: #C4B5FD;">
         "I thought AI was only for computer science graduates. I was wrong." - Marcus Rodriguez
@@ -115,7 +112,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>💡 Priya Patel: Teacher → AI Consultant</h2>
       <p><strong>Before:</strong> High school math teacher for 12 years<br>
       <strong>After:</strong> Runs own AI consulting firm<br>
-      <strong>Revenue:</strong> $150K in first year</p>
+      <strong>Success:</strong> Built thriving AI consulting practice</p>
       
       <div class="highlight-section">
         <h3>🎯 What Makes Ottobon Different?</h3>
@@ -127,7 +124,7 @@ const blogPosts: { [key: string]: BlogPost } = {
       <h2>📊 Program Results</h2>
       <ul>
         <li><strong>94% Job Placement Rate</strong> within 6 months</li>
-        <li><strong>65% Average Salary Increase</strong></li>
+        <li><strong>Career Transformation Guaranteed</strong></li>
         <li><strong>Top Companies:</strong> Google, Microsoft, Amazon, Tesla</li>
         <li><strong>No Degree Required:</strong> High school to PhD welcome</li>
       </ul>
@@ -160,7 +157,7 @@ const blogPosts: { [key: string]: BlogPost } = {
     readTime: '5 min read',
     content: `
       <h2>🏷️ The $4.6 Billion Opportunity Behind Every AI System</h2>
-      <p>While everyone talks about AI, <strong>data labeling professionals</strong> are quietly building the foundation that makes AI possible—and earning exceptional salaries doing it.</p>
+      <p>While everyone talks about AI, <strong>data labeling professionals</strong> are quietly building the foundation that makes AI possible—and securing high-demand careers doing it.</p>
       
       <div class="info-box">
         <p><strong>Hidden Gold Mine:</strong> Data labeling market growing at 26.6% annually. High demand, low competition.</p>
@@ -177,13 +174,11 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>NLP Training:</strong> Teach ChatGPT-style systems to understand language</li>
       </ul>
       
-      <h2>💰 Career Salary Ranges</h2>
-      
       <div class="highlight-section">
         <h3>📈 Rapid Career Growth Path</h3>
-        <p><strong>Entry Level:</strong> $35K-$50K (Remote work available)<br>
-        <strong>Specialists:</strong> $60K-$100K (2-3 years experience)<br>
-        <strong>Senior Roles:</strong> $120K-$250K (Team leads & consultants)</p>
+        <p><strong>Entry Level:</strong> Remote work opportunities available<br>
+        <strong>Specialists:</strong> Advanced roles with 2-3 years experience<br>
+        <strong>Senior Roles:</strong> Team leadership & consulting opportunities</p>
       </div>
       
       <h3>Companies Hiring NOW</h3>
