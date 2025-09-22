@@ -697,7 +697,7 @@ export default function ProServices() {
 
           {/* Services Section - Horizontal Sliding Carousel */}
           <section id="services" className="bg-purple-900/20 rounded-xl p-6 border border-purple-800/30 mb-6">
-            
+
             {/* Section Header with Navigation */}
             <div className="flex justify-between items-center mb-6">
               <div>
@@ -708,7 +708,7 @@ export default function ProServices() {
                     : 'AI-powered solutions with optional human support'}
                 </p>
               </div>
-              
+
               {/* Navigation Buttons - Show for all sections with multiple services */}
               {filteredServices.length > 1 && (
                 <div className="hidden md:flex space-x-2">
@@ -733,7 +733,7 @@ export default function ProServices() {
                 </div>
               )}
             </div>
-            
+
             {/* Carousel Container */}
             <div className="relative">
               {/* Mobile Navigation Buttons */}
