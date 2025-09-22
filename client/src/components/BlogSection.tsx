@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 import { useAnimation } from '@/hooks/use-animation';
 
 interface BlogPost {
@@ -75,7 +75,7 @@ const categories = ['All', 'Course Updates', 'Career Tips', 'AI Trends', 'Studen
 export default function BlogSection() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+  const [, navigate] = useLocation();
 
   // Animation refs
   const sectionRef = useAnimation('animate-fade-in');
