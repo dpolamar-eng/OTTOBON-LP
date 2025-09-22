@@ -234,40 +234,24 @@ export default function BlogSection() {
             Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => {
-                const target = document.querySelector('#courses');
-                if (target) {
-                  target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                  });
-                }
-              }}
+            <a
+              href="#courses"
               className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors text-lg"
             >
               Explore Our Courses
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
-            <button
-              onClick={() => {
-                const target = document.querySelector('#talent-compass');
-                if (target) {
-                  target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                  });
-                }
-              }}
+            </a>
+            <a
+              href="#talent-compass"
               className="inline-flex items-center px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-colors text-lg"
             >
               Begin Assessment
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
 
