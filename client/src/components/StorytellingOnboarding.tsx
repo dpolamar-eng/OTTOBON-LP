@@ -131,7 +131,7 @@ export default function StorytellingOnboarding() {
         {
           id: 7,
           text: "Within two months of completing the program, I received three job offers from leading consulting firms. I'm now a Senior Business Technology Consultant at a Big 4 firm, earning 60% more than my CA salary. More importantly, I wake up excited about work - helping Indian businesses digitally transform. The professional network I built through Ottobon continues to create opportunities.",
-          image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          image: "https://images.unsplash.com/photo-1553877522-43269d4995?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
           choices: [
             {
               id: 9,
@@ -485,7 +485,7 @@ export default function StorytellingOnboarding() {
 
   return (
     <>
-      <style jsx>{`
+      <style jsx="true">{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
@@ -515,7 +515,7 @@ export default function StorytellingOnboarding() {
           animation: shimmer 3s infinite;
         }
       `}</style>
-      
+
       <section id="stories" className="py-24 relative overflow-hidden bg-black" ref={sectionRef}>
         {/* Enhanced background effects */}
         <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
@@ -523,12 +523,12 @@ export default function StorytellingOnboarding() {
           <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl float-animation" style={{animationDelay: '-3s'}}></div>
           <div className="absolute top-3/4 right-1/2 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl float-animation" style={{animationDelay: '-1.5s'}}></div>
         </div>
-        
+
         {/* Animated grid background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden opacity-5">
           <div className="absolute inset-0 bg-grid-pattern animate-pulse"></div>
         </div>
-        
+
         {/* Enhanced gradient overlays */}
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#CDFFD8]/60 via-[#CDFFD8]/30 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#94B9FF]/60 via-[#94B9FF]/30 to-transparent"></div>
@@ -540,7 +540,7 @@ export default function StorytellingOnboarding() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>
-          
+
           <h2 ref={titleRef} className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
             Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 shimmer-effect">Success</span> Stories
           </h2>
@@ -561,7 +561,7 @@ export default function StorytellingOnboarding() {
               {/* Background decorations */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-purple-200/30 rounded-full blur-2xl"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-200/30 to-pink-200/30 rounded-full blur-xl"></div>
-              
+
               <div className="relative z-10">
                 <div className="text-center mb-12">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-4 shadow-lg">
@@ -586,10 +586,10 @@ export default function StorytellingOnboarding() {
                     >
                       {/* Hover gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-purple-50/0 to-indigo-50/0 group-hover:from-blue-50/60 group-hover:via-purple-50/40 group-hover:to-indigo-50/60 transition-all duration-500 rounded-2xl"></div>
-                      
+
                       {/* Floating accent */}
                       <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-xl group-hover:from-blue-400/40 group-hover:to-purple-400/40 transition-all duration-500"></div>
-                      
+
                       <div className="relative z-10 flex flex-col items-center text-center">
                         {/* Enhanced avatar with ring animation */}
                         <div className="relative mb-6">
@@ -609,35 +609,35 @@ export default function StorytellingOnboarding() {
                         <h4 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-gray-900 transition-colors">
                           {character.name}
                         </h4>
-                        
+
                         <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full mb-4 group-hover:from-blue-200 group-hover:to-purple-200 transition-all duration-300">
                           <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></div>
                           <p className="text-blue-700 font-semibold text-sm uppercase tracking-wide">
                             {character.role}
                           </p>
                         </div>
-                        
+
                         <p className="text-gray-600 text-sm leading-relaxed mb-6 group-hover:text-gray-700 transition-colors">
                           {character.background}
                         </p>
-                        
+
                         {/* Call-to-action button */}
                         <div className="mt-auto">
                           <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-full opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:shadow-xl">
                             <span className="mr-2">Explore Journey</span>
                             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-7H6" />
                             </svg>
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Bottom accent line */}
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                     </div>
                   ))}
                 </div>
-                
+
                 {/* Bottom inspiration text */}
                 <div className="text-center mt-12 p-6 bg-gradient-to-r from-blue-50/80 to-purple-50/80 rounded-xl border border-blue-200/30">
                   <p className="text-gray-700 font-medium">
@@ -657,7 +657,7 @@ export default function StorytellingOnboarding() {
                 {/* Background decorations */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-16"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>
-                
+
                 <div className="sticky top-6 relative z-10">
                   <button 
                     onClick={resetStory}
@@ -692,7 +692,7 @@ export default function StorytellingOnboarding() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-4">
                       <div className="bg-white/5 rounded-lg p-4">
                         <h4 className="text-white/70 text-xs uppercase font-semibold mb-2 tracking-wider">Background</h4>
@@ -807,7 +807,7 @@ export default function StorytellingOnboarding() {
                         >
                           Begin Assessment
                           <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-7H6"></path>
                           </svg>
                         </a>
                       )}
