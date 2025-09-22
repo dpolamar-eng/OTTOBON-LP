@@ -28,7 +28,7 @@ const blogPosts: BlogPost[] = [
     excerpt: 'A comprehensive guide to understanding AI agent development, from basic concepts to advanced implementations that will shape the future of automation.',
     category: 'Course Updates',
     date: '2024-01-12',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
     slug: 'getting-started-ai-agent-development'
   },
   {
