@@ -28,7 +28,7 @@ const blogPosts: BlogPost[] = [
     excerpt: 'A comprehensive guide to understanding AI agent development, from basic concepts to advanced implementations that will shape the future of automation.',
     category: 'Course Updates',
     date: '2024-01-12',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
     slug: 'getting-started-ai-agent-development'
   },
   {
@@ -37,7 +37,7 @@ const blogPosts: BlogPost[] = [
     excerpt: 'Stay ahead in the AI industry by mastering these crucial skills that top employers are looking for in 2025 and beyond.',
     category: 'Career Tips',
     date: '2024-01-10',
-    image: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
     slug: 'essential-skills-ai-professional-2025'
   },
   {
