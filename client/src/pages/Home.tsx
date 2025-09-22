@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="font-sans text-dark bg-white">
+    <div className="font-sans text-white bg-black min-h-screen">
       <Header />
       <main>
         <IntegratedHeroJourney />
