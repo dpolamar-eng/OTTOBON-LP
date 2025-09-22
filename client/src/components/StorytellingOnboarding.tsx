@@ -484,121 +484,261 @@ export default function StorytellingOnboarding() {
   const currentSegment = getCurrentSegment();
 
   return (
-    <section id="stories" className="py-20 relative overflow-hidden bg-black" ref={sectionRef}>
-      {/* Background effects */}
-      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"></div>
-      </div>
-      {/* Background decoration */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        {/* Tinted fades to avoid white band between sections */}
-        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#CDFFD8]/40 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#94B9FF]/40 to-transparent"></div>
-      </div>
+    <>
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-ring {
+          0% { transform: scale(1); opacity: 1; }
+          100% { transform: scale(1.3); opacity: 0; }
+        }
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .float-animation { animation: float 6s ease-in-out infinite; }
+        .pulse-ring { animation: pulse-ring 2s infinite; }
+        .shimmer-effect {
+          position: relative;
+          overflow: hidden;
+        }
+        .shimmer-effect::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          animation: shimmer 3s infinite;
+        }
+      `}</style>
+      
+      <section id="stories" className="py-24 relative overflow-hidden bg-black" ref={sectionRef}>
+        {/* Enhanced background effects */}
+        <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl float-animation"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl float-animation" style={{animationDelay: '-3s'}}></div>
+          <div className="absolute top-3/4 right-1/2 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl float-animation" style={{animationDelay: '-1.5s'}}></div>
+        </div>
+        
+        {/* Animated grid background */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden opacity-5">
+          <div className="absolute inset-0 bg-grid-pattern animate-pulse"></div>
+        </div>
+        
+        {/* Enhanced gradient overlays */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#CDFFD8]/60 via-[#CDFFD8]/30 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#94B9FF]/60 via-[#94B9FF]/30 to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-center mb-3 text-white">
-          Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Success</span> Stories
-        </h2>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6 shadow-2xl float-animation">
+            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          
+          <h2 ref={titleRef} className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
+            Real <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 shimmer-effect">Success</span> Stories
+          </h2>
 
-        <p className="text-center text-blue-100 max-w-3xl mx-auto mb-12">
-          Explore the journeys of Indian professionals who've transformed their careers through our program. 
-          Choose a story that resonates with your situation to see how your own path might unfold.
-        </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-6 rounded-full"></div>
 
-        <div ref={storyContainerRef} className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+          <p className="text-center text-blue-100 max-w-4xl mx-auto text-lg leading-relaxed">
+            Explore the inspiring journeys of Indian professionals who've transformed their careers through our program. 
+            <br />
+            <span className="text-blue-200 font-medium">Choose a story that resonates with your situation to see how your own path might unfold.</span>
+          </p>
+        </div>
+
+        <div ref={storyContainerRef} className="max-w-6xl mx-auto bg-gradient-to-br from-white via-gray-50 to-blue-50 rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
           {!selectedCharacter ? (
             // Character selection screen
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-center mb-8">Choose a Journey to Explore</h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {characters.map((character, index) => (
-                  <div 
-                    key={index} 
-                    className="bg-gray-50 rounded-lg p-6 cursor-pointer transform transition duration-300 hover:shadow-lg hover:-translate-y-1 hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50 border border-gray-200"
-                    onClick={() => selectCharacter(character)}
-                  >
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-4 border-white shadow-md">
-                        <img 
-                          src={character.avatar} 
-                          alt={character.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h4 className="text-xl font-bold mb-1">{character.name}</h4>
-                      <p className="text-blue-600 font-medium mb-3">{character.role}</p>
-                      <p className="text-gray-600 text-sm">{character.background}</p>
-                    </div>
+            <div className="p-10 relative">
+              {/* Background decorations */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-purple-200/30 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-200/30 to-pink-200/30 rounded-full blur-xl"></div>
+              
+              <div className="relative z-10">
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-4 shadow-lg">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
                   </div>
-                ))}
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-3">
+                    Choose Your Journey
+                  </h3>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    Discover how professionals like you transformed their careers through Ottobon Academy
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {characters.map((character, index) => (
+                    <div 
+                      key={index} 
+                      className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:bg-white border border-gray-200/50 hover:border-blue-300/50 overflow-hidden"
+                      onClick={() => selectCharacter(character)}
+                    >
+                      {/* Hover gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-purple-50/0 to-indigo-50/0 group-hover:from-blue-50/60 group-hover:via-purple-50/40 group-hover:to-indigo-50/60 transition-all duration-500 rounded-2xl"></div>
+                      
+                      {/* Floating accent */}
+                      <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-xl group-hover:from-blue-400/40 group-hover:to-purple-400/40 transition-all duration-500"></div>
+                      
+                      <div className="relative z-10 flex flex-col items-center text-center">
+                        {/* Enhanced avatar with ring animation */}
+                        <div className="relative mb-6">
+                          <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-white shadow-xl group-hover:shadow-2xl transition-all duration-300 relative z-10">
+                            <img 
+                              src={character.avatar} 
+                              alt={character.name}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                          </div>
+                          {/* Animated ring */}
+                          <div className="absolute inset-0 w-28 h-28 rounded-full border-2 border-blue-400/0 group-hover:border-blue-400/60 group-hover:scale-125 transition-all duration-500"></div>
+                          <div className="absolute inset-0 w-28 h-28 rounded-full border border-purple-400/0 group-hover:border-purple-400/40 group-hover:scale-150 transition-all duration-700 delay-100"></div>
+                        </div>
+
+                        {/* Enhanced content */}
+                        <h4 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-gray-900 transition-colors">
+                          {character.name}
+                        </h4>
+                        
+                        <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full mb-4 group-hover:from-blue-200 group-hover:to-purple-200 transition-all duration-300">
+                          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></div>
+                          <p className="text-blue-700 font-semibold text-sm uppercase tracking-wide">
+                            {character.role}
+                          </p>
+                        </div>
+                        
+                        <p className="text-gray-600 text-sm leading-relaxed mb-6 group-hover:text-gray-700 transition-colors">
+                          {character.background}
+                        </p>
+                        
+                        {/* Call-to-action button */}
+                        <div className="mt-auto">
+                          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-full opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <span className="mr-2">Explore Journey</span>
+                            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Bottom accent line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Bottom inspiration text */}
+                <div className="text-center mt-12 p-6 bg-gradient-to-r from-blue-50/80 to-purple-50/80 rounded-xl border border-blue-200/30">
+                  <p className="text-gray-700 font-medium">
+                    💡 <span className="font-semibold">Real stories</span> from real professionals who transformed their careers
+                  </p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    Choose the journey that resonates with your background and aspirations
+                  </p>
+                </div>
               </div>
             </div>
           ) : (
             // Story progression screen
-            <div className="flex flex-col md:flex-row">
-              {/* Character info sidebar */}
-              <div className="md:w-1/3 bg-gradient-to-br from-blue-600 to-purple-700 text-white p-6">
-                <div className="sticky top-6">
+            <div className="flex flex-col lg:flex-row">
+              {/* Enhanced character info sidebar */}
+              <div className="lg:w-1/3 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 text-white p-8 relative overflow-hidden">
+                {/* Background decorations */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-16"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>
+                
+                <div className="sticky top-6 relative z-10">
                   <button 
                     onClick={resetStory}
-                    className="mb-6 bg-white/20 hover:bg-white/30 py-2 px-4 rounded-lg text-sm flex items-center"
+                    className="mb-8 bg-white/20 hover:bg-white/30 py-3 px-5 rounded-xl text-sm flex items-center font-medium backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300 hover:scale-105 shadow-lg"
                   >
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
                     Choose Another Story
                   </button>
 
-                  <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/50 mr-4">
-                      <img 
-                        src={selectedCharacter.avatar} 
-                        alt={selectedCharacter.name}
-                        className="w-full h-full object-cover"
-                      />
+                  {/* Enhanced character profile */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/20">
+                    <div className="flex items-center mb-4">
+                      <div className="relative">
+                        <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-white/50 mr-4 shadow-xl">
+                          <img 
+                            src={selectedCharacter.avatar} 
+                            alt={selectedCharacter.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-400 rounded-full border-2 border-white flex items-center justify-center">
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-xl mb-1">{selectedCharacter.name}</h3>
+                        <div className="inline-flex items-center px-3 py-1 bg-white/20 rounded-full">
+                          <div className="w-2 h-2 bg-yellow-300 rounded-full mr-2 animate-pulse"></div>
+                          <p className="text-white/90 text-sm font-medium">{selectedCharacter.role}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-xl">{selectedCharacter.name}</h3>
-                      <p className="text-white/80">{selectedCharacter.role}</p>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white/5 rounded-lg p-4">
+                        <h4 className="text-white/70 text-xs uppercase font-semibold mb-2 tracking-wider">Background</h4>
+                        <p className="text-sm leading-relaxed">{selectedCharacter.background}</p>
+                      </div>
+
+                      <div className="bg-white/5 rounded-lg p-4">
+                        <h4 className="text-white/70 text-xs uppercase font-semibold mb-3 tracking-wider">Story Progress</h4>
+                        <div className="relative">
+                          <div className="w-full bg-white/20 rounded-full h-2 mb-3 overflow-hidden">
+                            <div 
+                              className="h-2 rounded-full bg-gradient-to-r from-yellow-300 to-orange-300 transition-all duration-500 relative overflow-hidden"
+                              style={{ width: `${(currentSegmentId / selectedCharacter.story.length) * 100}%` }}
+                            >
+                              <div className="absolute inset-0 bg-white/30 animate-pulse"></div>
+                            </div>
+                          </div>
+                          <p className="text-xs text-white/80 font-medium">
+                            {pathOutcome ? '🎯 Journey Complete' : `📖 Part ${currentSegmentId} of ${selectedCharacter.story.length - 1}`}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-white/70 text-sm uppercase font-medium mb-1">Background</h4>
-                      <p className="text-sm">{selectedCharacter.background}</p>
-                    </div>
-
-                    <div>
-                      <h4 className="text-white/70 text-sm uppercase font-medium mb-1">Story Progress</h4>
-                      <div className="w-full bg-white/10 rounded-full h-1.5 mb-3">
-                        <div 
-                          className="h-1.5 rounded-full bg-white"
-                          style={{ width: `${(currentSegmentId / selectedCharacter.story.length) * 100}%` }}
-                        ></div>
-                      </div>
-                      <p className="text-xs">
-                        {pathOutcome ? 'Conclusion' : `Part ${currentSegmentId} of ${selectedCharacter.story.length - 1}`}
-                      </p>
-                    </div>
-
-                    {pathOutcome === 'assessment' && (
-                      <div className="mt-6 bg-white/20 p-4 rounded-lg">
-                        <h4 className="font-medium mb-2">Ready for Your Journey?</h4>
-                        <p className="text-sm mb-4">Take the assessment to discover your ideal path in technology consulting.</p>
+                  {pathOutcome === 'assessment' && (
+                    <div className="bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/30 shadow-xl">
+                      <div className="text-center">
+                        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                          <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <h4 className="font-bold mb-2 text-lg">Ready for Your Journey?</h4>
+                        <p className="text-sm mb-6 text-white/90 leading-relaxed">
+                          Take the assessment to discover your ideal path in technology consulting.
+                        </p>
                         <a 
                           href="#talent-compass"
-                          className="block w-full bg-white text-blue-700 text-center font-medium py-2 px-4 rounded-lg hover:bg-blue-50 transition"
+                          className="block w-full bg-white text-blue-700 text-center font-bold py-3 px-4 rounded-xl hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg"
                         >
-                          Take Assessment Now
+                          🚀 Take Assessment Now
                         </a>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -679,6 +819,7 @@ export default function StorytellingOnboarding() {
           )}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
