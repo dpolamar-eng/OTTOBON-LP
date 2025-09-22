@@ -48,8 +48,8 @@ export default function IntegratedHeroJourney() {
       description:
         "Master AI-driven technologies with placement guaranteed programs. From AI for UI/UX Design to Agent Development, gain cutting-edge skills that employers demand with expert mentorship and hands-on projects.",
       image:
-        "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Technology professional in modern workspace",
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      alt: "Professional team collaborating on AI technology projects",
     },
     {
       title:
@@ -57,8 +57,8 @@ export default function IntegratedHeroJourney() {
       description:
         "Access comprehensive job search tools including ATS-friendly resume builders, AI-powered job matching, and realistic mock interview preparation to accelerate your career transition and land your dream role.",
       image:
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Collaborative learning environment",
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      alt: "Professional job interview and career success",
     },
     {
       title:
@@ -66,8 +66,8 @@ export default function IntegratedHeroJourney() {
       description:
         "Get personalized mentorship from AI-powered experts in Python, eCommerce, and emerging technologies. Receive real-time guidance, technical answers, and career advice tailored to your professional journey.",
       image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Professional working on advanced technology",
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      alt: "Expert mentor guiding professional in technology career",
     },
   ];
 
