@@ -175,8 +175,9 @@ export default function BlogSection() {
           {filteredPosts.map((post, index) => (
             <article
               key={post.id}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700/50 group"
+              className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700/50 group cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
+              onClick={() => window.location.href = `/blog/${post.slug}`}
             >
               {/* Image */}
               <div className="relative overflow-hidden">
@@ -202,15 +203,12 @@ export default function BlogSection() {
                 <p className="text-gray-300 text-sm line-clamp-3 mb-4">
                   {post.excerpt}
                 </p>
-                <a
-                  href={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium transition-colors group/link"
-                >
+                <div className="inline-flex items-center text-indigo-400 group-hover:text-indigo-300 font-medium transition-colors group/link">
                   Read More
                   <svg className="w-4 h-4 ml-2 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </div>
               </div>
             </article>
           ))}
@@ -225,18 +223,7 @@ export default function BlogSection() {
           </div>
         )}
 
-        {/* Call to Action */}
-        <div className="text-center mt-12">
-          <a
-            href="/blog"
-            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-full transition shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            View All Articles
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
+        
       </div>
     </section>
   );
