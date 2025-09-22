@@ -178,7 +178,10 @@ export default function BlogSection() {
               key={post.id}
               className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-700/50 group cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => navigate(`/blog/${post.slug}`)}
+              onClick={() => {
+                navigate(`/blog/${post.slug}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             >
               {/* Image */}
               <div className="relative overflow-hidden">
