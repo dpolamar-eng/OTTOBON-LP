@@ -71,6 +71,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p>Explore Ottobon's AI Marketing course to understand the technologies and methodologies behind modern marketing automation.</p>
         <p><strong>Discover the technical foundations of AI-driven marketing!</strong></p>
       </div>
+
+      <div class="career-transform-section">
+        <h3>Ready to Transform Your Career?</h3>
+        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
+        <div class="cta-buttons">
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
+        </div>
+      </div>
     `
   },
   'student-success-zero-to-ai-expert': {
@@ -143,6 +152,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p>Join Sarah, Marcus, and Priya in mastering AI fundamentals through our comprehensive program.</p>
         <p><em>Begin your AI education today!</em></p>
       </div>
+
+      <div class="career-transform-section">
+        <h3>Ready to Transform Your Career?</h3>
+        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
+        <div class="cta-buttons">
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
+        </div>
+      </div>
     `
   },
   'future-ai-data-labeling': {
@@ -214,6 +232,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p>Join Ottobon's Data Labeling course to learn the technical skills and best practices for AI training data preparation.</p>
         <p><em>Limited enrollment - Start your technical education today!</em></p>
       </div>
+
+      <div class="career-transform-section">
+        <h3>Ready to Transform Your Career?</h3>
+        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
+        <div class="cta-buttons">
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
+        </div>
+      </div>
     `
   },
   'ai-web-development-future-freshers': {
@@ -250,6 +277,15 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="cta-section">
         <h3>Ready to Start Your AI Web Development Journey?</h3>
         <p>Join Ottobon's comprehensive AI Web Development course and learn from industry experts.</p>
+      </div>
+
+      <div class="career-transform-section">
+        <h3>Ready to Transform Your Career?</h3>
+        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
+        <div class="cta-buttons">
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
+        </div>
       </div>
     `
   },
@@ -324,6 +360,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>🎯 Ready to Master AI Agent Development?</h3>
         <p>Join the waitlist for Ottobon's upcoming AI Agent Development course and secure your spot with exclusive early-bird pricing!</p>
       </div>
+
+      <div class="career-transform-section">
+        <h3>Ready to Transform Your Career?</h3>
+        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
+        <div class="cta-buttons">
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
+        </div>
+      </div>
     `
   },
   'essential-skills-ai-professional-2025': {
@@ -368,6 +413,15 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="cta-section">
         <h3>Develop Your AI Expertise</h3>
         <p>Explore Ottobon's comprehensive AI education programs designed to build both technical proficiency and practical problem-solving skills.</p>
+      </div>
+
+      <div class="career-transform-section">
+        <h3>Ready to Transform Your Career?</h3>
+        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
+        <div class="cta-buttons">
+          <a href="#courses" class="cta-button primary">Explore Our Courses</a>
+          <a href="#talent-compass" class="cta-button secondary">Begin Assessment</a>
+        </div>
       </div>
     `
   }

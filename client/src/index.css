@@ -587,6 +587,39 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     @apply text-gray-300 mb-0 relative z-10;
   }
 
+  .blog-content .career-transform-section {
+    @apply bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-xl p-6 md:p-8 mt-8 mb-8 text-center border border-indigo-600/30 shadow-2xl relative overflow-hidden;
+  }
+
+  .blog-content .career-transform-section::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-purple-600/10 blur-xl;
+  }
+
+  .blog-content .career-transform-section h3 {
+    @apply text-xl md:text-2xl font-bold text-white mb-4 mt-0 relative z-10;
+  }
+
+  .blog-content .career-transform-section p {
+    @apply text-gray-300 mb-6 relative z-10;
+  }
+
+  .blog-content .cta-buttons {
+    @apply flex flex-col sm:flex-row gap-4 justify-center relative z-10;
+  }
+
+  .blog-content .cta-button {
+    @apply inline-flex items-center px-8 py-4 font-bold rounded-lg transition-colors text-lg no-underline;
+  }
+
+  .blog-content .cta-button.primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white;
+  }
+
+  .blog-content .cta-button.secondary {
+    @apply bg-purple-600 hover:bg-purple-700 text-white;
+  }
+
   /* Enhanced styling for the content */
   .enhanced-content {
     @apply relative;
