@@ -128,13 +128,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><strong>Discover the technical foundations of AI-driven marketing!</strong></p>
       </div>
 
-      <div class="career-transform-section">
-        <h3>Ready to Transform Your Career?</h3>
-        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
-        <div class="cta-buttons">
-          <button onclick="window.location.href='/academy#courses';" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Begin Assessment</button>
+      <div class="enrollment-focused-section">
+        <h3>🚀 Ready to Launch Your AI Career?</h3>
+        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
+        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
+        <div class="cta-buttons enrollment-buttons">
+          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
+        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   },
@@ -209,13 +211,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><em>Begin your AI education today!</em></p>
       </div>
 
-      <div class="career-transform-section">
-        <h3>Ready to Transform Your Career?</h3>
-        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
-        <div class="cta-buttons">
-          <button onclick="window.location.href='/academy#courses';" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Begin Assessment</button>
+      <div class="enrollment-focused-section">
+        <h3>🚀 Ready to Launch Your AI Career?</h3>
+        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
+        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
+        <div class="cta-buttons enrollment-buttons">
+          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
+        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   },
@@ -289,13 +293,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p><em>Limited enrollment - Start your technical education today!</em></p>
       </div>
 
-      <div class="career-transform-section">
-        <h3>Ready to Transform Your Career?</h3>
-        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
-        <div class="cta-buttons">
-          <button onclick="window.location.href='/academy#courses';" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Begin Assessment</button>
+      <div class="enrollment-focused-section">
+        <h3>🚀 Ready to Launch Your AI Career?</h3>
+        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
+        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
+        <div class="cta-buttons enrollment-buttons">
+          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
+        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   },
@@ -335,13 +341,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p>Join Ottobon's comprehensive AI Web Development course and learn from industry experts.</p>
       </div>
 
-      <div class="career-transform-section">
-        <h3>Ready to Transform Your Career?</h3>
-        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
-        <div class="cta-buttons">
-          <button onclick="window.location.href='/academy#courses';" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Begin Assessment</button>
+      <div class="enrollment-focused-section">
+        <h3>🚀 Ready to Launch Your AI Career?</h3>
+        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
+        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
+        <div class="cta-buttons enrollment-buttons">
+          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
+        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   },
@@ -417,13 +425,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p>Join the waitlist for Ottobon's upcoming AI Agent Development course and secure your spot with exclusive early-bird pricing!</p>
       </div>
 
-      <div class="career-transform-section">
-        <h3>Ready to Transform Your Career?</h3>
-        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
-        <div class="cta-buttons">
-          <button onclick="window.location.href='/academy#courses';" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Begin Assessment</button>
+      <div class="enrollment-focused-section">
+        <h3>🚀 Ready to Launch Your AI Career?</h3>
+        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
+        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
+        <div class="cta-buttons enrollment-buttons">
+          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
+        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   },
@@ -471,13 +481,15 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p>Explore Ottobon's comprehensive AI education programs designed to build both technical proficiency and practical problem-solving skills.</p>
       </div>
 
-      <div class="career-transform-section">
-        <h3>Ready to Transform Your Career?</h3>
-        <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
-        <div class="cta-buttons">
-          <button onclick="window.location.href='/academy#courses';" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Begin Assessment</button>
+      <div class="enrollment-focused-section">
+        <h3>🚀 Ready to Launch Your AI Career?</h3>
+        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
+        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
+        <div class="cta-buttons enrollment-buttons">
+          <button onclick="window.location.href='/academy#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
+          <button onclick="window.location.href='/academy#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
         </div>
+        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   }
