@@ -469,7 +469,7 @@ export default function ProServices() {
         )}
       </header>
 
-      <style jsx>{`
+      <style jsx="true">{`
         /* Simple left-to-right slide transition */
         @keyframes slideInFromRight {
           0% { 
