@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams, Link } from 'wouter';
-import Header from '@/components/Header';
 
 interface BlogPost {
   id: string;
@@ -491,8 +490,7 @@ export default function BlogPost() {
   if (!post) {
     return (
       <div className="font-sans text-white bg-black min-h-screen">
-        <Header />
-        <main className="pt-20 pb-16">
+        <main className="pt-8 pb-16">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-md mx-auto">
               <div className="text-6xl mb-6">📝</div>
@@ -519,10 +517,8 @@ export default function BlogPost() {
 
   return (
     <div className="font-sans text-white bg-black min-h-screen">
-      <Header />
-
       {/* Hero Section */}
-      <section className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-8 relative overflow-hidden">
+      <section className="pt-8 md:pt-12 lg:pt-16 xl:pt-20 pb-8 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={post.image} 
