@@ -609,7 +609,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .blog-content .cta-button {
-    @apply inline-flex items-center px-8 py-4 font-bold rounded-lg transition-colors text-lg no-underline;
+    @apply inline-flex items-center px-8 py-4 font-bold rounded-lg transition-colors text-lg no-underline border-none cursor-pointer;
   }
 
   .blog-content .cta-button.primary {
