@@ -121,23 +121,6 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>🔍 Understanding AI Marketing</h3>
         <p>AI marketing involves using artificial intelligence technologies to make automated decisions based on data collection, audience analysis, and economic trends.</p>
       </div>
-
-      <div class="cta-section">
-        <h3>🚀 Learn AI Marketing Fundamentals</h3>
-        <p>Explore Ottobon's AI Marketing course to understand the technologies and methodologies behind modern marketing automation.</p>
-        <p><strong>Discover the technical foundations of AI-driven marketing!</strong></p>
-      </div>
-
-      <div class="enrollment-focused-section">
-        <h3>🚀 Ready to Launch Your AI Career?</h3>
-        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
-        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
-        <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
-        </div>
-        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
-      </div>
     `
   },
   'student-success-zero-to-ai-expert': {
@@ -203,24 +186,6 @@ const blogPosts: { [key: string]: BlogPost } = {
         <li><strong>Weeks 9-12:</strong> Advanced AI techniques and capstone project</li>
         <li><strong>Beyond:</strong> Continued learning support and community access</li>
       </ul>
-
-      <div class="cta-section">
-        <h3>🚀 Start Your AI Learning Journey</h3>
-        <p><strong>Limited seats available for next cohort starting soon.</strong></p>
-        <p>Join Sarah, Marcus, and Priya in mastering AI fundamentals through our comprehensive program.</p>
-        <p><em>Begin your AI education today!</em></p>
-      </div>
-
-      <div class="enrollment-focused-section">
-        <h3>🚀 Ready to Launch Your AI Career?</h3>
-        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
-        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
-        <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
-        </div>
-        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
-      </div>
     `
   },
   'future-ai-data-labeling': {
@@ -292,17 +257,6 @@ const blogPosts: { [key: string]: BlogPost } = {
         <p>Join Ottobon's Data Labeling course to learn the technical skills and best practices for AI training data preparation.</p>
         <p><em>Limited enrollment - Start your technical education today!</em></p>
       </div>
-
-      <div class="enrollment-focused-section">
-        <h3>🚀 Ready to Launch Your AI Career?</h3>
-        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
-        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
-        <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
-        </div>
-        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
-      </div>
     `
   },
   'ai-web-development-future-freshers': {
@@ -339,17 +293,6 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="cta-section">
         <h3>Ready to Start Your AI Web Development Journey?</h3>
         <p>Join Ottobon's comprehensive AI Web Development course and learn from industry experts.</p>
-      </div>
-
-      <div class="enrollment-focused-section">
-        <h3>🚀 Ready to Launch Your AI Career?</h3>
-        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
-        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
-        <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
-        </div>
-        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   },
@@ -424,17 +367,6 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>🎯 Ready to Master AI Agent Development?</h3>
         <p>Join the waitlist for Ottobon's upcoming AI Agent Development course and secure your spot with exclusive early-bird pricing!</p>
       </div>
-
-      <div class="enrollment-focused-section">
-        <h3>🚀 Ready to Launch Your AI Career?</h3>
-        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
-        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
-        <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
-        </div>
-        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
-      </div>
     `
   },
   'essential-skills-ai-professional-2025': {
@@ -479,17 +411,6 @@ const blogPosts: { [key: string]: BlogPost } = {
       <div class="cta-section">
         <h3>Develop Your AI Expertise</h3>
         <p>Explore Ottobon's comprehensive AI education programs designed to build both technical proficiency and practical problem-solving skills.</p>
-      </div>
-
-      <div class="enrollment-focused-section">
-        <h3>🚀 Ready to Launch Your AI Career?</h3>
-        <p><strong>Don't let this opportunity pass you by!</strong> Our next cohort starts in just 3 weeks, and we only have <span style="color: #ef4444; font-weight: bold;">12 spots remaining</span>.</p>
-        <p class="urgency-text">✅ Get personalized 1:1 mentorship<br>✅ Build a professional AI portfolio<br>✅ Access to exclusive job placement network</p>
-        <div class="cta-buttons enrollment-buttons">
-          <button onclick="window.location.href='/#enroll';" class="cta-button primary pulse-animation">🎯 Enroll Now - Limited Spots</button>
-          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Take Free Assessment First</button>
-        </div>
-        <p class="guarantee-text">💯 <strong>Money-back guarantee</strong> if you're not satisfied within the first week!</p>
       </div>
     `
   }
