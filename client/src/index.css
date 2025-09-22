@@ -676,7 +676,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     .blog-content {
       font-size: 16px;
     }
-    
+
     .blog-content h2 {
       @apply text-2xl mt-8 mb-6;
     }
@@ -720,8 +720,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  }
-
+  
   .blog-content .cta-buttons {
     display: flex;
     gap: 1rem;
@@ -1068,6 +1067,5 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-
 
 }
