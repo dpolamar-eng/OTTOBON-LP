@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -571,53 +571,66 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .blog-content .cta-section {
-    @apply bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-xl p-6 md:p-8 mt-8 mb-8 text-center border border-indigo-600/30 shadow-2xl relative overflow-hidden;
-  }
-
-  .blog-content .cta-section::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-purple-600/10 blur-xl;
-  }
-
-  .blog-content .cta-section h3 {
-    @apply text-xl md:text-2xl font-bold text-white mb-3 mt-0 relative z-10;
-  }
-
-  .blog-content .cta-section p {
-    @apply text-gray-300 mb-0 relative z-10;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    text-align: center;
+    border-left: 4px solid #8B5CF6;
   }
 
   .blog-content .career-transform-section {
-    @apply bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-xl p-6 md:p-8 mt-8 mb-8 text-center border border-indigo-600/30 shadow-2xl relative overflow-hidden;
-  }
-
-  .blog-content .career-transform-section::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-purple-600/10 blur-xl;
-  }
-
-  .blog-content .career-transform-section h3 {
-    @apply text-xl md:text-2xl font-bold text-white mb-4 mt-0 relative z-10;
-  }
-
-  .blog-content .career-transform-section p {
-    @apply text-gray-300 mb-6 relative z-10;
+    background: linear-gradient(135deg, #1e293b 0%, #374151 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    text-align: center;
+    border: 2px solid #4f46e5;
   }
 
   .blog-content .cta-buttons {
-    @apply flex flex-col sm:flex-row gap-4 justify-center relative z-10;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
   }
 
   .blog-content .cta-button {
-    @apply inline-flex items-center px-8 py-4 font-bold rounded-lg transition-colors text-lg no-underline border-none cursor-pointer;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .blog-content .cta-button.primary {
-    @apply bg-indigo-600 hover:bg-indigo-700 text-white;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+  }
+
+  .blog-content .cta-button.primary:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
   }
 
   .blog-content .cta-button.secondary {
-    @apply bg-purple-600 hover:bg-purple-700 text-white;
+    background: transparent;
+    color: #60a5fa;
+    border: 2px solid #60a5fa;
+  }
+
+  .blog-content .cta-button.secondary:hover {
+    background: #60a5fa;
+    color: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(96, 165, 250, 0.4);
   }
 
   /* Enhanced styling for the content */
@@ -652,15 +665,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     .blog-content h2 {
       @apply text-xl;
     }
-    
+
     .blog-content h3 {
       @apply text-lg;
     }
-    
+
     .blog-content p, .blog-content li {
       @apply text-sm;
     }
-    
+
     .blog-content .cta-section {
       @apply p-4;
     }

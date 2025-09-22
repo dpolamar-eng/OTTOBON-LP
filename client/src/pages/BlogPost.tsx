@@ -133,8 +133,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('courses'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('talent-compass'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button secondary">Begin Assessment</button>
+          <button onclick="window.location.href='/#courses';" class="cta-button primary">Explore Our Courses</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Begin Assessment</button>
         </div>
       </div>
     `
@@ -214,8 +214,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('courses'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('talent-compass'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button secondary">Begin Assessment</button>
+          <button onclick="window.location.href='/#courses';" class="cta-button primary">Explore Our Courses</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Begin Assessment</button>
         </div>
       </div>
     `
@@ -294,8 +294,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('courses'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('talent-compass'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button secondary">Begin Assessment</button>
+          <button onclick="window.location.href='/#courses';" class="cta-button primary">Explore Our Courses</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Begin Assessment</button>
         </div>
       </div>
     `
@@ -340,8 +340,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('courses'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('talent-compass'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button secondary">Begin Assessment</button>
+          <button onclick="window.location.href='/#courses';" class="cta-button primary">Explore Our Courses</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Begin Assessment</button>
         </div>
       </div>
     `
@@ -422,8 +422,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('courses'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('talent-compass'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button secondary">Begin Assessment</button>
+          <button onclick="window.location.href='/#courses';" class="cta-button primary">Explore Our Courses</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Begin Assessment</button>
         </div>
       </div>
     `
@@ -476,8 +476,8 @@ const blogPosts: { [key: string]: BlogPost } = {
         <h3>Ready to Transform Your Career?</h3>
         <p>Explore our comprehensive AI programs and discover your personalized learning path through our Talent Compass assessment.</p>
         <div class="cta-buttons">
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('courses'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button primary">Explore Our Courses</button>
-          <button onclick="window.location.href='/'; setTimeout(() => { const target = document.getElementById('talent-compass'); if (target) target.scrollIntoView({ behavior: 'smooth' }); }, 100);" class="cta-button secondary">Begin Assessment</button>
+          <button onclick="window.location.href='/#courses';" class="cta-button primary">Explore Our Courses</button>
+          <button onclick="window.location.href='/#talent-compass';" class="cta-button secondary">Begin Assessment</button>
         </div>
       </div>
     `
