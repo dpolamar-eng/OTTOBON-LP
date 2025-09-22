@@ -509,18 +509,7 @@ export default function BlogPost() {
 
             
 
-            {/* Back to Blog */}
-            <div className="text-center mb-12">
-              <Link 
-                to="/academy#blog" 
-                className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Back to Knowledge Hub
-              </Link>
-            </div>
+            
 
             {/* Related Articles */}
             {related.length > 0 && (
@@ -556,24 +545,7 @@ export default function BlogPost() {
         </div>
       </main>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-indigo-900/50 to-purple-900/50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your AI Journey?</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of students who have transformed their careers with Ottobon's comprehensive AI programs.
-          </p>
-          <Link 
-            to="/academy#courses" 
-            className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors text-lg"
-          >
-            Explore Our Courses
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      
 
       </div>
   );
