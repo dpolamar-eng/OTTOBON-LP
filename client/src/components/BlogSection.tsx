@@ -186,9 +186,6 @@ export default function BlogSection() {
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
-                <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(post.category)}`}>
-                  {post.category}
-                </span>
               </div>
 
               {/* Content */}
