@@ -581,7 +581,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .blog-content ol li {
-    @apply list-decimal ml-6;
+    @apply ml-0;
   }
 
   .blog-content strong {
