@@ -571,6 +571,9 @@ export default function BlogPost() {
                     <Link 
                       key={relatedPost.id}
                       to={`/blog/${relatedPost.slug}`}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
                       className="group block bg-gray-800/50 rounded-xl overflow-hidden hover:bg-gray-800/70 transition-all duration-300"
                     >
                       <img 
