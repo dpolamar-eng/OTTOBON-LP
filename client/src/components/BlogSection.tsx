@@ -65,7 +65,7 @@ const blogPosts: BlogPost[] = [
     category: 'AI Trends',
     date: '2024-01-03',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    slug: 'future-ai-data-labeling-trends'
+    slug: 'future-ai-data-labeling'
   }
 ];
 
