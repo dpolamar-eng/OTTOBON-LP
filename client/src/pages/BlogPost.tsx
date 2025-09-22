@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { useParams, Link } from 'wouter';
 import Header from '@/components/Header';
@@ -190,16 +191,23 @@ export default function BlogPost() {
     return (
       <div className="font-sans text-white bg-black min-h-screen">
         <Header />
-        <main className="pt-20 pb-16">
+        <main className="pt-24 pb-16">
           <div className="container mx-auto px-4 text-center">
-            <div className="max-w-md mx-auto">
-              <div className="text-6xl mb-6">📝</div>
-              <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-              <p className="text-gray-400 mb-8">The blog post you're looking for doesn't exist.</p>
+            <div className="max-w-md mx-auto bg-gray-900/50 backdrop-blur-md rounded-3xl p-12 border border-gray-800">
+              <div className="text-6xl mb-8 opacity-60">🔍</div>
+              <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
+                Article Not Found
+              </h1>
+              <p className="text-gray-400 mb-8 text-lg">
+                The article you're looking for doesn't exist or has been moved.
+              </p>
               <Link 
                 to="/#blog" 
-                className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
                 Back to Knowledge Hub
               </Link>
             </div>
@@ -216,87 +224,106 @@ export default function BlogPost() {
     <div className="font-sans text-white bg-black min-h-screen">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-8 relative overflow-hidden">
+      {/* Hero Section - Magazine Style */}
+      <section className="pt-24 md:pt-28 lg:pt-32 xl:pt-40 pb-16 relative overflow-hidden">
+        {/* Dynamic Background */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={post.image} 
-            alt={post.title}
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/30 via-purple-900/20 to-pink-900/30"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          {/* Breadcrumb */}
-          <nav className="mb-8">
-            <div className="flex items-center text-sm text-gray-400">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <span className="mx-2">/</span>
-              <Link to="/#blog" className="hover:text-white transition-colors">Knowledge Hub</Link>
-              <span className="mx-2">/</span>
-              <span className="text-white">{post.title}</span>
+          {/* Elegant Breadcrumb */}
+          <nav className="mb-12">
+            <div className="flex items-center text-sm bg-white/10 backdrop-blur-md rounded-full px-6 py-3 w-fit border border-white/20">
+              <Link to="/" className="text-gray-300 hover:text-white transition-colors font-medium">Home</Link>
+              <svg className="w-4 h-4 mx-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <Link to="/#blog" className="text-gray-300 hover:text-white transition-colors font-medium">Knowledge Hub</Link>
+              <svg className="w-4 h-4 mx-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span className="text-white font-medium">{post.title}</span>
             </div>
           </nav>
           
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center mb-4 bg-indigo-500/20 px-4 py-2 rounded-full">
-              <span className="text-indigo-300 font-medium text-sm uppercase tracking-wider">{post.category}</span>
-            </div>
-            
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-              {post.title}
-            </h1>
-            
-            <div className="flex items-center justify-center space-x-6 text-gray-300 mb-8">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white font-bold">O</span>
+          <div className="max-w-5xl mx-auto">
+            {/* Article Header Card */}
+            <div className="bg-gradient-to-r from-gray-900/80 via-gray-800/80 to-gray-900/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-700/50 shadow-2xl mb-12">
+              {/* Category Badge */}
+              <div className="inline-flex items-center mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-2 rounded-full shadow-lg">
+                <span className="text-white font-semibold text-sm uppercase tracking-wider">{post.category}</span>
+              </div>
+              
+              {/* Title */}
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+                {post.title}
+              </h1>
+              
+              {/* Meta Information */}
+              <div className="flex flex-wrap items-center gap-6 text-gray-300 mb-8">
+                <div className="flex items-center bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mr-3 shadow-lg">
+                    <span className="text-white font-bold text-lg">O</span>
+                  </div>
+                  <span className="font-medium">{post.author}</span>
                 </div>
-                <span>{post.author}</span>
+                <div className="flex items-center bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
+                  <svg className="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="font-medium">
+                    {new Date(post.date).toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
+                  </span>
+                </div>
+                <div className="flex items-center bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
+                  <svg className="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="font-medium">{post.readTime}</span>
+                </div>
               </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                {new Date(post.date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}
-              </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {post.readTime}
-              </div>
+            </div>
+
+            {/* Featured Image */}
+            <div className="mb-12 relative overflow-hidden rounded-3xl shadow-2xl">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                className="w-full h-64 md:h-80 lg:h-96 object-cover transform hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Content */}
-      <main className="pb-16 pt-8">
+      {/* Content Section */}
+      <main className="pb-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Article Content */}
-            <article className="prose prose-lg prose-invert max-w-none mb-12">
+            <article className="bg-gradient-to-br from-gray-900/50 via-gray-800/30 to-gray-900/50 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-700/50 shadow-2xl mb-16">
               <div 
                 dangerouslySetInnerHTML={{ __html: post.content }}
-                className="blog-content enhanced-content"
+                className="blog-content-modern prose prose-xl prose-invert max-w-none"
               />
             </article>
 
-            
-
-            {/* Back to Blog */}
-            <div className="text-center mb-12">
+            {/* Navigation */}
+            <div className="flex justify-center mb-16">
               <Link 
                 to="/#blog" 
-                className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-gray-600"
               >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
                 Back to Knowledge Hub
@@ -305,28 +332,47 @@ export default function BlogPost() {
 
             {/* Related Articles */}
             {related.length > 0 && (
-              <section className="border-t border-gray-800 pt-12">
-                <h2 className="text-2xl font-bold mb-8">Related Articles</h2>
+              <section className="mb-16">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                    Continue Reading
+                  </h2>
+                  <p className="text-gray-400 text-lg">Discover more insights and knowledge</p>
+                </div>
+                
                 <div className="grid md:grid-cols-2 gap-8">
                   {related.map((relatedPost) => (
                     <Link 
                       key={relatedPost.id}
                       to={`/blog/${relatedPost.slug}`}
-                      className="group block bg-gray-800/50 rounded-xl overflow-hidden hover:bg-gray-800/70 transition-all duration-300"
+                      className="group block bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-xl rounded-2xl overflow-hidden hover:from-gray-800/80 hover:to-gray-700/80 transition-all duration-500 transform hover:scale-105 border border-gray-700/50 shadow-xl hover:shadow-2xl"
                     >
-                      <img 
-                        src={relatedPost.image} 
-                        alt={relatedPost.title}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={relatedPost.image} 
+                          alt={relatedPost.title}
+                          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div className="absolute top-4 left-4">
+                          <span className="inline-block bg-indigo-600/90 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                            {relatedPost.category}
+                          </span>
+                        </div>
+                      </div>
                       <div className="p-6">
-                        <div className="text-indigo-400 text-sm mb-2">{relatedPost.category}</div>
-                        <h3 className="text-xl font-bold mb-3 group-hover:text-indigo-300 transition-colors">
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-indigo-300 transition-colors leading-tight">
                           {relatedPost.title}
                         </h3>
-                        <p className="text-gray-400 text-sm line-clamp-2">
+                        <p className="text-gray-400 text-sm line-clamp-2 mb-4">
                           {relatedPost.excerpt}
                         </p>
+                        <div className="flex items-center text-indigo-400 group-hover:text-indigo-300 font-medium text-sm">
+                          Read Article
+                          <svg className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </div>
                       </div>
                     </Link>
                   ))}
@@ -337,22 +383,32 @@ export default function BlogPost() {
         </div>
       </main>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-indigo-900/50 to-purple-900/50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your AI Journey?</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of students who have transformed their careers with Ottobon's comprehensive AI programs.
-          </p>
-          <Link 
-            to="/#courses" 
-            className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors text-lg"
-          >
-            Explore Our Courses
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+      {/* Enhanced CTA Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/50 via-purple-900/50 to-pink-900/50"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/20 shadow-2xl">
+              <div className="text-5xl mb-6">🚀</div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Ready to Transform Your Future?
+              </h2>
+              <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Join thousands of learners who have transformed their careers with Ottobon's cutting-edge AI programs and expert mentorship.
+              </p>
+              <Link 
+                to="/#courses" 
+                className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl text-lg"
+              >
+                Start Your Journey Today
+                <svg className="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
