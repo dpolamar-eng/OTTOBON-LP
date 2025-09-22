@@ -36,6 +36,9 @@ export default function Header() {
           {/* Logo - Responsive sizing */}
           <Link
             href="/"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="flex items-center group flex-shrink-0"
           >
             <img
