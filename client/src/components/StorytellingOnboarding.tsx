@@ -766,19 +766,19 @@ export default function StorytellingOnboarding() {
                     {/* Choice options */}
                     {currentSegment.choices && currentSegment.choices.length > 0 && !isTyping && (
                       <div className="space-y-3 mt-6">
-                        <h4 className="text-sm font-medium text-gray-500">Choose your response:</h4>
+                        <h4 className="text-sm font-medium text-gray-800">Choose your response:</h4>
                         {currentSegment.choices.map((choice) => (
                           <button
                             key={choice.id}
                             onClick={() => makeChoice(choice)}
-                            className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-200 transition flex items-center"
+                            className="w-full text-left p-3 border border-gray-300 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition flex items-center text-gray-800 hover:text-gray-900"
                           >
                             <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mr-3 flex-shrink-0">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                               </svg>
                             </span>
-                            <span>{choice.text}</span>
+                            <span className="font-medium">{choice.text}</span>
                           </button>
                         ))}
                       </div>
