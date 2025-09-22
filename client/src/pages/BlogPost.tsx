@@ -228,17 +228,6 @@ export default function BlogPost() {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          {/* Breadcrumb */}
-          <nav className="mb-8">
-            <div className="flex items-center text-sm text-gray-400">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <span className="mx-2">/</span>
-              <Link to="/#blog" className="hover:text-white transition-colors">Knowledge Hub</Link>
-              <span className="mx-2">/</span>
-              <span className="text-white">{post.title}</span>
-            </div>
-          </nav>
-          
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center mb-4 bg-indigo-500/20 px-4 py-2 rounded-full">
               <span className="text-indigo-300 font-medium text-sm uppercase tracking-wider">{post.category}</span>
@@ -247,31 +236,6 @@ export default function BlogPost() {
             <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
               {post.title}
             </h1>
-            
-            <div className="flex items-center justify-center space-x-6 text-gray-300 mb-8">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white font-bold">O</span>
-                </div>
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                {new Date(post.date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}
-              </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {post.readTime}
-              </div>
-            </div>
           </div>
         </div>
       </section>
