@@ -526,9 +526,6 @@ export default function BlogPost() {
           </div>
         </div>
       </main>
-
-
-
       </div>
   );
 }
