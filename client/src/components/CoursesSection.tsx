@@ -361,12 +361,24 @@ export default function CoursesSection() {
           </h2>
           <p
             ref={descriptionRef}
-            className="text-center text-blue-100 max-w-2xl mx-auto mb-8 text-lg"
+            className="text-center text-blue-100 max-w-2xl mx-auto mb-4 text-lg"
           >
             Gain certification, industry recognition, and career advancement
             opportunities through our hands-on training programs focused on
             in-demand technical skills sought by leading employers.
           </p>
+          <div className="bg-blue-900/40 border border-blue-500/50 rounded-lg p-4 max-w-3xl mx-auto mb-8">
+            <div className="flex items-center justify-center mb-2">
+              <svg className="w-5 h-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 className="text-lg font-semibold text-blue-300">Course Availability</h3>
+            </div>
+            <p className="text-blue-100 text-center text-sm">
+              <span className="font-semibold text-green-400">AI for Web-developer</span> is now accepting applications. 
+              All other courses are <span className="font-semibold text-orange-400">coming soon</span> - join our waitlist to be notified when enrollment opens.
+            </p>
+          </div>
           <div className="fancy-divider"></div>
         </div>
 
@@ -480,9 +492,21 @@ export default function CoursesSection() {
                         </div>
                         <div className="p-6 flex flex-col h-2/5 bg-gray-800">
                           <div className="flex justify-between items-start mb-3">
-                            <h3 className="text-xl font-bold pr-2 leading-tight text-white">
-                              {course.title}
-                            </h3>
+                            <div className="flex flex-col pr-2">
+                              <h3 className="text-xl font-bold leading-tight text-white">
+                                {course.title}
+                              </h3>
+                              {course.id !== "ai-uiux" && (
+                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-400/30 mt-2 self-start">
+                                  Coming Soon
+                                </span>
+                              )}
+                              {course.id === "ai-uiux" && (
+                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-400/30 mt-2 self-start">
+                                  Enroll Now
+                                </span>
+                              )}
+                            </div>
                             <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0">
                               {course.id === "genai" && "🤖 "}
                               {course.id === "cloud" && "☁️ "}
@@ -857,29 +881,54 @@ export default function CoursesSection() {
                           </div>
 
                           <div className="mt-4 text-center">
-                            <a
-                              href="#talent-compass"
-                              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex"
-                            >
-                              <span className="relative z-10 flex items-center justify-center">
-                                Apply Now
-                                <svg
-                                  className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                  ></path>
-                                </svg>
-                              </span>
-                              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                            </a>
+                            {course.id === "ai-uiux" ? (
+                              <a
+                                href="#talent-compass"
+                                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex"
+                              >
+                                <span className="relative z-10 flex items-center justify-center">
+                                  Apply Now
+                                  <svg
+                                    className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    ></path>
+                                  </svg>
+                                </span>
+                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
+                              </a>
+                            ) : (
+                              <button
+                                disabled
+                                className="bg-gray-600 text-gray-400 font-semibold py-2 px-6 rounded-full cursor-not-allowed opacity-60 inline-flex items-center"
+                              >
+                                <span className="flex items-center justify-center">
+                                  Coming Soon
+                                  <svg
+                                    className="ml-1 w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                  </svg>
+                                </span>
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
