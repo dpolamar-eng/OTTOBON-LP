@@ -417,19 +417,19 @@ export default function CoursesSection() {
                     )}
                     
                     <div 
-                      className={`flip-card ${flippedCards[course.id] && course.isClickable ? 'flipped' : ''} group relative ${
+                      className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative ${
                         course.status === 'ready' ? 'transform hover:scale-105 transition-transform duration-300' : ''
                       } ${
                         course.status === 'coming-soon' ? 'opacity-70' : ''
                       } ${
                         course.status === 'ready' ? 'shadow-2xl shadow-indigo-500/20' : ''
                       }`}
-                      onClick={() => course.isClickable && toggleFlipCard(course.id)}
-                      onTouchStart={() => course.isClickable && setIsHovering(true)}
-                      onTouchEnd={() => course.isClickable && setIsHovering(false)}
-                      onMouseDown={() => course.isClickable && setIsHovering(true)}
-                      onMouseUp={() => course.isClickable && setIsHovering(false)}
-                      style={{ cursor: course.isClickable ? 'pointer' : 'default' }}
+                      onClick={() => toggleFlipCard(course.id)}
+                      onTouchStart={() => setIsHovering(true)}
+                      onTouchEnd={() => setIsHovering(false)}
+                      onMouseDown={() => setIsHovering(true)}
+                      onMouseUp={() => setIsHovering(false)}
+                      style={{ cursor: 'pointer' }}
                     >
                       {/* Coming Soon Overlay */}
                       {course.status === 'coming-soon' && (
@@ -442,7 +442,7 @@ export default function CoursesSection() {
                         </div>
                       )}
 
-                      <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] && course.isClickable ? 'flipped' : ''}`}>
+                      <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? 'flipped' : ''}`}>
                         {/* Card Front */}
                         <div className="flip-card-front">
                           <div className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 relative overflow-hidden`}>
@@ -480,9 +480,8 @@ export default function CoursesSection() {
                           </div>
                         </div>
 
-                        {/* Card Back - Only show for clickable cards */}
-                        {course.isClickable && (
-                          <div className="flip-card-back">
+                        {/* Card Back */}
+                        <div className="flip-card-back">
                             <div className="p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
                               <div className="flex justify-between items-start mb-4">
                                 <h3 className="text-xl font-bold flex items-center text-white">
@@ -571,22 +570,36 @@ export default function CoursesSection() {
                               </div>
 
                               <div className="mt-4 text-center">
-                                <a 
-                                  href="#talent-compass" 
-                                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex animate-pulse"
-                                >
-                                  <span className="relative z-10 flex items-center justify-center">
-                                    🚀 Apply Now - Limited Seats!
-                                    <svg className="ml-2 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                                    </svg>
-                                  </span>
-                                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                                </a>
+                                {course.status === 'ready' ? (
+                                  <a 
+                                    href="#talent-compass" 
+                                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex animate-pulse"
+                                  >
+                                    <span className="relative z-10 flex items-center justify-center">
+                                      🚀 Apply Now - Limited Seats!
+                                      <svg className="ml-2 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                      </svg>
+                                    </span>
+                                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
+                                  </a>
+                                ) : (
+                                  <button 
+                                    className="bg-gradient-to-r from-gray-600 to-gray-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md relative overflow-hidden group inline-flex cursor-not-allowed opacity-75"
+                                    disabled
+                                  >
+                                    <span className="relative z-10 flex items-center justify-center">
+                                      🚧 Coming Soon - Get Notified!
+                                      <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-5 5-5-5h5v-5"></path>
+                                      </svg>
+                                    </span>
+                                  </button>
+                                )}
                               </div>
                             </div>
                           </div>
-                        )}
+                        </div>
                       </div>
                     </div>
                   </div>
