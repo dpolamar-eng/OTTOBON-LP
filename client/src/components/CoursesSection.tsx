@@ -50,6 +50,26 @@ export default function CoursesSection() {
   // Courses data
   const courses: Course[] = [
     {
+      id: "ai-agent-development",
+      title: "AI Agent Development",
+      category: "Career Launch",
+      categoryLabel: "Agent Engineering",
+      color: "emerald-800",
+      bgColor: "emerald-100",
+      description:
+        "Build intelligent AI agents and autonomous systems using cutting-edge frameworks and NLP.",
+      outcomes: [
+        "Design conversational AI agents and chatbots",
+        "Build multi-agent systems and autonomous workflows",
+        "Implement advanced NLP and reasoning capabilities",
+        "Create scalable agent architectures for enterprises",
+      ],
+      logoUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png",
+      gradientFrom: "from-emerald-500",
+      gradientTo: "to-emerald-700",
+    },
+    {
       id: "ai-marketing",
       title: "AI in Marketing",
       category: "Career Launch",
@@ -86,26 +106,6 @@ export default function CoursesSection() {
       logoUrl: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png",
       gradientFrom: "from-indigo-500",
       gradientTo: "to-indigo-700",
-    },
-    {
-      id: "ai-agent-development",
-      title: "AI Agent Development",
-      category: "Career Launch",
-      categoryLabel: "Agent Engineering",
-      color: "emerald-800",
-      bgColor: "emerald-100",
-      description:
-        "Build intelligent AI agents and autonomous systems using cutting-edge frameworks and NLP.",
-      outcomes: [
-        "Design conversational AI agents and chatbots",
-        "Build multi-agent systems and autonomous workflows",
-        "Implement advanced NLP and reasoning capabilities",
-        "Create scalable agent architectures for enterprises",
-      ],
-      logoUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png",
-      gradientFrom: "from-emerald-500",
-      gradientTo: "to-emerald-700",
     },
     {
       id: "ai-data-labeling",
