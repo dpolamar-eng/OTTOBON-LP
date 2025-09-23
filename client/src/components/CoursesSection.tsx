@@ -40,7 +40,6 @@ interface Course {
   logoUrl: string;
   gradientFrom: string;
   gradientTo: string;
-  status?: 'ready-to-enroll' | 'coming-soon';
 }
 
 export default function CoursesSection() {
@@ -49,6 +48,24 @@ export default function CoursesSection() {
 
   // Courses data
   const courses: Course[] = [
+    {
+      id: 'ai-uiux',
+      title: 'AI for UI/UX Designer',
+      category: 'Career Launch',
+      categoryLabel: 'Design Intelligence',
+      color: 'indigo-800',
+      bgColor: 'indigo-100',
+      description: 'Integrate AI into UI/UX workflows for smarter, data-driven design and personalized user experiences.',
+      outcomes: [
+        'Master AI-driven design principles and tools',
+        'Build generative UI/UX prototyping systems',
+        'Apply AI to user research and testing workflows',
+        'Design adaptive, personalized interfaces'
+      ],
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',
+      gradientFrom: 'from-indigo-500',
+      gradientTo: 'to-indigo-700'
+    },
     {
       id: 'ai-marketing',
       title: 'AI in Marketing',
@@ -65,27 +82,7 @@ export default function CoursesSection() {
       ],
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
       gradientFrom: 'from-amber-500',
-      gradientTo: 'to-amber-700',
-      status: 'coming-soon'
-    },
-    {
-      id: 'ai-web-development',
-      title: 'AI for Web Development',
-      category: 'Career Launch',
-      categoryLabel: 'Development Intelligence',
-      color: 'indigo-800',
-      bgColor: 'indigo-100',
-      description: 'Master modern web development with AI-powered tools, frameworks, and automation for building responsive, intelligent websites.',
-      outcomes: [
-        'Build AI-enhanced web applications with modern frameworks',
-        'Implement intelligent user interfaces and interactions',
-        'Master AI-powered development tools and automation',
-        'Create responsive, adaptive web experiences'
-      ],
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',
-      gradientFrom: 'from-indigo-500',
-      gradientTo: 'to-indigo-700',
-      status: 'ready-to-enroll'
+      gradientTo: 'to-amber-700'
     },
     {
       id: 'ai-agent-development',
@@ -103,8 +100,7 @@ export default function CoursesSection() {
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png',
       gradientFrom: 'from-emerald-500',
-      gradientTo: 'to-emerald-700',
-      status: 'coming-soon'
+      gradientTo: 'to-emerald-700'
     },
     {
       id: 'ai-data-labeling',
@@ -122,8 +118,7 @@ export default function CoursesSection() {
       ],
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/512px-Jupyter_logo.svg.png',
       gradientFrom: 'from-pink-500',
-      gradientTo: 'to-pink-700',
-      status: 'coming-soon'
+      gradientTo: 'to-pink-700'
     },
     {
       id: 'resume-builder',
@@ -205,15 +200,12 @@ export default function CoursesSection() {
     ? courses 
     : courses.filter(course => course.category === activeFilter);
 
-  // Toggle flip card state - only allow for ready-to-enroll courses
+  // Toggle flip card state
   const toggleFlipCard = (courseId: string) => {
-    const course = filteredCourses.find(c => c.id === courseId);
-    if (course?.status !== 'coming-soon') {
-      setFlippedCards(prev => ({
-        ...prev,
-        [courseId]: !prev[courseId]
-      }));
-    }
+    setFlippedCards(prev => ({
+      ...prev,
+      [courseId]: !prev[courseId]
+    }));
   };
 
   // Responsive slide count function
@@ -393,35 +385,13 @@ export default function CoursesSection() {
                   className={`${filteredCourses.length === 1 ? 'w-full max-w-sm' : 'min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)]'} px-4 flex-shrink-0`}
                 >
                   <div 
-                    className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative
-                      ${course.status === 'coming-soon' ? 'opacity-70' : ''}
-                      ${course.status === 'ready-to-enroll' ? 'ring-2 ring-green-400 shadow-lg shadow-green-400/25' : ''}
-                      ${course.status === 'coming-soon' ? 'cursor-not-allowed' : 'cursor-pointer'}
-                    `}
+                    className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative`}
                     onClick={() => toggleFlipCard(course.id)}
-                    onTouchStart={() => course.status !== 'coming-soon' && setIsHovering(true)}
-                    onTouchEnd={() => course.status !== 'coming-soon' && setIsHovering(false)}
-                    onMouseDown={() => course.status !== 'coming-soon' && setIsHovering(true)}
-                    onMouseUp={() => course.status !== 'coming-soon' && setIsHovering(false)}
+                    onTouchStart={() => setIsHovering(true)}
+                    onTouchEnd={() => setIsHovering(false)}
+                    onMouseDown={() => setIsHovering(true)}
+                    onMouseUp={() => setIsHovering(false)}
                   >
-                    {/* Enrollment Status Badge */}
-                    {course.status === 'ready-to-enroll' && (
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-20">
-                        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
-                          🚀 READY TO ENROLL
-                        </div>
-                      </div>
-                    )}
-                    
-                    {course.status === 'coming-soon' && (
-                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50 rounded-xl">
-                        <div className="bg-gray-800 border border-gray-600 text-white px-6 py-3 rounded-lg text-center">
-                          <div className="text-2xl mb-2">⏳</div>
-                          <div className="font-bold text-sm">COMING SOON</div>
-                          <div className="text-xs text-gray-300 mt-1">Stay tuned for updates</div>
-                        </div>
-                      </div>
-                    )}
                     {/* No hover tooltip anymore */}
                     <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? 'flipped' : ''}`}>
                       {/* Card Front */}
@@ -439,7 +409,7 @@ export default function CoursesSection() {
                             <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
                           ) : (
                             <div className="relative z-10 text-white text-7xl">
-                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
+                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
                             </div>
                           )}
                         </div>
@@ -451,7 +421,7 @@ export default function CoursesSection() {
                               {course.id === 'cloud' && '☁️ '}
                               {course.id === 'data' && '📊 '}
                               {course.id === 'blockchain' && '🔗 '}
-                              {course.id === 'ai-web-development' && '💻 '}
+                              {course.id === 'ai-uiux' && '🎨 '}
                               {course.id === 'ai-marketing' && '📈 '}
                               {course.id === 'ai-agent-development' && '🤖 '}
                               {course.id === 'ai-data-labeling' && '🏷️ '}
@@ -471,7 +441,7 @@ export default function CoursesSection() {
                           <div className="flex justify-between items-start mb-4">
                             <h3 className="text-xl font-bold flex items-center text-white">
                               <span className="text-2xl mr-2">
-                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
+                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-uiux' ? '🎨' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
                               </span>
                               {course.title}
                             </h3>
