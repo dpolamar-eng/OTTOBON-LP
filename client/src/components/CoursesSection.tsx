@@ -482,121 +482,120 @@ export default function CoursesSection() {
 
                         {/* Card Back */}
                         <div className="flip-card-back">
-                            <div className="p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
-                              <div className="flex justify-between items-start mb-4">
-                                <h3 className="text-xl font-bold flex items-center text-white">
-                                  <span className="text-2xl mr-2">
-                                    {course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
-                                  </span>
-                                  {course.title}
-                                </h3>
-                                <button 
-                                  className="text-gray-400 hover:text-gray-200 bg-gray-700 rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:shadow transition"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleFlipCard(course.id);
-                                  }}
-                                >
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                          <div className="p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
+                            <div className="flex justify-between items-start mb-4">
+                              <h3 className="text-xl font-bold flex items-center text-white">
+                                <span className="text-2xl mr-2">
+                                  {course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
+                                </span>
+                                {course.title}
+                              </h3>
+                              <button 
+                                className="text-gray-400 hover:text-gray-200 bg-gray-700 rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:shadow transition"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleFlipCard(course.id);
+                                }}
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                              </button>
+                            </div>
+
+                            <div className="overflow-y-auto flex-1">
+                              <div className="bg-gray-700 p-4 rounded-lg mb-4">
+                                <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                   </svg>
-                                </button>
+                                  Key Outcomes
+                                </h4>
+                                <ul className="mb-1 space-y-2">
+                                  {course.outcomes.map((outcome, index) => (
+                                    <li key={index} className="flex items-start text-sm">
+                                      <span className="text-green-400 mr-2 mt-1">✓</span>
+                                      <span className="text-gray-200">{outcome}</span>
+                                    </li>
+                                  ))}
+                                </ul>
                               </div>
 
-                              <div className="overflow-y-auto flex-1">
-                                <div className="bg-gray-700 p-4 rounded-lg mb-4">
-                                  <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                              {/* Course specific content */}
+                              <div className="grid grid-cols-2 gap-4 mb-4">
+                                <div className="bg-gray-600 p-4 rounded-lg">
+                                  <h4 className="font-semibold mb-2 text-purple-300 flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                                      <line x1="3" y1="10" x2="21" y2="10"></line>
                                     </svg>
-                                    Key Outcomes
-                                  </h4>
-                                  <ul className="mb-1 space-y-2">
-                                    {course.outcomes.map((outcome, index) => (
-                                      <li key={index} className="flex items-start text-sm">
-                                        <span className="text-green-400 mr-2 mt-1">✓</span>
-                                        <span className="text-gray-200">{outcome}</span>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-
-                                {/* Course specific content */}
-                                <div className="grid grid-cols-2 gap-4 mb-4">
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-purple-300 flex items-center">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                                      </svg>
-                                      Duration
-                                    </h4>
-                                    <p className="text-gray-200 text-sm">
-                                      12-week immersive program
-                                    </p>
-                                  </div>
-
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-green-300 flex items-center">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                        <path d="M12 3v19M5 8h14M5 18h14"></path>
-                                      </svg>
-                                      Format
-                                    </h4>
-                                    <p className="text-gray-200 text-sm">
-                                      Hands-on projects with expert mentors
-                                    </p>
-                                  </div>
-                                </div>
-
-                                <div className="bg-gray-600 p-4 rounded-lg mb-4">
-                                  <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                      <path d="M20 7h-9"></path>
-                                      <path d="M14 17H5"></path>
-                                      <circle cx="17" cy="17" r="3"></circle>
-                                      <circle cx="7" cy="7" r="3"></circle>
-                                    </svg>
-                                    Career Opportunities
+                                    Duration
                                   </h4>
                                   <p className="text-gray-200 text-sm">
-                                    Graduates work as specialized consultants in top firms with excellent career advancement opportunities and competitive compensation packages.
+                                    12-week immersive program
+                                  </p>
+                                </div>
+
+                                <div className="bg-gray-600 p-4 rounded-lg">
+                                  <h4 className="font-semibold mb-2 text-green-300 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                      <path d="M12 3v19M5 8h14M5 18h14"></path>
+                                    </svg>
+                                    Format
+                                  </h4>
+                                  <p className="text-gray-200 text-sm">
+                                    Hands-on projects with expert mentors
                                   </p>
                                 </div>
                               </div>
 
-                              <div className="mt-4 text-center">
-                                {course.status === 'ready' ? (
-                                  <a 
-                                    href="#talent-compass" 
-                                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex animate-pulse"
-                                  >
-                                    <span className="relative z-10 flex items-center justify-center">
-                                      🚀 Apply Now - Limited Seats!
-                                      <svg className="ml-2 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                                      </svg>
-                                    </span>
-                                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                                  </a>
-                                ) : (
-                                  <button 
-                                    className="bg-gradient-to-r from-gray-600 to-gray-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md relative overflow-hidden group inline-flex cursor-not-allowed opacity-75"
-                                    disabled
-                                  >
-                                    <span className="relative z-10 flex items-center justify-center">
-                                      🚧 Coming Soon - Get Notified!
-                                      <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-5 5-5-5h5v-5"></path>
-                                      </svg>
-                                    </span>
-                                  </button>
-                                )}
+                              <div className="bg-gray-600 p-4 rounded-lg mb-4">
+                                <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                    <path d="M20 7h-9"></path>
+                                    <path d="M14 17H5"></path>
+                                    <circle cx="17" cy="17" r="3"></circle>
+                                    <circle cx="7" cy="7" r="3"></circle>
+                                  </svg>
+                                  Career Opportunities
+                                </h4>
+                                <p className="text-gray-200 text-sm">
+                                  Graduates work as specialized consultants in top firms with excellent career advancement opportunities and competitive compensation packages.
+                                </p>
                               </div>
+                            </div>
+
+                            <div className="mt-4 text-center">
+                              {course.status === 'ready' ? (
+                                <a 
+                                  href="#talent-compass" 
+                                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex animate-pulse"
+                                >
+                                  <span className="relative z-10 flex items-center justify-center">
+                                    🚀 Apply Now - Limited Seats!
+                                    <svg className="ml-2 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                  </span>
+                                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
+                                </a>
+                              ) : (
+                                <button 
+                                  className="bg-gradient-to-r from-gray-600 to-gray-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md relative overflow-hidden group inline-flex cursor-not-allowed opacity-75"
+                                  disabled
+                                >
+                                  <span className="relative z-10 flex items-center justify-center">
+                                    🚧 Coming Soon - Get Notified!
+                                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-5 5-5-5h5v-5"></path>
+                                    </svg>
+                                  </span>
+                                </button>
+                              )}
                             </div>
                           </div>
                         </div>
