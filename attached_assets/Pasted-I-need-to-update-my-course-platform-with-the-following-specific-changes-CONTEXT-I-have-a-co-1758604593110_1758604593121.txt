@@ -1,0 +1,52 @@
+I need to update my course platform with the following specific changes:
+
+**CONTEXT**: I have a course carousel with 3 cards - "AI for UI/UX Designer", "AI in Marketing", and "AI Agent Development". Each card has flip functionality that shows course details and an "Apply Now" button on the back.
+
+**SPECIFIC REQUIREMENTS**:
+
+1. **Update First Course Card (Position & Content)**:
+   - Change the card title from "AI for UI/UX Designer" to "AI for Web Development"
+   - Change the subtitle from "Design Intelligence" to "Development Intelligence"
+   - Update the description to: "Master modern web development with AI-powered tools, frameworks, and automation for building responsive, intelligent websites."
+   - Keep the same purple gradient background and briefcase icon
+   - This should remain as the FIRST card in the carousel
+
+2. **Reorder Cards (Swap Positions)**:
+   - Move the current "AI in Marketing" card to position 1 (first position)
+   - Move the updated "AI for Web Development" card to position 2 (second position)
+   - Keep "AI Agent Development" in position 3 (third position)
+
+3. **Add Enrollment Status Indicators**:
+   - **"AI for Web Development" card ONLY**: Add a green "READY TO ENROLL" badge/indicator at the top
+   - **All other cards ("AI in Marketing" & "AI Agent Development")**: Add "COMING SOON" overlay/badge
+   - Coming soon cards should have reduced opacity (70%) to indicate unavailability
+   - Disable flip functionality for coming soon cards (they should not be clickable)
+
+4. **Update Card Flip Functionality**:
+   - **Active card (AI for Web Development)**: Keep flip animation and show detailed course content with "Apply Now" button
+   - **Coming soon cards**: Remove flip animation, show static front face only
+   - Ensure flip animation remains smooth (0.5s transition) for the active card
+
+5. **Visual Indicators**:
+   - Add a subtle shadow/glow effect around the "Ready to Enroll" card to make it stand out
+   - Coming soon cards should have a semi-transparent overlay with "COMING SOON" text
+   - Maintain current card dimensions and carousel navigation
+
+**TECHNICAL REQUIREMENTS**:
+- Keep existing CSS flip card animations for the active course
+- Maintain responsive design across all screen sizes
+- Preserve current color scheme and typography
+- Keep carousel navigation arrows functional
+- Ensure accessibility standards are maintained
+
+**EXPECTED OUTCOME**:
+After implementation:
+- Users will clearly see only "AI for Web Development" is available for enrollment
+- The card order will be: "AI in Marketing", "AI for Web Development", "AI Agent Development"
+- Only the middle card (AI for Web Development) will be interactive and flippable
+- Other cards will be visually marked as "Coming Soon"
+
+Please implement these changes step by step and test the flip functionality before finalizing.
+
+Make changes like a professional UI/UX designer
+Our goal is to get as enrollments as possible. 
