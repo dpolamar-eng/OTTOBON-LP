@@ -45,26 +45,27 @@ export default function MethodologySection() {
             }}
           >
             <div className="flip-card-inner" style={{boxShadow: 'none'}}>
-              <div className="flip-card-front bg-gray-800/90 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50">
-                <div className="h-2/5 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
+              <div className="flip-card-front bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm rounded-lg overflow-hidden border border-blue-500/30 shadow-2xl">
+                <div className="h-2/5 bg-gradient-to-r from-blue-600 to-blue-800 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
                     alt="Team collaboration" 
-                    className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover opacity-70 transition-transform duration-300 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-                <div className="bg-gray-800/90 backdrop-blur-sm p-6 h-3/5 flex flex-col">
-                  <div className="text-blue-400 text-3xl mb-4 flex justify-center">
+                <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm p-6 h-3/5 flex flex-col border-t border-blue-500/20">
+                  <div className="text-blue-400 text-3xl mb-4 flex justify-center drop-shadow-lg">
                     <i className="fas fa-users"></i>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-center text-white">Human-Centered Excellence</h3>
-                  <p className="text-gray-300 text-center">
+                  <h3 className="text-xl font-bold mb-3 text-center text-white drop-shadow-sm">Human-Centered Excellence</h3>
+                  <p className="text-gray-200 text-center leading-relaxed">
                     Technical expertise must be paired with exceptional communication, adaptability, and emotional intelligence.
                   </p>
                 </div>
               </div>
 
-              <div className="flip-card-back bg-gray-800/90 backdrop-blur-sm rounded-lg border border-gray-700/50">
+              <div className="flip-card-back bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm rounded-lg border border-blue-500/30 shadow-2xl">
                 <div className="h-full p-6 flex flex-col">
                   <div className="mb-4">
                     <h3 className="text-xl font-bold flex items-center text-white">
@@ -127,26 +128,27 @@ export default function MethodologySection() {
             }}
           >
             <div className="flip-card-inner" style={{boxShadow: 'none'}}>
-              <div className="flip-card-front bg-gray-800/90 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50">
-                <div className="h-2/5 bg-gradient-to-r from-blue-500 to-blue-700 relative overflow-hidden">
+              <div className="flip-card-front bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm rounded-lg overflow-hidden border border-blue-500/30 shadow-2xl">
+                <div className="h-2/5 bg-gradient-to-r from-blue-600 to-blue-800 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=600&q=80" 
                     alt="Industry analysis" 
-                    className="w-full h-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover opacity-70 transition-transform duration-300 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-                <div className="bg-gray-800/90 backdrop-blur-sm p-6 h-3/5 flex flex-col">
-                  <div className="text-blue-400 text-3xl mb-4 flex justify-center">
+                <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm p-6 h-3/5 flex flex-col border-t border-blue-500/20">
+                  <div className="text-blue-400 text-3xl mb-4 flex justify-center drop-shadow-lg">
                     <i className="fas fa-chart-line"></i>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-center text-white">Business & Industry Mastery</h3>
-                  <p className="text-gray-300 text-center">
+                  <h3 className="text-xl font-bold mb-3 text-center text-white drop-shadow-sm">Business & Industry Mastery</h3>
+                  <p className="text-gray-200 text-center leading-relaxed">
                     Technology solutions exist to solve business problems. Our curriculum emphasizes context and industry-specific challenges.
                   </p>
                 </div>
               </div>
 
-              <div className="flip-card-back bg-gray-800/90 backdrop-blur-sm rounded-lg border border-gray-700/50">
+              <div className="flip-card-back bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm rounded-lg border border-blue-500/30 shadow-2xl">
                 <div className="p-6 h-full flex flex-col">
                   <div className="mb-4">
                     <h3 className="text-xl font-bold flex items-center text-white">
@@ -203,26 +205,27 @@ export default function MethodologySection() {
             }}
           >
             <div className="flip-card-inner" style={{boxShadow: 'none'}}>
-              <div className="flip-card-front bg-gray-800/90 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50">
-                <div className="h-2/5 bg-gradient-to-r from-purple-500 to-purple-700 relative overflow-hidden">
+              <div className="flip-card-front bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm rounded-lg overflow-hidden border border-purple-500/30 shadow-2xl">
+                <div className="h-2/5 bg-gradient-to-r from-purple-600 to-purple-800 relative overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" 
                     alt="Technical development" 
-                    className="w-full h-full object-cover opacity-75 transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover opacity-70 transition-transform duration-300 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-                <div className="bg-gray-800/90 backdrop-blur-sm p-6 h-3/5 flex flex-col">
-                  <div className="text-purple-400 text-3xl mb-4 flex justify-center">
+                <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm p-6 h-3/5 flex flex-col border-t border-purple-500/20">
+                  <div className="text-purple-400 text-3xl mb-4 flex justify-center drop-shadow-lg">
                     <i className="fas fa-code"></i>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-center text-white">Technical Acceleration</h3>
-                  <p className="text-gray-300 text-center">
+                  <h3 className="text-xl font-bold mb-3 text-center text-white drop-shadow-sm">Technical Acceleration</h3>
+                  <p className="text-gray-200 text-center leading-relaxed">
                     Build robust technical foundations across high-demand domains through our accelerated, hands-on approach.
                   </p>
                 </div>
               </div>
 
-              <div className="flip-card-back bg-gray-800/90 backdrop-blur-sm rounded-lg border border-gray-700/50">
+              <div className="flip-card-back bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-sm rounded-lg border border-purple-500/30 shadow-2xl">
                 <div className="p-6 h-full flex flex-col">
                   <div className="mb-4">
                     <h3 className="text-xl font-bold flex items-center text-white">
