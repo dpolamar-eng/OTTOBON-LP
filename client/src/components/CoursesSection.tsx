@@ -50,7 +50,7 @@ export default function CoursesSection() {
   const courses: Course[] = [
     {
       id: 'ai-uiux',
-      title: 'AI for UI/UX Designer',
+      title: 'AI for Web-developer',
       category: 'Career Launch',
       categoryLabel: 'Design Intelligence',
       color: 'indigo-800',
