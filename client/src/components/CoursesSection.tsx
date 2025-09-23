@@ -417,14 +417,14 @@ export default function CoursesSection() {
                     )}
                     
                     <div 
-                      className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative ${
+                      className={`flip-card ${flippedCards[course.id] && course.isClickable ? 'flipped' : ''} group relative ${
                         course.status === 'ready' ? 'transform hover:scale-105 transition-transform duration-300' : ''
                       } ${
                         course.status === 'coming-soon' ? 'opacity-70' : ''
                       } ${
                         course.status === 'ready' ? 'shadow-2xl shadow-indigo-500/20' : ''
                       }`}
-                      onClick={() => toggleFlipCard(course.id)}
+                      onClick={() => course.isClickable && toggleFlipCard(course.id)}
                       onTouchStart={() => course.isClickable && setIsHovering(true)}
                       onTouchEnd={() => course.isClickable && setIsHovering(false)}
                       onMouseDown={() => course.isClickable && setIsHovering(true)}
@@ -433,12 +433,11 @@ export default function CoursesSection() {
                     >
                       {/* Coming Soon Overlay */}
                       {course.status === 'coming-soon' && (
-                        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm rounded-lg z-10 flex items-center justify-center">
+                        <div className="absolute top-0 left-0 right-0 bg-black/60 backdrop-blur-sm rounded-t-lg z-10 flex items-center justify-center py-2">
                           <div className="text-center">
-                            <div className="bg-gray-800/90 text-white px-6 py-3 rounded-full border border-gray-600">
-                              <span className="text-lg font-bold">🚧 COMING SOON</span>
+                            <div className="bg-gray-800/90 text-white px-4 py-1 rounded-full border border-gray-600">
+                              <span className="text-sm font-bold">🚧 COMING SOON</span>
                             </div>
-                            <p className="text-gray-300 text-sm mt-2 font-medium">Get notified when available</p>
                           </div>
                         </div>
                       )}
