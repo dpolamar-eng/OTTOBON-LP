@@ -447,7 +447,7 @@ export default function CoursesSection() {
                   >
                     {/* No hover tooltip anymore */}
                     <div
-                      className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? "flipped" : ""}`}
+                      className={`flip-card-inner ${flippedCards[course.id] ? "flipped" : ""}`}
                     >
                       {/* Card Front */}
                       <div className="flip-card-front">
