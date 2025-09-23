@@ -43,7 +43,7 @@ I need to update my course platform with the following specific changes:
 After implementation:
 - Users will clearly see only "AI for Web Development" is available for enrollment
 - The card order will be: "AI in Marketing", "AI for Web Development", "AI Agent Development"
-- Only the middle card (AI for Web Development) will be interactive and flappable
+- Only the middle card (AI for Web Development) will be interactive and flippable
 - Other cards will be visually marked as "Coming Soon"
 
 Please implement these changes step by step and test the flip functionality before finalizing.

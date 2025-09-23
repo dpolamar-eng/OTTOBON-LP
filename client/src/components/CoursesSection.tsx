@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useAnimation, useStaggeredAnimation } from '@/hooks/use-animation';
@@ -41,15 +40,14 @@ interface Course {
   logoUrl: string;
   gradientFrom: string;
   gradientTo: string;
-  status: 'ready' | 'coming-soon';
-  isClickable: boolean;
+  status?: 'ready-to-enroll' | 'coming-soon';
 }
 
 export default function CoursesSection() {
   const [activeFilter, setActiveFilter] = useState<CourseCategory>('Career Launch');
   const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
 
-  // Courses data - reordered with AI Marketing first, AI Web Development second, AI Agent Development third
+  // Courses data - Reordered as requested
   const courses: Course[] = [
     {
       id: 'ai-marketing',
@@ -68,8 +66,7 @@ export default function CoursesSection() {
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
       gradientFrom: 'from-amber-500',
       gradientTo: 'to-amber-700',
-      status: 'coming-soon',
-      isClickable: false
+      status: 'coming-soon'
     },
     {
       id: 'ai-web-development',
@@ -81,15 +78,14 @@ export default function CoursesSection() {
       description: 'Master modern web development with AI-powered tools, frameworks, and automation for building responsive, intelligent websites.',
       outcomes: [
         'Build AI-enhanced web applications with modern frameworks',
+        'Implement intelligent user interfaces and interactions',
         'Master AI-powered development tools and automation',
-        'Implement intelligent features like chatbots and personalization',
-        'Deploy scalable, responsive websites with AI integrations'
+        'Create responsive, adaptive web experiences'
       ],
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',
       gradientFrom: 'from-indigo-500',
       gradientTo: 'to-indigo-700',
-      status: 'ready',
-      isClickable: true
+      status: 'ready-to-enroll'
     },
     {
       id: 'ai-agent-development',
@@ -108,8 +104,7 @@ export default function CoursesSection() {
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png',
       gradientFrom: 'from-emerald-500',
       gradientTo: 'to-emerald-700',
-      status: 'coming-soon',
-      isClickable: false
+      status: 'coming-soon'
     },
     {
       id: 'ai-data-labeling',
@@ -128,8 +123,7 @@ export default function CoursesSection() {
       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/512px-Jupyter_logo.svg.png',
       gradientFrom: 'from-pink-500',
       gradientTo: 'to-pink-700',
-      status: 'coming-soon',
-      isClickable: false
+      status: 'coming-soon'
     },
     {
       id: 'resume-builder',
@@ -147,9 +141,7 @@ export default function CoursesSection() {
       ],
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
       gradientFrom: 'from-blue-500',
-      gradientTo: 'to-blue-700',
-      status: 'coming-soon',
-      isClickable: false
+      gradientTo: 'to-blue-700'
     },
     {
       id: 'job-matching',
@@ -167,9 +159,7 @@ export default function CoursesSection() {
       ],
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/2920/2920277.png',
       gradientFrom: 'from-green-500',
-      gradientTo: 'to-green-700',
-      status: 'coming-soon',
-      isClickable: false
+      gradientTo: 'to-green-700'
     },
     {
       id: 'mock-interviews',
@@ -187,9 +177,7 @@ export default function CoursesSection() {
       ],
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',
       gradientFrom: 'from-purple-500',
-      gradientTo: 'to-purple-700',
-      status: 'coming-soon',
-      isClickable: false
+      gradientTo: 'to-purple-700'
     },
     {
       id: 'expert-app',
@@ -208,9 +196,7 @@ export default function CoursesSection() {
       ],
       logoUrl: 'https://cdn-icons-png.flaticon.com/512/4712/4712038.png',
       gradientFrom: 'from-teal-500',
-      gradientTo: 'to-teal-700',
-      status: 'coming-soon',
-      isClickable: false
+      gradientTo: 'to-teal-700'
     }
   ];
 
@@ -219,10 +205,10 @@ export default function CoursesSection() {
     ? courses 
     : courses.filter(course => course.category === activeFilter);
 
-  // Toggle flip card state - only for clickable cards
+  // Toggle flip card state - only allow for ready-to-enroll courses
   const toggleFlipCard = (courseId: string) => {
     const course = filteredCourses.find(c => c.id === courseId);
-    if (course && course.isClickable) {
+    if (course?.status !== 'coming-soon') {
       setFlippedCards(prev => ({
         ...prev,
         [courseId]: !prev[courseId]
@@ -406,125 +392,129 @@ export default function CoursesSection() {
                   key={course.id}
                   className={`${filteredCourses.length === 1 ? 'w-full max-w-sm' : 'min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)]'} px-4 flex-shrink-0`}
                 >
-                  <div className="relative">
-                    {/* Status Badge */}
-                    {course.status === 'ready' && (
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-20">
-                        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg animate-pulse">
-                          ✓ Ready to Enroll
+                  <div 
+                    className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative h-[400px]
+                      ${course.status === 'coming-soon' ? 'opacity-80' : ''}
+                      ${course.status === 'ready-to-enroll' ? 'ring-2 ring-green-400 shadow-lg shadow-green-400/25' : ''}
+                      ${course.status === 'coming-soon' ? 'cursor-not-allowed' : 'cursor-pointer'}
+                    `}
+                    onClick={() => toggleFlipCard(course.id)}
+                    onTouchStart={() => course.status !== 'coming-soon' && setIsHovering(true)}
+                    onTouchEnd={() => course.status !== 'coming-soon' && setIsHovering(false)}
+                    onMouseDown={() => course.status !== 'coming-soon' && setIsHovering(true)}
+                    onMouseUp={() => course.status !== 'coming-soon' && setIsHovering(false)}
+                  >
+                    {/* Enrollment Status Badge - Better positioning */}
+                    {course.status === 'ready-to-enroll' && (
+                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-30">
+                        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-xl border-2 border-white">
+                          <span className="flex items-center gap-1">
+                            <span className="animate-pulse">🚀</span>
+                            READY TO ENROLL
+                          </span>
                         </div>
                       </div>
                     )}
                     
-                    <div 
-                      className={`flip-card ${flippedCards[course.id] && course.isClickable ? 'flipped' : ''} group relative ${
-                        course.status === 'ready' ? 'transform hover:scale-105 transition-transform duration-300' : ''
-                      } ${
-                        course.status === 'coming-soon' ? 'opacity-70' : ''
-                      } ${
-                        course.status === 'ready' ? 'shadow-2xl shadow-indigo-500/20' : ''
-                      }`}
-                      onClick={() => course.isClickable && toggleFlipCard(course.id)}
-                      onTouchStart={() => course.isClickable && setIsHovering(true)}
-                      onTouchEnd={() => course.isClickable && setIsHovering(false)}
-                      onMouseDown={() => course.isClickable && setIsHovering(true)}
-                      onMouseUp={() => course.isClickable && setIsHovering(false)}
-                      style={{ cursor: course.isClickable ? 'pointer' : 'default' }}
-                    >
-                      {/* Coming Soon Overlay */}
-                      {course.status === 'coming-soon' && (
-                        <div className="absolute top-0 left-0 right-0 bg-black/60 backdrop-blur-sm rounded-t-lg z-10 flex items-center justify-center py-2">
-                          <div className="text-center">
-                            <div className="bg-gray-800/90 text-white px-4 py-1 rounded-full border border-gray-600">
-                              <span className="text-sm font-bold">🚧 COMING SOON</span>
-                            </div>
-                          </div>
+                    {/* Coming Soon Overlay - Improved styling */}
+                    {course.status === 'coming-soon' && (
+                      <div className="absolute inset-0 z-20 flex items-center justify-center bg-gray-900 bg-opacity-75 rounded-xl backdrop-blur-sm">
+                        <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 text-white px-6 py-4 rounded-xl text-center shadow-2xl">
+                          <div className="text-3xl mb-2 animate-bounce">⏳</div>
+                          <div className="font-bold text-sm mb-1">COMING SOON</div>
+                          <div className="text-xs text-gray-400">Stay tuned for updates</div>
                         </div>
-                      )}
-
-                      <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] && course.isClickable ? 'flipped' : ''}`}>
-                        {/* Card Front */}
-                        <div className="flip-card-front">
-                          <div className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 relative overflow-hidden`}>
-                            {/* Decorative elements */}
-                            <div className="absolute top-0 left-0 w-full h-full">
-                              <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 rounded-full"></div>
-                              <div className="absolute bottom-12 right-8 w-20 h-20 bg-white/10 rounded-full"></div>
-                              <div className="absolute top-1/3 right-1/4 w-12 h-12 bg-white/10 rounded-full"></div>
-                              <div className="bg-grid-pattern opacity-20 absolute inset-0"></div>
-                            </div>
-
-                            {course.logoUrl ? (
-                              <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
-                            ) : (
-                              <div className="relative z-10 text-white text-7xl">
-                                {course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
-                              </div>
-                            )}
+                      </div>
+                    )}
+                    {/* Flip card inner container */}
+                    <div className={`flip-card-inner shadow-xl h-full ${flippedCards[course.id] ? 'flipped' : ''}`}>
+                      {/* Card Front */}
+                      <div className="flip-card-front">
+                        <div className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 relative overflow-hidden`}>
+                          {/* Decorative elements */}
+                          <div className="absolute top-0 left-0 w-full h-full">
+                            <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 rounded-full"></div>
+                            <div className="absolute bottom-12 right-8 w-20 h-20 bg-white/10 rounded-full"></div>
+                            <div className="absolute top-1/3 right-1/4 w-12 h-12 bg-white/10 rounded-full"></div>
+                            <div className="bg-grid-pattern opacity-20 absolute inset-0"></div>
                           </div>
-                          <div className="p-6 flex flex-col h-2/5 bg-gray-800">
-                            <div className="flex justify-between items-start mb-3">
-                              <h3 className="text-xl font-bold pr-2 leading-tight text-white">{course.title}</h3>
-                              <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0">
-                                {course.id === 'ai-web-development' && '💻 '}
-                                {course.id === 'ai-marketing' && '📈 '}
-                                {course.id === 'ai-agent-development' && '🤖 '}
-                                {course.id === 'ai-data-labeling' && '🏷️ '}
-                                {course.id === 'expert-app' && '🧠 '}
-                                {course.categoryLabel}
+
+                          {course.logoUrl ? (
+                            <img src={course.logoUrl} alt={course.title} className="h-24 max-w-full object-contain relative z-10" />
+                          ) : (
+                            <div className="relative z-10 text-white text-7xl">
+                              {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-6 flex flex-col h-2/5 bg-gray-800">
+                          <div className="flex justify-between items-start mb-3">
+                            <h3 className="text-xl font-bold pr-2 leading-tight text-white">{course.title}</h3>
+                            <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0">
+                              {course.id === 'genai' && '🤖 '}
+                              {course.id === 'cloud' && '☁️ '}
+                              {course.id === 'data' && '📊 '}
+                              {course.id === 'blockchain' && '🔗 '}
+                              {course.id === 'ai-web-development' && '💻 '}
+                              {course.id === 'ai-marketing' && '📈 '}
+                              {course.id === 'ai-agent-development' && '🤖 '}
+                              {course.id === 'ai-data-labeling' && '🏷️ '}
+                              {course.id === 'expert-app' && '🧠 '}
+                              {course.categoryLabel}
+                            </span>
+                          </div>
+                          <p className="text-gray-300 text-sm font-medium leading-relaxed flex-1">
+                            {course.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Card Back */}
+                      <div className="flip-card-back">
+                        <div className="p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
+                          <div className="flex justify-between items-start mb-4">
+                            <h3 className="text-xl font-bold flex items-center text-white">
+                              <span className="text-2xl mr-2">
+                                {course.id === 'genai' ? '🤖' : course.id === 'cloud' ? '☁️' : course.id === 'data' ? '📊' : course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
                               </span>
-                            </div>
-                            <p className="text-gray-300 text-sm font-medium leading-relaxed flex-1">
-                              {course.description}
-                            </p>
+                              {course.title}
+                            </h3>
+                            <button 
+                              className="text-gray-400 hover:text-gray-200 bg-gray-700 rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:shadow transition"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleFlipCard(course.id);
+                              }}
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                              </svg>
+                            </button>
                           </div>
-                        </div>
 
-                        {/* Card Back - Only show for clickable cards */}
-                        {course.isClickable && (
-                          <div className="flip-card-back">
-                            <div className="p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
-                              <div className="flex justify-between items-start mb-4">
-                                <h3 className="text-xl font-bold flex items-center text-white">
-                                  <span className="text-2xl mr-2">
-                                    {course.id === 'ai-web-development' ? '💻' : course.id === 'ai-marketing' ? '📈' : course.id === 'ai-agent-development' ? '🤖' : course.id === 'ai-data-labeling' ? '🏷️' : course.id === 'expert-app' ? '🧠' : '💻'}
-                                  </span>
-                                  {course.title}
-                                </h3>
-                                <button 
-                                  className="text-gray-400 hover:text-gray-200 bg-gray-700 rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:shadow transition"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleFlipCard(course.id);
-                                  }}
-                                >
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                  </svg>
-                                </button>
-                              </div>
+                          <div className="overflow-y-auto flex-1">
+                            <div className="bg-gray-700 p-4 rounded-lg mb-4">
+                              <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                Key Outcomes
+                              </h4>
+                              <ul className="mb-1 space-y-2">
+                                {course.outcomes.map((outcome, index) => (
+                                  <li key={index} className="flex items-start text-sm">
+                                    <span className="text-green-400 mr-2 mt-1">✓</span>
+                                    <span className="text-gray-200">{outcome}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
 
-                              <div className="overflow-y-auto flex-1">
-                                <div className="bg-gray-700 p-4 rounded-lg mb-4">
-                                  <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                    </svg>
-                                    Key Outcomes
-                                  </h4>
-                                  <ul className="mb-1 space-y-2">
-                                    {course.outcomes.map((outcome, index) => (
-                                      <li key={index} className="flex items-start text-sm">
-                                        <span className="text-green-400 mr-2 mt-1">✓</span>
-                                        <span className="text-gray-200">{outcome}</span>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-
-                                {/* Course specific content */}
+                            {/* Conditional content based on course category */}
+                            {course.category === 'Career Launch' ? (
+                              <>
                                 <div className="grid grid-cols-2 gap-4 mb-4">
                                   <div className="bg-gray-600 p-4 rounded-lg">
                                     <h4 className="font-semibold mb-2 text-purple-300 flex items-center">
@@ -568,25 +558,113 @@ export default function CoursesSection() {
                                     Graduates work as specialized consultants in top firms with excellent career advancement opportunities and competitive compensation packages.
                                   </p>
                                 </div>
-                              </div>
+                              </>
+                            ) : course.category === 'Tech Edge' ? (
+                              <>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                  <div className="bg-gray-600 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                      </svg>
+                                      Instant Access
+                                    </h4>
+                                    <p className="text-gray-200 text-sm">
+                                      Available 24/7 with real-time processing
+                                    </p>
+                                  </div>
 
-                              <div className="mt-4 text-center">
-                                <a 
-                                  href="#talent-compass" 
-                                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex animate-pulse"
-                                >
-                                  <span className="relative z-10 flex items-center justify-center">
-                                    🚀 Apply Now - Limited Seats!
-                                    <svg className="ml-2 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                  <div className="bg-gray-600 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-green-300 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M9 12l2 2 4-4"></path>
+                                        <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                                        <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                                      </svg>
+                                      AI-Powered
+                                    </h4>
+                                    <p className="text-gray-200 text-sm">
+                                      Smart algorithms for best matches
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="bg-gray-600 p-4 rounded-lg mb-4">
+                                  <h4 className="font-semibold mb-2 text-purple-300 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                      <circle cx="8.5" cy="7" r="4"></circle>
+                                      <polyline points="17 11 19 13 23 9"></polyline>
                                     </svg>
-                                  </span>
-                                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                                </a>
-                              </div>
-                            </div>
+                                    Success Rate
+                                  </h4>
+                                  <p className="text-gray-200 text-sm">
+                                    93% of users find relevant opportunities within the first month of using our platform.
+                                  </p>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                  <div className="bg-gray-600 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-teal-300 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <path d="m21 2-1 1"></path>
+                                        <path d="m22 5-1-1"></path>
+                                        <path d="m21 6-1-1"></path>
+                                      </svg>
+                                      Expert Mentors
+                                    </h4>
+                                    <p className="text-gray-200 text-sm">
+                                      Industry professionals with 10+ years experience
+                                    </p>
+                                  </div>
+
+                                  <div className="bg-gray-600 p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-2 text-orange-300 flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                      </svg>
+                                      Personalized
+                                    </h4>
+                                    <p className="text-gray-200 text-sm">
+                                      Tailored guidance based on your goals
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="bg-gray-600 p-4 rounded-lg mb-4">
+                                  <h4 className="font-semibold mb-2 text-indigo-300 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                    Investment
+                                  </h4>
+                                  <p className="text-gray-200 text-sm">
+                                    Affordable monthly subscription with unlimited access to expert guidance and resources.
+                                  </p>
+                                </div>
+                              </>
+                            )}
                           </div>
-                        )}
+
+                          <div className="mt-4 text-center">
+                            <a 
+                              href="#talent-compass" 
+                              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex"
+                            >
+                              <span className="relative z-10 flex items-center justify-center">
+                                Apply Now
+                                <svg className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                              </span>
+                              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
