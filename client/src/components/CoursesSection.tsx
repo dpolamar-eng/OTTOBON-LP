@@ -50,25 +50,6 @@ export default function CoursesSection() {
   // Courses data
   const courses: Course[] = [
     {
-      id: "ai-uiux",
-      title: "AI for Web-developer",
-      category: "Career Launch",
-      categoryLabel: "Design Intelligence",
-      color: "indigo-800",
-      bgColor: "indigo-100",
-      description:
-        "Integrate AI into UI/UX workflows for smarter, data-driven design and personalized user experiences.",
-      outcomes: [
-        "Master AI-driven design principles and tools",
-        "Build generative UI/UX prototyping systems",
-        "Apply AI to user research and testing workflows",
-        "Design adaptive, personalized interfaces",
-      ],
-      logoUrl: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png",
-      gradientFrom: "from-indigo-500",
-      gradientTo: "to-indigo-700",
-    },
-    {
       id: "ai-marketing",
       title: "AI in Marketing",
       category: "Career Launch",
@@ -86,6 +67,25 @@ export default function CoursesSection() {
       logoUrl: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
       gradientFrom: "from-amber-500",
       gradientTo: "to-amber-700",
+    },
+    {
+      id: "ai-uiux",
+      title: "AI for Web-developer",
+      category: "Career Launch",
+      categoryLabel: "Design Intelligence",
+      color: "indigo-800",
+      bgColor: "indigo-100",
+      description:
+        "Integrate AI into UI/UX workflows for smarter, data-driven design and personalized user experiences.",
+      outcomes: [
+        "Master AI-driven design principles and tools",
+        "Build generative UI/UX prototyping systems",
+        "Apply AI to user research and testing workflows",
+        "Design adaptive, personalized interfaces",
+      ],
+      logoUrl: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png",
+      gradientFrom: "from-indigo-500",
+      gradientTo: "to-indigo-700",
     },
     {
       id: "ai-agent-development",
