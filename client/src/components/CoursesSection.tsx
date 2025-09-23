@@ -47,7 +47,7 @@ export default function CoursesSection() {
   const [activeFilter, setActiveFilter] = useState<CourseCategory>('Career Launch');
   const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({});
 
-  // Courses data - Reordered as requested
+  // Courses data
   const courses: Course[] = [
     {
       id: 'ai-marketing',
@@ -393,8 +393,8 @@ export default function CoursesSection() {
                   className={`${filteredCourses.length === 1 ? 'w-full max-w-sm' : 'min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)]'} px-4 flex-shrink-0`}
                 >
                   <div 
-                    className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative h-[400px]
-                      ${course.status === 'coming-soon' ? 'opacity-80' : ''}
+                    className={`flip-card ${flippedCards[course.id] ? 'flipped' : ''} group relative
+                      ${course.status === 'coming-soon' ? 'opacity-70' : ''}
                       ${course.status === 'ready-to-enroll' ? 'ring-2 ring-green-400 shadow-lg shadow-green-400/25' : ''}
                       ${course.status === 'coming-soon' ? 'cursor-not-allowed' : 'cursor-pointer'}
                     `}
@@ -404,30 +404,26 @@ export default function CoursesSection() {
                     onMouseDown={() => course.status !== 'coming-soon' && setIsHovering(true)}
                     onMouseUp={() => course.status !== 'coming-soon' && setIsHovering(false)}
                   >
-                    {/* Enrollment Status Badge - Better positioning */}
+                    {/* Enrollment Status Badge */}
                     {course.status === 'ready-to-enroll' && (
-                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-30">
-                        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-xl border-2 border-white">
-                          <span className="flex items-center gap-1">
-                            <span className="animate-pulse">🚀</span>
-                            READY TO ENROLL
-                          </span>
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-20">
+                        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
+                          🚀 READY TO ENROLL
                         </div>
                       </div>
                     )}
                     
-                    {/* Coming Soon Overlay - Improved styling */}
                     {course.status === 'coming-soon' && (
-                      <div className="absolute inset-0 z-20 flex items-center justify-center bg-gray-900 bg-opacity-75 rounded-xl backdrop-blur-sm">
-                        <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 text-white px-6 py-4 rounded-xl text-center shadow-2xl">
-                          <div className="text-3xl mb-2 animate-bounce">⏳</div>
-                          <div className="font-bold text-sm mb-1">COMING SOON</div>
-                          <div className="text-xs text-gray-400">Stay tuned for updates</div>
+                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50 rounded-xl">
+                        <div className="bg-gray-800 border border-gray-600 text-white px-6 py-3 rounded-lg text-center">
+                          <div className="text-2xl mb-2">⏳</div>
+                          <div className="font-bold text-sm">COMING SOON</div>
+                          <div className="text-xs text-gray-300 mt-1">Stay tuned for updates</div>
                         </div>
                       </div>
                     )}
-                    {/* Flip card inner container */}
-                    <div className={`flip-card-inner shadow-xl h-full ${flippedCards[course.id] ? 'flipped' : ''}`}>
+                    {/* No hover tooltip anymore */}
+                    <div className={`flip-card-inner shadow-lg ${flippedCards[course.id] ? 'flipped' : ''}`}>
                       {/* Card Front */}
                       <div className="flip-card-front">
                         <div className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 relative overflow-hidden`}>
