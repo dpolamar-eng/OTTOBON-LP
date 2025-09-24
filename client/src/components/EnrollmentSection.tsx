@@ -243,7 +243,7 @@ export default function EnrollmentSection() {
       };
       
       // Send to n8n webhook
-      const response = await fetch('http://localhost:5678/webhook-test/734ffe5e-34ca-4e41-a6f1-57e93e823349', {
+      const response = await fetch('https://n8nottobon.duckdns.org/webhook-test/4582a252-6beb-471f-b965-c52a55ae285a', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
