@@ -489,33 +489,35 @@ export default function CoursesSection() {
                                 {course.title}
                               </h3>
                               <div className="flex flex-wrap gap-1 mt-1 sm:mt-2">
-                                {course.id !== "ai-uiux" && (
-                                  <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-400/30">
-                                    Coming Soon
+                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0">
+                                  <span className="mr-1">
+                                    {course.id === "genai" && "🤖"}
+                                    {course.id === "cloud" && "☁️"}
+                                    {course.id === "data" && "📊"}
+                                    {course.id === "blockchain" && "🔗"}
+                                    {course.id === "ai-uiux" && "🎨"}
+                                    {course.id === "ai-marketing" && "📈"}
+                                    {course.id === "ai-agent-development" && "🤖"}
+                                    {course.id === "ai-data-labeling" && "🏷️"}
+                                    {course.id === "expert-app" && "🧠"}
                                   </span>
-                                )}
-                                {course.id === "ai-uiux" && (
-                                  <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-400/30">
-                                    Enroll Now
-                                  </span>
-                                )}
+                                  <span className="hidden sm:inline">{course.categoryLabel}</span>
+                                  <span className="sm:hidden">{course.categoryLabel.split(' ')[0]}</span>
+                                </span>
                               </div>
                             </div>
-                            <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0 self-start sm:self-auto">
-                              <span className="mr-1">
-                                {course.id === "genai" && "🤖"}
-                                {course.id === "cloud" && "☁️"}
-                                {course.id === "data" && "📊"}
-                                {course.id === "blockchain" && "🔗"}
-                                {course.id === "ai-uiux" && "🎨"}
-                                {course.id === "ai-marketing" && "📈"}
-                                {course.id === "ai-agent-development" && "🤖"}
-                                {course.id === "ai-data-labeling" && "🏷️"}
-                                {course.id === "expert-app" && "🧠"}
-                              </span>
-                              <span className="hidden sm:inline">{course.categoryLabel}</span>
-                              <span className="sm:hidden">{course.categoryLabel.split(' ')[0]}</span>
-                            </span>
+                            <div className="flex flex-wrap gap-1 self-start sm:self-auto">
+                              {course.id !== "ai-uiux" && (
+                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-400/30">
+                                  Coming Soon
+                                </span>
+                              )}
+                              {course.id === "ai-uiux" && (
+                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-400/30">
+                                  Enroll Now
+                                </span>
+                              )}
+                            </div>
                           </div>
                           <p className="text-gray-300 text-xs sm:text-sm font-medium leading-relaxed flex-1 line-clamp-3 sm:line-clamp-4">
                             {course.description}
