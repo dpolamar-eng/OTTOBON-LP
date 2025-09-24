@@ -428,30 +428,29 @@ export default function CoursesSection() {
               {filteredCourses.map((course) => (
                 <div
                   key={course.id}
-                  className={`${filteredCourses.length === 1 ? "w-full max-w-sm" : "min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)]"} px-4 flex-shrink-0`}
+                  className={`${filteredCourses.length === 1 ? "w-full max-w-sm mx-auto" : "min-w-[100%] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)]"} px-2 sm:px-4 flex-shrink-0`}
                 >
                   <div
-                    className={`flip-card ${flippedCards[course.id] ? "flipped" : ""} group relative`}
+                    className={`flip-card ${flippedCards[course.id] ? "flipped" : ""} group relative h-[450px] sm:h-[500px]`}
                     onClick={() => toggleFlipCard(course.id)}
                     onTouchStart={() => setIsHovering(true)}
                     onTouchEnd={() => setIsHovering(false)}
                     onMouseDown={() => setIsHovering(true)}
                     onMouseUp={() => setIsHovering(false)}
                   >
-                    {/* No hover tooltip anymore */}
                     <div
                       className={`flip-card-inner ${flippedCards[course.id] ? "flipped" : ""}`}
                     >
                       {/* Card Front */}
                       <div className="flip-card-front">
                         <div
-                          className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 relative overflow-hidden`}
+                          className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-3 sm:p-6 relative overflow-hidden`}
                         >
-                          {/* Decorative elements */}
+                          {/* Decorative elements - responsive sizes */}
                           <div className="absolute top-0 left-0 w-full h-full">
-                            <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 rounded-full"></div>
-                            <div className="absolute bottom-12 right-8 w-20 h-20 bg-white/10 rounded-full"></div>
-                            <div className="absolute top-1/3 right-1/4 w-12 h-12 bg-white/10 rounded-full"></div>
+                            <div className="absolute top-4 sm:top-8 left-4 sm:left-8 w-8 sm:w-16 h-8 sm:h-16 bg-white/10 rounded-full"></div>
+                            <div className="absolute bottom-6 sm:bottom-12 right-4 sm:right-8 w-10 sm:w-20 h-10 sm:h-20 bg-white/10 rounded-full"></div>
+                            <div className="absolute top-1/3 right-1/4 w-6 sm:w-12 h-6 sm:h-12 bg-white/10 rounded-full"></div>
                             <div className="bg-grid-pattern opacity-20 absolute inset-0"></div>
                           </div>
 
@@ -459,10 +458,10 @@ export default function CoursesSection() {
                             <img
                               src={course.logoUrl}
                               alt={course.title}
-                              className="h-24 max-w-full object-contain relative z-10"
+                              className="h-16 sm:h-20 md:h-24 max-w-full object-contain relative z-10"
                             />
                           ) : (
-                            <div className="relative z-10 text-white text-7xl">
+                            <div className="relative z-10 text-white text-4xl sm:text-5xl md:text-7xl">
                               {course.id === "genai"
                                 ? "🤖"
                                 : course.id === "cloud"
@@ -483,37 +482,42 @@ export default function CoursesSection() {
                             </div>
                           )}
                         </div>
-                        <div className="p-6 flex flex-col h-2/5 bg-gray-800">
-                          <div className="flex justify-between items-start mb-3">
-                            <div className="flex flex-col pr-2">
-                              <h3 className="text-xl font-bold leading-tight text-white">
+                        <div className="p-3 sm:p-4 md:p-6 flex flex-col h-2/5 bg-gray-800">
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 sm:mb-3 gap-2">
+                            <div className="flex flex-col min-w-0 flex-1">
+                              <h3 className="text-base sm:text-lg md:text-xl font-bold leading-tight text-white truncate">
                                 {course.title}
                               </h3>
-                              {course.id !== "ai-uiux" && (
-                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-400/30 mt-2 self-start">
-                                  Coming Soon
-                                </span>
-                              )}
-                              {course.id === "ai-uiux" && (
-                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-400/30 mt-2 self-start">
-                                  Enroll Now
-                                </span>
-                              )}
+                              <div className="flex flex-wrap gap-1 mt-1 sm:mt-2">
+                                {course.id !== "ai-uiux" && (
+                                  <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-400/30">
+                                    Coming Soon
+                                  </span>
+                                )}
+                                {course.id === "ai-uiux" && (
+                                  <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-400/30">
+                                    Enroll Now
+                                  </span>
+                                )}
+                              </div>
                             </div>
-                            <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0">
-                              {course.id === "genai" && "🤖 "}
-                              {course.id === "cloud" && "☁️ "}
-                              {course.id === "data" && "📊 "}
-                              {course.id === "blockchain" && "🔗 "}
-                              {course.id === "ai-uiux" && "🎨 "}
-                              {course.id === "ai-marketing" && "📈 "}
-                              {course.id === "ai-agent-development" && "🤖 "}
-                              {course.id === "ai-data-labeling" && "🏷️ "}
-                              {course.id === "expert-app" && "🧠 "}
-                              {course.categoryLabel}
+                            <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0 self-start sm:self-auto">
+                              <span className="mr-1">
+                                {course.id === "genai" && "🤖"}
+                                {course.id === "cloud" && "☁️"}
+                                {course.id === "data" && "📊"}
+                                {course.id === "blockchain" && "🔗"}
+                                {course.id === "ai-uiux" && "🎨"}
+                                {course.id === "ai-marketing" && "📈"}
+                                {course.id === "ai-agent-development" && "🤖"}
+                                {course.id === "ai-data-labeling" && "🏷️"}
+                                {course.id === "expert-app" && "🧠"}
+                              </span>
+                              <span className="hidden sm:inline">{course.categoryLabel}</span>
+                              <span className="sm:hidden">{course.categoryLabel.split(' ')[0]}</span>
                             </span>
                           </div>
-                          <p className="text-gray-300 text-sm font-medium leading-relaxed flex-1">
+                          <p className="text-gray-300 text-xs sm:text-sm font-medium leading-relaxed flex-1 line-clamp-3 sm:line-clamp-4">
                             {course.description}
                           </p>
                         </div>
@@ -521,10 +525,10 @@ export default function CoursesSection() {
 
                       {/* Card Back */}
                       <div className="flip-card-back">
-                        <div className="p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
-                          <div className="flex justify-between items-start mb-4">
-                            <h3 className="text-xl font-bold flex items-center text-white">
-                              <span className="text-2xl mr-2">
+                        <div className="p-3 sm:p-4 md:p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
+                          <div className="flex justify-between items-start mb-3 sm:mb-4">
+                            <h3 className="text-base sm:text-lg md:text-xl font-bold flex items-center text-white flex-1 min-w-0">
+                              <span className="text-lg sm:text-xl md:text-2xl mr-2 flex-shrink-0">
                                 {course.id === "genai"
                                   ? "🤖"
                                   : course.id === "cloud"
@@ -543,10 +547,10 @@ export default function CoursesSection() {
                                                 ? "🧠"
                                                 : "💻"}
                               </span>
-                              {course.title}
+                              <span className="truncate">{course.title}</span>
                             </h3>
                             <button
-                              className="text-gray-400 hover:text-gray-200 bg-gray-700 rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:shadow transition"
+                              className="text-gray-400 hover:text-gray-200 bg-gray-700 rounded-full w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center shadow-sm hover:shadow transition flex-shrink-0 ml-2"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 toggleFlipCard(course.id);
@@ -554,14 +558,15 @@ export default function CoursesSection() {
                             >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
+                                width="14"
+                                height="14"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
+                                className="sm:w-4 sm:h-4"
                               >
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -569,36 +574,36 @@ export default function CoursesSection() {
                             </button>
                           </div>
 
-                          <div className="overflow-y-auto flex-1">
-                            <div className="bg-gray-700 p-4 rounded-lg mb-4">
-                              <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                          <div className="overflow-y-auto flex-1 scrollbar-hide">
+                            <div className="bg-gray-700 p-3 sm:p-4 rounded-lg mb-3 sm:mb-4">
+                              <h4 className="font-semibold mb-2 text-blue-300 flex items-center text-sm sm:text-base">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
-                                  width="18"
-                                  height="18"
+                                  width="16"
+                                  height="16"
                                   viewBox="0 0 24 24"
                                   fill="none"
                                   stroke="currentColor"
                                   strokeWidth="2"
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
-                                  className="mr-2"
+                                  className="mr-2 flex-shrink-0 sm:w-[18px] sm:h-[18px]"
                                 >
                                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                 </svg>
                                 Key Outcomes
                               </h4>
-                              <ul className="mb-1 space-y-2">
+                              <ul className="mb-1 space-y-1 sm:space-y-2">
                                 {course.outcomes.map((outcome, index) => (
                                   <li
                                     key={index}
-                                    className="flex items-start text-sm"
+                                    className="flex items-start text-xs sm:text-sm"
                                   >
-                                    <span className="text-green-400 mr-2 mt-1">
+                                    <span className="text-green-400 mr-2 mt-1 flex-shrink-0">
                                       ✓
                                     </span>
-                                    <span className="text-gray-200">
+                                    <span className="text-gray-200 leading-tight">
                                       {outcome}
                                     </span>
                                   </li>
@@ -609,20 +614,20 @@ export default function CoursesSection() {
                             {/* Conditional content based on course category */}
                             {course.category === "Career Launch" ? (
                               <>
-                                <div className="grid grid-cols-2 gap-4 mb-4">
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-purple-300 flex items-center">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-3 sm:mb-4">
+                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-1 sm:mb-2 text-purple-300 flex items-center text-xs sm:text-sm">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="mr-2"
+                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                       >
                                         <rect
                                           x="3"
@@ -653,48 +658,48 @@ export default function CoursesSection() {
                                       </svg>
                                       Duration
                                     </h4>
-                                    <p className="text-gray-200 text-sm">
+                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                       12-week immersive program
                                     </p>
                                   </div>
 
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-green-300 flex items-center">
+                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-1 sm:mb-2 text-green-300 flex items-center text-xs sm:text-sm">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="mr-2"
+                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                       >
                                         <path d="M12 3v19M5 8h14M5 18h14"></path>
                                       </svg>
                                       Format
                                     </h4>
-                                    <p className="text-gray-200 text-sm">
+                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                       Hands-on projects with expert mentors
                                     </p>
                                   </div>
                                 </div>
 
-                                <div className="bg-gray-600 p-4 rounded-lg mb-4">
-                                  <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                                <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg mb-3 sm:mb-4">
+                                  <h4 className="font-semibold mb-1 sm:mb-2 text-blue-300 flex items-center text-xs sm:text-sm">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      width="18"
-                                      height="18"
+                                      width="14"
+                                      height="14"
                                       viewBox="0 0 24 24"
                                       fill="none"
                                       stroke="currentColor"
                                       strokeWidth="2"
                                       strokeLinecap="round"
                                       strokeLinejoin="round"
-                                      className="mr-2"
+                                      className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                     >
                                       <path d="M20 7h-9"></path>
                                       <path d="M14 17H5"></path>
@@ -703,7 +708,7 @@ export default function CoursesSection() {
                                     </svg>
                                     Career Opportunities
                                   </h4>
-                                  <p className="text-gray-200 text-sm">
+                                  <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                     Graduates work as specialized consultants in
                                     top firms with excellent career advancement
                                     opportunities and competitive compensation
@@ -713,43 +718,43 @@ export default function CoursesSection() {
                               </>
                             ) : course.category === "Tech Edge" ? (
                               <>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-blue-300 flex items-center">
+                                <div className="grid grid-cols-1 gap-2 sm:gap-4 mb-3 sm:mb-4">
+                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-1 sm:mb-2 text-blue-300 flex items-center text-xs sm:text-sm">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="mr-2"
+                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                       >
                                         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                                       </svg>
                                       Instant Access
                                     </h4>
-                                    <p className="text-gray-200 text-sm">
+                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                       Available 24/7 with real-time processing
                                     </p>
                                   </div>
 
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-green-300 flex items-center">
+                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-1 sm:mb-2 text-green-300 flex items-center text-xs sm:text-sm">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="mr-2"
+                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                       >
                                         <path d="M9 12l2 2 4-4"></path>
                                         <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
@@ -757,25 +762,25 @@ export default function CoursesSection() {
                                       </svg>
                                       AI-Powered
                                     </h4>
-                                    <p className="text-gray-200 text-sm">
+                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                       Smart algorithms for best matches
                                     </p>
                                   </div>
                                 </div>
 
-                                <div className="bg-gray-600 p-4 rounded-lg mb-4">
-                                  <h4 className="font-semibold mb-2 text-purple-300 flex items-center">
+                                <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg mb-3 sm:mb-4">
+                                  <h4 className="font-semibold mb-1 sm:mb-2 text-purple-300 flex items-center text-xs sm:text-sm">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      width="18"
-                                      height="18"
+                                      width="14"
+                                      height="14"
                                       viewBox="0 0 24 24"
                                       fill="none"
                                       stroke="currentColor"
                                       strokeWidth="2"
                                       strokeLinecap="round"
                                       strokeLinejoin="round"
-                                      className="mr-2"
+                                      className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                     >
                                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                       <circle cx="8.5" cy="7" r="4"></circle>
@@ -783,7 +788,7 @@ export default function CoursesSection() {
                                     </svg>
                                     Success Rate
                                   </h4>
-                                  <p className="text-gray-200 text-sm">
+                                  <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                     93% of users find relevant opportunities
                                     within the first month of using our
                                     platform.
@@ -792,20 +797,20 @@ export default function CoursesSection() {
                               </>
                             ) : (
                               <>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-teal-300 flex items-center">
+                                <div className="grid grid-cols-1 gap-2 sm:gap-4 mb-3 sm:mb-4">
+                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-1 sm:mb-2 text-teal-300 flex items-center text-xs sm:text-sm">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="mr-2"
+                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                       >
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                         <circle cx="8.5" cy="7" r="4"></circle>
@@ -815,55 +820,55 @@ export default function CoursesSection() {
                                       </svg>
                                       Expert Mentors
                                     </h4>
-                                    <p className="text-gray-200 text-sm">
+                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                       Industry professionals with 10+ years
                                       experience
                                     </p>
                                   </div>
 
-                                  <div className="bg-gray-600 p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-2 text-orange-300 flex items-center">
+                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
+                                    <h4 className="font-semibold mb-1 sm:mb-2 text-orange-300 flex items-center text-xs sm:text-sm">
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="mr-2"
+                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                       >
                                         <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                                       </svg>
                                       Personalized
                                     </h4>
-                                    <p className="text-gray-200 text-sm">
+                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                       Tailored guidance based on your goals
                                     </p>
                                   </div>
                                 </div>
 
-                                <div className="bg-gray-600 p-4 rounded-lg mb-4">
-                                  <h4 className="font-semibold mb-2 text-indigo-300 flex items-center">
+                                <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg mb-3 sm:mb-4">
+                                  <h4 className="font-semibold mb-1 sm:mb-2 text-indigo-300 flex items-center text-xs sm:text-sm">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
-                                      width="18"
-                                      height="18"
+                                      width="14"
+                                      height="14"
                                       viewBox="0 0 24 24"
                                       fill="none"
                                       stroke="currentColor"
                                       strokeWidth="2"
                                       strokeLinecap="round"
                                       strokeLinejoin="round"
-                                      className="mr-2"
+                                      className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
                                     >
                                       <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                                     </svg>
                                     Investment
                                   </h4>
-                                  <p className="text-gray-200 text-sm">
+                                  <p className="text-gray-200 text-xs sm:text-sm leading-tight">
                                     Affordable monthly subscription with
                                     unlimited access to expert guidance and
                                     resources.
@@ -873,16 +878,16 @@ export default function CoursesSection() {
                             )}
                           </div>
 
-                          <div className="mt-4 text-center">
+                          <div className="mt-3 sm:mt-4 text-center">
                             {course.id === "ai-uiux" ? (
                               <a
                                 href="#talent-compass"
-                                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-2 px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex"
+                                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-2 px-4 sm:px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex text-xs sm:text-sm"
                               >
                                 <span className="relative z-10 flex items-center justify-center">
                                   Apply Now
                                   <svg
-                                    className="ml-1 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                                    className="ml-1 w-3 h-3 sm:w-4 sm:h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -901,12 +906,12 @@ export default function CoursesSection() {
                             ) : (
                               <button
                                 disabled
-                                className="bg-gray-600 text-gray-400 font-semibold py-2 px-6 rounded-full cursor-not-allowed opacity-60 inline-flex items-center"
+                                className="bg-gray-600 text-gray-400 font-semibold py-2 px-4 sm:px-6 rounded-full cursor-not-allowed opacity-60 inline-flex items-center text-xs sm:text-sm"
                               >
                                 <span className="flex items-center justify-center">
                                   Coming Soon
                                   <svg
-                                    className="ml-1 w-4 h-4"
+                                    className="ml-1 w-3 h-3 sm:w-4 sm:h-4"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
