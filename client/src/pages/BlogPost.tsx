@@ -248,29 +248,33 @@ export default function BlogPost() {
                   </Card>
                 )}
 
-                {/* CTA (unchanged) */}
-                <Card className="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 border-indigo-600/30">
-                  <CardContent className="p-6">
+                {/* CTA Card */}
+                <Card className="relative overflow-hidden bg-gradient-to-br from-indigo-900/80 via-purple-900/70 to-pink-900/60 border-2 border-indigo-500/40 shadow-2xl shadow-indigo-900/50">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10"></div>
+                  <CardContent className="p-6 relative z-10">
                     <div className="text-center">
-                      <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-3">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-indigo-500/50 transform hover:scale-110 transition-transform duration-300">
+                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
                       </div>
-                      <h4 className="font-semibold text-white mb-2">Ready to Learn More?</h4>
-                      <p className="text-sm text-gray-300 mb-4">
+                      <h4 className="font-bold text-white mb-3 text-lg">Ready to Learn More?</h4>
+                      <p className="text-sm text-gray-200 mb-5 leading-relaxed">
                         Explore our comprehensive AI courses designed for professionals like you.
                       </p>
-                      <Button
-                        className="w-full bg-indigo-600 hover:bg-indigo-700"
-                        onClick={() => {
-                          const el = document.querySelector("#courses");
-                          if (el) el.scrollIntoView({ behavior: "smooth" });
-                          else window.location.href = "/academy#courses";
-                        }}
-                      >
-                        View Courses
-                      </Button>
+                      <Link to="/academy#courses">
+                        <Button
+                          className="w-full group relative overflow-hidden bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/50"
+                        >
+                          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                          <span className="relative z-10 flex items-center justify-center">
+                            View Courses
+                            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                          </span>
+                        </Button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>
