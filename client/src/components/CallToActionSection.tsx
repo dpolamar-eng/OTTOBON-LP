@@ -87,29 +87,7 @@ export default function CallToActionSection() {
             </button>
           </div>
 
-          {/* Email signup */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 max-w-md mx-auto border border-white/20 shadow-md">
-            <h3 className="text-white font-semibold mb-3 text-center">Get Program Updates</h3>
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 px-3 sm:px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30 text-sm"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition text-sm whitespace-nowrap shadow"
-              >
-                {isSubmitted ? 'Thanks!' : 'Notify Me'}
-              </button>
-            </form>
-            <p className="text-blue-100 text-xs mt-2 text-center">
-              Get notified about new programs and special offers
-            </p>
-          </div>
+          
         </div>
       </div>
     </section>
