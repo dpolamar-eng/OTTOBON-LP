@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import MethodologySection from "@/components/MethodologySection";
 import CoursesSection from "@/components/CoursesSection";
 import BlogSection from "@/components/BlogSection";
-import RequirementsSection from "@/components/RequirementsSection";
+// import RequirementsSection from "@/components/RequirementsSection";
 import IntegratedHeroJourney from "@/components/IntegratedHeroJourney";
 import StorytellingOnboarding from "@/components/StorytellingOnboarding";
 import TalentCompassAssessment from "@/components/TalentCompassAssessment";
@@ -20,7 +20,7 @@ export default function Home() {
         <StorytellingOnboarding />
         <CoursesSection />
         <BlogSection />
-        <RequirementsSection />
+        {/* <RequirementsSection /> */}
         <TalentCompassAssessment />
         <CallToActionSection />
         <AcademyFAQSection />
