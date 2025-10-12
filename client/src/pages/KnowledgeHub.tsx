@@ -3,8 +3,6 @@ import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { blogApi } from "@/lib/blogApi";
 import { Card, CardContent } from "@/components/ui/card";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export default function KnowledgeHub() {
   const { data: posts, isLoading } = useQuery({
@@ -14,9 +12,7 @@ export default function KnowledgeHub() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Header />
-      
-      <main className="pt-24 pb-16">
+      <main className="pt-16 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* Breadcrumb */}
           <div className="mb-6">
@@ -89,8 +85,6 @@ export default function KnowledgeHub() {
           )}
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
