@@ -1,0 +1,97 @@
+Tasks
+
+Add a top-nav entry: “Knowledge Hub”
+
+Update the main header/nav component (the one used site-wide; e.g., components/Header.tsx or where the current top nav is defined).
+
+Insert a visible nav item labeled Knowledge Hub that routes to /knowledge.
+
+Ensure it appears in both desktop nav and mobile menu/drawer if present.
+
+Keep existing theme behavior (light/dark) and spacing consistent with other nav items.
+
+Create a dedicated Knowledge Hub page (route /knowledge)
+
+Create pages/KnowledgeHubPage.tsx.
+
+Reuse the current blog grid/list component and styles exactly as they are (same cards, filters/tabs if any, spacing, and responsive behavior).
+
+Page header: Knowledge Hub title + short subtitle (Insights, case studies, and updates.). Use the same typography scale as other page titles.
+
+Add a secondary breadcrumb or link “← Back to Academy” that routes to /academy (or whatever the Academy page route is in this project).
+
+No visual changes to the blog cards themselves.
+
+Academy page: replace the big blog block with a small teaser
+
+File: pages/AcademyPage.tsx (or whichever renders the long screenshot).
+
+Remove the large Knowledge Hub block from this page (the long list of blog cards).
+
+Insert a compact section titled Latest from the Knowledge Hub near the footer, right above FAQ/CTA.
+
+Teaser content:
+
+Show exactly 3 latest posts (reuse the same card component so visuals remain identical, just fewer items).
+
+Right-aligned link button: Explore All Articles → that routes to /knowledge.
+
+No category filters/tabs here, just the 3 cards in a single row with horizontal scroll on mobile if needed.
+
+Keep spacing consistent with neighboring sections (section vertical margin, same max-width container).
+
+Routing
+
+Ensure wouter routes include:
+
+/academy → Academy page (existing)
+
+/knowledge → new KnowledgeHubPage
+
+Do not break existing routes (courses, cart, dashboard, etc.).
+
+Constraints & Style Guardrails
+
+Do not modify the blog card component styles, typography, paddings, or gradients.
+
+Do not change enroll CTA buttons or hero area.
+
+Maintain current theme tokens and shadcn variants.
+
+Tailwind classnames should match the project’s current conventions (containers, max-w, spacing).
+
+Lighthouse/CLS safe: no layout shift when the teaser loads.
+
+Acceptance Criteria
+
+Top navbar shows Knowledge Hub; clicking goes to /knowledge.
+
+/knowledge displays the same blog grid/list UI the Academy page used (same look & feel).
+
+Academy page no longer shows the long blog list; instead it shows a 3-card teaser + “Explore All Articles →” link to /knowledge.
+
+All links work in desktop and mobile; mobile menu also contains Knowledge Hub.
+
+No visual regression to blog card designs.
+
+Dark & light themes look correct.
+
+Build passes, no TS errors.
+
+Nice-to-have (only if trivial)
+
+Teaser’s 3 posts are the most recent by date; otherwise fall back to first 3.
+
+Teaser row can scroll horizontally on small screens (use overflow-x-auto + scroll-snap), no custom JS.
+
+Files likely to touch
+
+components/Header.tsx (or wherever the main nav lives)
+
+pages/KnowledgeHubPage.tsx (new)
+
+pages/AcademyPage.tsx (swap long blog list → 3-card teaser)
+
+App.tsx or routing file (add /knowledge route)
+
+Do not change any other components or global styles.
