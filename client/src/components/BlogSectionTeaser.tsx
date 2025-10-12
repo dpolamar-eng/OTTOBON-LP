@@ -36,6 +36,11 @@ export default function BlogSectionTeaser() {
           </div>
           <Link
             href="/knowledge"
+            onClick={() => {
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 100);
+            }}
             className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-semibold transition-colors whitespace-nowrap self-start sm:self-auto"
           >
             Explore All Articles
