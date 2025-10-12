@@ -231,60 +231,67 @@ export default function Header() {
           <nav className="flex flex-col space-y-4">
             <a
               href="#methodology"
-              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
               onClick={(e) => {
                 e.preventDefault();
-                const target = document.querySelector("#methodology");
-                if (target) {
-                  target.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-                closeMobileMenu();
+                setMobileMenuOpen(false);
+                setTimeout(() => {
+                  const target = document.querySelector("#methodology");
+                  if (target) {
+                    target.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+                }, 100);
               }}
+              className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-all"
             >
-              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">
-                ⚡
-              </span>
-              <span>Our Approach</span>
+              Our Approach
             </a>
             <a
               href="#courses"
-              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
               onClick={(e) => {
                 e.preventDefault();
-                const target = document.querySelector("#courses");
-                if (target) {
-                  target.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-                closeMobileMenu();
+                setMobileMenuOpen(false);
+                setTimeout(() => {
+                  const target = document.querySelector("#courses");
+                  if (target) {
+                    target.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+                }, 100);
               }}
+              className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-all"
             >
-              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">
-                🚀
-              </span>
-              <span>Programs</span>
+              Programs
             </a>
             <a
-              href="/academy#talent-compass"
-              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              href="/knowledge"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+            >
+              Knowledge Hub
+            </a>
+            <a
+              href="#talent-compass"
               onClick={(e) => {
                 e.preventDefault();
-                // Check if we're already on the academy page
-                if (window.location.pathname === '/academy' || window.location.pathname === '/') {
+                setMobileMenuOpen(false);
+                setTimeout(() => {
                   const target = document.querySelector("#talent-compass");
                   if (target) {
-                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    target.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
                   }
-                } else {
-                  // Navigate to academy page with anchor
-                  window.location.href = '/academy#talent-compass';
-                }
-                closeMobileMenu();
+                }, 100);
               }}
+              className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-all"
             >
-              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">
-                🧭
-              </span>
-              <span>Talent Compass</span>
+              Talent Compass
             </a>
           </nav>
         </div>

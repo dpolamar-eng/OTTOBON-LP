@@ -9,6 +9,7 @@ import Portal from "@/pages/Portal";
 import Services from "@/pages/Services";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import KnowledgeHub from "@/pages/KnowledgeHub"; // Assuming KnowledgeHub component exists
 import EnrollmentSection from "@/components/EnrollmentSection";
 import ScrollToTop from "@/components/ScrollToTop";
 import OnboardingExperience from "@/components/OnboardingExperience";
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/knowledge" component={KnowledgeHub} />
       <Route path="/enroll" component={EnrollmentSection} />
       <Route component={NotFound} />
     </Switch>
