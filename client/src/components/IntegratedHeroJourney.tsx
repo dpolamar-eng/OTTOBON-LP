@@ -278,23 +278,15 @@ export default function IntegratedHeroJourney() {
                       <div className="flex flex-col sm:flex-row gap-4 pt-4">
                         <a
                           href="#talent-compass"
-                          className="group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 px-8 py-4 font-bold text-white shadow-2xl shadow-emerald-500/30 transition-all hover:scale-105 hover:shadow-emerald-500/50"
+                          className="group inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 px-8 py-4 font-bold text-white transition-all hover:scale-105"
                         >
-                          <span className="relative z-10 flex items-center gap-2">
+                          <span className="flex items-center gap-2">
                             Start Your Journey
                             <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5-5 5M6 12h12" />
                             </svg>
                           </span>
-                          <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                         </a>
-
-                        <button
-                          onClick={toggleJourney}
-                          className="inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 px-8 py-4 font-semibold text-white transition-all hover:scale-105"
-                        >
-                          View Learning Path
-                        </button>
                       </div>
                     </div>
 
