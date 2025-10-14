@@ -268,13 +268,6 @@ export default function Header() {
               Programs
             </a>
             <a
-              href="/knowledge"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-all"
-            >
-              Knowledge Hub
-            </a>
-            <a
               href="#talent-compass"
               onClick={(e) => {
                 e.preventDefault();
