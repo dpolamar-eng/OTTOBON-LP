@@ -21,7 +21,7 @@ export default function Home() {
         <CoursesSection />
         {/* <RequirementsSection /> */}
         <TalentCompassAssessment />
-        <BlogSectionTeaser />
+        {/* <BlogSectionTeaser /> */}
         <CallToActionSection />
         <AcademyFAQSection />
       </main>
