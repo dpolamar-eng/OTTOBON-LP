@@ -135,12 +135,13 @@ export default function CoursesSection() {
       color: "blue-800",
       bgColor: "blue-100",
       description:
-        "Create professional, ATS-friendly resumes tailored to your career goals and industry standards.",
+        "AI-powered, ATS-friendly resumes that stand out with industry templates and smart customization.",
       outcomes: [
-        "Design tailored resumes for different job roles",
-        "Leverage templates optimized for applicant tracking systems",
-        "Highlight key skills and achievements effectively",
-        "Export resumes in multiple professional formats",
+        "Start from Scratch / Modify Existing / JD-Based Resume modes",
+        "Upload an existing resume for instant refinement",
+        "Paste a job description to tailor a role-specific resume",
+        "Export in professional formats",
+        "Outcome: polished, targeted resumes for every application",
       ],
       logoUrl: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
       gradientFrom: "from-blue-500",
@@ -154,12 +155,13 @@ export default function CoursesSection() {
       color: "green-800",
       bgColor: "green-100",
       description:
-        "Discover personalized job opportunities using AI-powered job matching systems.",
+        "Finds roles that fit both your skills and personality with personalized job alerts.",
       outcomes: [
-        "Match skills with the most relevant job postings",
-        "Access hidden opportunities through smart recommendations",
-        "Save time by filtering jobs automatically",
-        "Receive tailored career growth suggestions",
+        "Personality + skill matching for best-fit opportunities",
+        "Personalized job alerts after you create your resume",
+        "Smart filters: location, experience, remote/hybrid/on-site, etc.",
+        "Real-time updates with fresh openings across industries",
+        "Outcome: discover the right job and culture for you",
       ],
       logoUrl: "https://cdn-icons-png.flaticon.com/512/2920/2920277.png",
       gradientFrom: "from-green-500",
@@ -173,12 +175,14 @@ export default function CoursesSection() {
       color: "purple-800",
       bgColor: "purple-100",
       description:
-        "Prepare for interviews with realistic practice sessions and AI-driven feedback.",
+        "Unlimited AI-powered practice to boost confidence with Standard and JD-Based modes.",
       outcomes: [
-        "Practice technical and behavioral interviews",
-        "Receive real-time performance analysis and feedback",
-        "Build confidence with simulated interview environments",
-        "Identify areas for improvement before real interviews",
+        "Modes: Standard (by domain) / JD-Based (from a job description)",
+        "Mixed question types: MCQs, descriptive, scenario-based",
+        "Detailed feedback highlighting strengths & improvement areas",
+        "Actionable tips to fix weak spots step by step",
+        "Extra learning support via our expert app",
+        "Outcome: be fully prepared before the real interview",
       ],
       logoUrl: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png",
       gradientFrom: "from-purple-500",
@@ -737,10 +741,14 @@ export default function CoursesSection() {
                                       >
                                         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                                       </svg>
-                                      Instant Access
+                                      {course.id === "resume-builder" && "Multiple Modes"}
+                                      {course.id === "job-matching" && "Smart Matching"}
+                                      {course.id === "mock-interviews" && "Unlimited Practice"}
                                     </h4>
                                     <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                      Available 24/7 with real-time processing
+                                      {course.id === "resume-builder" && "Start from scratch, modify existing, or create JD-based resumes"}
+                                      {course.id === "job-matching" && "Personality and skill-based matching for best-fit roles"}
+                                      {course.id === "mock-interviews" && "Practice anytime with Standard or JD-Based interview modes"}
                                     </p>
                                   </div>
 
@@ -762,10 +770,14 @@ export default function CoursesSection() {
                                         <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
                                         <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
                                       </svg>
-                                      AI-Powered
+                                      {course.id === "resume-builder" && "ATS-Optimized"}
+                                      {course.id === "job-matching" && "Real-Time Updates"}
+                                      {course.id === "mock-interviews" && "Detailed Feedback"}
                                     </h4>
                                     <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                      Smart algorithms for best matches
+                                      {course.id === "resume-builder" && "Templates optimized for applicant tracking systems"}
+                                      {course.id === "job-matching" && "Fresh openings across industries with smart filters"}
+                                      {course.id === "mock-interviews" && "Highlights strengths and improvement areas with actionable tips"}
                                     </p>
                                   </div>
                                 </div>
@@ -788,12 +800,14 @@ export default function CoursesSection() {
                                       <circle cx="8.5" cy="7" r="4"></circle>
                                       <polyline points="17 11 19 13 23 9"></polyline>
                                     </svg>
-                                    Success Rate
+                                    {course.id === "resume-builder" && "Professional Results"}
+                                    {course.id === "job-matching" && "Perfect Fit"}
+                                    {course.id === "mock-interviews" && "Interview Ready"}
                                   </h4>
                                   <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                    93% of users find relevant opportunities
-                                    within the first month of using our
-                                    platform.
+                                    {course.id === "resume-builder" && "Polished, targeted resumes for every application with multiple export formats"}
+                                    {course.id === "job-matching" && "Discover the right job and culture that matches your skills and personality"}
+                                    {course.id === "mock-interviews" && "Be fully prepared before the real interview with comprehensive practice sessions"}
                                   </p>
                                 </div>
                               </>
