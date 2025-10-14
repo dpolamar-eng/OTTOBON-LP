@@ -194,9 +194,9 @@ export default function CoursesSection() {
       description:
         "Helps you to solve everyday technical challenges, grow within your organization, and map a clear path to success.",
       outcomes: [
-        "Access expert knowledge in Python programming",
-        "Learn eCommerce best practices and strategies",
-        "Get personalized career advice from domain experts",
+        "Access expert knowledge in many fields",
+        "Learn best practices and strategies",
+        "Get your own personalized answers",
         "Receive real-time answers to technical questions",
         "Build skills through interactive expert sessions",
       ],
@@ -823,7 +823,7 @@ export default function CoursesSection() {
                                       Expert Mentors
                                     </h4>
                                     <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                      Industry professionals with 10+ years
+                                      Industry professionals with years of
                                       experience
                                     </p>
                                   </div>
