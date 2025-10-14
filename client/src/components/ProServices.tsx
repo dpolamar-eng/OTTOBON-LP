@@ -1012,7 +1012,7 @@ export default function ProServices() {
           ></div>
 
           {/* Modal Content */}
-          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
+          <div className="relative bg-gray-800 rounded-2xl border border-gray-600 shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden flex flex-col">
             {(() => {
               const service = getModalService();
               if (!service) return null;
@@ -1020,7 +1020,7 @@ export default function ProServices() {
               return (
                 <>
                   {/* Modal Header */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden flex-shrink-0">
                     <img 
                       src={service.image}
                       alt={service.title}
@@ -1042,8 +1042,8 @@ export default function ProServices() {
                     </div>
                   </div>
 
-                  {/* Modal Body */}
-                  <div className="p-6">
+                  {/* Modal Body with Invisible Scroll */}
+                  <div className="p-6 overflow-y-auto flex-1 scrollbar-hide">
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-white mb-3">About This Service</h4>
                       <p className="text-gray-300">{service.details}</p>
