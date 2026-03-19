@@ -302,30 +302,51 @@ export default function EnrollmentSection() {
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
-        phone: formData.phone,
+        phone: formData.phone || "Not provided",
         currentRole: formData.currentRole,
         educationLevel: formData.education,
         yearsExperience: formData.experience,
-        interests: formData.interests,
-        referralSource: formData.referral,
-        skills: formData.skills,
-        bestMatch: formData.bestMatch,
+        interests: formData.interests, // Send as array
+        referralSource: formData.referral || "Not specified",
+        skills: formData.skills, // Send as array
+        bestMatch: formData.bestMatch || "Not assessed",
+        submittedAt: new Date().toISOString(),
       };
+
+      console.log("Sending data to webhook:", webhookData);
 
       // Send to n8n webhook
       const response = await fetch(
-        "https://n8nottobon.duckdns.org/webhook/4582a252-6beb-471f-b965-c52a55ae285a",
+        "https://n8nottobon.duckdns.org/webhook/website/enrolls",
         {
           method: "POST",
+          mode: "cors",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify(webhookData),
         },
       );
 
+      console.log("Webhook response status:", response.status);
+
+      // Check if response is ok (status 200-299)
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error("Webhook error response:", errorText);
+        throw new Error(
+          `Webhook returned status ${response.status}: ${errorText}`,
+        );
+      }
+
+      // Try to parse response
+      let responseData;
+      try {
+        responseData = await response.json();
+        console.log("Webhook response data:", responseData);
+      } catch (parseError) {
+        console.log("Response is not JSON, treating as success");
       }
 
       // Success message
@@ -361,7 +382,9 @@ export default function EnrollmentSection() {
       toast({
         title: "Submission Error",
         description:
-          "There was a problem submitting your application. Please check your connection and try again.",
+          error instanceof Error
+            ? `Failed to submit: ${error.message}`
+            : "There was a problem submitting your application. Please check your connection and try again.",
         variant: "destructive",
       });
     } finally {

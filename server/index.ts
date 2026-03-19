@@ -10,20 +10,20 @@ app.use(express.urlencoded({ extended: false }));
 async function testDatabaseConnection() {
   try {
     console.log('🔍 Testing database connection...');
-    
+
     if (!process.env.DATABASE_URL) {
       throw new Error('DATABASE_URL environment variable is missing');
     }
-    
+
     console.log('✅ DATABASE_URL is set');
-    
+
     // Import and test database connection
     const { db } = await import("./database");
-    
+
     // Simple test query
     await db.execute('SELECT 1 as test');
     console.log('✅ Database connection successful');
-    
+
     return true;
   } catch (error) {
     console.error('❌ Database connection failed:', error);
@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 (async () => {
   try {
     console.log('🚀 Starting Ottobon Academy server...');
-    
+
     // Test database connection first
     const dbConnected = await testDatabaseConnection();
     if (!dbConnected) {
@@ -77,15 +77,15 @@ app.use((req, res, next) => {
       try {
         const { db } = await import("./database");
         await db.execute('SELECT 1 as health_check');
-        res.json({ 
-          status: 'healthy', 
+        res.json({
+          status: 'healthy',
           database: 'connected',
           timestamp: new Date().toISOString(),
           environment: process.env.NODE_ENV || 'development'
         });
       } catch (error) {
-        res.status(503).json({ 
-          status: 'unhealthy', 
+        res.status(503).json({
+          status: 'unhealthy',
           database: 'disconnected',
           error: error instanceof Error ? error.message : 'Unknown error',
           timestamp: new Date().toISOString()
@@ -99,7 +99,7 @@ app.use((req, res, next) => {
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       const status = err.status || err.statusCode || 500;
       const message = err.message || "Internal Server Error";
-      
+
       console.error('💥 Server error:', {
         status,
         message,
@@ -122,19 +122,12 @@ app.use((req, res, next) => {
       console.log('✅ Static files configured for production');
     }
 
-    // ALWAYS serve the app on port 5000
-    // this serves both the API and the client.
-    // It is the only port that is not firewalled.
-    const port = 5000;
-    server.listen({
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    }, () => {
+    // Serve the app on the configured port
+    const port = parseInt(process.env.PORT || "7000", 10);
+    server.listen(port, () => {
       console.log('🎉 Server startup complete!');
-      console.log(`📡 Server listening on http://0.0.0.0:${port}`);
-      console.log(`🔗 Health check: http://0.0.0.0:${port}/health`);
-      console.log(`🌐 Public URL: https://${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co`);
+      console.log(`📡 Server listening on http://localhost:${port}`);
+      console.log(`🔗 Health check: http://localhost:${port}/health`);
       log(`serving on port ${port}`);
     });
 

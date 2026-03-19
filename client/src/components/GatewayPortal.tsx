@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import HomeHeader from "./HomeHeader";
+import { GraduationCap, BriefcaseBusiness, Check, Sparkles } from "lucide-react";
 
 export default function GatewayPortal() {
   const [, navigate] = useLocation();
@@ -118,7 +119,7 @@ export default function GatewayPortal() {
             <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
           </div>
 
-          <div className="max-w-4xl mx-auto text-blue-100 space-y-4">
+          <div className="max-w-4xl mx-auto text-blue-100 space-y-4 text-center">
             <p className="text-base md:text-lg leading-relaxed">
               Ottobon exists to help people and teams perform like top-tier
               technology consultants. We combine human mentorship with AI
@@ -136,202 +137,231 @@ export default function GatewayPortal() {
       </section>
 
       {/* Our Services (Academy + Professional Services) */}
+      
+
       <section
         id="services-overview"
-        className="relative z-10 py-8 sm:py-10 scroll-mt-24 md:scroll-mt-28"
+        className="relative z-10 pt-8 sm:pt-10 pb-2 scroll-mt-24 md:scroll-mt-28"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
               Our Services
             </h2>
-            <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3"></div>
+            <div className="mx-auto mt-3 h-px w-28 md:w-32 bg-gradient-to-r from-blue-400/80 via-blue-300/50 to-purple-400/80" />
             <p className="text-blue-200 mt-3 max-w-3xl mx-auto text-base md:text-lg">
               Two complementary tracks. Academy turns students and freshers into
-              job‑ready consultants with guided paths, projects, and interview
-              prep. PSO equips working professionals and firms with AI‑powered
+              job-ready consultants with guided paths, projects, and interview
+              prep. PSO equips working professionals and firms with AI-powered
               operations—so your delivery, marketing, and admin run with
-              enterprise‑grade efficiency.
+              enterprise-grade efficiency.
             </p>
           </div>
         </div>
 
-        {/* Optimized two-card flex layout with reduced height */}
-        <div className="relative z-10 flex-grow flex flex-col md:flex-row items-center justify-center gap- md:gap-12 px-4 pb-16">
-          {/* Academy Card */}
-          <div
-            className={`gateway-card group ${hoverState === "academy" ? "scale-105" : hoverState === "services" ? "scale-95 opacity-80" : ""}`}
-            onMouseEnter={() => setHoverState("academy")}
-            onMouseLeave={() => setHoverState(null)}
-          >
-            <div className="relative w-full max-w-md h-96 rounded-2xl overflow-hidden bg-[#0F1E2E] p-0.5">
-              {/* Solid brand background replacing previous blue gradient */}
-              <div className="absolute inset-0 bg-[#0F1E2E]"></div>
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgyLTJoLTJ6TTM0IDMwaDJoMnpNNDAgMjhWLTJWMjh6TTQyIDMyVjJWMzJ6TTQwIDM2djIyVjM2ek00MiA0MHYxOFY0MHpNNDAgMjhoMnYyaC0yek00MiAzMmgydjJoLTJ6TTQwIDM2aDJ2MmgtMnpNNDIgNDBoMnYyaC0yek0zMiAzNGgyek0zNCAzMGgyek0yOCAzNGgyek0zMCAzMGgyek0yOCAyOHYzMFYyOHpNMzAgMzJ2MjJWMzJ6TTI4IDI4aDJ2MmgtMnpNMzAgMzJoMnYyaC0yek0yOCAzNGgyek0zMCAzOGgydjJoLTJ6Ik0yNCAzNGgyek0yNiAzMGgyek0yMCAzNGgyek0yMiAzMGgyek0yMCAzMnYyMlYzMnpNMjIgMzZ2MTRWMzZ6TTIwIDMyaDJ2MmgtMnpNMjIgMzZoMnYyaC0yek0yMCAzOGgydjJoLTJ6TTIyIDQyaDJ2MmgtMnpNMTYgMzRoek0xOCAzMGgyek0xMiAzNGgyek0xNCAzMGgyek0xMiAyOHYzMFYyOHpNMTQgMzJ2MjJWMzJ6TTEyIDI4aDJ2MmgtMnpNMTQgMzJoMnYyaC0yek0xMiAzNGgyek0xNCAzOGgydjJoLTJ6TTggMzRoek0xMCAzMGgyek00IDM0aHpNNiAzMGgyek00IDMydjIyVjMyek02IDM2djE0VjM2ek00IDMyaDJ2MmgtMnpNNiAzNmgydjJoLTJ6TTQgMzhoMnYyaC0yek02IDQyaDJ2MmgtMnpNNTYgMzRoek01OCAzMGgyek01MiAzNGgyek01NCAzMGgyek01MiAyOHYzMFYyOHpNNTQgMzJ2MjJWMzJ6TTUyIDI4aDJ2MmgtMnpNNTQgMzJoMnYyaC0yek01MiAzNGgyek01NCAzOGgydjJoLTJ6TTQ4IDM0aHpNNTAgMzBoek00NCAzNGh6TTQ2IDMwaHpNNDQgMzJ2MjJWMzJ6TTQ2IDM2djE0VjM2ek00NCAzMmgydjJoLTJ6TTQ2IDM2aDJ2MmgtMnpNNDQgMzhoMnYyaC0yek00NiA0MmgydjJoLTJ6TTYwIDI4djMwVjI4ek0wIDI4djMwVjI4ek0wIDI4aDJ2MmgtMnpNNjAgMjhoLTJ2MmgyeiIgZmlsbD0iI2ZmZiIgZmlsbC13b3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]"></div>
+        {/* Cards */}
+        <div className="container mx-auto px-4 pb-6 md:pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-4 md:gap-8 max-w-4xl mx-auto">
 
-              <div className="relative h-full flex flex-col p-6 bg-[#112537]/70 backdrop-blur-sm rounded-2xl">
-                <div className="flex-1">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                      <span className="text-2xl">🎓</span>
-                    </div>
-                    <h2 className="ml-3 text-xl font-bold text-white">
-                      Ottobon Academy
-                    </h2>
-                  </div>
-                  <p className="text-blue-100 text-sm mb-4">
-                    Transform students and freshers into independent consultants
-                    with job-ready skills in high-demand technologies.
-                  </p>
+            {/* Academy */}
+            <div
+              className={`w-full transition-transform duration-300 ${
+                hoverState === "academy"
+                  ? "scale-[1.02]"
+                  : hoverState === "services"
+                  ? "scale-[0.98] opacity-90"
+                  : ""
+              }`}
+              onMouseEnter={() => setHoverState("academy")}
+              onMouseLeave={() => setHoverState(null)}
+            >
+              <div className="relative h-full rounded-2xl overflow-hidden">
+                {/* base */}
+                <div className="relative bg-[#0F1E2E] rounded-2xl ring-1 ring-white/10 shadow-[0_8px_28px_rgba(0,0,0,0.35)]">
+                  {/* subtle texture */}
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.06)_100%)] opacity-[0.08]" />
 
-                  <div className="space-y-1">
-                    <div className="flex items-start">
-                      <span className="text-green-400 mr-2 text-sm">✓</span>
-                      <span className="text-blue-50 text-sm">
-                        AI-Powered Skill Growth
-                      </span>
+                  <div className="relative p-6 md:p-8 flex flex-col">
+                    {/* header */}
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ring-1 ring-white/15">
+                        <GraduationCap className="w-6 h-6 text-blue-200" />
+                      </div>
+                      <h3 className="ml-3 text-xl font-bold text-white">
+                        Ottobon Academy
+                      </h3>
                     </div>
-                    <div className="flex items-start">
-                      <span className="text-green-400 mr-2 text-sm">✓</span>
-                      <span className="text-blue-50 text-sm">
-                        Land Your Dream Job
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="text-green-400 mr-2 text-sm">✓</span>
-                      <span className="text-blue-50 text-sm">
-                        Thrive With Expert Guidance
-                      </span>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (pressing) return;
-                      setPressing("academy");
-                      setTimeout(() => {
-                        navigate("/academy");
-                        window.scrollTo(0, 0);
-                      }, 160);
-                    }}
-                    aria-pressed={pressing === "academy"}
-                    className={`bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg w-full relative overflow-hidden cursor-pointer filter focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 
-                        group-hover:scale-105 group-hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.65)] hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] 
-                        ${pressing === "academy" ? "scale-110 drop-shadow-[0_12px_28px_rgba(212,175,55,0.75)]" : ""}`}
-                  >
-                    <span className="relative z-10 flex items-center justify-center">
-                      Get Started
-                      <svg
-                        className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                    {/* copy */}
+                    <p className="text-blue-100 text-sm md:text-base mb-5">
+                      Transform students and freshers into independent consultants
+                      with job-ready skills in high-demand technologies.
+                    </p>
+
+                    {/* bullets */}
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                        <span className="text-blue-50 text-sm md:text-base">
+                          AI-Powered Skill Growth
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                        <span className="text-blue-50 text-sm md:text-base">
+                          Land Your Dream Job
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                        <span className="text-blue-50 text-sm md:text-base">
+                          Thrive With Expert Guidance
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* cta */}
+                    <div className="mt-auto pt-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (pressing) return;
+                          setPressing("academy");
+                          setTimeout(() => {
+                            navigate("/academy");
+                            window.scrollTo(0, 0);
+                          }, 160);
+                        }}
+                        aria-pressed={pressing === "academy"}
+                        className={`w-full rounded-full bg-[#FFC107] text-black font-semibold py-3 px-6 transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 ${
+                          pressing === "academy" ? "scale-[1.02]" : ""
+                        }`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        ></path>
-                      </svg>
-                    </span>
-                  </button>
+                        <span className="inline-flex items-center justify-center">
+                          Get Started
+                          <svg
+                            className="ml-2 w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Professional Services Card */}
-          <div
-            className={`gateway-card group ${hoverState === "services" ? "scale-105" : hoverState === "academy" ? "scale-95 opacity-80" : ""}`}
-            onMouseEnter={() => setHoverState("services")}
-            onMouseLeave={() => setHoverState(null)}
-          >
-            <div className="relative w-full max-w-md h-96 rounded-2xl overflow-hidden bg-[#0F1E2E] p-0.5">
-              {/* Solid brand background replacing previous purple/pink gradient */}
-              <div className="absolute inset-0 bg-[#0F1E2E]"></div>
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgyLTJoLTJ6TTM0IDMwaDJoMnpNNDAgMjhWLTJWMjh6TTQyIDMyVjJWMzJ6TTQwIDM2djIyVjM2ek00MiA0MHYxOFY0MHpNNDAgMjhoMnYyaC0yek00MiAzMmgydjJoLTJ6TTQwIDM2aDJ2MmgtMnpNNDIgNDBoMnYyaC0yek0zMiAzNGgyek0zNCAzMGgyek0yOCAzNGgyek0zMCAzMGgyek0yOCAyOHYzMFYyOHpNMzAgMzJ2MjJWMzJ6TTI4IDI4aDJ2MmgtMnpNMzAgMzJoMnYyaC0yek0yOCAzNGgyek0zMCAzOGgydjJoLTJ6Ik0yNCAzNGgyek0yNiAzMGgyek0yMCAzNGgyek0yMiAzMGgyek0yMCAzMnYyMlYzMnpNMjIgMzZ2MTRWMzZ6TTIwIDMyaDJ2MmgtMnpNMjIgMzZoMnYyaC0yek0yMCAzOGgydjJoLTJ6TTIyIDQyaDJ2MmgtMnpNMTYgMzRoek0xOCAzMGgyek0xMiAzNGgyek0xNCAzMGgyek0xMiAyOHYzMFYyOHpNMTQgMzJ2MjJWMzJ6TTEyIDI4aDJ2MmgtMnpNMTQgMzJoMnYyaC0yek0xMiAzNGgyek0xNCAzOGgydjJoLTJ6TTggMzRoek0xMCAzMGgyek00IDM0aHpNNiAzMGgyek00IDMydjIyVjMyek02IDM2djE0VjM2ek00IDMyaDJ2MmgtMnpNNiAzNmgydjJoLTJ6TTQgMzhoMnYyaC0yek02IDQyaDJ2MmgtMnpNNTYgMzRoek01OCAzMGgyek01MiAzNGgyek01NCAzMGgyek01MiAyOHYzMFYyOHpNNTQgMzJ2MjJWMzJ6TTUyIDI4aDJ2MmgtMnpNNTQgMzJoMnYyaC0yek01MiAzNGgyek01NCAzOGgydjJoLTJ6TTQ4IDM0aHpNNTAgMzBoek00NCAzNGh6TTQ2IDMwaHpNNDQgMzJ2MjJWMzJ6TTQ2IDM2djE0VjM2ek00NCAzMmgydjJoLTJ6TTQ2IDM2aDJ2MmgtMnpNNDQgMzhoMnYyaC0yek00NiA0MmgydjJoLTJ6TTYwIDI4djMwVjI4ek0wIDI4djMwVjI4ek0wIDI4aDJ2MmgtMnpNNjAgMjhoLTJ2MmgyeiIgZmlsbD0iI2ZmZiIgZmlsbC13b3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]"></div>
+            {/* Services */}
+            <div
+              className={`w-full transition-transform duration-300 ${
+                hoverState === "services"
+                  ? "scale-[1.02]"
+                  : hoverState === "academy"
+                  ? "scale-[0.98] opacity-90"
+                  : ""
+              }`}
+              onMouseEnter={() => setHoverState("services")}
+              onMouseLeave={() => setHoverState(null)}
+            >
+              <div className="relative h-full rounded-2xl overflow-hidden">
+                {/* base */}
+                <div className="relative bg-[#0F1E2E] rounded-2xl ring-1 ring-white/10 shadow-[0_8px_28px_rgba(0,0,0,0.35)]">
+                  {/* subtle texture */}
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_500px_at_0%_0%,rgba(255,255,255,0.06),transparent_60%)] opacity-[0.08]" />
 
-              <div className="relative h-full flex flex-col p-6 bg-[#112537]/70 backdrop-blur-sm rounded-2xl">
-                <div className="flex-1">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                      <span className="text-2xl">🤖</span>
+                  <div className="relative p-6 md:p-8 flex flex-col">
+                    {/* header */}
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ring-1 ring-white/15">
+                        <BriefcaseBusiness className="w-6 h-6 text-pink-200" />
+                      </div>
+                      <h3 className="ml-3 text-xl font-bold text-white">
+                        Ottobon Services
+                      </h3>
                     </div>
-                    <h2 className="ml-3 text-xl font-bold text-white">
-                      Ottobon Services
-                    </h2>
-                  </div>
-                  <p className="text-purple-100 text-sm mb-4">
-                    Empowering working professionals to transition into
-                    consultant providers with advanced tech learning and
-                    professional services.
-                  </p>
 
-                  <div className="space-y-1">
-                    <div className="flex items-start">
-                      <span className="text-pink-300 mr-2 text-sm">⚡</span>
-                      <span className="text-purple-50 text-sm">
-                        Transforming Health with Innovation
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="text-pink-300 mr-2 text-sm">⚡</span>
-                      <span className="text-purple-50 text-sm">
-                        Driving Innovation with Expertise
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="text-pink-300 mr-2 text-sm">⚡</span>
-                      <span className="text-purple-50 text-sm">Legal & Finance</span>
-                    </div>
-                  </div>
-                </div>
+                    {/* copy */}
+                    <p className="text-purple-100 text-sm md:text-base mb-5">
+                      Empowering working professionals to transition into
+                      consultant providers with advanced tech learning and
+                      professional services.
+                    </p>
 
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (pressing) return;
-                      setPressing("services");
-                      setTimeout(() => {
-                        navigate("/services");
-                        window.scrollTo(0, 0);
-                      }, 160);
-                    }}
-                    aria-pressed={pressing === "services"}
-                    className={`bg-[#FFC107] text-black font-semibold py-3 px-6 rounded-full transition transform duration-300 ease-out shadow-md hover:shadow-lg w-full relative overflow-hidden cursor-pointer filter focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 focus-visible:ring-offset-0 
-                        group-hover:scale-105 group-hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.65)] hover:scale-105 hover:drop-shadow-[0_10px_24px_rgba(212,175,55,0.35)] active:scale-110 active:drop-shadow-[0_12px_28px_rgba(212,175,55,0.45)] 
-                        ${pressing === "services" ? "scale-110 drop-shadow-[0_12px_28px_rgba(212,175,55,0.75)]" : ""}`}
-                  >
-                    <span className="relative z-10 flex items-center justify-center">
-                      Get Started
-                      <svg
-                        className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                    {/* bullets */}
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
+                        <span className="text-purple-50 text-sm md:text-base">
+                          Transform Health with Innovation
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
+                        <span className="text-purple-50 text-sm md:text-base">
+                          Driving Innovation with Expertise
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
+                        <span className="text-purple-50 text-sm md:text-base">
+                          Legal & Finance
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* cta */}
+                    <div className="mt-auto pt-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (pressing) return;
+                          setPressing("services");
+                          setTimeout(() => {
+                            navigate("/services");
+                            window.scrollTo(0, 0);
+                          }, 160);
+                        }}
+                        aria-pressed={pressing === "services"}
+                        className={`w-full rounded-full bg-[#FFC107] text-black font-semibold py-3 px-6 transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 ${
+                          pressing === "services" ? "scale-[1.02]" : ""
+                        }`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        ></path>
-                      </svg>
-                    </span>
-                  </button>
+                        <span className="inline-flex items-center justify-center">
+                          Get Started
+                          <svg
+                            className="ml-2 w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
+
 
 
 

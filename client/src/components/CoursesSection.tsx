@@ -50,6 +50,25 @@ export default function CoursesSection() {
   // Courses data
   const courses: Course[] = [
     {
+      id: "ai-uiux",
+      title: "AI for Web Development",
+      category: "Career Launch",
+      categoryLabel: "Design Intelligence",
+      color: "indigo-800",
+      bgColor: "indigo-100",
+      description:
+        "Integrate AI into UI/UX workflows for smarter, data-driven design and personalized user experiences.",
+      outcomes: [
+        "Master AI-driven design principles and tools",
+        "Build generative UI/UX prototyping systems",
+        "Apply AI to user research and testing workflows",
+        "Design adaptive, personalized interfaces",
+      ],
+      logoUrl: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png",
+      gradientFrom: "from-indigo-500",
+      gradientTo: "to-indigo-700",
+    },
+    {
       id: "ai-agent-development",
       title: "AI Agent Development",
       category: "Career Launch",
@@ -87,25 +106,6 @@ export default function CoursesSection() {
       logoUrl: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
       gradientFrom: "from-amber-500",
       gradientTo: "to-amber-700",
-    },
-    {
-      id: "ai-uiux",
-      title: "AI for Web-developer",
-      category: "Career Launch",
-      categoryLabel: "Design Intelligence",
-      color: "indigo-800",
-      bgColor: "indigo-100",
-      description:
-        "Integrate AI into UI/UX workflows for smarter, data-driven design and personalized user experiences.",
-      outcomes: [
-        "Master AI-driven design principles and tools",
-        "Build generative UI/UX prototyping systems",
-        "Apply AI to user research and testing workflows",
-        "Design adaptive, personalized interfaces",
-      ],
-      logoUrl: "https://cdn-icons-png.flaticon.com/512/3281/3281289.png",
-      gradientFrom: "from-indigo-500",
-      gradientTo: "to-indigo-700",
     },
     {
       id: "ai-data-labeling",
@@ -247,10 +247,7 @@ export default function CoursesSection() {
     direction: "ltr",
     startIndex: 0,
   });
-  const [autoplay, setAutoplay] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
-  const autoplayInterval = 3000;
-  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Check if we need to show navigation at all
   const [canScroll, setCanScroll] = useState(true);
@@ -277,17 +274,6 @@ export default function CoursesSection() {
     if (!embla) return;
   }, [embla]);
 
-  const autoplayCallback = useCallback(() => {
-    if (!embla || !autoplay || isHovering) return;
-    if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
-
-    autoplayTimeoutRef.current = setTimeout(() => {
-      if (!embla || isHovering) return;
-      embla.scrollNext();
-      autoplayCallback();
-    }, autoplayInterval);
-  }, [autoplay, embla, autoplayInterval, isHovering]);
-
   useEffect(() => {
     if (!embla) return;
 
@@ -303,33 +289,11 @@ export default function CoursesSection() {
     embla.on("select", onSelect);
     embla.on("reInit", updateCanScroll);
 
-    if (autoplay && canScroll) {
-      autoplayCallback();
-    }
-
     return () => {
       embla.off("select", onSelect);
       embla.off("reInit", updateCanScroll);
-      if (autoplayTimeoutRef.current) {
-        clearTimeout(autoplayTimeoutRef.current);
-      }
     };
-  }, [
-    autoplay,
-    autoplayCallback,
-    embla,
-    onSelect,
-    isHovering,
-    filteredCourses,
-    canScroll,
-  ]);
-
-  // Effect to restart autoplay when hovering stops
-  useEffect(() => {
-    if (!isHovering && autoplay) {
-      autoplayCallback();
-    }
-  }, [isHovering, autoplay, autoplayCallback]);
+  }, [embla, onSelect, filteredCourses, canScroll]);
 
   // Animation refs
   const sectionRef = useAnimation("animate-fade-in");
@@ -351,32 +315,18 @@ export default function CoursesSection() {
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-6">
-          <div className="inline-flex items-center mb-4 bg-blue-500/20 px-4 py-2 rounded-full">
-            <span className="text-blue-400 mr-2 text-xl">🔥</span>
-            <span className="text-blue-300 font-medium text-sm uppercase tracking-wider">
+          <div className="inline-flex items-center mb-4 bg-blue-500/10 px-6 py-2 rounded-full border border-blue-400/20 backdrop-blur-sm">
+            <span className="text-blue-200 font-semibold text-sm uppercase tracking-wider">
               In-Demand Skills
             </span>
           </div>
           <h2
             ref={headingRef}
-            className="text-3xl md:text-4xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400"
+            className="text-3xl md:text-4xl font-bold text-center mb-4 text-white"
           >
             Advance Your Professional Skills
           </h2>
-          
-          <div className="bg-blue-900/40 border border-blue-500/50 rounded-lg p-4 max-w-3xl mx-auto mb-8">
-            <div className="flex items-center justify-center mb-2">
-              <svg className="w-5 h-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <h3 className="text-lg font-semibold text-blue-300">Course Availability</h3>
-            </div>
-            <p className="text-blue-100 text-center text-sm">
-              <span className="font-semibold text-green-400">AI for Web-developer</span> is now accepting applications. 
-              All other courses are <span className="font-semibold text-orange-400">coming soon</span> - join our waitlist to be notified when enrollment opens.
-            </p>
-          </div>
-          <div className="fancy-divider"></div>
+          <div className="h-0.5 w-28 md:w-32 mx-auto bg-gradient-to-r from-blue-400/80 via-blue-300/50 to-purple-400/80 rounded-full"></div>
         </div>
 
         {/* Course Filters */}
@@ -385,20 +335,13 @@ export default function CoursesSection() {
             {categories.map((category) => (
               <div key={category.id} className="text-center">
                 <button
-                  className={`font-medium py-2 px-8 rounded-full transition flex items-center ${
+                  className={`font-semibold py-3 px-8 rounded-lg transition-all duration-200 ${
                     activeFilter === category.id
-                      ? "bg-primary text-white shadow-md"
-                      : "bg-white hover:bg-gray-100 text-gray-700 shadow-sm"
+                      ? "bg-blue-600 text-white shadow-lg border-2 border-blue-500 shadow-blue-500/30"
+                      : "bg-white/5 hover:bg-white/10 text-blue-100 shadow-sm border-2 border-white/10 hover:border-white/20 backdrop-blur-sm"
                   }`}
                   onClick={() => setActiveFilter(category.id)}
                 >
-                  <span className="mr-2 text-lg">
-                    {category.id === "Career Launch"
-                      ? "🚀"
-                      : category.id === "Tech Edge"
-                        ? "⚙️"
-                        : "🎯"}
-                  </span>
                   {category.title}
                 </button>
               </div>
@@ -406,11 +349,14 @@ export default function CoursesSection() {
           </div>
 
           {/* Description for selected category only */}
-          <div className="text-center animate-fade-in">
+          <div className="flex justify-center animate-fade-in">
             {categories.map(
               (category) =>
                 activeFilter === category.id && (
-                  <p key={category.id} className="text-sm text-gray-600 mt-2">
+                  <p
+                    key={category.id}
+                    className="text-sm text-blue-200/80 mt-2 text-center max-w-md"
+                  >
                     {category.description}
                   </p>
                 ),
@@ -448,115 +394,64 @@ export default function CoursesSection() {
                       {/* Card Front */}
                       <div className="flip-card-front">
                         <div
-                          className={`h-3/5 bg-gradient-to-r ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-3 sm:p-6 relative overflow-hidden`}
+                          className={`h-3/5 bg-gradient-to-br ${course.gradientFrom} ${course.gradientTo} flex items-center justify-center p-6 sm:p-8 relative overflow-hidden`}
                         >
-                          {/* Decorative elements - responsive sizes */}
-                          <div className="absolute top-0 left-0 w-full h-full">
-                            <div className="absolute top-4 sm:top-8 left-4 sm:left-8 w-8 sm:w-16 h-8 sm:h-16 bg-white/10 rounded-full"></div>
-                            <div className="absolute bottom-6 sm:bottom-12 right-4 sm:right-8 w-10 sm:w-20 h-10 sm:h-20 bg-white/10 rounded-full"></div>
-                            <div className="absolute top-1/3 right-1/4 w-6 sm:w-12 h-6 sm:h-12 bg-white/10 rounded-full"></div>
-                            <div className="bg-grid-pattern opacity-20 absolute inset-0"></div>
+                          {/* Professional decorative pattern */}
+                          <div className="absolute inset-0 opacity-10">
+                            <div
+                              className="absolute inset-0"
+                              style={{
+                                backgroundImage:
+                                  "linear-gradient(30deg, transparent 48%, rgba(255,255,255,0.3) 49%, rgba(255,255,255,0.3) 51%, transparent 52%), linear-gradient(150deg, transparent 48%, rgba(255,255,255,0.3) 49%, rgba(255,255,255,0.3) 51%, transparent 52%)",
+                                backgroundSize: "20px 20px",
+                              }}
+                            ></div>
                           </div>
 
-                          {course.logoUrl ? (
-                            <img
-                              src={course.logoUrl}
-                              alt={course.title}
-                              className="h-16 sm:h-20 md:h-24 max-w-full object-contain relative z-10"
-                            />
-                          ) : (
-                            <div className="relative z-10 text-white text-4xl sm:text-5xl md:text-7xl">
-                              {course.id === "genai"
-                                ? "🤖"
-                                : course.id === "cloud"
-                                  ? "☁️"
-                                  : course.id === "data"
-                                    ? "📊"
-                                    : course.id === "ai-uiux"
-                                      ? "🎨"
-                                      : course.id === "ai-marketing"
-                                        ? "📈"
-                                        : course.id === "ai-agent-development"
-                                          ? "🤖"
-                                          : course.id === "ai-data-labeling"
-                                            ? "🏷️"
-                                            : course.id === "expert-app"
-                                              ? "🧠"
-                                              : "💻"}
+                          {/* Course title in header */}
+                          <div className="relative z-10 text-center px-4">
+                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight break-words">
+                              {course.title}
+                            </h3>
+                            <div className="inline-block px-4 py-1.5 bg-white/20 backdrop-blur-sm rounded-full">
+                              <span className="text-white text-xs sm:text-sm font-semibold">
+                                {course.categoryLabel}
+                              </span>
                             </div>
-                          )}
+                          </div>
                         </div>
-                        <div className="p-3 sm:p-4 md:p-6 flex flex-col h-2/5 bg-gray-800">
-                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 sm:mb-3 gap-2">
-                            <div className="flex flex-col min-w-0 flex-1">
-                              <h3 className="text-base sm:text-lg md:text-xl font-bold leading-tight text-white truncate">
-                                {course.title}
-                              </h3>
-                              <div className="flex flex-wrap gap-1 mt-1 sm:mt-2">
-                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-700 text-gray-200 flex items-center flex-shrink-0">
-                                  <span className="mr-1">
-                                    {course.id === "genai" && "🤖"}
-                                    {course.id === "cloud" && "☁️"}
-                                    {course.id === "data" && "📊"}
-                                    {course.id === "blockchain" && "🔗"}
-                                    {course.id === "ai-uiux" && "🎨"}
-                                    {course.id === "ai-marketing" && "📈"}
-                                    {course.id === "ai-agent-development" && "🤖"}
-                                    {course.id === "ai-data-labeling" && "🏷️"}
-                                    {course.id === "expert-app" && "🧠"}
-                                  </span>
-                                  <span className="hidden sm:inline">{course.categoryLabel}</span>
-                                  <span className="sm:hidden">{course.categoryLabel.split(' ')[0]}</span>
-                                </span>
-                              </div>
+                        <div className="p-4 sm:p-5 md:p-6 flex flex-col h-2/5 bg-gray-900/95 border-t-2 border-white/10">
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 gap-2">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                                {course.description}
+                              </p>
                             </div>
-                            <div className="flex flex-wrap gap-1 self-start sm:self-auto">
+                            <div className="flex flex-wrap gap-2 self-start sm:self-auto sm:ml-3">
                               {course.id !== "ai-uiux" && (
-                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-400/30">
+                                <span className="text-xs font-bold px-3 py-1.5 rounded-md bg-orange-500/20 text-orange-300 border border-orange-500/40 whitespace-nowrap">
                                   Coming Soon
                                 </span>
                               )}
                               {course.id === "ai-uiux" && (
-                                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-400/30">
+                                <span className="text-xs font-bold px-3 py-1.5 rounded-md bg-green-500/20 text-green-300 border border-green-500/40 whitespace-nowrap">
                                   Enroll Now
                                 </span>
                               )}
                             </div>
                           </div>
-                          <p className="text-gray-300 text-xs sm:text-sm font-medium leading-relaxed flex-1 line-clamp-3 sm:line-clamp-4">
-                            {course.description}
-                          </p>
                         </div>
                       </div>
 
                       {/* Card Back */}
                       <div className="flip-card-back">
-                        <div className="p-3 sm:p-4 md:p-6 h-full flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
-                          <div className="flex justify-between items-start mb-3 sm:mb-4">
-                            <h3 className="text-base sm:text-lg md:text-xl font-bold flex items-center text-white flex-1 min-w-0">
-                              <span className="text-lg sm:text-xl md:text-2xl mr-2 flex-shrink-0">
-                                {course.id === "genai"
-                                  ? "🤖"
-                                  : course.id === "cloud"
-                                    ? "☁️"
-                                    : course.id === "data"
-                                      ? "📊"
-                                      : course.id === "ai-uiux"
-                                        ? "🎨"
-                                        : course.id === "ai-marketing"
-                                          ? "📈"
-                                          : course.id === "ai-agent-development"
-                                            ? "🤖"
-                                            : course.id === "ai-data-labeling"
-                                              ? "🏷️"
-                                              : course.id === "expert-app"
-                                                ? "🧠"
-                                                : "💻"}
-                              </span>
+                        <div className="p-4 sm:p-5 md:p-6 h-full flex flex-col bg-gray-900/95">
+                          <div className="flex justify-between items-start mb-4 pb-3 border-b-2 border-white/10">
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white flex-1 min-w-0">
                               <span className="truncate">{course.title}</span>
                             </h3>
                             <button
-                              className="text-gray-400 hover:text-gray-200 bg-gray-700 rounded-full w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center shadow-sm hover:shadow transition flex-shrink-0 ml-2"
+                              className="text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full w-8 h-8 flex items-center justify-center transition flex-shrink-0 ml-3"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 toggleFlipCard(course.id);
@@ -564,15 +459,14 @@ export default function CoursesSection() {
                             >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
+                                width="16"
+                                height="16"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="sm:w-4 sm:h-4"
                               >
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -581,35 +475,18 @@ export default function CoursesSection() {
                           </div>
 
                           <div className="overflow-y-auto flex-1 scrollbar-hide">
-                            <div className="bg-gray-700 p-3 sm:p-4 rounded-lg mb-3 sm:mb-4">
-                              <h4 className="font-semibold mb-2 text-blue-300 flex items-center text-sm sm:text-base">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  className="mr-2 flex-shrink-0 sm:w-[18px] sm:h-[18px]"
-                                >
-                                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
+                            <div className="bg-blue-500/10 border border-blue-500/30 p-4 rounded-lg mb-4">
+                              <h4 className="font-bold mb-3 text-blue-300 text-sm sm:text-base uppercase tracking-wide">
                                 Key Outcomes
                               </h4>
-                              <ul className="mb-1 space-y-1 sm:space-y-2">
+                              <ul className="space-y-2">
                                 {course.outcomes.map((outcome, index) => (
                                   <li
                                     key={index}
                                     className="flex items-start text-xs sm:text-sm"
                                   >
-                                    <span className="text-green-400 mr-2 mt-1 flex-shrink-0">
-                                      ✓
-                                    </span>
-                                    <span className="text-gray-200 leading-tight">
+                                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
+                                    <span className="text-gray-300 leading-relaxed">
                                       {outcome}
                                     </span>
                                   </li>
@@ -620,101 +497,31 @@ export default function CoursesSection() {
                             {/* Conditional content based on course category */}
                             {course.category === "Career Launch" ? (
                               <>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-3 sm:mb-4">
-                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-1 sm:mb-2 text-purple-300 flex items-center text-xs sm:text-sm">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                      >
-                                        <rect
-                                          x="3"
-                                          y="4"
-                                          width="18"
-                                          height="18"
-                                          rx="2"
-                                          ry="2"
-                                        ></rect>
-                                        <line
-                                          x1="16"
-                                          y1="2"
-                                          x2="16"
-                                          y2="6"
-                                        ></line>
-                                        <line
-                                          x1="8"
-                                          y1="2"
-                                          x2="8"
-                                          y2="6"
-                                        ></line>
-                                        <line
-                                          x1="3"
-                                          y1="10"
-                                          x2="21"
-                                          y2="10"
-                                        ></line>
-                                      </svg>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                                  <div className="bg-purple-500/10 border border-purple-500/30 p-3 sm:p-4 rounded-lg">
+                                    <h4 className="font-bold mb-2 text-purple-300 text-xs sm:text-sm uppercase tracking-wide">
                                       Duration
                                     </h4>
-                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
+                                    <p className="text-gray-300 text-xs sm:text-sm leading-tight">
                                       12-week immersive program
                                     </p>
                                   </div>
 
-                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-1 sm:mb-2 text-green-300 flex items-center text-xs sm:text-sm">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                      >
-                                        <path d="M12 3v19M5 8h14M5 18h14"></path>
-                                      </svg>
+                                  <div className="bg-green-500/10 border border-green-500/30 p-3 sm:p-4 rounded-lg">
+                                    <h4 className="font-bold mb-2 text-green-300 text-xs sm:text-sm uppercase tracking-wide">
                                       Format
                                     </h4>
-                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                      Hands-on projects with expert mentors
+                                    <p className="text-gray-300 text-xs sm:text-sm leading-tight">
+                                      Expert guidance and career mentorship
                                     </p>
                                   </div>
                                 </div>
 
-                                <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg mb-3 sm:mb-4">
-                                  <h4 className="font-semibold mb-1 sm:mb-2 text-blue-300 flex items-center text-xs sm:text-sm">
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width="14"
-                                      height="14"
-                                      viewBox="0 0 24 24"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      strokeWidth="2"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                    >
-                                      <path d="M20 7h-9"></path>
-                                      <path d="M14 17H5"></path>
-                                      <circle cx="17" cy="17" r="3"></circle>
-                                      <circle cx="7" cy="7" r="3"></circle>
-                                    </svg>
+                                <div className="bg-white/5 border border-white/10 p-3 sm:p-4 rounded-lg mb-4">
+                                  <h4 className="font-bold mb-2 text-gray-200 text-xs sm:text-sm uppercase tracking-wide">
                                     Career Opportunities
                                   </h4>
-                                  <p className="text-gray-200 text-xs sm:text-sm leading-tight">
+                                  <p className="text-gray-300 text-xs sm:text-sm leading-tight">
                                     Graduates work as specialized consultants in
                                     top firms with excellent career advancement
                                     opportunities and competitive compensation
@@ -724,167 +531,93 @@ export default function CoursesSection() {
                               </>
                             ) : course.category === "Tech Edge" ? (
                               <>
-                                <div className="grid grid-cols-1 gap-2 sm:gap-4 mb-3 sm:mb-4">
-                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-1 sm:mb-2 text-blue-300 flex items-center text-xs sm:text-sm">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                      >
-                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                                      </svg>
-                                      {course.id === "resume-builder" && "Multiple Modes"}
-                                      {course.id === "job-matching" && "Smart Matching"}
-                                      {course.id === "mock-interviews" && "Unlimited Practice"}
+                                <div className="grid grid-cols-1 gap-3 mb-4">
+                                  <div className="bg-indigo-500/10 border border-indigo-500/30 p-3 sm:p-4 rounded-lg">
+                                    <h4 className="font-bold mb-2 text-indigo-300 text-xs sm:text-sm uppercase tracking-wide">
+                                      {course.id === "resume-builder" &&
+                                        "Multiple Modes"}
+                                      {course.id === "job-matching" &&
+                                        "Smart Matching"}
+                                      {course.id === "mock-interviews" &&
+                                        "Unlimited Practice"}
                                     </h4>
-                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                      {course.id === "resume-builder" && "Start from scratch, modify existing, or create JD-based resumes"}
-                                      {course.id === "job-matching" && "Personality and skill-based matching for best-fit roles"}
-                                      {course.id === "mock-interviews" && "Practice anytime with Standard or JD-Based interview modes"}
+                                    <p className="text-gray-300 text-xs sm:text-sm leading-tight">
+                                      {course.id === "resume-builder" &&
+                                        "Start from scratch, modify existing, or create JD-based resumes"}
+                                      {course.id === "job-matching" &&
+                                        "Personality and skill-based matching for best-fit roles"}
+                                      {course.id === "mock-interviews" &&
+                                        "Practice anytime with Standard or JD-Based interview modes"}
                                     </p>
                                   </div>
 
-                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-1 sm:mb-2 text-green-300 flex items-center text-xs sm:text-sm">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                      >
-                                        <path d="M9 12l2 2 4-4"></path>
-                                        <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
-                                        <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
-                                      </svg>
-                                      {course.id === "resume-builder" && "ATS-Optimized"}
-                                      {course.id === "job-matching" && "Real-Time Updates"}
-                                      {course.id === "mock-interviews" && "Detailed Feedback"}
+                                  <div className="bg-teal-500/10 border border-teal-500/30 p-3 sm:p-4 rounded-lg">
+                                    <h4 className="font-bold mb-2 text-teal-300 text-xs sm:text-sm uppercase tracking-wide">
+                                      {course.id === "resume-builder" &&
+                                        "ATS-Optimized"}
+                                      {course.id === "job-matching" &&
+                                        "Real-Time Updates"}
+                                      {course.id === "mock-interviews" &&
+                                        "Detailed Feedback"}
                                     </h4>
-                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                      {course.id === "resume-builder" && "Templates optimized for applicant tracking systems"}
-                                      {course.id === "job-matching" && "Fresh openings across industries with smart filters"}
-                                      {course.id === "mock-interviews" && "Highlights strengths and improvement areas with actionable tips"}
+                                    <p className="text-gray-300 text-xs sm:text-sm leading-tight">
+                                      {course.id === "resume-builder" &&
+                                        "Templates optimized for applicant tracking systems"}
+                                      {course.id === "job-matching" &&
+                                        "Fresh openings across industries with smart filters"}
+                                      {course.id === "mock-interviews" &&
+                                        "Highlights strengths and improvement areas with actionable tips"}
                                     </p>
                                   </div>
                                 </div>
 
-                                <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg mb-3 sm:mb-4">
-                                  <h4 className="font-semibold mb-1 sm:mb-2 text-purple-300 flex items-center text-xs sm:text-sm">
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width="14"
-                                      height="14"
-                                      viewBox="0 0 24 24"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      strokeWidth="2"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                    >
-                                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                      <circle cx="8.5" cy="7" r="4"></circle>
-                                      <polyline points="17 11 19 13 23 9"></polyline>
-                                    </svg>
-                                    {course.id === "resume-builder" && "Professional Results"}
-                                    {course.id === "job-matching" && "Perfect Fit"}
-                                    {course.id === "mock-interviews" && "Interview Ready"}
+                                <div className="bg-amber-500/10 border border-amber-500/30 p-3 sm:p-4 rounded-lg mb-4">
+                                  <h4 className="font-bold mb-2 text-amber-300 text-xs sm:text-sm uppercase tracking-wide">
+                                    {course.id === "resume-builder" &&
+                                      "Professional Results"}
+                                    {course.id === "job-matching" &&
+                                      "Perfect Fit"}
+                                    {course.id === "mock-interviews" &&
+                                      "Interview Ready"}
                                   </h4>
-                                  <p className="text-gray-200 text-xs sm:text-sm leading-tight">
-                                    {course.id === "resume-builder" && "Polished, targeted resumes for every application with multiple export formats"}
-                                    {course.id === "job-matching" && "Discover the right job and culture that matches your skills and personality"}
-                                    {course.id === "mock-interviews" && "Be fully prepared before the real interview with comprehensive practice sessions"}
+                                  <p className="text-gray-300 text-xs sm:text-sm leading-tight">
+                                    {course.id === "resume-builder" &&
+                                      "Polished, targeted resumes for every application with multiple export formats"}
+                                    {course.id === "job-matching" &&
+                                      "Discover the right job and culture that matches your skills and personality"}
+                                    {course.id === "mock-interviews" &&
+                                      "Be fully prepared before the real interview with comprehensive practice sessions"}
                                   </p>
                                 </div>
                               </>
                             ) : (
                               <>
-                                <div className="grid grid-cols-1 gap-2 sm:gap-4 mb-3 sm:mb-4">
-                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-1 sm:mb-2 text-teal-300 flex items-center text-xs sm:text-sm">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                      >
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="8.5" cy="7" r="4"></circle>
-                                        <path d="m21 2-1 1"></path>
-                                        <path d="m22 5-1-1"></path>
-                                        <path d="m21 6-1-1"></path>
-                                      </svg>
+                                <div className="grid grid-cols-1 gap-3 mb-4">
+                                  <div className="bg-cyan-500/10 border border-cyan-500/30 p-3 sm:p-4 rounded-lg">
+                                    <h4 className="font-bold mb-2 text-cyan-300 text-xs sm:text-sm uppercase tracking-wide">
                                       Expert Mentors
                                     </h4>
-                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
+                                    <p className="text-gray-300 text-xs sm:text-sm leading-tight">
                                       Industry professionals with years of
                                       experience
                                     </p>
                                   </div>
 
-                                  <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg">
-                                    <h4 className="font-semibold mb-1 sm:mb-2 text-orange-300 flex items-center text-xs sm:text-sm">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                      >
-                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                                      </svg>
+                                  <div className="bg-rose-500/10 border border-rose-500/30 p-3 sm:p-4 rounded-lg">
+                                    <h4 className="font-bold mb-2 text-rose-300 text-xs sm:text-sm uppercase tracking-wide">
                                       Personalized
                                     </h4>
-                                    <p className="text-gray-200 text-xs sm:text-sm leading-tight">
+                                    <p className="text-gray-300 text-xs sm:text-sm leading-tight">
                                       Tailored guidance based on your goals
                                     </p>
                                   </div>
                                 </div>
 
-                                <div className="bg-gray-600 p-2 sm:p-3 md:p-4 rounded-lg mb-3 sm:mb-4">
-                                  <h4 className="font-semibold mb-1 sm:mb-2 text-indigo-300 flex items-center text-xs sm:text-sm">
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width="14"
-                                      height="14"
-                                      viewBox="0 0 24 24"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      strokeWidth="2"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      className="mr-1 sm:mr-2 flex-shrink-0 sm:w-[16px] sm:h-[16px]"
-                                    >
-                                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                    </svg>
+                                <div className="bg-slate-500/10 border border-slate-500/30 p-3 sm:p-4 rounded-lg mb-4">
+                                  <h4 className="font-bold mb-2 text-slate-200 text-xs sm:text-sm uppercase tracking-wide">
                                     Investment
                                   </h4>
-                                  <p className="text-gray-200 text-xs sm:text-sm leading-tight">
+                                  <p className="text-gray-300 text-xs sm:text-sm leading-tight">
                                     Affordable monthly subscription with
                                     unlimited access to expert guidance and
                                     resources.
@@ -894,53 +627,36 @@ export default function CoursesSection() {
                             )}
                           </div>
 
-                          <div className="mt-3 sm:mt-4 text-center">
+                          <div className="mt-4 text-center pt-4 border-t border-white/10">
                             {course.id === "ai-uiux" ? (
-                              <a
-                                href="#talent-compass"
-                                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-2 px-4 sm:px-6 rounded-full transition shadow-md hover:shadow-lg relative overflow-hidden group inline-flex text-xs sm:text-sm"
+                              <button
+                                onClick={() => {
+                                  window.location.href =
+                                    "https://cohort.ottobon.cloud/";
+                                }}
+                                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl inline-flex items-center text-sm sm:text-base"
                               >
-                                <span className="relative z-10 flex items-center justify-center">
-                                  Apply Now
-                                  <svg
-                                    className="ml-1 w-3 h-3 sm:w-4 sm:h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="2"
-                                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                    ></path>
-                                  </svg>
-                                </span>
-                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/30 to-white/0 -translate-x-full animate-shine"></span>
-                              </a>
+                                Apply Now
+                                <svg
+                                  className="ml-2 w-4 h-4 sm:w-5 sm:h-5"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                  ></path>
+                                </svg>
+                              </button>
                             ) : (
                               <button
                                 disabled
-                                className="bg-gray-600 text-gray-400 font-semibold py-2 px-4 sm:px-6 rounded-full cursor-not-allowed opacity-60 inline-flex items-center text-xs sm:text-sm"
+                                className="bg-white/5 text-gray-400 font-bold py-3 px-8 rounded-lg cursor-not-allowed inline-flex items-center text-sm sm:text-base border border-white/10"
                               >
-                                <span className="flex items-center justify-center">
-                                  Coming Soon
-                                  <svg
-                                    className="ml-1 w-3 h-3 sm:w-4 sm:h-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="2"
-                                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    ></path>
-                                  </svg>
-                                </span>
+                                Coming Soon
                               </button>
                             )}
                           </div>
@@ -957,7 +673,7 @@ export default function CoursesSection() {
           {canScroll && (
             <>
               <button
-                className="absolute top-1/2 -translate-y-1/2 -left-2 md:left-2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-blue-600 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 border border-blue-100"
+                className="absolute top-1/2 -translate-y-1/2 -left-2 md:left-2 bg-black/60 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-white/70 hover:text-white hover:bg-black/80 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 border border-white/20 hover:border-blue-400/50"
                 onClick={() => embla?.scrollPrev()}
                 aria-label="Previous slide"
               >
@@ -976,7 +692,7 @@ export default function CoursesSection() {
                 </svg>
               </button>
               <button
-                className="absolute top-1/2 -translate-y-1/2 -right-2 md:right-2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-blue-600 hover:bg-blue-600 hover:text-white transition-all hover:scale-105 border border-blue-100"
+                className="absolute top-1/2 -translate-y-1/2 -right-2 md:right-2 bg-black/60 backdrop-blur-sm shadow-lg rounded-full w-12 h-12 flex items-center justify-center z-10 text-white/70 hover:text-white hover:bg-black/80 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 border border-white/20 hover:border-blue-400/50"
                 onClick={() => embla?.scrollNext()}
                 aria-label="Next slide"
               >
@@ -993,44 +709,6 @@ export default function CoursesSection() {
                 >
                   <path d="M9 18l6-6-6-6" />
                 </svg>
-              </button>
-
-              {/* Pause/Play Button */}
-              <button
-                className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm shadow-md rounded-full w-10 h-10 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition border border-blue-100"
-                onClick={() => setAutoplay(!autoplay)}
-                aria-label={autoplay ? "Pause autoplay" : "Start autoplay"}
-              >
-                {autoplay ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="6" y="4" width="4" height="16" />
-                    <rect x="14" y="4" width="4" height="16" />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
-                )}
               </button>
             </>
           )}

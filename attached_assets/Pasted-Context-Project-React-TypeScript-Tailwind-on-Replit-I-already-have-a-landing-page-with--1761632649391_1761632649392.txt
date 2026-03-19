@@ -1,0 +1,63 @@
+Context:
+- Project: React + TypeScript + Tailwind on Replit.
+- I already have a landing page with a header (navbar area).
+- I have an external page built in plain HTML, CSS, and JS that I want to integrate as a new page in this same React app.
+
+Goal:
+Convert the provided HTML, CSS, and JS into a new React page that fits into my existing project, and add a navigation button to the landing page header that opens this new page when clicked.
+
+Instructions:
+
+1️⃣ Create a new page:
+- Create a new React page named `MyPage.tsx` under `src/pages/`.
+- Convert my HTML → JSX while maintaining identical structure and visuals.
+- Move CSS → a scoped CSS Module file (`MyPage.module.css`). Avoid global leakage.
+- Convert all JS interactions → React logic using `useEffect` and `useRef`. No direct DOM manipulations like `document.querySelector`.
+- Keep all animations, behaviors, and responsiveness exactly the same.
+- Use my theme tokens (Tailwind variables or CSS vars). Do NOT add new colors or hardcoded hex values.
+- Keep all text and visuals unchanged, just adapted for React.
+
+2️⃣ Responsiveness:
+- Ensure it’s fully responsive across mobile, tablet, and desktop.
+- Maintain all original responsive behaviors and media queries.
+
+3️⃣ Routing:
+- Add a route `/my-page` to the app’s routing file (React Router).
+- Do not disturb existing routes or layouts.
+- Make sure it’s accessible directly via `/my-page` in the browser.
+
+4️⃣ Add button in header:
+- On the landing page’s header (navbar), add a new button labeled:
+  **“Open My Page”** (you can rename later if needed).
+- This button should navigate to `/my-page` using the app’s router (no page reload).
+- The button style should match my existing header buttons (use same padding, border-radius, hover styles, and color tokens).
+- Do not alter header alignment, spacing, or other nav items — just add this one cleanly to the right side (or aligned with existing CTA).
+
+5️⃣ Accessibility & UX:
+- Keep all focus states visible and accessible.
+- Ensure the page can scroll normally on mobile.
+- Make sure header navigation still works properly on small screens (menu toggles, etc.).
+
+6️⃣ Assets:
+- Place all images/fonts in `/public/assets/my-page/` and fix URLs accordingly.
+- If there are external scripts, import them safely inside the component with lazy loading or `useEffect`.
+
+7️⃣ Deliver:
+- Files created:
+  • `src/pages/MyPage.tsx`
+  • `src/pages/MyPage.module.css`
+- Route entry in app router (e.g., `App.tsx` or `routes.tsx`)
+- Header button on landing page that navigates to `/my-page`.
+- Short inline comment in code explaining where navigation was added.
+- The rest of the site, theme, and structure must remain exactly the same.
+
+8️⃣ Acceptance criteria:
+✅ MyPage visually matches the original HTML version exactly.  
+✅ Fully responsive and interactive.  
+✅ Navigable via `/my-page` route.  
+✅ Header button “Open My Page” links to it cleanly.  
+✅ No color or spacing changes elsewhere.  
+✅ Works perfectly in both light and dark themes.  
+✅ Minimal, isolated changes (no regression in layout or behavior anywhere).
+
+After this, I will paste my HTML, CSS, and JS — please implement this conversion and button addition exactly as described.

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Application Developer Internship - OTTOBON</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles & Palette */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4; /* Lighter, warmer neutral background */
+            color: #1a202c;
+        }
+
+        /* Chart Container for Responsiveness */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px; /* Slightly larger max width for better display */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Adjusted height for mobile and desktop consistency */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8); /* Slightly less transparent */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px); /* Lift on hover */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Mobile Menu Animation */
+        .mobile-menu-transition {
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+        .mobile-menu-transition.open {
+            max-height: 300px; /* Adjust based on content */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-100">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="https://ottobon.in/" class="flex items-center space-x-2 text-xl font-bold text-gray-800">
+                <span class="text-blue-600 text-3xl"><image src="image-removebg-preview (1).png" style="width: 60px;height: auto;"></image></span>
+                <span>OTTOBON Internship</span>
+            </a>
+            <div class="hidden md:flex space-x-10">
+                <a href="#investment" class="nav-link text-gray-600 font-medium hover:text-blue-600 transition duration-300">The Value</a>
+                <a href="#journey" class="nav-link text-gray-600 font-medium hover:text-blue-600 transition duration-300">Your Journey</a>
+                <a href="#payoff" class="nav-link text-gray-600 font-medium hover:text-blue-600 transition duration-300">Career Payoff</a>
+                <a href="#apply" class="btn-primary bg-blue-600 text-white font-medium py-2 px-4 rounded-lg text-sm shadow-md hover:bg-blue-700">Apply Now</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu-transition md:hidden bg-white border-t border-gray-100">
+            <div class="px-6 pt-2 pb-4">
+                <a href="#investment" class="block py-3 px-3 rounded-md hover:bg-gray-50 text-gray-700 font-medium">The Value</a>
+                <a href="#journey" class="block py-3 px-3 rounded-md hover:bg-gray-50 text-gray-700 font-medium">Your Journey</a>
+                <a href="#payoff" class="block py-3 px-3 rounded-md hover:bg-gray-50 text-gray-700 font-medium">Career Payoff</a>
+                <a href="#apply" class="block py-3 px-3 rounded-md mt-2 text-center bg-blue-600 text-white font-medium">Apply Now</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="py-20 md:py-32 bg-gray-50 border-b border-gray-100">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
+                <p class="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-2">AI APPLICATION DEVELOPER PROGRAM</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-snug">
+                    Accelerate Your Career Capital <br class="hidden sm:inline"> in Applied AI
+                </h1>
+                <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+                    Targeted internship tracks for <b>3rd/4th Year Undergrads</b> and <b>Freshers</b>. Build real-world AI applications, gain elite mentorship, and follow a clear path from a free internship to <b>paid roles</b> and <b>full-time offers</b>.<br>
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmY5RbqR90zPf4bg2gTAeEuBBfb4rkYDVuWyhwlmVBgcTpKg/viewform?usp=dialog" target="_blank" class="btn-primary bg-blue-600 text-white font-semibold py-3 px-10 rounded-xl shadow-xl w-full sm:w-auto text-lg hover:bg-blue-700">
+                        Secure Your Spot
+                    </a>
+                    <a href="#investment" class="font-semibold text-blue-600 py-3 px-6 hover:text-blue-800 transition duration-300">
+                        See The Value &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="investment" class="py-20">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">The Non-Monetary Investment: Skill, Exposure & Credibility 🚀</h2>
+                    <p class="mt-4 text-md text-gray-600 max-w-2xl mx-auto">We offset the free nature by guaranteeing non-negotiable gains that will define your career trajectory. This is your gateway to validated, meaningful industry exposure.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="glass-card p-6 rounded-2xl shadow-lg">
+                        <span class="text-3xl text-blue-600 mb-2 block">🤝</span>
+                        <h3 class="text-xl font-bold text-gray-900">Elite Mentorship</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Direct guidance from experts at <b>top MNCs</b>. Build a genuine professional network and secure career-defining references.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl shadow-lg">
+                        <span class="text-3xl text-blue-600 mb-2 block">🛠️</span>
+                        <h3 class="text-xl font-bold text-gray-900">Exclusive Tool Access</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Hands-on experience with <b>paid, professional-grade AI</b> and MLOps tools, mastering the industry-standard deployment workflows.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl shadow-lg">
+                        <span class="text-3xl text-blue-600 mb-2 block">🏅</span>
+                        <h3 class="text-xl font-bold text-gray-900">Professional Certification</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Earn a completion certificate from <b>OTTOBON Academy</b>—proof of high-quality training and critical practical capability.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl shadow-lg">
+                        <span class="text-3xl text-blue-600 mb-2 block">💾</span>
+                        <h3 class="text-xl font-bold text-gray-900">Real-World Portfolio</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Build portfolio-ready AI products with real market use. Gain exposure to high-growth domains like <b>healthcare and consulting</b>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="py-20 bg-gray-50 border-t border-b border-gray-100">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Choose Your Career Path 🚀</h2>
+                    <p class="mt-4 text-md text-gray-600 max-w-2xl mx-auto">We offer two distinct tracks designed for your current academic or professional level, each with a direct path to a career with us.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 flex flex-col">
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-600">FOR 3RD & 4TH YEAR STUDENTS</span>
+                        <h3 class="text-2xl font-bold text-gray-800 mt-3 mb-4">12-Week Foundation Program</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">A 12-week (free) intensive program to build your core AI application development skills. You'll work on real products and be mentored by industry experts.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mt-4">
+                            <h4 class="font-bold text-blue-800">Contingency: Paid Internship</h4>
+                            <p class="text-sm text-blue-700">Exceptional performers will be extended for an <b>additional 12-week PAID internship</b> to deepen their expertise.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 flex flex-col">
+                        <span class="text-xs font-bold uppercase tracking-wider text-green-600">FOR FRESH GRADUATES</span>
+                        <h3 class="text-2xl font-bold text-gray-800 mt-3 mb-4">8-Week Conversion Program</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">An 8-week (free) fast-track program focused on immediate impact and team integration. Prove your skills on live projects and prepare for a full-time role.</p>
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200 mt-4">
+                            <h4 class="font-bold text-green-800">Contingency: Full-Time Offer</h4>
+                            <p class="text-sm text-green-700">Successful interns will be converted directly into <b>full-time AI Application Developer</b> roles at OTTOBON.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-16 pt-8 border-t border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-800 text-center mb-6">Core Responsibilities: Building Real-World Value</h3>
+                    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        <div class="p-6 bg-white rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition">
+                            <span class="text-4xl text-blue-600">&#9999;</span>
+                            <p class="mt-3 font-semibold text-gray-700">Advanced Prompt & Content Refinement</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition">
+                            <span class="text-4xl text-blue-600">&#9733;</span>
+                            <p class="mt-3 font-semibold text-gray-700">UI/UX Review & Data Curation</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition">
+                            <span class="text-4xl text-blue-600">&#128104;&#8205;&#128187;</span>
+                            <p class="mt-3 font-semibold text-gray-700">Cross-Domain Team Collaboration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="payoff" class="py-20">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">The Ultimate Payoff: Your Career Edge 🥇</h2>
+                    <p class="mt-4 text-md text-gray-600 max-w-2xl mx-auto">You'll leave with tangible assets that instantly elevate your profile, making you a top candidate for competitive roles in tech, product, and consulting.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8 order-2 lg:order-1">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 border-b pb-2">A Resume That Commands Attention</h3>
+                            <p class="text-gray-600 mb-4">You won't just list an internship. You'll showcase <b>quantifiable, high-value achievements</b>:</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-3 mt-1 text-lg font-bold">&#10148;</span>
+                                    <span><strong>Engineered and validated content</strong> for an <b>LLM-driven healthcare agent</b>, successfully improving knowledge retrieval accuracy by 15%.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-3 mt-1 text-lg font-bold">&#10148;</span>
+                                    <span><strong>Collaborated with UI/UX and Engineering</strong> on 4 major feature deployments, ensuring seamless integration of AI outputs into the user journey.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-500 mr-3 mt-1 text-lg font-bold">&#10148;</span>
+                                    <span>Gained <b>Professional Certification</b> from OTTOBON Academy in <b>Applied AI Application Development</b>.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Your Career Capital Growth</h3>
+                        <div class="chart-container">
+                            <canvas id="careerChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-gray-500 mt-4">Comparing the career value gained from our focused program versus a generic, less-structured internship.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="apply" class="py-20 bg-blue-700 border-t border-blue-800">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white">Ready to Build Your Future, Today?</h2>
+                <p class="mt-4 text-lg text-blue-200 max-w-3xl mx-auto">
+                    If you are a highly motivated <b>3rd year, 4th year, or recent graduate</b> ready to commit, learn, and earn certified, real-world credibility, this is your moment.
+                </p>
+                <div class="mt-10">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmY5RbqR90zPf4bg2gTAeEuBBfb4rkYDVuWyhwlmVBgcTpKg/viewform?usp=dialog" target="_blank" class="btn-primary bg-yellow-400 text-blue-800 font-extrabold py-4 px-12 rounded-full shadow-2xl uppercase tracking-wider text-xl hover:bg-yellow-300 hover:shadow-3xl">
+                        Apply for the Cohort
+                    </a>
+                    <p class="text-sm text-blue-300 mt-4">Applications are now open for the next intake.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <p class="text-sm">&copy; 2025 OTTOBON Academy. All Rights Reserved. | Dedicated to Real-World AI Impact.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('open');
+                // Adjust ARIA attributes for accessibility
+                mobileMenuButton.setAttribute('aria-expanded', isOpen);
+            });
+            
+            // Close mobile menu on link click
+            const mobileNavLinks = mobileMenu.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Intersection Observer for scroll-linked effects (optional for basic responsiveness, but enhances UI)
+            const sections = document.querySelectorAll('section[id]');
+            const options = {
+                rootMargin: '0px',
+                threshold: 0.2 
+            };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add a class for simple fade-in or slide-up effects if needed
+                        entry.target.classList.add('is-visible'); 
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+
+            // Career Chart - Chart.js (Optimized for cleaner look)
+            const ctx = document.getElementById('careerChart').getContext('2d');
+            const careerChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Hands-on AI', 'Mentorship', 'Portfolio Strength', 'Pro Network', 'Certification'],
+                    datasets: [{
+                        label: 'AI Innovation Internship',
+                        data: [9, 8, 9, 7, 10],
+                        backgroundColor: 'rgba(59, 130, 246, 0.4)', /* More opacity */
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 3, /* Thicker border */
+                        pointRadius: 4,
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                    }, {
+                        label: 'Generic Paid Internship',
+                        data: [3, 4, 3, 5, 2],
+                        backgroundColor: 'rgba(107, 114, 128, 0.4)',
+                        borderColor: 'rgba(107, 114, 128, 1)',
+                        borderWidth: 3,
+                        pointRadius: 4,
+                        pointBackgroundColor: 'rgba(107, 114, 128, 1)',
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.15)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.15)' },
+                            pointLabels: {
+                                font: { size: 14, weight: '600' }, /* Larger, bolder labels */
+                                color: '#374151'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(248, 247, 244, 0.9)', /* Match body color */
+                                color: '#6B7280',
+                                stepSize: 2,
+                                display: false /* Hide tick labels for cleaner look */
+                            },
+                            min: 0,
+                            max: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { size: 14 },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleFont: { weight: 'bold' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

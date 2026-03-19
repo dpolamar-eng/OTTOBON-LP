@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <IntegratedHeroJourney />
         <MethodologySection />
-        <StorytellingOnboarding />
+        {/* <StorytellingOnboarding /> */}
         <CoursesSection />
         {/* <RequirementsSection /> */}
         <TalentCompassAssessment />

@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 
@@ -41,7 +42,6 @@ export default function IntegratedHeroJourney() {
       image:
         "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2070&q=80",
       alt: "AI-powered learning dashboard with analytics and progress tracking",
-      gradient: "from-emerald-500 to-teal-400",
     },
     {
       title: "Land Your Dream Role with AI Job Tools",
@@ -51,7 +51,6 @@ export default function IntegratedHeroJourney() {
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2015&q=80",
       alt: "Career success dashboard showing job matches and interview preparation",
-      gradient: "from-indigo-500 to-violet-400",
     },
     {
       title: "Get Expert Mentorship Every Step of the Way",
@@ -61,7 +60,6 @@ export default function IntegratedHeroJourney() {
       image:
         "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2070&q=80",
       alt: "Professional mentor providing career guidance and technical advice",
-      gradient: "from-sky-500 to-cyan-400",
     },
   ];
 
@@ -162,7 +160,6 @@ export default function IntegratedHeroJourney() {
     heroEmbla.scrollPrev();
   }, [heroEmbla]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") goToPrevSlide();
@@ -222,90 +219,65 @@ export default function IntegratedHeroJourney() {
   };
 
   return (
-    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-12 overflow-hidden bg-black">
-      {/* Animated gradient orbs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/10 blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-indigo-500/20 to-violet-500/10 blur-3xl animate-pulse animation-delay-2000" />
-      </div>
-
-      <div className="container mx-auto px-3 md:px-6 lg:px-8 relative z-10">
-        {/* Hero Carousel */}
-        <div className="relative group">
+    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-12 bg-black">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        {/* Classic Hero Carousel */}
+        <div className="relative max-w-7xl mx-auto">
           <div
             ref={heroViewportRef}
-            className="overflow-hidden rounded-3xl"
+            className="overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <div className="flex">
               {heroSlides.map((slide, index) => (
-                <div key={index} className="min-w-full relative">
-                  {/* Background image with Ken Burns effect */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    <div
-                      className={`absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms] ${
-                        index === heroActiveIndex && !isHovered ? 'scale-110' : 'scale-100'
-                      }`}
-                      style={{
-                        backgroundImage: `url(${slide.image})`,
-                        filter: 'brightness(0.4)',
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-                  </div>
+                <div key={index} className="min-w-full">
+                  <div className="bg-gradient-to-br from-gray-900 to-black rounded-lg border border-gray-800 shadow-2xl overflow-hidden">
+                    <div className="grid md:grid-cols-2 gap-0">
+                      {/* Left Content */}
+                      <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                        <div className="space-y-6">
+                          {/* Subtitle */}
+                          <div className="inline-block">
+                            <span className="text-sm font-semibold tracking-wider uppercase text-blue-400 bg-blue-400/10 px-4 py-2 rounded-full border border-blue-400/20">
+                              {slide.subtitle}
+                            </span>
+                          </div>
 
-                  {/* Content */}
-                  <div className="relative z-10 grid md:grid-cols-2 gap-8 lg:gap-12 p-8 md:p-12 lg:p-16 min-h-[600px] items-center">
-                    {/* Left content */}
-                    <div className="space-y-6">
-                      {/* Subtitle */}
-                      <div className={`text-sm font-bold tracking-widest uppercase bg-gradient-to-r ${slide.gradient} bg-clip-text text-transparent`}>
-                        {slide.subtitle}
+                          {/* Title */}
+                          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                            {slide.title}
+                          </h1>
+
+                          {/* Description */}
+                          <p className="text-lg text-gray-300 leading-relaxed">
+                            {slide.description}
+                          </p>
+
+                          {/* CTA */}
+                          <div className="pt-4">
+                            <a
+                              href="#talent-compass"
+                              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50"
+                            >
+                              Start Your Journey
+                              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5-5 5M6 12h12" />
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Title */}
-                      <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight tracking-tight">
-                        {slide.title}
-                      </h1>
-
-                      {/* Description */}
-                      <p className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-xl">
-                        {slide.description}
-                      </p>
-
-                      {/* CTAs */}
-                      <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a
-                          href="#talent-compass"
-                          className="group inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 px-8 py-4 font-bold text-white transition-all hover:scale-105"
-                        >
-                          <span className="flex items-center gap-2">
-                            Start Your Journey
-                            <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5-5 5M6 12h12" />
-                            </svg>
-                          </span>
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Right side - Featured image card */}
-                    <div className="hidden md:block">
-                      <div className="group/card relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-4 shadow-2xl hover:scale-[1.02] transition-transform duration-500">
-                        <div className="overflow-hidden rounded-xl">
-                          <img
-                            src={slide.image}
-                            alt={slide.alt}
-                            className="h-[400px] w-full object-cover transition-transform duration-700 group-hover/card:scale-110"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                          <p className="text-white/90 text-sm font-medium">{slide.alt}</p>
-                        </div>
-                        {/* Shine effect */}
-                        <div className="absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" />
+                      {/* Right Image */}
+                      <div className="relative h-64 md:h-auto">
+                        <img
+                          src={slide.image}
+                          alt={slide.alt}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:bg-gradient-to-l md:from-gray-900 md:to-transparent"></div>
                       </div>
                     </div>
                   </div>
@@ -314,45 +286,41 @@ export default function IntegratedHeroJourney() {
             </div>
           </div>
 
-          {/* Navigation buttons */}
+          {/* Navigation Arrows */}
           <button
             onClick={goToPrevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all hover:scale-110 opacity-0 group-hover:opacity-100"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-gray-900 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Previous slide"
           >
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button
             onClick={goToNextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all hover:scale-110 opacity-0 group-hover:opacity-100"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-gray-900 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Next slide"
           >
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
 
-          {/* Simple dot indicators */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+          {/* Dot Indicators */}
+          <div className="flex items-center justify-center gap-2 mt-6">
             {heroSlides.map((slide, i) => (
               <button
                 key={i}
                 onClick={() => scrollTo(i)}
-                className="group relative"
+                className={`transition-all duration-300 rounded-full ${
+                  i === heroActiveIndex
+                    ? "bg-blue-500 w-8 h-3"
+                    : "bg-gray-600 hover:bg-gray-500 w-3 h-3"
+                }`}
                 aria-label={`Go to slide ${i + 1}`}
                 title={slide.title}
-              >
-                <div
-                  className={`h-3 w-3 rounded-full transition-all duration-300 ${
-                    i === heroActiveIndex
-                      ? "bg-white scale-125 shadow-lg shadow-white/50"
-                      : "bg-white/40 group-hover:bg-white/70 scale-100"
-                  }`}
-                />
-              </button>
+              />
             ))}
           </div>
         </div>
@@ -520,16 +488,6 @@ export default function IntegratedHeroJourney() {
           </div>
         )}
       </div>
-
-      <style jsx>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 0.2; }
-          50% { opacity: 0.4; }
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-      `}</style>
     </section>
   );
 }

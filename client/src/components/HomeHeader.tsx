@@ -1,101 +1,75 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function HomeHeader() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [, navigate] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => setMobileMenuOpen((v) => !v);
-  const closeMobileMenu = () => setMobileMenuOpen(false);
-
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? "bg-[#0F1E2E]/95 shadow-xl" : "bg-[#0F1E2E] shadow-xl"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#0F1E2E]/95 backdrop-blur-md shadow-lg"
+          : "bg-[#0F1E2E]/80 backdrop-blur-sm"
+      }`}
     >
-      {/* Subtle divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-
-  <div className="w-full pl-[20px] pr-[20px] py-6 flex justify-between items-center">
-        {/* Brand */}
-  <Link href="/" className="flex items-center group">
-          <img src="/assets/logo.png" alt="Ottobon Logo" className="h-9 sm:h-14 md:h-16 w-auto" />
-          <div className="text-lg sm:text-2xl md:text-3xl font-extrabold ml-2 sm:ml-3">
-            <span className="text-white">OTTOBON</span>
-          </div>
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-          {[
-            { label: "About", href: "#about" },
-            { label: "Our Services", href: "#services-overview" },
-          ].map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                const target = document.querySelector(item.href);
-                if (target) {
-                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-              className="text-white/90 hover:text-white font-medium py-2 px-2 xl:px-4 rounded-lg hover:bg-white/10 transition-all relative overflow-hidden group text-sm xl:text-base"
-            >
-              <div className="flex items-center space-x-1">
-                <span>{item.label}</span>
-              </div>
-              <span className="absolute bottom-0 left-1/2 right-1/2 h-0.5 bg-[#FFC107] transition-all duration-300 group-hover:left-0 group-hover:right-0"></span>
-            </a>
-          ))}
-        </nav>
-
-        
-
-        {/* Mobile menu button */}
-        <div className="lg:hidden">
-          <button
-            onClick={toggleMobileMenu}
-            className="bg-white/10 backdrop-blur-sm rounded-full p-2 text-white focus:outline-none hover:bg-indigo-500/30 transition shadow-sm"
-            aria-label="Toggle mobile menu"
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link
+            href="/"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-            </svg>
-          </button>
-        </div>
-      </div>
+            <img
+              src="/assets/logo.png"
+              alt="Ottobon Logo"
+              className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto transition-transform group-hover:scale-105"
+            />
+            <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white">
+              OTTOBON
+            </div>
+          </Link>
 
-      {/* Mobile nav */}
-      <div className={`lg:hidden bg-[#0F1E2E] border-t border-indigo-800/50 shadow-lg overflow-hidden transition-all duration-300 ${mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="container mx-auto px-4 py-5 flex flex-col space-y-4">
-          {[
-            { label: "About", href: "#about", icon: "📜" },
-            { label: "Our Services", href: "#services-overview", icon: "🧩" },
-          ].map((item) => (
+          {/* Navigation Links */}
+          <nav className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6">
             <a
-              key={item.label}
-              href={item.href}
-              className="text-white/90 hover:text-white transition py-3 px-4 rounded-lg hover:bg-white/10 flex items-center"
+              href="#about"
               onClick={(e) => {
                 e.preventDefault();
-                const target = document.querySelector(item.href);
+                const target = document.querySelector("#about");
                 if (target) {
-                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
-                closeMobileMenu();
               }}
+              className="hidden sm:block text-white/90 hover:text-white font-medium text-sm md:text-base lg:text-lg transition-colors duration-200"
             >
-              <span className="w-8 h-8 flex items-center justify-center bg-blue-600/20 rounded-full mr-3 text-lg">{item.icon}</span>
-              <span>{item.label}</span>
+              About
             </a>
-          ))}
+            <a
+              href="#services-overview"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector("#services-overview");
+                if (target) {
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
+              className="hidden sm:block text-white/90 hover:text-white font-medium text-sm md:text-base lg:text-lg transition-colors duration-200"
+            >
+              Our Services
+            </a>
+          </nav>
         </div>
       </div>
     </header>
