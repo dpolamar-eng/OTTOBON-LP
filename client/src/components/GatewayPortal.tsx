@@ -228,8 +228,7 @@ export default function GatewayPortal() {
                           if (pressing) return;
                           setPressing("academy");
                           setTimeout(() => {
-                            navigate("/academy");
-                            window.scrollTo(0, 0);
+                            window.location.href = "https://academy.ottobon.in";
                           }, 160);
                         }}
                         aria-pressed={pressing === "academy"}
