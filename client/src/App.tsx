@@ -11,10 +11,11 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import KnowledgeHub from "@/pages/KnowledgeHub"; // Assuming KnowledgeHub component exists
 import Internship from "./pages/Internship";
-import HealthCompanion from "./pages/HealthCompanion";
 import TalentOps from "./pages/TalentOps";
 import IdeaToPrototype from "./pages/IdeaToPrototype";
 import ContractToHire from "./pages/ContractToHire";
+import Marketing from "./pages/Marketing";
+import Sales from "./pages/Sales";
 import CoursePlatform from "./pages/CoursePlatform";
 import ScrollToTop from "./components/ScrollToTop";
 import EnrollmentSection from "@/components/EnrollmentSection";
@@ -29,10 +30,11 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
-      <Route path="/health-companion" component={HealthCompanion} />
       <Route path="/talentops" component={TalentOps} />
       <Route path="/idea-to-prototype" component={IdeaToPrototype} />
       <Route path="/contract-to-hire" component={ContractToHire} />
+      <Route path="/marketing" component={Marketing} />
+      <Route path="/sales" component={Sales} />
       <Route path="/course-platform" component={CoursePlatform} />
       <Route component={NotFound} />
     </Switch>

@@ -1,0 +1,156 @@
+{
+  "hero": {
+    "headline": "Your business, fully supported. Your team, always ready.",
+    "sub_headline": "Ottobon Professional Services handles the operational weight so your core team can focus on what actually moves the needle — delivered by expert humans, powered by AI.",
+    "ctas": [
+      {
+        "text": "See How We Work",
+        "link": "#how-we-work",
+        "primary": true
+      },
+      {
+        "text": "Talk to Us",
+        "link": "#contact",
+        "primary": false
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+  },
+  "positioning": {
+    "quote": "We are not a staffing agency. We are not a software tool. We are the operational backbone your business didn't know it was missing."
+  },
+  "pillars": {
+    "heading": "Two ways we support your business",
+    "items": [
+      {
+        "title": "People & Talent",
+        "tagline": "Get the right people doing the right work — tracked, accountable, and delivered.",
+        "description": "Whether you have an idea that needs to become a product, or a growing team that needs qualified talent fast — we put the right people in place. And with our built-in task management layer, you always know exactly what's happening, no matter where in the world your team sits."
+      },
+      {
+        "title": "Business Operations",
+        "tagline": "Stop running your business on the side. Let us run the back-office.",
+        "description": "Finance. Legal. Sales. Compliance. These are the departments every business needs but few early-stage companies can afford to build in-house. We handle all of it — so you don't have to."
+      }
+    ]
+  },
+  "detailed_services": [
+    {
+      "id": "business-development",
+      "label": "Sales & Marketing / Pre-Sales",
+      "headline": "We fill your pipeline. You close the deals.",
+      "body": "From market research and lead generation to pre-sales support and pitch preparation — our BD team works as an extension of your own sales function. We don't just hand you leads; we build the foundation for sustainable growth.",
+      "included": [
+        "Market research & competitive analysis",
+        "Lead generation & outbound campaigns",
+        "Pre-sales support & proposal writing",
+        "Brand positioning & go-to-market strategy"
+      ],
+      "ctas": [
+        { "text": "Know More: Sales", "link": "/sales" },
+        { "text": "Know More: Marketing", "link": "/marketing" }
+      ],
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "operational-support",
+      "label": "TalentOps",
+      "headline": "The operational layer your team is missing.",
+      "body": "Running a consulting practice or a growing startup means constant coordination — managing people, tracking work, and keeping quality consistent. Our TalentOps function handles all of that behind the scenes, so your delivery never slips.",
+      "included": [
+        "Day-to-day team coordination & task tracking",
+        "Workflow design & SOP documentation",
+        "Quality assurance & delivery oversight",
+        "Reporting & operational dashboards"
+      ],
+      "ctas": [
+        { "text": "Know More", "link": "/talentops" }
+      ],
+      "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "executive-support",
+      "label": "Talent Acquisition + MVP Builds",
+      "headline": "From idea to team to product — we make it real.",
+      "body": "This is the heart of our people-side offering. Two distinct models:",
+      "sub_sections": [
+        {
+          "title": "Contract & Full-Time Hiring",
+          "description": "",
+          "bullets": [
+            "Source, vet, and place qualified talent",
+            "Available on hourly contracts or as full-time hires",
+            "Built-in task management and complete work visibility"
+          ]
+        },
+        {
+          "title": "MVP / Idea to Prototype",
+          "description": "",
+          "bullets": [
+            "Turn concepts into working prototypes at a fixed price",
+            "Clear scope defined upfront with no surprises",
+            "Delivered strictly on time by expert technical teams"
+          ]
+        }
+      ],
+      "ctas": [
+        { "text": "Know More", "link": "/idea-to-prototype" }
+      ],
+      "quote": "Think of it as: you bring the vision, we build the engine.",
+      "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "compliance-resilience",
+      "label": "Legal, Finance & Regulatory",
+      "headline": "Stay legal. Stay protected. Stay operational.",
+      "body": "From tax filings and payroll to corporate compliance and regulatory frameworks — we ensure your business is always on the right side of the law and built to withstand pressure. This is the unsexy work that quietly keeps everything else running.",
+      "included": [
+        "Tax filing & financial compliance",
+        "Payroll & billing management",
+        "Legal documentation & contract support",
+        "Regulatory advisory & risk assessment"
+      ],
+      "ctas": [
+        { "text": "Know More", "link": "/contract-to-hire" }
+      ],
+      "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
+    }
+  ],
+  "secret_sauce": {
+    "heading": "Human expertise. AI efficiency. Full transparency.",
+    "body": "Every service we offer is delivered through a modern two-layer model — experienced professionals backed by AI tools that accelerate output, improve accuracy, and reduce cost. And across all talent engagements, our task management infrastructure gives clients real-time visibility into what's being done, by whom, and when.",
+    "truths": [
+      {
+        "title": "No black boxes",
+        "description": "you see exactly what your team is doing"
+      },
+      {
+        "title": "No long-term lock-ins",
+        "description": "start with what you need, scale as you grow"
+      },
+      {
+        "title": "No single point of failure",
+        "description": "humans and AI working together means more reliability"
+      }
+    ]
+  },
+  "audience": [
+    {
+      "title": "Independent Consultants",
+      "description": "Run like a larger firm without building one"
+    },
+    {
+      "title": "Early-Stage Startups",
+      "description": "Get the back-office running from day one"
+    },
+    {
+      "title": "Small & Mid-Size Businesses",
+      "description": "Plug in the functions you're missing without full-time hires"
+    }
+  ],
+  "cta": {
+    "heading": "Let's build the operational foundation your business deserves.",
+    "sub": "Whether you need one service or all four — we start with a conversation, not a contract.",
+    "button_text": "Book a Free Consultation"
+  }
+}
