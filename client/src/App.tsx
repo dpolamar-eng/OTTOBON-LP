@@ -16,6 +16,9 @@ import IdeaToPrototype from "./pages/IdeaToPrototype";
 import ContractToHire from "./pages/ContractToHire";
 import Marketing from "./pages/Marketing";
 import Sales from "./pages/Sales";
+import Tax from "./pages/Tax";
+import Legal from "./pages/Legal";
+import Compliance from "./pages/Compliance";
 import CoursePlatform from "./pages/CoursePlatform";
 import ScrollToTop from "./components/ScrollToTop";
 import EnrollmentSection from "@/components/EnrollmentSection";
@@ -35,6 +38,9 @@ function Router() {
       <Route path="/contract-to-hire" component={ContractToHire} />
       <Route path="/marketing" component={Marketing} />
       <Route path="/sales" component={Sales} />
+      <Route path="/tax" component={Tax} />
+      <Route path="/legal" component={Legal} />
+      <Route path="/compliance" component={Compliance} />
       <Route path="/course-platform" component={CoursePlatform} />
       <Route component={NotFound} />
     </Switch>

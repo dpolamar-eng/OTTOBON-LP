@@ -50,6 +50,4 @@ if (isMainModule) {
       console.error('💥 Migration script error:', error);
       process.exit(1);
     });
-}s.exit(1);
-    });
 }
