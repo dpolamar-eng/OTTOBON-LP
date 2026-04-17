@@ -26,7 +26,7 @@ export function ServicesPositioningLayout({ quote }: ServicesPositioningLayoutPr
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef<number>(1);
-  const baseVelocity = -0.5; // Made slower/smoother
+  const baseVelocity = -2.5; // Increased speed as requested
 
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
@@ -50,7 +50,7 @@ export function ServicesPositioningLayout({ quote }: ServicesPositioningLayoutPr
       {/* Endless Marquee Text */}
       <div className="w-full flex overflow-hidden whitespace-nowrap opacity-80">
         <motion.div
-          className="flex whitespace-nowrap items-center text-xl md:text-2xl lg:text-3xl font-medium tracking-wide text-gray-300 m-0"
+          className="flex whitespace-nowrap items-center text-base md:text-lg lg:text-xl font-medium tracking-wide text-gray-300 m-0"
           style={{ x }}
         >
           {/* Repeat the quote multiple times to make sure it loops smoothly */}
