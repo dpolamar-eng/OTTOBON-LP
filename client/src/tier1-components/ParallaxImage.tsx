@@ -16,18 +16,18 @@ export function ParallaxImage({ src, alt, className = '', offset = 50 }: Paralla
     offset: ["start end", "end start"]
   });
 
-  // Dramatic but constrained Parallax Transforms (Mind-blowing smooth vertical slide)
-  const y = useTransform(scrollYProgress, [0, 1], [-offset * 4, offset * 4]);
-  // Toned down the scale so we don't zoom in too much and lose image context
-  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [1, -1]);
+  // Pronounced Parallax Transforms (Highly visible 'proper' effect)
+  const y = useTransform(scrollYProgress, [0, 1], ["-12.5%", "12.5%"]);
+  // Subtle scale and rotation to add depth
+  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.1]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0.8, -0.8]);
 
   return (
     <div ref={ref} className={`overflow-hidden relative rounded-2xl ${className}`}>
       <motion.img
         src={src}
         alt={alt}
-        className="w-full h-[150%] object-cover absolute top-[-25%] left-0"
+        className="w-full h-[125%] object-cover absolute top-[-12.5%] left-0"
         style={{ y, scale, rotate }}
       />
     </div>

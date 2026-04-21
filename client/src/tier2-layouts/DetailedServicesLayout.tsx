@@ -40,7 +40,7 @@ export function DetailedServicesLayout({ services }: { services: Service[] }) {
                 {/* Image / Illustration Side */}
                 <div className="w-full lg:w-1/2 rounded-2xl relative shadow-2xl">
                   <AnimatedSection direction={isEven ? 'right' : 'left'}>
-                    <div className="aspect-[4/3] rounded-2xl overflow-hidden group w-full h-full relative">
+                    <div className="aspect-[3/2] rounded-2xl overflow-hidden group w-full relative">
                       <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500" />
                       <ParallaxImage 
                         src={service.image} 

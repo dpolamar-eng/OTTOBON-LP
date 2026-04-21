@@ -37,7 +37,7 @@
   "detailed_services": [
     {
       "id": "business-development",
-      "label": "Sales & Marketing / Pre-Sales",
+      "label": "Business Development",
       "headline": "We fill your pipeline. You close the deals.",
       "body": "From market research and lead generation to pre-sales support and pitch preparation — our BD team works as an extension of your own sales function. We don't just hand you leads; we build the foundation for sustainable growth.",
       "included": [
@@ -47,14 +47,20 @@
         "Brand positioning & go-to-market strategy"
       ],
       "ctas": [
-        { "text": "Know More: Sales", "link": "/sales" },
-        { "text": "Know More: Marketing", "link": "/marketing" }
+        {
+          "text": "Know More: Sales",
+          "link": "/sales"
+        },
+        {
+          "text": "Know More: Marketing",
+          "link": "/marketing"
+        }
       ],
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+      "image": "https://images.unsplash.com/photo-1688380692117-63178554d76d?q=80&w=1170&auto=format&fit=crop&w=1200&q=80"
     },
     {
       "id": "operational-support",
-      "label": "TalentOps",
+      "label": "Operation Support",
       "headline": "The operational layer your team is missing.",
       "body": "Running a consulting practice or a growing startup means constant coordination — managing people, tracking work, and keeping quality consistent. Our TalentOps function handles all of that behind the scenes, so your delivery never slips.",
       "included": [
@@ -64,13 +70,16 @@
         "Reporting & operational dashboards"
       ],
       "ctas": [
-        { "text": "Know More", "link": "/talentops" }
+        {
+          "text": "Know More",
+          "link": "/talentops"
+        }
       ],
       "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
     },
     {
       "id": "executive-support",
-      "label": "Talent Acquisition + MVP Builds",
+      "label": "Execution Support",
       "headline": "From idea to team to product — we make it real.",
       "body": "This is the heart of our people-side offering. Two distinct models:",
       "sub_sections": [
@@ -94,7 +103,10 @@
         }
       ],
       "ctas": [
-        { "text": "Know More", "link": "/idea-to-prototype" }
+        {
+          "text": "Know More",
+          "link": "/idea-to-prototype"
+        }
       ],
       "quote": "Think of it as: you bring the vision, we build the engine.",
       "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
@@ -102,7 +114,7 @@
     {
       "id": "compliance-resilience",
       "label": "Legal, Finance & Regulatory",
-      "headline": "Stay legal. Stay protected. Stay operational.",
+      "headline": "Stay legal. Stay Compliant. Stay operational.",
       "body": "From tax filings and payroll to corporate compliance and regulatory frameworks — we ensure your business is always on the right side of the law and built to withstand pressure. This is the unsexy work that quietly keeps everything else running.",
       "included": [
         "Tax filing & financial compliance",
@@ -111,9 +123,18 @@
         "Regulatory advisory & risk assessment"
       ],
       "ctas": [
-        { "text": "Know More: Tax", "link": "/tax" },
-        { "text": "Know More: Legal", "link": "/legal" },
-        { "text": "Know More: Compliance", "link": "/compliance" }
+        {
+          "text": "Know More: Tax",
+          "link": "/tax"
+        },
+        {
+          "text": "Know More: Legal",
+          "link": "/legal"
+        },
+        {
+          "text": "Know More: Compliance",
+          "link": "/compliance"
+        }
       ],
       "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
     }
