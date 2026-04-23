@@ -19,6 +19,7 @@ import Sales from "./pages/Sales";
 import Tax from "./pages/Tax";
 import Legal from "./pages/Legal";
 import Compliance from "./pages/Compliance";
+import MeetTheSystem from "./pages/MeetTheSystem";
 import CoursePlatform from "./pages/CoursePlatform";
 import ScrollToTop from "./components/ScrollToTop";
 import EnrollmentSection from "@/components/EnrollmentSection";
@@ -41,6 +42,7 @@ function Router() {
       <Route path="/tax" component={Tax} />
       <Route path="/legal" component={Legal} />
       <Route path="/compliance" component={Compliance} />
+      <Route path="/meet-the-system" component={MeetTheSystem} />
       <Route path="/course-platform" component={CoursePlatform} />
       <Route component={NotFound} />
     </Switch>

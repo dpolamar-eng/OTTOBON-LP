@@ -104,8 +104,12 @@
       ],
       "ctas": [
         {
-          "text": "Know More",
+          "text": "Know More: Idea to Prototype",
           "link": "/idea-to-prototype"
+        },
+        {
+          "text": "Know Our Team",
+          "link": "/meet-the-system"
         }
       ],
       "quote": "Think of it as: you bring the vision, we build the engine.",
@@ -174,6 +178,96 @@
   "cta": {
     "heading": "Let's build the operational foundation your business deserves.",
     "sub": "Whether you need one service or all four — we start with a conversation, not a contract.",
-    "button_text": "Book a Free Consultation"
+    "button_text": "Talk to Us"
+  },
+  "about_us": {
+    "hero": {
+      "headline": "A Women-Driven Organization",
+      "sub_headline": "Ottobon was born from the belief that innovation knows no geography or gender. Our mission is to deliver world-class technology solutions accessible to every forward-thinking organization."
+    },
+    "stats": [
+      {
+        "value": "Global",
+        "label": "Reach & Impact"
+      },
+      {
+        "value": "Agile",
+        "label": "Delivery Model"
+      },
+      {
+        "value": "Inclusive",
+        "label": "Women-Led Team"
+      },
+      {
+        "value": "Complete",
+        "label": "End-to-End Support"
+      }
+    ],
+    "values": [
+      {
+        "title": "Women-Led Leadership",
+        "description": "Empowering women at every level.",
+        "icon": "Users"
+      },
+      {
+        "title": "Accessible Everywhere",
+        "description": "Global reach, local impact.",
+        "icon": "Globe"
+      },
+      {
+        "title": "Inclusive Community",
+        "description": "Building diverse and strong teams.",
+        "icon": "Heart"
+      },
+      {
+        "title": "Innovation-First",
+        "description": "Pushing boundaries in tech.",
+        "icon": "Zap"
+      }
+    ],
+    "leadership": [
+      {
+        "name": "Radhika Bonu",
+        "role": "Executive Director",
+        "description": "Over 15 years leading cross-functional teams and scaling global operations.",
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
+        "color": "purple"
+      },
+      {
+        "name": "Sandhya Rani Bonu",
+        "role": "Director",
+        "description": "Mastermind behind our delivery models, ensuring excellent client outcomes.",
+        "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800",
+        "color": "emerald"
+      },
+      {
+        "name": "Gitika Senthil",
+        "role": "Head of operation and Business Development",
+        "description": "Driving efficiency and operational excellence across all our key pillars.",
+        "image": "https://images.unsplash.com/photo-1550525811-e5869dd03032?auto=format&fit=crop&q=80&w=800",
+        "color": "yellow"
+      },
+      {
+        "name": "Dr. Amina Rahman",
+        "role": "Advisory Board",
+        "description": "Strategic advisor bringing insights from top Fortune 500 tech companies.",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800",
+        "color": "purple"
+      },
+      {
+        "name": "Chloe Dupont",
+        "role": "Advisory Board",
+        "description": "Expert in scaling startups and optimizing operational frameworks.",
+        "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=800",
+        "color": "emerald"
+      },
+      {
+        "name": "Aisha Patel",
+        "role": "Advisory Board",
+        "description": "Specialist in compliance and legal resilience for modern enterprises.",
+        "image": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=800",
+        "color": "yellow"
+      }
+    ]
   }
 }

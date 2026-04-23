@@ -54,8 +54,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center text-sm">
                 <i className="fas fa-envelope text-blue-400 mr-2"></i>
-                <a href="mailto:hr@ottobon.in" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  hr@ottobon.in
+                <a href="mailto:hr.acad@ottobon.in" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  hr.acad@ottobon.in
                 </a>
               </li>
               <li className="flex items-center text-sm">

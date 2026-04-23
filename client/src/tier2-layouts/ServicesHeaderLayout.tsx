@@ -28,6 +28,7 @@ export function ServicesHeaderLayout() {
           <a href="#how-we-work" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">How We Work</a>
           <a href="#detailed-services" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a>
           <a href="#audience" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Who We Serve</a>
+          <a href="#about-us" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">About Us</a>
         </nav>
 
         {/* CTA */}
@@ -53,6 +54,7 @@ export function ServicesHeaderLayout() {
           <a href="#how-we-work" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">How We Work</a>
           <a href="#detailed-services" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">Services</a>
           <a href="#audience" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">Who We Serve</a>
+          <a href="#about-us" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">About Us</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="bg-blue-600 text-white text-center p-3 rounded-full font-bold mt-2">Talk to Us</a>
         </div>
       )}

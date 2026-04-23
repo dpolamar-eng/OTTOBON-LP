@@ -7,6 +7,7 @@ import { ServicesPositioningLayout } from '../tier2-layouts/ServicesPositioningL
 import { ServicesPillarsLayout } from '../tier2-layouts/ServicesPillarsLayout';
 import { DetailedServicesLayout } from '../tier2-layouts/DetailedServicesLayout';
 import { SecretSauceLayout } from '../tier2-layouts/SecretSauceLayout';
+import { ServicesAboutUsLayout } from '../tier2-layouts/ServicesAboutUsLayout';
 import { AudienceAndCTALayout } from '../tier2-layouts/AudienceAndCTALayout';
 
 import ScrollToTop from '@/components/ScrollToTop';
@@ -45,6 +46,9 @@ export default function Services() {
 
         {/* Who We Serve & Final CTA */}
         <AudienceAndCTALayout data={{ audience: servicesContent.audience, cta: servicesContent.cta }} />
+
+        {/* About Us Section */}
+        <ServicesAboutUsLayout data={servicesContent.about_us as any} />
       </main>
 
       <Footer />

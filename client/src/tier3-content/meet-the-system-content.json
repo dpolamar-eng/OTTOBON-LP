@@ -1,0 +1,174 @@
+{
+  "hero": {
+    "eyebrow": "THE ENGINE BEHIND INNOVATION",
+    "title": "The Engine Behind Your Next Breakthrough",
+    "rotatingProps": [
+      "No hiring overhead. Just specialized execution.",
+      "Production-grade AI. Not prototype theater.",
+      "From healthcare to dev tools. Proven versatility."
+    ]
+  },
+  "layers": [
+    {
+      "id": "product-thinkers",
+      "number": "01",
+      "title": "Product & System Thinkers",
+      "subtitle": "The Strategic Core",
+      "tagline": "The architects of \"what\" and \"why\" — turning vision into actionable systems.",
+      "color": "#E76F51",
+      "colorLight": "#F4845F",
+      "roles": ["Product Owners", "System Architects", "Strategic Visionaries"],
+      "capabilities": [
+        "Problem → Solution mapping",
+        "Product direction & roadmaps",
+        "Trade-off navigation",
+        "Stakeholder alignment"
+      ],
+      "withoutThem": "Random building. No purpose. No direction.",
+      "metrics": [
+        { "value": "90%", "label": "latency reduction", "detail": "Healthcare AI optimized from 40s → 4s" },
+        { "value": "20%", "label": "productivity gain", "detail": "Reusable context systems across teams" },
+        { "value": "20+", "label": "person teams", "detail": "Prototype to production with system thinking" }
+      ],
+      "skills": [
+        { "name": "Generative AI", "icon": null },
+        { "name": "RAG", "icon": null },
+        { "name": "Prompt Engineering", "icon": null },
+        { "name": "Product Strategy", "icon": null },
+        { "name": "System Design", "icon": null },
+        { "name": "Roadmapping", "icon": null }
+      ]
+    },
+    {
+      "id": "ai-backend",
+      "number": "02",
+      "title": "AI & Backend Engineers",
+      "subtitle": "The Intelligence Layer",
+      "tagline": "The invisible architecture that makes everything smart.",
+      "color": "#8B5CF6",
+      "colorLight": "#A78BFA",
+      "roles": ["AI Engineers (GenAI / RAG / LLM)", "Backend Architects", "Data & Retrieval Specialists"],
+      "capabilities": [
+        "Production RAG systems",
+        "Multi-layer LLM safety pipelines",
+        "Vector embedding architectures",
+        "Real-time API infrastructures",
+        "Clinical-grade AI validation"
+      ],
+      "withoutThem": "Brittle systems. No intelligence. No scalability.",
+      "metrics": [
+        { "value": "Multi-layer", "label": "safety pipeline", "detail": "Input filtering → Retrieval grounding → Response validation" },
+        { "value": "100ms", "label": "response times", "detail": "Deterministic SQL-backed interactions" },
+        { "value": "Hybrid", "label": "search system", "detail": "HNSW + GIN with similarity gating" }
+      ],
+      "skills": [
+        { "name": "Python", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+        { "name": "FastAPI", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+        { "name": "LangChain", "icon": null },
+        { "name": "Vector DB", "icon": null },
+        { "name": "PostgreSQL", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+        { "name": "RAG Systems", "icon": null }
+      ]
+    },
+    {
+      "id": "uiux-frontend",
+      "number": "03",
+      "title": "UI/UX & Frontend",
+      "subtitle": "The Experience Layer",
+      "tagline": "Where technology meets human intuition.",
+      "color": "#2A9D8F",
+      "colorLight": "#52B69A",
+      "roles": ["UI/UX Designers", "Frontend Engineers", "User Experience Architects"],
+      "capabilities": [
+        "Interface design & development",
+        "User flow optimization",
+        "Cross-platform experiences",
+        "Responsive & accessible systems",
+        "Design system architecture"
+      ],
+      "withoutThem": "Beautiful backends nobody can use. No adoption.",
+      "metrics": [
+        { "value": "250+", "label": "active users", "detail": "Chrome extension across 5 LLM platforms" },
+        { "value": "Platform", "label": "aware parsing", "detail": "MutationObserver tracking dynamic SPAs" },
+        { "value": "Cross", "label": "platform transfer", "detail": "Structured context sharing via storage APIs" }
+      ],
+      "skills": [
+        { "name": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { "name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+        { "name": "TailwindCSS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+        { "name": "Figma", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+        { "name": "Design Systems", "icon": null },
+        { "name": "DOM APIs", "icon": null }
+      ]
+    },
+    {
+      "id": "devops-execution",
+      "number": "04",
+      "title": "DevOps & Execution",
+      "subtitle": "The Delivery Layer",
+      "tagline": "Where code becomes reality, reliably and repeatedly.",
+      "color": "#F4A261",
+      "colorLight": "#F4B982",
+      "roles": ["DevOps Engineers", "Infrastructure Specialists", "Deployment Architects"],
+      "capabilities": [
+        "CI/CD pipeline automation",
+        "Container orchestration",
+        "System monitoring & scaling",
+        "Production deployment reliability",
+        "Infrastructure as Code"
+      ],
+      "withoutThem": "\"It works on my machine.\" Never ships. Never scales.",
+      "metrics": [
+        { "value": "15+", "label": "containerized apps", "detail": "Across healthcare, EdTech, and tooling" },
+        { "value": "5", "label": "CI/CD pipelines", "detail": "GitHub Actions for testing & deployment" },
+        { "value": "Async", "label": "optimization", "detail": "Re-architected for real-time performance" }
+      ],
+      "skills": [
+        { "name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+        { "name": "Linux", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+        { "name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+        { "name": "GitHub Actions", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+        { "name": "PostgreSQL", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+        { "name": "CI/CD", "icon": null }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Healthcare AI Platform",
+      "challenge": "40-second response times in clinical AI system",
+      "solution": "Async re-architecture with RAG optimization",
+      "result": "4s real-time responses with clinical-grade accuracy",
+      "techStack": ["Python", "FastAPI", "RAG", "PostgreSQL"],
+      "image": "/assets/projects/project_healthcare_ai.png"
+    },
+    {
+      "title": "Talent Operations Platform",
+      "challenge": "Inefficient technical screening and talent matching",
+      "solution": "AI-driven assessment and profile matching system",
+      "result": "Reduced hiring cycle time by 60% with higher precision",
+      "techStack": ["React", "FastAPI", "Supabase", "LLMs"],
+      "image": "/assets/projects/project_talent_ops.png"
+    },
+    {
+      "title": "EdTech Assessment Engine",
+      "challenge": "Manual grading bottleneck for 500+ students",
+      "solution": "AI-powered assessment with adaptive difficulty",
+      "result": "Automated evaluation with personalized feedback",
+      "techStack": ["React", "Node.js", "PostgreSQL", "Docker"],
+      "image": "/assets/projects/project_edtech.png"
+    }
+  ],
+  "talentProfiles": [
+    { "role": "AI & Backend Engineer", "layer": 2, "color": "#8B5CF6" },
+    { "role": "Product Strategist", "layer": 1, "color": "#E76F51" },
+    { "role": "Frontend Engineer", "layer": 3, "color": "#2A9D8F" },
+    { "role": "DevOps Specialist", "layer": 4, "color": "#F4A261" }
+  ],
+  "cta": {
+    "title": "Ready to Build?",
+    "subtitle": "Whether you need a full team or specialized talent, we build systems that matter.",
+    "buttonText": "Start a Conversation",
+    "buttonLink": "/services#contact"
+  }
+}
