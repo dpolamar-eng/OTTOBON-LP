@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { AnimatedSection } from '../tier1-components/AnimatedSection';
+import { ContactModal } from '@/components/ContactModal';
 
 interface SocialProof {
   avatars: string[];
@@ -77,25 +78,37 @@ export function ServicesHeroLayout({ data }: { data: HeroData }) {
               
               {/* Generate Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                {data.ctas.map((cta, index) => (
-                  <a
-                    key={index}
-                    href={cta.link}
-                    className={`group relative px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2 overflow-hidden ${
-                      cta.primary 
-                        ? 'bg-transparent text-white hover:bg-blue-600 shadow-[0_0_40px_rgba(37,99,235,0)] hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] border border-white/20 hover:border-blue-400 backdrop-blur-md' 
-                        : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 backdrop-blur-md'
-                    }`}
-                  >
-                    {cta.primary && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-                    )}
-                    <span className="relative z-10">{cta.text}</span>
-                    {cta.primary && (
-                      <svg className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                    )}
-                  </a>
-                ))}
+                {data.ctas.map((cta, index) => {
+                  const CtaContent = (
+                    <a
+                      key={index}
+                      href={cta.link === "#contact" ? undefined : cta.link}
+                      className={`group relative px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2 overflow-hidden cursor-pointer ${
+                        cta.primary 
+                          ? 'bg-transparent text-white hover:bg-blue-600 shadow-[0_0_40px_rgba(37,99,235,0)] hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] border border-white/20 hover:border-blue-400 backdrop-blur-md' 
+                          : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 backdrop-blur-md'
+                      }`}
+                    >
+                      {cta.primary && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                      )}
+                      <span className="relative z-10">{cta.text}</span>
+                      {cta.primary && (
+                        <svg className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                      )}
+                    </a>
+                  );
+
+                  if (cta.link === "#contact" || cta.text.toLowerCase().includes("talk to us")) {
+                    return (
+                      <ContactModal key={index}>
+                        {CtaContent}
+                      </ContactModal>
+                    );
+                  }
+                  
+                  return CtaContent;
+                })}
               </div>
 
               {/* Social Proof matching the reference image style */}

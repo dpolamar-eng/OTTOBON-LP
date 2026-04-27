@@ -6,7 +6,8 @@ import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import content from "../tier3-content/meet-the-system-content.json";
+import peopleData from "../tier3-content/people-content.json";
+import { ContactModal } from '@/components/ContactModal';
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +44,7 @@ const CAMERA_PATH = [
   { pos: [0, 0, 10] as [number,number,number], target: [0, 0, 0] as [number,number,number] },
 ];
 
-const STYLES = `/* === MEET THE SYSTEM v2 — Warm Premium Design === */
+const STYLES = `/* === PEOPLE v2 — Warm Premium Design === */
 
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
@@ -201,7 +202,7 @@ const STYLES = `/* === MEET THE SYSTEM v2 — Warm Premium Design === */
   .mts-footer-inner { flex-direction: column; gap: 16px; }
 }
 `;
-// ─── REACT COMPONENTS FOR MEET THE SYSTEM v2 ─────────────────
+// ─── REACT COMPONENTS FOR PEOPLE v2 ─────────────────
 
 // Infrastructure
 function StylesInjection({ styles }: { styles: string }) {
@@ -248,11 +249,13 @@ function Nav() {
         <img src="/assets/logo.png" alt="Ottobon" style={{ height: "44px", width: "auto" }} />
       </a>
       <ul className="mts-nav-links">
-        <li><a href="#system">The System</a></li>
+        <li><a href="#system">Our People</a></li>
         <li><a href="#projects">Work</a></li>
         <li><a href="#talent">Team</a></li>
       </ul>
-      <a href="/services#contact" className="mts-nav-cta">Talk to Us</a>
+      <ContactModal>
+        <button className="mts-nav-cta cursor-pointer">Talk to Us</button>
+      </ContactModal>
       <button className="mts-nav-hamburger" aria-label="Menu"><span/><span/><span/></button>
     </nav>
   );
@@ -262,7 +265,7 @@ function Nav() {
 function HeroSection() {
   const [propIdx, setPropIdx] = useState(0);
   useEffect(() => {
-    const iv = setInterval(() => setPropIdx(i => (i + 1) % content.hero.rotatingProps.length), 3500);
+    const iv = setInterval(() => setPropIdx(i => (i + 1) % peopleData.hero.rotatingProps.length), 3500);
     return () => clearInterval(iv);
   }, []);
   return (
@@ -276,14 +279,14 @@ function HeroSection() {
         ))}
       </div>
       <motion.div className="mts-hero-content" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-        <div className="mts-hero-eyebrow">{content.hero.eyebrow}</div>
+        <div className="mts-hero-eyebrow">{peopleData.hero.eyebrow}</div>
         <h1 className="mts-hero-title">
           The Engine Behind Your Next <br/>
           <span className="mts-gradient-text">Breakthrough</span>
         </h1>
         <AnimatePresence mode="wait">
           <motion.div key={propIdx} className="mts-hero-prop" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.5 }}>
-            {content.hero.rotatingProps[propIdx]}
+            {peopleData.hero.rotatingProps[propIdx]}
           </motion.div>
         </AnimatePresence>
       </motion.div>
@@ -455,7 +458,7 @@ function NetworkSection() {
     return () => ctx.revert();
   }, [isMobile]);
 
-  const layer = content.layers[activeLayer];
+  const layer = peopleData.layers[activeLayer];
 
   return (
     <section ref={sectionRef} className="mts-network" id="system">
@@ -469,7 +472,7 @@ function NetworkSection() {
               {HUB_POSITIONS.map((pos, i) => (
                 <React.Fragment key={i}>
                   <HubNode position={pos} color={HUB_COLORS[i]} />
-                  <SkillOrbiters hubPos={pos} color={HUB_COLORS[i]} skills={content.layers[i].skills} />
+                  <SkillOrbiters hubPos={pos} color={HUB_COLORS[i]} skills={peopleData.layers[i].skills} />
                 </React.Fragment>
               ))}
               <NetworkConnections />
@@ -500,7 +503,7 @@ function NetworkSection() {
           </AnimatePresence>
 
           <div className="mts-layer-progress">
-            {content.layers.map((l: any, i: number) => (
+            {peopleData.layers.map((l: any, i: number) => (
               <React.Fragment key={l.id}>
                 {i > 0 && <div className="mts-layer-progress-line" />}
                 <div className={`mts-layer-progress-item ${activeLayer === i ? "active" : ""}`} style={activeLayer === i ? { color: l.colorLight } : {}}>
@@ -513,7 +516,7 @@ function NetworkSection() {
         </div>
       </div>
 
-      {isMobile && content.layers.map((l: any, i: number) => (
+      {isMobile && peopleData.layers.map((l: any, i: number) => (
         <div key={l.id} className="mts-layer-panel" style={{ position: "relative", right: "auto", top: "auto", transform: "none", width: "100%", margin: "0 auto 24px", maxWidth: 500 }}>
           <div className="mts-layer-panel-number">LAYER {l.number}</div>
           <h3 className="mts-layer-panel-title" style={{ color: l.colorLight }}>{l.title}</h3>
@@ -538,7 +541,7 @@ function ProjectsSection() {
         <p>Real systems we've built — from concept to production.</p>
       </motion.div>
       <div className="mts-projects-grid">
-        {content.projects.map((p: any, i: number) => (
+        {peopleData.projects.map((p: any, i: number) => (
           <motion.div key={i} className="mts-project-card" initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.5, delay: i*0.1 }}>
             <div className="mts-project-thumb">
               <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -567,7 +570,7 @@ function TalentSection() {
         <p>Specialized talent ready to build your next breakthrough.</p>
       </motion.div>
       <div className="mts-talent-grid">
-        {content.talentProfiles.map((t: any, i: number) => (
+        {peopleData.talentProfiles.map((t: any, i: number) => (
           <motion.div key={i} className="mts-talent-card" initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.5, delay: i*0.1 }}>
             <div className="mts-talent-avatar" style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}88)` }}>
               <span style={{ position:"relative", zIndex:1, fontSize: 24, opacity: 0.9 }}>{AVATAR_ICONS[i]}</span>
@@ -587,9 +590,11 @@ function CTASection() {
     <section className="mts-cta" id="cta">
       <div className="mts-cta-glow" />
       <motion.div initial={{ opacity:0, y:30 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.7 }}>
-        <h2>{content.cta.title}</h2>
-        <p>{content.cta.subtitle}</p>
-        <a href={content.cta.buttonLink} className="mts-cta-btn">{content.cta.buttonText} →</a>
+        <h2>{peopleData.cta.title}</h2>
+        <p>{peopleData.cta.subtitle}</p>
+        <ContactModal>
+          <button className="mts-cta-btn cursor-pointer">{peopleData.cta.buttonText} →</button>
+        </ContactModal>
       </motion.div>
     </section>
   );
@@ -600,7 +605,7 @@ function PageFooter() {
   return (
     <footer className="mts-footer">
       <div className="mts-footer-inner">
-        <span className="mts-footer-copy">© {new Date().getFullYear()} Ottobon Services</span>
+        <span className="mts-footer-copy">© {new Date().getFullYear()} Ottobon</span>
         <div className="mts-footer-links">
           <a href="/services">Services</a>
           <a href="/talentops">Talent Ops</a>
@@ -613,7 +618,7 @@ function PageFooter() {
 
 
 // ─── MAIN PAGE COMPONENT ─────────────────────────────────────
-export default function MeetTheSystem() {
+export default function People() {
   return (
     <div className="mts-page">
       <StylesInjection styles={STYLES} />

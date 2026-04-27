@@ -78,44 +78,6 @@
       "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
     },
     {
-      "id": "executive-support",
-      "label": "Execution Support",
-      "headline": "From idea to team to product — we make it real.",
-      "body": "This is the heart of our people-side offering. Two distinct models:",
-      "sub_sections": [
-        {
-          "title": "Contract & Full-Time Hiring",
-          "description": "",
-          "bullets": [
-            "Source, vet, and place qualified talent",
-            "Available on hourly contracts or as full-time hires",
-            "Built-in task management and complete work visibility"
-          ]
-        },
-        {
-          "title": "MVP / Idea to Prototype",
-          "description": "",
-          "bullets": [
-            "Turn concepts into working prototypes at a fixed price",
-            "Clear scope defined upfront with no surprises",
-            "Delivered strictly on time by expert technical teams"
-          ]
-        }
-      ],
-      "ctas": [
-        {
-          "text": "Know More: Idea to Prototype",
-          "link": "/idea-to-prototype"
-        },
-        {
-          "text": "Know Our Team",
-          "link": "/meet-the-system"
-        }
-      ],
-      "quote": "Think of it as: you bring the vision, we build the engine.",
-      "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
       "id": "compliance-resilience",
       "label": "Legal, Finance & Regulatory",
       "headline": "Stay legal. Stay Compliant. Stay operational.",
@@ -143,6 +105,45 @@
       "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
     }
   ],
+  "execution_support": {
+    "id": "execution-support",
+    "badge": "EXECUTION SUPPORT",
+    "label": "Execution Support",
+    "headline": "From idea to team to product — we make it real.",
+    "body": "This is the heart of our people-side offering. Two distinct models:",
+    "sub_sections": [
+      {
+        "title": "Contract & Full-Time Hiring",
+        "description": "",
+        "bullets": [
+          "Source, vet, and place qualified talent",
+          "Available on hourly contracts or as full-time hires",
+          "Built-in task management and complete work visibility"
+        ]
+      },
+      {
+        "title": "MVP / Idea to Prototype",
+        "description": "",
+        "bullets": [
+          "Turn concepts into working prototypes at a fixed price",
+          "Clear scope defined upfront with no surprises",
+          "Delivered strictly on time by expert technical teams"
+        ]
+      }
+    ],
+    "ctas": [
+      {
+        "text": "Know More: Idea to Prototype",
+        "link": "/idea-to-prototype"
+      },
+      {
+        "text": "Know Our Team",
+        "link": "/people"
+      }
+    ],
+    "quote": "Think of it as: you bring the vision, we build the engine.",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+  },
   "secret_sauce": {
     "heading": "Human expertise. AI efficiency. Full transparency.",
     "body": "Every service we offer is delivered through a modern two-layer model — experienced professionals backed by AI tools that accelerate output, improve accuracy, and reduce cost. And across all talent engagements, our task management infrastructure gives clients real-time visibility into what's being done, by whom, and when.",

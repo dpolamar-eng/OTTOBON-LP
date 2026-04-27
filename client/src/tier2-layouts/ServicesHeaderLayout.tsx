@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'wouter';
+import { ContactModal } from '@/components/ContactModal';
 
 export function ServicesHeaderLayout() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,9 +34,11 @@ export function ServicesHeaderLayout() {
 
         {/* CTA */}
         <div className="hidden md:block">
-          <a href="#contact" className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full transition-colors shadow-lg shadow-blue-500/20">
-            Talk to Us
-          </a>
+          <ContactModal>
+            <a className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full transition-colors shadow-lg shadow-blue-500/20 cursor-pointer">
+              Talk to Us
+            </a>
+          </ContactModal>
         </div>
 
         {/* Mobile Toggle */}
@@ -55,7 +58,9 @@ export function ServicesHeaderLayout() {
           <a href="#detailed-services" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">Services</a>
           <a href="#audience" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">Who We Serve</a>
           <a href="#about-us" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">About Us</a>
-          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="bg-blue-600 text-white text-center p-3 rounded-full font-bold mt-2">Talk to Us</a>
+          <ContactModal>
+            <a onClick={() => setMobileMenuOpen(false)} className="bg-blue-600 text-white text-center p-3 rounded-full font-bold mt-2 cursor-pointer">Talk to Us</a>
+          </ContactModal>
         </div>
       )}
     </header>

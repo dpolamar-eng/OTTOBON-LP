@@ -1,14 +1,12 @@
 import React, { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import HomeHeader from "./HomeHeader";
-import { GraduationCap, BriefcaseBusiness, Check, Sparkles } from "lucide-react";
+import { GraduationCap, BriefcaseBusiness, Check, Sparkles, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { TiltCard } from "../tier1-components/TiltCard";
 
 export default function GatewayPortal() {
   const [, navigate] = useLocation();
-  const [hoverState, setHoverState] = useState<"academy" | "services" | null>(
-    null,
-  );
-  const [pressing, setPressing] = useState<"academy" | "services" | null>(null);
 
   // Memoize bubble positions/sizes so background doesn't change on hover-induced re-renders
   const bubbles = useMemo(
@@ -141,222 +139,146 @@ export default function GatewayPortal() {
 
       <section
         id="services-overview"
-        className="relative z-10 pt-8 sm:pt-10 pb-2 scroll-mt-24 md:scroll-mt-28"
+        className="relative z-10 pt-10 pb-20 scroll-mt-20 md:scroll-mt-24"
       >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
               Our Services
             </h2>
-            <div className="mx-auto mt-3 h-px w-28 md:w-32 bg-gradient-to-r from-blue-400/80 via-blue-300/50 to-purple-400/80" />
-            <p className="text-blue-200 mt-3 max-w-3xl mx-auto text-base md:text-lg">
+            <div className="mx-auto h-1 w-24 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mb-6 shadow-[0_0_15px_rgba(139,92,246,0.5)]" />
+            <p className="text-blue-100/80 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
               Two complementary tracks. Academy turns students and freshers into
               job-ready consultants with guided paths, projects, and interview
               prep. PSO equips working professionals and firms with AI-powered
               operations—so your delivery, marketing, and admin run with
               enterprise-grade efficiency.
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* Cards */}
-        <div className="container mx-auto px-4 pb-6 md:pb-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-4 md:gap-8 max-w-4xl mx-auto">
-
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {/* Academy */}
-            <div
-              className={`w-full transition-transform duration-300 ${
-                hoverState === "academy"
-                  ? "scale-[1.02]"
-                  : hoverState === "services"
-                  ? "scale-[0.98] opacity-90"
-                  : ""
-              }`}
-              onMouseEnter={() => setHoverState("academy")}
-              onMouseLeave={() => setHoverState(null)}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="flex flex-col h-full"
             >
-              <div className="relative h-full rounded-2xl overflow-hidden">
-                {/* base */}
-                <div className="relative bg-[#0F1E2E] rounded-2xl ring-1 ring-white/10 shadow-[0_8px_28px_rgba(0,0,0,0.35)]">
-                  {/* subtle texture */}
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.06)_100%)] opacity-[0.08]" />
+              <TiltCard className="flex-1 rounded-[20px] overflow-hidden border border-white/10 bg-[#0A0D14] transition-all duration-300 hover:border-blue-500/50 group h-full">
+                <div className="absolute inset-0 z-0">
+                  <div className="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors duration-500" />
+                </div>
 
-                  <div className="relative p-6 md:p-8 flex flex-col">
-                    {/* header */}
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ring-1 ring-white/15">
-                        <GraduationCap className="w-6 h-6 text-blue-200" />
-                      </div>
-                      <h3 className="ml-3 text-xl font-bold text-white">
-                        Ottobon Academy
-                      </h3>
+                <div className="relative z-10 p-6 sm:p-8 flex flex-col h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center ring-1 ring-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                      <GraduationCap className="w-6 h-6 text-blue-400" />
                     </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      Ottobon Academy
+                    </h3>
+                  </div>
 
-                    {/* copy */}
-                    <p className="text-blue-100 text-sm md:text-base mb-5">
-                      Transform students and freshers into independent consultants
-                      with job-ready skills in high-demand technologies.
-                    </p>
+                  <p className="text-blue-100/70 text-sm sm:text-base mb-6 leading-relaxed flex-grow">
+                    Transform students and freshers into independent consultants
+                    with job-ready skills in high-demand technologies.
+                  </p>
 
-                    {/* bullets */}
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                        <span className="text-blue-50 text-sm md:text-base">
-                          AI-Powered Skill Growth
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                        <span className="text-blue-50 text-sm md:text-base">
-                          Land Your Dream Job
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                        <span className="text-blue-50 text-sm md:text-base">
-                          Thrive With Expert Guidance
-                        </span>
-                      </div>
-                    </div>
+                  <ul className="space-y-3 mb-8">
+                    {['AI-Powered Skill Growth', 'Land Your Dream Job', 'Thrive With Expert Guidance'].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="mt-1 w-4 h-4 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                          <Check className="w-2.5 h-2.5 text-blue-400" />
+                        </div>
+                        <span className="text-white/90 text-sm sm:text-base font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                    {/* cta */}
-                    <div className="mt-auto pt-2">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (pressing) return;
-                          setPressing("academy");
-                          setTimeout(() => {
-                            window.location.href = "https://academy.ottobon.in";
-                          }, 160);
-                        }}
-                        aria-pressed={pressing === "academy"}
-                        className={`w-full rounded-full bg-[#FFC107] text-black font-semibold py-3 px-6 transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 ${
-                          pressing === "academy" ? "scale-[1.02]" : ""
-                        }`}
-                      >
-                        <span className="inline-flex items-center justify-center">
-                          Get Started
-                          <svg
-                            className="ml-2 w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M13 7l5 5m0 0l-5 5m5-5H6"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
+                  <div className="mt-auto pt-5 border-t border-white/5">
+                    <button
+                      onClick={() => window.location.href = "https://academy.ottobon.in"}
+                      className="group/btn relative w-full overflow-hidden rounded-lg bg-blue-600 px-5 py-3 transition-all hover:bg-blue-500 hover:shadow-[0_0_25px_rgba(37,99,235,0.4)]"
+                    >
+                      <div className="relative z-10 flex items-center justify-center gap-2 font-bold text-white text-base">
+                        <span>Get Started</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                      </div>
+                      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover/btn:translate-x-full" />
+                    </button>
                   </div>
                 </div>
-              </div>
-            </div>
+              </TiltCard>
+            </motion.div>
 
             {/* Services */}
-            <div
-              className={`w-full transition-transform duration-300 ${
-                hoverState === "services"
-                  ? "scale-[1.02]"
-                  : hoverState === "academy"
-                  ? "scale-[0.98] opacity-90"
-                  : ""
-              }`}
-              onMouseEnter={() => setHoverState("services")}
-              onMouseLeave={() => setHoverState(null)}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="flex flex-col h-full"
             >
-              <div className="relative h-full rounded-2xl overflow-hidden">
-                {/* base */}
-                <div className="relative bg-[#0F1E2E] rounded-2xl ring-1 ring-white/10 shadow-[0_8px_28px_rgba(0,0,0,0.35)]">
-                  {/* subtle texture */}
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_500px_at_0%_0%,rgba(255,255,255,0.06),transparent_60%)] opacity-[0.08]" />
+              <TiltCard className="flex-1 rounded-[20px] overflow-hidden border border-white/10 bg-[#0A0D14] transition-all duration-300 hover:border-purple-500/50 group h-full">
+                <div className="absolute inset-0 z-0">
+                  <div className="absolute inset-0 bg-purple-500/5 group-hover:bg-purple-500/10 transition-colors duration-500" />
+                </div>
 
-                  <div className="relative p-6 md:p-8 flex flex-col">
-                    {/* header */}
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ring-1 ring-white/15">
-                        <BriefcaseBusiness className="w-6 h-6 text-pink-200" />
-                      </div>
-                      <h3 className="ml-3 text-xl font-bold text-white">
-                        Ottobon Services
-                      </h3>
+                <div className="relative z-10 p-6 sm:p-8 flex flex-col h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center ring-1 ring-purple-500/30 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                      <BriefcaseBusiness className="w-6 h-6 text-purple-400" />
                     </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      Ottobon Services
+                    </h3>
+                  </div>
 
-                    {/* copy */}
-                    <p className="text-purple-100 text-sm md:text-base mb-5">
-                      Empowering working professionals to transition into
-                      consultant providers with advanced tech learning and
-                      professional services.
-                    </p>
+                  <p className="text-purple-100/70 text-sm sm:text-base mb-6 leading-relaxed flex-grow">
+                    Empowering working professionals to transition into
+                    consultant providers with advanced tech learning and
+                    professional services.
+                  </p>
 
-                    {/* bullets */}
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
-                        <span className="text-purple-50 text-sm md:text-base">
-                          Transform Health with Innovation
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
-                        <span className="text-purple-50 text-sm md:text-base">
-                          Driving Innovation with Expertise
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
-                        <span className="text-purple-50 text-sm md:text-base">
-                          Legal & Finance
-                        </span>
-                      </div>
-                    </div>
+                  <ul className="space-y-3 mb-8">
+                    {['Transform Health with Innovation', 'Driving Innovation with Expertise', 'Legal & Finance'].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="mt-1 w-4 h-4 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
+                          <Check className="w-2.5 h-2.5 text-purple-400" />
+                        </div>
+                        <span className="text-white/90 text-sm sm:text-base font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                    {/* cta */}
-                    <div className="mt-auto pt-2">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (pressing) return;
-                          setPressing("services");
-                          setTimeout(() => {
-                            navigate("/services");
-                            window.scrollTo(0, 0);
-                          }, 160);
-                        }}
-                        aria-pressed={pressing === "services"}
-                        className={`w-full rounded-full bg-[#FFC107] text-black font-semibold py-3 px-6 transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/60 ${
-                          pressing === "services" ? "scale-[1.02]" : ""
-                        }`}
-                      >
-                        <span className="inline-flex items-center justify-center">
-                          Get Started
-                          <svg
-                            className="ml-2 w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M13 7l5 5m0 0l-5 5m5-5H6"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
+                  <div className="mt-auto pt-5 border-t border-white/5">
+                    <button
+                      onClick={() => {
+                        navigate("/services");
+                        window.scrollTo(0, 0);
+                      }}
+                      className="group/btn relative w-full overflow-hidden rounded-lg bg-purple-600 px-5 py-3 transition-all hover:bg-purple-500 hover:shadow-[0_0_25px_rgba(168,85,247,0.4)]"
+                    >
+                      <div className="relative z-10 flex items-center justify-center gap-2 font-bold text-white text-base">
+                        <span>Get Started</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                      </div>
+                      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover/btn:translate-x-full" />
+                    </button>
                   </div>
                 </div>
-              </div>
-            </div>
-
+              </TiltCard>
+            </motion.div>
           </div>
         </div>
       </section>

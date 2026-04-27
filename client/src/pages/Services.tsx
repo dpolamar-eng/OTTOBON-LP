@@ -6,6 +6,7 @@ import { ServicesHeroLayout } from '../tier2-layouts/ServicesHeroLayout';
 import { ServicesPositioningLayout } from '../tier2-layouts/ServicesPositioningLayout';
 import { ServicesPillarsLayout } from '../tier2-layouts/ServicesPillarsLayout';
 import { DetailedServicesLayout } from '../tier2-layouts/DetailedServicesLayout';
+import { ExecutionSupportLayout } from '../tier2-layouts/ExecutionSupportLayout';
 import { SecretSauceLayout } from '../tier2-layouts/SecretSauceLayout';
 import { ServicesAboutUsLayout } from '../tier2-layouts/ServicesAboutUsLayout';
 import { AudienceAndCTALayout } from '../tier2-layouts/AudienceAndCTALayout';
@@ -37,6 +38,9 @@ export default function Services() {
 
         {/* Two Pillars Section */}
         <ServicesPillarsLayout data={servicesContent.pillars} />
+
+        {/* Execution Support — Premium Redesigned Section */}
+        <ExecutionSupportLayout data={servicesContent.execution_support as any} />
 
         {/* Detailed Services Block */}
         <DetailedServicesLayout services={servicesContent.detailed_services} />

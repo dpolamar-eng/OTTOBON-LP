@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnimatedSection } from '../tier1-components/AnimatedSection';
 import { Briefcase, Zap, Landmark } from 'lucide-react';
+import { ContactModal } from '@/components/ContactModal';
 
 interface Audience {
   title: string;
@@ -79,9 +80,11 @@ export function AudienceAndCTALayout({ data }: { data: AudienceAndCTAData }) {
             <p className="text-xl md:text-2xl text-gray-300 mb-12">
               {data.cta.sub}
             </p>
-            <a href="mailto:contact@ottobon.com" className="inline-block px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full transition-all hover:scale-105 shadow-[0_0_30px_rgba(37,99,235,0.5)]">
-              {data.cta.button_text}
-            </a>
+            <ContactModal>
+              <button className="inline-block px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full transition-all hover:scale-105 shadow-[0_0_30px_rgba(37,99,235,0.5)] cursor-pointer">
+                {data.cta.button_text}
+              </button>
+            </ContactModal>
           </AnimatedSection>
         </div>
       </section>

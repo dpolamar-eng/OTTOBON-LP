@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { AnimatedSection } from '../ui/AnimatedSection';
+import { AnimatedSection } from '../../tier1-components/AnimatedSection';
 
 interface HeroData {
   headline: string;
