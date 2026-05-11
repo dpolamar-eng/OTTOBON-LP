@@ -29,7 +29,7 @@
       },
       {
         "title": "Business Operations",
-        "tagline": "Stop running your business on the side. Let us run the back-office.",
+        "tagline": "Operations, simplified and fully managed.",
         "description": "Finance. Legal. Sales. Compliance. These are the departments every business needs but few early-stage companies can afford to build in-house. We handle all of it — so you don't have to."
       }
     ]
@@ -61,8 +61,8 @@
     {
       "id": "operational-support",
       "label": "Operation Support",
-      "headline": "The operational layer your team is missing.",
-      "body": "Running a consulting practice or a growing startup means constant coordination — managing people, tracking work, and keeping quality consistent. Our TalentOps function handles all of that behind the scenes, so your delivery never slips.",
+      "headline": "Deliver Consistently. Scale Confidently.",
+      "body": "Manage people, track work, and maintain quality—without the daily firefighting. Our operational support services are designed to keep your projects on track and your teams aligned, so you can focus on growth instead of getting bogged down in the details.",
       "included": [
         "Day-to-day team coordination & task tracking",
         "Workflow design & SOP documentation",
@@ -81,7 +81,7 @@
       "id": "compliance-resilience",
       "label": "Legal, Finance & Regulatory",
       "headline": "Stay legal. Stay Compliant. Stay operational.",
-      "body": "From tax filings and payroll to corporate compliance and regulatory frameworks — we ensure your business is always on the right side of the law and built to withstand pressure. This is the unsexy work that quietly keeps everything else running.",
+      "body": "Our team ensures every financial, legal, and regulatory requirement is handled with precision—so your operations stay stable and audit-ready. We provide the expertise and infrastructure to manage these critical functions without the overhead of building in-house teams.",
       "included": [
         "Tax filing & financial compliance",
         "Payroll & billing management",

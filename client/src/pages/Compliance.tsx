@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useMemo, forwardRef, useImperativeH
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
-import { degToRad } from 'three/src/math/MathUtils.js';
 
 // ==========================================
 // 1. DATA / CONTENT (Tier 3)
@@ -400,7 +399,7 @@ const Beams = ({ beamWidth = 2, beamHeight = 15, beamNumber = 12, lightColor = '
 
   return (
     <Canvas dpr={[1, 2]} frameloop="always" className="beams-container">
-      <group rotation={[0, 0, degToRad(rotation)]}>
+      <group rotation={[0, 0, THREE.MathUtils.degToRad(rotation)]}>
         <PlaneNoise ref={meshRef} material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} />
         <directionalLight color={lightColor} intensity={1} position={[0, 3, 10]} />
       </group>
