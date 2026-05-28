@@ -92,10 +92,7 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
   // CTA mapping: index 0 = "Know More: Idea to Prototype" → goes under MVP card
   // CTA mapping: index 1 = "Know Our Team" → goes under Hiring card
   // Reorder: card[0]=Hiring gets cta[1], card[1]=MVP gets cta[0]
-  const ctaForCard = [
-    data.ctas[1], // "Know Our Team" under Hiring
-    data.ctas[0], // "Know More: Idea to Prototype" under MVP
-  ];
+
 
   // Stacked images for left column - UI/UX design style collage
   const stackImages = [
@@ -247,20 +244,20 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
 
               {/* Service Model Cards — NO icons, CTA below each card */}
               <motion.div
-                className="grid sm:grid-cols-2 gap-5 will-change-transform"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-5 will-change-transform"
                 style={{ y: cardsY }}
                 variants={slideInLeft}
               >
                 {data.sub_sections.map((sub, i) => (
-                  <div key={i} className="flex flex-col">
+                  <div key={i} className="flex flex-col w-full h-full">
                     <TiltCard
-                      className="rounded-[16px] p-5 border bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-black/20 hover:bg-white/10 flex-1"
+                      className="rounded-[16px] p-4 md:p-5 border bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-black/20 hover:bg-white/10 flex-1 flex flex-col"
                       style={{ borderColor: cardBorderColor }}
                     >
-                      <div className="relative z-10">
+                      <div className="relative z-10 flex flex-col h-full">
                         {/* Card Title */}
                         <motion.h4
-                          className="text-lg md:text-xl font-bold mb-3"
+                          className="text-base md:text-lg font-bold mb-3 leading-tight"
                           style={{ color: headlineColor }}
                         >
                           {sub.title}
@@ -279,7 +276,7 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
                                   }}
                                 />
                                 <motion.span
-                                  className="text-sm leading-relaxed"
+                                  className="text-[13px] md:text-sm leading-relaxed"
                                   style={{ color: bodyColor }}
                                 >
                                   {bullet}
@@ -290,39 +287,44 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
                         )}
                       </div>
                     </TiltCard>
-
-                    {/* CTA below each card */}
-                    {ctaForCard[i] && (
-                      <motion.a
-                        href={ctaForCard[i].link}
-                        className={`group inline-flex items-center justify-center gap-2 mt-4 px-5 py-2.5 rounded-full text-sm transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap ${
-                          i === 0
-                            ? // "Know Our Team" — Yellow filled, bold
-                              'bg-yellow-500 text-white font-bold border-2 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600 shadow-[0_4px_16px_rgba(234,179,8,0.35)] hover:shadow-[0_6px_24px_rgba(234,179,8,0.5)]'
-                            : // "Know More: Idea to Prototype" — Same as Know More: Sales style
-                              'bg-transparent border hover:bg-blue-600 hover:border-blue-500 font-medium shadow-[0_0_20px_rgba(37,99,235,0)] hover:shadow-[0_4px_20px_rgba(37,99,235,0.4)] backdrop-blur-sm'
-                        }`}
-                        style={
-                          i === 1
-                            ? { color: 'var(--es-primary-blue)', borderColor: btnBorderColor }
-                            : undefined
-                        }
-                        onMouseEnter={(e) => {
-                          if (i === 1) {
-                            e.currentTarget.style.color = '#FFFFFF';
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (i === 1) {
-                            e.currentTarget.style.color = 'var(--es-primary-blue)';
-                          }
-                        }}
-                      >
-                        <span>{ctaForCard[i].text}</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </motion.a>
-                    )}
                   </div>
+                ))}
+              </motion.div>
+
+              {/* Two Big Buttons Below Cards */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 mt-8 will-change-transform"
+                style={{ y: cardsY }}
+                variants={slideInLeft}
+              >
+                {data.ctas.map((cta, i) => (
+                  <motion.a
+                    key={i}
+                    href={cta.link}
+                    className={`group flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-base font-bold transition-all duration-300 hover:-translate-y-1 whitespace-nowrap ${
+                      cta.text.includes("Know Our Team")
+                        ? 'bg-yellow-500 text-white border-2 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600 shadow-[0_4px_16px_rgba(234,179,8,0.35)] hover:shadow-[0_6px_24px_rgba(234,179,8,0.5)]'
+                        : 'bg-transparent border-2 hover:bg-blue-600 hover:border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0)] hover:shadow-[0_4px_20px_rgba(37,99,235,0.4)] backdrop-blur-sm'
+                    }`}
+                    style={
+                      !cta.text.includes("Know Our Team")
+                        ? { color: 'var(--es-primary-blue)', borderColor: btnBorderColor }
+                        : undefined
+                    }
+                    onMouseEnter={(e) => {
+                      if (!cta.text.includes("Know Our Team")) {
+                        e.currentTarget.style.color = '#FFFFFF';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!cta.text.includes("Know Our Team")) {
+                        e.currentTarget.style.color = 'var(--es-primary-blue)';
+                      }
+                    }}
+                  >
+                    <span>{cta.text}</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </motion.a>
                 ))}
               </motion.div>
             </div>

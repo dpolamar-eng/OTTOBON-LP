@@ -1,20 +1,55 @@
 {
   "hero": {
-    "headline": "Your business, fully supported. Your team, always ready.",
-    "sub_headline": "Ottobon Professional Services handles the operational weight so your core team can focus on what actually moves the needle — delivered by expert humans, powered by AI.",
+    "headline": "Your one-place to go for\nAI consultants.",
+    "sub_headline": "Manage your talent seamlessly at an extremely lower price.",
     "ctas": [
       {
         "text": "See How We Work",
         "link": "#how-we-work",
-        "primary": true
+        "primary": false
       },
       {
         "text": "Talk to Us",
         "link": "#contact",
-        "primary": false
+        "primary": true
       }
     ],
     "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+  },
+  "core_offerings": {
+    "heading": "CORE OFFERINGS",
+    "cards": [
+      {
+        "title": "Agentic AI Engineers",
+        "features": [
+          "Build autonomous AI agents to automate multi-step business processes.",
+          "Expert behavior control for predictable and safe performance.",
+          "Deep experience in deterministic instruction following.",
+          "Outcome-focused delivery for specific technical goals."
+        ],
+        "icon": "Settings"
+      },
+      {
+        "title": "AI-Native Full-Stack Consultants",
+        "features": [
+          "End-to-end development of AI-powered applications and platforms.",
+          "Integration of modern AI models and LLMs.",
+          "Focus on creating multi-outcome development cycles.",
+          "Specialized in deterministic RAG and other advanced architectures."
+        ],
+        "icon": "Database"
+      },
+      {
+        "title": "Strategic AI Consulting",
+        "features": [
+          "Define optimal AI strategy and deployment roadmaps.",
+          "Expertise in AI ethics, guardrail setting, and governance.",
+          "Align AI outcomes with business value and ROI.",
+          "Continuous guidance on the AI technology landscape."
+        ],
+        "icon": "Brain"
+      }
+    ]
   },
   "positioning": {
     "quote": "We are not a staffing agency. We are not a software tool. We are the operational backbone your business didn't know it was missing."
@@ -110,30 +145,39 @@
     "badge": "EXECUTION SUPPORT",
     "label": "Execution Support",
     "headline": "From idea to team to product — we make it real.",
-    "body": "This is the heart of our people-side offering. Two distinct models:",
+    "body": "This is the heart of our people-side offering. Three distinct models:",
     "sub_sections": [
       {
-        "title": "Contract & Full-Time Hiring",
+        "title": "Hourly Engagement",
         "description": "",
         "bullets": [
-          "Source, vet, and place qualified talent",
-          "Available on hourly contracts or as full-time hires",
-          "Built-in task management and complete work visibility"
+          "On-demand consulting & rapid integrations",
+          "Flexible hourly contracts",
+          "Full time-tracking & visibility"
         ]
       },
       {
-        "title": "MVP / Idea to Prototype",
+        "title": "Contract-to-Hire",
         "description": "",
         "bullets": [
-          "Turn concepts into working prototypes at a fixed price",
-          "Clear scope defined upfront with no surprises",
-          "Delivered strictly on time by expert technical teams"
+          "Structured evaluation period",
+          "Short-term trial (e.g., 1-month) pre-placement",
+          "Seamless integration to your team"
+        ]
+      },
+      {
+        "title": "Outcome Based",
+        "description": "",
+        "bullets": [
+          "Fixed-price milestone delivery (e.g., MVP)",
+          "Clear scope & transparent pricing",
+          "Timeline adherence & expert teams"
         ]
       }
     ],
     "ctas": [
       {
-        "text": "Know More: Idea to Prototype",
+        "text": "Idea to Prototype",
         "link": "/idea-to-prototype"
       },
       {
@@ -206,24 +250,24 @@
     ],
     "values": [
       {
-        "title": "Women-Led Leadership",
-        "description": "Empowering women at every level.",
-        "icon": "Users"
+        "title": "AI-Native Expertise",
+        "description": "Your one-place to go for elite Agentic AI Engineers and Full-Stack Consultants.",
+        "icon": "Brain"
       },
       {
-        "title": "Accessible Everywhere",
-        "description": "Global reach, local impact.",
-        "icon": "Globe"
+        "title": "Seamless & Cost-Effective",
+        "description": "Manage your technical talent effortlessly at a significantly lower price point.",
+        "icon": "TrendingDown"
       },
       {
-        "title": "Inclusive Community",
-        "description": "Building diverse and strong teams.",
-        "icon": "Heart"
+        "title": "Outcome-Driven Delivery",
+        "description": "Focused on concrete milestones, utilizing robust architectures like deterministic RAG.",
+        "icon": "Target"
       },
       {
-        "title": "Innovation-First",
-        "description": "Pushing boundaries in tech.",
-        "icon": "Zap"
+        "title": "Flexible & Uncluttered",
+        "description": "Simple engagement models—hourly, contract-to-hire, or milestone-based—with zero operational bloat.",
+        "icon": "Settings"
       }
     ],
     "leadership": [
@@ -231,7 +275,7 @@
         "name": "Radhika Bonu",
         "role": "Executive Director",
         "description": "Over 15 years leading cross-functional teams and scaling global operations.",
-        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
+        "image": "/images/radhika-bonu.jpg",
         "color": "purple"
       },
       {
@@ -245,7 +289,7 @@
         "name": "Gitika Senthil",
         "role": "Head of operation and Business Development",
         "description": "Driving efficiency and operational excellence across all our key pillars.",
-        "image": "https://images.unsplash.com/photo-1550525811-e5869dd03032?auto=format&fit=crop&q=80&w=800",
+        "image": "/images/Gitika.jpg",
         "color": "yellow"
       },
       {

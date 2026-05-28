@@ -26,7 +26,7 @@ export function ServicesHeroLayout({ data }: { data: HeroData }) {
       {/* Parallax Background Image */}
       {data.image && (
         <motion.div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 origin-top"
+          className="absolute -top-[400px] -bottom-[400px] inset-x-0 z-0 bg-cover bg-center bg-no-repeat opacity-40"
           style={{ backgroundImage: `url(${data.image})`, y: yImage, scale: 1.1 }}
         />
       )}
@@ -47,20 +47,20 @@ export function ServicesHeroLayout({ data }: { data: HeroData }) {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/30 blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none z-0" />
 
-      <div className="container mx-auto px-4 relative z-20 w-full">
+      <div className="container mx-auto px-4 relative z-20 w-full -mt-24">
         <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
           
           {/* Top Badge */}
           <AnimatedSection direction="down" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-md mb-8">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-              <span className="text-blue-200 text-sm font-medium tracking-wide">Ottobon Professional Services</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+              <div className="w-5 h-5 rounded-full bg-yellow-600 flex items-center justify-center text-[10px] font-bold text-white border border-yellow-400/50">B</div>
+              <span className="text-gray-200 text-sm font-medium tracking-wide">Ottobon Professional Services</span>
             </div>
           </AnimatedSection>
           
-          {/* Headline - No line breaks applied forcibly to allow natural, robust wrapping */}
+          {/* Headline - Allows explicit line breaks via \\n */}
           <AnimatedSection direction="up" delay={0.2} duration={0.8}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-400 tracking-tight mb-6 leading-tight">
+            <h1 className="whitespace-pre-line text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-400 tracking-tight mb-6 leading-tight">
               {data.headline}
             </h1>
           </AnimatedSection>
@@ -83,17 +83,17 @@ export function ServicesHeroLayout({ data }: { data: HeroData }) {
                     <a
                       key={index}
                       href={cta.link === "#contact" ? undefined : cta.link}
-                      className={`group relative px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2 overflow-hidden cursor-pointer ${
+                      className={`group relative px-8 py-3.5 rounded-full font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center gap-2 overflow-hidden cursor-pointer ${
                         cta.primary 
-                          ? 'bg-transparent text-white hover:bg-blue-600 shadow-[0_0_40px_rgba(37,99,235,0)] hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] border border-white/20 hover:border-blue-400 backdrop-blur-md' 
-                          : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 backdrop-blur-md'
+                          ? 'bg-blue-500 text-white hover:bg-blue-600 shadow-lg shadow-blue-500/30' 
+                          : 'bg-transparent text-white border border-white/30 hover:border-white/60 hover:bg-white/5 backdrop-blur-md'
                       }`}
                     >
                       {cta.primary && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
                       )}
                       <span className="relative z-10">{cta.text}</span>
-                      {cta.primary && (
+                      {!cta.primary && (
                         <svg className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                       )}
                     </a>

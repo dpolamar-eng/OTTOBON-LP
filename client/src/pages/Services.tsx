@@ -3,8 +3,8 @@ import servicesContent from '../tier3-content/services-content.json';
 
 // Import Tier 2 Layout Components
 import { ServicesHeroLayout } from '../tier2-layouts/ServicesHeroLayout';
+import { CoreOfferingsLayout } from '../tier2-layouts/CoreOfferingsLayout';
 import { ServicesPositioningLayout } from '../tier2-layouts/ServicesPositioningLayout';
-import { ServicesPillarsLayout } from '../tier2-layouts/ServicesPillarsLayout';
 import { DetailedServicesLayout } from '../tier2-layouts/DetailedServicesLayout';
 import { ExecutionSupportLayout } from '../tier2-layouts/ExecutionSupportLayout';
 import { SecretSauceLayout } from '../tier2-layouts/SecretSauceLayout';
@@ -32,24 +32,25 @@ export default function Services() {
       <main>
         {/* Hero Section */}
         <ServicesHeroLayout data={servicesContent.hero} />
+
+        {/* Core Offerings Section */}
+        <CoreOfferingsLayout data={servicesContent.core_offerings} />
         
         {/* Positioning Quote */}
         <ServicesPositioningLayout quote={servicesContent.positioning.quote} />
-
-        {/* Two Pillars Section */}
-        <ServicesPillarsLayout data={servicesContent.pillars} />
 
         {/* Execution Support — Premium Redesigned Section */}
         <ExecutionSupportLayout data={servicesContent.execution_support as any} />
 
         {/* Detailed Services Block */}
-        <DetailedServicesLayout services={servicesContent.detailed_services} />
-
-        {/* Secret Sauce / How we Work */}
-        <SecretSauceLayout data={servicesContent.secret_sauce} />
+        {/* The 'compliance-resilience' (Legal & Finance) section is filtered out here so it remains in the codebase but doesn't show on the page */}
+        <DetailedServicesLayout services={servicesContent.detailed_services.filter(s => s.id !== 'compliance-resilience')} />
 
         {/* Who We Serve & Final CTA */}
         <AudienceAndCTALayout data={{ audience: servicesContent.audience, cta: servicesContent.cta }} />
+
+        {/* Secret Sauce / How we Work */}
+        <SecretSauceLayout data={servicesContent.secret_sauce} />
 
         {/* About Us Section */}
         <ServicesAboutUsLayout data={servicesContent.about_us as any} />

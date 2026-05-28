@@ -67,27 +67,7 @@ export function AudienceAndCTALayout({ data }: { data: AudienceAndCTAData }) {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 relative overflow-hidden" id="contact">
-        <div className="absolute inset-0 bg-blue-900/20" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/30 rounded-full blur-[150px] pointer-events-none" />
-        
-        <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center">
-          <AnimatedSection direction="up">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
-              {data.cta.heading}
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12">
-              {data.cta.sub}
-            </p>
-            <ContactModal>
-              <button className="inline-block px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full transition-all hover:scale-105 shadow-[0_0_30px_rgba(37,99,235,0.5)] cursor-pointer">
-                {data.cta.button_text}
-              </button>
-            </ContactModal>
-          </AnimatedSection>
-        </div>
-      </section>
+
     </div>
   );
 }
