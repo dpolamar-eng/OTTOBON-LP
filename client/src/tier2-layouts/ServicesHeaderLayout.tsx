@@ -26,7 +26,7 @@ export function ServicesHeaderLayout() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#how-we-work" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">How We Work</a>
+          <a href="#execution-support" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">How We Work</a>
           <a href="#detailed-services" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a>
           <a href="#audience" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Who We Serve</a>
           <a href="#about-us" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">About Us</a>
@@ -54,7 +54,7 @@ export function ServicesHeaderLayout() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-gray-900 border-b border-white/10 p-4 flex flex-col gap-4 shadow-xl">
-          <a href="#how-we-work" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">How We Work</a>
+          <a href="#execution-support" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">How We Work</a>
           <a href="#detailed-services" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">Services</a>
           <a href="#audience" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">Who We Serve</a>
           <a href="#about-us" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white p-2">About Us</a>
