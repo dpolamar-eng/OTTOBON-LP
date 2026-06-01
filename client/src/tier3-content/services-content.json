@@ -20,12 +20,12 @@
     "heading": "CORE OFFERINGS",
     "cards": [
       {
-        "title": "Agentic AI Engineers",
+        "title": "Strategic AI Consulting",
         "features": [
-          "Build autonomous AI agents to automate multi-step business processes.",
-          "Expert behavior control for predictable and safe performance.",
-          "Deep experience in deterministic instruction following.",
-          "Outcome-focused delivery for specific technical goals."
+          "Define optimal AI strategy and deployment roadmaps.",
+          "Expertise in AI ethics, guardrail setting, and governance.",
+          "Align AI outcomes with business value and ROI.",
+          "Continuous guidance on the AI technology landscape."
         ],
         "icon": "Settings"
       },
@@ -40,19 +40,19 @@
         "icon": "Database"
       },
       {
-        "title": "Strategic AI Consulting",
+        "title": "Agentic AI Engineers",
         "features": [
-          "Define optimal AI strategy and deployment roadmaps.",
-          "Expertise in AI ethics, guardrail setting, and governance.",
-          "Align AI outcomes with business value and ROI.",
-          "Continuous guidance on the AI technology landscape."
+          "Build autonomous AI agents to automate multi-step business processes.",
+          "Expert behavior control for predictable and safe performance.",
+          "Deep experience in deterministic instruction following.",
+          "Outcome-focused delivery for specific technical goals."
         ],
         "icon": "Brain"
       }
     ]
   },
   "positioning": {
-    "quote": "We are not a staffing agency. We are not a software tool. We are the operational backbone your business didn't know it was missing."
+    "quote": "✦  Scaling Irreplaceable Expertise  ✦  Auditable Digital Twins  ✦  Deterministic Systems  ✦  Cognitive Operational Backbone  ✦  Expertise at Infinite Scale  ✦  Audit-Ready Decision Flow  ✦"
   },
   "pillars": {
     "heading": "Two ways we support your business",
@@ -143,7 +143,7 @@
   "execution_support": {
     "id": "execution-support",
     "badge": "EXECUTION SUPPORT",
-    "label": "Execution Support",
+    "label": "Implementation",
     "headline": "From idea to team to product — we make it real.",
     "body": "This is the heart of our people-side offering. Three distinct models:",
     "sub_sections": [

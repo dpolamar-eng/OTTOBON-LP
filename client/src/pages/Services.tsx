@@ -7,6 +7,7 @@ import { CoreOfferingsLayout } from '../tier2-layouts/CoreOfferingsLayout';
 import { ServicesPositioningLayout } from '../tier2-layouts/ServicesPositioningLayout';
 import { DetailedServicesLayout } from '../tier2-layouts/DetailedServicesLayout';
 import { ExecutionSupportLayout } from '../tier2-layouts/ExecutionSupportLayout';
+import { ExpertCognitiveScalingLayout } from '../tier2-layouts/ExpertCognitiveScalingLayout';
 import { SecretSauceLayout } from '../tier2-layouts/SecretSauceLayout';
 import { ServicesAboutUsLayout } from '../tier2-layouts/ServicesAboutUsLayout';
 import { AudienceAndCTALayout } from '../tier2-layouts/AudienceAndCTALayout';
@@ -41,6 +42,7 @@ export default function Services() {
 
         {/* Execution Support — Premium Redesigned Section */}
         <ExecutionSupportLayout data={servicesContent.execution_support as any} />
+        <ExpertCognitiveScalingLayout />
 
         {/* Detailed Services Block */}
         {/* The 'compliance-resilience' (Legal & Finance) section is filtered out here so it remains in the codebase but doesn't show on the page */}
