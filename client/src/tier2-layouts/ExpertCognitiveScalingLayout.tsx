@@ -1,6 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Check } from 'lucide-react';
+import { AnimatedSection } from '../tier1-components/AnimatedSection';
+import { ParallaxImage } from '../tier1-components/ParallaxImage';
+import { ArrowRight } from 'lucide-react';
 
 const highlights = [
   'Replicates expert reasoning patterns & escalation instincts',
@@ -11,58 +12,64 @@ const highlights = [
 
 export function ExpertCognitiveScalingLayout() {
   return (
-    <section className="relative overflow-hidden bg-[#050b18] py-20 md:py-24 lg:py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(40,91,196,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.08),transparent_24%)]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
-
-      <div className="relative z-10 mx-auto grid max-w-[1600px] items-start gap-12 px-5 sm:px-6 lg:grid-cols-[minmax(0,1.06fr)_minmax(430px,0.94fr)] lg:gap-16 lg:px-12 xl:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative lg:pt-1"
-        >
-          <div className="relative aspect-[1.7/1] overflow-hidden rounded-[28px] border border-white/8 bg-[#0d1427] shadow-[0_28px_80px_rgba(0,0,0,0.42)]">
-            <img
-              src="/images/digital_twin.jpeg"
-              alt="Professional standing in front of an AI mirror reflection"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(66,111,196,0.18),transparent_28%,rgba(255,250,220,0.08)_100%)]" />
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col lg:max-w-[720px] lg:pt-1"
-        >
-          <div className="mb-7 inline-flex w-fit items-center rounded-full border border-[#2b58c8]/55 bg-[#0d2355] px-5 py-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#a9c3ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            Expert Cognitive Scaling
+    <section className="py-24 bg-gray-950">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          
+          {/* Image / Illustration Side */}
+          <div className="w-full lg:w-1/2 rounded-2xl relative shadow-2xl">
+            <AnimatedSection direction="right">
+              <div className="aspect-[3/2] rounded-2xl overflow-hidden group w-full relative">
+                <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500" />
+                <ParallaxImage 
+                  src="/images/digital_twin.jpeg" 
+                  alt="Professional standing in front of an AI mirror reflection" 
+                  offset={30}
+                  className="w-full h-full"
+                />
+              </div>
+            </AnimatedSection>
           </div>
 
-          <h2 className="max-w-[19ch] text-xl font-extrabold leading-[1.02] tracking-[-0.035em] text-white sm:text-5xl lg:text-[2.0rem] xl:text-[2.5rem]">
-            Your professional presence,<br className="hidden lg:block" /> amplified at infinite scale.
-          </h2>
+          {/* Content Side */}
+          <div className="w-full lg:w-1/2">
+            <AnimatedSection direction="left" delay={0.2}>
+              <span className="inline-block py-1 px-3 rounded-full bg-blue-900/40 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 border border-blue-700/50">
+                Expert Cognitive Scaling
+              </span>
 
-          <p className="mt-8 max-w-[38rem] text-lg leading-[1.75] text-slate-300 lg:text-[1.02rem]">
-            Scale your intuition and professional boundaries. From routine reviews and targeted interventions to ambiguous case surfacing and auditing, our platform replicates your expert judgment, extending it across hundreds of simultaneous interactions while preserving your final word.
-          </p>
+              <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
+                Your professional presence,<br className="hidden lg:block" /> amplified at infinite scale.
+              </h3>
 
-          <ul className="mt-10 space-y-6">
-            {highlights.map((item) => (
-              <li key={item} className="flex items-start gap-4 text-base leading-[1.6] text-slate-100">
-                <span className="mt-1 inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-sky-500/16 text-sky-300 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]">
-                  <Check className="h-4 w-4" />
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul> 
-        </motion.div>
+              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                Scale your intuition and professional boundaries. From routine reviews and targeted interventions to ambiguous case surfacing and auditing, our platform replicates your expert judgment, extending it across hundreds of simultaneous interactions while preserving your final word.
+              </p>
+
+              {/* Features List */}
+              <div className="space-y-4 mb-8">
+                {highlights.map((item, i) => (
+                  <div key={i} className="flex items-start">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0 mt-2.5 mr-4" />
+                    <span className="text-gray-300">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Button */}
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a 
+                  href="#"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-white border border-white/20 hover:bg-blue-600 hover:border-blue-500 font-medium rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0)] hover:shadow-[0_4px_20px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 whitespace-nowrap backdrop-blur-sm"
+                >
+                  <span>Coming Soon</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </AnimatedSection>
+          </div>
+
+        </div>
       </div>
     </section>
   );
