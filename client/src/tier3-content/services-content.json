@@ -163,8 +163,7 @@
           "title": "What Our Team Can Do",
           "bullets": [
             "Designing and deploying Zero-Trust hybrid RAG architectures.",
-            "Engineering autonomous, agentic workflows for complex backend systems.",
-            "Implementing cross-platform LLM context management and hallucination shields."
+            "Engineering autonomous, agentic workflows for complex backend systems."
           ]
         }
       ],
@@ -187,8 +186,7 @@
         {
           "title": "Proof of Delivery",
           "bullets": [
-            "Scaling an AI-powered medical knowledge companion from an n8n prototype to a production-grade FastAPI backend.",
-            "Delivery of specialized tools, like Chrome extensions designed for multi-platform LLM context telemetry."
+            "Scaling an AI-powered medical knowledge companion from an n8n prototype to a production-grade FastAPI backend."
           ]
         },
         {
