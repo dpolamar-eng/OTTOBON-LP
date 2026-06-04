@@ -4,22 +4,26 @@ import { ArrowRight } from 'lucide-react';
 import { TiltCard } from '../tier1-components/TiltCard';
 import { FloatingBackground } from '../tier1-components/FloatingBackground';
 
-interface SubSection {
+interface SectionCard {
   title: string;
-  description: string;
   bullets?: string[];
+}
+
+interface ExecutionSection {
+  badge: string;
+  headline: string;
+  body: string;
+  cards: SectionCard[];
+  cta: {
+    text: string;
+    link: string;
+  };
 }
 
 interface ExecutionSupportData {
   id: string;
-  badge: string;
-  label: string;
-  headline: string;
-  body: string;
-  sub_sections: SubSection[];
-  ctas: { text: string; link: string }[];
-  quote: string;
-  image: string;
+  section_1: ExecutionSection;
+  section_2: ExecutionSection;
 }
 
 export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData }) {
@@ -89,16 +93,30 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
     },
   };
 
-  // CTA mapping: index 0 = "Know More: Idea to Prototype" → goes under MVP card
-  // CTA mapping: index 1 = "Know Our Team" → goes under Hiring card
-  // Reorder: card[0]=Hiring gets cta[1], card[1]=MVP gets cta[0]
-
+  const slideInRight = {
+    hidden: { opacity: 0, x: 80 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
   // Stacked images for left column - UI/UX design style collage
   const stackImages = [
     'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop',
+  ];
+
+  // Stacked images for right column (second section) - Prototype/Product focused
+  const stackImages2 = [
+    'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop', // Product design/prototyping
+    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop', // Data / charts
+    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop', // Digital network / AI cloud
   ];
 
   return (
@@ -128,7 +146,7 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          {/* Two-column grid */}
+          {/* ===== ROW 1: Images Left, Content Right ===== */}
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
 
             {/* ===== LEFT COLUMN: Stacked Image Collage ===== */}
@@ -197,7 +215,7 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
             <div className="w-full lg:w-[52%]">
               {/* Badge */}
               <motion.div
-                variants={slideInLeft}
+                variants={slideInRight}
                 style={{ y: headerY }}
                 className="will-change-transform"
               >
@@ -213,14 +231,14 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
                     className="text-xs font-bold tracking-[0.15em] uppercase"
                     style={{ color: headlineColor }}
                   >
-                    {data.badge}
+                    {data.section_1.badge}
                   </motion.span>
                 </div>
               </motion.div>
 
               {/* Headline — compact */}
               <motion.div
-                variants={slideInLeft}
+                variants={slideInRight}
                 style={{ y: headerY }}
                 className="will-change-transform"
               >
@@ -228,28 +246,28 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
                   className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4"
                   style={{ color: headlineColor }}
                 >
-                  {data.headline}
+                  {data.section_1.headline}
                 </motion.h2>
               </motion.div>
 
               {/* Subtitle */}
-              <motion.div variants={slideInLeft}>
+              <motion.div variants={slideInRight}>
                 <motion.p
                   className="text-base md:text-lg leading-relaxed mb-6 max-w-xl"
                   style={{ color: bodyColor }}
                 >
-                  {data.body}
+                  {data.section_1.body}
                 </motion.p>
               </motion.div>
 
-              {/* Service Model Cards — NO icons, CTA below each card */}
+              {/* Service Model Cards */}
               <motion.div
-                className="grid grid-cols-1 sm:grid-cols-3 gap-5 will-change-transform"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-5 will-change-transform"
                 style={{ y: cardsY }}
-                variants={slideInLeft}
+                variants={slideInRight}
               >
-                {data.sub_sections.map((sub, i) => (
-                  <div key={i} className="flex flex-col w-full h-full">
+                {data.section_1.cards.map((sub, i) => (
+                  <div key={i} className={`flex flex-col w-full h-full ${i === 2 ? 'sm:col-span-2' : ''}`}>
                     <TiltCard
                       className="rounded-[16px] p-4 md:p-5 border bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-black/20 hover:bg-white/10 flex-1 flex flex-col"
                       style={{ borderColor: cardBorderColor }}
@@ -291,43 +309,208 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
                 ))}
               </motion.div>
 
-              {/* Two Big Buttons Below Cards */}
+              {/* Button Below Cards */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 mt-8 will-change-transform"
+                style={{ y: cardsY }}
+                variants={slideInRight}
+              >
+                <motion.a
+                  href={data.section_1.cta.link}
+                  className="group flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold transition-all duration-300 hover:-translate-y-1 whitespace-nowrap bg-yellow-500 text-white border-2 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600 shadow-[0_4px_16px_rgba(234,179,8,0.35)] hover:shadow-[0_6px_24px_rgba(234,179,8,0.5)]"
+                >
+                  <span>{data.section_1.cta.text}</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.a>
+              </motion.div>
+            </div>
+          </div>
+
+
+          {/* ===== ROW 2: Content Left, Images Right ===== */}
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-center mt-32">
+            
+            {/* ===== LEFT COLUMN: Content ===== */}
+            <div className="w-full lg:w-[52%] order-2 lg:order-1">
+              
+              <motion.div
+                variants={slideInLeft}
+                style={{ y: headerY }}
+                className="will-change-transform"
+              >
+                <div
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-5 relative overflow-hidden es-animate-shimmer"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15))',
+                    border: '1px solid rgba(59,130,246,0.3)',
+                  }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                  <motion.span
+                    className="text-xs font-bold tracking-[0.15em] uppercase"
+                    style={{ color: headlineColor }}
+                  >
+                    {data.section_2.badge}
+                  </motion.span>
+                </div>
+              </motion.div>
+
+              <motion.div
+                variants={slideInLeft}
+                style={{ y: headerY }}
+                className="will-change-transform"
+              >
+                <motion.h2
+                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4"
+                  style={{ color: headlineColor }}
+                >
+                  {data.section_2.headline}
+                </motion.h2>
+              </motion.div>
+
+              <motion.div variants={slideInLeft}>
+                <motion.p
+                  className="text-base md:text-lg leading-relaxed mb-6 max-w-xl"
+                  style={{ color: bodyColor }}
+                >
+                  {data.section_2.body}
+                </motion.p>
+              </motion.div>
+
+              {/* Service Model Cards */}
+              <motion.div
+                className="grid grid-cols-1 sm:grid-cols-2 gap-5 will-change-transform"
+                style={{ y: cardsY }}
+                variants={slideInLeft}
+              >
+                {data.section_2.cards.map((sub, i) => (
+                  <div key={i} className={`flex flex-col w-full h-full ${i === 2 ? 'sm:col-span-2' : ''}`}>
+                    <TiltCard
+                      className="rounded-[16px] p-4 md:p-5 border bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-black/20 hover:bg-white/10 flex-1 flex flex-col"
+                      style={{ borderColor: cardBorderColor }}
+                    >
+                      <div className="relative z-10 flex flex-col h-full">
+                        {/* Card Title */}
+                        <motion.h4
+                          className="text-base md:text-lg font-bold mb-3 leading-tight"
+                          style={{ color: headlineColor }}
+                        >
+                          {sub.title}
+                        </motion.h4>
+
+                        {/* Bullets */}
+                        {sub.bullets && sub.bullets.length > 0 && (
+                          <ul className="space-y-2">
+                            {sub.bullets.map((bullet, idx) => (
+                              <li key={idx} className="flex items-start gap-2.5">
+                                <span
+                                  className="es-animate-pulse-dot w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                                  style={{
+                                    backgroundColor: 'var(--es-primary-blue)',
+                                    animationDelay: `${idx * 0.3}s`,
+                                  }}
+                                />
+                                <motion.span
+                                  className="text-[13px] md:text-sm leading-relaxed"
+                                  style={{ color: bodyColor }}
+                                >
+                                  {bullet}
+                                </motion.span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </TiltCard>
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* Button Below Cards */}
               <motion.div 
                 className="flex flex-col sm:flex-row gap-4 mt-8 will-change-transform"
                 style={{ y: cardsY }}
                 variants={slideInLeft}
               >
-                {data.ctas.map((cta, i) => (
-                  <motion.a
-                    key={i}
-                    href={cta.link}
-                    className={`group flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-base font-bold transition-all duration-300 hover:-translate-y-1 whitespace-nowrap ${
-                      cta.text.includes("Know Our Team")
-                        ? 'bg-yellow-500 text-white border-2 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600 shadow-[0_4px_16px_rgba(234,179,8,0.35)] hover:shadow-[0_6px_24px_rgba(234,179,8,0.5)]'
-                        : 'bg-transparent border-2 hover:bg-blue-600 hover:border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0)] hover:shadow-[0_4px_20px_rgba(37,99,235,0.4)] backdrop-blur-sm'
-                    }`}
-                    style={
-                      !cta.text.includes("Know Our Team")
-                        ? { color: 'var(--es-primary-blue)', borderColor: btnBorderColor }
-                        : undefined
-                    }
-                    onMouseEnter={(e) => {
-                      if (!cta.text.includes("Know Our Team")) {
-                        e.currentTarget.style.color = '#FFFFFF';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!cta.text.includes("Know Our Team")) {
-                        e.currentTarget.style.color = 'var(--es-primary-blue)';
-                      }
-                    }}
-                  >
-                    <span>{cta.text}</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </motion.a>
-                ))}
+                <motion.a
+                  href={data.section_2.cta.link}
+                  className="group flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold transition-all duration-300 hover:-translate-y-1 whitespace-nowrap bg-transparent border-2 hover:bg-blue-600 hover:border-blue-500 shadow-[0_0_20px_rgba(37,99,235,0)] hover:shadow-[0_4px_20px_rgba(37,99,235,0.4)] backdrop-blur-sm"
+                  style={{ color: 'var(--es-primary-blue)', borderColor: btnBorderColor }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#FFFFFF';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'var(--es-primary-blue)';
+                  }}
+                >
+                  <span>{data.section_2.cta.text}</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.a>
               </motion.div>
             </div>
+
+            {/* ===== RIGHT COLUMN: Stacked Image Collage (Mirrored) ===== */}
+            <motion.div
+              className="w-full lg:w-[48%] will-change-transform flex justify-center order-1 lg:order-2"
+              variants={slideInRight}
+            >
+              <div className="relative w-full max-w-[500px] lg:max-w-none aspect-[4/5] sm:aspect-square lg:aspect-[4/5] xl:aspect-square">
+                {/* Main large image */}
+                <motion.div
+                  className="absolute z-10 rounded-[20px] overflow-hidden shadow-2xl bg-gray-200"
+                  style={{ y: img1Y, top: '10%', right: '0', width: '80%', height: '65%' }}
+                >
+                  <div className="w-full h-full group">
+                    <img
+                      src={stackImages2[0]}
+                      alt="Product strategy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                </motion.div>
+
+                {/* Second stacked image - offset left & down */}
+                <motion.div
+                  className="absolute z-20 rounded-[16px] overflow-hidden shadow-xl border-4 border-white/80 bg-gray-200"
+                  style={{ y: img2Y, bottom: '5%', left: '0', width: '60%', height: '45%' }}
+                >
+                  <div className="w-full h-full group">
+                    <img
+                      src={stackImages2[1]}
+                      alt="Data metrics"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Third accent image - small, top left */}
+                <motion.div
+                  className="absolute z-30 rounded-[12px] overflow-hidden shadow-lg border-4 border-white/80 bg-gray-200"
+                  style={{ y: img3Y, top: '0', left: '5%', width: '35%', height: '30%' }}
+                >
+                  <div className="w-full h-full group">
+                    <img
+                      src={stackImages2[2]}
+                      alt="Cloud architecture"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Decorative accent dot (Mirrored) */}
+                <div
+                  className="absolute w-16 h-16 rounded-full opacity-30 z-0 hidden md:block"
+                  style={{
+                    background: 'var(--es-primary-blue)',
+                    top: '5%',
+                    right: '-3%',
+                    filter: 'blur(8px)',
+                  }}
+                />
+              </div>
+            </motion.div>
+
           </div>
         </motion.div>
       </div>
