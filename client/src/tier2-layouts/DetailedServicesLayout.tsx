@@ -119,6 +119,12 @@ export function DetailedServicesLayout({ services }: { services: Service[] }) {
                           <a 
                             key={i} 
                             href={cta.link}
+                            onClick={(e) => {
+                              if (cta.link.startsWith('http')) {
+                                e.preventDefault();
+                                window.location.href = cta.link;
+                              }
+                            }}
                             className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-white border border-white/20 hover:bg-blue-600 hover:border-blue-500 font-medium rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0)] hover:shadow-[0_4px_20px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 whitespace-nowrap backdrop-blur-sm"
                           >
                             <span>{cta.text}</span>
