@@ -19,6 +19,7 @@ interface Service {
   quote?: string;
   image: string;
   ctas?: { text: string; link: string }[];
+  imagePosition?: 'left' | 'right';
 }
 
 import { ParallaxImage } from '../tier1-components/ParallaxImage';
@@ -31,15 +32,16 @@ export function DetailedServicesLayout({ services }: { services: Service[] }) {
         <div className="space-y-32">
           {services.map((service, index) => {
             const isEven = index % 2 === 0;
+            const isImageLeft = service.imagePosition ? service.imagePosition === 'left' : isEven;
 
             return (
               <div
                 key={service.id}
-                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+                className={`flex flex-col ${isImageLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
               >
                 {/* Image / Illustration Side */}
                 <div className="w-full lg:w-1/2 rounded-2xl relative shadow-2xl">
-                  <AnimatedSection direction={isEven ? 'right' : 'left'}>
+                  <AnimatedSection direction={isImageLeft ? 'right' : 'left'}>
                     <div className="aspect-[3/2] rounded-2xl overflow-hidden group w-full relative">
                       <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500" />
                       <ParallaxImage 
@@ -54,7 +56,7 @@ export function DetailedServicesLayout({ services }: { services: Service[] }) {
 
                 {/* Content Side */}
                 <div className="w-full lg:w-1/2">
-                  <AnimatedSection direction={isEven ? 'left' : 'right'} delay={0.2}>
+                  <AnimatedSection direction={isImageLeft ? 'left' : 'right'} delay={0.2}>
                     <span className="inline-block py-1 px-3 rounded-full bg-blue-900/40 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 border border-blue-700/50">
                       {service.label}
                     </span>

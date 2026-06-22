@@ -138,6 +138,27 @@
         }
       ],
       "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "hiring-agency",
+      "label": "Ottobon TalentOps: Hiring Agency",
+      "headline": "Skip the Resume Noise. Hire Pre-Vetted Professionals on Demand.",
+      "body": "Stop wasting countless hours interviewing the wrong candidates. Our proprietary two-tier screening utilizes neural-engine AI and real human experts to evaluate candidates on technical depth, core values, and cultural compatibility. We do the heavy lifting so you only meet the top-tier.",
+      "included": [
+        "Automatic filtering of up to 60% of unqualified applicants",
+        "Real-time technical screening via adaptive neural-engine AI",
+        "Rigorous final evaluation by internal human tech experts",
+        "Precision semantic matching for technical and cultural alignment",
+        "Immediate access to exclusive, pre-vetted talent pools"
+      ],
+      "ctas": [
+        {
+          "text": "Know More",
+          "link": "/talentops"
+        }
+      ],
+      "image": "/images/hiring-agency.png",
+      "imagePosition": "right"
     }
   ],
   "execution_support": {
