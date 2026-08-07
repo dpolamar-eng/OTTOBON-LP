@@ -198,17 +198,7 @@ export const ServicesAboutUsLayout: React.FC<{ data: AboutUsData }> = ({ data })
                   whileHover={{ y: -10 }}
                   className={`group relative overflow-hidden rounded-3xl bg-slate-800/80 backdrop-blur-md border border-slate-700 transition-all duration-300 ${hoverBorder}`}
                 >
-                  <div className="aspect-[4/3] w-full overflow-hidden relative">
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="w-full h-full object-cover object-[center_20%] grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
-                  </div>
-
-                  <div className="p-6 relative z-10 -mt-12">
+                  <div className="p-6 relative z-10">
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide border backdrop-blur-sm mb-4 ${badgeClasses} transform group-hover:-translate-y-1 transition-transform`}>
                       {leader.role}
                     </span>
