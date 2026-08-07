@@ -326,27 +326,6 @@
         "description": "Driving efficiency and operational excellence across all our key pillars.",
         "image": "/images/Gitika.jpg",
         "color": "yellow"
-      },
-      {
-        "name": "Dr. Amina Rahman",
-        "role": "Advisory Board",
-        "description": "Strategic advisor bringing insights from top Fortune 500 tech companies.",
-        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800",
-        "color": "purple"
-      },
-      {
-        "name": "Chloe Dupont",
-        "role": "Advisory Board",
-        "description": "Expert in scaling startups and optimizing operational frameworks.",
-        "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=800",
-        "color": "emerald"
-      },
-      {
-        "name": "Aisha Patel",
-        "role": "Advisory Board",
-        "description": "Specialist in compliance and legal resilience for modern enterprises.",
-        "image": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=800",
-        "color": "yellow"
       }
     ]
   }
