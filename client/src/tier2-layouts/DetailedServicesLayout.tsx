@@ -72,12 +72,23 @@ export function DetailedServicesLayout({ services }: { services: Service[] }) {
                     {/* Features List */}
                     {service.included && (
                       <div className="space-y-4 mb-8">
-                        {service.included.map((item, i) => (
-                          <div key={i} className="flex items-start">
-                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0 mt-2.5 mr-4" />
-                            <span className="text-gray-300">{item}</span>
-                          </div>
-                        ))}
+                        {service.included.map((item, i) => {
+                          const parts = item.split(': ');
+                          return (
+                            <div key={i} className="flex items-start">
+                              <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0 mt-2.5 mr-4" />
+                              <span className="text-gray-300">
+                                {parts.length > 1 ? (
+                                  <>
+                                    <strong className={`${parts[0] === 'Lead Generation' ? 'text-blue-400' : 'text-white'} font-semibold`}>{parts[0]}:</strong> {parts.slice(1).join(': ')}
+                                  </>
+                                ) : (
+                                  item
+                                )}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
                     )}
 

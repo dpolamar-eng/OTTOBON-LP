@@ -28,7 +28,7 @@ export function CoreOfferingsLayout({ data }: { data: CoreOfferingsData }) {
           <span className="text-sm font-bold text-blue-200 uppercase tracking-[0.3em] [text-shadow:0_0_15px_rgba(96,165,250,0.8)] drop-shadow-lg">{data.heading}</span>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${data.cards.length > 3 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-6 max-w-7xl mx-auto`}>
           {data.cards.map((card, idx) => {
             const IconComponent = iconMap[card.icon] || Settings;
             return (

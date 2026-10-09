@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
+import { ArrowRight, Settings, Repeat } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import { TiltCard } from '../tier1-components/TiltCard';
 import { FloatingBackground } from '../tier1-components/FloatingBackground';
+import servicesContent from '../tier3-content/services-content.json';
 
 interface SectionCard {
   title: string;
@@ -326,6 +327,52 @@ export function ExecutionSupportLayout({ data }: { data: ExecutionSupportData })
             </div>
           </div>
 
+          {/* ===== ROW 1.5: Operate & Transfer Service Cards ===== */}
+          <div className="mt-24 mb-16 will-change-transform">
+             <motion.div 
+               className="grid grid-cols-1 md:grid-cols-2 gap-8"
+               variants={slideInRight}
+               style={{ y: cardsY }}
+             >
+               {servicesContent.operate_transfer.cards.map((card, i) => (
+                 <TiltCard key={i} 
+                   className="flex-1 p-8 rounded-[20px] border bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-black/20 hover:bg-white/10 flex flex-col group relative overflow-hidden"
+                   style={{ borderColor: cardBorderColor }}
+                 >
+                   <div className="relative z-10 flex flex-col h-full">
+                     <div className="w-12 h-12 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                       {i === 0 ? <Settings className="w-6 h-6" /> : <Repeat className="w-6 h-6" />}
+                     </div>
+                     <motion.h3 
+                       className="text-2xl font-extrabold mb-4"
+                       style={{ color: headlineColor }}
+                     >
+                       {card.title}
+                     </motion.h3>
+                     <motion.p 
+                       className="mb-6 leading-relaxed"
+                       style={{ color: bodyColor }}
+                     >
+                       {card.description}
+                     </motion.p>
+                     <ul className="space-y-3 mb-8">
+                       {card.highlights.map((highlight, idx) => (
+                         <li key={idx} className="flex items-start gap-3">
+                           <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0 mt-2" />
+                           <motion.span 
+                             className="text-sm leading-relaxed"
+                             style={{ color: bodyColor }}
+                           >
+                             {highlight}
+                           </motion.span>
+                         </li>
+                       ))}
+                     </ul>
+                   </div>
+                 </TiltCard>
+               ))}
+             </motion.div>
+          </div>
 
           {/* ===== ROW 2: Content Left, Images Right ===== */}
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-center mt-32">

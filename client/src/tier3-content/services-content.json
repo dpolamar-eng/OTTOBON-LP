@@ -48,6 +48,16 @@
           "Outcome-focused delivery for specific technical goals."
         ],
         "icon": "Brain"
+      },
+      {
+        "title": "Custom Software & Cloud Engineering",
+        "features": [
+          "Custom software development and full-stack engineering.",
+          "Cloud engineering and scalable architectures.",
+          "Prototypes and MVP development.",
+          "Integration of AI capabilities into existing workflows."
+        ],
+        "icon": "Cloud"
       }
     ]
   },
@@ -70,6 +80,20 @@
     ]
   },
   "detailed_services": [
+    {
+      "id": "ibot-model",
+      "label": "The IBOT Model",
+      "headline": "IBOT: Identify. Build. Operate. Transfer.",
+      "body": "Ottobon connects talent development with real-world business delivery through a structured talent lifecycle. Our Academy focuses on identifying and building talent, while Professional Services focuses on enabling client engagement and potential long-term hiring.",
+      "included": [
+        "1. Identify: Identify suitable candidates for relevant technical roles.",
+        "2. Build: Develop technical capabilities in Python, AI, Cloud, and other relevant technologies through Ottobon Academy.",
+        "3. Operate: Enable selected talent to contribute to client work through a defined engagement arrangement.",
+        "4. Transfer: Provide a potential pathway for clients to hire suitable candidates permanently following an agreed evaluation period."
+      ],
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop",
+      "imagePosition": "left"
+    },
     {
       "id": "business-development",
       "label": "Business Development",
@@ -94,6 +118,26 @@
       "image": "https://images.unsplash.com/photo-1688380692117-63178554d76d?q=80&w=1170&auto=format&fit=crop&w=1200&q=80"
     },
     {
+      "id": "sbloom",
+      "label": "sBLOOM — Digital Growth",
+      "headline": "Grow Your Digital Presence. Generate More Leads.",
+      "body": "We help businesses strengthen their online presence, reach the right audience, and turn digital marketing efforts into meaningful growth.",
+      "included": [
+        "Lead Generation: Attract potential customers and create more opportunities for enquiries.",
+        "Digital Front Office: Build a stronger online presence across your website and digital channels.",
+        "Digital Marketing: Reach relevant audiences through focused digital marketing campaigns.",
+        "Brand Positioning: Communicate what makes your business valuable and different.",
+        "Go-to-Market Strategy: Plan how to introduce your offerings to the right customers and markets."
+      ],
+      "ctas": [
+        {
+          "text": "Explore Digital Growth",
+          "link": "/marketing"
+        }
+      ],
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
       "id": "operational-support",
       "label": "Operation Support",
       "headline": "Deliver Consistently. Scale Confidently.",
@@ -102,7 +146,12 @@
         "Day-to-day team coordination & task tracking",
         "Workflow design & SOP documentation",
         "Quality assurance & delivery oversight",
-        "Reporting & operational dashboards"
+        "Reporting & operational dashboards",
+        "Project coordination",
+        "Workflow design and improvement",
+        "Standard Operating Procedures (SOPs)",
+        "Quality assurance",
+        "Reporting and operational support"
       ],
       "ctas": [
         {
@@ -177,7 +226,7 @@
         {
           "title": "Contract-to-Hire",
           "bullets": [
-            "A structured short-term evaluation period allowing for a seamless, risk-free integration into the core team before a full-time commitment."
+            "A structured short-term evaluation period allowing for a seamless, structured integration into the core team before a full-time commitment."
           ]
         },
         {
@@ -326,6 +375,62 @@
         "description": "Driving efficiency and operational excellence across all our key pillars.",
         "image": "/images/Gitika.jpg",
         "color": "yellow"
+      }
+    ]
+  },
+  "ibot": {
+    "heading": "IBOT: Identify. Build. Operate. Transfer.",
+    "description": "Ottobon connects talent development with real-world business delivery through a structured talent lifecycle. Our Academy focuses on identifying and building talent, while Professional Services focuses on enabling client engagement and potential long-term hiring.",
+    "steps": [
+      {
+        "title": "Identify",
+        "description": "Identify suitable candidates for relevant technical roles."
+      },
+      {
+        "title": "Build",
+        "description": "Develop technical capabilities in Python, AI, Cloud, and other relevant technologies through Ottobon Academy."
+      },
+      {
+        "title": "Operate",
+        "description": "Enable selected talent to contribute to client work through a defined engagement arrangement."
+      },
+      {
+        "title": "Transfer",
+        "description": "Provide a potential pathway for clients to hire suitable candidates permanently following an agreed evaluation period."
+      }
+    ]
+  },
+  "operate_transfer": {
+    "cards": [
+      {
+        "title": "Operate: Structured Talent Engagement",
+        "description": "Enable your organization to engage selected AI, Cloud, and software engineering talent through a clearly defined working arrangement. Establish responsibilities, engagement duration, performance reviews, and the operational support required for effective collaboration.",
+        "highlights": [
+          "Candidate selection and technical readiness.",
+          "Defined engagement duration and responsibilities.",
+          "Performance evaluation and feedback.",
+          "Clear employment or contracting arrangements.",
+          "Payroll administration and related coordination, where contractually agreed and legally appropriate."
+        ],
+        "cta": {
+          "text": "Explore Operate",
+          "link": "#contact"
+        }
+      },
+      {
+        "title": "Transfer: Contract-to-Hire",
+        "description": "Evaluate a candidate's technical capabilities, collaboration, and role fit during an agreed engagement period. If the candidate and organization are a good match, provide a pathway toward permanent employment under mutually agreed terms.",
+        "highlights": [
+          "Evaluation in a real working environment.",
+          "Technical and performance reviews.",
+          "Assessment of team and role fit.",
+          "Coordination of permanent hiring.",
+          "Clearly defined conversion conditions and contractual terms."
+        ],
+        "cta": {
+          "text": "Explore Transfer",
+          "link": "#contact"
+        }
       }
     ]
   }

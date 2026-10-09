@@ -20,6 +20,14 @@ export default function Services() {
   // Add smooth scroll behavior to HTML element
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // SEO setup
+    document.title = "Ottobon Professional Services | AI Engineering & Talent Solutions";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Explore Ottobon Professional Services for AI and Cloud engineering, technical team extension, structured talent engagement, contract-to-hire pathways, and digital growth support.");
+    }
+
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
@@ -36,6 +44,8 @@ export default function Services() {
 
         {/* Core Offerings Section */}
         <CoreOfferingsLayout data={servicesContent.core_offerings} />
+
+
         
         {/* Positioning Quote */}
         <ServicesPositioningLayout quote={servicesContent.positioning.quote} />
