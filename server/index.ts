@@ -66,12 +66,8 @@ app.use((req, res, next) => {
   try {
     console.log('🚀 Starting Ottobon Academy server...');
 
-    // Test database connection first
-    const dbConnected = await testDatabaseConnection();
-    if (!dbConnected) {
-      console.warn('⚠️ Database connection failed, but continuing startup...');
-    }
-
+    // Skip database connection test during website startup
+console.log('⏭️ Skipping database connection test.');
     // Add health check endpoint before other routes
     app.get('/health', async (req, res) => {
       try {
